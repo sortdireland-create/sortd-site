@@ -202,36 +202,28 @@ input,select,button{font-family:'Nunito',sans-serif;}
 .hero-nl-note{font-size:12px;font-weight:600;color:#2E84AC;opacity:0.7;}
 @media(max-width:520px){.hero-nl-bar{flex-wrap:wrap;border-radius:14px;padding:12px 14px;gap:10px;}.hero-nl-btn{width:100%;text-align:center;}}
 
-/* POPUP OVERLAY */
+/* POPUP OVERLAY — waitlist mockup v3 style */
 .popup-overlay{position:fixed;inset:0;background:rgba(39,49,74,0.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s;}
 .popup-overlay.show{opacity:1;pointer-events:all;}
-.popup{background:#fff;border-radius:24px;padding:40px 36px;max-width:440px;width:100%;position:relative;transform:translateY(20px);transition:transform 0.3s;text-align:center;}
+.popup{position:relative;width:100%;max-width:440px;background:#CBEAF8;border-radius:24px;padding:48px 34px 36px;text-align:center;box-shadow:0 24px 60px rgba(39,49,74,0.18);transform:translateY(20px);transition:transform 0.3s;}
 .popup-overlay.show .popup{transform:translateY(0);}
-.popup-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;color:#aaa;cursor:pointer;line-height:1;padding:4px 8px;}
-.popup-close:hover{color:#27314A;}
-.popup-icon{font-size:44px;display:block;margin-bottom:14px;}
-.popup-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px;letter-spacing:-0.02em;color:#27314A;line-height:1.1;margin-bottom:10px;}
-.popup-title em{font-style:normal;color:#2E84AC;}
-.popup-sub{font-size:15px;font-weight:600;color:#666;line-height:1.6;margin-bottom:24px;}
-.popup-form{}
-.popup-input{width:100%;background:#F5F0E8;border:1.5px solid #EDE7D8;border-radius:12px;padding:14px 18px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:600;color:#27314A;outline:none;margin-bottom:10px;transition:border-color 0.15s;}
-.popup-input:focus{border-color:#2E84AC;background:#fff;}
-.popup-btn{width:100%;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:16px;color:#fff;background:#2E84AC;padding:15px;border-radius:12px;border:none;cursor:pointer;transition:opacity 0.15s;}
-.popup-btn:hover{opacity:0.88;}
-.popup-note{font-size:12px;font-weight:600;color:#aaa;margin-top:10px;display:block;}
+.popup-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:10px;background:rgba(39,49,74,0.08);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#27314A;font-size:18px;line-height:1;transition:background 0.15s ease;}
+.popup-close:hover{background:rgba(39,49,74,0.16);}
+.popup-logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px;color:#27314A;letter-spacing:0.01em;margin-bottom:18px;}
+.popup-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:27px;color:#27314A;margin:0 0 14px;line-height:1.3;}
+.popup-sub{font-family:'Nunito',sans-serif;font-size:15px;font-weight:600;color:#4c5a6b;line-height:1.55;margin:0 0 28px;}
+.popup-form{display:flex;flex-direction:column;gap:14px;}
+.popup-input{width:100%;padding:16px 18px;border-radius:12px;border:1.5px solid rgba(39,49,74,0.12);background:#FBF8F0;font-family:'Nunito',sans-serif;font-size:15px;font-weight:600;color:#27314A;outline:none;}
+.popup-input::placeholder{color:#9aa3ac;font-weight:600;}
+.popup-input:focus{border-color:#27314A;}
+.popup-btn{margin-top:4px;width:100%;padding:17px;border:none;border-radius:12px;background:#F6B4AC;color:#27314A;font-family:'Baloo 2',sans-serif;font-size:17px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.15s ease,transform 0.1s ease;}
+.popup-btn:hover{background:#f2a196;transform:translateY(-1px);}
+.popup-privacy{margin-top:20px;font-family:'Nunito',sans-serif;font-size:12px;color:#6b7885;line-height:1.5;text-align:center;}
+.popup-privacy a{color:#27314A;text-decoration:underline;font-weight:700;}
 .popup-success{display:none;padding:10px 0;}
 .popup-success-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;color:#27314A;margin-bottom:6px;}
-.popup-success-sub{font-size:14px;font-weight:600;color:#666;}
-.popup-success-caveat{font-family:'Caveat',cursive;font-weight:600;font-size:19px;color:#2E84AC;display:block;margin-top:10px;}
-.pf-group{margin-bottom:9px;text-align:left;}
-.pf-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#aaa;display:block;margin-bottom:4px;}
-.pf-bar{display:flex;align-items:center;gap:8px;background:#F5F0E8;border-radius:10px;padding:5px 5px 5px 14px;border:1.5px solid #EDE7D8;transition:border-color 0.15s;}
-.pf-bar:focus-within{border-color:#2E84AC;background:#fff;}
-.pf-icon{font-size:16px;color:#9aa0aa;flex-shrink:0;}
-.pf-input{flex:1;border:none;outline:none;background:transparent;font-size:14px;font-weight:600;color:#27314A;min-width:0;width:100%;}
-.pf-input::placeholder{color:#b0b8c8;}
-.pf-select{appearance:none;-webkit-appearance:none;cursor:pointer;}
-.popup-privacy{font-size:11px;font-weight:600;color:#aaa;line-height:1.6;margin-top:10px;text-align:center;}
+.popup-success-sub{font-size:14px;font-weight:600;color:#4c5a6b;}
+.popup-success-caveat{font-family:'Caveat',cursive;font-weight:600;font-size:19px;color:#27314A;display:block;margin-top:10px;}
 
 
 </style>
@@ -671,91 +663,27 @@ render(filterCamps());
 <!-- NEWSLETTER POPUP -->
 <div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-label="Newsletter signup">
   <div class="popup">
-    <button class="popup-close" onclick="closePopup()" aria-label="Close"><i class="ti ti-x" aria-hidden="true"></i></button>
-
-    <div style="width:52px;height:52px;border-radius:50%;background:#CBEAF6;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
-      <i class="ti ti-mail" style="font-size:24px;color:#2E84AC;" aria-hidden="true"></i>
-    </div>
-
-    <div class="popup-title">Get your monthly round-up of<br><em>kids' activities near you.</em></div>
-    <p class="popup-sub">Camps, sport, drama, music, GAA and more — every activity in your county, straight to your inbox.</p>
-    <p style="background:#CBEAF6;color:#1E3FAE;font-weight:700;font-size:14px;padding:10px 14px;border-radius:10px;margin:0 0 16px;text-align:center;">Afterschool, extra-curricular & baby/toddler activities added this September — be the first to find out.</p>
+    <button class="popup-close" onclick="closePopup()" aria-label="Close">&#10005;</button>
+    <div class="popup-logo">sortd</div>
 
     <div id="popupFormWrap">
+      <div class="popup-title">Join the waitlist — be the first to see new sortd</div>
+      <p class="popup-sub">All your weekly classes, camps and afterschool clubs listed on one website. Absolutely free.</p>
+
       <form class="popup-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="popupSubmit(event)">
         <input type="hidden" name="form-name" value="newsletter">
         <p style="display:none"><label>Don't fill: <input name="bot-field"></label></p>
-
-        <div class="pf-group">
-          <label class="pf-label" for="p-email">Your email <span style="color:#EF3D2F;">*</span></label>
-          <div class="pf-bar">
-            <i class="ti ti-mail pf-icon" aria-hidden="true"></i>
-            <input class="pf-input" id="p-email" name="email" type="email" placeholder="your@email.ie" required aria-label="Email address">
-          </div>
-        </div>
-
-        <div class="pf-group">
-          <label class="pf-label" for="p-name">First name <span style="color:#EF3D2F;">*</span></label>
-          <div class="pf-bar">
-            <i class="ti ti-user pf-icon" aria-hidden="true"></i>
-            <input class="pf-input" id="p-name" name="first-name" type="text" placeholder="e.g. Sarah" required aria-label="First name">
-          </div>
-        </div>
-
-        <div class="pf-group">
-          <label class="pf-label" for="p-county">Your county <span style="color:#EF3D2F;">*</span></label>
-          <div class="pf-bar">
-            <i class="ti ti-map-pin pf-icon" aria-hidden="true"></i>
-            <select class="pf-input pf-select" id="p-county" name="county" required aria-label="Your county">
-              <option value="" disabled selected>Select county</option>
-              <option>Antrim</option><option>Armagh</option><option>Carlow</option>
-              <option>Cavan</option><option>Clare</option><option>Cork</option>
-              <option>Derry</option><option>Donegal</option><option>Down</option>
-              <option>Dublin</option><option>Fermanagh</option><option>Galway</option>
-              <option>Kerry</option><option>Kildare</option><option>Kilkenny</option>
-              <option>Laois</option><option>Leitrim</option><option>Limerick</option>
-              <option>Longford</option><option>Louth</option><option>Mayo</option>
-              <option>Meath</option><option>Monaghan</option><option>Offaly</option>
-              <option>Roscommon</option><option>Sligo</option><option>Tipperary</option>
-              <option>Tyrone</option><option>Waterford</option><option>Westmeath</option>
-              <option>Wexford</option><option>Wicklow</option>
-            </select>
-            <i class="ti ti-chevron-down" style="font-size:14px;color:#9aa0aa;flex-shrink:0;pointer-events:none;margin-right:4px;" aria-hidden="true"></i>
-          </div>
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;">
-          <div class="pf-group" style="margin-bottom:0;">
-            <label class="pf-label" for="p-child1">Child 1 age <span style="color:#EF3D2F;">*</span></label>
-            <div class="pf-bar">
-              <i class="ti ti-star pf-icon" aria-hidden="true"></i>
-              <input class="pf-input" id="p-child1" name="child1-age" type="number" placeholder="e.g. 5" min="0" max="18" required aria-label="Child 1 age">
-            </div>
-          </div>
-          <div class="pf-group" style="margin-bottom:0;">
-            <label class="pf-label" for="p-child2">Child 2 age <span style="font-weight:400;font-size:10px;color:#bbb;">(optional)</span></label>
-            <div class="pf-bar">
-              <i class="ti ti-star pf-icon" aria-hidden="true"></i>
-              <input class="pf-input" id="p-child2" name="child2-age" type="number" placeholder="e.g. 8" min="0" max="18" aria-label="Child 2 age (optional)">
-            </div>
-          </div>
-        </div>
-
-        <button class="popup-btn" type="submit" style="margin-top:14px;">Join free →</button>
-
-        <p class="popup-privacy">By submitting this form, you agree that your information can be processed in accordance with our <a href="/privacy-policy" style="color:#2E84AC;">Privacy Policy</a>. You can unsubscribe at any time.</p>
+        <input class="popup-input" id="p-email" name="email" type="email" placeholder="your@email.ie" required aria-label="Email address">
+        <button class="popup-btn" type="submit">Join Free →</button>
       </form>
+
+      <p class="popup-privacy">By submitting this form, you agree that your information can be processed in accordance with our <a href="/privacy-policy">Privacy Policy</a>. You can unsubscribe at any time.</p>
     </div>
 
     <div class="popup-success" id="popupSuccess">
       <div class="popup-success-title">You're in.</div>
-      <p class="popup-success-sub">We'll be in touch with everything on near you in your county.</p>
+      <p class="popup-success-sub">We'll let you know as soon as new sortd is live.</p>
       <span class="popup-success-caveat">activities sorted →</span>
-    </div>
-
-    <div style="margin-top:14px;padding-top:14px;border-top:1px solid #F0EBE3;display:flex;align-items:center;justify-content:center;gap:6px;">
-      <span style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:14px;color:#27314A;">sortd</span>
-      <span style="font-size:12px;font-weight:600;color:#aaa;">· 400+ parents already getting it</span>
     </div>
   </div>
 </div>
