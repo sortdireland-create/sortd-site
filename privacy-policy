@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HHTB7S9WJG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HHTB7S9WJG');
+</script>
+<title>Privacy Policy — sortd Ireland</title>
+<meta name="description" content="sortd Ireland privacy policy. How we collect, use and protect your personal data.">
+<link rel="canonical" href="https://sortd-ireland.ie/privacy-policy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:#F5F0E8;color:#27314A;-webkit-font-smoothing:antialiased;}
+a{color:#2E84AC;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.nav{background:#fff;border-bottom:1.5px solid #eee;position:sticky;top:0;z-index:100;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;}
+.logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:28px;color:#27314A;letter-spacing:-0.03em;text-decoration:none;}
+.nav-links{display:flex;align-items:center;gap:24px;font-weight:700;font-size:14px;}
+.nav-links a{color:#27314A;opacity:0.6;text-decoration:none;transition:opacity 0.15s;}
+.nav-links a:hover{opacity:1;}
+@media(max-width:768px){.nav-links{display:none;}.nav-inner{padding:14px 20px;}}
+
+.hero{background:#27314A;padding:52px 40px 44px;}
+.hero-inner{max-width:760px;margin:0 auto;}
+.hero-eye{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#F4A7C3;display:block;margin-bottom:12px;}
+.hero h1{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);letter-spacing:-0.02em;color:#fff;margin-bottom:10px;}
+.hero-sub{font-size:15px;font-weight:600;color:rgba(255,255,255,0.6);line-height:1.6;}
+@media(max-width:768px){.hero{padding:40px 20px;}}
+
+.content{max-width:760px;margin:0 auto;padding:56px 40px 80px;}
+@media(max-width:768px){.content{padding:40px 20px 64px;}}
+
+.card{background:#fff;border-radius:18px;padding:36px;margin-bottom:24px;}
+.card h2{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px;color:#27314A;margin-bottom:14px;padding-bottom:12px;border-bottom:1.5px solid #F0EBE3;}
+.card p{font-size:15px;font-weight:600;color:#444;line-height:1.75;margin-bottom:14px;}
+.card p:last-child{margin-bottom:0;}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.card ul li{font-size:15px;font-weight:600;color:#444;line-height:1.65;display:flex;gap:10px;align-items:flex-start;}
+.card ul li::before{content:'·';color:#2E84AC;font-weight:800;flex-shrink:0;margin-top:1px;}
+.card h3{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:16px;color:#27314A;margin:20px 0 8px;}
+.card h3:first-child{margin-top:0;}
+.updated{font-size:13px;font-weight:600;color:#aaa;display:block;margin-bottom:28px;}
+
+.contact-box{background:#CBEAF6;border-radius:14px;padding:20px 22px;margin-top:14px;}
+.contact-box p{font-size:15px;font-weight:600;color:#27314A;line-height:1.65;margin-bottom:6px;}
+.contact-box p:last-child{margin-bottom:0;}
+
+.footer{background:#27314A;padding:32px 40px;text-align:center;}
+.footer-logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;color:#F4A7C3;display:block;margin-bottom:10px;text-decoration:none;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.35);}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">sortd</a>
+    <div class="nav-links">
+      <a href="/how-it-works">how it works</a>
+      <a href="/recommend">recommend a camp</a>
+      <a href="/about">about</a>
+      <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener">instagram</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eye">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p class="hero-sub">We take your privacy seriously. This policy explains what we collect, why we collect it, and how we look after it.</p>
+  </div>
+</section>
+
+<div class="content">
+  <span class="updated">Last updated: June 2026</span>
+
+  <div class="card">
+    <h2>Who we are</h2>
+    <p>sortd Ireland is a parent-curated directory of children's camps and activities across Ireland. sortd is operated by Rachel, a working mum based in Malahide, Co. Dublin, Ireland.</p>
+    <p>When we say "sortd", "we", "us" or "our" in this policy, we mean sortd Ireland.</p>
+    <p>If you have any questions about this policy or how we handle your data, please contact us at <a href="mailto:sortd.ireland@gmail.com">sortd.ireland@gmail.com</a>.</p>
+  </div>
+
+  <div class="card">
+    <h2>What information we collect</h2>
+
+    <h3>Newsletter subscribers</h3>
+    <p>When you sign up for our newsletter, we collect:</p>
+    <ul>
+      <li>Your email address</li>
+      <li>Your first name</li>
+      <li>Your county in Ireland</li>
+      <li>Your child or children's ages</li>
+    </ul>
+    <p>We collect this information so we can send you a relevant, personalised monthly round-up of kids' activities in your area, matched to your children's ages.</p>
+
+    <h3>Camp recommendations</h3>
+    <p>When you recommend a camp via our website, we collect the details you provide about the camp (name, location, category, contact details) and optionally your first name. We use this to research and add the camp to our directory.</p>
+
+    <h3>Website usage</h3>
+    <p>Like most websites, we may collect basic technical information when you visit sortd-ireland.ie, including your IP address, browser type, and pages visited. This helps us understand how the site is being used and improve it over time. We do not use this data to identify you personally.</p>
+  </div>
+
+  <div class="card">
+    <h2>How we use your information</h2>
+    <p>We use the information we collect only for the purposes it was given:</p>
+    <ul>
+      <li>To send you our monthly newsletter with children's activities relevant to your county and your children's ages</li>
+      <li>To add recommended camps to the sortd directory</li>
+      <li>To improve the website and understand how parents use it</li>
+    </ul>
+    <p>We will never sell your personal data to third parties. We will never use your data for advertising purposes. We will never share your data with anyone outside of what is needed to operate sortd.</p>
+  </div>
+
+  <div class="card">
+    <h2>Legal basis for processing</h2>
+    <p>We process your personal data on the following legal bases under GDPR:</p>
+    <ul>
+      <li><strong>Consent</strong> — when you sign up for our newsletter, you give us explicit consent to contact you. You can withdraw this consent at any time by unsubscribing.</li>
+      <li><strong>Legitimate interests</strong> — for basic website analytics to understand how sortd is being used and to improve the experience for parents.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>How we store your data</h2>
+    <p>Newsletter signups are captured via Netlify Forms and stored securely on Netlify's servers. Netlify is GDPR-compliant and their data processing terms are available at <a href="https://www.netlify.com/gdpr-ccpa" target="_blank" rel="noopener">netlify.com/gdpr-ccpa</a>.</p>
+    <p>We do not currently use a third-party email marketing platform. When we do, we will update this policy to name that provider and link to their privacy terms.</p>
+    <p>We retain your data for as long as you are subscribed to our newsletter. If you unsubscribe, we will delete your personal data from our records within 30 days.</p>
+  </div>
+
+  <div class="card">
+    <h2>Your rights under GDPR</h2>
+    <p>As someone based in Ireland or the EU, you have the following rights regarding your personal data:</p>
+    <ul>
+      <li><strong>Right to access</strong> — you can ask us what personal data we hold about you</li>
+      <li><strong>Right to rectification</strong> — you can ask us to correct any inaccurate data</li>
+      <li><strong>Right to erasure</strong> — you can ask us to delete your data at any time</li>
+      <li><strong>Right to restrict processing</strong> — you can ask us to stop using your data</li>
+      <li><strong>Right to data portability</strong> — you can ask for a copy of your data in a portable format</li>
+      <li><strong>Right to object</strong> — you can object to us processing your data</li>
+      <li><strong>Right to withdraw consent</strong> — you can unsubscribe from our newsletter at any time using the unsubscribe link in any email we send</li>
+    </ul>
+    <p>To exercise any of these rights, please email us at <a href="mailto:sortd.ireland@gmail.com">sortd.ireland@gmail.com</a>. We will respond within 30 days.</p>
+  </div>
+
+  <div class="card">
+    <h2>Cookies</h2>
+    <p>sortd-ireland.ie does not currently use tracking cookies or advertising cookies. We may use a session cookie to remember that you have closed our newsletter popup during your visit, so it does not reappear. This cookie is not used to identify you and expires when you close your browser.</p>
+  </div>
+
+  <div class="card">
+    <h2>Third-party links</h2>
+    <p>Our website links to external camp and activity provider websites. Once you leave sortd-ireland.ie, this privacy policy no longer applies. We encourage you to read the privacy policy of any website you visit. We are not responsible for the privacy practices of third-party sites.</p>
+  </div>
+
+  <div class="card">
+    <h2>Children's privacy</h2>
+    <p>sortd is a service for parents and guardians. We do not knowingly collect personal data directly from children. The only data we collect about children is their age, provided by a parent or guardian when signing up for our newsletter, used solely to personalise activity recommendations.</p>
+  </div>
+
+  <div class="card">
+    <h2>Changes to this policy</h2>
+    <p>We may update this privacy policy from time to time as sortd grows and changes. When we do, we will update the "last updated" date at the top of this page. For significant changes, we will notify newsletter subscribers by email.</p>
+  </div>
+
+  <div class="card">
+    <h2>Contact us</h2>
+    <p>If you have any questions about this privacy policy, your data, or how we handle information, please get in touch:</p>
+    <div class="contact-box">
+      <p><strong>sortd Ireland</strong></p>
+      <p>Malahide, Co. Dublin, Ireland</p>
+      <p>Email: <a href="mailto:sortd.ireland@gmail.com">sortd.ireland@gmail.com</a></p>
+      <p>Instagram: <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener">@sortd.ireland</a></p>
+    </div>
+    <p style="margin-top:14px;">If you are not satisfied with how we handle your data, you also have the right to lodge a complaint with the Data Protection Commission Ireland at <a href="https://www.dataprotection.ie" target="_blank" rel="noopener">dataprotection.ie</a>.</p>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <a href="/" class="footer-logo">sortd</a>
+  <div class="footer-copy">© 2026 sortd Ireland · sortd-ireland.ie · Built by a mum in Malahide</div>
+</footer>
+
+</body>
+</html>

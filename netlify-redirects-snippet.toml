@@ -1,0 +1,13 @@
+# ADD THESE REDIRECTS TO YOUR EXISTING netlify.toml
+
+[[redirects]]
+  from = "/neurodivergent-camps-ireland"
+  to = "/neurodivergent-camps-ireland/index.html"
+  status = 200
+
+# NOTE: the 4 per-camp NDI redirects that used to live here have been removed.
+# They were never actually necessary — Netlify serves /camps/dublin/{slug} from
+# {slug}.html automatically (same as all 137+ other generator-produced camp
+# pages, none of which have individual redirect entries). Once the 4 NDI pages
+# come from generate-listings.js instead of hand-built files, they work the
+# same way with no redirect needed.

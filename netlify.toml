@@ -1,0 +1,86 @@
+[build]
+  functions = "netlify/functions"
+
+# ── STATIC PAGES ─────────────────────────────────────────────────
+[[redirects]]
+  from = "/about"
+  to = "/about"
+  status = 200
+
+[[redirects]]
+  from = "/how-it-works"
+  to = "/how-it-works"
+  status = 200
+
+[[redirects]]
+  from = "/recommend"
+  to = "/recommend"
+  status = 200
+
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/privacy-policy"
+  status = 200
+
+# ── DUBLIN AREA HUB PAGES ────────────────────────────────────────
+[[redirects]]
+  from = "/dublin/northside"
+  to = "/dublin-northside.html"
+  status = 200
+
+[[redirects]]
+  from = "/dublin/southside"
+  to = "/dublin-southside.html"
+  status = 200
+
+[[redirects]]
+  from = "/dublin/city"
+  to = "/dublin-city.html"
+  status = 200
+
+# ── DUBLIN CAMPS LISTING PAGES ───────────────────────────────────
+[[redirects]]
+  from = "/dublin/northside/camps"
+  to = "/camps-northside.html"
+  status = 200
+
+[[redirects]]
+  from = "/dublin/southside/camps"
+  to = "/camps-southside.html"
+  status = 200
+
+[[redirects]]
+  from = "/dublin/city/camps"
+  to = "/camps-city.html"
+  status = 200
+
+# ── COMING SEPTEMBER — redirect to hub in the meantime ───────────
+[[redirects]]
+  from = "/dublin/northside/after-school"
+  to = "/dublin/northside"
+  status = 302
+
+[[redirects]]
+  from = "/dublin/northside/clubs"
+  to = "/dublin/northside"
+  status = 302
+
+[[redirects]]
+  from = "/dublin/southside/after-school"
+  to = "/dublin/southside"
+  status = 302
+
+[[redirects]]
+  from = "/dublin/southside/clubs"
+  to = "/dublin/southside"
+  status = 302
+
+[[redirects]]
+  from = "/dublin/city/after-school"
+  to = "/dublin/city"
+  status = 302
+
+[[redirects]]
+  from = "/dublin/city/clubs"
+  to = "/dublin/city"
+  status = 302
