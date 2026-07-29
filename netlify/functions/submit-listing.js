@@ -67,6 +67,7 @@ ${innerHtml}
 <tr><td style="background:#293148;padding:20px 32px;text-align:center;">
 <p style="margin:0;font-size:12px;color:#D1E9F5;font-family:'Nunito',Verdana,Arial,sans-serif;">sortd · Dublin, Ireland<br>
 <a href="https://sortd-ireland.ie" style="color:#D1E9F5;text-decoration:none;font-weight:700;">sortd-ireland.ie</a></p>
+<p style="margin:10px 0 0;font-size:11px;color:#8fa5b8;font-family:'Nunito',Verdana,Arial,sans-serif;">Questions? <a href="mailto:hello@sortd-ireland.ie" style="color:#8fa5b8;text-decoration:underline;">hello@sortd-ireland.ie</a> · <a href="https://sortd-ireland.ie/privacy-policy" style="color:#8fa5b8;text-decoration:underline;">Privacy Policy</a></p>
 </td></tr>
 </table>
 </td></tr>
@@ -188,7 +189,7 @@ exports.handler = async function (event) {
           ${data.category.trim()} · ${data.county.trim()}, ${data.area.trim()}<br>
           Ages ${data.ageMin}–${data.ageMax} · ${data.cost.trim()}
         </td></tr></table>
-        <p style="margin:0 0 16px;">Once it's live, parents across ${data.county.trim()} searching for ${data.category.trim().toLowerCase()} camps will be able to find you.</p>
+        <p style="margin:0 0 16px;">Once it's live, parents across ${data.county.trim()} searching for ${data.category.trim().toLowerCase()} activities will be able to find you.</p>
         <p style="margin:0;">Questions in the meantime? Just reply to this email.</p>
         <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">we'll take it from here →</p>
       `),
