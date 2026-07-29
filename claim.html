@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HHTB7S9WJG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HHTB7S9WJG');
+</script>
+<title>Claim your listing — sortd</title>
+<meta name="description" content="Already listed on sortd? Claim your listing to confirm it's yours and get notified about updates.">
+<link rel="canonical" href="https://sortd-ireland.ie/claim">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--cr:#F5F0E8;--nv:#27314A;--sk:#29ABE2;--pk:#F4A7C3;--rd:#EF3D2F;--su:#F7A800;--gr:#2BAD7E;--fd:'Baloo 2',sans-serif;--fb:'Nunito',sans-serif;}
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
+nav{background:var(--nv);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-family:var(--fd);font-size:1.6rem;font-weight:800;color:#fff;text-decoration:none;}
+.nav-logo span{color:var(--pk);}
+.nav-links a{color:#fff;opacity:.75;text-decoration:none;font-weight:600;font-size:.9rem;}
+.hero{background:var(--nv);color:#fff;padding:56px 24px 72px;text-align:center;}
+.hero h1{font-family:var(--fd);font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px;}
+.hero p{max-width:520px;margin:0 auto;color:#c9d0dd;font-size:1.05rem;line-height:1.6;}
+.wrap{max-width:520px;margin:-40px auto 64px;padding:0 20px;}
+.card{background:#fff;border-radius:20px;box-shadow:0 10px 40px rgba(39,49,74,.12);padding:36px 32px;}
+.fld{margin-bottom:18px;}
+.fld label{display:block;font-size:.85rem;font-weight:700;color:var(--nv);margin-bottom:6px;}
+.fld input{width:100%;padding:12px 14px;border:1.5px solid #e0d8c8;border-radius:10px;font-family:var(--fb);font-size:.95rem;background:var(--cr);}
+.fld input:focus{outline:2px solid var(--sk);background:#fff;}
+.submit-btn{width:100%;background:var(--rd);color:#fff;font-family:var(--fd);font-weight:800;font-size:1.05rem;padding:16px;border:none;border-radius:12px;cursor:pointer;}
+.submit-btn:hover{background:#d62f22;}
+.submit-btn:disabled{opacity:.6;cursor:default;}
+.status{margin-top:16px;padding:14px 16px;border-radius:10px;font-size:.9rem;display:none;line-height:1.5;}
+.status.ok{background:#E8FFF3;color:#1A7A50;display:block;}
+.status.err{background:#FEF2F2;color:#DC2626;display:block;}
+footer{background:var(--nv);color:#8b93a8;text-align:center;padding:28px 24px;font-size:.85rem;}
+footer a{color:var(--pk);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">sort<span>d</span></a>
+  <div class="nav-links"><a href="/list">List a new camp</a></div>
+</nav>
+
+<div class="hero">
+  <h1>Claim your listing</h1>
+  <p>Already on sortd? Confirm it's your business and we'll flag it as verified.</p>
+</div>
+
+<div class="wrap">
+  <div class="card">
+    <form id="claim-form">
+      <div class="fld">
+        <label>Camp or business name</label>
+        <input type="text" name="query" required placeholder="e.g. Designer Minds, or your camp's name">
+      </div>
+      <div class="fld">
+        <label>Your email</label>
+        <input type="email" name="email" required placeholder="you@yourbusiness.ie">
+        <div class="hint" style="font-size:.78rem;color:#888;margin-top:4px;">Must match the email already on file for the listing — that's how we confirm it's really you.</div>
+      </div>
+      <button type="submit" class="submit-btn" id="submit-btn">Send confirmation link</button>
+      <div class="status" id="status"></div>
+    </form>
+  </div>
+</div>
+
+<footer><p>© 2026 sortd · <a href="/privacy-policy">Privacy Policy</a></p></footer>
+
+<script>
+document.getElementById('claim-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  const status = document.getElementById('status');
+  const data = Object.fromEntries(new FormData(e.target));
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  status.className = 'status';
+
+  try{
+    const res = await fetch('/.netlify/functions/claim-listing?action=request', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+    await res.json();
+    // Always show the same message, whether or not a match was found —
+    // avoids revealing which emails/listings exist in the system.
+    status.className = 'status ok';
+    status.textContent = "If we found a listing matching that name and email, we've sent a confirmation link to that address. Click it to confirm you're the owner.";
+    btn.textContent = 'Sent ✓';
+  } catch(err){
+    status.className = 'status err';
+    status.textContent = 'Something went wrong. Please try again or email us directly.';
+    btn.disabled = false;
+    btn.textContent = 'Send confirmation link';
+  }
+});
+</script>
+
+</body>
+</html>

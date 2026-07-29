@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HHTB7S9WJG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HHTB7S9WJG');
+</script>
+<title>List your camp on sortd — free, takes 3 minutes</title>
+<meta name="description" content="List your kids' camp or activity on sortd for free. Takes about 3 minutes. Reach Irish parents searching for summer camps, after-school clubs and activities.">
+<link rel="canonical" href="https://sortd-ireland.ie/list">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--cr:#F5F0E8;--nv:#27314A;--sk:#29ABE2;--pk:#F4A7C3;--rd:#EF3D2F;--su:#F7A800;--gr:#2BAD7E;--bd:#3a4560;--fd:'Baloo 2',sans-serif;--fb:'Nunito',sans-serif;--fs:'Caveat',cursive;}
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&family=Caveat:wght@600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
+nav{background:var(--nv);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-family:var(--fd);font-size:1.6rem;font-weight:800;color:#fff;text-decoration:none;}
+.nav-logo span{color:var(--pk);}
+.nav-links a{color:#fff;opacity:.75;text-decoration:none;font-weight:600;font-size:.9rem;}
+.hero{background:var(--nv);color:#fff;padding:56px 24px 72px;text-align:center;}
+.hero h1{font-family:var(--fd);font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px;}
+.hero p{max-width:520px;margin:0 auto;color:#c9d0dd;font-size:1.05rem;line-height:1.6;}
+.hero .pill{display:inline-block;margin-top:20px;background:var(--pk);color:var(--nv);font-weight:800;font-size:.85rem;padding:8px 18px;border-radius:20px;}
+.wrap{max-width:640px;margin:-40px auto 64px;padding:0 20px;}
+.card{background:#fff;border-radius:20px;box-shadow:0 10px 40px rgba(39,49,74,.12);padding:36px 32px;}
+.fld{margin-bottom:18px;}
+.fld label{display:block;font-size:.85rem;font-weight:700;color:var(--nv);margin-bottom:6px;}
+.fld .req{color:var(--rd);}
+.fld input,.fld select,.fld textarea{width:100%;padding:12px 14px;border:1.5px solid #e0d8c8;border-radius:10px;font-family:var(--fb);font-size:.95rem;background:var(--cr);}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:2px solid var(--sk);background:#fff;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.hint{font-size:.78rem;color:#888;margin-top:4px;}
+.submit-btn{width:100%;background:var(--rd);color:#fff;font-family:var(--fd);font-weight:800;font-size:1.05rem;padding:16px;border:none;border-radius:12px;cursor:pointer;margin-top:8px;}
+.submit-btn:hover{background:#d62f22;}
+.submit-btn:disabled{opacity:.6;cursor:default;}
+.status{margin-top:16px;padding:14px 16px;border-radius:10px;font-size:.9rem;display:none;}
+.status.ok{background:#E8FFF3;color:#1A7A50;display:block;}
+.status.err{background:#FEF2F2;color:#DC2626;display:block;}
+.already{text-align:center;margin-top:28px;font-size:.9rem;color:#666;}
+.already a{color:var(--sk);font-weight:700;text-decoration:none;}
+footer{background:var(--nv);color:#8b93a8;text-align:center;padding:28px 24px;font-size:.85rem;}
+footer a{color:var(--pk);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">sort<span>d</span></a>
+  <div class="nav-links"><a href="/">For parents</a></div>
+</nav>
+
+<div class="hero">
+  <h1>List your camp for free</h1>
+  <p>Reach Irish parents searching for camps and activities near them. Takes about 3 minutes — no payment needed to get listed.</p>
+  <div class="pill">✓ Free forever tier · No card required</div>
+</div>
+
+<div class="wrap">
+  <div class="card">
+    <form id="listing-form">
+      <div class="fld">
+        <label>Camp / activity name <span class="req">*</span></label>
+        <input type="text" name="name" required placeholder="e.g. Summer Adventure Camp">
+      </div>
+
+      <div class="fld">
+        <label>Your business / provider name <span class="req">*</span></label>
+        <input type="text" name="provider" required placeholder="e.g. Adventure Ireland">
+      </div>
+
+      <div class="row2">
+        <div class="fld">
+          <label>County <span class="req">*</span></label>
+          <select name="county" required>
+            <option value="">Select county</option>
+            <option>Dublin</option><option>Wicklow</option><option>Kildare</option>
+            <option>Meath</option><option>Louth</option><option>Cork</option>
+            <option>Galway</option><option>Limerick</option><option>Waterford</option>
+            <option>Kilkenny</option><option>Wexford</option><option>Other</option>
+          </select>
+        </div>
+        <div class="fld">
+          <label>Area / town <span class="req">*</span></label>
+          <input type="text" name="area" required placeholder="e.g. Malahide">
+        </div>
+      </div>
+
+      <div class="fld">
+        <label>Category <span class="req">*</span></label>
+        <select name="category" required>
+          <option value="">Select category</option>
+          <option>Multi-Activity</option><option>Sport</option><option>Arts & Crafts</option>
+          <option>Drama & Performing Arts</option><option>Coding & STEM</option>
+          <option>Outdoor & Adventure</option><option>Language</option><option>Music</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="row2">
+        <div class="fld">
+          <label>Age from <span class="req">*</span></label>
+          <input type="number" name="ageMin" min="0" max="18" required placeholder="e.g. 5">
+        </div>
+        <div class="fld">
+          <label>Age to <span class="req">*</span></label>
+          <input type="number" name="ageMax" min="0" max="18" required placeholder="e.g. 12">
+        </div>
+      </div>
+
+      <div class="fld">
+        <label>Cost <span class="req">*</span></label>
+        <input type="text" name="cost" required placeholder="e.g. €180 per week">
+      </div>
+
+      <div class="fld">
+        <label>Booking link or contact <span class="req">*</span></label>
+        <input type="text" name="bookingUrl" required placeholder="Website URL, phone number, or email">
+        <div class="hint">Where should parents go to book? A link is best, but a phone number works too.</div>
+      </div>
+
+      <div class="fld">
+        <label>Tell parents about the camp</label>
+        <textarea name="activities" rows="4" placeholder="What happens during the day, what's included, anything that makes it special..."></textarea>
+      </div>
+
+      <div class="fld">
+        <label>Your email <span class="req">*</span></label>
+        <input type="email" name="providerEmail" required placeholder="you@yourbusiness.ie">
+        <div class="hint">We'll send a confirmation here, and use it if you ever need to update or claim this listing.</div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">Submit for review</button>
+      <div class="status" id="status"></div>
+    </form>
+  </div>
+
+  <div class="already">
+    Already listed on sortd and need to make a change? <a href="/claim">Claim your listing →</a>
+  </div>
+</div>
+
+<footer><p>© 2026 sortd · <a href="/privacy-policy">Privacy Policy</a></p></footer>
+
+<script>
+document.getElementById('listing-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  const status = document.getElementById('status');
+  const data = Object.fromEntries(new FormData(e.target));
+
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  status.className = 'status';
+
+  try{
+    const res = await fetch('/.netlify/functions/submit-listing', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    if(res.ok){
+      status.className = 'status ok';
+      status.textContent = "Thanks! We've received your listing and will review it shortly. Check your email for confirmation.";
+      e.target.reset();
+      btn.textContent = 'Submitted ✓';
+    } else {
+      throw new Error(result.error || 'Something went wrong');
+    }
+  } catch(err){
+    status.className = 'status err';
+    status.textContent = 'Something went wrong: ' + err.message + '. Please try again or email us directly.';
+    btn.disabled = false;
+    btn.textContent = 'Submit for review';
+  }
+});
+</script>
+
+</body>
+</html>

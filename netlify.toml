@@ -22,6 +22,17 @@
   to = "/privacy-policy"
   status = 200
 
+# ── PROVIDER PAGES ───────────────────────────────────────────────
+[[redirects]]
+  from = "/list"
+  to = "/list"
+  status = 200
+
+[[redirects]]
+  from = "/claim"
+  to = "/claim"
+  status = 200
+
 # ── DUBLIN AREA HUB PAGES ────────────────────────────────────────
 [[redirects]]
   from = "/dublin/northside"
