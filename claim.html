@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
-:root{--cr:#F5F0E8;--nv:#27314A;--sk:#29ABE2;--pk:#F4A7C3;--rd:#EF3D2F;--su:#F7A800;--gr:#2BAD7E;--fd:'Baloo 2',sans-serif;--fb:'Nunito',sans-serif;}
+:root{--cr:#F5F0E8;--nv:#27314A;--sk:#29ABE2;--pk:#F4A7C3;--bl:#4782A8;--pkA:#C66686;--tpk:#F5D9E4;--su:#F7A800;--gr:#2BAD7E;--fd:'Baloo 2',sans-serif;--fb:'Nunito',sans-serif;}
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
@@ -34,12 +34,12 @@ nav{background:var(--nv);padding:0 24px;display:flex;align-items:center;justify-
 .fld label{display:block;font-size:.85rem;font-weight:700;color:var(--nv);margin-bottom:6px;}
 .fld input{width:100%;padding:12px 14px;border:1.5px solid #e0d8c8;border-radius:10px;font-family:var(--fb);font-size:.95rem;background:var(--cr);}
 .fld input:focus{outline:2px solid var(--sk);background:#fff;}
-.submit-btn{width:100%;background:var(--rd);color:#fff;font-family:var(--fd);font-weight:800;font-size:1.05rem;padding:16px;border:none;border-radius:12px;cursor:pointer;}
-.submit-btn:hover{background:#d62f22;}
+.submit-btn{width:100%;background:var(--bl);color:#fff;font-family:var(--fd);font-weight:800;font-size:1.05rem;padding:16px;border:none;border-radius:999px;cursor:pointer;}
+.submit-btn:hover{background:#3c6a86;}
 .submit-btn:disabled{opacity:.6;cursor:default;}
 .status{margin-top:16px;padding:14px 16px;border-radius:10px;font-size:.9rem;display:none;line-height:1.5;}
 .status.ok{background:#E8FFF3;color:#1A7A50;display:block;}
-.status.err{background:#FEF2F2;color:#DC2626;display:block;}
+.status.err{background:var(--tpk);color:var(--pkA);display:block;}
 footer{background:var(--nv);color:#8b93a8;text-align:center;padding:28px 24px;font-size:.85rem;}
 footer a{color:var(--pk);text-decoration:none;}
 </style>
