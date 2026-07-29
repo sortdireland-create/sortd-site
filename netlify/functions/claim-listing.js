@@ -102,11 +102,12 @@ ${innerHtml}
 </html>`;
 }
 
-// Primary CTA — always the dark navy button pattern from the real site's
-// "Find out more" buttons. No colour param: red/bright colours are off-brand.
+// Primary CTA — blue stadium pill, matching the real site's "Get the
+// newsletter" / "List your camp" primary buttons. No colour param:
+// red/bright colours are off-brand.
 function emailButton(text, url) {
-  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:12px;background:#293148;">
-<a href="${url}" style="display:inline-block;padding:14px 28px;color:#ffffff;font-family:'Baloo 2',Verdana,sans-serif;font-weight:700;text-decoration:none;font-size:15px;border-radius:12px;">${text}</a>
+  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:999px;background:#4782A8;">
+<a href="${url}" style="display:inline-block;padding:14px 30px;color:#ffffff;font-family:'Baloo 2',Verdana,sans-serif;font-weight:700;text-decoration:none;font-size:15px;border-radius:999px;">${text}</a>
 </td></tr></table>`;
 }
 
@@ -197,7 +198,7 @@ exports.handler = async function (event) {
             <p style="margin:0 0 4px;">Click below to confirm you're the owner of <strong>${name}</strong> on sortd:</p>
             ${emailButton("Confirm it's mine →", confirmUrl)}
             <p style="margin:4px 0 0;font-size:13px;color:#666;">If you didn't request this, you can safely ignore this email.</p>
-            <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">— sortd</p>
+            <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">you're nearly there →</p>
           `),
         });
       }

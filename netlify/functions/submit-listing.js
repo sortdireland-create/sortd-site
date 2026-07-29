@@ -75,11 +75,12 @@ ${innerHtml}
 </html>`;
 }
 
-// Primary CTA — always the dark navy button pattern from the real site's
-// "Find out more" buttons. No colour param: red/bright colours are off-brand.
+// Primary CTA — blue stadium pill, matching the real site's "Get the
+// newsletter" / "List your camp" primary buttons. No colour param:
+// red/bright colours are off-brand.
 function emailButton(text, url) {
-  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:12px;background:#293148;">
-<a href="${url}" style="display:inline-block;padding:14px 28px;color:#ffffff;font-family:'Baloo 2',Verdana,sans-serif;font-weight:700;text-decoration:none;font-size:15px;border-radius:12px;">${text}</a>
+  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:999px;background:#4782A8;">
+<a href="${url}" style="display:inline-block;padding:14px 30px;color:#ffffff;font-family:'Baloo 2',Verdana,sans-serif;font-weight:700;text-decoration:none;font-size:15px;border-radius:999px;">${text}</a>
 </td></tr></table>`;
 }
 
@@ -182,14 +183,14 @@ exports.handler = async function (event) {
       html: emailShell(`
         <p style="margin:0 0 16px;">Hi,</p>
         <p style="margin:0 0 16px;">Thanks for submitting <strong>${data.name.trim()}</strong> to sortd! We'll review it and get it live within a few days.</p>
-        <table role="presentation" width="100%" style="background:#D1E9F5;border-radius:12px;margin:0 0 20px;"><tr><td style="padding:16px 20px;font-size:14px;color:#293148;line-height:1.8;font-weight:600;">
+        <table role="presentation" width="100%" style="background:#D1E9F5;border-radius:16px;margin:0 0 20px;"><tr><td style="padding:16px 20px;font-size:14px;color:#293148;line-height:1.8;font-weight:600;">
           <strong>${data.name.trim()}</strong><br>
           ${data.category.trim()} · ${data.county.trim()}, ${data.area.trim()}<br>
           Ages ${data.ageMin}–${data.ageMax} · ${data.cost.trim()}
         </td></tr></table>
         <p style="margin:0 0 16px;">Once it's live, parents across ${data.county.trim()} searching for ${data.category.trim().toLowerCase()} camps will be able to find you.</p>
         <p style="margin:0;">Questions in the meantime? Just reply to this email.</p>
-        <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">— sortd</p>
+        <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">we'll take it from here →</p>
       `),
     });
 
@@ -202,7 +203,7 @@ exports.handler = async function (event) {
         subject: `New listing to review: ${data.name.trim()}`,
         html: emailShell(`
           <p style="margin:0 0 16px;">New self-submitted listing, pending review:</p>
-          <table role="presentation" width="100%" style="background:#D1E9F5;border-radius:12px;margin:0 0 4px;"><tr><td style="padding:16px 20px;font-size:14px;color:#293148;line-height:1.8;font-weight:600;">
+          <table role="presentation" width="100%" style="background:#D1E9F5;border-radius:16px;margin:0 0 4px;"><tr><td style="padding:16px 20px;font-size:14px;color:#293148;line-height:1.8;font-weight:600;">
             <strong>Name:</strong> ${data.name.trim()}<br>
             <strong>Provider:</strong> ${data.provider.trim()}<br>
             <strong>County/Area:</strong> ${data.county.trim()} / ${data.area.trim()}<br>
