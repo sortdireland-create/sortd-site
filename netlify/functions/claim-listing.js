@@ -72,25 +72,28 @@ async function sendEmail({ to, subject, html }) {
   if (!res.ok) console.error('Customer.io email failed:', await res.text());
 }
 
-// ── Branded email shell (same as submit-listing.js — inline styles +
-// table layout so it renders consistently across Gmail/Outlook/Apple Mail) ──
+// ── Branded email shell — matches sortd-brand-foundations exactly:
+// muted/dusty palette (navy #293148, blue #4782A8 accent, NEVER red),
+// Baloo 2 for headings/logo/buttons, Nunito for body, ~18px card radius,
+// ~12px button radius, rounded corners only (never circles). ──
 function emailShell(innerHtml) {
   return `<!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#F5F0E8;font-family:Verdana,Arial,sans-serif;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5F0E8;padding:32px 16px;">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet"></head>
+<body style="margin:0;padding:0;background:#F7F7F7;font-family:'Nunito',Verdana,Arial,sans-serif;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F7F7F7;padding:32px 16px;">
 <tr><td align="center">
-<table role="presentation" width="100%" style="max-width:520px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(39,49,74,.08);">
-<tr><td style="background:#27314A;padding:24px 32px;text-align:center;">
-<span style="font-family:Georgia,serif;font-size:24px;font-weight:bold;color:#ffffff;letter-spacing:.5px;">sort<span style="color:#F4A7C3;">d</span></span>
+<table role="presentation" width="100%" style="max-width:520px;background:#ffffff;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(41,49,72,.08);">
+<tr><td style="background:#293148;padding:24px 32px;text-align:center;">
+<span style="font-family:'Baloo 2',Verdana,sans-serif;font-size:24px;font-weight:800;color:#ffffff;letter-spacing:.5px;">sortd</span>
 </td></tr>
-<tr><td style="padding:32px;color:#1a1a2e;font-size:15px;line-height:1.6;">
+<tr><td style="padding:32px;color:#293148;font-size:15px;font-family:'Nunito',Verdana,Arial,sans-serif;font-weight:600;line-height:1.6;">
 ${innerHtml}
 </td></tr>
-<tr><td style="background:#F5F0E8;padding:20px 32px;text-align:center;">
-<p style="margin:0;font-size:12px;color:#8b93a8;">sortd · Dublin, Ireland<br>
-<a href="https://sortd-ireland.ie" style="color:#29ABE2;text-decoration:none;">sortd-ireland.ie</a></p>
+<tr><td style="background:#293148;padding:20px 32px;text-align:center;">
+<p style="margin:0;font-size:12px;color:#D1E9F5;font-family:'Nunito',Verdana,Arial,sans-serif;">sortd · Dublin, Ireland<br>
+<a href="https://sortd-ireland.ie" style="color:#D1E9F5;text-decoration:none;font-weight:700;">sortd-ireland.ie</a></p>
 </td></tr>
 </table>
 </td></tr>
@@ -99,19 +102,25 @@ ${innerHtml}
 </html>`;
 }
 
-function emailButton(text, url, color) {
-  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:8px;background:${color};">
-<a href="${url}" style="display:inline-block;padding:14px 28px;color:#ffffff;font-weight:bold;text-decoration:none;font-size:15px;border-radius:8px;">${text}</a>
+// Primary CTA — always the dark navy button pattern from the real site's
+// "Find out more" buttons. No colour param: red/bright colours are off-brand.
+function emailButton(text, url) {
+  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:12px;background:#293148;">
+<a href="${url}" style="display:inline-block;padding:14px 28px;color:#ffffff;font-family:'Baloo 2',Verdana,sans-serif;font-weight:700;text-decoration:none;font-size:15px;border-radius:12px;">${text}</a>
 </td></tr></table>`;
 }
 
+// Landing page shown when the confirm link is clicked — same brand system,
+// no red: success uses brand green, error/expired uses brand pink (both muted).
 function htmlPage(title, message, ok) {
+  const accent = ok ? '#4A9B6C' : '#C66686';
   return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${title}</title>
-  <style>body{font-family:system-ui,sans-serif;background:#F5F0E8;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:24px;}
-  .card{background:#fff;border-radius:20px;padding:40px;max-width:440px;text-align:center;box-shadow:0 10px 40px rgba(39,49,74,.12);}
-  h1{color:${ok ? '#1A7A50' : '#DC2626'};font-size:1.4rem;margin-bottom:12px;}
-  p{color:#444;line-height:1.6;}
-  a{color:#29ABE2;font-weight:700;text-decoration:none;}</style></head>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>body{font-family:'Nunito',system-ui,sans-serif;background:#F7F7F7;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:24px;}
+  .card{background:#fff;border-radius:18px;padding:40px;max-width:440px;text-align:center;box-shadow:0 10px 40px rgba(41,49,72,.10);}
+  h1{font-family:'Baloo 2',sans-serif;font-weight:800;color:${accent};font-size:1.4rem;margin-bottom:12px;}
+  p{color:#293148;font-weight:600;line-height:1.6;}
+  a{color:#4782A8;font-weight:700;text-decoration:none;}</style></head>
   <body><div class="card"><h1>${ok ? '✓' : '✕'} ${title}</h1><p>${message}</p><p style="margin-top:20px"><a href="https://sortd-ireland.ie">← Back to sortd</a></p></div></body></html>`;
 }
 
@@ -186,9 +195,9 @@ exports.handler = async function (event) {
           html: emailShell(`
             <p style="margin:0 0 16px;">Hi,</p>
             <p style="margin:0 0 4px;">Click below to confirm you're the owner of <strong>${name}</strong> on sortd:</p>
-            ${emailButton("Confirm it's mine →", confirmUrl, '#EF3D2F')}
+            ${emailButton("Confirm it's mine →", confirmUrl)}
             <p style="margin:4px 0 0;font-size:13px;color:#666;">If you didn't request this, you can safely ignore this email.</p>
-            <p style="margin:16px 0 0;">— sortd</p>
+            <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">— sortd</p>
           `),
         });
       }

@@ -45,25 +45,28 @@ const F = {
 
 const REQUIRED = ['name','provider','county','area','category','ageMin','ageMax','cost','bookingUrl','providerEmail'];
 
-// ── Branded email shell (inline styles + table layout so it renders
-// consistently across Gmail/Outlook/Apple Mail — no external CSS/fonts) ──
+// ── Branded email shell — matches sortd-brand-foundations exactly:
+// muted/dusty palette (navy #293148, blue #4782A8 accent, NEVER red),
+// Baloo 2 for headings/logo/buttons, Nunito for body, ~18px card radius,
+// ~12px button radius, rounded corners only (never circles). ──
 function emailShell(innerHtml) {
   return `<!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#F5F0E8;font-family:Verdana,Arial,sans-serif;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5F0E8;padding:32px 16px;">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet"></head>
+<body style="margin:0;padding:0;background:#F7F7F7;font-family:'Nunito',Verdana,Arial,sans-serif;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F7F7F7;padding:32px 16px;">
 <tr><td align="center">
-<table role="presentation" width="100%" style="max-width:520px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(39,49,74,.08);">
-<tr><td style="background:#27314A;padding:24px 32px;text-align:center;">
-<span style="font-family:Georgia,serif;font-size:24px;font-weight:bold;color:#ffffff;letter-spacing:.5px;">sort<span style="color:#F4A7C3;">d</span></span>
+<table role="presentation" width="100%" style="max-width:520px;background:#ffffff;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(41,49,72,.08);">
+<tr><td style="background:#293148;padding:24px 32px;text-align:center;">
+<span style="font-family:'Baloo 2',Verdana,sans-serif;font-size:24px;font-weight:800;color:#ffffff;letter-spacing:.5px;">sortd</span>
 </td></tr>
-<tr><td style="padding:32px;color:#1a1a2e;font-size:15px;line-height:1.6;">
+<tr><td style="padding:32px;color:#293148;font-size:15px;font-family:'Nunito',Verdana,Arial,sans-serif;font-weight:600;line-height:1.6;">
 ${innerHtml}
 </td></tr>
-<tr><td style="background:#F5F0E8;padding:20px 32px;text-align:center;">
-<p style="margin:0;font-size:12px;color:#8b93a8;">sortd · Dublin, Ireland<br>
-<a href="https://sortd-ireland.ie" style="color:#29ABE2;text-decoration:none;">sortd-ireland.ie</a></p>
+<tr><td style="background:#293148;padding:20px 32px;text-align:center;">
+<p style="margin:0;font-size:12px;color:#D1E9F5;font-family:'Nunito',Verdana,Arial,sans-serif;">sortd · Dublin, Ireland<br>
+<a href="https://sortd-ireland.ie" style="color:#D1E9F5;text-decoration:none;font-weight:700;">sortd-ireland.ie</a></p>
 </td></tr>
 </table>
 </td></tr>
@@ -72,9 +75,11 @@ ${innerHtml}
 </html>`;
 }
 
-function emailButton(text, url, color) {
-  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:8px;background:${color};">
-<a href="${url}" style="display:inline-block;padding:14px 28px;color:#ffffff;font-weight:bold;text-decoration:none;font-size:15px;border-radius:8px;">${text}</a>
+// Primary CTA — always the dark navy button pattern from the real site's
+// "Find out more" buttons. No colour param: red/bright colours are off-brand.
+function emailButton(text, url) {
+  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:12px;background:#293148;">
+<a href="${url}" style="display:inline-block;padding:14px 28px;color:#ffffff;font-family:'Baloo 2',Verdana,sans-serif;font-weight:700;text-decoration:none;font-size:15px;border-radius:12px;">${text}</a>
 </td></tr></table>`;
 }
 
@@ -177,14 +182,14 @@ exports.handler = async function (event) {
       html: emailShell(`
         <p style="margin:0 0 16px;">Hi,</p>
         <p style="margin:0 0 16px;">Thanks for submitting <strong>${data.name.trim()}</strong> to sortd! We'll review it and get it live within a few days.</p>
-        <table role="presentation" width="100%" style="background:#F5F0E8;border-radius:10px;margin:0 0 20px;"><tr><td style="padding:16px 20px;font-size:14px;color:#27314A;line-height:1.8;">
+        <table role="presentation" width="100%" style="background:#D1E9F5;border-radius:12px;margin:0 0 20px;"><tr><td style="padding:16px 20px;font-size:14px;color:#293148;line-height:1.8;font-weight:600;">
           <strong>${data.name.trim()}</strong><br>
           ${data.category.trim()} · ${data.county.trim()}, ${data.area.trim()}<br>
           Ages ${data.ageMin}–${data.ageMax} · ${data.cost.trim()}
         </td></tr></table>
         <p style="margin:0 0 16px;">Once it's live, parents across ${data.county.trim()} searching for ${data.category.trim().toLowerCase()} camps will be able to find you.</p>
         <p style="margin:0;">Questions in the meantime? Just reply to this email.</p>
-        <p style="margin:16px 0 0;">— sortd</p>
+        <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">— sortd</p>
       `),
     });
 
@@ -197,7 +202,7 @@ exports.handler = async function (event) {
         subject: `New listing to review: ${data.name.trim()}`,
         html: emailShell(`
           <p style="margin:0 0 16px;">New self-submitted listing, pending review:</p>
-          <table role="presentation" width="100%" style="background:#F5F0E8;border-radius:10px;margin:0 0 4px;"><tr><td style="padding:16px 20px;font-size:14px;color:#27314A;line-height:1.8;">
+          <table role="presentation" width="100%" style="background:#D1E9F5;border-radius:12px;margin:0 0 4px;"><tr><td style="padding:16px 20px;font-size:14px;color:#293148;line-height:1.8;font-weight:600;">
             <strong>Name:</strong> ${data.name.trim()}<br>
             <strong>Provider:</strong> ${data.provider.trim()}<br>
             <strong>County/Area:</strong> ${data.county.trim()} / ${data.area.trim()}<br>
@@ -206,7 +211,7 @@ exports.handler = async function (event) {
             <strong>Cost:</strong> ${data.cost.trim()}<br>
             <strong>Contact:</strong> ${data.providerEmail.trim()}
           </td></tr></table>
-          ${emailButton('Review in Airtable →', airtableUrl, '#EF3D2F')}
+          ${emailButton('Review in Airtable →', airtableUrl)}
         `),
       });
     }
