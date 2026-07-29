@@ -72,6 +72,39 @@ async function sendEmail({ to, subject, html }) {
   if (!res.ok) console.error('Customer.io email failed:', await res.text());
 }
 
+// ── Branded email shell (same as submit-listing.js — inline styles +
+// table layout so it renders consistently across Gmail/Outlook/Apple Mail) ──
+function emailShell(innerHtml) {
+  return `<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#F5F0E8;font-family:Verdana,Arial,sans-serif;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5F0E8;padding:32px 16px;">
+<tr><td align="center">
+<table role="presentation" width="100%" style="max-width:520px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(39,49,74,.08);">
+<tr><td style="background:#27314A;padding:24px 32px;text-align:center;">
+<span style="font-family:Georgia,serif;font-size:24px;font-weight:bold;color:#ffffff;letter-spacing:.5px;">sort<span style="color:#F4A7C3;">d</span></span>
+</td></tr>
+<tr><td style="padding:32px;color:#1a1a2e;font-size:15px;line-height:1.6;">
+${innerHtml}
+</td></tr>
+<tr><td style="background:#F5F0E8;padding:20px 32px;text-align:center;">
+<p style="margin:0;font-size:12px;color:#8b93a8;">sortd · Dublin, Ireland<br>
+<a href="https://sortd-ireland.ie" style="color:#29ABE2;text-decoration:none;">sortd-ireland.ie</a></p>
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
+}
+
+function emailButton(text, url, color) {
+  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:8px;background:${color};">
+<a href="${url}" style="display:inline-block;padding:14px 28px;color:#ffffff;font-weight:bold;text-decoration:none;font-size:15px;border-radius:8px;">${text}</a>
+</td></tr></table>`;
+}
+
 function htmlPage(title, message, ok) {
   return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${title}</title>
   <style>body{font-family:system-ui,sans-serif;background:#F5F0E8;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:24px;}
@@ -150,9 +183,13 @@ exports.handler = async function (event) {
         await sendEmail({
           to: email,
           subject: `Confirm you're the owner of ${name}`,
-          html: `<p>Hi,</p><p>Click below to confirm you're the owner of <strong>${name}</strong> on sortd:</p>
-                 <p><a href="${confirmUrl}" style="background:#EF3D2F;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700;">Confirm it's mine →</a></p>
-                 <p>If you didn't request this, you can ignore this email.</p><p>— sortd</p>`,
+          html: emailShell(`
+            <p style="margin:0 0 16px;">Hi,</p>
+            <p style="margin:0 0 4px;">Click below to confirm you're the owner of <strong>${name}</strong> on sortd:</p>
+            ${emailButton("Confirm it's mine →", confirmUrl, '#EF3D2F')}
+            <p style="margin:4px 0 0;font-size:13px;color:#666;">If you didn't request this, you can safely ignore this email.</p>
+            <p style="margin:16px 0 0;">— sortd</p>
+          `),
         });
       }
 

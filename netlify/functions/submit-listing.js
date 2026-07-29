@@ -45,6 +45,39 @@ const F = {
 
 const REQUIRED = ['name','provider','county','area','category','ageMin','ageMax','cost','bookingUrl','providerEmail'];
 
+// ── Branded email shell (inline styles + table layout so it renders
+// consistently across Gmail/Outlook/Apple Mail — no external CSS/fonts) ──
+function emailShell(innerHtml) {
+  return `<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#F5F0E8;font-family:Verdana,Arial,sans-serif;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5F0E8;padding:32px 16px;">
+<tr><td align="center">
+<table role="presentation" width="100%" style="max-width:520px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(39,49,74,.08);">
+<tr><td style="background:#27314A;padding:24px 32px;text-align:center;">
+<span style="font-family:Georgia,serif;font-size:24px;font-weight:bold;color:#ffffff;letter-spacing:.5px;">sort<span style="color:#F4A7C3;">d</span></span>
+</td></tr>
+<tr><td style="padding:32px;color:#1a1a2e;font-size:15px;line-height:1.6;">
+${innerHtml}
+</td></tr>
+<tr><td style="background:#F5F0E8;padding:20px 32px;text-align:center;">
+<p style="margin:0;font-size:12px;color:#8b93a8;">sortd · Dublin, Ireland<br>
+<a href="https://sortd-ireland.ie" style="color:#29ABE2;text-decoration:none;">sortd-ireland.ie</a></p>
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
+}
+
+function emailButton(text, url, color) {
+  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:8px;background:${color};">
+<a href="${url}" style="display:inline-block;padding:14px 28px;color:#ffffff;font-weight:bold;text-decoration:none;font-size:15px;border-radius:8px;">${text}</a>
+</td></tr></table>`;
+}
+
 async function sendEmail({ to, subject, html }) {
   const apiKey = process.env.CUSTOMERIO_APP_API_KEY;
   if (!apiKey) {
@@ -141,34 +174,40 @@ exports.handler = async function (event) {
     await sendEmail({
       to: data.providerEmail.trim(),
       subject: `We've got your listing for ${data.name.trim()}`,
-      html: `
-        <p>Hi,</p>
-        <p>Thanks for submitting <strong>${data.name.trim()}</strong> to sortd! We'll review it and get it live within a few days.</p>
-        <p>Once it's live, parents across ${data.county.trim()} searching for ${data.category.trim().toLowerCase()} camps will be able to find you.</p>
-        <p>Questions in the meantime? Just reply to this email.</p>
-        <p>— sortd</p>
-      `,
+      html: emailShell(`
+        <p style="margin:0 0 16px;">Hi,</p>
+        <p style="margin:0 0 16px;">Thanks for submitting <strong>${data.name.trim()}</strong> to sortd! We'll review it and get it live within a few days.</p>
+        <table role="presentation" width="100%" style="background:#F5F0E8;border-radius:10px;margin:0 0 20px;"><tr><td style="padding:16px 20px;font-size:14px;color:#27314A;line-height:1.8;">
+          <strong>${data.name.trim()}</strong><br>
+          ${data.category.trim()} · ${data.county.trim()}, ${data.area.trim()}<br>
+          Ages ${data.ageMin}–${data.ageMax} · ${data.cost.trim()}
+        </td></tr></table>
+        <p style="margin:0 0 16px;">Once it's live, parents across ${data.county.trim()} searching for ${data.category.trim().toLowerCase()} camps will be able to find you.</p>
+        <p style="margin:0;">Questions in the meantime? Just reply to this email.</p>
+        <p style="margin:16px 0 0;">— sortd</p>
+      `),
     });
 
     // Notification to Rachel
     const notifyTo = process.env.RACHEL_NOTIFY_EMAIL;
     if (notifyTo) {
+      const airtableUrl = `https://airtable.com/${BASE_ID}/${TABLE_ID}/${record.id}`;
       await sendEmail({
         to: notifyTo,
         subject: `New listing to review: ${data.name.trim()}`,
-        html: `
-          <p>New self-submitted listing, pending review:</p>
-          <ul>
-            <li><strong>Name:</strong> ${data.name.trim()}</li>
-            <li><strong>Provider:</strong> ${data.provider.trim()}</li>
-            <li><strong>County/Area:</strong> ${data.county.trim()} / ${data.area.trim()}</li>
-            <li><strong>Category:</strong> ${data.category.trim()}</li>
-            <li><strong>Ages:</strong> ${data.ageMin}–${data.ageMax}</li>
-            <li><strong>Cost:</strong> ${data.cost.trim()}</li>
-            <li><strong>Contact:</strong> ${data.providerEmail.trim()}</li>
-          </ul>
-          <p>Airtable record: ${record.id}</p>
-        `,
+        html: emailShell(`
+          <p style="margin:0 0 16px;">New self-submitted listing, pending review:</p>
+          <table role="presentation" width="100%" style="background:#F5F0E8;border-radius:10px;margin:0 0 4px;"><tr><td style="padding:16px 20px;font-size:14px;color:#27314A;line-height:1.8;">
+            <strong>Name:</strong> ${data.name.trim()}<br>
+            <strong>Provider:</strong> ${data.provider.trim()}<br>
+            <strong>County/Area:</strong> ${data.county.trim()} / ${data.area.trim()}<br>
+            <strong>Category:</strong> ${data.category.trim()}<br>
+            <strong>Ages:</strong> ${data.ageMin}–${data.ageMax}<br>
+            <strong>Cost:</strong> ${data.cost.trim()}<br>
+            <strong>Contact:</strong> ${data.providerEmail.trim()}
+          </td></tr></table>
+          ${emailButton('Review in Airtable →', airtableUrl, '#EF3D2F')}
+        `),
       });
     }
 
