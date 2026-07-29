@@ -11,8 +11,8 @@
   gtag('js', new Date());
   gtag('config', 'G-HHTB7S9WJG');
 </script>
-<title>List your camp on sortd — free, takes 3 minutes</title>
-<meta name="description" content="List your kids' camp or activity on sortd for free. Takes about 3 minutes. Reach Irish parents searching for summer camps, after-school clubs and activities.">
+<title>List your activity on sortd — free, takes 3 minutes</title>
+<meta name="description" content="List your kids' activity on sortd for free. Takes about 3 minutes. Reach Irish parents searching for holiday camps, weekly classes, after-school clubs and more.">
 <link rel="canonical" href="https://sortd-ireland.ie/list">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,8 +58,8 @@ footer a{color:var(--pk);text-decoration:none;}
 </nav>
 
 <div class="hero">
-  <h1>List your camp for free</h1>
-  <p>Reach Irish parents searching for camps and activities near them. Takes about 3 minutes — no payment needed to get listed.</p>
+  <h1>List your activity for free</h1>
+  <p>Reach Irish parents searching for activities near them. Takes about 3 minutes — no payment needed to get listed.</p>
   <div class="pill">✓ Free forever tier · No card required</div>
 </div>
 
@@ -67,8 +67,17 @@ footer a{color:var(--pk);text-decoration:none;}
   <div class="card">
     <form id="listing-form">
       <div class="fld">
-        <label>Camp / activity name <span class="req">*</span></label>
-        <input type="text" name="name" required placeholder="e.g. Summer Adventure Camp">
+        <label>Activity name <span class="req">*</span></label>
+        <input type="text" name="name" required placeholder="e.g. Little Explorers Nature Club">
+      </div>
+
+      <div class="fld">
+        <label>Type <span class="req">*</span></label>
+        <select name="type" required>
+          <option value="">Select type</option>
+          <option>Holiday Camp</option><option>Weekly Class</option>
+        </select>
+        <div class="hint">A one-off block during school holidays, or an ongoing weekly session?</div>
       </div>
 
       <div class="fld">
@@ -127,7 +136,7 @@ footer a{color:var(--pk);text-decoration:none;}
       </div>
 
       <div class="fld">
-        <label>Tell parents about the camp</label>
+        <label>Tell parents more about it</label>
         <textarea name="activities" rows="4" placeholder="What happens during the day, what's included, anything that makes it special..."></textarea>
       </div>
 
