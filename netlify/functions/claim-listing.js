@@ -135,7 +135,7 @@ exports.handler = async function (event) {
       return { statusCode: 400, headers: {'Content-Type':'text/html'}, body: htmlPage('Invalid link', 'This confirmation link looks incomplete. Please request a new one.', false) };
     }
 
-    const getRes = await airtableRequest(`/${id}`);
+    const getRes = await airtableRequest(`/${id}?returnFieldsByFieldId=true`);
     if (!getRes.ok) {
       return { statusCode: 404, headers: {'Content-Type':'text/html'}, body: htmlPage('Listing not found', "We couldn't find that listing. It may have been removed.", false) };
     }
@@ -172,7 +172,7 @@ exports.handler = async function (event) {
 
     try {
       const searchRes = await fetch(
-        `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}?filterByFormula=` +
+        `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}?returnFieldsByFieldId=true&filterByFormula=` +
         encodeURIComponent(`AND(OR(SEARCH(LOWER("${query.replace(/"/g,'')}"), LOWER({${F.NAME}})), SEARCH(LOWER("${query.replace(/"/g,'')}"), LOWER({${F.PROVIDER}}))), LOWER({${F.PROVIDER_EMAIL}}) = LOWER("${email.replace(/"/g,'')}"))`),
         { headers: { 'Authorization': `Bearer ${process.env.AIRTABLE_API_KEY}` } }
       );
