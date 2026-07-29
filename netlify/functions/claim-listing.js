@@ -104,7 +104,7 @@ ${innerHtml}
 }
 
 // Primary CTA — blue stadium pill, matching the real site's "Get the
-// newsletter" / "List your camp" primary buttons. No colour param:
+// newsletter" / "List an activity" primary buttons. No colour param:
 // red/bright colours are off-brand.
 function emailButton(text, url) {
   return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:999px;background:#4782A8;">

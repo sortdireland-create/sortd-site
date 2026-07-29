@@ -41,9 +41,10 @@ const F = {
   PROVIDER_EMAIL: 'fldaApVUFBE4DPy3S', // Provider Email
   CLAIMED:        'fldp4ynCy4tXcncUi', // Claimed
   CLAIM_TOKEN:    'fldPCNXqEJOX7n1Cw', // ClaimToken
+  TYPE:           'fldIKsf7AM5Jqr60K', // Type — "Holiday Camp" or "Weekly Class"
 };
 
-const REQUIRED = ['name','provider','county','area','category','ageMin','ageMax','cost','bookingUrl','providerEmail'];
+const REQUIRED = ['name','type','provider','county','area','category','ageMin','ageMax','cost','bookingUrl','providerEmail'];
 
 // ── Branded email shell — matches sortd-brand-foundations exactly:
 // muted/dusty palette (navy #293148, blue #4782A8 accent, NEVER red),
@@ -77,7 +78,7 @@ ${innerHtml}
 }
 
 // Primary CTA — blue stadium pill, matching the real site's "Get the
-// newsletter" / "List your camp" primary buttons. No colour param:
+// newsletter" / "List an activity" primary buttons. No colour param:
 // red/bright colours are off-brand.
 function emailButton(text, url) {
   return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:999px;background:#4782A8;">
@@ -136,6 +137,7 @@ exports.handler = async function (event) {
 
   const fields = {
     [F.NAME]:           data.name.trim(),
+    [F.TYPE]:           data.type.trim(),
     [F.PROVIDER]:       data.provider.trim(),
     [F.COUNTY]:         data.county.trim(),
     [F.AREA]:           data.area.trim(),
@@ -185,7 +187,7 @@ exports.handler = async function (event) {
         <p style="margin:0 0 16px;">Hi,</p>
         <p style="margin:0 0 16px;">Thanks for submitting <strong>${data.name.trim()}</strong> to sortd! We'll review it and get it live within a few days.</p>
         <table role="presentation" width="100%" style="background:#D1E9F5;border-radius:16px;margin:0 0 20px;"><tr><td style="padding:16px 20px;font-size:14px;color:#293148;line-height:1.8;font-weight:600;">
-          <strong>${data.name.trim()}</strong><br>
+          <strong>${data.name.trim()}</strong> · ${data.type.trim()}<br>
           ${data.category.trim()} · ${data.county.trim()}, ${data.area.trim()}<br>
           Ages ${data.ageMin}–${data.ageMax} · ${data.cost.trim()}
         </td></tr></table>
@@ -206,6 +208,7 @@ exports.handler = async function (event) {
           <p style="margin:0 0 16px;">New self-submitted listing, pending review:</p>
           <table role="presentation" width="100%" style="background:#D1E9F5;border-radius:16px;margin:0 0 4px;"><tr><td style="padding:16px 20px;font-size:14px;color:#293148;line-height:1.8;font-weight:600;">
             <strong>Name:</strong> ${data.name.trim()}<br>
+            <strong>Type:</strong> ${data.type.trim()}<br>
             <strong>Provider:</strong> ${data.provider.trim()}<br>
             <strong>County/Area:</strong> ${data.county.trim()} / ${data.area.trim()}<br>
             <strong>Category:</strong> ${data.category.trim()}<br>
