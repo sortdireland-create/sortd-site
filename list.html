@@ -6,10 +6,10 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HHTB7S9WJG"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HHTB7S9WJG');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HHTB7S9WJG');
 </script>
 <title>List your activity on sortd — free, takes 3 minutes</title>
 <meta name="description" content="List your kids' activity on sortd for free. Takes about 3 minutes. Reach Irish parents searching for holiday camps, weekly classes, after-school clubs and more.">
@@ -36,8 +36,12 @@ nav{background:var(--nv);padding:0 24px;display:flex;align-items:center;justify-
 .fld .req{color:var(--pkA);}
 .fld input,.fld select,.fld textarea{width:100%;padding:12px 14px;border:1.5px solid #e0d8c8;border-radius:10px;font-family:var(--fb);font-size:.95rem;background:var(--cr);}
 .fld input:focus,.fld select:focus,.fld textarea:focus{outline:2px solid var(--sk);background:#fff;}
+.fld input[type=file]{padding:9px 12px;background:#fff;border:1.5px dashed #cfc4ac;cursor:pointer;}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .hint{font-size:.78rem;color:#888;margin-top:4px;}
+.file-list{font-size:.78rem;color:#888;margin-top:4px;}
+.field-err{font-size:.78rem;color:var(--pkA);margin-top:4px;display:none;}
+.field-err.show{display:block;}
 .submit-btn{width:100%;background:var(--bl);color:#fff;font-family:var(--fd);font-weight:800;font-size:1.05rem;padding:16px;border:none;border-radius:999px;cursor:pointer;margin-top:8px;}
 .submit-btn:hover{background:#3c6a86;}
 .submit-btn:disabled{opacity:.6;cursor:default;}
@@ -53,143 +57,246 @@ footer a{color:var(--pk);text-decoration:none;}
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">sort<span>d</span></a>
-  <div class="nav-links"><a href="/">For parents</a><a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener">Partners Portal</a></div>
+<a href="/" class="nav-logo">sort<span>d</span></a>
+<div class="nav-links"><a href="/">For parents</a><a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener">Partners Portal</a></div>
 </nav>
 
 <div class="hero">
-  <h1>List your activity for free</h1>
-  <p>Reach Irish parents searching for activities near them. Takes about 3 minutes — no payment needed to get listed.</p>
-  <div class="pill">✓ Free forever tier · No card required</div>
+<h1>List your activity for free</h1>
+<p>Reach Irish parents searching for activities near them. Takes about 3 minutes — no payment needed to get listed.</p>
+<div class="pill">✓ Free forever tier · No card required</div>
 </div>
 
 <div class="wrap">
-  <div class="card">
-    <form id="listing-form">
-      <div class="fld">
-        <label>Activity name <span class="req">*</span></label>
-        <input type="text" name="name" required placeholder="e.g. Little Explorers Nature Club">
-      </div>
+<div class="card">
+<form id="listing-form">
+<div class="fld">
+<label>Activity name <span class="req">*</span></label>
+<input type="text" name="name" required placeholder="e.g. Little Explorers Nature Club">
+</div>
 
-      <div class="fld">
-        <label>Type <span class="req">*</span></label>
-        <select name="type" required>
-          <option value="">Select type</option>
-          <option>Holiday Camp</option><option>Weekly Class</option>
-        </select>
-        <div class="hint">A one-off block during school holidays, or an ongoing weekly session?</div>
-      </div>
+<div class="fld">
+<label>Type <span class="req">*</span></label>
+<select name="type" required>
+<option value="">Select type</option>
+<option>Holiday Camp</option><option>Weekly Class</option>
+</select>
+<div class="hint">A one-off block during school holidays, or an ongoing weekly session?</div>
+</div>
 
-      <div class="fld">
-        <label>Your business / provider name <span class="req">*</span></label>
-        <input type="text" name="provider" required placeholder="e.g. Adventure Ireland">
-      </div>
+<div class="fld">
+<label>Your business / provider name <span class="req">*</span></label>
+<input type="text" name="provider" required placeholder="e.g. Adventure Ireland">
+</div>
 
-      <div class="row2">
-        <div class="fld">
-          <label>County <span class="req">*</span></label>
-          <select name="county" required>
-            <option value="">Select county</option>
-            <option>Dublin</option><option>Wicklow</option><option>Kildare</option>
-            <option>Meath</option><option>Louth</option><option>Cork</option>
-            <option>Galway</option><option>Limerick</option><option>Waterford</option>
-            <option>Kilkenny</option><option>Wexford</option><option>Other</option>
-          </select>
-        </div>
-        <div class="fld">
-          <label>Area / town <span class="req">*</span></label>
-          <input type="text" name="area" required placeholder="e.g. Malahide">
-        </div>
-      </div>
+<div class="row2">
+<div class="fld">
+<label>County <span class="req">*</span></label>
+<select name="county" required>
+<option value="">Select county</option>
+<option>Dublin</option><option>Wicklow</option><option>Kildare</option>
+<option>Meath</option><option>Louth</option><option>Cork</option>
+<option>Galway</option><option>Limerick</option><option>Waterford</option>
+<option>Kilkenny</option><option>Wexford</option><option>Other</option>
+</select>
+</div>
+<div class="fld">
+<label>Area / town <span class="req">*</span></label>
+<input type="text" name="area" required placeholder="e.g. Malahide">
+</div>
+</div>
 
-      <div class="fld">
-        <label>Category <span class="req">*</span></label>
-        <select name="category" required>
-          <option value="">Select category</option>
-          <option>Multi-Activity</option><option>Sport</option><option>Arts & Crafts</option>
-          <option>Drama & Performing Arts</option><option>Coding & STEM</option>
-          <option>Outdoor & Adventure</option><option>Language</option><option>Music</option>
-          <option>Other</option>
-        </select>
-      </div>
+<div class="fld">
+<label>Category <span class="req">*</span></label>
+<select name="category" required>
+<option value="">Select category</option>
+<option>Multi-Activity</option><option>Sport</option><option>Arts & Crafts</option>
+<option>Drama & Performing Arts</option><option>Coding & STEM</option>
+<option>Outdoor & Adventure</option><option>Language</option><option>Music</option>
+<option>Other</option>
+</select>
+</div>
 
-      <div class="row2">
-        <div class="fld">
-          <label>Age from <span class="req">*</span></label>
-          <input type="number" name="ageMin" min="0" max="18" required placeholder="e.g. 5">
-        </div>
-        <div class="fld">
-          <label>Age to <span class="req">*</span></label>
-          <input type="number" name="ageMax" min="0" max="18" required placeholder="e.g. 12">
-        </div>
-      </div>
+<div class="row2">
+<div class="fld">
+<label>Age from <span class="req">*</span></label>
+<input type="number" name="ageMin" min="0" max="18" required placeholder="e.g. 5">
+</div>
+<div class="fld">
+<label>Age to <span class="req">*</span></label>
+<input type="number" name="ageMax" min="0" max="18" required placeholder="e.g. 12">
+</div>
+</div>
 
-      <div class="fld">
-        <label>Cost <span class="req">*</span></label>
-        <input type="text" name="cost" required placeholder="e.g. €180 per week">
-      </div>
+<div class="fld">
+<label>Cost <span class="req">*</span></label>
+<input type="text" name="cost" required placeholder="e.g. €180 per week">
+</div>
 
-      <div class="fld">
-        <label>Booking link or contact <span class="req">*</span></label>
-        <input type="text" name="bookingUrl" required placeholder="Website URL, phone number, or email">
-        <div class="hint">Where should parents go to book? A link is best, but a phone number works too.</div>
-      </div>
+<div class="fld">
+<label>Booking link or contact <span class="req">*</span></label>
+<input type="text" name="bookingUrl" required placeholder="Website URL, phone number, or email">
+<div class="hint">Where should parents go to book? A link is best, but a phone number works too.</div>
+</div>
 
-      <div class="fld">
-        <label>Tell parents more about it</label>
-        <textarea name="activities" rows="4" placeholder="What happens during the day, what's included, anything that makes it special..."></textarea>
-      </div>
+<div class="fld">
+<label>Tell parents more about it</label>
+<textarea name="activities" rows="4" placeholder="What happens during the day, what's included, anything that makes it special..."></textarea>
+</div>
 
-      <div class="fld">
-        <label>Your email <span class="req">*</span></label>
-        <input type="email" name="providerEmail" required placeholder="you@yourbusiness.ie">
-        <div class="hint">We'll send a confirmation here, and use it if you ever need to update or claim this listing.</div>
-      </div>
+<div class="fld">
+<label>Logo</label>
+<input type="file" id="f-logo" accept="image/*">
+<div class="hint">Optional — up to 4MB. Shown alongside your listing.</div>
+<div class="field-err" id="logo-err"></div>
+</div>
 
-      <button type="submit" class="submit-btn" id="submit-btn">Submit for review</button>
-      <div class="status" id="status"></div>
-    </form>
-  </div>
+<div class="fld">
+<label>Photos</label>
+<input type="file" id="f-photos" accept="image/*" multiple>
+<div class="hint">Optional — up to 5 images, 4MB each.</div>
+<div class="file-list" id="photos-list"></div>
+<div class="field-err" id="photos-err"></div>
+</div>
 
-  <div class="already">
-    Already listed on sortd and need to make a change? <a href="/claim">Claim your listing →</a>
-  </div>
+<div class="fld">
+<label>Your email <span class="req">*</span></label>
+<input type="email" name="providerEmail" required placeholder="you@yourbusiness.ie">
+<div class="hint">We'll send a confirmation here, and use it if you ever need to update or claim this listing.</div>
+</div>
+
+<button type="submit" class="submit-btn" id="submit-btn">Submit for review</button>
+<div class="status" id="status"></div>
+</form>
+</div>
+
+<div class="already">
+Already listed on sortd and need to make a change? <a href="/claim">Claim your listing →</a>
+</div>
 </div>
 
 <footer><p>© 2026 sortd · <a href="/privacy-policy">Privacy Policy</a></p></footer>
 
 <script>
-document.getElementById('listing-form').addEventListener('submit', async function(e){
-  e.preventDefault();
-  const btn = document.getElementById('submit-btn');
-  const status = document.getElementById('status');
-  const data = Object.fromEntries(new FormData(e.target));
+const MAX_IMAGE_BYTES = 4 * 1024 * 1024; // 4MB — matches the cap enforced in upload-listing-image.js
+const MAX_PHOTOS = 5;
 
-  btn.disabled = true;
-  btn.textContent = 'Submitting...';
-  status.className = 'status';
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = String(reader.result).split(',')[1] || '';
+      resolve({ filename: file.name, contentType: file.type, base64 });
+    };
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
 
-  try{
-    const res = await fetch('/.netlify/functions/submit-listing', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(data)
-    });
-    const result = await res.json();
-    if(res.ok){
-      status.className = 'status ok';
-      status.textContent = "Thanks! We've received your listing and will review it shortly. Check your email for confirmation.";
-      e.target.reset();
-      btn.textContent = 'Submitted ✓';
-    } else {
-      throw new Error(result.error || 'Something went wrong');
-    }
-  } catch(err){
-    status.className = 'status err';
-    status.textContent = 'Something went wrong: ' + err.message + '. Please try again or email us directly.';
-    btn.disabled = false;
-    btn.textContent = 'Submit for review';
+document.getElementById('f-logo').addEventListener('change', function () {
+  const err = document.getElementById('logo-err');
+  err.className = 'field-err'; err.textContent = '';
+  const file = this.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('image/')) {
+    err.textContent = 'Please choose an image file.'; err.className = 'field-err show'; this.value = '';
+  } else if (file.size > MAX_IMAGE_BYTES) {
+    err.textContent = 'That file is too large — please use one under 4MB.'; err.className = 'field-err show'; this.value = '';
   }
+});
+
+document.getElementById('f-photos').addEventListener('change', function () {
+  const err = document.getElementById('photos-err');
+  const listEl = document.getElementById('photos-list');
+  err.className = 'field-err'; err.textContent = '';
+  const files = Array.from(this.files);
+  if (files.length > MAX_PHOTOS) {
+    err.textContent = `Please choose up to ${MAX_PHOTOS} photos.`; err.className = 'field-err show';
+    this.value = ''; listEl.textContent = '';
+    return;
+  }
+  const notImage = files.find((f) => !f.type.startsWith('image/'));
+  const tooBig = files.find((f) => f.size > MAX_IMAGE_BYTES);
+  if (notImage) {
+    err.textContent = 'Please choose image files only.'; err.className = 'field-err show';
+    this.value = ''; listEl.textContent = '';
+    return;
+  }
+  if (tooBig) {
+    err.textContent = `"${tooBig.name}" is too large — please use images under 4MB.`; err.className = 'field-err show';
+    this.value = ''; listEl.textContent = '';
+    return;
+  }
+  listEl.textContent = files.length ? files.map((f) => f.name).join(', ') : '';
+});
+
+document.getElementById('listing-form').addEventListener('submit', async function(e){
+e.preventDefault();
+const btn = document.getElementById('submit-btn');
+const status = document.getElementById('status');
+const data = Object.fromEntries(new FormData(e.target));
+
+// Grab image files before anything resets the form.
+const logoFile = document.getElementById('f-logo').files[0] || null;
+const photoFiles = Array.from(document.getElementById('f-photos').files);
+
+if (document.getElementById('logo-err').classList.contains('show') || document.getElementById('photos-err').classList.contains('show')) {
+status.className = 'status err';
+status.textContent = 'Please fix the image errors above before submitting.';
+return;
+}
+
+btn.disabled = true;
+btn.textContent = 'Submitting...';
+status.className = 'status';
+
+try{
+const res = await fetch('/.netlify/functions/submit-listing', {
+method: 'POST',
+headers: {'Content-Type':'application/json'},
+body: JSON.stringify(data)
+});
+const result = await res.json();
+if(!res.ok){
+throw new Error(result.error || 'Something went wrong');
+}
+
+const uploads = [];
+if (logoFile) uploads.push({ file: logoFile, field: 'Logo' });
+photoFiles.forEach((file) => uploads.push({ file, field: 'Photos' }));
+
+let failedUploads = [];
+if (uploads.length && result.recordId) {
+for (let i = 0; i < uploads.length; i++) {
+btn.textContent = `Uploading images (${i + 1}/${uploads.length})...`;
+const { file, field } = uploads[i];
+try {
+const { filename, contentType, base64 } = await fileToBase64(file);
+const upRes = await fetch('/.netlify/functions/upload-listing-image', {
+method: 'POST',
+headers: {'Content-Type':'application/json'},
+body: JSON.stringify({ recordId: result.recordId, field, filename, contentType, file: base64 }),
+});
+if (!upRes.ok) failedUploads.push(file.name);
+} catch (e) {
+failedUploads.push(file.name);
+}
+}
+}
+
+status.className = 'status ok';
+status.textContent = failedUploads.length
+? `Thanks! We've received your listing and will review it shortly. (Heads up: ${failedUploads.join(', ')} didn't upload — no worries, just email us the images directly.) Check your email for confirmation.`
+: "Thanks! We've received your listing and will review it shortly. Check your email for confirmation.";
+e.target.reset();
+document.getElementById('photos-list').textContent = '';
+btn.textContent = 'Submitted ✓';
+} catch(err){
+status.className = 'status err';
+status.textContent = 'Something went wrong: ' + err.message + '. Please try again or email us directly.';
+btn.disabled = false;
+btn.textContent = 'Submit for review';
+}
 });
 </script>
 
