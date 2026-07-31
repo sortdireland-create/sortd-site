@@ -1,8 +1,8 @@
 [build]
   functions = "netlify/functions"
 
-  [functions."notify-listing-live"]
-    schedule = "*/10 * * * *"
+# DISABLED 2026-07-31 pending backfill fix — was mass-emailing all pre-existing live listings. #   [functions."notify-listing-live"]
+#     schedule = "*/10 * * * *"
 
 # ── STATIC PAGES ─────────────────────────────────────────────────
 [[redirects]]
