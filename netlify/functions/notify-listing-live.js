@@ -63,22 +63,36 @@ async function sendEmail({ to, subject, html }) {
     console.warn('CUSTOMERIO_APP_API_KEY not set — skipping email send to', to);
     return false;
   }
-  const res = await fetch('https://api.customer.io/v1/send/email', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      to,
-      from: 'sortd <hello@sortd-ireland.ie>',
-      subject,
-      body: html,
-      identifiers: { email: to },
-    }),
-  });
+  let res;
+  try {
+    res = await fetch('https://api.customer.io/v1/send/email', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        to,
+        from: 'sortd <hello@sortd-ireland.ie>',
+        subject,
+        body: html,
+        identifiers: { email: to },
+      }),
+    });
+  } catch (fetchErr) {
+    // DIAGNOSTIC (temporary, added while investigating a silent-failure bug —
+    // remove once confirmed working): the fetch itself threw (network/DNS/etc),
+    // separate from Customer.io returning a non-2xx response below.
+    console.error(`Customer.io fetch threw for ${to}:`, fetchErr && fetchErr.stack || fetchErr);
+    return false;
+  }
+  // DIAGNOSTIC (temporary): log the outcome either way so a silent failure
+  // (e.g. Customer.io returning 200 but not actually queuing the send, or a
+  // non-2xx we weren't seeing in Netlify's log viewer) is visible in Netlify's
+  // Observability request log for this invocation, not just the function log.
+  const bodyText = await res.text();
+  console.log(`Customer.io response for ${to}: status=${res.status} body=${bodyText}`);
   if (!res.ok) {
-    console.error('Customer.io email failed:', await res.text());
     return false;
   }
   return true;
@@ -104,6 +118,13 @@ exports.handler = async function () {
       return { statusCode: 500, body: 'Airtable list failed' };
     }
     const { records } = await listRes.json();
+
+    // DIAGNOSTIC (temporary): confirm exactly which records the filter
+    // matched before doing anything else, so a test run's scope is verifiable.
+    console.log(
+      `notify-listing-live: filter matched ${records ? records.length : 0} record(s): ` +
+      (records || []).map((r) => `${r.id} (${r.fields[F.NAME] || 'no name'})`).join(', ')
+    );
 
     if (!records || records.length === 0) {
       return { statusCode: 200, body: 'No newly-live listings to notify.' };
