@@ -103,8 +103,12 @@ exports.handler = async function (event) {
       return json(403, { error: 'This listing can no longer accept image uploads.' });
     }
 
+    // NOTE: the uploadAttachment endpoint's URL does NOT include the table ID —
+    // just baseId/recordId/fieldId (record IDs are unique across a whole base).
+    // Including TABLE_ID here (as an earlier version of this file did) makes
+    // Airtable return a 404 NOT_FOUND, since the URL doesn't match any route.
     const upRes = await fetch(
-      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}/${fieldId}/uploadAttachment`,
+      `https://api.airtable.com/v0/${BASE_ID}/${recordId}/${fieldId}/uploadAttachment`,
       {
         method: 'POST',
         headers: {
