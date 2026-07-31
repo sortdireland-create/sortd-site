@@ -89,9 +89,10 @@ exports.handler = async function (event) {
   try {
     // Ownership/eligibility check: only allow uploads onto a fresh, still-pending
     // draft created by this same self-submit flow — not any arbitrary/live record.
-    const recRes = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`, {
-      headers: { Authorization: `Bearer ${apiKey}` },
-    });
+    const recRes = await fetch(
+      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}?returnFieldsByFieldId=true`,
+      { headers: { Authorization: `Bearer ${apiKey}` } }
+    );
     if (!recRes.ok) {
       return json(404, { error: 'Listing not found.' });
     }
