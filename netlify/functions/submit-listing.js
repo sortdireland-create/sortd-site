@@ -21,8 +21,26 @@
 // ClaimToken (type: Single line text)
 // ─────────────────────────────────────────────────────────────────────
 
+const crypto = require('crypto');
+
 const BASE_ID = 'appuyWkAmTRI4lN5r';
 const TABLE_ID = 'tblziKRbWXA1veyuz';
+
+// Login Tokens table — shared with sortd-provider-portal's request-link.js.
+// Generating a token here (instead of making the provider request one
+// separately on the portal) means the confirmation email can carry a
+// real one-click magic link straight away. Mirrors request-link.js exactly
+// so verify-link.js on the portal accepts it without any changes there.
+const LOGIN_TOKENS_TABLE_ID = 'tblR2PKvtvhV016jN';
+const LT = {
+EMAIL: 'flddFt9rZLBmVFlas',
+TOKEN: 'fld7WgLX9A4nj59dM',
+CREATED_AT: 'fldkEPACSX1KpitP1',
+EXPIRES_AT: 'fldNL6jggJIdA6B99',
+USED: 'fldHbAyLOCuChZ2xa',
+};
+const TOKEN_TTL_MINUTES = 30; // matches request-link.js
+const PORTAL_URL = 'https://portal.sortd-ireland.ie';
 
 const F = {
 NAME: 'fldTrzk8wQ8sefLvj',
@@ -151,6 +169,47 @@ console.error('Customer.io email failed:', await res.text());
 }
 }
 
+// Creates a one-time login token for this provider's email, exactly like
+// request-link.js does, and returns the ready-to-click portal magic link.
+// Returns null on any failure — callers should fall back to the plain
+// portal URL rather than let this break the whole submission.
+async function createMagicLink(email, apiKey) {
+try {
+const token = crypto.randomUUID().replace(/-/g, '') + crypto.randomUUID().replace(/-/g, '');
+const now = new Date();
+const expires = new Date(now.getTime() + TOKEN_TTL_MINUTES * 60 * 1000);
+
+const res = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${LOGIN_TOKENS_TABLE_ID}`, {
+method: 'POST',
+headers: {
+'Authorization': `Bearer ${apiKey}`,
+'Content-Type': 'application/json',
+},
+body: JSON.stringify({
+records: [{
+fields: {
+[LT.EMAIL]: email,
+[LT.TOKEN]: token,
+[LT.CREATED_AT]: now.toISOString(),
+[LT.EXPIRES_AT]: expires.toISOString(),
+[LT.USED]: false,
+},
+}],
+}),
+});
+
+if (!res.ok) {
+console.error('createMagicLink: Login Tokens write failed:', await res.text());
+return null;
+}
+
+return `${PORTAL_URL}/.netlify/functions/verify-link?token=${token}`;
+} catch (err) {
+console.error('createMagicLink error:', err);
+return null;
+}
+}
+
 exports.handler = async function (event) {
 if (event.httpMethod !== 'POST') {
 return { statusCode: 405, body: 'Method not allowed' };
@@ -224,6 +283,13 @@ return { statusCode: 500, body: JSON.stringify({ error: 'Could not save listing,
 const result = await airtableRes.json();
 const record = result.records[0];
 
+// Auto-generate a one-time portal login link for this provider so the
+// confirmation email's CTA is a real one-click magic link instead of
+// just pointing at the portal's login page. Falls back to the plain
+// portal URL if this fails for any reason — never blocks the submission.
+const magicLink = await createMagicLink(data.providerEmail.trim().toLowerCase(), apiKey);
+const portalCtaUrl = magicLink || PORTAL_URL;
+
 // Confirmation email to the provider
 await sendEmail({
 to: data.providerEmail.trim(),
@@ -237,9 +303,10 @@ ${data.category.trim()} · ${data.county.trim()}, ${data.area.trim()}<br>
 Ages ${data.ageMin}–${data.ageMax} · ${data.cost.trim()}
 </td></tr></table>
 <p style="margin:0 0 16px;">Once it's live, parents across ${data.county.trim()} searching for ${data.category.trim().toLowerCase()} activities will be able to find you.</p>
-<p style="margin:0 0 16px;">Got another camp or class to add? You can add it any time from your provider portal — log in with just your email, no password needed.</p>
-${emailButton('Log into my portal →', 'https://portal.sortd-ireland.ie')}
-<p style="margin:0;">Questions in the meantime? Just reply to this email.</p>
+<p style="margin:0 0 16px;">Got another camp or class to add? You can add it any time from your provider portal — this link logs you straight in, no password needed.</p>
+${emailButton('Log into my portal →', portalCtaUrl)}
+<p style="margin:0;font-size:12px;color:#888;">This login link expires in ${TOKEN_TTL_MINUTES} minutes and can only be used once — after that, just enter your email again at portal.sortd-ireland.ie for a fresh one.</p>
+<p style="margin:16px 0 0;">Questions in the meantime? Just reply to this email.</p>
 <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">we'll take it from here →</p>
 `),
 });
