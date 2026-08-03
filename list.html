@@ -52,6 +52,14 @@ nav{background:var(--nv);padding:0 24px;display:flex;align-items:center;justify-
 .already a{color:var(--sk);font-weight:700;text-decoration:none;}
 footer{background:var(--nv);color:#8b93a8;text-align:center;padding:28px 24px;font-size:.85rem;}
 footer a{color:var(--pk);text-decoration:none;}
+.done-badge{width:52px;height:52px;border-radius:14px;background:var(--gr);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;margin:0 auto 18px;}
+.done-h{font-family:var(--fd);font-weight:800;font-size:1.4rem;color:var(--nv);text-align:center;margin-bottom:12px;}
+.done-p{font-size:.95rem;color:#444;line-height:1.6;text-align:center;margin-bottom:16px;}
+.done-p strong{color:var(--nv);}
+.done-cta{display:block;text-align:center;text-decoration:none;}
+.done-again{text-align:center;margin-top:14px;font-size:.85rem;}
+.done-again a{color:var(--sk);font-weight:700;text-decoration:none;}
+.done-note{font-family:var(--fs);font-size:1.15rem;color:var(--bl);text-align:center;margin-top:18px;}
 </style>
 </head>
 <body>
@@ -68,7 +76,7 @@ footer a{color:var(--pk);text-decoration:none;}
 </div>
 
 <div class="wrap">
-<div class="card">
+<div class="card" id="form-card">
 <form id="listing-form">
 <div class="fld">
 <label>Activity name <span class="req">*</span></label>
@@ -130,7 +138,8 @@ footer a{color:var(--pk);text-decoration:none;}
 
 <div class="fld">
 <label>Cost <span class="req">*</span></label>
-<input type="text" name="cost" required placeholder="e.g. €180 per week">
+<input type="text" name="cost" required placeholder="e.g. €80 for 7 weeks, or €150 a week">
+<div class="hint">Running a camp? Give the total for the block, e.g. "€80 for 7 weeks". Running a weekly class? Give the price per week, e.g. "€150 a week".</div>
 </div>
 
 <div class="fld">
@@ -170,7 +179,18 @@ footer a{color:var(--pk);text-decoration:none;}
 </form>
 </div>
 
-<div class="already">
+<div class="card" id="done-card" style="display:none;">
+<div class="done-badge">✓</div>
+<h2 class="done-h">You're on the list!</h2>
+<p class="done-p">Thanks for submitting <strong id="done-name">your listing</strong> — we'll review it and it's usually live within a few days. Check <strong id="done-email">your inbox</strong> for a confirmation email.</p>
+<p class="done-p" id="done-upload-warning" style="display:none;"></p>
+<p class="done-p">Got another camp or class to add? Log into your provider portal to manage all your listings — new and existing — in one place.</p>
+<a class="submit-btn done-cta" href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener">Log into my portal →</a>
+<p class="done-again"><a href="#" id="submit-another">Or submit another listing here</a></p>
+<p class="done-note">thanks for being part of sortd →</p>
+</div>
+
+<div class="already" id="already-note">
 Already listed on sortd and need to make a change? <a href="/claim">Claim your listing →</a>
 </div>
 </div>
@@ -230,6 +250,36 @@ document.getElementById('f-photos').addEventListener('change', function () {
   listEl.textContent = files.length ? files.map((f) => f.name).join(', ') : '';
 });
 
+function showDoneCard(name, email, failedUploads) {
+  document.getElementById('form-card').style.display = 'none';
+  document.getElementById('already-note').style.display = 'none';
+  document.getElementById('done-name').textContent = name || 'your listing';
+  document.getElementById('done-email').textContent = email || 'your inbox';
+  const warn = document.getElementById('done-upload-warning');
+  if (failedUploads && failedUploads.length) {
+    warn.textContent = `Heads up: ${failedUploads.join(', ')} didn't upload — no worries, just email us the images directly.`;
+    warn.style.display = 'block';
+  } else {
+    warn.style.display = 'none';
+  }
+  document.getElementById('done-card').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.getElementById('submit-another').addEventListener('click', function (e) {
+  e.preventDefault();
+  document.getElementById('done-card').style.display = 'none';
+  document.getElementById('form-card').style.display = 'block';
+  document.getElementById('already-note').style.display = 'block';
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = false;
+  btn.textContent = 'Submit for review';
+  const status = document.getElementById('status');
+  status.className = 'status';
+  status.textContent = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 document.getElementById('listing-form').addEventListener('submit', async function(e){
 e.preventDefault();
 const btn = document.getElementById('submit-btn');
@@ -284,13 +334,13 @@ failedUploads.push(file.name);
 }
 }
 
-status.className = 'status ok';
-status.textContent = failedUploads.length
-? `Thanks! We've received your listing and will review it shortly. (Heads up: ${failedUploads.join(', ')} didn't upload — no worries, just email us the images directly.) Check your email for confirmation.`
-: "Thanks! We've received your listing and will review it shortly. Check your email for confirmation.";
+const submittedName = data.name;
+const submittedEmail = data.providerEmail;
 e.target.reset();
 document.getElementById('photos-list').textContent = '';
-btn.textContent = 'Submitted ✓';
+btn.disabled = false;
+btn.textContent = 'Submit for review';
+showDoneCard(submittedName, submittedEmail, failedUploads);
 } catch(err){
 status.className = 'status err';
 status.textContent = 'Something went wrong: ' + err.message + '. Please try again or email us directly.';
