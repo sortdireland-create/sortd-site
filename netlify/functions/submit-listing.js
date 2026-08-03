@@ -61,6 +61,7 @@ PROVIDER_EMAIL: 'fldaApVUFBE4DPy3S', // Provider Email
 CLAIMED: 'fldp4ynCy4tXcncUi', // Claimed
 CLAIM_TOKEN: 'fldPCNXqEJOX7n1Cw', // ClaimToken
 TYPE: 'fldIKsf7AM5Jqr60K', // Type — "Holiday Camp" or "Weekly Class"
+SOURCE_TYPE: 'fld5nEnrJH86qJdT8', // Source Type — singleSelect: Manual / Provider Self-Submit / AI-Sourced
 };
 
 const REQUIRED = ['name','type','provider','county','area','category','ageMin','ageMax','cost','bookingUrl','providerEmail'];
@@ -246,6 +247,7 @@ const fields = {
 [F.PROVIDER_EMAIL]: data.providerEmail.trim(),
 [F.LIVE]: false, // always a draft — Rachel reviews before publishing
 [F.NOTES]: 'Submitted via self-submit form — pending review.',
+[F.SOURCE_TYPE]: 'Provider Self-Submit', // distinguishes from Manual / AI-Sourced
 };
 
 // Best-effort numeric CostValue (€/week) so this listing sorts sensibly
