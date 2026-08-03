@@ -237,6 +237,8 @@ ${data.category.trim()} · ${data.county.trim()}, ${data.area.trim()}<br>
 Ages ${data.ageMin}–${data.ageMax} · ${data.cost.trim()}
 </td></tr></table>
 <p style="margin:0 0 16px;">Once it's live, parents across ${data.county.trim()} searching for ${data.category.trim().toLowerCase()} activities will be able to find you.</p>
+<p style="margin:0 0 16px;">Got another camp or class to add? You can add it any time from your provider portal — log in with just your email, no password needed.</p>
+${emailButton('Log into my portal →', 'https://portal.sortd-ireland.ie')}
 <p style="margin:0;">Questions in the meantime? Just reply to this email.</p>
 <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">we'll take it from here →</p>
 `),
