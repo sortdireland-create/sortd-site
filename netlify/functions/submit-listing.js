@@ -60,7 +60,7 @@ LIVE: 'fldBQ6YMcDuYPJkne',
 PROVIDER_EMAIL: 'fldaApVUFBE4DPy3S', // Provider Email
 CLAIMED: 'fldp4ynCy4tXcncUi', // Claimed
 CLAIM_TOKEN: 'fldPCNXqEJOX7n1Cw', // ClaimToken
-TYPE: 'fldIKsf7AM5Jqr60K', // Type — "Holiday Camp" or "Weekly Class"
+TYPE: 'fldIKsf7AM5Jqr60K', // Type — "Holiday Camp", "Weekly Class", or "One-off Class"
 SOURCE_TYPE: 'fld5nEnrJH86qJdT8', // Source Type — singleSelect: Manual / Provider Self-Submit / AI-Sourced
 DATE_START: 'fldwCRNqtDFTs7u4N', // DateStart — same field the sourcing agent / sortd-updater use for camps
 };
