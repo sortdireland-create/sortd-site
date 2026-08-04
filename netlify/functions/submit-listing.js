@@ -62,9 +62,19 @@ CLAIMED: 'fldp4ynCy4tXcncUi', // Claimed
 CLAIM_TOKEN: 'fldPCNXqEJOX7n1Cw', // ClaimToken
 TYPE: 'fldIKsf7AM5Jqr60K', // Type — "Holiday Camp" or "Weekly Class"
 SOURCE_TYPE: 'fld5nEnrJH86qJdT8', // Source Type — singleSelect: Manual / Provider Self-Submit / AI-Sourced
+DATE_START: 'fldwCRNqtDFTs7u4N', // DateStart — same field the sourcing agent / sortd-updater use for camps
 };
 
-const REQUIRED = ['name','type','provider','county','area','category','ageMin','ageMax','cost','bookingUrl','providerEmail'];
+const REQUIRED = ['name','type','provider','county','area','category','ageMin','ageMax','cost','bookingUrl','providerEmail','startDate'];
+
+// Formats a "YYYY-MM-DD" date input value as e.g. "2 Sep 2026" for emails.
+// Parses as UTC noon-anchored so local timezone can never shift it a day off.
+function formatDateForEmail(dateStr) {
+if (!dateStr) return '';
+const d = new Date(`${dateStr}T00:00:00Z`);
+if (isNaN(d.getTime())) return dateStr;
+return d.toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+}
 
 // Derives a numeric CostValue (€ per week) from the free-text Cost string, so
 // camps and weekly classes end up on a comparable scale for "price low to
@@ -248,6 +258,7 @@ const fields = {
 [F.LIVE]: false, // always a draft — Rachel reviews before publishing
 [F.NOTES]: 'Submitted via self-submit form — pending review.',
 [F.SOURCE_TYPE]: 'Provider Self-Submit', // distinguishes from Manual / AI-Sourced
+[F.DATE_START]: data.startDate.trim(), // "YYYY-MM-DD" from the <input type="date">, Airtable accepts this directly
 };
 
 // Best-effort numeric CostValue (€/week) so this listing sorts sensibly
@@ -302,7 +313,8 @@ html: emailShell(`
 <table role="presentation" width="100%" style="background:#D1E9F5;border-radius:16px;margin:0 0 20px;"><tr><td style="padding:16px 20px;font-size:14px;color:#293148;line-height:1.8;font-weight:600;">
 <strong>${data.name.trim()}</strong> · ${data.type.trim()}<br>
 ${data.category.trim()} · ${data.county.trim()}, ${data.area.trim()}<br>
-Ages ${data.ageMin}–${data.ageMax} · ${data.cost.trim()}
+Ages ${data.ageMin}–${data.ageMax} · ${data.cost.trim()}<br>
+Starts ${formatDateForEmail(data.startDate.trim())}
 </td></tr></table>
 <p style="margin:0 0 16px;">Once it's live, parents across ${data.county.trim()} searching for ${data.category.trim().toLowerCase()} activities will be able to find you.</p>
 <p style="margin:0 0 16px;">Got another camp or class to add? You can add it any time from your provider portal — this link logs you straight in, no password needed.</p>
@@ -330,6 +342,7 @@ html: emailShell(`
 <strong>Category:</strong> ${data.category.trim()}<br>
 <strong>Ages:</strong> ${data.ageMin}–${data.ageMax}<br>
 <strong>Cost:</strong> ${data.cost.trim()}<br>
+<strong>Start date:</strong> ${formatDateForEmail(data.startDate.trim())}<br>
 <strong>Contact:</strong> ${data.providerEmail.trim()}
 </td></tr></table>
 ${emailButton('Review in Airtable →', airtableUrl)}
