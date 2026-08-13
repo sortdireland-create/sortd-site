@@ -33,7 +33,7 @@ a{text-decoration:none;color:inherit;}
 .hero{background:#CBEAF6;padding:72px 40px 64px;}
 .hero h1{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(36px,5vw,58px);line-height:1.0;letter-spacing:-0.03em;color:#27314A;margin-bottom:18px;}
 .hero h1 em{font-style:normal;color:#2E84AC;}
-.hero-sub{font-weight:600;font-size:18px;line-height:1.6;color:#3c4a55;max-width:580px;}
+.hero-sub{font-weight:600;font-size:18px;line-height:1.6;color:#3c4a55;max-width:580px;margin:0 auto;text-align:center;}
 @media(max-width:768px){.hero{padding:52px 20px 48px;}}
 
 /* PROBLEM STRIP */
@@ -222,7 +222,11 @@ a{text-decoration:none;color:inherit;}
 <div class="faq-list">
 <div class="faq-item">
 <div class="faq-q" onclick="toggle(this)">Is sortd free to use?</div>
-<div class="faq-a">Yes — completely free for parents. Always. sortd makes money from providers who want to be more visible through the Partners portal, not from the parents using the directory.</div>
+<div class="faq-a">Yes — it's free for everyone. Free for parents to search and browse, and free for providers to list a camp or class. The Partners portal offers optional extra visibility for providers who want it, but sortd itself is free for everyone.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggle(this)">I run a camp or class — how do I get listed?</div>
+<div class="faq-a">We'd love to have you. Head to <a href="/list" style="color:#2E84AC;text-decoration:underline;">sortd-ireland.ie/list</a> — it's free and takes about three minutes. If you'd like more visibility or better placement, check out the Partners portal.</div>
 </div>
 <div class="faq-item">
 <div class="faq-q" onclick="toggle(this)">Do I need to create an account?</div>
@@ -243,10 +247,6 @@ a{text-decoration:none;color:inherit;}
 <div class="faq-item">
 <div class="faq-q" onclick="toggle(this)">My area isn't covered yet — when will it be?</div>
 <div class="faq-a">We started in north Dublin and are expanding across Leinster — Wicklow and Meath are already live, with Kildare, Louth, Laois, Offaly, Westmeath, Longford, Carlow, Kilkenny and Wexford next. The fastest way to get your area covered is to email us a recommendation and we'll add it.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggle(this)">I run a camp or class — how do I get listed?</div>
-<div class="faq-a">We'd love to have you. Listing is free and takes about three minutes — click "Add a class" in the navigation and fill in the details. If you'd like more visibility, better placement or newsletter features, check out the Partners portal.</div>
 </div>
 <div class="faq-item">
 <div class="faq-q" onclick="toggle(this)">How do I know if places are still available?</div>
@@ -353,13 +353,13 @@ item.classList.toggle('open');
 "@context": "https://schema.org",
 "@type": "FAQPage",
 "mainEntity": [
-{"@type":"Question","name":"Is sortd free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes — completely free for parents. Always. sortd makes money from providers who want to be more visible through the Partners portal, not from the parents using the directory."}},
+{"@type":"Question","name":"Is sortd free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes — it's free for everyone. Free for parents to search and browse, and free for providers to list a camp or class. The Partners portal offers optional extra visibility for providers who want it, but sortd itself is free for everyone."}},
+{"@type":"Question","name":"I run a camp or class — how do I get listed?","acceptedAnswer":{"@type":"Answer","text":"Head to sortd-ireland.ie/list — it's free and takes about three minutes. If you'd like more visibility or better placement, check out the Partners portal."}},
 {"@type":"Question","name":"Do I need to create an account?","acceptedAnswer":{"@type":"Answer","text":"No account, no login, no app to download. Just open sortd-ireland.ie on your phone or computer and start searching."}},
 {"@type":"Question","name":"Do you have weekly classes too, or just camps?","acceptedAnswer":{"@type":"Answer","text":"Both. Camps covers holiday camps for midterms and summer; Weekly classes covers term-time activities like swimming, dance, GAA and more."}},
 {"@type":"Question","name":"How do I actually book?","acceptedAnswer":{"@type":"Answer","text":"Click through on any listing and you'll go straight to the provider's own booking page or contact details. sortd doesn't take the booking — we just help you find the camp or class."}},
 {"@type":"Question","name":"Are all the listings on sortd verified?","acceptedAnswer":{"@type":"Answer","text":"Every listing on sortd is researched and added by hand. We check details directly from the provider's website, Instagram or by contacting them."}},
 {"@type":"Question","name":"My area isn't covered yet — when will it be?","acceptedAnswer":{"@type":"Answer","text":"We started in north Dublin and are expanding across Leinster — Wicklow and Meath are already live, with more counties next. Email us a recommendation and we'll add it."}},
-{"@type":"Question","name":"I run a camp or class — how do I get listed?","acceptedAnswer":{"@type":"Answer","text":"Listing is free and takes about three minutes. Click 'Add a class' in the navigation and fill in the details. For more visibility, check out the Partners portal."}},
 {"@type":"Question","name":"How do I know if places are still available?","acceptedAnswer":{"@type":"Answer","text":"Each listing shows a live status where we have it. We update this regularly, but always check with the provider directly for the most up-to-date availability."}},
 {"@type":"Question","name":"Do you have a newsletter?","acceptedAnswer":{"@type":"Answer","text":"We've moved to Instagram for updates. Follow @sortd.ireland to stay in the loop."}}
 ]
