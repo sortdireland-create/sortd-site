@@ -10,9 +10,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-HHTB7S9WJG');
 </script>
-<title>sortd — Every kids' camp & activity in Ireland, in one place</title>
-<meta name="description" content="Find summer camps, weekly classes, after-school sport, drama, GAA, coding and more across Dublin & Leinster. Built by a mum in Malahide who was sick of trawling 14 WhatsApp groups.">
-<link rel="canonical" href="https://sortd-ireland.ie">
+<title>Holiday camps — sortd</title>
+<meta name="description" content="Every kids' summer camp across Dublin, Wicklow, Meath and beyond — search by area, age and day.">
+<link rel="canonical" href="https://sortd-ireland.ie/camps">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
@@ -27,11 +27,11 @@ gtag('config', 'G-HHTB7S9WJG');
 <input type="number" name="child2-age">
 </form>
 <body>
-<div class="annotation">Preview branch — homepage redesign, not live yet. See PR notes for the list of decisions/gaps flagged for Rachel's review.</div>
+<div class="annotation">Preview branch — /camps search page, not live yet.</div>
 <nav>
   <a href="/" class="brand">sortd<span>.</span></a>
   <div class="navlinks">
-    <a href="/camps" class="navlink">Camps</a>
+    <a href="/camps" class="navlink active">Camps</a>
     <a href="/weekly-classes" class="navlink">Weekly classes</a>
     <a href="/how-it-works" class="navlink">How it works</a>
     <a href="/about" class="navlink">Our story</a>
@@ -42,37 +42,27 @@ gtag('config', 'G-HHTB7S9WJG');
     <button class="nav-cta" onclick="openPopup()">Get the newsletter</button>
   </div>
 </nav>
-<section class="hero">
+<section class="hero pagehero">
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
-  <div class="eyebrow">Camps &amp; weekly classes live now — expanding across Leinster</div>
-  <h1>Every camp, class &amp; after-school club — <em>sorted.</em></h1>
-  <p class="sub">Search summer camps, weekly classes and after-school clubs near you — all in one place, kept up to date so you're not stuck on a waitlist that closed months ago.</p>
+  <div class="eyebrow">Holiday camps</div>
+  <h1>Find your camp</h1>
+  <p class="sub">Search summer camps by area, age and day — updated weekly so you're not stuck on a waitlist that closed months ago.</p>
 
-  <div class="searchcard">
+  <div class="searchcard wide">
     <div class="sf">
       <i class="ti ti-map-pin"></i>
       <div class="sf-body">
         <div class="sf-label">Eircode or area</div>
-        <input type="text" id="hEircode" placeholder="e.g. D13, Malahide, K36…">
-      </div>
-    </div>
-    <div class="sf">
-      <i class="ti ti-category"></i>
-      <div class="sf-body">
-        <div class="sf-label">What are you looking for?</div>
-        <select id="hType">
-          <option value="camp">Holiday camps</option>
-          <option value="weekly">Weekly classes</option>
-        </select>
+        <input type="text" id="sEircode" placeholder="e.g. D13, Malahide, K36…">
       </div>
     </div>
     <div class="sf">
       <i class="ti ti-users"></i>
       <div class="sf-body">
         <div class="sf-label">What age?</div>
-        <select id="hAge">
+        <select id="sAge">
           <option value="">All ages</option>
           <option value="0-2">0–2 years</option>
           <option value="3-5">3–5 years</option>
@@ -87,48 +77,33 @@ gtag('config', 'G-HHTB7S9WJG');
         <i class="ti ti-calendar" style="margin-top:6px;"></i>
         <div class="sf-body">
           <div class="sf-label">Which days?</div>
-          <div class="daychips" id="hDays"></div>
+          <div class="daychips" id="sDays"></div>
         </div>
       </div>
     </div>
-    <button class="search-btn" onclick="heroSearch()">Search</button>
+    <button class="search-btn" onclick="doSearch()">Search</button>
     <div class="quick">
-      <div class="quick-label">Already know which class you're looking for?</div>
+      <div class="quick-label">Already know which one you're looking for?</div>
       <div class="quick-input">
         <i class="ti ti-search"></i>
-        <input type="text" id="hText" placeholder="Search by name or provider" onkeydown="if(event.key==='Enter')heroSearch()">
+        <input type="text" id="sText" placeholder="Search by name or provider" onkeydown="if(event.key==='Enter')doSearch()">
       </div>
     </div>
   </div>
-  <span class="hero-note">no app to download · just open it →</span>
 </section>
 
-<div class="band band-green">
-  <div class="band-inner">
-    <div class="section-label">Browse by county</div>
-    <h2>Leinster-wide</h2>
-    <div class="countystrip" id="countyStrip"></div>
-    <div class="note">no more missing the sign-up window — we'll tell you what's on ↗</div>
-  </div>
-</div>
-
-<section class="section" style="padding-top:0;">
-  <div class="section-label">Featured this week</div>
-  <h2>Featured classes</h2>
-  <div class="marquee-wrap">
-    <div class="marquee-track" id="marquee-track"></div>
-  </div>
-</section>
-
-<section class="section" style="padding-top:0;">
-  <div class="aboutsec">
-    <div class="about-photo"><img src="/images/rachel-ella.jpg" alt="Rachel and Ella enjoying ice cream in Malahide" loading="lazy"></div>
-    <div>
-      <div class="about-eyebrow">The story behind sortd</div>
-      <h2>Built on a Monday night. Out of necessity.</h2>
-      <p>I set up sortd because I couldn't find summer camps without trawling 14 WhatsApp groups, Instagram saves and spreadsheets that were already out of date. I'm a working mum to Ella and Finn, and I wanted to see everything in one place — so I built the thing that didn't exist. It started with camps in north Dublin, and we're expanding county by county across Leinster. No VC money. No boardroom. Just a real problem, sorted.</p>
-      <a href="/about" class="about-link">Read the full story →</a>
+<section class="results-shell">
+  <div class="results-inner">
+    <div class="typetoggle">
+      <a href="/camps" class="on">Holiday camps</a>
+      <a href="/weekly-classes" class="">Weekly classes</a>
     </div>
+    <div class="filter-row">
+      <div class="fg"><label class="fl" for="sSort">Sort by</label><select class="fs" id="sSort"><option value="name">Name (A–Z)</option><option value="price_lo">Price (low → high)</option><option value="price_hi">Price (high → low)</option><option value="age_lo">Youngest age first</option></select></div>
+      <button class="filter-clear" onclick="clearAll()">Clear all filters</button>
+    </div>
+    <div class="results-meta"><span class="results-count" id="rCount">Loading…</span></div>
+    <div class="grid" id="grid"></div>
   </div>
 </section>
 <footer>
@@ -196,42 +171,57 @@ gtag('config', 'G-HHTB7S9WJG');
 <script src="/js/camps-data.js"></script>
 <script src="/js/search.js"></script>
 <script>
-document.getElementById('hDays').innerHTML = dayCheckboxesHtml('hDays');
-function heroSearch(){
-  const type = document.getElementById('hType').value;
-  const eircode = document.getElementById('hEircode').value;
-  const ageKey = document.getElementById('hAge').value;
-  const days = readSelectedDays('hDays');
-  const text = document.getElementById('hText').value;
-  const qs = buildSearchQuery({eircode, ageKey, days, text});
-  const dest = type === 'weekly' ? '/weekly-classes' : '/camps';
-  window.location.href = dest + (qs ? '?' + qs : '');
+document.getElementById('sDays').innerHTML = dayCheckboxesHtml('sDays');
+const TYPE = 'camp';
+
+function readFilters(){
+  return {
+    type: TYPE,
+    eircode: document.getElementById('sEircode').value,
+    ageBucket: ageBucketFromKey(document.getElementById('sAge').value),
+    days: readSelectedDays('sDays'),
+    text: document.getElementById('sText').value,
+    sort: document.getElementById('sSort').value,
+  };
 }
 
-function filterCounty(county){
-  window.location.href = '/camps?q=' + encodeURIComponent(county);
+function render(listings){
+  const grid = document.getElementById('grid');
+  const count = document.getElementById('rCount');
+  if(!listings.length){
+    grid.innerHTML = '<div class="empty"><div class="empty-title">No camps found</div><div class="empty-sub">Try a different area, age or day, or clear the filters.</div></div>';
+    count.textContent = '0 results';
+    return;
+  }
+  count.textContent = listings.length + ' result' + (listings.length!==1?'s':'') + ' found';
+  grid.innerHTML = listings.map((c,i) => listingCard(c,i)).join('');
 }
 
-function renderFeatured(){
-  const track = document.getElementById('marquee-track');
-  const step = Math.max(1, Math.ceil(LISTINGS.length / 10));
-  const featured = LISTINGS.filter((c,i)=> i % step === 0).slice(0,10);
-  const html = featured.map(featuredCard).join('');
-  track.innerHTML = html + html;
+function doSearch(){
+  render(filterListings(LISTINGS, readFilters()));
 }
 
-function renderCountyStrip(){
-  const strip = document.getElementById('countyStrip');
-  strip.innerHTML = LEINSTER_COUNTIES.map(county=>{
-    const n = LISTINGS.filter(c=>(c.county||'').toLowerCase()===county.toLowerCase()).length;
-    return '<button class="county" onclick="filterCounty(\''+county+'\')">'+county+'<span class="county-count">('+n+')</span></button>';
-  }).join('') + '<a href="/camps" class="county" style="background:var(--nv);color:#fff;border-color:var(--nv);">All areas <span class="county-count" style="opacity:.8">('+LISTINGS.length+')</span></a>';
+function clearAll(){
+  document.getElementById('sEircode').value='';
+  document.getElementById('sText').value='';
+  document.getElementById('sAge').value='';
+  document.getElementById('sSort').value='name';
+  setSelectedDays('sDays', []);
+  doSearch();
 }
 
-document.getElementById('hEircode').addEventListener('keydown',e=>{if(e.key==='Enter')heroSearch();});
+document.getElementById('sEircode').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch();});
 
-renderFeatured();
-renderCountyStrip();
+// ── INIT — pick up filters handed off from the homepage hero search ──────
+(function initFromQuery(){
+  const q = readSearchQuery();
+  document.getElementById('sEircode').value = q.eircode;
+  document.getElementById('sText').value = q.text;
+  if(q.ageKey) document.getElementById('sAge').value = q.ageKey;
+  setSelectedDays('sDays', Array.from(q.days));
+})();
+
+doSearch();
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"sortd","url":"https://sortd-ireland.ie","description":"Ireland's directory of kids' summer camps and weekly classes. Find summer camps, after-school sport, drama, GAA, coding and more across Dublin and Leinster.","potentialAction":{"@type":"SearchAction","target":"https://sortd-ireland.ie/camps?text={search_term_string}","query-input":"required name=search_term_string"}}
