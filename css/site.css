@@ -1,7 +1,23 @@
 :root{
   --pg:#CFE8F6; --cd:#FFFFFF; --nv:#1E2A44; --sk:#3D77A3; --pk:#F4A7C3;
   --gr:#1D8A52; --grl:#C9F0DA; --bd:#C3DCEC; --pu:#5B4FCA; --pul:#E7E1F8;
+  --pkl:#FBD7E4; --pkink:#D45F86;
 }
+
+/* Holiday camps = green tint, Weekly classes = pink tint — used on the
+   /camps and /weekly-classes page heroes and their type-toggle pills. */
+.hero.tint-green{background:var(--grl);}
+.hero.tint-green .eyebrow{color:var(--gr);}
+.hero.tint-green h1 em{color:var(--gr);}
+.hero.tint-green .blob2{background:var(--pkl);}
+.hero.tint-green .blob3{background:var(--gr); opacity:.2;}
+.hero.tint-pink{background:var(--pkl);}
+.hero.tint-pink .eyebrow{color:var(--pkink);}
+.hero.tint-pink h1 em{color:var(--pkink);}
+.hero.tint-pink .blob2{background:var(--grl);}
+.hero.tint-pink .blob3{background:var(--pkink); opacity:.2;}
+.typetoggle a.on-camp{background:var(--gr); color:#fff; border-color:var(--gr);}
+.typetoggle a.on-weekly{background:var(--pkink); color:#fff; border-color:var(--pkink);}
 *{box-sizing:border-box; margin:0; padding:0;}
 body{font-family:'Nunito',sans-serif; background:var(--pg); color:var(--nv);}
 h1,h2,h3,.brand,.pill,.navlink,.cta{font-family:'Baloo 2',sans-serif;}
