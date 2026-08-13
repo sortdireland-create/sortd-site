@@ -6,712 +6,629 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HHTB7S9WJG"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HHTB7S9WJG');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HHTB7S9WJG');
 </script>
 <title>sortd — Every kids' camp & activity in Ireland, in one place</title>
-<meta name="description" content="Find summer camps, after-school sport, drama, GAA, coding and more across Dublin & Ireland. Built by a mum in Malahide who was sick of trawling 14 WhatsApp groups.">
+<meta name="description" content="Find summer camps, after-school sport, drama, GAA, coding and more across Dublin & Leinster. Built by a mum in Malahide who was sick of trawling 14 WhatsApp groups.">
 <link rel="canonical" href="https://sortd-ireland.ie">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Nunito',sans-serif;background:#fff;color:#27314A;-webkit-font-smoothing:antialiased;}
-a{text-decoration:none;color:inherit;}
-input,select,button{font-family:'Nunito',sans-serif;}
+  :root{
+    --pg:#CFE8F6; --cd:#FFFFFF; --nv:#1E2A44; --sk:#3D77A3; --pk:#F4A7C3;
+    --gr:#1D8A52; --grl:#C9F0DA; --bd:#C3DCEC; --pu:#5B4FCA; --pul:#E7E1F8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Nunito',sans-serif; background:var(--pg); color:var(--nv);}
+  h1,h2,h3,.brand,.pill,.navlink,.cta{font-family:'Baloo 2',sans-serif;}
+  a{text-decoration:none;color:inherit;}
 
-/* NAV */
-.nav{background:#fff;border-bottom:1.5px solid #eee;position:sticky;top:0;z-index:100;}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;}
-.logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:28px;color:#27314A;letter-spacing:-0.03em;}
-.nav-links{display:flex;align-items:center;gap:24px;font-weight:700;font-size:14px;}
-.nav-links a{color:#27314A;opacity:0.6;transition:opacity 0.15s;}
-.nav-links a:hover{opacity:1;}
-.nav-cta{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#2E84AC;padding:9px 20px;border-radius:999px;white-space:nowrap;}
-@media(max-width:768px){.nav-links{display:none;}.nav-inner{padding:14px 20px;}}
+  /* ===== NAV ===== */
+  nav{
+    position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--bd);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 40px;
+  }
+  .brand{font-size:24px; font-weight:800; color:var(--nv); display:flex; align-items:center; gap:6px;}
+  .brand span{color:var(--sk);}
+  .navlinks{display:flex; align-items:center; gap:28px;}
+  .navlink{font-family:'Nunito',sans-serif; font-weight:700; font-size:15px; color:var(--nv); text-decoration:none; padding:6px 2px; border-bottom:2px solid transparent; background:none; border-top:none; border-left:none; border-right:none; cursor:pointer;}
+  .navlink.active, .navlink:hover{border-bottom:2px solid var(--sk); color:var(--sk);}
+  .nav-cta{background:var(--sk); color:#fff; font-family:'Nunito',sans-serif; font-weight:700; font-size:14px;
+    padding:10px 20px; border-radius:999px; text-decoration:none; border:none; cursor:pointer;}
+  .nav-cta-outline{background:transparent; color:var(--nv); font-family:'Nunito',sans-serif; font-weight:700; font-size:14px;
+    padding:10px 18px; border-radius:999px; text-decoration:none; border:1.5px solid var(--bd);}
+  .nav-icon{font-size:18px; color:var(--nv);}
+  @media (max-width:900px){ .navlinks{display:none;} }
 
-/* HERO */
-.hero{background:#CBEAF6;padding:72px 40px 80px;}
-.hero-inner{max-width:1200px;margin:0 auto;display:flex;gap:48px;align-items:center;}
-.hero-copy{flex:1.2;min-width:0;}
-.hero-eye{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.24em;text-transform:uppercase;color:#6E5FB8;display:block;margin-bottom:16px;}
-.hero-h1{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(38px,5vw,64px);line-height:0.98;letter-spacing:-0.03em;color:#27314A;margin-bottom:20px;}
-.hero-h1 em{font-style:normal;color:#2E84AC;}
-.hero-sub{font-weight:600;font-size:18px;line-height:1.5;color:#3c4a55;max-width:520px;margin-bottom:28px;}
-.hero-caveat{font-family:'Caveat',cursive;font-weight:600;font-size:21px;color:#2E84AC;display:block;margin-top:18px;}
-.hero-cards{flex:0 0 340px;position:relative;height:320px;}
-.hcard{position:absolute;border-radius:18px;padding:18px;box-shadow:0 12px 28px rgba(0,0,0,.10);display:flex;flex-direction:column;}
-.hcard-logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:16px;}
-.hcard-body{flex:1;display:flex;align-items:center;}
-.hcard-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px;line-height:1.0;}
-.hcard-note{font-family:'Caveat',cursive;font-weight:600;font-size:16px;}
-@media(max-width:860px){.hero-cards{display:none;}.hero{padding:52px 20px 60px;}}
+  /* ===== HERO ===== */
+  .hero{position:relative; overflow:hidden; padding:64px 40px 48px; text-align:center; background:var(--pul); color:var(--nv);}
+  .blob{position:absolute; border-radius:22px; opacity:.4;}
+  .blob1{width:200px; height:140px; background:#fff; top:-40px; left:-40px; transform:rotate(-8deg);}
+  .blob2{width:170px; height:120px; background:var(--grl); bottom:-30px; right:-30px; transform:rotate(9deg);}
+  .blob3{width:130px; height:100px; background:var(--sk); top:30px; right:10%; transform:rotate(-5deg); opacity:.25;}
+  .eyebrow{position:relative; display:block; font-family:'Nunito',sans-serif; font-weight:700; font-size:13px;
+    letter-spacing:.06em; text-transform:uppercase; color:var(--pu); margin-bottom:20px;}
+  h1{position:relative; font-size:44px; font-weight:800; line-height:1.15; color:var(--nv); max-width:780px; margin:0 auto 16px;}
+  h1 em{font-style:normal; color:var(--pu);}
+  .sub{position:relative; font-size:17px; color:#5b6478; max-width:560px; margin:0 auto 32px; line-height:1.6;}
 
-/* SEARCH */
-.search-sec{background:#fff;border-bottom:2px solid #eee;}
-.search-inner{max-width:1200px;margin:0 auto;padding:36px 40px 40px;}
-.search-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px;letter-spacing:-0.02em;margin-bottom:4px;}
-.search-sub{font-size:15px;font-weight:600;color:#666;margin-bottom:22px;}
-.searchbar{display:flex;align-items:center;gap:10px;background:#F5F0E8;border-radius:999px;padding:7px 7px 7px 20px;margin-bottom:18px;max-width:680px;}
-.searchbar input{flex:1;border:none;outline:none;background:transparent;font-size:15px;font-weight:600;color:#27314A;min-width:0;}
-.searchbar input::placeholder{color:#9aa0aa;}
-.searchbar-btn{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#2E84AC;padding:11px 24px;border-radius:999px;border:none;cursor:pointer;white-space:nowrap;}
-.filter-row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;}
-.fg{display:flex;flex-direction:column;gap:4px;flex:1;min-width:130px;}
-.fl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.16em;color:#aaa;}
-.fs,.fi{background:#F5F0E8;border:1.5px solid #EDE7D8;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:600;color:#27314A;outline:none;appearance:none;-webkit-appearance:none;cursor:pointer;width:100%;transition:border-color 0.15s;}
-.fs:focus,.fi:focus{border-color:#2E84AC;}
-.filter-btn{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#27314A;padding:10px 22px;border-radius:10px;border:none;cursor:pointer;white-space:nowrap;align-self:flex-end;}
-.filter-clear{font-size:13px;font-weight:700;color:#2E84AC;background:none;border:none;cursor:pointer;align-self:flex-end;padding:10px 0;white-space:nowrap;}
-.cat-chips{display:flex;flex-wrap:wrap;gap:7px;}
-.cc{font-size:12px;font-weight:700;padding:6px 14px;border-radius:999px;background:#F5F0E8;color:#27314A;border:1.5px solid #EDE7D8;cursor:pointer;transition:all 0.14s;white-space:nowrap;}
-.cc:hover{background:#CBEAF6;border-color:#2E84AC;color:#2E84AC;}
-.cc.on{background:#27314A;color:#fff;border-color:#27314A;}
-@media(max-width:768px){.search-inner{padding:24px 20px;}.filter-row{gap:8px;}.fg{min-width:calc(50% - 4px);}}
+  /* ===== SEARCH CARD ===== */
+  .searchcard{position:relative; max-width:420px; margin:0 auto; background:#fff; border:1px solid var(--bd);
+    border-radius:20px; padding:24px; text-align:left; box-shadow:0 8px 24px rgba(39,49,74,0.08);}
+  .sf{display:flex; align-items:center; gap:10px; padding:12px 0; border-bottom:1px solid var(--bd);}
+  .sf .ti{font-size:18px; color:var(--sk); width:20px; text-align:center;}
+  .sf-body{flex:1;}
+  .sf-label{font-family:'Nunito',sans-serif; font-weight:700; font-size:13px; color:#8a8f9c; margin-bottom:2px;}
+  .sf select{width:100%; font-family:'Baloo 2',sans-serif; font-weight:700; font-size:16px; color:var(--nv);
+    border:none; background:transparent; outline:none; appearance:none; -webkit-appearance:none; padding:0;}
+  .search-btn{width:100%; margin-top:16px; background:var(--sk); color:#fff; border:none; border-radius:14px;
+    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:16px; padding:14px; cursor:pointer;}
+  .quick{margin-top:16px; padding-top:16px; border-top:1px dashed var(--bd); text-align:center;}
+  .quick-label{font-size:13px; font-weight:700; color:#8a8f9c; margin-bottom:10px;}
+  .quick-input{display:flex; align-items:center; gap:8px; background:var(--pg); border:1px solid var(--bd);
+    border-radius:12px; padding:10px 14px;}
+  .quick-input .ti{color:#8a8f9c; font-size:16px;}
+  .quick-input input{flex:1; border:none; background:transparent; outline:none; font-family:'Nunito',sans-serif;
+    font-weight:600; font-size:14px; color:var(--nv);}
+  .hero-note{position:relative; font-family:'Caveat',cursive; font-size:20px; color:var(--pu); display:block; margin-top:22px;}
 
-/* RESULTS */
-.results{background:#fff;min-height:300px;}
-.results-inner{max-width:1200px;margin:0 auto;padding:28px 40px 56px;}
-.results-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px;}
-.results-count{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:14px;color:#888;}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.camp-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.07);border:1px solid #f0f0f0;display:flex;flex-direction:column;transition:box-shadow 0.15s,transform 0.15s;}
-.camp-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.12);transform:translateY(-2px);}
-.card-img{height:120px;position:relative;display:flex;align-items:center;justify-content:center;}
-.card-status{position:absolute;top:11px;left:11px;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.08em;padding:5px 11px;border-radius:999px;color:#fff;}
-.s-open{background:#1A9D67;}
-.s-wait{background:#F7A800;color:#27314A;}
-.card-body{padding:16px 18px 20px;display:flex;flex-direction:column;flex:1;}
-.card-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.16em;margin-bottom:3px;}
-.card-name{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:17px;color:#27314A;margin-bottom:3px;line-height:1.2;}
-.card-prov{font-size:12px;color:#888;margin-bottom:9px;}
-.card-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
-.cm{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:#F5F0E8;color:#555;}
-.card-cost{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:19px;color:#2E84AC;margin-top:auto;}
-.card-cost span{font-size:12px;color:#999;font-weight:600;}
-.card-link{display:flex;align-items:center;justify-content:center;background:#27314A;color:#fff;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:13px;padding:11px;border-radius:9px;margin-top:13px;transition:opacity 0.15s;}
-.card-link:hover{opacity:0.85;}
-.card-link.no-url{background:#EDE7D8;color:#888;cursor:default;}
-.empty{text-align:center;padding:60px 20px;grid-column:1/-1;}
-.empty-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;margin-bottom:8px;}
-.empty-sub{font-size:15px;color:#888;font-weight:600;}
-@media(max-width:768px){.results-inner{padding:20px;}.grid{grid-template-columns:1fr 1fr;gap:14px;}}
-@media(max-width:520px){.grid{grid-template-columns:1fr;}}
+  /* ===== SECTION SHELL ===== */
+  .section{max-width:1200px; margin:0 auto; padding:48px 40px;}
+  .section-label{font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--pu); margin-bottom:8px;}
+  .section h2{font-size:26px; font-weight:800; color:var(--nv); margin-bottom:24px;}
 
-/* HOW */
-.how{background:#D2F2E2;padding:64px 40px;}
-.how-inner{max-width:1200px;margin:0 auto;}
-.how-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:36px;letter-spacing:-0.02em;color:#1A9D67;margin-bottom:4px;}
-.how-sub{font-weight:600;font-size:16px;color:#3d6b54;margin:0 0 30px;}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.step{background:#fff;border-radius:18px;padding:26px;}
-.step-n{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:13px;letter-spacing:0.1em;margin-bottom:5px;}
-.step-t{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;color:#27314A;margin-bottom:6px;}
-.step-d{font-weight:600;font-size:14px;line-height:1.45;color:#666;}
-.how-caveat{font-family:'Caveat',cursive;font-weight:600;font-size:19px;color:#1A9D67;display:block;margin-top:24px;}
-@media(max-width:768px){.how{padding:48px 20px;}.steps{grid-template-columns:1fr;gap:12px;}}
+  /* ===== COUNTY STRIP ===== */
+  .band{width:100%; padding:48px 40px;}
+  .band-green{background:var(--grl);}
+  .band-inner{max-width:1200px; margin:0 auto;}
+  .countystrip{display:flex; flex-wrap:wrap; gap:10px;}
+  .county{font-size:13px; font-weight:700; background:#fff; border:1px solid rgba(29,138,82,.25); color:var(--nv);
+    padding:8px 16px; border-radius:999px; text-decoration:none; cursor:pointer;}
+  .county:hover{background:var(--gr); color:#fff; border-color:var(--gr);}
+  .county-count{opacity:.55; font-weight:600; margin-left:4px;}
 
-/* COUNTY */
-.county{background:#FBD7E4;padding:64px 40px;}
-.county-inner{max-width:1200px;margin:0 auto;}
-.county-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:36px;letter-spacing:-0.02em;color:#27314A;margin-bottom:4px;}
-.county-sub{font-weight:600;font-size:16px;color:#8a4a61;margin:0 0 30px;}
-.county-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
-.county-card{background:#fff;border-radius:14px;padding:20px 16px;display:block;box-shadow:0 3px 10px rgba(0,0,0,.06);transition:box-shadow 0.15s,transform 0.15s;}
-.county-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.10);transform:translateY(-2px);}
-.county-n{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:19px;color:#27314A;margin-bottom:2px;}
-.county-c{font-size:12px;font-weight:700;color:#D45F86;}
-.county-dark{background:#27314A;}
-.county-dark .county-n{color:#FBD7E4;}
-.county-dark .county-c{color:rgba(251,215,228,0.65);}
-.county-caveat{font-family:'Caveat',cursive;font-weight:600;font-size:19px;color:#D45F86;display:block;margin-top:22px;}
-@media(max-width:768px){.county{padding:48px 20px;}.county-grid{grid-template-columns:repeat(2,1fr);}}
+  /* ===== FEATURED CLASSES MARQUEE ===== */
+  .marquee-wrap{overflow:hidden; position:relative; -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
+  .marquee-track{display:flex; gap:20px; width:max-content; animation:scroll 46s linear infinite;}
+  .marquee-wrap:hover .marquee-track{animation-play-state:paused;}
+  @keyframes scroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+  @media (prefers-reduced-motion: reduce){ .marquee-track{animation:none; overflow-x:auto;} }
+  .fcard{flex:0 0 260px; background:#fff; border:1px solid var(--bd); border-top:4px solid var(--cc); border-radius:16px; padding:18px; text-decoration:none; color:var(--nv); display:block;}
+  .fcard-top{display:flex; align-items:center; gap:10px; margin-bottom:12px;}
+  .fcard-icon{width:36px; height:36px; border-radius:10px; background:var(--cc); color:#fff; display:flex; align-items:center; justify-content:center; font-size:16px;}
+  .fcard-type{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--cc);}
+  .fcard-name{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:16px; color:var(--nv); margin-bottom:2px;}
+  .fcard-provider{font-size:12px; color:#8a8f9c; font-weight:600; margin-bottom:12px;}
+  .fcard-meta{display:flex; align-items:center; gap:6px; font-size:13px; color:var(--nv); font-weight:600; margin-bottom:6px;}
+  .fcard-meta .ti{color:#8a8f9c; font-size:14px;}
+  .fcard-cost{margin-top:10px; font-family:'Baloo 2',sans-serif; font-weight:700; font-size:15px; color:var(--sk);}
+  .note{font-family:'Caveat',cursive; font-size:22px; color:var(--gr); text-align:center; margin-top:8px;}
 
-/* FOUNDER */
-.founder{background:#fff;padding:64px 40px;}
-.founder-inner{max-width:1200px;margin:0 auto;display:flex;gap:56px;align-items:center;}
-.founder-photo{flex:0 0 280px;background:#FBD7E4;border-radius:22px;height:340px;display:flex;align-items:center;justify-content:center;}
-.founder-eye{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#D45F86;display:block;margin-bottom:14px;}
-.founder-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(26px,3.5vw,38px);line-height:1.05;letter-spacing:-0.02em;color:#27314A;margin-bottom:18px;}
-.founder-quote{font-weight:600;font-size:17px;line-height:1.65;color:#444;border-left:4px solid #D45F86;padding-left:20px;margin:0 0 18px;}
-.founder-name{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#D45F86;display:block;margin-bottom:16px;}
-.founder-caveat{font-family:'Caveat',cursive;font-weight:600;font-size:20px;color:#D45F86;display:block;}
-@media(max-width:768px){.founder{padding:48px 20px;}.founder-inner{flex-direction:column;gap:28px;}.founder-photo{width:100%;flex:none;height:200px;}}
+  /* ===== RESULTS GRID (full browsable list — kept from the existing homepage,
+     the new top-of-page design didn't include its own results section, so
+     search/county/featured all funnel down into this proven grid+filter UI) ===== */
+  .results-shell{background:#fff;}
+  .results-inner{max-width:1200px;margin:0 auto;padding:8px 40px 56px;}
+  .filter-row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:18px;}
+  .fg{display:flex;flex-direction:column;gap:4px;flex:1;min-width:130px;}
+  .fl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#aaa;}
+  .fs,.fi{background:var(--pg);border:1.5px solid var(--bd);border-radius:10px;padding:9px 12px;font-size:13px;font-weight:600;color:var(--nv);outline:none;appearance:none;-webkit-appearance:none;cursor:pointer;width:100%;}
+  .filter-clear{font-size:13px;font-weight:700;color:var(--sk);background:none;border:none;cursor:pointer;align-self:flex-end;padding:10px 0;white-space:nowrap;}
+  .results-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px;}
+  .results-count{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:14px;color:#888;}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .camp-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.07);border:1px solid #f0f0f0;display:flex;flex-direction:column;transition:box-shadow 0.15s,transform 0.15s;}
+  .camp-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.12);transform:translateY(-2px);}
+  .card-img{height:80px;position:relative;display:flex;align-items:center;justify-content:center;}
+  .card-status{position:absolute;top:11px;left:11px;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.08em;padding:5px 11px;border-radius:999px;color:#fff;}
+  .s-open{background:var(--gr);}
+  .s-wait{background:#D9971E;color:#fff;}
+  .card-body{padding:16px 18px 20px;display:flex;flex-direction:column;flex:1;}
+  .card-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.16em;margin-bottom:3px;}
+  .card-name{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:17px;color:var(--nv);margin-bottom:3px;line-height:1.2;}
+  .card-prov{font-size:12px;color:#888;margin-bottom:9px;}
+  .card-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
+  .cm{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--pg);color:#555;}
+  .card-cost{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:19px;color:var(--sk);margin-top:auto;}
+  .card-link{display:flex;align-items:center;justify-content:center;background:var(--nv);color:#fff;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:13px;padding:11px;border-radius:9px;margin-top:13px;transition:opacity 0.15s;}
+  .card-link:hover{opacity:0.85;}
+  .empty{text-align:center;padding:60px 20px;grid-column:1/-1;}
+  .empty-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;margin-bottom:8px;}
+  .empty-sub{font-size:15px;color:#888;font-weight:600;}
+  @media(max-width:900px){.grid{grid-template-columns:1fr 1fr;gap:14px;}}
+  @media(max-width:520px){.grid{grid-template-columns:1fr;}}
 
-/* EMAIL */
-.email-sec{background:#D2F2E2;padding:64px 40px;}
-.email-inner{max-width:1200px;margin:0 auto;}
-.email-eye{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#1A9D67;display:block;margin-bottom:12px;}
-.email-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(26px,3.5vw,40px);letter-spacing:-0.02em;color:#27314A;margin-bottom:10px;}
-.email-sub{font-weight:600;font-size:17px;color:#3d6b54;margin:0 0 26px;max-width:480px;}
-.email-form{display:flex;gap:10px;flex-wrap:wrap;max-width:480px;margin-bottom:14px;}
-.email-input{flex:1;min-width:200px;background:#fff;border:1.5px solid transparent;border-radius:999px;padding:13px 20px;font-size:15px;font-weight:600;color:#27314A;outline:none;transition:border-color 0.15s;}
-.email-input:focus{border-color:#1A9D67;}
-.email-btn{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#1A9D67;padding:13px 28px;border-radius:999px;border:none;cursor:pointer;white-space:nowrap;}
-.email-proof{font-size:13px;font-weight:700;color:#1A9D67;display:block;margin-bottom:6px;}
-.email-caveat{font-family:'Caveat',cursive;font-weight:600;font-size:18px;color:#1A9D67;display:block;}
-@media(max-width:768px){.email-sec{padding:48px 20px;}}
+  /* ===== ABOUT TEASER ===== */
+  .aboutsec{background:#fff; border-radius:24px; padding:40px; display:grid; grid-template-columns:220px 1fr; gap:36px; align-items:center;}
+  @media (max-width:700px){ .aboutsec{grid-template-columns:1fr; text-align:center;} }
+  .about-photo{width:100%; aspect-ratio:1; border-radius:20px; overflow:hidden; background:var(--pul);}
+  .about-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .about-eyebrow{font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--pu); margin-bottom:10px;}
+  .aboutsec h2{font-size:24px; margin-bottom:14px;}
+  .aboutsec p{font-size:15px; line-height:1.7; color:#4c5468; margin-bottom:16px; max-width:640px;}
+  .about-link{font-family:'Nunito',sans-serif; font-weight:700; font-size:14px; color:var(--sk); text-decoration:none;}
 
-/* POPULAR */
-.popular{background:#F5F0E8;padding:32px 40px;}
-.popular-inner{max-width:1200px;margin:0 auto;}
-.popular-lbl{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#aaa;display:block;margin-bottom:12px;}
-.popular-links{display:flex;flex-wrap:wrap;gap:7px;}
-.pl{font-size:12px;font-weight:700;color:#27314A;padding:6px 14px;border-radius:999px;background:#fff;border:1.5px solid #dde3ec;white-space:nowrap;transition:all 0.14s;}
-.pl:hover{background:#27314A;color:#fff;border-color:#27314A;}
-@media(max-width:768px){.popular{padding:28px 20px;}}
+  /* ===== FOOTER ===== */
+  footer{background:var(--nv); color:#cfd4e0; padding:56px 40px 24px;}
+  .foot-top{max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:32px; padding-bottom:36px;}
+  @media (max-width:800px){ .foot-top{grid-template-columns:1fr 1fr;} }
+  .foot-logo{font-family:'Baloo 2',sans-serif; font-weight:800; font-size:22px; color:#fff; margin-bottom:10px;}
+  .foot-tag{font-size:14px; line-height:1.6; color:#9aa4bd; max-width:260px; margin-bottom:16px;}
+  .foot-social{display:flex; gap:10px;}
+  .foot-social a{width:34px; height:34px; border-radius:10px; background:rgba(255,255,255,.08); display:flex;
+    align-items:center; justify-content:center; color:#fff; text-decoration:none; font-size:16px;}
+  .foot-heading{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:14px; color:#5CE0A0; margin-bottom:14px;}
+  .foot-col a,.foot-col button{display:block; font-size:14px; color:#cfd4e0; text-decoration:none; margin-bottom:10px; background:none; border:none; text-align:left; cursor:pointer; font-family:'Nunito',sans-serif; padding:0;}
+  .foot-col a:hover,.foot-col button:hover{color:#fff;}
+  .foot-bottom{max-width:1200px; margin:0 auto; border-top:1px solid #3a4460; padding-top:20px; display:flex;
+    flex-wrap:wrap; justify-content:space-between; gap:12px; font-size:12px; color:#8892a8;}
+  .foot-bottom a{color:#8892a8;}
+  .foot-source{max-width:520px;}
 
-/* FOOTER CTA */
-.fcta{background:#E6E2F6;padding:72px 40px;text-align:center;}
-.fcta-l1{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(30px,4vw,50px);letter-spacing:-0.02em;color:#27314A;line-height:1.0;}
-.fcta-l2{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(30px,4vw,50px);letter-spacing:-0.02em;color:#6E5FB8;line-height:1.0;margin-top:4px;}
-.fcta-btns{display:inline-flex;gap:12px;margin-top:28px;flex-wrap:wrap;justify-content:center;}
-.fcta-b1{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:16px;color:#fff;background:#6E5FB8;padding:14px 30px;border-radius:999px;display:inline-block;}
-.fcta-b2{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:16px;color:#6E5FB8;background:#fff;padding:14px 30px;border-radius:999px;display:inline-block;}
-.fcta-handle{font-weight:700;font-size:13px;color:#6E5FB8;display:block;margin-top:22px;opacity:0.8;}
-@media(max-width:768px){.fcta{padding:56px 20px;}}
+  .annotation{background:#fff8e6; border:1px dashed #D9971E; border-radius:10px; padding:14px 18px; font-size:13px;
+    color:#6b5410; max-width:1200px; margin:0 auto 0; font-family:'Nunito',sans-serif;}
 
-/* FOOTER */
-.footer{background:#27314A;padding:52px 40px 28px;}
-.footer-inner{max-width:1200px;margin:0 auto;}
-.footer-cols{display:flex;gap:56px;margin-bottom:40px;}
-.footer-logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px;color:#F4A7C3;display:block;margin-bottom:8px;letter-spacing:-0.02em;}
-.footer-tag{font-weight:600;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;max-width:240px;margin-bottom:16px;}
-.footer-soc{display:flex;gap:8px;}
-.footer-soc a{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);transition:background 0.14s;}
-.footer-soc a:hover{background:rgba(255,255,255,0.16);}
-.footer-col-t{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);display:block;margin-bottom:12px;}
-.footer-col a{display:block;font-weight:600;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:8px;transition:color 0.14s;}
-.footer-col a:hover{color:#fff;}
-.footer-col .hi{color:#F4A7C3;font-weight:700;}
-.footer-bot{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
-.footer-copy{font-size:11px;color:rgba(255,255,255,0.3);}
-.footer-prov{font-size:12px;font-weight:700;color:#F4A7C3;}
-@media(max-width:768px){.footer{padding:40px 20px 24px;}.footer-cols{flex-direction:column;gap:24px;}}
-
-/* HERO NEWSLETTER FORM */
-.hero-nl-form{margin-top:4px;}
-.hero-nl-bar{display:flex;gap:8px;align-items:center;background:#fff;border-radius:999px;padding:6px 6px 6px 20px;box-shadow:0 4px 16px rgba(39,49,74,0.12);max-width:460px;margin-bottom:8px;}
-.hero-nl-input{flex:1;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:15px;font-weight:600;color:#27314A;background:transparent;min-width:0;}
-.hero-nl-input::placeholder{color:#9aa0aa;}
-.hero-nl-btn{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#2E84AC;padding:11px 20px;border-radius:999px;border:none;cursor:pointer;white-space:nowrap;transition:opacity 0.15s;}
-.hero-nl-btn:hover{opacity:0.88;}
-.hero-nl-note{font-size:12px;font-weight:600;color:#2E84AC;opacity:0.7;}
-@media(max-width:520px){.hero-nl-bar{flex-wrap:wrap;border-radius:14px;padding:12px 14px;gap:10px;}.hero-nl-btn{width:100%;text-align:center;}}
-
-/* POPUP OVERLAY — waitlist mockup v3 style */
-.popup-overlay{position:fixed;inset:0;background:rgba(39,49,74,0.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s;}
-.popup-overlay.show{opacity:1;pointer-events:all;}
-.popup{position:relative;width:100%;max-width:440px;background:#CBEAF8;border-radius:24px;padding:48px 34px 36px;text-align:center;box-shadow:0 24px 60px rgba(39,49,74,0.18);transform:translateY(20px);transition:transform 0.3s;}
-.popup-overlay.show .popup{transform:translateY(0);}
-.popup-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:10px;background:rgba(39,49,74,0.08);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#27314A;font-size:18px;line-height:1;transition:background 0.15s ease;}
-.popup-close:hover{background:rgba(39,49,74,0.16);}
-.popup-logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px;color:#27314A;letter-spacing:0.01em;margin-bottom:18px;}
-.popup-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:27px;color:#27314A;margin:0 0 14px;line-height:1.3;}
-.popup-sub{font-family:'Nunito',sans-serif;font-size:15px;font-weight:600;color:#4c5a6b;line-height:1.55;margin:0 0 28px;}
-.popup-form{display:flex;flex-direction:column;gap:14px;}
-.popup-input{width:100%;padding:16px 18px;border-radius:12px;border:1.5px solid rgba(39,49,74,0.12);background:#FBF8F0;font-family:'Nunito',sans-serif;font-size:15px;font-weight:600;color:#27314A;outline:none;}
-.popup-input::placeholder{color:#9aa3ac;font-weight:600;}
-.popup-input:focus{border-color:#27314A;}
-.popup-btn{margin-top:4px;width:100%;padding:17px;border:none;border-radius:12px;background:#F6B4AC;color:#27314A;font-family:'Baloo 2',sans-serif;font-size:17px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.15s ease,transform 0.1s ease;}
-.popup-btn:hover{background:#f2a196;transform:translateY(-1px);}
-.popup-privacy{margin-top:20px;font-family:'Nunito',sans-serif;font-size:12px;color:#6b7885;line-height:1.5;text-align:center;}
-.popup-privacy a{color:#27314A;text-decoration:underline;font-weight:700;}
-.popup-success{display:none;padding:10px 0;}
-.popup-success-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;color:#27314A;margin-bottom:6px;}
-.popup-success-sub{font-size:14px;font-weight:600;color:#4c5a6b;}
-.popup-success-caveat{font-family:'Caveat',cursive;font-weight:600;font-size:19px;color:#27314A;display:block;margin-top:10px;}
-
-
+  /* ===== NEWSLETTER POPUP (reused from live site) ===== */
+  .popup-overlay{position:fixed;inset:0;background:rgba(39,49,74,0.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+  .popup-overlay.show{opacity:1;pointer-events:all;}
+  .popup{position:relative;width:100%;max-width:440px;background:var(--pg);border-radius:24px;padding:48px 34px 36px;text-align:center;box-shadow:0 24px 60px rgba(39,49,74,0.18);transform:translateY(20px);transition:transform 0.3s;}
+  .popup-overlay.show .popup{transform:translateY(0);}
+  .popup-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:10px;background:rgba(39,49,74,0.08);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--nv);font-size:18px;line-height:1;}
+  .popup-logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px;color:var(--nv);margin-bottom:18px;}
+  .popup-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:27px;color:var(--nv);margin:0 0 14px;line-height:1.3;}
+  .popup-sub{font-size:15px;font-weight:600;color:#4c5a6b;line-height:1.55;margin:0 0 28px;}
+  .popup-form{display:flex;flex-direction:column;gap:14px;}
+  .popup-input{width:100%;padding:16px 18px;border-radius:12px;border:1.5px solid rgba(39,49,74,0.12);background:#fff;font-size:15px;font-weight:600;color:var(--nv);outline:none;}
+  .popup-btn{margin-top:4px;width:100%;padding:17px;border:none;border-radius:12px;background:var(--sk);color:#fff;font-family:'Baloo 2',sans-serif;font-size:17px;font-weight:700;cursor:pointer;}
+  .popup-privacy{margin-top:20px;font-size:12px;color:#6b7885;line-height:1.5;text-align:center;}
+  .popup-privacy a{color:var(--nv);text-decoration:underline;font-weight:700;}
+  .popup-success{display:none;padding:10px 0;}
+  .popup-success-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;color:var(--nv);margin-bottom:6px;}
+  .popup-success-sub{font-size:14px;font-weight:600;color:#4c5a6b;}
 </style>
+</head>
 
-<!-- HIDDEN NETLIFY FORM for popup (Netlify needs it in the HTML) -->
+<!-- HIDDEN NETLIFY FORM for popup (Netlify needs it in the HTML at build time) -->
 <form name="newsletter" netlify netlify-honeypot="bot-field" hidden>
-  <input type="email" name="email">
-  <input type="text" name="first-name">
-  <input type="text" name="county">
-  <input type="number" name="child1-age">
-  <input type="number" name="child2-age">
+<input type="email" name="email">
+<input type="text" name="first-name">
+<input type="text" name="county">
+<input type="number" name="child1-age">
+<input type="number" name="child2-age">
 </form>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="logo">sortd</a>
-    <div class="nav-links">
-      <a href="/how-it-works">how it works</a>
-      <a href="/about">about</a>
-      <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener">partners portal</a>
-      <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener">instagram</a>
-    </div>
-    <button class="nav-cta" onclick="openPopup()" style="border:none;cursor:pointer;">get the newsletter</button>
+<div class="annotation">Preview branch — homepage redesign, not live yet. See PR notes for the list of decisions/gaps flagged for Rachel's review.</div>
+
+<nav>
+  <a href="/" class="brand">sortd<span>.</span></a>
+  <div class="navlinks">
+    <a href="/" class="navlink active">Camps</a>
+    <button class="navlink" onclick="goWeeklyClasses()">Weekly classes</button>
+    <a href="/how-it-works" class="navlink">How it works</a>
+    <a href="/about" class="navlink">Our story</a>
+  </div>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener"><i class="ti ti-brand-instagram nav-icon"></i></a>
+    <a href="/list" class="nav-cta-outline">Add a class</a>
+    <button class="nav-cta" onclick="openPopup()">Get the newsletter</button>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <span class="hero-eye">Coming this September</span>
-      <h1 class="hero-h1">Every summer camp,<br>one place. Now <em>so much more</em>.</h1>
-      <p class="hero-sub">sortd already brings together every kids' summer camp in Dublin &amp; beyond. From September, we're adding weekly classes, after-school clubs and more — pop in your email and be the first to hear.</p>
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+  <div class="eyebrow">Dublin, Wicklow &amp; Meath live now — expanding across Leinster</div>
+  <h1>Every camp, class &amp; after-school club — <em>sorted.</em></h1>
+  <p class="sub">Search summer camps, weekly classes and after-school clubs near you — all in one place, kept up to date so you're not stuck on a waitlist that closed months ago.</p>
 
-      <!-- Hero inline email capture -->
-      <form class="hero-nl-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="heroSubmit(event)">
-        <input type="hidden" name="form-name" value="newsletter">
-        <p style="display:none"><label>Don't fill: <input name="bot-field"></label></p>
-        <div class="hero-nl-bar">
-          <input class="hero-nl-input" type="email" name="email" placeholder="your@email.ie" required aria-label="Email address">
-          <button class="hero-nl-btn" type="submit">Notify me →</button>
-        </div>
-        <div class="hero-nl-success" id="heroSuccess" style="display:none;">
-          <span style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:16px;color:#27314A;">You're on the list.</span>
-          <span style="font-size:14px;font-weight:600;color:#2E84AC;margin-left:6px;">We'll email you the moment it's live.</span>
-        </div>
-        <p class="hero-nl-note">Free · no spam · unsubscribe any time</p>
-      </form>
-
-      <span class="hero-caveat">no app to download · just open it →</span>
-    </div>
-    <div class="hero-cards" aria-hidden="true">
-      <div class="hcard" style="top:12px;left:24px;width:200px;height:240px;background:#D2F2E2;transform:rotate(-5deg);">
-        <span class="hcard-logo" style="color:#1A9D67;">sortd</span>
-        <div class="hcard-body"><span class="hcard-title" style="color:#1A9D67;">Save your spot</span></div>
-        <span class="hcard-note" style="color:#1A9D67;">we'll hold it →</span>
+  <div class="searchcard">
+    <div class="sf">
+      <i class="ti ti-map-pin"></i>
+      <div class="sf-body">
+        <div class="sf-label">Where?</div>
+        <select id="hWhere">
+          <option value="">Any county</option>
+          <option value="Dublin">Dublin</option>
+          <option value="Kildare">Kildare</option>
+          <option value="Meath">Meath</option>
+          <option value="Wicklow">Wicklow</option>
+          <option value="Louth">Louth</option>
+          <option value="Laois">Laois</option>
+          <option value="Offaly">Offaly</option>
+          <option value="Westmeath">Westmeath</option>
+          <option value="Longford">Longford</option>
+          <option value="Carlow">Carlow</option>
+          <option value="Kilkenny">Kilkenny</option>
+          <option value="Wexford">Wexford</option>
+        </select>
       </div>
-      <div class="hcard" style="top:56px;right:16px;width:194px;height:234px;background:#E6E2F6;transform:rotate(6deg);">
-        <span class="hcard-logo" style="color:#6E5FB8;">sortd</span>
-        <div class="hcard-body"><span class="hcard-title" style="color:#6E5FB8;">93 camps live now</span></div>
-        <span class="hcard-note" style="color:#6E5FB8;">go go go →</span>
+    </div>
+    <div class="sf">
+      <i class="ti ti-category"></i>
+      <div class="sf-body">
+        <div class="sf-label">What are you looking for?</div>
+        <select id="hType">
+          <option value="">All</option>
+          <option value="camp">Holiday camps</option>
+          <option value="weekly">Weekly classes</option>
+        </select>
+      </div>
+    </div>
+    <div class="sf">
+      <i class="ti ti-users"></i>
+      <div class="sf-body">
+        <div class="sf-label">What age?</div>
+        <select id="hAge">
+          <option value="">All ages</option>
+          <option value="0-2">0–2 years</option>
+          <option value="3-5">3–5 years</option>
+          <option value="6-8">6–8 years</option>
+          <option value="9-12">9–12 years</option>
+          <option value="13-99">13+ years</option>
+        </select>
+      </div>
+    </div>
+    <div class="sf" style="border-bottom:none;">
+      <i class="ti ti-calendar"></i>
+      <div class="sf-body">
+        <div class="sf-label">Which day?</div>
+        <select id="hDay">
+          <option value="">Any day</option>
+          <option>Monday</option>
+          <option>Tuesday</option>
+          <option>Wednesday</option>
+          <option>Thursday</option>
+          <option>Friday</option>
+          <option>Saturday</option>
+          <option>Sunday</option>
+        </select>
+      </div>
+    </div>
+    <button class="search-btn" onclick="heroSearch()">Search</button>
+    <div class="quick">
+      <div class="quick-label">Already know which class you're looking for?</div>
+      <div class="quick-input">
+        <i class="ti ti-search"></i>
+        <input type="text" id="hText" placeholder="Search by name or provider" onkeydown="if(event.key==='Enter')heroSearch()">
       </div>
     </div>
   </div>
+  <span class="hero-note">no app to download · just open it →</span>
 </section>
 
-<section class="search-sec" id="search">
-  <div class="search-inner">
-    <div class="search-title">Find your camp</div>
-    <p class="search-sub">📍 Dublin &amp; north Dublin · Wicklow · Meath — more counties coming soon</p>
-    <div class="searchbar">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E84AC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input id="sText" type="search" placeholder='Search camp name, provider or area…'>
-      <button class="searchbar-btn" onclick="doSearch()">Search</button>
-    </div>
+<div class="band band-green">
+  <div class="band-inner">
+    <div class="section-label">Browse by county</div>
+    <h2>Leinster-wide</h2>
+    <div class="countystrip" id="countyStrip"></div>
+    <div class="note">no more missing the sign-up window — we'll tell you what's on ↗</div>
+  </div>
+</div>
+
+<section class="section" style="padding-top:0;">
+  <div class="section-label">Featured this week</div>
+  <h2>Featured classes</h2>
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marquee-track"></div>
+  </div>
+</section>
+
+<section class="results-shell" id="search">
+  <div class="results-inner">
     <div class="filter-row">
       <div class="fg"><label class="fl" for="fArea">Area / postcode</label><input class="fi" id="fArea" type="text" placeholder="e.g. Malahide, Swords…"></div>
-      <div class="fg"><label class="fl" for="fAge">Age fit</label><select class="fs" id="fAge"><option value="">Any age</option><option value="pre">Preschool (3–5)</option><option value="pri">Primary (6–12)</option><option value="teen">Teens (13+)</option></select></div>
-      <div class="fg"><label class="fl" for="fDateFrom">Dates from</label><input class="fi" id="fDateFrom" type="date"></div>
-      <div class="fg"><label class="fl" for="fDateTo">Dates to</label><input class="fi" id="fDateTo" type="date"></div>
       <div class="fg"><label class="fl" for="fSort">Sort by</label><select class="fs" id="fSort"><option value="name">Name (A–Z)</option><option value="price_lo">Price (low → high)</option><option value="price_hi">Price (high → low)</option><option value="age_lo">Youngest age first</option></select></div>
-      <button class="filter-btn" onclick="doSearch()">Filter</button>
-      <button class="filter-clear" onclick="clearAll()">Clear</button>
+      <button class="filter-clear" onclick="clearAll()">Clear all filters</button>
     </div>
-    <div class="cat-chips" id="cats">
-      <button class="cc on" data-cat="" onclick="toggleCat(this,'')">All</button>
-      <button class="cc" data-cat="Tennis" onclick="toggleCat(this,'Tennis')">Tennis</button>
-      <button class="cc" data-cat="Football" onclick="toggleCat(this,'Football')">Football</button>
-      <button class="cc" data-cat="GAA" onclick="toggleCat(this,'GAA')">GAA</button>
-      <button class="cc" data-cat="Adventure" onclick="toggleCat(this,'Adventure')">Adventure</button>
-      <button class="cc" data-cat="Dance" onclick="toggleCat(this,'Dance')">Dance</button>
-      <button class="cc" data-cat="Performing" onclick="toggleCat(this,'Performing')">Drama &amp; Performing</button>
-      <button class="cc" data-cat="Music" onclick="toggleCat(this,'Music')">Music</button>
-      <button class="cc" data-cat="STEM" onclick="toggleCat(this,'STEM')">STEM &amp; Coding</button>
-      <button class="cc" data-cat="Arts" onclick="toggleCat(this,'Arts')">Arts &amp; Crafts</button>
-      <button class="cc" data-cat="Multi" onclick="toggleCat(this,'Multi')">Multi-Activity</button>
-      <button class="cc" data-cat="Early" onclick="toggleCat(this,'Early')">Early Years</button>
-      <button class="cc" data-cat="Additional" onclick="toggleCat(this,'Additional')">Additional Needs</button>
-    </div>
-  </div>
-</section>
-
-<section class="results">
-  <div class="results-inner">
     <div class="results-meta"><span class="results-count" id="rCount">Loading…</span></div>
     <div class="grid" id="grid"></div>
   </div>
 </section>
 
-<section class="how">
-  <div class="how-inner">
-    <div class="how-title">How sortd works</div>
-    <p class="how-sub">Three steps from chaos to a sorted summer.</p>
-    <div class="steps">
-      <div class="step"><div class="step-n" style="color:#D45F86;">01</div><div class="step-t">Browse every camp</div><p class="step-d">One parent-curated directory. No more scrolling Instagram and ten WhatsApp groups.</p></div>
-      <div class="step"><div class="step-n" style="color:#2E84AC;">02</div><div class="step-t">Plan your weeks</div><p class="step-d">See all 9 weeks on one screen. Compare dates, ages and prices at a glance.</p></div>
-      <div class="step"><div class="step-n" style="color:#6E5FB8;">03</div><div class="step-t">Sign up &amp; share</div><p class="step-d">Book where friends are going and coordinate drop-offs with your village.</p></div>
-    </div>
-    <span class="how-caveat">raise your hand if this needs to be sorted for you →</span>
-  </div>
-</section>
-
-<section class="county">
-  <div class="county-inner">
-    <div class="county-title">Find camps near you</div>
-    <p class="county-sub">All 32 counties coming. Dublin live now.</p>
-    <div class="county-grid">
-      <a href="#search" onclick="filterArea('Malahide')" class="county-card"><div class="county-n">Malahide</div><div class="county-c">North Dublin</div></a>
-      <a href="#search" onclick="filterArea('Swords')" class="county-card"><div class="county-n">Swords</div><div class="county-c">Fingal</div></a>
-      <a href="#search" onclick="filterArea('Portmarnock')" class="county-card"><div class="county-n">Portmarnock</div><div class="county-c">North Dublin</div></a>
-      <a href="#search" onclick="filterArea('Donabate')" class="county-card"><div class="county-n">Donabate</div><div class="county-c">Fingal</div></a>
-      <a href="#search" onclick="filterArea('Skerries')" class="county-card"><div class="county-n">Skerries</div><div class="county-c">Fingal</div></a>
-      <a href="#search" onclick="filterArea('Baldoyle')" class="county-card"><div class="county-n">Baldoyle</div><div class="county-c">D13</div></a>
-      <a href="#search" onclick="filterArea('Clontarf')" class="county-card"><div class="county-n">Clontarf</div><div class="county-c">D3</div></a>
-      <a href="#search" onclick="setCat(document.querySelector('.cc[data-cat=\\'\\']'),''); clearAll()" class="county-card county-dark"><div class="county-n">All areas</div><div class="county-c">See all 93 camps →</div></a>
-    </div>
-    <span class="county-caveat">more areas and counties added every week →</span>
-  </div>
-</section>
-
-<section class="founder">
-  <div class="founder-inner">
-    <div class="founder-photo">
-      <div style="text-align:center">
-        <div style="font-size:52px;margin-bottom:10px">👩‍💼</div>
-        <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:15px;color:#D45F86">Rachel · Founder</div>
-      </div>
-    </div>
+<section class="section" style="padding-top:0;">
+  <div class="aboutsec">
+    <div class="about-photo"><img src="/images/rachel-ella.jpg" alt="Rachel and Ella enjoying ice cream in Malahide" loading="lazy"></div>
     <div>
-      <span class="founder-eye">Built by a mum</span>
-      <div class="founder-title">Built on a Monday night.<br>Out of necessity.</div>
-      <blockquote class="founder-quote">"I'm a working mum to Ella and Finn. Eight weeks of school holidays. Not enough annual leave. Camp info was everywhere and nowhere at the same time. So I built the thing that didn't exist. Last Monday night."</blockquote>
-      <span class="founder-name">Rachel · Working mum · Malahide</span>
-      <span class="founder-caveat">no VC money. no boardroom. just a real problem, sorted →</span>
+      <div class="about-eyebrow">The story behind sortd</div>
+      <h2>Built on a Monday night. Out of necessity.</h2>
+      <p>I set up sortd because I couldn't find summer camps without trawling 14 WhatsApp groups, Instagram saves and spreadsheets that were already out of date. I'm a working mum to Ella and Finn, and I wanted to see everything in one place — so I built the thing that didn't exist. It started with camps in north Dublin, and we're expanding county by county across Leinster. No VC money. No boardroom. Just a real problem, sorted.</p>
+      <a href="/about" class="about-link">Read the full story →</a>
     </div>
   </div>
 </section>
 
-<section class="email-sec">
-  <div class="email-inner">
-    <span class="email-eye">Join the waitlist</span>
-    <div class="email-title">Be the first to see<br>new sortd.</div>
-    <p class="email-sub">All your weekly classes, camps and afterschool clubs listed on one website. Absolutely free.</p>
-    <form class="email-form" onsubmit="return false">
-      <input class="email-input" type="email" placeholder="your@email.ie" aria-label="Email address">
-      <button class="email-btn" type="submit">Join Free →</button>
-    </form>
-    <span class="email-proof">400+ parents already on the list</span>
-    <span class="email-caveat">we'll never sell your email. ever →</span>
-  </div>
-</section>
-
-<div class="popular">
-  <div class="popular-inner">
-    <span class="popular-lbl">Popular searches</span>
-    <nav class="popular-links">
-      <a href="#search" class="pl" onclick="filterArea('Malahide')">summer camps malahide</a>
-      <a href="#search" class="pl" onclick="filterArea('Swords')">camps in swords</a>
-      <a href="#search" class="pl" onclick="setCat(document.querySelector('[data-cat=GAA]'),'GAA')">GAA camps dublin</a>
-      <a href="#search" class="pl" onclick="setCat(document.querySelector('[data-cat=Performing]'),'Performing')">drama camps dublin</a>
-      <a href="#search" class="pl" onclick="setCat(document.querySelector('[data-cat=Tennis]'),'Tennis')">tennis camps malahide</a>
-      <a href="#search" class="pl" onclick="setCat(document.querySelector('[data-cat=Music]'),'Music')">music camps north dublin</a>
-      <a href="#search" class="pl" onclick="setCat(document.querySelector('[data-cat=STEM]'),'STEM')">stem camps fingal</a>
-      <a href="#search" class="pl" onclick="setCat(document.querySelector('[data-cat=Arts]'),'Arts')">arts camps malahide</a>
-      <a href="#search" class="pl" onclick="setCat(document.querySelector('[data-cat=Additional]'),'Additional')">additional needs camps</a>
-      <a href="#search" class="pl" onclick="setCat(document.querySelector('[data-cat=Adventure]'),'Adventure')">adventure camps dublin</a>
-    </nav>
-  </div>
-</div>
-
-<section class="fcta">
-  <div style="max-width:1200px;margin:0 auto;">
-    <div class="fcta-l1">Summer camps are a part-time job.</div>
-    <div class="fcta-l2">sortd makes it easier.</div>
-    <div class="fcta-btns">
-      <a href="#search" class="fcta-b1">Find a camp</a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSelQlw3EjgVy573-91GTTzI1amA2SY-UGDrc_fDk_EQZDoaRQ/viewform" class="fcta-b2" target="_blank" rel="noopener">List your camp free</a>
-    </div>
-    <span class="fcta-handle">@sortd.ireland · sortd-ireland.ie</span>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-cols">
-      <div style="flex:1.4;min-width:0">
-        <span class="footer-logo">sortd</span>
-        <p class="footer-tag">Ireland's home for children's camps and activities. Built by a mum. For parents.</p>
-        <div class="footer-soc">
-          <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <a href="https://whatsapp.com/channel/0029Vb7sv3eInlqMyMfLFY01" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer-col" style="flex:1">
-        <span class="footer-col-t">Browse</span>
-        <a href="#search" onclick="filterArea('Malahide')">Malahide camps</a>
-        <a href="#search" onclick="filterArea('Swords')">Swords camps</a>
-        <a href="#search" onclick="filterArea('Portmarnock')">Portmarnock camps</a>
-        <a href="#search" onclick="filterArea('Donabate')">Donabate camps</a>
-        <a href="#search" onclick="clearAll()">All camps</a>
-      </div>
-      <div class="footer-col" style="flex:1">
-        <span class="footer-col-t">sortd</span>
-        <a href="/how-it-works">How it works</a>
-        <a href="/about">About</a>
-        <a href="/recommend">Recommend a camp</a>
-        <a href="mailto:sortd.ireland@gmail.com">Contact</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSelQlw3EjgVy573-91GTTzI1amA2SY-UGDrc_fDk_EQZDoaRQ/viewform" class="hi" target="_blank" rel="noopener">List your camp free →</a>
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-logo">sortd</div>
+      <p class="foot-tag">Every kids' camp &amp; weekly class across Leinster, in one place. Built by a mum. For parents.</p>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb7sv3eInlqMyMfLFY01" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
       </div>
     </div>
-    <div class="footer-bot">
-      <span class="footer-copy">© 2026 sortd Ireland · <a href="/privacy-policy.html" style="color:rgba(255,255,255,0.3)">Privacy Policy</a> · Sources: provider websites, WhatsApp screenshots, Instagram. Confirm details with each provider before booking.</span>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSelQlw3EjgVy573-91GTTzI1amA2SY-UGDrc_fDk_EQZDoaRQ/viewform" class="footer-prov" target="_blank" rel="noopener">Run a camp? List for free →</a>
+    <div class="foot-col">
+      <div class="foot-heading">Browse</div>
+      <button onclick="filterCounty('Dublin')">Dublin camps</button>
+      <button onclick="filterCounty('Wicklow')">Wicklow camps</button>
+      <button onclick="filterCounty('Meath')">Meath camps</button>
+      <button onclick="clearAll()">All camps &amp; classes</button>
     </div>
+    <div class="foot-col">
+      <div class="foot-heading">Company</div>
+      <a href="/how-it-works">How it works</a>
+      <a href="/about">About</a>
+      <a href="mailto:sortd.ireland@gmail.com?subject=Camp%20recommendation">Recommend an activity</a>
+      <a href="mailto:sortd.ireland@gmail.com">Contact</a>
+    </div>
+    <div class="foot-col">
+      <div class="foot-heading">For providers</div>
+      <a href="/list">Add a class — free</a>
+      <a href="/claim">Claim your listing</a>
+      <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener">Partners portal</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© 2026 Sortd Ireland · <a href="/privacy-policy">Privacy Policy</a></div>
+    <div class="foot-source">Sources: provider websites, WhatsApp screenshots, Instagram. Confirm details with each provider before booking.</div>
   </div>
 </footer>
 
+<!-- NEWSLETTER POPUP (reused from live homepage) -->
+<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-label="Newsletter signup">
+<div class="popup">
+<button class="popup-close" onclick="closePopup()" aria-label="Close">&#10005;</button>
+<div class="popup-logo">sortd</div>
+<div id="popupFormWrap">
+<div class="popup-title">Join the waitlist — be the first to see new sortd</div>
+<p class="popup-sub">All your weekly classes, camps and afterschool clubs listed on one website. Absolutely free.</p>
+<form class="popup-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="popupSubmit(event)">
+<input type="hidden" name="form-name" value="newsletter">
+<p style="display:none"><label>Don't fill: <input name="bot-field"></label></p>
+<input class="popup-input" id="p-email" name="email" type="email" placeholder="your@email.ie" required aria-label="Email address">
+<button class="popup-btn" type="submit">Join Free →</button>
+</form>
+<p class="popup-privacy">By submitting this form, you agree that your information can be processed in accordance with our <a href="/privacy-policy">Privacy Policy</a>. You can unsubscribe at any time.</p>
+</div>
+<div class="popup-success" id="popupSuccess">
+<div class="popup-success-title">You're in.</div>
+<p class="popup-success-sub">We'll let you know as soon as new sortd is live.</p>
+</div>
+</div>
+</div>
+
 <script>
 // ── DATA ─────────────────────────────────────────────────────
+// Real listings, pulled from the live homepage's data (repo index.html).
+// 88 camps at merge time — re-pull from live before shipping,
+// since this list changes weekly.
 const CAMPS = [{"id":"rec03z3PfZR8mWB47","name":"Let's Go Swords Summer Camp","provider":"Let's Go","category":"Sport — Multi-activity","ageMin":4,"ageMax":12,"area":"Swords","county":"Dublin","cost":"€117–€132","costValue":117,"times":"9:30am – 3:30pm","days":"Mon–Fri","bookingUrl":"https://www.letsgo.ie/camps/dublin/swords/","weeks":[],"notes":"10 Aug week currently on waiting list.","listingUrl":"/camps/dublin/lets-go-swords-summer-camp"},{"id":"rec0OM52a4g3hL9Mq","name":"Malahide Tennis Club – Green & Yellow Ball Camp","provider":"Malahide Tennis Club","category":"Tennis","ageMin":10,"ageMax":null,"area":"Malahide","county":"Dublin","cost":"€120 members / €140 non-members","costValue":120,"times":"1:30–5pm","days":"Monday–Friday","bookingUrl":"https://www.smartclubcloud.com/","weeks":["Week 3","Week 5","Week 8"],"notes":"Green & Yellow Ball (ages 10+)","listingUrl":"/camps/dublin/malahide-tennis-club-green-yellow-ball-camp"},{"id":"rec1dMJmbm6j3chWd","name":"The Jam Summer Camp Donnycarney","provider":"The Jam","category":"Performing arts","ageMin":4,"ageMax":13,"area":"Donnycarney","county":"Dublin","cost":"€125–€180","costValue":125,"times":"10am–2pm / 2:30–4:30pm","days":"Mon–Fri","bookingUrl":"https://www.thejam.ie/classesandcamps/p/donnycarneysummercamp2026","weeks":["Week 4"],"notes":"10% sibling discount. Early bird €10 off.","listingUrl":"/camps/dublin/the-jam-summer-camp-donnycarney"},{"id":"rec1fIoliKyRqbSHD","name":"Starcamp – Raheny, Manor House","provider":"Starcamp","category":"Multi-Activity","ageMin":null,"ageMax":null,"area":"Raheny","county":"Dublin","cost":"€132","costValue":132,"times":"9am–2pm","days":"Monday–Friday","bookingUrl":"https://starcamp.ie/summer-camps-list/","weeks":["Week 4"],"notes":"20% off additional camps.","listingUrl":"/camps/dublin/starcamp-raheny-manor-house"},{"id":"rec2D0WXoOVp7qx8H","name":"Fashion Art Print Design – Summer Camp Tweens","provider":"Zila Lifestyle","category":"Arts & Crafts","ageMin":7,"ageMax":12,"area":"Malahide","county":"Dublin","cost":"€95","costValue":95,"times":"10am–1pm","days":"Wed–Fri","bookingUrl":"","weeks":["Week 2"],"notes":"","listingUrl":"/camps/dublin/zila-lifestyle-fashion-art-print-design-summer-camp-tweens"},{"id":"rec2kzR289GtSoXCM","name":"Active Ireland Kids Summer Camp – Sutton","provider":"Active Ireland","category":"Adventure","ageMin":5,"ageMax":12,"area":"Sutton","county":"Dublin","cost":"€140","costValue":140,"times":"9am–2pm","days":"Monday–Friday","bookingUrl":"https://activeireland.ie/camps/","weeks":["Week 4","Week 5","Week 6","Week 8"],"notes":"Sibling discounts available.","listingUrl":"/camps/dublin/active-ireland-kids-summer-camp-sutton"},{"id":"rec2yj7EcNqSljQjD","name":"Malahide United AFC – Girls Only","provider":"Malahide United AFC","category":"Football","ageMin":6,"ageMax":14,"area":"Malahide","county":"Dublin","cost":"","costValue":0,"times":"10am–1pm","days":"17–21 August","bookingUrl":"https://bookings.faifootballcamps.ie/s/camp-list","weeks":["Week 8"],"notes":"Girls only","listingUrl":"/camps/dublin/malahide-united-afc-girls-only"},{"id":"rec4Ylkr0gmisUS2B","name":"Bricks 4 Kidz LEGO Summer Camp","provider":"Bricks 4 Kidz","category":"STEM / LEGO","ageMin":4.5,"ageMax":12,"area":"Malahide","county":"Dublin","cost":"€125","costValue":125,"times":"10am–1pm or 2–5pm","days":"Mon–Fri","bookingUrl":"https://www.bricks4kidz.ie/fingal/lego-summer-camps-malahide/","weeks":[],"notes":"Watch for 2026 opening date.","listingUrl":"/camps/dublin/bricks-4-kidz-lego-summer-camp"},{"id":"rec4rOawHkPrRSE57","name":"Verona Football Club – Girls Only","provider":"Verona Football Club","category":"Football","ageMin":null,"ageMax":null,"area":"Coolmine","county":"Dublin","cost":"","costValue":0,"times":"10am–1pm","days":"Monday–Friday","bookingUrl":"https://bookings.faifootballcamps.ie/s/camp-list","weeks":["Week 3"],"notes":"Girls only","listingUrl":"/camps/dublin/verona-football-club-girls-only"},{"id":"rec5CbmnkWL2IyjBv","name":"Just for Fun Camp","provider":"Just for Fun","category":"Multi-Activity","ageMin":null,"ageMax":null,"area":"Malahide","county":"Dublin","cost":"€130","costValue":130,"times":"10am–1pm","days":"Mon–Fri","bookingUrl":"","weeks":["Week 3","Week 4"],"notes":"Call/text: 085 787 4417","listingUrl":"/camps/dublin/just-for-fun-camp"},{"id":"rec5Vb59aCpSsYlLL","name":"Active Ireland Outdoor Summer Camp","provider":"Active Ireland","category":"Adventure","ageMin":5,"ageMax":null,"area":"Killiney","county":"Dublin","cost":"€140","costValue":140,"times":"9am–2pm","days":"Monday–Friday","bookingUrl":"https://activeireland.ie/camps/","weeks":["Week 1","Week 2","Week 3","Week 4","Week 5","Week 6","Week 7","Week 8"],"notes":"Sibling discounts available.","listingUrl":"/camps/dublin/active-ireland-outdoor-summer-camp"},{"id":"rec6ZwAP6P5tjQTP2","name":"Messy Adventures Summer Camp","provider":"Messy Adventures","category":"Early years / general","ageMin":4,"ageMax":8,"area":"Malahide","county":"Dublin","cost":"See booking site","costValue":0,"times":"9:30am – 1:30pm","days":"Mon–Fri","bookingUrl":"https://messyadventures-ie.classforkids.io/camp/1","weeks":["Week 2"],"notes":"Check ClassForKids for availability.","listingUrl":"/camps/dublin/messy-adventures-summer-camp"},{"id":"rec75AjBGW8d627Ky","name":"The Stage Stars","provider":"The Stage Stars","category":"Performing Arts","ageMin":5,"ageMax":13,"area":"Swords","county":"Dublin","cost":"€50 for 3 days","costValue":50,"times":"10am–1pm","days":"Mon–Wed","bookingUrl":"","weeks":["Week 1"],"notes":"Call/text: 087 605 0183","listingUrl":"/camps/dublin/the-stage-stars"},{"id":"rec8Zp80OfvfKNcdu","name":"Pro Training Summer Soccer Camp Malahide","provider":"Pro Training","category":"Sport — Multi-activity","ageMin":7,"ageMax":13,"area":"Malahide","county":"Dublin","cost":"€85–€95","costValue":85,"times":"10am–2pm","days":"Mon–Fri","bookingUrl":"https://www.instagram.com/protraining2025/","weeks":["Week 1","Week 2","Week 5","Week 6"],"notes":"New AI shooting net this summer.","listingUrl":"/camps/dublin/pro-training-summer-soccer-camp-malahide"},{"id":"rec9EfpyvIp8YsKoo","name":"Malahide Tennis Club Junior Camps","provider":"Malahide Lawn Tennis Club","category":"Sport — Tennis","ageMin":5,"ageMax":14,"area":"Malahide","county":"Dublin","cost":"€100","costValue":100,"times":"9:30am – 1:00pm","days":"Mon–Fri","bookingUrl":"https://bookwhen.com/malahide","weeks":[],"notes":"2026 dates TBC.","listingUrl":"/camps/dublin/malahide-lawn-tennis-club-malahide-tennis-club-junior-camps"},{"id":"recAhBVc617R3e9gT","name":"Malahide Tennis Club – Red & Orange Ball Camp","provider":"Malahide Tennis Club","category":"Tennis","ageMin":5,"ageMax":9,"area":"Malahide","county":"Dublin","cost":"€120 members / €140 non-members","costValue":120,"times":"9:30am–1pm","days":"Monday–Friday","bookingUrl":"https://www.smartclubcloud.com/","weeks":["Week 3","Week 5","Week 8"],"notes":"Red & Orange Ball (ages 5–9)","listingUrl":"/camps/dublin/malahide-tennis-club-red-orange-ball-camp"},{"id":"recDQJwUq2XHlqRVb","name":"Active Ireland Kids Summer Camp – Killiney Hill","provider":"Active Ireland","category":"Adventure","ageMin":5,"ageMax":12,"area":"Killiney","county":"Dublin","cost":"€140","costValue":140,"times":"9am–2pm","days":"Monday–Friday","bookingUrl":"https://activeireland.ie/camps/","weeks":["Week 1","Week 2","Week 3","Week 4","Week 5","Week 6","Week 7","Week 8","Week 9"],"notes":"Sibling discounts. All 9 weeks available.","listingUrl":"/camps/dublin/active-ireland-kids-summer-camp-killiney-hill"},{"id":"recEbsxZLY2M8wINS","name":"Kickstart Movements (KSM) Summer Camp","provider":"Kickstart Movements","category":"Sport — Multi-activity","ageMin":3,"ageMax":9,"area":"Kinsealy","county":"Dublin","cost":"See kickstartmovements.ie","costValue":0,"times":"10am–1:30pm","days":"Mon–Fri","bookingUrl":"https://www.kickstartmovements.ie/products/pay-your-childs-term","weeks":["Week 2","Week 8"],"notes":"Bouncy castle included.","listingUrl":"/camps/dublin/kickstart-movements-ksm-summer-camp"},{"id":"recEd14G0FapDlJvz","name":"StarCamp Malahide Summer Camp copy","provider":"Starcamp","category":"Performing arts","ageMin":4,"ageMax":8,"area":"Swords","county":"Dublin","cost":"€132","costValue":132,"times":"9am–2pm","days":"Mon–Fri","bookingUrl":"https://starcamp.ie/summer-camps/#starcamp-new","weeks":["Week 4"],"notes":"Registration LIVE NOW.","listingUrl":"/camps/dublin/starcamp-malahide-summer-camp-copy"},{"id":"recF10kW7zAcezZTD","name":"Active Ireland Kids Summer Camp – Wicklow AFC","provider":"Active Ireland","category":"Adventure","ageMin":5,"ageMax":12,"area":"Wicklow","county":"Wicklow","cost":"€140","costValue":140,"times":"9am–2pm","days":"Monday–Friday","bookingUrl":"https://activeireland.ie/camps/","weeks":["Week 2","Week 5","Week 7","Week 8","Week 9"],"notes":"Good availability across all weeks.","listingUrl":"/camps/wicklow/active-ireland-kids-summer-camp-wicklow-afc"},{"id":"recGOYIj7jDtoyHzj","name":"Alive Outside Summer Camp Swords","provider":"Alive Outside","category":"Sport — Multi-activity","ageMin":7,"ageMax":13,"area":"Swords","county":"Dublin","cost":"€150","costValue":150,"times":"9am–3:30pm","days":"Mon–Fri","bookingUrl":"https://www.aliveoutside.ie/activity-package/summer-camp-swords/","weeks":[],"notes":"Day trip to Killruddery Estate included.","listingUrl":"/camps/dublin/alive-outside-summer-camp-swords"},{"id":"recGivIIv7KLXXBcY","name":"Junior Einsteins Science Club","provider":"Junior Einsteins Science Club","category":"STEM / LEGO","ageMin":5,"ageMax":8,"area":"Malahide","county":"Dublin","cost":"€195","costValue":195,"times":"9:30am – 1:30pm","days":"Mon–Fri","bookingUrl":"https://junioreinsteinsscienceclub.com/science-camps-stem-kids-summer-camp-fun-children-activities-slime/","weeks":["Week 1","Week 2","Week 3","Week 4","Week 5","Week 6","Week 7"],"notes":"Filter camp list by Malahide location when booking.","listingUrl":"/camps/dublin/junior-einsteins-science-club"},{"id":"recGozU7LseegC8zM","name":"Fingal Additional Needs Summer Camp — Skerries","provider":"Fingal Additional Needs","category":"Children with additional needs","ageMin":null,"ageMax":null,"area":"Skerries","county":"Dublin","cost":"€140","costValue":140,"times":"10:30am–12:30pm","days":"Monday–Wednesday","bookingUrl":"","weeks":["Week 5"],"notes":"Drop-off and leave. WhatsApp David: 085 2089122.","listingUrl":"/camps/dublin/fingal-additional-needs-summer-camp-skerries"},{"id":"recHFxuXMt7gJJXcP","name":"Parks Tennis – Malahide Castle","provider":"Parks Tennis","category":"Tennis","ageMin":5,"ageMax":15,"area":"Malahide","county":"Dublin","cost":"€35 per week","costValue":35,"times":"Ages 5–7 @ 2–3pm | Ages 8–10 @ 3–4pm | Ages 11–15 @ 4–5pm","days":"Monday–Friday","bookingUrl":"https://member.clubforce.com/","weeks":["Week 3","Week 4","Week 5"],"notes":"All equipment provided. Book via Clubforce.","listingUrl":"/camps/dublin/parks-tennis-malahide-castle"},{"id":"recIBbQk34YUk4osB","name":"Butler Patrice Performing Arts (Ages 8–13)","provider":"Butler Patrice Performing Arts","category":"Performing arts","ageMin":8,"ageMax":13,"area":"Malahide","county":"Dublin","cost":"Contact provider","costValue":0,"times":"9:30am – 12:30pm","days":"Mon–Thu (4-day)","bookingUrl":"https://www.butlerpatriceperformingarts.ie/ourcamps","weeks":["Week 3","Week 5"],"notes":"4-day camp, mornings only. Goodie bag included.","listingUrl":"/camps/dublin/butler-patrice-performing-arts-ages-813"},{"id":"recIjKbR1DnWUCjjF","name":"Keys & Strings – NEWBIES (Skerries)","provider":"Keys & Strings","category":"Music","ageMin":7,"ageMax":12,"area":"Skerries","county":"Dublin","cost":"€135","costValue":135,"times":"1pm–4pm","days":"Monday–Friday","bookingUrl":"https://keysandstrings.ie/7227-2/","weeks":["Week 4","Week 5","Week 7"],"notes":"Beginner music camp.","listingUrl":"/camps/dublin/keys-strings-newbies-skerries"},{"id":"recIv2VygYb277Xo8","name":"Campa Samhradh Fhaoldroma","provider":"Campa Samhradh","category":"Irish language","ageMin":null,"ageMax":22,"area":"Swords","county":"Dublin","cost":"Contact for pricing","costValue":0,"times":"10am – 2:30pm","days":"Monday 29 June–Friday 3 July","bookingUrl":"mailto:campasamhraidh22@gmail.com","weeks":["Week 1"],"notes":"Irish language camp. Sports, arts, dance.","listingUrl":"/camps/dublin/campa-samhradh-fhaoldroma"},{"id":"recJ7sVDNxE9PTVVP","name":"Keys & Strings – BANDZ (Rush)","provider":"Keys & Strings","category":"Music","ageMin":7,"ageMax":12,"area":"Rush","county":"Dublin","cost":"€135","costValue":135,"times":"1pm–4pm","days":"Monday–Friday","bookingUrl":"https://keysandstrings.ie/7227-2/","weeks":["Week 4","Week 5","Week 7"],"notes":"Band music camp.","listingUrl":"/camps/dublin/keys-strings-bandz-rush"},{"id":"recJvHfrcw9mUXIu6","name":"Keys & Strings – Music & Art (Rush)","provider":"Keys & Strings","category":"Music","ageMin":3,"ageMax":7,"area":"Rush","county":"Dublin","cost":"€120","costValue":120,"times":"9:30am–12:30pm","days":"Monday–Friday","bookingUrl":"https://keysandstrings.ie/7227-2/","weeks":["Week 4","Week 5","Week 7"],"notes":"Music and arts for younger children.","listingUrl":"/camps/dublin/keys-strings-music-art-rush"},{"id":"recK5WdpomAJHj6BT","name":"Garda AFC – Girls Only","provider":"Garda AFC","category":"Football","ageMin":null,"ageMax":null,"area":"Dublin 15","county":"Dublin","cost":"","costValue":0,"times":"10am–1pm","days":"Monday–Friday","bookingUrl":"https://bookings.faifootballcamps.ie/s/camp-list","weeks":["Week 2","Week 7"],"notes":"Girls only","listingUrl":"/camps/dublin/garda-afc-girls-only"},{"id":"recM16CywQIlfTPlC","name":"Kandoo Summer Camp","provider":"Kandoo","category":"Early years / general","ageMin":4,"ageMax":12,"area":"Malahide","county":"Dublin","cost":"€85–€140","costValue":85,"times":"10am–1:30pm","days":"Mon–Fri","bookingUrl":"https://www.kandoo.ie/","weeks":["Week 1","Week 2","Week 5","Week 6","Week 7"],"notes":"Half day only. Contact Susan: 086 317 5889.","listingUrl":"/camps/dublin/kandoo-summer-camp"},{"id":"recMBBhVV9gzNQBs9","name":"Starcamp – Swords, Old Borough School Hall","provider":"Starcamp","category":"Multi-Activity","ageMin":null,"ageMax":null,"area":"Swords","county":"Dublin","cost":"€132","costValue":132,"times":"9am–2pm","days":"Monday–Friday","bookingUrl":"https://starcamp.ie/summer-camps-list/","weeks":["Week 3","Week 5"],"notes":"20% off additional camps.","listingUrl":"/camps/dublin/starcamp-swords-old-borough-school-hall"},{"id":"recMEZVjiXRFoIUpn","name":"Summer Scholars","provider":"Guided Growth Academy","category":"Academic","ageMin":5,"ageMax":null,"area":"Blanchardstown","county":"Dublin","cost":"€110","costValue":110,"times":"9:30am–1:30pm","days":"Tuesday–Friday","bookingUrl":"","weeks":[],"notes":"Run by fully qualified teachers. WhatsApp: 089 942 8386.","listingUrl":"/camps/dublin/guided-growth-academy-summer-scholars"},{"id":"recMbyRSGcNmR6c9o","name":"Active Ireland Teens Summer Camp – Wicklow AFC","provider":"Active Ireland","category":"Adventure","ageMin":13,"ageMax":15,"area":"Wicklow","county":"Wicklow","cost":"€140","costValue":140,"times":"9am–2pm","days":"Monday–Friday","bookingUrl":"https://activeireland.ie/camps/","weeks":["Week 2","Week 7","Week 9"],"notes":"Good availability across all weeks.","listingUrl":"/camps/wicklow/active-ireland-teens-summer-camp-wicklow-afc"},{"id":"recNFjmtDFEUVSCXr","name":"DSA Performing Arts Summer Camp","provider":"DSA","category":"Dance","ageMin":4,"ageMax":12,"area":"Baldoyle","county":"Dublin","cost":"€120–€150","costValue":120,"times":"9am–3pm or 10am–2pm","days":"Mon–Fri","bookingUrl":"https://www.dancesingact.ie/service-page/summer-camp-1","weeks":["Week 1"],"notes":"Boys and girls. Early drop-off and late collection available.","listingUrl":"/camps/dublin/dsa-performing-arts-summer-camp"},{"id":"recOWYFA31P2zXEHM","name":"Starcamp – Donabate, Portrane Educate Together NS","provider":"Starcamp","category":"Multi-Activity","ageMin":null,"ageMax":null,"area":"Donabate","county":"Dublin","cost":"€132","costValue":132,"times":"9am–2pm","days":"Monday–Friday","bookingUrl":"https://starcamp.ie/summer-camps-list/","weeks":["Week 3"],"notes":"20% off additional camps.","listingUrl":"/camps/dublin/starcamp-donabate-portrane-educate-together-ns"},{"id":"recPMcf7yxDTZ8j0t","name":"Keys & Strings – NEWBIES (Rush)","provider":"Keys & Strings","category":"Music","ageMin":7,"ageMax":12,"area":"Rush","county":"Dublin","cost":"€135","costValue":135,"times":"1pm–4pm","days":"Monday–Friday","bookingUrl":"https://keysandstrings.ie/7227-2/","weeks":["Week 4","Week 5","Week 7"],"notes":"Beginner music camp.","listingUrl":"/camps/dublin/keys-strings-newbies-rush"},{"id":"recPZnhG8F0SVibdg","name":"The Jam Summer Camp Clontarf","provider":"The Jam","category":"Performing arts","ageMin":4,"ageMax":13,"area":"Clontarf","county":"Dublin","cost":"€125–€180","costValue":125,"times":"10am–2pm / 2:30–4:30pm","days":"Mon–Fri","bookingUrl":"https://www.thejam.ie/classesandcamps/p/baldoylesummercamp2026-p6pg9-j9l6e","weeks":["Week 1"],"notes":"Early bird €10 off.","listingUrl":"/camps/dublin/the-jam-summer-camp-clontarf"},{"id":"recRDs4K9yler2vVr","name":"House of Swag Summer Camp Swords","provider":"House of Swag","category":"Performing arts","ageMin":5,"ageMax":12,"area":"Swords","county":"Dublin","cost":"€60","costValue":60,"times":"See houseofswaghos.com","days":"","bookingUrl":"https://www.houseofswaghos.com/event-details/summer-camps-1","weeks":[],"notes":"€20 deposit secures place. Confirm dates directly.","listingUrl":"/camps/dublin/house-of-swag-summer-camp-swords"},{"id":"recRbqoYN2yG2dXin","name":"Butler Patrice Performing Arts (Ages 4–7)","provider":"Butler Patrice Performing Arts","category":"Performing arts","ageMin":4,"ageMax":7,"area":"Malahide","county":"Dublin","cost":"Contact provider","costValue":0,"times":"9:30am – 12:30pm","days":"Mon–Thu (4-day)","bookingUrl":"https://www.butlerpatriceperformingarts.ie/ourcamps","weeks":["Week 2","Week 4"],"notes":"4-day camp, mornings only. Goodie bag included.","listingUrl":"/camps/dublin/butler-patrice-performing-arts-ages-47"},{"id":"recRtZcqopcEWEols","name":"Rush Athletic FC – Girls Only","provider":"Rush Athletic FC","category":"Football","ageMin":null,"ageMax":null,"area":"Rush","county":"Dublin","cost":"","costValue":0,"times":"10am–1pm","days":"Monday–Friday","bookingUrl":"https://bookings.faifootballcamps.ie/s/camp-list","weeks":["Week 2","Week 3"],"notes":"Girls only","listingUrl":"/camps/dublin/rush-athletic-fc-girls-only"},{"id":"recTHshCsXuyQJA31","name":"Keys & Strings – Music & Art (Skerries)","provider":"Keys & Strings","category":"Music","ageMin":3,"ageMax":7,"area":"Skerries","county":"Dublin","cost":"€120","costValue":120,"times":"9:30am–12:30pm","days":"Monday–Friday","bookingUrl":"https://keysandstrings.ie/7227-2/","weeks":["Week 4","Week 5","Week 7"],"notes":"Music and arts for younger children.","listingUrl":"/camps/dublin/keys-strings-music-art-skerries"},{"id":"recU5rTegWhFPiQk6","name":"Playball Summer Camp Donabate","provider":"Playball","category":"Multi-Activity","ageMin":3,"ageMax":10,"area":"Donabate","county":"Dublin","cost":"€110 / €145 extended","costValue":110,"times":"9:30am–2pm","days":"Monday–Friday","bookingUrl":"https://www.playballkids.com/parent-zone/basket_bookings.php?classid=75702","weeks":["Week 7"],"notes":"Contact: playballnorthdublin@outlook.com","listingUrl":"/camps/dublin/playball-summer-camp-donabate"},{"id":"recU8aUAT3YA3hEt1","name":"ZILA Art and Design Summer Camp","provider":"ZILA","category":"Arts & crafts","ageMin":4,"ageMax":12,"area":"Malahide","county":"Dublin","cost":"€35 per day","costValue":35,"times":"10am–1pm","days":"3-day blocks","bookingUrl":"https://www.instagram.com/zilaartanddesign/","weeks":["Week 1","Week 2","Week 6","Week 7"],"notes":"3-day blocks. Book via WhatsApp or email Lisa.","listingUrl":"/camps/dublin/zila-art-and-design-summer-camp"},{"id":"recUVg1ddnVFc082r","name":"Fingal Additional Needs Summer Camp — Hedgestown","provider":"Fingal Additional Needs","category":"Children with additional needs","ageMin":null,"ageMax":null,"area":"Hedgestown","county":"Dublin","cost":"€140","costValue":140,"times":"10:30am–12:30pm","days":"Tuesday–Thursday","bookingUrl":"","weeks":["Week 3"],"notes":"Drop-off and leave. WhatsApp David: 085 2089122.","listingUrl":"/camps/dublin/fingal-additional-needs-summer-camp-hedgestown"},{"id":"recV7eVkvO2VPtmCS","name":"StarCamp Malahide Summer Camp","provider":"Starcamp","category":"Performing arts","ageMin":4,"ageMax":8,"area":"Malahide","county":"Dublin","cost":"€132","costValue":132,"times":"9am–2pm","days":"Mon–Fri","bookingUrl":"https://starcamp.ie/summer-camps/#starcamp-new","weeks":["Week 2","Week 7"],"notes":"Registration LIVE NOW. 20% off additional camps.","listingUrl":"/camps/dublin/starcamp-malahide-summer-camp"},{"id":"recVI1two4IhtQOb9","name":"Let's Go Malahide Summer Camp","provider":"Let's Go","category":"Sport — Multi-activity","ageMin":4,"ageMax":12,"area":"Malahide","county":"Dublin","cost":"€112–€147","costValue":112,"times":"9:30am–3:30pm","days":"Mon–Fri","bookingUrl":"https://letsgo.ie/search?location=Letsgo&type=309&stateId=81&site=32","weeks":["Week 1","Week 2","Week 3","Week 4"],"notes":"All 4 weeks currently on WAITING LIST.","listingUrl":"/camps/dublin/lets-go-malahide-summer-camp"},{"id":"recaVTnXKl4CmelzT","name":"Lightning Legs Summer Camp","provider":"Lightning Legs","category":"Sport — Multi-activity","ageMin":4,"ageMax":10,"area":"Baldoyle","county":"Dublin","cost":"See lightninglegs.ie","costValue":0,"times":"9am–3pm","days":"Mon–Fri","bookingUrl":"https://www.lightninglegs.ie/summer-camp","weeks":["Week 4","Week 5"],"notes":"Good option for active preschoolers.","listingUrl":"/camps/dublin/lightning-legs-summer-camp"},{"id":"recbWNpyUmXrYg0MA","name":"Nature, Yoga & Art Summer Camps","provider":"Community Well","category":"Multi-Activity","ageMin":6,"ageMax":10,"area":"Donabate","county":"Dublin","cost":"€140 for 4-day camp","costValue":140,"times":"10am–2pm","days":"Monday–Thursday","bookingUrl":"https://communitywelldonabate.com/childrens-classes","weeks":["Week 1","Week 5","Week 7","Week 8"],"notes":"Sibling discount available.","listingUrl":"/camps/dublin/community-well-nature-yoga-art-summer-camps"},{"id":"recbaJ59gcqZAgdwU","name":"The Jam Summer Camp Malahide","provider":"The Jam","category":"Performing arts","ageMin":4,"ageMax":7,"area":"Malahide","county":"Dublin","cost":"€150","costValue":150,"times":"10am–1pm","days":"Tue–Fri (4-day)","bookingUrl":"https://www.thejam.ie/classesandcamps/p/baldoylesummercamp2026-p6pg9-9jf7h-lswl3","weeks":["Week 5"],"notes":"4-day camp. Early bird €10 off.","listingUrl":"/camps/dublin/the-jam-summer-camp-malahide"},{"id":"recbiAvannHqZic9H","name":"Rush Athletic FC — Football For All (Children with Additional Needs)","provider":"Rush Athletic FC","category":"Children with additional needs","ageMin":null,"ageMax":null,"area":"Rush","county":"Dublin","cost":"","costValue":0,"times":"Monday–Friday","days":"Monday–Friday","bookingUrl":"https://bookings.faifootballcamps.ie/s/camp-list","weeks":["Week 3"],"notes":"Football for children with additional needs.","listingUrl":"/camps/dublin/rush-athletic-fc-football-for-all-children-with-additional-needs"},{"id":"recblwQqun5Luyd3u","name":"The Krafty Italian Summer Craft Camp","provider":"The Krafty Italian","category":"Arts & crafts","ageMin":5,"ageMax":12,"area":"Malahide","county":"Dublin","cost":"€100","costValue":100,"times":"9:15am – 12:45pm","days":"Mon–Fri","bookingUrl":"https://www.instagram.com/thekraftyitaliandublin/","weeks":["Week 2","Week 3","Week 4","Week 5"],"notes":"10% sibling discount. Message Lisa to book.","listingUrl":"/camps/dublin/the-krafty-italian-summer-craft-camp"},{"id":"reccM3cr6v5xbMn8R","name":"Project Fashion Teenage Summer Camp","provider":"Project Fashion","category":"Arts & Crafts","ageMin":13,"ageMax":17,"area":"Swords","county":"Dublin","cost":"","costValue":0,"times":"2pm–5:30pm","days":"Monday–Friday","bookingUrl":"https://projectfashion.ie/summer-camps/","weeks":["Week 1"],"notes":"Fashion design & sustainable fashion for teens.","listingUrl":"/camps/dublin/project-fashion-teenage-summer-camp"},{"id":"recdKf1AmINoTwFmU","name":"The Jam Summer Camp Raheny","provider":"The Jam","category":"Performing arts","ageMin":4,"ageMax":13,"area":"Raheny","county":"Dublin","cost":"€125–€180","costValue":125,"times":"10am–2pm / 2:30–4:30pm","days":"Mon–Fri","bookingUrl":"https://www.thejam.ie/classesandcamps/p/rahenysummercamp2025","weeks":["Week 3"],"notes":"Early bird €10 off.","listingUrl":"/camps/dublin/the-jam-summer-camp-raheny"},{"id":"recdqkziZymFu2VJk","name":"Project Fashion Summer Camp (Kids)","provider":"Project Fashion","category":"Arts & Crafts","ageMin":7,"ageMax":17,"area":"Swords","county":"Dublin","cost":"","costValue":0,"times":"9:30am–1:30pm","days":"Monday–Friday","bookingUrl":"https://projectfashion.ie/summer-camps/","weeks":["Week 1","Week 2","Week 3","Week 4","Week 5","Week 6","Week 7","Week 8","Week 9"],"notes":"Multiple Dublin locations all summer.","listingUrl":"/camps/dublin/project-fashion-summer-camp-kids"},{"id":"recdv3t56kWq9Bx6k","name":"Absolute Angels Summer Camp","provider":"Absolute Angels","category":"Performing arts","ageMin":4,"ageMax":12,"area":"Malahide","county":"Dublin","cost":"€150","costValue":150,"times":"10am–1pm","days":"Mon–Fri","bookingUrl":"","weeks":["Week 1","Week 2"],"notes":"WhatsApp Caroline: +353 87 287 1949.","listingUrl":"/camps/dublin/absolute-angels-summer-camp"},{"id":"rece32EOKbHab9jvv","name":"ALSAA Kids Summer Camp","provider":"ALSAA","category":"Sport — Multi-activity","ageMin":5,"ageMax":12,"area":"Cloghran","county":"Dublin","cost":"€90 members / €120 visitors","costValue":90,"times":"9:30am – 3pm","days":"Mon–Fri","bookingUrl":"https://alsaa.ie/kids-camps/","weeks":["Week 2","Week 3","Week 4","Week 5","Week 6"],"notes":"Full day. Great value.","listingUrl":"/camps/dublin/alsaa-kids-summer-camp"},{"id":"rece6bbFaugsP6pxs","name":"Sounds Good Summer Camp","provider":"IIMS","category":"Music & performing arts","ageMin":7,"ageMax":12,"area":"Malahide","county":"Dublin","cost":"€125","costValue":125,"times":"9am–2:30pm","days":"Mon–Fri","bookingUrl":"https://www.irishinstituteofmusic.com/book-camps/summer-camp","weeks":["Week 4","Week 7","Week 8"],"notes":"Kids form a band and record a track by end of the week.","listingUrl":"/camps/dublin/iims-sounds-good-summer-camp"},{"id":"rececipSrvrSz4hRj","name":"Kickstart Movements (KSM) Summer Camp Drumcondra","provider":"Kickstart Movements","category":"Sport — Multi-activity","ageMin":3,"ageMax":9,"area":"Drumcondra","county":"Dublin","cost":"See kickstartmovements.ie","costValue":0,"times":"10am–1:30pm","days":"Mon–Fri","bookingUrl":"https://www.kickstartmovements.ie/products/pay-your-childs-term","weeks":["Week 6"],"notes":"New Drumcondra location for 2026.","listingUrl":"/camps/dublin/kickstart-movements-ksm-summer-camp-drumcondra"},{"id":"recflvgINuHahcNR2","name":"Active Ireland Teens Summer Camp – Sutton","provider":"Active Ireland","category":"Adventure","ageMin":13,"ageMax":15,"area":"Sutton","county":"Dublin","cost":"€140","costValue":140,"times":"9am–2pm","days":"Monday–Friday","bookingUrl":"https://activeireland.ie/camps/","weeks":["Week 5","Week 8"],"notes":"Good availability.","listingUrl":"/camps/dublin/active-ireland-teens-summer-camp-sutton"},{"id":"reck8ZU5XM6GUel1c","name":"Playball Summer Camp Baldoyle","provider":"Playball","category":"Multi-Activity","ageMin":3,"ageMax":10,"area":"Baldoyle","county":"Dublin","cost":"€110 / €145 extended","costValue":110,"times":"10am–2pm","days":"Monday–Friday","bookingUrl":"https://www.playballkids.com/parent-zone/basket_bookings.php?classid=75702","weeks":["Week 8"],"notes":"Contact: playballnorthdublin@outlook.com","listingUrl":"/camps/dublin/playball-summer-camp-baldoyle"},{"id":"recmHOx6z6gXFRfn4","name":"Kellogg's GAA Cúl Camps (St Sylvester's)","provider":"Kellogg's GAA","category":"Sport — GAA","ageMin":6,"ageMax":13,"area":"Malahide","county":"Dublin","cost":"~€65","costValue":65,"times":"10am–2pm","days":"Mon–Fri","bookingUrl":"https://www.kelloggsculcamps.gaa.ie/booking/online/","weeks":[],"notes":"2026 Malahide dates TBC. Use site's location picker.","listingUrl":"/camps/dublin/kelloggs-gaa-cul-camps-st-sylvesters"},{"id":"reco8M12V9cfGVuzT","name":"Active Ireland Teens Summer Camp – Killiney Hill","provider":"Active Ireland","category":"Adventure","ageMin":13,"ageMax":15,"area":"Killiney","county":"Dublin","cost":"€140","costValue":140,"times":"9am–2pm","days":"Monday–Friday","bookingUrl":"https://activeireland.ie/camps/","weeks":["Week 3","Week 7","Week 8"],"notes":"Week 1 sold out.","listingUrl":"/camps/dublin/active-ireland-teens-summer-camp-killiney-hill"},{"id":"recoI1vEv5CkWxMW5","name":"Drama House Summer Academy","provider":"Drama House","category":"Performing arts","ageMin":4,"ageMax":12,"area":"Malahide","county":"Dublin","cost":"€130","costValue":130,"times":"10am–2pm","days":"Mon–Fri","bookingUrl":"https://www.dramahouse.ie/courses","weeks":["Week 2","Week 3","Week 4"],"notes":"Three themed weeks: Pop, Musicals, Disney.","listingUrl":"/camps/dublin/drama-house-summer-academy"},{"id":"recoZKOcRoKglDrgO","name":"Playhouse Pals Summer Camp","provider":"Playhouse Pals","category":"Early years / general","ageMin":4,"ageMax":6,"area":"Malahide","county":"Dublin","cost":"€140","costValue":140,"times":"9:30am–1pm","days":"Mon–Fri","bookingUrl":"mailto:playhousepals123@gmail.com","weeks":["Week 2"],"notes":"FULLY BOOKED for 2026. Email to join interest list.","listingUrl":"/camps/dublin/playhouse-pals-summer-camp"},{"id":"recozl1n5XXhktCdC","name":"Swords – Summer Camp 4 Day","provider":"LetsGo","category":"Multi-Activity","ageMin":null,"ageMax":null,"area":"Swords","county":"Dublin","cost":"€117 (1st), €107 (2nd), €97 (3rd)","costValue":117,"times":"9:30am–3:30pm","days":"Tuesday–Friday","bookingUrl":"https://www.letsgo.ie/camps/dublin/swords/","weeks":["Week 6"],"notes":"4-day camp. 20% off additional camps.","listingUrl":"/camps/dublin/letsgo-swords-summer-camp-4-day"},{"id":"recpvbFRWrFbPPMUR","name":"Alive Outside Summer Camp","provider":"Alive Outside","category":"Multi-Activity","ageMin":7,"ageMax":13,"area":"Malahide","county":"Dublin","cost":"","costValue":0,"times":"Full day","days":"Monday–Friday","bookingUrl":"https://www.aliveoutside.ie/summer-camps-dublin-wicklow-2026-alive-outside-summer-camps/","weeks":["Week 1","Week 2","Week 3","Week 4","Week 5","Week 6","Week 7","Week 8","Week 9"],"notes":"Multiple Dublin locations. From Ireland's Fittest Family TV team.","listingUrl":"/camps/dublin/alive-outside-summer-camp"},{"id":"recpxMvm1UycdgEam","name":"PSLC Kids Summer Camp","provider":"PSLC","category":"Multi-Activity","ageMin":4,"ageMax":9,"area":"Portmarnock","county":"Dublin","cost":"€120 Members / €140 Non-Members","costValue":120,"times":"10am–2pm","days":"Monday–Friday","bookingUrl":"https://www.pslc.ie","weeks":["Week 2","Week 3","Week 4","Week 5","Week 6","Week 7"],"notes":"New for 2026: Padel courts, Bubble Football. Week 5 Tue–Fri only.","listingUrl":"/camps/dublin/pslc-kids-summer-camp"},{"id":"recqP7BhCDftePke5","name":"Swords – Summer Camp","provider":"LetsGo","category":"Multi-Activity","ageMin":null,"ageMax":null,"area":"Swords","county":"Dublin","cost":"€102–€132","costValue":102,"times":"9:30am–3:30pm","days":"Monday–Friday","bookingUrl":"https://www.letsgo.ie/camps/dublin/swords/","weeks":["Week 7"],"notes":"⚠️ WAITING LIST ONLY as of May 2026.","listingUrl":"/camps/dublin/letsgo-swords-summer-camp"},{"id":"recqiRm2vY9Q9C42j","name":"Kids Summer Dance Camp 2026","provider":"Viva School of Dance","category":"Dance","ageMin":4,"ageMax":16,"area":"Drumcondra","county":"Dublin","cost":"€119.99–€139.99","costValue":119,"times":"10am–2pm","days":"Monday–Friday","bookingUrl":"https://vivaschoolofdance.com/kids/events/kids-summer-dance-camp-2026/","weeks":["Week 1","Week 2","Week 3"],"notes":"Ballet, jazz, hip-hop, K-Pop, Latin, ballroom. Friday mini showcase.","listingUrl":"/camps/dublin/viva-school-of-dance-kids-summer-dance-camp-2026"},{"id":"recqkybZu63dcm355","name":"Catch Summer Dance Camp","provider":"Catch Dance Academy","category":"Dance","ageMin":5,"ageMax":12,"area":"Malahide","county":"Dublin","cost":"€130–€140","costValue":130,"times":"10am–2pm","days":"Mon–Fri","bookingUrl":"https://www.catchdanceacademy.com/book-online","weeks":["Week 5","Week 6"],"notes":"Hip Hop, Commercial, Contemporary, Drama, Arts & Crafts.","listingUrl":"/camps/dublin/catch-dance-academy-catch-summer-dance-camp"},{"id":"recqwgJVpvjg5K6g5","name":"St Sylvester's GAA Summer Camps","provider":"St Sylvester's GAA","category":"Sport — GAA","ageMin":5,"ageMax":13,"area":"Malahide","county":"Dublin","cost":"Announced closer to time","costValue":0,"times":"10am–2pm","days":"Mon–Fri","bookingUrl":"https://stsylvesters.ie/","weeks":[],"notes":"2026 dates TBC — follow @officialsylsgaa.","listingUrl":"/camps/dublin/st-sylvesters-gaa-summer-camps"},{"id":"recrpgU0EQsoL9AbB","name":"Summer Camp Junior","provider":"IIMS","category":"Music & performing arts","ageMin":4,"ageMax":7,"area":"Malahide","county":"Dublin","cost":"€125","costValue":125,"times":"9:30am–1pm","days":"Mon–Fri","bookingUrl":"https://www.irishinstituteofmusic.com/book-camps/summer-camp-junior","weeks":["Week 4","Week 7","Week 8"],"notes":"Singing, instruments, songwriting. Starts age 4.","listingUrl":"/camps/dublin/iims-summer-camp-junior"},{"id":"recsgI7RGYYYQ4BoI","name":"Starcamp – Swords, St Colmcilles GAA","provider":"Starcamp","category":"Multi-Activity","ageMin":null,"ageMax":null,"area":"Swords","county":"Dublin","cost":"€132","costValue":132,"times":"9am–2pm","days":"Monday–Friday","bookingUrl":"https://starcamp.ie/summer-camps-list/","weeks":["Week 4"],"notes":"20% off additional camps.","listingUrl":"/camps/dublin/starcamp-swords-st-colmcilles-gaa"},{"id":"rect1IVdXAKRmHzYR","name":"Keys & Strings – BANDZ (Skerries)","provider":"Keys & Strings","category":"Music","ageMin":7,"ageMax":12,"area":"Skerries","county":"Dublin","cost":"€135","costValue":135,"times":"1pm–4pm","days":"Monday–Friday","bookingUrl":"https://keysandstrings.ie/7227-2/","weeks":["Week 4","Week 5","Week 7"],"notes":"Band music camp.","listingUrl":"/camps/dublin/keys-strings-bandz-skerries"},{"id":"rectEDkwksr5hvwxI","name":"StarCamp Swords Summer Camp","provider":"Starcamp","category":"Performing arts","ageMin":4,"ageMax":12,"area":"Swords","county":"Dublin","cost":"See starcamp.ie","costValue":0,"times":"9am–2pm","days":"Mon–Fri","bookingUrl":"https://starcamp.ie/product/swords-kids-camps/","weeks":["Week 3","Week 5"],"notes":"Same format as Malahide camp.","listingUrl":"/camps/dublin/starcamp-swords-summer-camp"},{"id":"recupIBsPNZ2p4Wz1","name":"Fingal Additional Needs Summer Camp — Rush","provider":"Fingal Additional Needs","category":"Children with additional needs","ageMin":null,"ageMax":null,"area":"Rush","county":"Dublin","cost":"€140","costValue":140,"times":"10:30am–12:30pm","days":"Monday–Wednesday","bookingUrl":"","weeks":["Week 4"],"notes":"Drop-off and leave. WhatsApp David: 085 2089122.","listingUrl":"/camps/dublin/fingal-additional-needs-summer-camp-rush"},{"id":"recvCp1T1vqTfWS4W","name":"Happy Campers Summer Camp","provider":"Happy Campers","category":"Early years / general","ageMin":4,"ageMax":6,"area":"Malahide","county":"Dublin","cost":"€140","costValue":140,"times":"9:30am–1pm","days":"Mon–Fri","bookingUrl":"mailto:Happycampersmalahide@gmail.com","weeks":["Week 3"],"notes":"For incoming/current Junior & Senior Infants. Limited spaces.","listingUrl":"/camps/dublin/happy-campers-summer-camp"},{"id":"recvLp3QirSyj1Jol","name":"Wicklow Getaway at Knockree – Residential Teen Adventure","provider":"Active Ireland","category":"Adventure","ageMin":13,"ageMax":16,"area":"Wicklow","county":"Wicklow","cost":"€495–€545","costValue":495,"times":"Full residential (Mon–Fri)","days":"Monday–Friday","bookingUrl":"https://activeireland.ie/teen-camp-2/wicklowgetaway/","weeks":["Week 3"],"notes":"6 spaces remaining. Full board included.","listingUrl":"/camps/wicklow/active-ireland-wicklow-getaway-at-knockree-residential-teen-adventure"},{"id":"recvyyEpwelht7CO5","name":"PSLC Kids Summer Camp 2026","provider":"PSLC","category":"Multi-Activity","ageMin":4,"ageMax":9,"area":"Portmarnock","county":"Dublin","cost":"€120 members / €140 non-members","costValue":120,"times":"10am–2pm","days":"Monday–Friday","bookingUrl":"https://pslc.ie/pslc-kids-summer-camp-2026","weeks":["Week 2","Week 3","Week 4","Week 5","Week 6","Week 7"],"notes":"Boys & girls. Week 5 Tue–Fri only.","listingUrl":"/camps/dublin/pslc-kids-summer-camp-2026"},{"id":"recw6TG2pp3AYE71B","name":"Castleknock Celtic — Football For All (Children with Additional Needs)","provider":"Castleknock Celtic","category":"Children with additional needs","ageMin":null,"ageMax":null,"area":"Castleknock","county":"Dublin","cost":"","costValue":0,"times":"Monday–Friday","days":"Monday–Friday","bookingUrl":"https://bookings.faifootballcamps.ie/s/camp-list","weeks":["Week 4"],"notes":"Football for children with additional needs.","listingUrl":"/camps/dublin/castleknock-celtic-football-for-all-children-with-additional-needs"},{"id":"recwvQnTiZLEBRyIP","name":"Active Ireland Cycle & Craft Camp – Monkstown","provider":"Active Ireland","category":"Adventure","ageMin":7,"ageMax":12,"area":"Monkstown","county":"Dublin","cost":"€140","costValue":140,"times":"9am–2pm","days":"Monday–Friday","bookingUrl":"https://activeireland.ie/active-cycle-craft-camp-august-17th-august-21st/","weeks":["Week 8"],"notes":"Low availability. Cycling + crafts.","listingUrl":"/camps/dublin/active-ireland-cycle-craft-camp-monkstown"},{"id":"recx65er8dpdPR5QT","name":"St Itas AFC – Girls Only","provider":"St Itas AFC","category":"Football","ageMin":null,"ageMax":null,"area":"Portrane","county":"Dublin","cost":"","costValue":0,"times":"10am–1pm","days":"Monday–Friday","bookingUrl":"https://bookings.faifootballcamps.ie/s/camp-list","weeks":["Week 7"],"notes":"Girls only","listingUrl":"/camps/dublin/st-itas-afc-girls-only"},{"id":"recxo4omxfaObhYov","name":"The Jam Summer Camp Baldoyle","provider":"The Jam","category":"Performing arts","ageMin":4,"ageMax":13,"area":"Baldoyle","county":"Dublin","cost":"€125–€180","costValue":125,"times":"10am–2pm / 2:30–4:30pm","days":"Mon–Fri","bookingUrl":"https://www.thejam.ie/classesandcamps/p/baldoylesummercamp2026-p6pg9","weeks":["Week 2"],"notes":"Early bird €10 off.","listingUrl":"/camps/dublin/the-jam-summer-camp-baldoyle"},{"id":"recy8QDHLQItLtEPh","name":"Charlene's Little Bakers Club","provider":"Charlene's Little Bakers Club","category":"Arts & Crafts","ageMin":6,"ageMax":12,"area":"Malahide","county":"Dublin","cost":"€165","costValue":165,"times":"10am–1pm","days":"Monday–Friday","bookingUrl":"","weeks":["Week 7"],"notes":"Baking, decorating, take-home recipes. Contact Charlene: 085 107 5382.","listingUrl":"/camps/dublin/charlenes-little-bakers-club"},{"id":"recz62tVrj3fx8x05","name":"Navan Adventure Centre Summer Camp","provider":"Navan Adventure Centre","category":"Multi-Activity","ageMin":5,"ageMax":11,"area":"Navan","county":"Meath","cost":"","costValue":0,"times":"9am–2pm","days":"Monday–Friday","bookingUrl":"https://navanadventure.ie/summer-camp/","weeks":["Week 1","Week 3","Week 5","Week 7","Week 8"],"notes":"Archery, mini golf, roller disco, inflatables, laser tag.","listingUrl":"/camps/meath/navan-adventure-centre-summer-camp"},{"id":"reczYIXBXwcN7XDfz","name":"The Jam Summer Camp Sandymount","provider":"The Jam","category":"Performing arts","ageMin":4,"ageMax":13,"area":"Sandymount","county":"Dublin","cost":"€125–€180","costValue":125,"times":"10am–2pm / 2:30–4:30pm","days":"Mon–Fri","bookingUrl":"https://www.thejam.ie/classesandcamps/p/baldoylesummercamp2026-p6pg9-9jf7h","weeks":["Week 8"],"notes":"Early bird €10 off.","listingUrl":"/camps/dublin/the-jam-summer-camp-sandymount"},{"id":"recRtZcqopcEWEols","name":"Rush Athletic FC – Girls Only","provider":"Rush Athletic FC","category":"Football","ageMin":null,"ageMax":null,"area":"Rush","county":"Dublin","cost":"","costValue":0,"times":"10am–1pm","days":"Monday–Friday","bookingUrl":"https://bookings.faifootballcamps.ie/s/camp-list","weeks":["Week 2","Week 3"],"notes":"Girls only","listingUrl":"/camps/dublin/rush-athletic-fc-girls-only"}];
 
-// ── STATE ────────────────────────────────────────────────────
-let activeCats = new Set(); // multi-select category filter
+const LEINSTER_COUNTIES = ['Dublin','Kildare','Meath','Wicklow','Louth','Laois','Offaly','Westmeath','Longford','Carlow','Kilkenny','Wexford'];
 
-// ── WEEK DATES (2026 camp weeks, used by the date range filter) ─
 const WEEK_RANGES = {
-  'Week 1':['2026-06-29','2026-07-03'],
-  'Week 2':['2026-07-06','2026-07-10'],
-  'Week 3':['2026-07-13','2026-07-17'],
-  'Week 4':['2026-07-20','2026-07-24'],
-  'Week 5':['2026-07-27','2026-07-31'],
-  'Week 6':['2026-08-03','2026-08-07'],
-  'Week 7':['2026-08-10','2026-08-14'],
-  'Week 8':['2026-08-17','2026-08-21'],
-  'Week 9':['2026-08-24','2026-08-28'],
+'Week 1':['2026-06-29','2026-07-03'],'Week 2':['2026-07-06','2026-07-10'],'Week 3':['2026-07-13','2026-07-17'],
+'Week 4':['2026-07-20','2026-07-24'],'Week 5':['2026-07-27','2026-07-31'],'Week 6':['2026-08-03','2026-08-07'],
+'Week 7':['2026-08-10','2026-08-14'],'Week 8':['2026-08-17','2026-08-21'],'Week 9':['2026-08-24','2026-08-28'],
 };
 
-// ── COLOURS ──────────────────────────────────────────────────
-const COLS = [
-  {bg:'#CBEAF6',ink:'#2E84AC'},
-  {bg:'#D2F2E2',ink:'#1A9D67'},
-  {bg:'#E6E2F6',ink:'#6E5FB8'},
-  {bg:'#FBD7E4',ink:'#D45F86'},
-];
+const COLS = [{bg:'#CFE8F6',ink:'#3D77A3'},{bg:'#C9F0DA',ink:'#1D8A52'},{bg:'#E7E1F8',ink:'#5B4FCA'},{bg:'#FBE1EB',ink:'#C6567F'}];
 
-// ── FILTER ───────────────────────────────────────────────────
+// Freeform category string → accent colour + icon. Real category values are
+// hand-typed free text (e.g. "Sport — Multi-activity", "STEM / LEGO"), not a
+// clean enum, so this is a best-effort keyword match, not exact taxonomy —
+// worth cleaning up the Airtable category field into a fixed picklist later.
+function categoryStyle(cat){
+  const c = (cat||'').toLowerCase();
+  if(c.includes('tennis')) return {cc:'#3D77A3', icon:'ti-ball-tennis'};
+  if(c.includes('football')||c.includes('gaa')) return {cc:'#1D8A52', icon:'ti-ball-football'};
+  if(c.includes('adventure')||c.includes('outdoor')) return {cc:'#1D8A52', icon:'ti-mountain'};
+  if(c.includes('drama')||c.includes('performing')) return {cc:'#5B4FCA', icon:'ti-masks-theater'};
+  if(c.includes('dance')||c.includes('music')) return {cc:'#C6567F', icon:'ti-music'};
+  if(c.includes('art')) return {cc:'#5B4FCA', icon:'ti-palette'};
+  if(c.includes('stem')||c.includes('coding')||c.includes('lego')||c.includes('science')) return {cc:'#3D77A3', icon:'ti-circuit-board'};
+  if(c.includes('language')) return {cc:'#1D8A52', icon:'ti-language'};
+  if(c.includes('additional needs')) return {cc:'#5B4FCA', icon:'ti-heart'};
+  if(c.includes('academic')) return {cc:'#3D77A3', icon:'ti-book'};
+  if(c.includes('multi')||c.includes('sport')) return {cc:'#3D77A3', icon:'ti-stars'};
+  return {cc:'#3D77A3', icon:'ti-star'};
+}
+
+function ageOverlap(ageMin, ageMax, lo, hi){
+  const effMin = ageMin==null ? 0 : ageMin;
+  const effMax = ageMax==null ? 99 : ageMax;
+  return !(hi < effMin || lo > effMax);
+}
+
+// Approximate day match against the freeform `days` string (e.g. "Mon–Fri",
+// "Tuesdays", "Monday–Friday"). Good enough for a quick filter, not exact
+// parsing — flagged as a known limitation.
+function dayMatches(daysStr, day){
+  if(!day) return true;
+  const d = (daysStr||'').toLowerCase();
+  const short = day.slice(0,3).toLowerCase();
+  if(d.includes(short)) return true;
+  if(/mon.*fri/.test(d) && ['monday','tuesday','wednesday','thursday','friday'].includes(day.toLowerCase())) return true;
+  return false;
+}
+
+let activeCats = new Set();
+
 function filterCamps(){
-  const text    = (document.getElementById('sText').value||'').toLowerCase().trim();
-  const area    = (document.getElementById('fArea').value||'').toLowerCase().trim();
-  const age     = document.getElementById('fAge').value;
-  const sort    = document.getElementById('fSort').value;
-  const dFrom   = document.getElementById('fDateFrom').value; // 'YYYY-MM-DD' or ''
-  const dTo     = document.getElementById('fDateTo').value;
-  const cats    = Array.from(activeCats).map(c=>c.toLowerCase());
+  const text = (document.getElementById('fArea') ? '' : '');
+  const areaText = (document.getElementById('fArea').value||'').toLowerCase().trim();
+  const quickText = (document.getElementById('hText').value||'').toLowerCase().trim();
+  const county = document.getElementById('hWhere').value;
+  const type = document.getElementById('hType').value;
+  const ageVal = document.getElementById('hAge').value;
+  const day = document.getElementById('hDay').value;
+  const sort = document.getElementById('fSort').value;
 
   let res = CAMPS.filter(c=>{
-    if(text){
+    if(quickText){
       const h = [c.name,c.provider,c.area,c.county,c.category].join(' ').toLowerCase();
-      if(!h.includes(text)) return false;
+      if(!h.includes(quickText)) return false;
     }
-    if(area){
+    if(areaText){
       const h = [c.area,c.county].join(' ').toLowerCase();
-      if(!h.includes(area)) return false;
+      if(!h.includes(areaText)) return false;
     }
-    if(cats.length){
-      const cc = (c.category||'').toLowerCase();
-      if(!cats.some(cat=>cc.includes(cat))) return false;
+    if(county && (c.county||'').toLowerCase() !== county.toLowerCase()) return false;
+    // Every real record today is a holiday camp — "Weekly classes" has no
+    // live inventory yet, so that filter intentionally returns zero results
+    // with an encouraging empty state rather than a fake/broken page.
+    if(type === 'weekly') return false;
+    if(ageVal){
+      const [lo,hi] = ageVal.split('-').map(Number);
+      if(!ageOverlap(c.ageMin,c.ageMax,lo,hi)) return false;
     }
-    if(age==='pre'){if((c.ageMin||99)>5||(c.ageMax||0)<3) return false;}
-    if(age==='pri'){if((c.ageMin||99)>12||(c.ageMax||0)<6) return false;}
-    if(age==='teen'){if((c.ageMin||99)>18||(c.ageMax||0)<13) return false;}
-    if(dFrom||dTo){
-      const from = dFrom ? new Date(dFrom) : null;
-      const to   = dTo   ? new Date(dTo)   : null;
-      const weeks = c.weeks||[];
-      const overlaps = weeks.some(w=>{
-        const r = WEEK_RANGES[w];
-        if(!r) return false;
-        const wStart = new Date(r[0]), wEnd = new Date(r[1]);
-        if(from && wEnd < from) return false;
-        if(to && wStart > to) return false;
-        return true;
-      });
-      if(!overlaps) return false;
-    }
+    if(day && !dayMatches(c.days, day)) return false;
     return true;
   });
-
   if(sort==='name') res.sort((a,b)=>a.name.localeCompare(b.name));
   else if(sort==='price_lo') res.sort((a,b)=>(a.costValue||0)-(b.costValue||0));
   else if(sort==='price_hi') res.sort((a,b)=>(b.costValue||999)-(a.costValue||999));
   else if(sort==='age_lo') res.sort((a,b)=>(a.ageMin||99)-(b.ageMin||99));
-
   return res;
 }
 
-// ── RENDER ───────────────────────────────────────────────────
 function render(camps){
   const grid = document.getElementById('grid');
   const count = document.getElementById('rCount');
-
+  const type = document.getElementById('hType').value;
   if(!camps.length){
-    grid.innerHTML = '<div class="empty"><div class="empty-title">No camps found</div><div class="empty-sub">Try a different area, age or clear the filters.</div></div>';
+    const msg = type === 'weekly'
+      ? {t:'Weekly classes are launching soon', s:'Camps are live now — get the newsletter to hear the moment weekly classes go live.'}
+      : {t:'No camps found', s:'Try a different area, age or clear the filters.'};
+    grid.innerHTML = '<div class="empty"><div class="empty-title">'+msg.t+'</div><div class="empty-sub">'+msg.s+'</div></div>';
     count.textContent = '0 camps';
     return;
   }
-
   count.textContent = camps.length + ' camp' + (camps.length!==1?'s':'') + ' found';
   grid.innerHTML = camps.map((c,i) => card(c,i)).join('');
 }
 
 function card(c, i){
   const col = COLS[i % COLS.length];
-  const ageStr = c.ageMin!=null && c.ageMax!=null
-    ? 'Ages '+c.ageMin+'–'+c.ageMax
-    : c.ageMin!=null ? 'Ages '+c.ageMin+'+' : '';
+  const ageStr = c.ageMin!=null && c.ageMax!=null ? 'Ages '+c.ageMin+'–'+c.ageMax : c.ageMin!=null ? 'Ages '+c.ageMin+'+' : '';
   const weeksStr = (c.weeks||[]).slice(0,2).join(', ');
-  const hasUrl = true; // All camps have listing pages
   const isWait = (c.notes||'').toLowerCase().includes('waiting list') || (c.notes||'').toLowerCase().includes('fully booked');
-
-  return `<div class="camp-card">
-    <div class="card-img" style="background:${col.bg}">
-      <div class="card-status ${isWait?'s-wait':'s-open'}">${isWait?'WAITLIST':'LIVE NOW'}</div>
-    </div>
-    <div class="card-body">
-      ${c.category?`<div class="card-cat" style="color:${col.ink}">${c.category}</div>`:''}
-      <div class="card-name">${c.name}</div>
-      ${c.provider&&c.provider!==c.name?`<div class="card-prov">${c.provider}</div>`:''}
-      <div class="card-meta">
-        ${ageStr?`<span class="cm">${ageStr}</span>`:''}
-        ${c.area?`<span class="cm">📍 ${c.area}</span>`:''}
-        ${c.times?`<span class="cm">${c.times.split('\n')[0].substring(0,20)}</span>`:''}
-        ${weeksStr?`<span class="cm">${weeksStr}</span>`:''}
-      </div>
-      ${c.cost?`<div class="card-cost">${c.cost.split('\n')[0].substring(0,30)}</div>`:''}
-      ${hasUrl
-        ? `<a href="${c.listingUrl}" class="card-link">Find out more ↗</a>`
-        : `<span class="card-link no-url">Coming soon</span>`
-      }
-    </div>
-  </div>`;
+  return '<div class="camp-card">'
+  +'<div class="card-img" style="background:'+col.bg+'">'
+  +'<div class="card-status '+(isWait?'s-wait':'s-open')+'">'+(isWait?'WAITLIST':'LIVE NOW')+'</div>'
+  +'</div>'
+  +'<div class="card-body">'
+  +(c.category?'<div class="card-cat" style="color:'+col.ink+'">'+c.category+'</div>':'')
+  +'<div class="card-name">'+c.name+'</div>'
+  +(c.provider&&c.provider!==c.name?'<div class="card-prov">'+c.provider+'</div>':'')
+  +'<div class="card-meta">'
+  +(ageStr?'<span class="cm">'+ageStr+'</span>':'')
+  +(c.area?'<span class="cm">📍 '+c.area+'</span>':'')
+  +(c.times?'<span class="cm">'+c.times.split('\n')[0].substring(0,20)+'</span>':'')
+  +(weeksStr?'<span class="cm">'+weeksStr+'</span>':'')
+  +'</div>'
+  +(c.cost?'<div class="card-cost">'+c.cost.split('\n')[0].substring(0,30)+'</div>':'')
+  +'<a href="'+c.listingUrl+'" class="card-link">Find out more ↗</a>'
+  +'</div></div>';
 }
 
-// ── UI HELPERS ───────────────────────────────────────────────
-function doSearch(){
+function fcard(c){
+  const s = categoryStyle(c.category);
+  return '<a href="'+c.listingUrl+'" class="fcard" style="--cc:'+s.cc+'">'
+  +'<div class="fcard-top"><div class="fcard-icon"><i class="ti '+s.icon+'"></i></div><div class="fcard-type">Holiday camp</div></div>'
+  +'<div class="fcard-name">'+c.name+'</div>'
+  +'<div class="fcard-provider">'+c.provider+'</div>'
+  +(c.days?'<div class="fcard-meta"><i class="ti ti-calendar"></i>'+c.days+(c.times?' · '+c.times:'')+'</div>':'')
+  +(c.area?'<div class="fcard-meta"><i class="ti ti-map-pin"></i>'+c.area+', '+c.county+'</div>':'')
+  +(c.cost?'<div class="fcard-cost">'+c.cost.split('\n')[0]+'</div>':'')
+  +'</a>';
+}
+
+function renderFeatured(){
+  const track = document.getElementById('marquee-track');
+  const step = Math.max(1, Math.ceil(CAMPS.length / 10));
+  const featured = CAMPS.filter((c,i)=> i % step === 0).slice(0,10);
+  const html = featured.map(fcard).join('');
+  track.innerHTML = html + html; // duplicate for seamless scroll
+}
+
+function renderCountyStrip(){
+  const strip = document.getElementById('countyStrip');
+  strip.innerHTML = LEINSTER_COUNTIES.map(county=>{
+    const n = CAMPS.filter(c=>(c.county||'').toLowerCase()===county.toLowerCase()).length;
+    return '<button class="county" onclick="filterCounty(\''+county+'\')">'+county+'<span class="county-count">('+n+')</span></button>';
+  }).join('') + '<button class="county" style="background:var(--nv);color:#fff;border-color:var(--nv);" onclick="clearAll()">All areas <span class="county-count" style="opacity:.8">('+CAMPS.length+')</span></button>';
+}
+
+function heroSearch(){
   render(filterCamps());
   document.getElementById('search').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function filterCounty(county){
+  document.getElementById('hWhere').value = county;
+  heroSearch();
+}
+
+function goWeeklyClasses(){
+  document.getElementById('hType').value = 'weekly';
+  heroSearch();
 }
 
 function clearAll(){
-  document.getElementById('sText').value='';
   document.getElementById('fArea').value='';
-  document.getElementById('fAge').value='';
-  document.getElementById('fDateFrom').value='';
-  document.getElementById('fDateTo').value='';
+  document.getElementById('hText').value='';
+  document.getElementById('hWhere').value='';
+  document.getElementById('hType').value='';
+  document.getElementById('hAge').value='';
+  document.getElementById('hDay').value='';
   document.getElementById('fSort').value='name';
-  activeCats.clear();
-  syncCatUI();
   render(filterCamps());
 }
 
-// Reflects activeCats onto the chip buttons' "on" state.
-function syncCatUI(){
-  document.querySelectorAll('.cc').forEach(c=>c.classList.remove('on'));
-  if(!activeCats.size){
-    document.querySelector('.cc[data-cat=""]').classList.add('on');
-  } else {
-    activeCats.forEach(cat=>{
-      const btn = document.querySelector('.cc[data-cat="'+cat+'"]');
-      if(btn) btn.classList.add('on');
-    });
-  }
-}
-
-// Toggle one category chip on/off — lets people combine e.g. Dance + Drama.
-// Clicking "All" (cat==='') clears every selection.
-function toggleCat(el, cat){
-  if(cat===''){
-    activeCats.clear();
-  } else {
-    if(activeCats.has(cat)) activeCats.delete(cat);
-    else activeCats.add(cat);
-  }
-  syncCatUI();
-  render(filterCamps());
-  document.getElementById('search').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-// Select exactly one category — used by external deep links (footer, area cards)
-// that should replace the current selection rather than add to it.
-function setCat(el, cat){
-  activeCats.clear();
-  if(cat) activeCats.add(cat);
-  syncCatUI();
-  render(filterCamps());
-  document.getElementById('search').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function filterArea(area){
-  document.getElementById('fArea').value=area;
-  doSearch();
-}
-
-document.getElementById('sText').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch();});
-document.getElementById('fArea').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch();});
+document.getElementById('fArea').addEventListener('keydown',e=>{if(e.key==='Enter')heroSearch();});
 
 // ── INIT ─────────────────────────────────────────────────────
+renderFeatured();
+renderCountyStrip();
 render(filterCamps());
 </script>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"sortd","url":"https://sortd-ireland.ie","description":"Ireland's directory of kids' summer camps and activities. Find summer camps, after-school sport, drama, GAA, coding and more across Dublin and beyond.","potentialAction":{"@type":"SearchAction","target":"https://sortd-ireland.ie/?q={search_term_string}","query-input":"required name=search_term_string"}}
+{"@context":"https://schema.org","@type":"WebSite","name":"sortd","url":"https://sortd-ireland.ie","description":"Ireland's directory of kids' summer camps and activities. Find summer camps, after-school sport, drama, GAA, coding and more across Dublin and Leinster.","potentialAction":{"@type":"SearchAction","target":"https://sortd-ireland.ie/?q={search_term_string}","query-input":"required name=search_term_string"}}
 </script>
-<!-- NEWSLETTER POPUP -->
-<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-label="Newsletter signup">
-  <div class="popup">
-    <button class="popup-close" onclick="closePopup()" aria-label="Close">&#10005;</button>
-    <div class="popup-logo">sortd</div>
-
-    <div id="popupFormWrap">
-      <div class="popup-title">Join the waitlist — be the first to see new sortd</div>
-      <p class="popup-sub">All your weekly classes, camps and afterschool clubs listed on one website. Absolutely free.</p>
-
-      <form class="popup-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="popupSubmit(event)">
-        <input type="hidden" name="form-name" value="newsletter">
-        <p style="display:none"><label>Don't fill: <input name="bot-field"></label></p>
-        <input class="popup-input" id="p-email" name="email" type="email" placeholder="your@email.ie" required aria-label="Email address">
-        <button class="popup-btn" type="submit">Join Free →</button>
-      </form>
-
-      <p class="popup-privacy">By submitting this form, you agree that your information can be processed in accordance with our <a href="/privacy-policy">Privacy Policy</a>. You can unsubscribe at any time.</p>
-    </div>
-
-    <div class="popup-success" id="popupSuccess">
-      <div class="popup-success-title">You're in.</div>
-      <p class="popup-success-sub">We'll let you know as soon as new sortd is live.</p>
-      <span class="popup-success-caveat">activities sorted →</span>
-    </div>
-  </div>
-</div>
 
 <script>
 let popupShown = false;
-
 function openPopup() {
   document.getElementById('popupOverlay').classList.add('show');
   document.body.style.overflow = 'hidden';
 }
-
 function closePopup() {
   document.getElementById('popupOverlay').classList.remove('show');
   document.body.style.overflow = '';
   popupShown = true;
   sessionStorage.setItem('nlShown', '1');
 }
-
 document.getElementById('popupOverlay').addEventListener('click', function(e) {
   if (e.target === this) closePopup();
 });
-
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closePopup();
 });
-
 function checkScroll() {
   if (popupShown || sessionStorage.getItem('nlShown')) return;
   const scrolled = window.scrollY + window.innerHeight;
@@ -729,7 +646,6 @@ function popupSubmit(e) {
   const form = e.target;
   const data = new FormData(form);
   const payload = Object.fromEntries(data);
-
   fetch('/.netlify/functions/subscribe', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -746,31 +662,6 @@ function showPopupSuccess() {
   sessionStorage.setItem('nlShown', '1');
   setTimeout(closePopup, 3000);
 }
-
-function heroSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const data = new FormData(form);
-  const payload = Object.fromEntries(data);
-
-  fetch('/.netlify/functions/subscribe', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  })
-  .then(r => r.json())
-  .then(() => {
-    form.querySelector('.hero-nl-bar').style.display = 'none';
-    document.getElementById('heroSuccess').style.display = 'flex';
-    sessionStorage.setItem('nlShown', '1');
-  })
-  .catch(() => {
-    form.querySelector('.hero-nl-bar').style.display = 'none';
-    document.getElementById('heroSuccess').style.display = 'flex';
-    sessionStorage.setItem('nlShown', '1');
-  });
-}
 </script>
-
 </body>
 </html>
