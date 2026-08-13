@@ -19,13 +19,7 @@ gtag('config', 'G-HHTB7S9WJG');
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <link rel="stylesheet" href="/css/site.css">
 </head>
-<form name="newsletter" netlify netlify-honeypot="bot-field" hidden>
-<input type="email" name="email">
-<input type="text" name="first-name">
-<input type="text" name="county">
-<input type="number" name="child1-age">
-<input type="number" name="child2-age">
-</form>
+
 <body>
 <div class="annotation">Preview branch — homepage redesign, not live yet. See PR notes for the list of decisions/gaps flagged for Rachel's review.</div>
 <nav>
@@ -35,11 +29,12 @@ gtag('config', 'G-HHTB7S9WJG');
     <a href="/weekly-classes" class="navlink">Weekly classes</a>
     <a href="/how-it-works" class="navlink">How it works</a>
     <a href="/about" class="navlink">Our story</a>
+    <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener" class="navlink">Partners portal</a>
   </div>
   <div style="display:flex; align-items:center; gap:12px;">
     <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener"><i class="ti ti-brand-instagram nav-icon"></i></a>
     <a href="/list" class="nav-cta-outline">Add a class</a>
-    <button class="nav-cta" onclick="openPopup()">Get the newsletter</button>
+    <button class="nav-cta" onclick="openPopup()">Follow us</button>
   </div>
 </nav>
 <section class="hero">
@@ -172,25 +167,15 @@ gtag('config', 'G-HHTB7S9WJG');
     <div class="foot-source">Sources: provider websites, WhatsApp screenshots, Instagram. Confirm details with each provider before booking.</div>
   </div>
 </footer>
-<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-label="Newsletter signup">
+<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-label="Follow sortd on Instagram">
 <div class="popup">
 <button class="popup-close" onclick="closePopup()" aria-label="Close">&#10005;</button>
 <div class="popup-logo">sortd</div>
-<div id="popupFormWrap">
-<div class="popup-title">Join the waitlist — be the first to see new sortd</div>
-<p class="popup-sub">All your weekly classes, camps and afterschool clubs listed on one website. Absolutely free.</p>
-<form class="popup-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="popupSubmit(event)">
-<input type="hidden" name="form-name" value="newsletter">
-<p style="display:none"><label>Don't fill: <input name="bot-field"></label></p>
-<input class="popup-input" id="p-email" name="email" type="email" placeholder="your@email.ie" required aria-label="Email address">
-<button class="popup-btn" type="submit">Join Free →</button>
-</form>
-<p class="popup-privacy">By submitting this form, you agree that your information can be processed in accordance with our <a href="/privacy-policy">Privacy Policy</a>. You can unsubscribe at any time.</p>
-</div>
-<div class="popup-success" id="popupSuccess">
-<div class="popup-success-title">You're in.</div>
-<p class="popup-success-sub">We'll let you know as soon as new sortd is live.</p>
-</div>
+<div class="popup-title">Follow on Instagram</div>
+<p class="popup-sub">New camps, open spots and last-minute updates — posted first on Instagram. No app, no spam, just what's on.</p>
+<a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" class="popup-btn" style="display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;">
+<i class="ti ti-brand-instagram" style="font-size:20px;"></i> Follow @sortd.ireland
+</a>
 </div>
 </div>
 <script src="/js/camps-data.js"></script>
@@ -246,7 +231,7 @@ function closePopup() {
   document.getElementById('popupOverlay').classList.remove('show');
   document.body.style.overflow = '';
   popupShown = true;
-  sessionStorage.setItem('nlShown', '1');
+  sessionStorage.setItem('igShown', '1');
 }
 document.getElementById('popupOverlay').addEventListener('click', function(e) {
   if (e.target === this) closePopup();
@@ -255,7 +240,7 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closePopup();
 });
 function checkScroll() {
-  if (popupShown || sessionStorage.getItem('nlShown')) return;
+  if (popupShown || sessionStorage.getItem('igShown')) return;
   const scrolled = window.scrollY + window.innerHeight;
   const total = document.body.scrollHeight;
   if (scrolled / total >= 0.5) {
@@ -265,28 +250,6 @@ function checkScroll() {
   }
 }
 window.addEventListener('scroll', checkScroll, { passive: true });
-
-function popupSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const data = new FormData(form);
-  const payload = Object.fromEntries(data);
-  fetch('/.netlify/functions/subscribe', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  })
-  .then(r => r.json())
-  .then(() => showPopupSuccess())
-  .catch(() => showPopupSuccess());
-}
-
-function showPopupSuccess() {
-  document.getElementById('popupFormWrap').style.display = 'none';
-  document.getElementById('popupSuccess').style.display = 'block';
-  sessionStorage.setItem('nlShown', '1');
-  setTimeout(closePopup, 3000);
-}
 </script>
 </body>
 </html>
