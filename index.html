@@ -101,7 +101,7 @@ gtag('config', 'G-HHTB7S9WJG');
 <div class="band band-green">
   <div class="band-inner">
     <div class="section-label">Browse by county</div>
-    <h2>Leinster-wide</h2>
+    <h2>Dublin now. More counties soon.</h2>
     <div class="countystrip" id="countyStrip"></div>
     <div class="note">no more missing the sign-up window — we'll tell you what's on ↗</div>
   </div>
@@ -206,8 +206,15 @@ function renderFeatured(){
 }
 
 function renderCountyStrip(){
+  // Only show counties with at least one real listing — avoids linking to empty
+  // results for counties we haven't expanded into yet. Self-updates: a county
+  // appears here automatically the day it gets its first real listing, no
+  // hardcoding needed as Sortd expands beyond Dublin.
   const strip = document.getElementById('countyStrip');
-  strip.innerHTML = LEINSTER_COUNTIES.map(county=>{
+  const live = LEINSTER_COUNTIES.filter(county =>
+    LISTINGS.some(c=>(c.county||'').toLowerCase()===county.toLowerCase())
+  );
+  strip.innerHTML = live.map(county=>{
     const n = LISTINGS.filter(c=>(c.county||'').toLowerCase()===county.toLowerCase()).length;
     return '<button class="county" onclick="filterCounty(\''+county+'\')">'+county+'<span class="county-count">('+n+')</span></button>';
   }).join('') + '<a href="/camps" class="county" style="background:var(--nv);color:#fff;border-color:var(--nv);">All areas <span class="county-count" style="opacity:.8">('+LISTINGS.length+')</span></a>';
