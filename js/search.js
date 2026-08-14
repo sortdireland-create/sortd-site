@@ -54,14 +54,25 @@ function matchesDays(daysStr, selectedDays){
   return false;
 }
 
-// "Eircode or area" free-text field. There's no real eircode/lat-long on
-// each listing yet (Airtable only has area/county text), so this is a
-// substring match against area/county/name rather than true postcode-radius
-// search — flagged to Rachel as a follow-up if she wants real "nearest
-// first" results (would need a geocoding step per listing).
+// "Eircode or area" free-text field. Matches a real Eircode (routing key
+// like "K36"/"D13", or a full code like "K36 TD90") against each listing's
+// `postcode`, and falls back to a substring match against area/county/name
+// for a plain place name like "Malahide". There's still no lat/long-based
+// radius search — this is a prefix/substring match, not "nearest first" —
+// flagged to Rachel as a possible follow-up if she wants true proximity
+// results (would need a geocoding step per listing).
 function matchesEircodeOrArea(listing, query){
   if(!query) return true;
-  const q = query.toLowerCase().trim();
+  const qRaw = query.trim();
+  // Pad an unpadded Dublin routing key ("D5" -> "D05") so it matches the
+  // stored format, same as the padding applied to postcodes on import.
+  let qCode = qRaw.replace(/\s+/g, '').toUpperCase();
+  qCode = qCode.replace(/^D(\d)(?!\d)/, 'D0$1');
+  if(listing.postcode){
+    const pcCode = listing.postcode.replace(/\s+/g, '').toUpperCase();
+    if(pcCode.startsWith(qCode) || qCode.startsWith(pcCode)) return true;
+  }
+  const q = qRaw.toLowerCase();
   const h = [listing.area, listing.county, listing.name].join(' ').toLowerCase();
   return h.includes(q);
 }
