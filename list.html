@@ -16,16 +16,14 @@ gtag('config', 'G-HHTB7S9WJG');
 <link rel="canonical" href="https://sortd-ireland.ie/list">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="/css/site.css">
 <style>
 :root{--cr:#F5F0E8;--nv:#27314A;--sk:#29ABE2;--pk:#F4A7C3;--bl:#4782A8;--pkA:#C66686;--tpk:#F5D9E4;--su:#F7A800;--gr:#2BAD7E;--bd:#3a4560;--fd:'Baloo 2',sans-serif;--fb:'Nunito',sans-serif;--fs:'Caveat',cursive;}
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&family=Caveat:wght@600&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
-nav{background:var(--nv);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;}
-.nav-logo{font-family:var(--fd);font-size:1.6rem;font-weight:800;color:#fff;text-decoration:none;}
-.nav-logo span{color:var(--pk);}
-.nav-links a{color:#fff;opacity:.75;text-decoration:none;font-weight:600;font-size:.9rem;}
-.hero{background:var(--nv);color:#fff;padding:56px 24px 72px;text-align:center;}
+.hero{position:static;overflow:visible;background:var(--nv);color:#fff;padding:56px 24px 72px;text-align:center;}
 .hero h1{font-family:var(--fd);font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px;}
 .hero p{max-width:520px;margin:0 auto;color:#c9d0dd;font-size:1.05rem;line-height:1.6;}
 .hero .pill{display:inline-block;margin-top:20px;background:var(--pk);color:var(--nv);font-weight:800;font-size:.85rem;padding:8px 18px;border-radius:20px;}
@@ -50,8 +48,6 @@ nav{background:var(--nv);padding:0 24px;display:flex;align-items:center;justify-
 .status.err{background:var(--tpk);color:var(--pkA);display:block;}
 .already{text-align:center;margin-top:28px;font-size:.9rem;color:#666;}
 .already a{color:var(--sk);font-weight:700;text-decoration:none;}
-footer{background:var(--nv);color:#8b93a8;text-align:center;padding:28px 24px;font-size:.85rem;}
-footer a{color:var(--pk);text-decoration:none;}
 .done-badge{width:52px;height:52px;border-radius:14px;background:var(--gr);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;margin:0 auto 18px;}
 .done-h{font-family:var(--fd);font-weight:800;font-size:1.4rem;color:var(--nv);text-align:center;margin-bottom:12px;}
 .done-p{font-size:.95rem;color:#444;line-height:1.6;text-align:center;margin-bottom:16px;}
@@ -65,8 +61,18 @@ footer a{color:var(--pk);text-decoration:none;}
 <body>
 
 <nav>
-<a href="/" class="nav-logo">sort<span>d</span></a>
-<div class="nav-links"><a href="/">For parents</a><a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener">Partners Portal</a></div>
+  <a href="/" class="brand">sortd<span>.</span></a>
+  <div class="navlinks">
+    <a href="/camps" class="navlink">Camps</a>
+    <a href="/weekly-classes" class="navlink">Weekly classes</a>
+    <a href="/how-it-works" class="navlink">How it works</a>
+    <a href="/about" class="navlink">Our story</a>
+    <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener" class="navlink">Partners portal</a>
+  </div>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener"><i class="ti ti-brand-instagram nav-icon"></i></a>
+    <button class="nav-cta" onclick="openPopup()">Follow us</button>
+  </div>
 </nav>
 
 <div class="hero">
@@ -201,7 +207,79 @@ Already listed on sortd and need to make a change? <a href="/claim">Claim your l
 </div>
 </div>
 
-<footer><p>© 2026 sortd · <a href="/privacy-policy">Privacy Policy</a></p></footer>
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-logo">sortd</div>
+      <p class="foot-tag">Every kids' camp &amp; weekly class across Leinster, in one place. Built by a mum. For parents.</p>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb7sv3eInlqMyMfLFY01" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <div class="foot-heading">Browse</div>
+      <a href="/camps?q=Dublin">Dublin camps</a>
+      <a href="/camps?q=Wicklow">Wicklow camps</a>
+      <a href="/camps?q=Meath">Meath camps</a>
+      <a href="/camps">All camps</a>
+      <a href="/weekly-classes">All weekly classes</a>
+    </div>
+    <div class="foot-col">
+      <div class="foot-heading">Company</div>
+      <a href="/how-it-works">How it works</a>
+      <a href="/about">About</a>
+      <a href="mailto:sortd.ireland@gmail.com?subject=Camp%20recommendation">Recommend an activity</a>
+      <a href="mailto:sortd.ireland@gmail.com">Contact</a>
+    </div>
+    <div class="foot-col">
+      <div class="foot-heading">For providers</div>
+      <a href="/list">Add a class — free</a>
+      <a href="/claim">Claim your listing</a>
+      <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener">Partners portal</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© 2026 Sortd Ireland · <a href="/privacy-policy">Privacy Policy</a></div>
+    <div class="foot-source">Sources: provider websites, WhatsApp screenshots, Instagram. Confirm details with each provider before booking.</div>
+  </div>
+</footer>
+
+<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-label="Follow sortd on Instagram">
+<div class="popup">
+<button class="popup-close" onclick="closePopup()" aria-label="Close">&#10005;</button>
+<div class="popup-logo">sortd</div>
+<div class="popup-title">Follow on Instagram</div>
+<p class="popup-sub">New camps, open spots and last-minute updates — posted first on Instagram. No app, no spam, just what's on.</p>
+<a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" class="popup-btn" style="display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;">
+<i class="ti ti-brand-instagram" style="font-size:20px;"></i> Follow @sortd.ireland
+</a>
+</div>
+</div>
+
+<script>
+let popupShown = false;
+function openPopup() {
+  document.getElementById('popupOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closePopup() {
+  document.getElementById('popupOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+  popupShown = true;
+  sessionStorage.setItem('igShown', '1');
+}
+document.getElementById('popupOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closePopup();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePopup();
+});
+</script>
 
 <script>
 const MAX_IMAGE_BYTES = 4 * 1024 * 1024; // 4MB — matches the cap enforced in upload-listing-image.js

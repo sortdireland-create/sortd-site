@@ -6,31 +6,23 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HHTB7S9WJG"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HHTB7S9WJG');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HHTB7S9WJG');
 </script>
-<title>How sortd works — Finding kids' camps in Ireland made simple</title>
-<meta name="description" content="sortd is a free, parent-curated directory of summer camps and kids' activities across Ireland. No WhatsApp groups. No missed posts. Just every camp in one place.">
+<title>How sortd works — Finding kids' camps &amp; classes in Ireland made simple</title>
+<meta name="description" content="sortd is a free, parent-curated directory of summer camps and weekly classes across Dublin, Wicklow, Meath and beyond. No WhatsApp groups. No missed posts. Just every camp and class in one place.">
 <link rel="canonical" href="https://sortd-ireland.ie/how-it-works">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="/css/site.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Nunito',sans-serif;background:#fff;color:#27314A;-webkit-font-smoothing:antialiased;}
 a{text-decoration:none;color:inherit;}
-
-/* NAV */
-.nav{background:#fff;border-bottom:1.5px solid #eee;position:sticky;top:0;z-index:100;}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;}
-.logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:28px;color:#27314A;letter-spacing:-0.03em;}
-.nav-links{display:flex;align-items:center;gap:24px;font-weight:700;font-size:14px;}
-.nav-links a{color:#27314A;opacity:0.6;transition:opacity 0.15s;}
-.nav-links a:hover,.nav-links a.active{opacity:1;}
-.nav-cta{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#2E84AC;padding:9px 20px;border-radius:999px;white-space:nowrap;}
-@media(max-width:768px){.nav-links{display:none;}.nav-inner{padding:14px 20px;}}
 
 /* SHARED */
 .w{max-width:1200px;margin:0 auto;}
@@ -41,7 +33,7 @@ a{text-decoration:none;color:inherit;}
 .hero{background:#CBEAF6;padding:72px 40px 64px;}
 .hero h1{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(36px,5vw,58px);line-height:1.0;letter-spacing:-0.03em;color:#27314A;margin-bottom:18px;}
 .hero h1 em{font-style:normal;color:#2E84AC;}
-.hero-sub{font-weight:600;font-size:18px;line-height:1.6;color:#3c4a55;max-width:580px;}
+.hero-sub{font-weight:600;font-size:18px;line-height:1.6;color:#3c4a55;max-width:580px;margin:0 auto;text-align:center;}
 @media(max-width:768px){.hero{padding:52px 20px 48px;}}
 
 /* PROBLEM STRIP */
@@ -98,214 +90,279 @@ a{text-decoration:none;color:inherit;}
 .cta-b2{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:16px;color:#6E5FB8;background:#fff;padding:14px 30px;border-radius:999px;display:inline-block;}
 @media(max-width:768px){.cta-sec{padding:56px 20px;}}
 
-/* FOOTER */
-.footer{background:#27314A;padding:40px;text-align:center;}
-.footer-logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:24px;color:#F4A7C3;display:block;margin-bottom:12px;}
-.footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:16px;}
-.footer-links a{font-weight:600;font-size:13px;color:rgba(255,255,255,0.55);transition:color 0.14s;}
-.footer-links a:hover{color:#fff;}
-.footer-copy{font-size:11px;color:rgba(255,255,255,0.3);}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="logo">sortd</a>
-    <div class="nav-links">
-      <a href="/how-it-works" class="active">how it works</a>
-      <a href="/about">about</a>
-      <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener">partners portal</a>
-      <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener">instagram</a>
-    </div>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSelQlw3EjgVy573-91GTTzI1amA2SY-UGDrc_fDk_EQZDoaRQ/viewform" class="nav-cta" target="_blank" rel="noopener">list your camp</a>
+<nav>
+  <a href="/" class="brand">sortd<span>.</span></a>
+  <div class="navlinks">
+    <a href="/camps" class="navlink">Camps</a>
+    <a href="/weekly-classes" class="navlink">Weekly classes</a>
+    <a href="/how-it-works" class="navlink active">How it works</a>
+    <a href="/about" class="navlink">Our story</a>
+    <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener" class="navlink">Partners portal</a>
+  </div>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener"><i class="ti ti-brand-instagram nav-icon"></i></a>
+    <a href="/list" class="nav-cta-outline">Add a class</a>
+    <button class="nav-cta" onclick="openPopup()">Follow us</button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="w">
-    <span class="eyebrow" style="color:#6E5FB8;">How sortd works</span>
-    <h1>Finding summer camps in Ireland<br>just got <em>a lot easier.</em></h1>
-    <p class="hero-sub">sortd is a free, parent-curated directory of kids' summer camps and activities across Ireland. No algorithms. No ads. No WhatsApp groups to join. Just every camp, in one place.</p>
-    <span class="caveat" style="color:#2E84AC;">built by a mum who needed it →</span>
-  </div>
+<div class="w">
+<span class="eyebrow" style="color:#6E5FB8;">How sortd works</span>
+<h1>Finding camps and classes in Ireland<br>just got <em>a lot easier.</em></h1>
+<p class="hero-sub">sortd is a free, parent-curated directory of kids' holiday camps and weekly term-time classes across Dublin, Wicklow, Meath and beyond. No algorithms. No ads. No WhatsApp groups to join. Just every camp and class, in one place.</p>
+<span class="caveat" style="color:#2E84AC;">built by a mum who needed it →</span>
+</div>
 </section>
 
 <!-- THE PROBLEM -->
 <section class="problem">
-  <div class="problem-inner">
-    <div class="prob-card">
-      <div class="prob-num" style="color:#F4A7C3;">14</div>
-      <div class="prob-label">WhatsApp groups you'd need to be in to not miss a single camp in north Dublin</div>
-    </div>
-    <div class="prob-card">
-      <div class="prob-num" style="color:#CBEAF6;">7</div>
-      <div class="prob-label">Instagram accounts to follow before you'd see every option in your area</div>
-    </div>
-    <div class="prob-card">
-      <div class="prob-num" style="color:#D2F2E2;">3</div>
-      <div class="prob-label">Spreadsheets the average Dublin mum maintains just to track the summer</div>
-    </div>
-  </div>
+<div class="problem-inner">
+<div class="prob-card">
+<div class="prob-num" style="color:#F4A7C3;">14</div>
+<div class="prob-label">WhatsApp groups you'd need to be in to not miss a single camp or class in north Dublin</div>
+</div>
+<div class="prob-card">
+<div class="prob-num" style="color:#CBEAF6;">7</div>
+<div class="prob-label">Instagram accounts to follow before you'd see every option in your area</div>
+</div>
+<div class="prob-card">
+<div class="prob-num" style="color:#D2F2E2;">3</div>
+<div class="prob-label">Spreadsheets the average Dublin mum maintains just to keep track of it all</div>
+</div>
+</div>
 </section>
 
 <!-- STEPS -->
 <section class="steps-sec">
-  <div class="w">
-    <span class="eyebrow" style="color:#1A9D67;">Three steps</span>
-    <div class="steps-title">From chaos to a sorted summer.</div>
-    <p class="steps-sub">No account needed. No app to download. Works on your phone right now.</p>
-    <div class="steps-list">
-      <div class="step-row">
-        <div class="step-num-big" style="color:#1A9D67;">01</div>
-        <div class="step-content">
-          <div class="step-title">Search your area</div>
-          <p class="step-body">Type your town, area or postcode — or just browse all camps across Dublin, Wicklow, Meath and beyond. Filter by age, activity type, week and price. Every live camp in Ireland, not just the ones you happen to follow on Instagram.</p>
-          <span class="step-pill">Try: "Malahide" or "drama" or "ages 5–8"</span>
-        </div>
-      </div>
-      <div class="step-row">
-        <div class="step-num-big" style="color:#1A9D67;">02</div>
-        <div class="step-content">
-          <div class="step-title">See everything at a glance</div>
-          <p class="step-body">Each listing shows you exactly what you need — which weeks it runs, what age it's for, what time it starts, how much it costs, and where it is. No clicking through three different websites. No "DM for details." Just the info, right there.</p>
-          <span class="step-pill">93 camps listed · updated weekly</span>
-        </div>
-      </div>
-      <div class="step-row">
-        <div class="step-num-big" style="color:#1A9D67;">03</div>
-        <div class="step-content">
-          <div class="step-title">Book directly with the provider</div>
-          <p class="step-body">sortd links you straight through to the camp's own booking page. No middleman, no platform fee, no extra steps. You book directly with the provider — sortd just makes it easy to find them first.</p>
-          <span class="step-pill">Free to use for parents · always</span>
-        </div>
-      </div>
-    </div>
-    <span class="caveat" style="color:#1A9D67;">raise your hand if this needs to be sorted for you →</span>
-  </div>
+<div class="w">
+<span class="eyebrow" style="color:#1A9D67;">Three steps</span>
+<div class="steps-title">From chaos to a sorted summer.</div>
+<p class="steps-sub">No account needed. No app to download. Works on your phone right now.</p>
+<div class="steps-list">
+<div class="step-row">
+<div class="step-num-big" style="color:#1A9D67;">01</div>
+<div class="step-content">
+<div class="step-title">Choose camps or classes, search your area</div>
+<p class="step-body">Start from the homepage, or head straight to Camps or Weekly classes. Type your eircode or area — or just browse. Filter by age and day of the week to narrow it down. Every live listing across Dublin, Wicklow, Meath and beyond, not just the ones you happen to follow on Instagram.</p>
+<span class="step-pill">Try: "D13" or "Malahide" or "Tuesdays"</span>
+</div>
+</div>
+<div class="step-row">
+<div class="step-num-big" style="color:#1A9D67;">02</div>
+<div class="step-content">
+<div class="step-title">See everything at a glance</div>
+<p class="step-body">Each listing shows you exactly what you need — which weeks or days it runs, what age it's for, what time it starts, how much it costs, and where it is. No clicking through three different websites. No "DM for details." Just the info, right there.</p>
+<span class="step-pill">Camps &amp; weekly classes · updated weekly</span>
+</div>
+</div>
+<div class="step-row">
+<div class="step-num-big" style="color:#1A9D67;">03</div>
+<div class="step-content">
+<div class="step-title">Book directly with the provider</div>
+<p class="step-body">sortd links you straight through to the provider's own booking page or contact details. No middleman, no platform fee, no extra steps. You book directly with the provider — sortd just makes it easy to find them first.</p>
+<span class="step-pill">Free to use for parents · always</span>
+</div>
+</div>
+</div>
+<span class="caveat" style="color:#1A9D67;">raise your hand if this needs to be sorted for you →</span>
+</div>
 </section>
 
 <!-- FEATURES -->
 <section class="features">
-  <div class="w">
-    <span class="eyebrow" style="color:#EF3D2F;">What makes sortd different</span>
-    <div class="features-title">Built by a parent. For parents.</div>
-    <div class="feat-grid">
-      <div class="feat-card" style="background:#CBEAF6;">
-        <span class="feat-icon">📍</span>
-        <div class="feat-title">Real local knowledge</div>
-        <p class="feat-body">Every listing is researched and added by hand — not scraped from a database. If it's on sortd, a parent has checked it out.</p>
-      </div>
-      <div class="feat-card" style="background:#D2F2E2;">
-        <span class="feat-icon">🔍</span>
-        <div class="feat-title">Actually searchable</div>
-        <p class="feat-body">Filter by age, area, activity type, week and price. Find exactly what you need in 30 seconds, not 30 minutes.</p>
-      </div>
-      <div class="feat-card" style="background:#FBD7E4;">
-        <span class="feat-icon">📅</span>
-        <div class="feat-title">Week-by-week visibility</div>
-        <p class="feat-body">See at a glance which weeks each camp runs. Plan all 9 weeks of summer in one sitting instead of piecing it together from 14 different sources.</p>
-      </div>
-      <div class="feat-card" style="background:#E6E2F6;">
-        <span class="feat-icon">💸</span>
-        <div class="feat-title">Always free for parents</div>
-        <p class="feat-body">sortd is free to use. Always. We make money from camp providers who want to be more visible — not from the parents trying to find them.</p>
-      </div>
-      <div class="feat-card" style="background:#F5F0E8;">
-        <span class="feat-icon">📲</span>
-        <div class="feat-title">No app needed</div>
-        <p class="feat-body">Works in your browser on your phone. No download, no account, no login. Open sortd-ireland.ie and you're ready to go.</p>
-      </div>
-      <div class="feat-card" style="background:#CBEAF6;">
-        <span class="feat-icon">🔄</span>
-        <div class="feat-title">Updated constantly</div>
-        <p class="feat-body">New camps added every week. Status updated as places open and fill. If something changes, we update it so you don't have to chase it.</p>
-      </div>
-    </div>
-  </div>
+<div class="w">
+<span class="eyebrow" style="color:#C66686;">What makes sortd different</span>
+<div class="features-title">Built by a parent. For parents.</div>
+<div class="feat-grid">
+<div class="feat-card" style="background:#CBEAF6;">
+<span class="feat-icon">📍</span>
+<div class="feat-title">Real local knowledge</div>
+<p class="feat-body">Every listing is researched and added by hand — not scraped from a database. If it's on sortd, a parent has checked it out.</p>
+</div>
+<div class="feat-card" style="background:#D2F2E2;">
+<span class="feat-icon">🔍</span>
+<div class="feat-title">Actually searchable</div>
+<p class="feat-body">Filter by eircode or area, age and day of the week. Find exactly what you need in 30 seconds, not 30 minutes.</p>
+</div>
+<div class="feat-card" style="background:#FBD7E4;">
+<span class="feat-icon">📅</span>
+<div class="feat-title">Camps and classes, side by side</div>
+<p class="feat-body">Holiday camps for the midterms and summer, weekly classes for term time — searched the same way, shown the same way, so you're never stuck piecing it together from different sources.</p>
+</div>
+<div class="feat-card" style="background:#E6E2F6;">
+<span class="feat-icon">💸</span>
+<div class="feat-title">Always free for parents</div>
+<p class="feat-body">sortd is free to use. Always. We make money from camp providers who want to be more visible — not from the parents trying to find them.</p>
+</div>
+<div class="feat-card" style="background:#F5F0E8;">
+<span class="feat-icon">📲</span>
+<div class="feat-title">No app needed</div>
+<p class="feat-body">Works in your browser on your phone. No download, no account, no login. Open sortd-ireland.ie and you're ready to go.</p>
+</div>
+<div class="feat-card" style="background:#CBEAF6;">
+<span class="feat-icon">🔄</span>
+<div class="feat-title">Updated constantly</div>
+<p class="feat-body">New camps and classes added every week. Status updated as places open and fill. If something changes, we update it so you don't have to chase it.</p>
+</div>
+</div>
+</div>
 </section>
 
 <!-- FAQ -->
 <section class="faq">
-  <div class="w">
-    <span class="eyebrow" style="color:#EF3D2F;">Questions</span>
-    <div class="faq-title">Things parents ask us</div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggle(this)">Is sortd free to use?</div>
-        <div class="faq-a">Yes — completely free for parents. Always. sortd makes money from camp providers who pay to be listed and featured, not from the parents using the directory.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggle(this)">Do I need to create an account?</div>
-        <div class="faq-a">No account, no login, no app to download. Just open sortd-ireland.ie on your phone or computer and start searching. That's it.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggle(this)">How do I actually book a camp?</div>
-        <div class="faq-a">Click "Book this camp" on any listing and you'll go straight to the provider's own booking page. sortd doesn't take the booking — we just help you find the camp. You book directly with the provider, usually online, by email or by phone.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggle(this)">Are all the camps on sortd verified?</div>
-        <div class="faq-a">Every listing on sortd is researched and added by hand. We check the details directly from the provider's website, Instagram or by contacting them. That said, camp details can change — always confirm with the provider before booking, especially for dates and prices.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggle(this)">My area isn't covered yet — when will it be?</div>
-        <div class="faq-a">We started with north Dublin and are expanding county by county. Cork, Galway, Limerick and more are coming. The fastest way to get your area covered is to recommend camps to us — we'll add them and let you know when they're live.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggle(this)">I run a camp — how do I get listed?</div>
-        <div class="faq-a">We'd love to have you. Listing is free and takes about three minutes. Click "list your camp" in the navigation and fill in the details — we'll have you live within 24 hours.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggle(this)">How do I know if places are still available?</div>
-        <div class="faq-a">Each listing shows a live status — "Live Now" means booking is open, "Waitlist" means it's full but you can still join the queue. We update this regularly, but always check with the provider directly for the most up-to-date availability.</div>
-      </div>
-    </div>
-  </div>
+<div class="w">
+<span class="eyebrow" style="color:#C66686;">Questions</span>
+<div class="faq-title">Things parents ask us</div>
+<div class="faq-list">
+<div class="faq-item">
+<div class="faq-q" onclick="toggle(this)">Is sortd free to use?</div>
+<div class="faq-a">Yes — it's free for everyone. Free for parents to search and browse, and free for providers to list a camp or class. The Partners portal offers optional extra visibility for providers who want it, but sortd itself is free for everyone.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggle(this)">I run a camp or class — how do I get listed?</div>
+<div class="faq-a">We'd love to have you. Head to <a href="/list" style="color:#2E84AC;text-decoration:underline;">sortd-ireland.ie/list</a> — it's free and takes about three minutes. If you'd like more visibility or better placement, check out the Partners portal.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggle(this)">Do I need to create an account?</div>
+<div class="faq-a">No account, no login, no app to download. Just open sortd-ireland.ie on your phone or computer and start searching. That's it.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggle(this)">Do you have weekly classes too, or just camps?</div>
+<div class="faq-a">Both. Camps covers holiday camps for midterms and summer; Weekly classes covers term-time activities like swimming, dance, GAA and more. Use the nav to jump straight to whichever you need, or search from the homepage and pick a type.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggle(this)">How do I actually book?</div>
+<div class="faq-a">Click through on any listing and you'll go straight to the provider's own booking page or contact details. sortd doesn't take the booking — we just help you find the camp or class. You book directly with the provider, usually online, by email or by phone.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggle(this)">Are all the listings on sortd verified?</div>
+<div class="faq-a">Every listing on sortd is researched and added by hand. We check the details directly from the provider's website, Instagram or by contacting them. That said, details can change — always confirm with the provider before booking, especially for dates and prices.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggle(this)">My area isn't covered yet — when will it be?</div>
+<div class="faq-a">We started in north Dublin and are expanding across Leinster — Wicklow and Meath are already live, with Kildare, Louth, Laois, Offaly, Westmeath, Longford, Carlow, Kilkenny and Wexford next. The fastest way to get your area covered is to email us a recommendation and we'll add it.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggle(this)">How do I know if places are still available?</div>
+<div class="faq-a">Each listing shows a live status where we have it — "Live Now" means booking is open, "Waitlist" means it's full but you can still join the queue. We update this regularly, but always check with the provider directly for the most up-to-date availability.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggle(this)">Do you have a newsletter?</div>
+<div class="faq-a">We've moved to Instagram for updates — it's where new camps and classes, open spots and last-minute changes get posted first. Follow @sortd.ireland to stay in the loop, no inbox required.</div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- CTA -->
 <section class="cta-sec">
-  <div class="cta-l1">Summer sorted.</div>
-  <div class="cta-l2">Start right here.</div>
-  <div class="cta-btns">
-    <a href="/" class="cta-b1">Find a camp</a>
-    <a href="/recommend" class="cta-b2">Recommend a camp</a>
-  </div>
+<div class="cta-l1">Summer sorted.</div>
+<div class="cta-l2">Start right here.</div>
+<div class="cta-btns">
+<a href="/camps" class="cta-b1">Browse camps</a>
+<a href="/weekly-classes" class="cta-b2">Browse weekly classes</a>
+</div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <a href="/" class="footer-logo">sortd</a>
-  <div class="footer-links">
-    <a href="/">Find camps</a>
-    <a href="/how-it-works">How it works</a>
-    <a href="/about">About</a>
-    <a href="/recommend">Recommend a camp</a>
-    <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSelQlw3EjgVy573-91GTTzI1amA2SY-UGDrc_fDk_EQZDoaRQ/viewform" target="_blank" rel="noopener">List your camp</a>
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-logo">sortd</div>
+      <p class="foot-tag">Every kids' camp &amp; weekly class across Leinster, in one place. Built by a mum. For parents.</p>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb7sv3eInlqMyMfLFY01" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <div class="foot-heading">Browse</div>
+      <a href="/camps?q=Dublin">Dublin camps</a>
+      <a href="/camps?q=Wicklow">Wicklow camps</a>
+      <a href="/camps?q=Meath">Meath camps</a>
+      <a href="/camps">All camps</a>
+      <a href="/weekly-classes">All weekly classes</a>
+    </div>
+    <div class="foot-col">
+      <div class="foot-heading">Company</div>
+      <a href="/how-it-works">How it works</a>
+      <a href="/about">About</a>
+      <a href="mailto:sortd.ireland@gmail.com?subject=Camp%20recommendation">Recommend an activity</a>
+      <a href="mailto:sortd.ireland@gmail.com">Contact</a>
+    </div>
+    <div class="foot-col">
+      <div class="foot-heading">For providers</div>
+      <a href="/list">Add a class — free</a>
+      <a href="/claim">Claim your listing</a>
+      <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener">Partners portal</a>
+    </div>
   </div>
-  <div class="footer-copy">© 2026 sortd Ireland · sortd-ireland.ie · Built by a mum in Malahide</div>
+  <div class="foot-bottom">
+    <div>© 2026 Sortd Ireland · <a href="/privacy-policy">Privacy Policy</a></div>
+    <div class="foot-source">Sources: provider websites, WhatsApp screenshots, Instagram. Confirm details with each provider before booking.</div>
+  </div>
 </footer>
+
+<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-label="Follow sortd on Instagram">
+<div class="popup">
+<button class="popup-close" onclick="closePopup()" aria-label="Close">&#10005;</button>
+<div class="popup-logo">sortd</div>
+<div class="popup-title">Follow on Instagram</div>
+<p class="popup-sub">New camps, open spots and last-minute updates — posted first on Instagram. No app, no spam, just what's on.</p>
+<a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" class="popup-btn" style="display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;">
+<i class="ti ti-brand-instagram" style="font-size:20px;"></i> Follow @sortd.ireland
+</a>
+</div>
+</div>
+
+<script>
+function openPopup() {
+  document.getElementById('popupOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closePopup() {
+  document.getElementById('popupOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+document.getElementById('popupOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closePopup();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePopup();
+});
+</script>
 
 <script>
 function toggle(el){
-  const item = el.parentElement;
-  item.classList.toggle('open');
+const item = el.parentElement;
+item.classList.toggle('open');
 }
 </script>
 
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"Is sortd free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes — completely free for parents. Always. sortd makes money from camp providers who pay to be listed and featured, not from the parents using the directory."}},
-    {"@type":"Question","name":"Do I need to create an account?","acceptedAnswer":{"@type":"Answer","text":"No account, no login, no app to download. Just open sortd-ireland.ie on your phone or computer and start searching."}},
-    {"@type":"Question","name":"How do I actually book a camp?","acceptedAnswer":{"@type":"Answer","text":"Click 'Book this camp' on any listing and you'll go straight to the provider's own booking page. sortd doesn't take the booking — we just help you find the camp."}},
-    {"@type":"Question","name":"Are all the camps on sortd verified?","acceptedAnswer":{"@type":"Answer","text":"Every listing on sortd is researched and added by hand. We check details directly from the provider's website, Instagram or by contacting them."}},
-    {"@type":"Question","name":"I run a camp — how do I get listed?","acceptedAnswer":{"@type":"Answer","text":"Listing is free and takes about three minutes. Click 'list your camp' in the navigation and fill in the details — we'll have you live within 24 hours."}}
-  ]
+"@context": "https://schema.org",
+"@type": "FAQPage",
+"mainEntity": [
+{"@type":"Question","name":"Is sortd free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes — it's free for everyone. Free for parents to search and browse, and free for providers to list a camp or class. The Partners portal offers optional extra visibility for providers who want it, but sortd itself is free for everyone."}},
+{"@type":"Question","name":"I run a camp or class — how do I get listed?","acceptedAnswer":{"@type":"Answer","text":"Head to sortd-ireland.ie/list — it's free and takes about three minutes. If you'd like more visibility or better placement, check out the Partners portal."}},
+{"@type":"Question","name":"Do I need to create an account?","acceptedAnswer":{"@type":"Answer","text":"No account, no login, no app to download. Just open sortd-ireland.ie on your phone or computer and start searching."}},
+{"@type":"Question","name":"Do you have weekly classes too, or just camps?","acceptedAnswer":{"@type":"Answer","text":"Both. Camps covers holiday camps for midterms and summer; Weekly classes covers term-time activities like swimming, dance, GAA and more."}},
+{"@type":"Question","name":"How do I actually book?","acceptedAnswer":{"@type":"Answer","text":"Click through on any listing and you'll go straight to the provider's own booking page or contact details. sortd doesn't take the booking — we just help you find the camp or class."}},
+{"@type":"Question","name":"Are all the listings on sortd verified?","acceptedAnswer":{"@type":"Answer","text":"Every listing on sortd is researched and added by hand. We check details directly from the provider's website, Instagram or by contacting them."}},
+{"@type":"Question","name":"My area isn't covered yet — when will it be?","acceptedAnswer":{"@type":"Answer","text":"We started in north Dublin and are expanding across Leinster — Wicklow and Meath are already live, with more counties next. Email us a recommendation and we'll add it."}},
+{"@type":"Question","name":"How do I know if places are still available?","acceptedAnswer":{"@type":"Answer","text":"Each listing shows a live status where we have it. We update this regularly, but always check with the provider directly for the most up-to-date availability."}},
+{"@type":"Question","name":"Do you have a newsletter?","acceptedAnswer":{"@type":"Answer","text":"We've moved to Instagram for updates. Follow @sortd.ireland to stay in the loop."}}
+]
 }
 </script>
 </body>
