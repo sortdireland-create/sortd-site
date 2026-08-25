@@ -98,3 +98,42 @@
   from = "/dublin/city/clubs"
   to = "/dublin/city"
   status = 302
+
+# ── RENAMED LISTINGS — old Name/Provider-duplicated slugs (2026-08) ──
+# these old static HTML files are still in the repo, so status 301 alone
+# would be shadowed by them; force = true makes the redirect win instead.
+[[redirects]]
+  from = "/dublin/classes/scouting-ireland-22nd-dublin-mafikeng-scout-group-22nd-dublin-mafikeng-scouts-sutton-beaver-scouts"
+  to = "/dublin/classes/scouting-ireland-22nd-dublin-mafikeng-scout-group-beaver-scouts-sutton"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/scouting-ireland-donnybrook-scout-group-3rd40th41st-dublin-donnybrook-scout-group-beaver-scouts"
+  to = "/dublin/classes/scouting-ireland-donnybrook-scout-group-beaver-scouts-3rd40th41st-dublin"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/scouting-ireland-112th-knocklyon-scout-group-112th-knocklyon-scout-group-beaver-scouts"
+  to = "/dublin/classes/scouting-ireland-112th-knocklyon-scout-group-beaver-scouts"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/scouting-ireland-37th-dublin-scout-group-37th-dublin-scouts-terenuretempleogue-scouts-section"
+  to = "/dublin/classes/scouting-ireland-37th-dublin-scout-group-scouts-section-terenuretempleogue"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/scouting-ireland-109th-dublin-corduff-scout-group-109th-dublin-corduff-scouts"
+  to = "/dublin/classes/scouting-ireland-109th-dublin-corduff-scout-group-all-sections-beavers-ventures"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/scouting-ireland-104th144th-blanchardstown-scout-group-104th144th-blanchardstown-scout-group"
+  to = "/dublin/classes/scouting-ireland-104th144th-blanchardstown-scout-group-all-sections-beavers-ventures"
+  status = 301
+  force = true
