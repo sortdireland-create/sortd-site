@@ -57,6 +57,7 @@ a{text-decoration:none;color:inherit}
 h1{font-family:var(--fd);font-weight:800;font-size:clamp(22px,3.5vw,36px);line-height:1.1;color:var(--nv);margin-bottom:8px}
 .hd__p{font-size:14px;color:var(--mu);display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:20px}
 .sb{background:var(--sk);color:#fff;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:4px}
+.ab-badge{background:var(--pul);color:var(--pu);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:4px}
 .fg{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--bd);border-radius:12px;overflow:hidden;margin-bottom:16px}
 .fc{padding:12px 16px;border-right:1.5px solid var(--bd);border-bottom:1.5px solid var(--bd)}
 .fc:nth-child(2n){border-right:none}.fc:nth-child(3),.fc:nth-child(4){border-bottom:none}
@@ -66,13 +67,15 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(22px,3.5vw,36px);line-h
 .sd__l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pu);opacity:.75;margin-bottom:2px}
 .sd__d{font-family:var(--fd);font-weight:800;font-size:17px;color:var(--nv)}
 .sd .ti{font-size:24px;color:var(--pu);opacity:.55}
+.arch-note{background:var(--pg);border:1.5px dashed var(--bd);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--bt);line-height:1.55;margin-bottom:14px}
 .bb{display:block;width:100%;background:var(--nv);color:#fff;border:none;border-radius:999px;padding:14px;font-family:var(--fd);font-size:15px;font-weight:700;text-align:center;text-decoration:none;cursor:pointer;margin-bottom:10px}
-.be{display:block;width:100%;background:transparent;color:var(--nv);border:1.5px solid var(--bd);border-radius:999px;padding:12px;font-family:var(--fb);font-size:13px;font-weight:700;text-align:center;cursor:not-allowed;opacity:.5}
+.be{display:block;width:100%;background:transparent;color:var(--nv);border:1.5px solid var(--bd);border-radius:999px;padding:12px;font-family:var(--fb);font-size:13px;font-weight:700;text-align:center;cursor:pointer}
 .sc{background:var(--cd);border-radius:16px;padding:24px 28px;margin-bottom:16px}
 .sl{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--bc);margin-bottom:12px}
 .ab{font-size:15px;line-height:1.7;color:var(--bt);white-space:pre-line}
 .wcs{display:flex;flex-direction:column;gap:8px}
 .wc{background:var(--pg);border:1px solid var(--bd);border-radius:8px;padding:9px 14px}
+.wc--arch{opacity:.6}
 .wc__p{font-size:13px;font-weight:700;color:var(--nv)}.wc__s{font-size:11px;color:var(--mu);margin-top:2px}
 .cp{font-family:var(--fd);font-weight:800;font-size:32px;color:var(--nv);line-height:1}
 .cpe{font-size:13px;color:var(--mu);margin-top:4px;margin-bottom:14px}
@@ -147,16 +150,17 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(22px,3.5vw,36px);line-h
       <div class="hd">
         <div class="hd__c">Multi-Activity</div>
         <h1>Alive Outside Summer Camp</h1>
-        <div class="hd__p">Alive Outside<span class="sb">Sortd Listed</span></div>
+        <div class="hd__p">Alive Outside<span class="sb">Sortd Listed</span><span class="ab-badge">Finished for this year</span></div>
         <div class="fg">
           <div class="fc"><div class="fc__l"><i class="ti ti-calendar-event"></i> Days</div><div class="fc__v">Monday–Friday</div></div>
           <div class="fc"><div class="fc__l"><i class="ti ti-users"></i> Ages</div><div class="fc__v">7–13 yrs</div></div>
           <div class="fc"><div class="fc__l"><i class="ti ti-currency-euro"></i> Cost</div><div class="fc__v">See provider</div></div>
           <div class="fc"><div class="fc__l"><i class="ti ti-map-pin"></i> Location</div><div class="fc__v">Malahide, Dublin</div></div>
         </div>
-        <div class="sd"><div><div class="sd__l">Next start date</div><div class="sd__d">Week 1</div></div><i class="ti ti-calendar-check"></i></div>
-        <a href="https://www.aliveoutside.ie/summer-camps-dublin-wicklow-2026-alive-outside-summer-camps/" target="_blank" rel="noopener" class="bb">Book this camp ↗</a>
-        <button class="be" disabled>Send enquiry — coming soon</button>
+        <div class="sd"><div><div class="sd__l">Status</div><div class="sd__d">This year's camp has finished</div></div><i class="ti ti-calendar-off"></i></div>
+        <div class="arch-note">This year's Summer camp has finished. Alive Outside typically run it again — check back before next Summer, or get in touch with them directly.</div>
+        <a href="/camps?q=Malahide" class="bb">See what's on now ↗</a>
+        <a href="https://www.aliveoutside.ie/summer-camps-dublin-wicklow-2026-alive-outside-summer-camps/" target="_blank" rel="noopener" class="be">Still curious? Visit Alive Outside's site ↗</a>
       </div>
 
       <div class="sc">
@@ -165,8 +169,8 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(22px,3.5vw,36px);line-h
       </div>
 
       <div class="sc">
-        <div class="sl">Weeks available</div>
-        <div class="wcs"><div class="wc"><div class="wc__p">Week 1 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc"><div class="wc__p">Week 2 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc"><div class="wc__p">Week 3 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc"><div class="wc__p">Week 4 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc"><div class="wc__p">Week 5 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc"><div class="wc__p">Week 6 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc"><div class="wc__p">Week 7 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc"><div class="wc__p">Week 8 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc"><div class="wc__p">Week 9 ·</div><div class="wc__s">Monday–Friday</div></div></div>
+        <div class="sl">This year's weeks</div>
+        <div class="wcs"><div class="wc wc--arch"><div class="wc__p">Week 1 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc wc--arch"><div class="wc__p">Week 2 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc wc--arch"><div class="wc__p">Week 3 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc wc--arch"><div class="wc__p">Week 4 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc wc--arch"><div class="wc__p">Week 5 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc wc--arch"><div class="wc__p">Week 6 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc wc--arch"><div class="wc__p">Week 7 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc wc--arch"><div class="wc__p">Week 8 ·</div><div class="wc__s">Monday–Friday</div></div><div class="wc wc--arch"><div class="wc__p">Week 9 ·</div><div class="wc__s">Monday–Friday</div></div></div>
       </div>
 
       <div class="sc">
@@ -193,7 +197,6 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(22px,3.5vw,36px);line-h
         <div class="sl">How to book</div>
         <div class="br"><div class="br__l">Book online</div><div class="br__v"><i class="ti ti-external-link"></i><a href="https://www.aliveoutside.ie/summer-camps-dublin-wicklow-2026-alive-outside-summer-camps/" target="_blank" rel="noopener">aliveoutside.ie</a></div></div>
         <div class="br"><div class="br__l">Instagram</div><div class="br__v br__v--ig"><i class="ti ti-brand-instagram"></i><a href="https://www.instagram.com/aliveoutside_ireland/" target="_blank" rel="noopener">@aliveoutside_ireland</a></div></div>
-        <div class="br"><div class="br__l">How to book</div><div class="br__v" style="color:rgba(255,255,255,.7);font-weight:400">Book via aliveoutside.ie</div></div>
       </div>
 
       <div class="sc">
@@ -209,7 +212,7 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(22px,3.5vw,36px);line-h
       <div class="ex">
         <div class="ex__l">Explore more</div>
         <div class="ex__ls">
-          <a href="/camps" class="ex__a"><i class="ti ti-arrow-right"></i> All Multi-Activity camps in Dublin</a>
+          <a href="/camps" class="ex__a"><i class="ti ti-arrow-right"></i> All Multi-Activity camps</a>
           <a href="/camps?q=Malahide" class="ex__a"><i class="ti ti-arrow-right"></i> All camps in Malahide</a>
           <a href="/camps" class="ex__a"><i class="ti ti-arrow-right"></i> Camps for ages 7–13 yrs</a>
           <a href="/camps" class="ex__a"><i class="ti ti-arrow-right"></i> Back to all camps</a>
