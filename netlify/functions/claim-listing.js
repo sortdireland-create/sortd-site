@@ -42,6 +42,71 @@ const F = {
 
 const SITE_URL = 'https://sortd-ireland.ie';
 
+// Customer.io's transactional Send API is region-locked — an EU-region
+// workspace's App API key is rejected (401) by the default api.customer.io
+// (US) host. Must match CUSTOMERIO_REGION, same as subscribe.js's Track API
+// host logic. Getting this wrong means every send silently fails (caught
+// below and only console.error'd — nothing surfaces to the caller).
+const CIO_REGION = (process.env.CUSTOMERIO_REGION || 'us').toLowerCase();
+const CIO_SEND_HOST = CIO_REGION === 'eu' ? 'api-eu.customer.io' : 'api.customer.io';
+
+// Login Tokens table — shared with submit-listing.js and sortd-provider-portal's
+// request-link.js. Generating a token here means the "listing claimed!" page
+// can offer a real one-click "log into my portal" button instead of just
+// pointing at the portal's login screen and making them type their email again.
+const LOGIN_TOKENS_TABLE_ID = 'tblR2PKvtvhV016jN';
+const LT = {
+  EMAIL: 'flddFt9rZLBmVFlas',
+  TOKEN: 'fld7WgLX9A4nj59dM',
+  CREATED_AT: 'fldkEPACSX1KpitP1',
+  EXPIRES_AT: 'fldNL6jggJIdA6B99',
+  USED: 'fldHbAyLOCuChZ2xa',
+};
+const TOKEN_TTL_MINUTES = 30; // matches request-link.js / submit-listing.js
+const PORTAL_URL = 'https://portal.sortd-ireland.ie';
+
+// Creates a one-time login token for this provider's email, exactly like
+// submit-listing.js's createMagicLink does, and returns the ready-to-click
+// portal magic link. Returns null on any failure — callers should fall back
+// to the plain portal URL rather than let this break the claim confirmation.
+async function createMagicLink(email, apiKey) {
+  if (!email) return null;
+  try {
+    const token = crypto.randomUUID().replace(/-/g, '') + crypto.randomUUID().replace(/-/g, '');
+    const now = new Date();
+    const expires = new Date(now.getTime() + TOKEN_TTL_MINUTES * 60 * 1000);
+
+    const res = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${LOGIN_TOKENS_TABLE_ID}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        records: [{
+          fields: {
+            [LT.EMAIL]: email,
+            [LT.TOKEN]: token,
+            [LT.CREATED_AT]: now.toISOString(),
+            [LT.EXPIRES_AT]: expires.toISOString(),
+            [LT.USED]: false,
+          },
+        }],
+      }),
+    });
+
+    if (!res.ok) {
+      console.error('createMagicLink: Login Tokens write failed:', await res.text());
+      return null;
+    }
+
+    return `${PORTAL_URL}/.netlify/functions/verify-link?token=${token}`;
+  } catch (err) {
+    console.error('createMagicLink error:', err);
+    return null;
+  }
+}
+
 async function airtableRequest(path, options = {}) {
   const apiKey = process.env.AIRTABLE_API_KEY;
   const res = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}${path}`, {
@@ -58,7 +123,7 @@ async function airtableRequest(path, options = {}) {
 async function sendEmail({ to, subject, html }) {
   const apiKey = process.env.CUSTOMERIO_APP_API_KEY;
   if (!apiKey) { console.warn('CUSTOMERIO_APP_API_KEY not set — skipping email to', to); return; }
-  const res = await fetch('https://api.customer.io/v1/send/email', {
+  const res = await fetch(`https://${CIO_SEND_HOST}/v1/send/email`, {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -122,7 +187,9 @@ function htmlPage(title, message, ok) {
   .card{background:#fff;border-radius:18px;padding:40px;max-width:440px;text-align:center;box-shadow:0 10px 40px rgba(41,49,72,.10);}
   h1{font-family:'Baloo 2',sans-serif;font-weight:800;color:${accent};font-size:1.4rem;margin-bottom:12px;}
   p{color:#293148;font-weight:600;line-height:1.6;}
-  a{color:#4782A8;font-weight:700;text-decoration:none;}</style></head>
+  a{color:#4782A8;font-weight:700;text-decoration:none;}
+  .btn{display:inline-block;margin-top:6px;padding:14px 30px;background:#4782A8;color:#fff !important;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:15px;border-radius:999px;text-decoration:none;}
+  .fine{font-size:13px;color:#888;font-weight:600;display:block;margin-top:16px;}</style></head>
   <body><div class="card"><h1>${ok ? '✓' : '✕'} ${title}</h1><p>${message}</p><p style="margin-top:20px"><a href="https://sortd-ireland.ie">← Back to sortd</a></p></div></body></html>`;
 }
 
@@ -153,10 +220,22 @@ exports.handler = async function (event) {
     });
 
     const name = record.fields[F.NAME] || 'your listing';
+
+    // Straight to a one-click portal login from here — this is the moment
+    // they're most engaged, so don't make them go dig up a second link.
+    // Falls back to the plain portal URL (still requires them to enter
+    // their email again) if token creation fails for any reason.
+    const magicLink = await createMagicLink(record.fields[F.PROVIDER_EMAIL], process.env.AIRTABLE_API_KEY);
+    const portalCtaUrl = magicLink || PORTAL_URL;
+
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'text/html' },
-      body: htmlPage('Listing claimed!', `<strong>${name}</strong> is now confirmed as yours. Need to update any details? Just reply to any email from us, or contact hello@sortd-ireland.ie directly for now.`, true),
+      body: htmlPage(
+        'Listing claimed!',
+        `<strong>${name}</strong> is now confirmed as yours.<br><br>Got a camp or a new term class to add? Log into your portal below — no password needed:<br><a class="btn" href="${portalCtaUrl}">Log into my portal →</a><span class="fine">Need to update existing details instead? Just reply to any email from us, or contact hello@sortd-ireland.ie.</span>`,
+        true
+      ),
     };
   }
 

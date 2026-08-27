@@ -25,11 +25,16 @@
 
 const REGION = (process.env.CUSTOMERIO_REGION || 'us').toLowerCase();
 const TRACK_HOST = REGION === 'eu' ? 'track-eu.customer.io' : 'track.customer.io';
+// The transactional Send API is region-locked too — an EU-region App API
+// key is rejected (401) by the default api.customer.io (US) host, same
+// issue as the Track API host above. Was previously hardcoded to the US
+// host regardless of REGION, so every confirmation send silently failed.
+const SEND_HOST = REGION === 'eu' ? 'api-eu.customer.io' : 'api.customer.io';
 
 async function sendEmail({ to, subject, html }) {
   const apiKey = process.env.CUSTOMERIO_APP_API_KEY;
   if (!apiKey) { console.warn('CUSTOMERIO_APP_API_KEY not set — skipping confirmation email to', to); return; }
-  const res = await fetch('https://api.customer.io/v1/send/email', {
+  const res = await fetch(`https://${SEND_HOST}/v1/send/email`, {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({

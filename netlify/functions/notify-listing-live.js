@@ -22,6 +22,13 @@ const F = {
   LIVE_EMAIL_SENT: 'fldwRZoQ35bVMmu8J',
 };
 
+// Customer.io's transactional Send API is region-locked — an EU-region
+// workspace's App API key is rejected (401) by the default api.customer.io
+// (US) host. Kept in sync with the same fix in claim-listing.js /
+// submit-listing.js / subscribe.js.
+const CIO_REGION = (process.env.CUSTOMERIO_REGION || 'us').toLowerCase();
+const CIO_SEND_HOST = CIO_REGION === 'eu' ? 'api-eu.customer.io' : 'api.customer.io';
+
 // ── Branded email shell — kept in sync manually with the equivalent shell
 // in submit-listing.js / claim-listing.js / subscribe.js. ──
 function emailShell(innerHtml) {
@@ -65,7 +72,7 @@ async function sendEmail({ to, subject, html }) {
   }
   let res;
   try {
-    res = await fetch('https://api.customer.io/v1/send/email', {
+    res = await fetch(`https://${CIO_SEND_HOST}/v1/send/email`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,

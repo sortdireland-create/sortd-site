@@ -42,6 +42,14 @@ USED: 'fldHbAyLOCuChZ2xa',
 const TOKEN_TTL_MINUTES = 30; // matches request-link.js
 const PORTAL_URL = 'https://portal.sortd-ireland.ie';
 
+// Customer.io's transactional Send API is region-locked — an EU-region
+// workspace's App API key is rejected (401) by the default api.customer.io
+// (US) host. Must match CUSTOMERIO_REGION, same as subscribe.js's Track API
+// host logic. Getting this wrong means every send silently fails (caught
+// below and only console.error'd — nothing surfaces to the caller).
+const CIO_REGION = (process.env.CUSTOMERIO_REGION || 'us').toLowerCase();
+const CIO_SEND_HOST = CIO_REGION === 'eu' ? 'api-eu.customer.io' : 'api.customer.io';
+
 const F = {
 NAME: 'fldTrzk8wQ8sefLvj',
 PROVIDER: 'fldTeVX37izewUhIA',
@@ -161,7 +169,7 @@ return;
 }
 // Ad-hoc send (no pre-built Customer.io template needed) — identifiers.email
 // links this send to a customer profile, creating one if it doesn't exist yet.
-const res = await fetch('https://api.customer.io/v1/send/email', {
+const res = await fetch(`https://${CIO_SEND_HOST}/v1/send/email`, {
 method: 'POST',
 headers: {
 'Authorization': `Bearer ${apiKey}`,
