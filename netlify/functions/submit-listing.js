@@ -162,6 +162,33 @@ return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin
 }
 
 async function sendEmail({ to, subject, html }) {
+const apiKey = process.env.BREVO_API_KEY;
+if (!apiKey) {
+console.warn('BREVO_API_KEY not set — skipping email send to', to);
+return;
+}
+const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+method: 'POST',
+headers: {
+'api-key': apiKey,
+'Content-Type': 'application/json',
+'Accept': 'application/json',
+},
+body: JSON.stringify({
+sender: { name: 'sortd', email: 'hello@sortd-ireland.ie' },
+to: [{ email: to }],
+subject,
+htmlContent: html,
+}),
+});
+if (!res.ok) {
+console.error('Brevo email failed:', await res.text());
+}
+}
+
+// Kept for fallback — not called. Switched to Brevo (Sept 2026) after
+// Customer.io's trial lapsed.
+async function sendEmailViaCustomerIo({ to, subject, html }) {
 const apiKey = process.env.CUSTOMERIO_APP_API_KEY;
 if (!apiKey) {
 console.warn('CUSTOMERIO_APP_API_KEY not set — skipping email send to', to);
