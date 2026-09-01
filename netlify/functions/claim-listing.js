@@ -38,6 +38,7 @@ const F = {
   PROVIDER_EMAIL: 'fldaApVUFBE4DPy3S', // Provider Email
   CLAIMED:        'fldp4ynCy4tXcncUi', // Claimed
   CLAIM_TOKEN:    'fldPCNXqEJOX7n1Cw', // ClaimToken
+  MARKETING_OPT_OUT: 'fldCx8ppVT18rV7og', // Marketing Opt Out — gates the welcome email below, not the confirm link itself
 };
 
 const SITE_URL = 'https://sortd-ireland.ie';
@@ -159,8 +160,16 @@ async function sendEmailViaCustomerIo({ to, subject, html }) {
 // ── Branded email shell — matches sortd-brand-foundations exactly:
 // muted/dusty palette (navy #293148, blue #4782A8 accent, NEVER red),
 // Baloo 2 for headings/logo/buttons, Nunito for body, ~18px card radius,
-// ~12px button radius, rounded corners only (never circles). ──
-function emailShell(innerHtml) {
+// ~12px button radius, rounded corners only (never circles).
+//
+// unsubscribeUrl now goes on every send from this file (Sept 2026) — even
+// the claim-confirmation email, since Rachel wants one consistent footer
+// across every provider-facing email rather than carving out exceptions
+// for "this one's technically transactional". Sending the confirmation
+// itself is never skipped by an opt-out — only the welcome email below is
+// gated by MARKETING_OPT_OUT — this just tells them how to stop whatever
+// comes next. ──
+function emailShell(innerHtml, unsubscribeUrl) {
   return `<!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -179,6 +188,7 @@ ${innerHtml}
 <p style="margin:0;font-size:12px;color:#D1E9F5;font-family:'Nunito',Verdana,Arial,sans-serif;">sortd · Dublin, Ireland<br>
 <a href="https://sortd-ireland.ie" style="color:#D1E9F5;text-decoration:none;font-weight:700;">sortd-ireland.ie</a></p>
 <p style="margin:10px 0 0;font-size:11px;color:#8fa5b8;font-family:'Nunito',Verdana,Arial,sans-serif;">Questions? <a href="mailto:hello@sortd-ireland.ie" style="color:#8fa5b8;text-decoration:underline;">hello@sortd-ireland.ie</a> · <a href="https://sortd-ireland.ie/privacy-policy" style="color:#8fa5b8;text-decoration:underline;">Privacy Policy</a></p>
+${unsubscribeUrl ? `<p style="margin:6px 0 0;font-size:11px;color:#8fa5b8;font-family:'Nunito',Verdana,Arial,sans-serif;"><a href="${unsubscribeUrl}" style="color:#8fa5b8;text-decoration:underline;">Unsubscribe</a> from emails like this</p>` : ''}
 </td></tr>
 </table>
 </td></tr>
@@ -194,6 +204,24 @@ function emailButton(text, url) {
   return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:999px;background:#4782A8;">
 <a href="${url}" style="display:inline-block;padding:14px 30px;color:#ffffff;font-family:'Baloo 2',Verdana,sans-serif;font-weight:700;text-decoration:none;font-size:15px;border-radius:999px;">${text}</a>
 </td></tr></table>`;
+}
+
+// ── Post-claim welcome email — sent once, right after a listing is
+// confirmed. Distinct from the plain-webpage confirmation the browser shows
+// (that page's magic link expires in 30 min and is easy to lose if the tab
+// gets closed); this is the persistent, findable copy of the portal link,
+// plus the pitch to actually use it. Skipped entirely for anyone who's
+// opted out via the unsubscribe link (MARKETING_OPT_OUT) — see below.
+function welcomeEmailHtml({ name, portalCtaUrl, unsubscribeUrl }) {
+  return emailShell(`
+    <p style="margin:0 0 16px;">Hi,</p>
+    <p style="margin:0 0 16px;"><strong>${name}</strong> is now verified on sortd — parents searching for camps and classes near you will see it's kept up to date.</p>
+    <p style="margin:0 0 16px;"><strong>Add as many classes or camps as you like</strong> — a new term, a Halloween camp, an extra venue — there's no limit and no charge. Send us your logo and Instagram handle while you're in there and we'll feature you across the site and our socials, free.</p>
+    <p style="margin:0 0 4px;">Log into your portal any time — no password needed, the button below logs you straight in:</p>
+    ${emailButton('Log into my portal →', portalCtaUrl)}
+    <p style="margin:0 0 16px;">A bit about why sortd exists, in case you haven't come across it before: I'm Rachel, a working mum in Malahide. Last summer I spent hours trying to plan childcare for my daughter across 8+ weeks of school holidays, with camp info scattered across Instagram, WhatsApp groups and websites nobody had updated since 2022. So one Monday night I built the thing that didn't exist — one place to see everything. No VC funding, no boardroom — just a real problem being sorted for real families, and it's grown from there ever since.</p>
+    <p style="margin:0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">go get discovered →</p>
+  `, unsubscribeUrl);
 }
 
 // Landing page shown when the confirm link is clicked — same brand system,
@@ -247,6 +275,26 @@ exports.handler = async function (event) {
     const magicLink = await createMagicLink(record.fields[F.PROVIDER_EMAIL], process.env.AIRTABLE_API_KEY);
     const portalCtaUrl = magicLink || PORTAL_URL;
 
+    // Best-effort welcome email — never let a failure here break the
+    // confirmation page the browser is about to show. Skipped entirely for
+    // anyone who's opted out of non-essential emails; the page below still
+    // renders either way, since that's the transactional part of this flow.
+    if (record.fields[F.PROVIDER_EMAIL] && !record.fields[F.MARKETING_OPT_OUT]) {
+      try {
+        await sendEmail({
+          to: record.fields[F.PROVIDER_EMAIL],
+          subject: `You're verified on sortd — here's what's next`,
+          html: welcomeEmailHtml({
+            name,
+            portalCtaUrl,
+            unsubscribeUrl: `${SITE_URL}/.netlify/functions/unsubscribe?id=${id}`,
+          }),
+        });
+      } catch (err) {
+        console.error('claim-listing welcome email error:', err);
+      }
+    }
+
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'text/html' },
@@ -298,7 +346,7 @@ exports.handler = async function (event) {
             ${emailButton("Confirm it's mine →", confirmUrl)}
             <p style="margin:4px 0 0;font-size:13px;color:#666;">If you didn't request this, you can safely ignore this email.</p>
             <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">you're nearly there →</p>
-          `),
+          `, `${SITE_URL}/.netlify/functions/unsubscribe?id=${record.id}`),
         });
       }
 

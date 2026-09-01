@@ -17,11 +17,18 @@
 //   CUSTOMERIO_SITE_ID       — Track API site ID (Customer.io → Settings → API Credentials)
 //   CUSTOMERIO_TRACK_API_KEY — Track API key, same location
 //   CUSTOMERIO_REGION        — "us" or "eu", depending which region you picked at signup
-//                              (get this wrong and every request silently fails)
+//                               (get this wrong and every request silently fails)
 //   CUSTOMERIO_APP_API_KEY   — Transactional "App" API key (same one used by
-//                              submit-listing.js / claim-listing.js) — for the
-//                              confirmation email only. Signup still succeeds
-//                              without it; the email is just skipped.
+//                               submit-listing.js / claim-listing.js) — for the
+//                               confirmation email only. Signup still succeeds
+//                               without it; the email is just skipped.
+//
+// The confirmation email's footer carries an unsubscribe link like every
+// other transactional email now does — but this signup has no Airtable
+// listing record behind it, just a Customer.io profile keyed by email, so
+// it's routed by ?email= instead of ?id= (see unsubscribe.js).
+
+const SITE_URL = 'https://sortd-ireland.ie';
 
 const REGION = (process.env.CUSTOMERIO_REGION || 'us').toLowerCase();
 const TRACK_HOST = REGION === 'eu' ? 'track-eu.customer.io' : 'track.customer.io';
@@ -71,7 +78,7 @@ async function sendEmailViaCustomerIo({ to, subject, html }) {
 // Baloo 2 for headings/logo, Nunito for body, ~18px card radius,
 // rounded corners only (never circles). Same shell as the other two
 // transactional emails, kept in sync manually. ──
-function emailShell(innerHtml) {
+function emailShell(innerHtml, unsubscribeUrl) {
   return `<!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,6 +97,7 @@ ${innerHtml}
 <p style="margin:0;font-size:12px;color:#D1E9F5;font-family:'Nunito',Verdana,Arial,sans-serif;">sortd · Dublin, Ireland<br>
 <a href="https://sortd-ireland.ie" style="color:#D1E9F5;text-decoration:none;font-weight:700;">sortd-ireland.ie</a></p>
 <p style="margin:10px 0 0;font-size:11px;color:#8fa5b8;font-family:'Nunito',Verdana,Arial,sans-serif;">Questions? <a href="mailto:hello@sortd-ireland.ie" style="color:#8fa5b8;text-decoration:underline;">hello@sortd-ireland.ie</a> · <a href="https://sortd-ireland.ie/privacy-policy" style="color:#8fa5b8;text-decoration:underline;">Privacy Policy</a></p>
+${unsubscribeUrl ? `<p style="margin:6px 0 0;font-size:11px;color:#8fa5b8;font-family:'Nunito',Verdana,Arial,sans-serif;"><a href="${unsubscribeUrl}" style="color:#8fa5b8;text-decoration:underline;">Unsubscribe</a> from emails like this</p>` : ''}
 </td></tr>
 </table>
 </td></tr>
@@ -135,7 +143,7 @@ exports.handler = async function(event) {
     subscribed_at: Math.floor(Date.now() / 1000), // Customer.io wants unix timestamps
   };
   if (firstName) attributes.first_name = firstName.trim();
-  if (county)    attributes.county = county.trim();
+  if (county) attributes.county = county.trim();
   if (child1Age) attributes.child1_age = parseInt(child1Age, 10);
   if (child2Age) attributes.child2_age = parseInt(child2Age, 10);
 
@@ -162,7 +170,7 @@ exports.handler = async function(event) {
             <p style="margin:0 0 16px;">You're on the list! sortd already brings together every kids' summer camp in Dublin &amp; beyond — and from September, we're adding weekly classes, after-school clubs and more.</p>
             <p style="margin:0 0 16px;">We'll email you the moment it's live. No spam, unsubscribe any time.</p>
             <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">see you in September →</p>
-          `),
+          `, `${SITE_URL}/.netlify/functions/unsubscribe?email=${encodeURIComponent(cleanEmail)}`),
         });
       } catch (emailErr) {
         console.error('subscribe confirmation email error:', emailErr);

@@ -15,6 +15,7 @@
 
 const BASE_ID = 'appuyWkAmTRI4lN5r';
 const TABLE_ID = 'tblziKRbWXA1veyuz';
+const SITE_URL = 'https://sortd-ireland.ie';
 
 const F = {
   NAME: 'fldTrzk8wQ8sefLvj',
@@ -30,8 +31,11 @@ const CIO_REGION = (process.env.CUSTOMERIO_REGION || 'us').toLowerCase();
 const CIO_SEND_HOST = CIO_REGION === 'eu' ? 'api-eu.customer.io' : 'api.customer.io';
 
 // ── Branded email shell — kept in sync manually with the equivalent shell
-// in submit-listing.js / claim-listing.js / subscribe.js. ──
-function emailShell(innerHtml) {
+// in submit-listing.js / claim-listing.js / subscribe.js. unsubscribeUrl
+// goes on every send from this file — a provider can always opt out of
+// future non-essential emails, even though this particular send (their
+// listing going live) is itself never skipped. ──
+function emailShell(innerHtml, unsubscribeUrl) {
   return `<!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,6 +54,7 @@ ${innerHtml}
 <p style="margin:0;font-size:12px;color:#D1E9F5;font-family:'Nunito',Verdana,Arial,sans-serif;">sortd · Dublin, Ireland<br>
 <a href="https://sortd-ireland.ie" style="color:#D1E9F5;text-decoration:none;font-weight:700;">sortd-ireland.ie</a></p>
 <p style="margin:10px 0 0;font-size:11px;color:#8fa5b8;font-family:'Nunito',Verdana,Arial,sans-serif;">Questions? <a href="mailto:hello@sortd-ireland.ie" style="color:#8fa5b8;text-decoration:underline;">hello@sortd-ireland.ie</a> · <a href="https://sortd-ireland.ie/privacy-policy" style="color:#8fa5b8;text-decoration:underline;">Privacy Policy</a></p>
+${unsubscribeUrl ? `<p style="margin:6px 0 0;font-size:11px;color:#8fa5b8;font-family:'Nunito',Verdana,Arial,sans-serif;"><a href="${unsubscribeUrl}" style="color:#8fa5b8;text-decoration:underline;">Unsubscribe</a> from emails like this</p>` : ''}
 </td></tr>
 </table>
 </td></tr>
@@ -180,7 +185,7 @@ exports.handler = async function () {
           ${emailButton('Open my provider dashboard →', 'https://portal.sortd-ireland.ie')}
           <p style="margin:0;">Thanks for being part of sortd!</p>
           <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">go get discovered →</p>
-        `),
+        `, `${SITE_URL}/.netlify/functions/unsubscribe?id=${record.id}`),
       });
 
       // Mark as sent even if the send itself failed silently (e.g. no API key
