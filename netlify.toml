@@ -99,6 +99,24 @@
   to = "/dublin/city"
   status = 302
 
+# ── CAMP URL SCHEME MIGRATION (2026-09-22) ───────────────────────
+# Canonical camp URL is now /camps/{county}/{slug} (matches the sortd-admin
+# daily generate-listings.js job). Old hand-built pages still live at
+# /dublin/camps/{slug} in this repo, so force = true so the redirect wins
+# instead of Netlify serving the old static file.
+[[redirects]]
+  from = "/dublin/camps/*"
+  to = "/camps/dublin/:splat"
+  status = 301
+  force = true
+
+# NOTE: /dublin/classes/* is NOT redirected yet. The automated job currently
+# misfiles Weekly Classes under /camps/{county}/{slug} too (a bug) — add the
+# equivalent /dublin/classes/* -> /classes/dublin/:splat redirect only after
+# the sortd-admin Type-routing fix has shipped and a daily run has produced
+# real pages at /classes/dublin/{slug}. Redirecting classes before that
+# target exists would 404 every class page.
+
 # ── RENAMED LISTINGS — old Name/Provider-duplicated slugs (2026-08) ──
 # these old static HTML files are still in the repo, so status 301 alone
 # would be shadowed by them; force = true makes the redirect win instead.
