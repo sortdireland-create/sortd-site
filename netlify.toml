@@ -137,3 +137,802 @@
   to = "/dublin/classes/scouting-ireland-104th144th-blanchardstown-scout-group-all-sections-beavers-ventures"
   status = 301
   force = true
+
+# ── URL SCHEME MIGRATION — old /dublin/{camps|classes}/{slug} redirected
+# to the current /{camps|classes}/dublin/{slug} scheme (2026-09-22) ──────
+# These old static HTML files are still in the repo (not deleted), so
+# status 301 alone would be shadowed by them; force = true makes the
+# redirect win instead, same pattern as the RENAMED LISTINGS section above.
+# Generated from a diff of js/camps-data.js against the live manifest.json
+# — every target below was confirmed to actually exist before being added.
+[[redirects]]
+  from = "/dublin/camps/junior-einsteins-halloween-science-camp-malahide-castle"
+  to = "/camps/dublin/junior-einsteins-halloween-science-camp-malahide-castle"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/messy-adventures-halloween-role-play-village-dundrum"
+  to = "/camps/dublin/messy-adventures-halloween-role-play-village-dundrum"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/messy-adventures-halloween-role-play-village-swords"
+  to = "/camps/dublin/messy-adventures-halloween-role-play-village-swords"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/messy-adventures-halloween-role-play-village-ashtown"
+  to = "/camps/dublin/messy-adventures-halloween-role-play-village-ashtown"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/stretch-n-grow-halloween-camp-firhouse"
+  to = "/camps/dublin/stretch-n-grow-halloween-camp-firhouse"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/stretch-n-grow-halloween-camp-dundrum"
+  to = "/camps/dublin/stretch-n-grow-halloween-camp-dundrum"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/catch-dance-academy-halloween-dance-camp"
+  to = "/camps/dublin/catch-dance-academy-halloween-dance-camp"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/scouting-ireland-22nd-dublin-mafikeng-scout-group-beaver-scouts-sutton"
+  to = "/classes/dublin/scouting-ireland-22nd-dublin-mafikeng-scout-group-beaver-scouts-sutton"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-sandyford"
+  to = "/classes/dublin/gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-sandyford"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/sutton-lawn-tennis-club-mini-tennis-ages-5-7"
+  to = "/classes/dublin/sutton-lawn-tennis-club-mini-tennis-ages-5-7"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/bective-tennis-club-junior-coaching"
+  to = "/classes/dublin/bective-tennis-club-junior-coaching"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/shankill-tennis-club-junior-tennis"
+  to = "/classes/dublin/shankill-tennis-club-junior-tennis"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/babble-box-learning-babble-bloom"
+  to = "/classes/dublin/babble-bloom"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/butler-patrice-performing-arts-academy"
+  to = "/classes/dublin/butler-patrice-performing-arts-academy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/stillorgan-rathfarnham-rfc-minis-rugby"
+  to = "/classes/dublin/stillorgan-rathfarnham-rfc-minis-rugby"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/east-coast-school-of-ballet-malahide"
+  to = "/classes/dublin/east-coast-school-of-ballet-malahide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/clontarf-fc-clontarf-mini-rugby"
+  to = "/classes/dublin/clontarf-mini-rugby"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/killester-basketball-club-junior-development-academy"
+  to = "/classes/dublin/killester-basketball-club-junior-development-academy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/foxrock-cabinteely-gaa-club-foxcub-academy"
+  to = "/classes/dublin/foxrock-cabinteely-gaa-club-foxcub-academy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/malahide-united-fc-nippers-academy"
+  to = "/classes/dublin/malahide-united-fc-nippers-academy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/gti-ireland-be-martial-arts-fitness-gti-family-martial-arts-taekwondo-malahide"
+  to = "/classes/dublin/gti-family-martial-arts-taekwondo-malahide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/scouting-ireland-donnybrook-scout-group-beaver-scouts-3rd40th41st-dublin"
+  to = "/classes/dublin/scouting-ireland-donnybrook-scout-group-beaver-scouts-3rd40th41st-dublin"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/tr-basketball-academy-tr-academy-weekly-basketball-classes"
+  to = "/classes/dublin/tr-academy-weekly-basketball-classes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/music-generation-fingal-balbriggan-jam"
+  to = "/classes/dublin/music-generation-fingal-balbriggan-jam"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-temple-bar"
+  to = "/classes/dublin/gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-temple-bar"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/coolmine-sports-leisure-centre-coolmine-swim-club-childrens-swimming-lessons"
+  to = "/classes/dublin/coolmine-sports-leisure-centre-coolmine-swim-club-childrens-swimming-lessons"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/scouting-ireland-112th-knocklyon-scout-group-beaver-scouts"
+  to = "/classes/dublin/scouting-ireland-112th-knocklyon-scout-group-beaver-scouts"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/dolphin-swim-school-group-swim-lessons"
+  to = "/classes/dublin/dolphin-swim-school-group-swim-lessons"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/lucan-sarsfields-gaa-club-abc-academy"
+  to = "/classes/dublin/lucan-sarsfields-gaa-club-abc-academy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/skerries-rfc-minis-u6-u12"
+  to = "/classes/dublin/skerries-rfc-minis-u6-u12"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/little-kickers-portmarnock"
+  to = "/classes/dublin/little-kickers-portmarnock"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-malahide"
+  to = "/classes/dublin/gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-malahide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/metropolitan-school-of-dance-howth"
+  to = "/classes/dublin/metropolitan-school-of-dance-howth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/metropolitan-school-of-dance-balbriggan"
+  to = "/classes/dublin/metropolitan-school-of-dance-balbriggan"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/colour-and-art-kids-classes-swords"
+  to = "/classes/dublin/colour-and-art-kids-classes-swords"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/trinity-sport-trinity-college-dublin-trinity-sport-childrens-swimming-lessons"
+  to = "/classes/dublin/trinity-sport-childrens-swimming-lessons"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/balbriggan-rfc-mini-rugby"
+  to = "/classes/dublin/balbriggan-rfc-mini-rugby"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/drama-house-malahide-musical-theatre-youth-theatre"
+  to = "/classes/dublin/drama-house-malahide-musical-theatre-youth-theatre"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/blackrock-college-rfc-minis"
+  to = "/classes/dublin/blackrock-college-rfc-minis"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/old-bawn-gymnastics-club"
+  to = "/classes/dublin/old-bawn-gymnastics-club"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/marian-lennon-school-of-ballet-blanchardstowncastleknock"
+  to = "/classes/dublin/marian-lennon-school-of-ballet-blanchardstowncastleknock"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/dsa-dance-sing-act-performing-arts-classes-baldoyle"
+  to = "/classes/dublin/dsa-dance-sing-act-performing-arts-classes-baldoyle"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/scouting-ireland-37th-dublin-scout-group-scouts-section-terenuretempleogue"
+  to = "/classes/dublin/scouting-ireland-37th-dublin-scout-group-scouts-section-terenuretempleogue"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/leader-gymnastics-club-swords"
+  to = "/classes/dublin/leader-gymnastics-club-swords"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/scouting-ireland-109th-dublin-corduff-scout-group-all-sections-beavers-ventures"
+  to = "/classes/dublin/scouting-ireland-109th-dublin-corduff-scout-group-all-sections-beavers-ventures"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/sport-ireland-campus-national-aquatic-centre-swim-academy-lessons-national-aquatic-centre"
+  to = "/classes/dublin/sport-ireland-campus-national-aquatic-centre-swim-academy-lessons-national-aquatic-centre"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/leopardstown-tennis-club-junior-coaching-ages-5-18"
+  to = "/classes/dublin/leopardstown-tennis-club-junior-coaching-ages-5-18"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/artzone-senior-primary-art-classes-1st6th-class-malahide"
+  to = "/classes/dublin/artzone-senior-primary-art-classes-1st-6th-class-malahide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/dublin-raiders-basketball-club-dublin-raiders-basketball-academy"
+  to = "/classes/dublin/dublin-raiders-basketball-academy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/naomh-mearnog-gaa-club-naomh-mearnog-gaa-academy"
+  to = "/classes/dublin/naomh-mearnog-gaa-academy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/clontarf-gaa-nursery"
+  to = "/classes/dublin/clontarf-gaa-nursery"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/dublin-sonics-basketball-club"
+  to = "/classes/dublin/dublin-sonics-basketball-club"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/alliance-franaise-dublin-childrens-french-classes"
+  to = "/classes/dublin/alliance-franaise-dublin-childrens-french-classes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/little-kickers-swords"
+  to = "/classes/dublin/little-kickers-swords"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/scouting-ireland-104th144th-blanchardstown-scout-group-all-sections-beavers-ventures"
+  to = "/classes/dublin/scouting-ireland-104th144th-blanchardstown-scout-group-all-sections-beavers-ventures"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/raheny-gaa-ogra-academy"
+  to = "/classes/dublin/raheny-gaa-ogra-academy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/skerries-harps-gaa-camogie-club-academy"
+  to = "/classes/dublin/skerries-harps-gaa-camogie-club-academy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/curtain-call-stage-school-malahide"
+  to = "/classes/dublin/curtain-call-stage-school-malahide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/kinsella-school-of-ballet-malahide"
+  to = "/classes/dublin/kinsella-school-of-ballet-malahide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/kilmacud-crokes-gaa-club-nursery-football-camogie"
+  to = "/classes/dublin/kilmacud-crokes-gaa-club-nursery-football-camogie"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/artzone-junior-art-classes-juniorsenior-infants-malahide"
+  to = "/classes/dublin/artzone-junior-art-classes-juniorsenior-infants-malahide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/allegro-stage-school"
+  to = "/classes/dublin/allegro-stage-school"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/leap-gymnastics-club"
+  to = "/classes/dublin/leap-gymnastics-club"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/de-la-salle-palmerston-fc-dlsp-fc-dlsp-fc-mini-rugby"
+  to = "/classes/dublin/de-la-salle-palmerston-fc-dlsp-fc-dlsp-fc-mini-rugby"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/metro-st-brigids-athletic-club-metro-st-brigids-ac-juvenile-training"
+  to = "/classes/dublin/metro-st-brigids-ac-juvenile-training"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/na-fianna-clg-nursery"
+  to = "/classes/dublin/na-fianna-clg-nursery"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/catch-dance-academy-hip-hop-dance"
+  to = "/classes/dublin/catch-dance-academy-hip-hop-dance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/music-generation-fingal-lusk-cello-tuition-hub"
+  to = "/classes/dublin/music-generation-fingal-lusk-cello-tuition-hub"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/fkft-fit-kids-fit-teens-fkft-kids-teens-dance-fitness-balbriggan"
+  to = "/classes/dublin/fkft-kids-teens-dance-fitness-balbriggan"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/splashtastic-swimming-classes"
+  to = "/classes/dublin/splashtastic-swimming-classes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/glenageary-lawn-tennis-club-junior-coaching-red-to-yellow-ball"
+  to = "/classes/dublin/glenageary-lawn-tennis-club-junior-coaching-red-to-yellow-ball"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/terenure-college-rfc-mini-rugby"
+  to = "/classes/dublin/terenure-college-rfc-mini-rugby"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/old-wesley-rfc-mini-youth-rugby"
+  to = "/classes/dublin/old-wesley-rfc-mini-youth-rugby"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/clondalkin-rfc-mini-rugby"
+  to = "/classes/dublin/clondalkin-rfc-mini-rugby"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/dsa-dance-sing-act-performing-arts-classes-belmayne"
+  to = "/classes/dublin/dsa-dance-sing-act-performing-arts-classes-belmayne"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/iswim-academy-childrens-swimming-lessons"
+  to = "/classes/dublin/iswim-academy-childrens-swimming-lessons"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/skerries-athletic-club-skerries-ac-juvenile-athletics"
+  to = "/classes/dublin/skerries-ac-juvenile-athletics"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/raheny-shamrock-athletic-club-raheny-shamrock-ac-juvenile-athletics"
+  to = "/classes/dublin/raheny-shamrock-ac-juvenile-athletics"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/colour-and-art-kids-classes-balbriggan"
+  to = "/classes/dublin/colour-and-art-kids-classes-balbriggan"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-sportsco-gym-ringsend"
+  to = "/classes/dublin/rugbytots-sportsco-gym-ringsend"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-cabinteely-community-school"
+  to = "/classes/dublin/rugbytots-cabinteely-community-school"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-glasnevin-etns"
+  to = "/classes/dublin/rugbytots-glasnevin-etns"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-manor-house-school-raheny"
+  to = "/classes/dublin/rugbytots-manor-house-school-raheny"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-pope-john-paul-ii-ns-malahide"
+  to = "/classes/dublin/rugbytots-pope-john-paul-ii-ns-malahide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-loreto-abbey-dalkey"
+  to = "/classes/dublin/rugbytots-loreto-abbey-dalkey"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-ballyroan-boys-national-school-knocklyon"
+  to = "/classes/dublin/rugbytots-ballyroan-boys-national-school-knocklyon"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-taney-parish-centre-dundrum"
+  to = "/classes/dublin/rugbytots-taney-parish-centre-dundrum"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-st-brigids-national-school-castleknock"
+  to = "/classes/dublin/rugbytots-st-brigids-national-school-castleknock"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-esker-educate-together-ns-lucan"
+  to = "/classes/dublin/rugbytots-esker-educate-together-ns-lucan"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-stepaside-etns"
+  to = "/classes/dublin/rugbytots-stepaside-etns"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-newpark-sports-centre-blackrock"
+  to = "/classes/dublin/rugbytots-newpark-sports-centre-blackrock"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-monkstown-etns-dun-laoghaire"
+  to = "/classes/dublin/rugbytots-monkstown-etns-dun-laoghaire"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-skerries-etns"
+  to = "/classes/dublin/rugbytots-skerries-etns"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-marian-college-landsdowne"
+  to = "/classes/dublin/rugbytots-marian-college-landsdowne"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-alexandra-college-milltown"
+  to = "/classes/dublin/rugbytots-alexandra-college-milltown"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-st-josephs-bns-terenure"
+  to = "/classes/dublin/rugbytots-st-josephs-bns-terenure"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/rugbytots-dublin-rugbytots-belgrove-junior-boys-ns-clontarf"
+  to = "/classes/dublin/rugbytots-belgrove-junior-boys-ns-clontarf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/malahide-rfc-pre-mini-rugby-2026-2027"
+  to = "/classes/dublin/malahide-rfc-pre-mini-rugby-2026-2027"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/odwyers-gaa-ogdwyers-nursery-academy"
+  to = "/classes/dublin/odwyers-gaa-ogdwyers-nursery-academy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/cabinteely-fc-cubs-kittens"
+  to = "/classes/dublin/cabinteely-fc-cubs-kittens"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/hombu-dojo-karate-mixed-juniors-karate-rathmines"
+  to = "/classes/dublin/hombu-dojo-karate-mixed-juniors-karate-rathmines"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/ballyboden-st-endas-gaa-boden-og"
+  to = "/classes/dublin/ballyboden-st-endas-gaa-boden-og"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/swan-leisure-kids-swimming-lessons-rathmines"
+  to = "/classes/dublin/swan-leisure-kids-swimming-lessons-rathmines"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/trojan-gymnastic-club-recreational-gymnastics"
+  to = "/classes/dublin/trojan-gymnastic-club-recreational-gymnastics"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/weston-hockey-club-youth-section"
+  to = "/classes/dublin/weston-hockey-club-youth-section"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/kate-buckley-school-of-dance-dundrum"
+  to = "/classes/dublin/kate-buckley-school-of-dance-dundrum"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/gc-school-of-dance-swords"
+  to = "/classes/dublin/gc-school-of-dance-swords"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/sean-gilligan-performing-arts-artane"
+  to = "/classes/dublin/sean-gilligan-performing-arts-artane"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/acting-academy-swords"
+  to = "/classes/dublin/acting-academy-swords"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/iims-youth-choir-balbriggan"
+  to = "/classes/dublin/irish-institute-of-music-and-song-iims-iims-youth-choir-balbriggan"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/dun-laoghaire-school-of-music-childrens-world-of-music-dalkey"
+  to = "/classes/dublin/dun-laoghaire-school-of-music-childrens-world-of-music-dalkey"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/project-fashion-fashion-design-after-school-workshop-dundrum"
+  to = "/classes/dublin/project-fashion-fashion-design-after-school-workshop-dundrum"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/project-fashion-kids-sewing-class-malahide"
+  to = "/classes/dublin/project-fashion-kids-sewing-class-malahide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/bricks-4-kidz-after-school-legostem-club-foxrock"
+  to = "/classes/dublin/bricks-4-kidz-after-school-legostem-club-foxrock"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/coderdojo-digital-dun-laoghaire"
+  to = "/classes/dublin/coderdojo-digital-dun-laoghaire"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/flemington-community-centre-balbriggan-mandarin-chinese-language-school"
+  to = "/classes/dublin/flemington-community-centre-balbriggan-mandarin-chinese-language-school"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/classes/sense-of-wonder-forest-school-killiney"
+  to = "/classes/dublin/sense-of-wonder-forest-school-killiney"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-clontarf-4-8"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-clontarf-starcamp-ages-4-8"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-clontarf-8-12"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-clontarf-starcrew-ages-8-12"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-blackrock-4-8"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-blackrock-starcamp-ages-4-8"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-blackrock-8-12"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-blackrock-starcrew-ages-8-12"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-diswellstown-4-8"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-diswellstown-starcamp-ages-4-8"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-diswellstown-8-12"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-diswellstown-starcrew-ages-8-12"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-baldoyle-4-8"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-baldoyle-starcamp-ages-4-8"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-baldoyle-8-12"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-baldoyle-starcrew-ages-8-12"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-rathgar-4-8"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-rathgar-starcamp-ages-4-8"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-rathgar-8-12"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-rathgar-starcrew-ages-8-12"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-malahide-4-8"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-malahide-starcamp-ages-4-8"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-malahide-8-12"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-malahide-starcrew-ages-8-12"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-ballinteer-4-8"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-ballinteer-starcamp-ages-4-8"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/starcamp-thriller-halloween-camp-ballinteer-8-12"
+  to = "/camps/dublin/starcamp-thriller-halloween-camp-ballinteer-starcrew-ages-8-12"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dublin/camps/zila-art-and-design-halloween-midterm-camp-baldoyle"
+  to = "/camps/dublin/zila-art-and-design-halloween-midterm-art-design-camp-baldoyle"
+  status = 301
+  force = true
