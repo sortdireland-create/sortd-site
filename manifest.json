@@ -1,0 +1,1610 @@
+[
+  {
+    "slug": "scouting-ireland-22nd-dublin-mafikeng-scout-group-beaver-scouts-sutton",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/scouting-ireland-22nd-dublin-mafikeng-scout-group-beaver-scouts-sutton",
+    "name": "Beaver Scouts (Sutton)",
+    "provider": "Scouting Ireland – 22nd Dublin Mafikeng Scout Group",
+    "section": "classes"
+  },
+  {
+    "slug": "the-krafty-italian-dublin-autumn-halloween-craft-classes-tuesdays",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/the-krafty-italian-dublin-autumn-halloween-craft-classes-tuesdays",
+    "name": "Autumn & Halloween Craft Classes (Tuesdays)",
+    "provider": "The Krafty Italian Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-sandyford",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-sandyford",
+    "name": "Young Gaiety Drama Workshop (Ages 8-10) — Sandyford",
+    "provider": "Gaiety School of Acting",
+    "section": "classes"
+  },
+  {
+    "slug": "sutton-lawn-tennis-club-mini-tennis-ages-5-7",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/sutton-lawn-tennis-club-mini-tennis-ages-5-7",
+    "name": "Sutton Lawn Tennis Club - Mini-Tennis (Ages 5-7)",
+    "provider": "Sutton Lawn Tennis Club",
+    "section": "classes"
+  },
+  {
+    "slug": "bective-tennis-club-junior-coaching",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/bective-tennis-club-junior-coaching",
+    "name": "Bective Tennis Club — Junior Coaching",
+    "provider": "Bective Tennis Club",
+    "section": "classes"
+  },
+  {
+    "slug": "flemington-community-centre-balbriggan-mandarin-chinese-language-school",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/flemington-community-centre-balbriggan-mandarin-chinese-language-school",
+    "name": "Flemington Community Centre — Balbriggan Mandarin Chinese Language School",
+    "provider": "Flemington Community Centre",
+    "section": "classes"
+  },
+  {
+    "slug": "shankill-tennis-club-junior-tennis",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/shankill-tennis-club-junior-tennis",
+    "name": "Shankill Tennis Club — Junior Tennis",
+    "provider": "Shankill Tennis Club",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-whitehall",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-whitehall",
+    "name": "Designer Minds STEAM Camp – Whitehall",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "babble-bloom",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/babble-bloom",
+    "name": "Babble & Bloom",
+    "provider": "Babble Box Learning",
+    "section": "classes"
+  },
+  {
+    "slug": "butler-patrice-performing-arts-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/butler-patrice-performing-arts-academy",
+    "name": "Butler Patrice Performing Arts Academy",
+    "provider": "Butler Patrice Performing Arts",
+    "section": "classes"
+  },
+  {
+    "slug": "stillorgan-rathfarnham-rfc-minis-rugby",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/stillorgan-rathfarnham-rfc-minis-rugby",
+    "name": "Stillorgan-Rathfarnham RFC Minis Rugby",
+    "provider": "Stillorgan-Rathfarnham RFC",
+    "section": "classes"
+  },
+  {
+    "slug": "east-coast-school-of-ballet-malahide",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/east-coast-school-of-ballet-malahide",
+    "name": "East Coast School of Ballet — Malahide",
+    "provider": "East Coast School of Ballet",
+    "section": "classes"
+  },
+  {
+    "slug": "clontarf-mini-rugby",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/clontarf-mini-rugby",
+    "name": "Clontarf Mini Rugby",
+    "provider": "Clontarf FC",
+    "section": "classes"
+  },
+  {
+    "slug": "killester-basketball-club-junior-development-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/killester-basketball-club-junior-development-academy",
+    "name": "Killester Basketball Club – Junior Development Academy",
+    "provider": "Killester Basketball Club",
+    "section": "classes"
+  },
+  {
+    "slug": "foxrock-cabinteely-gaa-club-foxcub-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/foxrock-cabinteely-gaa-club-foxcub-academy",
+    "name": "FoxCub Academy",
+    "provider": "Foxrock Cabinteely GAA Club",
+    "section": "classes"
+  },
+  {
+    "slug": "rugbytots-sportsco-gym-ringsend",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-sportsco-gym-ringsend",
+    "name": "Rugbytots — SportsCo Gym (Ringsend)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "rugbytots-cabinteely-community-school",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-cabinteely-community-school",
+    "name": "Rugbytots — Cabinteely Community School",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "junior-einsteins-halloween-science-camp-malahide-castle",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-halloween-science-camp-malahide-castle",
+    "name": "Junior Einsteins Halloween Science Camp – Malahide Castle",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps"
+  },
+  {
+    "slug": "malahide-united-fc-nippers-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/malahide-united-fc-nippers-academy",
+    "name": "Malahide United FC Nippers Academy",
+    "provider": "Malahide United FC",
+    "section": "classes"
+  },
+  {
+    "slug": "gti-family-martial-arts-taekwondo-malahide",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/gti-family-martial-arts-taekwondo-malahide",
+    "name": "GTI Family Martial Arts (Taekwondo) — Malahide",
+    "provider": "GTI Ireland / Be Martial Arts & Fitness",
+    "section": "classes"
+  },
+  {
+    "slug": "rugbytots-glasnevin-etns",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-glasnevin-etns",
+    "name": "Rugbytots — Glasnevin ETNS",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "scouting-ireland-donnybrook-scout-group-beaver-scouts-3rd40th41st-dublin",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/scouting-ireland-donnybrook-scout-group-beaver-scouts-3rd40th41st-dublin",
+    "name": "Beaver Scouts (3rd/40th/41st Dublin)",
+    "provider": "Scouting Ireland – Donnybrook Scout Group",
+    "section": "classes"
+  },
+  {
+    "slug": "tr-academy-weekly-basketball-classes",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/tr-academy-weekly-basketball-classes",
+    "name": "TR Academy – Weekly Basketball Classes",
+    "provider": "TR Basketball Academy",
+    "section": "classes"
+  },
+  {
+    "slug": "stretch-n-grow-halloween-camp-firhouse",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/stretch-n-grow-halloween-camp-firhouse",
+    "name": "Stretch-n-Grow Halloween Camp – Firhouse",
+    "provider": "Stretch-n-Grow Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "music-generation-fingal-balbriggan-jam",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/music-generation-fingal-balbriggan-jam",
+    "name": "Balbriggan Jam",
+    "provider": "Music Generation Fingal",
+    "section": "classes"
+  },
+  {
+    "slug": "zila-art-and-design-the-art-club",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/zila-art-and-design-the-art-club",
+    "name": "The Art Club",
+    "provider": "Zila Art and Design",
+    "section": "classes"
+  },
+  {
+    "slug": "gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-temple-bar",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-temple-bar",
+    "name": "Young Gaiety Drama Workshop (Ages 8-10) — Temple Bar",
+    "provider": "Gaiety School of Acting",
+    "section": "classes"
+  },
+  {
+    "slug": "coolmine-sports-leisure-centre-coolmine-swim-club-childrens-swimming-lessons",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/coolmine-sports-leisure-centre-coolmine-swim-club-childrens-swimming-lessons",
+    "name": "Children's Swimming Lessons",
+    "provider": "Coolmine Sports & Leisure Centre (Coolmine Swim Club)",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-adamstown",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-adamstown",
+    "name": "Designer Minds STEAM Camp – Adamstown",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "sense-of-wonder-forest-school-killiney",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/sense-of-wonder-forest-school-killiney",
+    "name": "Sense of Wonder Forest School — Killiney",
+    "provider": "Sense of Wonder Forest School",
+    "section": "classes"
+  },
+  {
+    "slug": "keys-strings-bandz-skerries-part-2-of-2",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/keys-strings-bandz-skerries-part-2-of-2",
+    "name": "Keys & Strings – BANDZ (Skerries) (Part 2 of 2)",
+    "provider": "Keys & Strings",
+    "section": "camps"
+  },
+  {
+    "slug": "keys-strings-newbies-rush-part-2-of-2",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/keys-strings-newbies-rush-part-2-of-2",
+    "name": "Keys & Strings – NEWBIES (Rush) (Part 2 of 2)",
+    "provider": "Keys & Strings",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-grangegorman",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-grangegorman",
+    "name": "Designer Minds STEAM Camp – Grangegorman",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "navan-adventure-centre-summer-camp-part-3-of-4",
+    "county": "meath",
+    "url": "https://sortd-ireland.ie/camps/meath/navan-adventure-centre-summer-camp-part-3-of-4",
+    "name": "Navan Adventure Centre Summer Camp (Part 3 of 4)",
+    "provider": "Navan Adventure Centre",
+    "section": "camps"
+  },
+  {
+    "slug": "messy-adventures-halloween-role-play-village-swords",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/messy-adventures-halloween-role-play-village-swords",
+    "name": "Messy Adventures Halloween Role Play Village – Swords",
+    "provider": "Messy Adventures",
+    "section": "camps"
+  },
+  {
+    "slug": "scouting-ireland-112th-knocklyon-scout-group-beaver-scouts",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/scouting-ireland-112th-knocklyon-scout-group-beaver-scouts",
+    "name": "Beaver Scouts",
+    "provider": "Scouting Ireland – 112th Knocklyon Scout Group",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-malahide-parish-centre",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-malahide-parish-centre",
+    "name": "Designer Minds STEAM Camp – Malahide (Parish Centre)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "dolphin-swim-school-group-swim-lessons",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/dolphin-swim-school-group-swim-lessons",
+    "name": "Dolphin Swim School – Group Swim Lessons",
+    "provider": "Dolphin Swim School",
+    "section": "classes"
+  },
+  {
+    "slug": "rugbytots-manor-house-school-raheny",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-manor-house-school-raheny",
+    "name": "Rugbytots — Manor House School (Raheny)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-leopardstown-nord-anglia",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-leopardstown-nord-anglia",
+    "name": "Designer Minds STEAM Camp – Leopardstown (Nord Anglia)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "navan-adventure-centre-summer-camp-part-2-of-4",
+    "county": "meath",
+    "url": "https://sortd-ireland.ie/camps/meath/navan-adventure-centre-summer-camp-part-2-of-4",
+    "name": "Navan Adventure Centre Summer Camp (Part 2 of 4)",
+    "provider": "Navan Adventure Centre",
+    "section": "camps"
+  },
+  {
+    "slug": "alive-outside-summer-camp-grangegorman-tud",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/alive-outside-summer-camp-grangegorman-tud",
+    "name": "Alive Outside Summer Camp – Grangegorman (TUD)",
+    "provider": "Alive Outside",
+    "section": "camps"
+  },
+  {
+    "slug": "rugbytots-pope-john-paul-ii-ns-malahide",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-pope-john-paul-ii-ns-malahide",
+    "name": "Rugbytots — Pope John Paul II NS (Malahide)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "rugbytots-loreto-abbey-dalkey",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-loreto-abbey-dalkey",
+    "name": "Rugbytots — Loreto Abbey Dalkey",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "rugbytots-ballyroan-boys-national-school-knocklyon",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-ballyroan-boys-national-school-knocklyon",
+    "name": "Rugbytots — Ballyroan Boys National School (Knocklyon)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "trojan-gymnastic-club-recreational-gymnastics",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/trojan-gymnastic-club-recreational-gymnastics",
+    "name": "Trojan Gymnastic Club — Recreational Gymnastics",
+    "provider": "Trojan Gymnastic Club",
+    "section": "classes"
+  },
+  {
+    "slug": "weston-hockey-club-youth-section",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/weston-hockey-club-youth-section",
+    "name": "Weston Hockey Club — Youth Section",
+    "provider": "Weston Hockey Club",
+    "section": "classes"
+  },
+  {
+    "slug": "neurodiversity-ireland-summer-camp-ages-8-10",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/neurodiversity-ireland-summer-camp-ages-8-10",
+    "name": "Neurodiversity Ireland Summer Camp – Ages 8–10",
+    "provider": "Neurodiversity Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "lucan-sarsfields-gaa-club-abc-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/lucan-sarsfields-gaa-club-abc-academy",
+    "name": "Lucan Sarsfields GAA Club — ABC Academy",
+    "provider": "Lucan Sarsfields GAA Club",
+    "section": "classes"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-clontarf-starcamp-ages-4-8",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-clontarf-starcamp-ages-4-8",
+    "name": "Starcamp Thriller Halloween Camp – Clontarf (StarCamp, ages 4-8)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "coderdojo-digital-dun-laoghaire",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/coderdojo-digital-dun-laoghaire",
+    "name": "CoderDojo Digital Dun Laoghaire",
+    "provider": "CoderDojo Digital Dun Laoghaire (DDL)",
+    "section": "classes"
+  },
+  {
+    "slug": "skerries-rfc-minis-u6-u12",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/skerries-rfc-minis-u6-u12",
+    "name": "Skerries RFC Minis (U6-U12)",
+    "provider": "Skerries RFC",
+    "section": "classes"
+  },
+  {
+    "slug": "little-kickers-portmarnock",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/little-kickers-portmarnock",
+    "name": "Little Kickers — Portmarnock",
+    "provider": "Little Kickers",
+    "section": "classes"
+  },
+  {
+    "slug": "gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-malahide",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-malahide",
+    "name": "Young Gaiety Drama Workshop (Ages 8-10) — Malahide",
+    "provider": "Gaiety School of Acting",
+    "section": "classes"
+  },
+  {
+    "slug": "rugbytots-taney-parish-centre-dundrum",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-taney-parish-centre-dundrum",
+    "name": "Rugbytots — Taney Parish Centre (Dundrum)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "metropolitan-school-of-dance-howth",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/metropolitan-school-of-dance-howth",
+    "name": "Metropolitan School of Dance — Howth",
+    "provider": "Metropolitan School of Dance",
+    "section": "classes"
+  },
+  {
+    "slug": "keys-strings-newbies-skerries-part-2-of-2",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/keys-strings-newbies-skerries-part-2-of-2",
+    "name": "Keys & Strings – NEWBIES (Skerries) (Part 2 of 2)",
+    "provider": "Keys & Strings",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-tallaght",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-tallaght",
+    "name": "Designer Minds STEAM Camp – Tallaght",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "messy-adventures-halloween-role-play-village-dundrum",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/messy-adventures-halloween-role-play-village-dundrum",
+    "name": "Messy Adventures Halloween Role Play Village – Dundrum",
+    "provider": "Messy Adventures",
+    "section": "camps"
+  },
+  {
+    "slug": "hombu-dojo-karate-mixed-juniors-karate-rathmines",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/hombu-dojo-karate-mixed-juniors-karate-rathmines",
+    "name": "Hombu Dojo Karate — Mixed Juniors Karate (Rathmines)",
+    "provider": "Hombu Dojo Karate",
+    "section": "classes"
+  },
+  {
+    "slug": "rugbytots-st-brigids-national-school-castleknock",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-st-brigids-national-school-castleknock",
+    "name": "Rugbytots — St Brigids National School (Castleknock)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "metropolitan-school-of-dance-balbriggan",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/metropolitan-school-of-dance-balbriggan",
+    "name": "Metropolitan School of Dance — Balbriggan",
+    "provider": "Metropolitan School of Dance",
+    "section": "classes"
+  },
+  {
+    "slug": "colour-and-art-kids-classes-swords",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/colour-and-art-kids-classes-swords",
+    "name": "Colour and Art Kids Classes — Swords",
+    "provider": "Colour and Art",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-donnycarney-week-3",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-donnycarney-week-3",
+    "name": "Designer Minds STEAM Camp – Donnycarney (Week 3)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "trinity-sport-childrens-swimming-lessons",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/trinity-sport-childrens-swimming-lessons",
+    "name": "Trinity Sport Children's Swimming Lessons",
+    "provider": "Trinity Sport, Trinity College Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "rugbytots-esker-educate-together-ns-lucan",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-esker-educate-together-ns-lucan",
+    "name": "Rugbytots — Esker Educate Together NS (Lucan)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "balbriggan-rfc-mini-rugby",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/balbriggan-rfc-mini-rugby",
+    "name": "Balbriggan RFC Mini Rugby",
+    "provider": "Balbriggan RFC",
+    "section": "classes"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-blackrock-starcrew-ages-8-12",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-blackrock-starcrew-ages-8-12",
+    "name": "Starcamp Thriller Halloween Camp – Blackrock (StarCrew, ages 8-12)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "rugbytots-stepaside-etns",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-stepaside-etns",
+    "name": "Rugbytots — Stepaside ETNS",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "drama-house-malahide-musical-theatre-youth-theatre",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/drama-house-malahide-musical-theatre-youth-theatre",
+    "name": "Drama House — Malahide (Musical Theatre / Youth Theatre)",
+    "provider": "Drama House",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-skerries-pm",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-skerries-pm",
+    "name": "Designer Minds STEAM Camp – Skerries (PM)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-mount-merrion",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-mount-merrion",
+    "name": "Designer Minds STEAM Camp – Mount Merrion",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-glenageary",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-glenageary",
+    "name": "Designer Minds STEAM Camp – Glenageary",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-diswellstown-starcamp-ages-4-8",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-diswellstown-starcamp-ages-4-8",
+    "name": "Starcamp Thriller Halloween Camp – Diswellstown (StarCamp, ages 4-8)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "playball-parent-and-toddler-saturday-classes-2-3-year-olds",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/playball-parent-and-toddler-saturday-classes-2-3-year-olds",
+    "name": "Playball parent and toddler Saturday classes 2- 3 year olds",
+    "provider": "Playball North Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "malahide-cricket-club-august-camp-2026",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/malahide-cricket-club-august-camp-2026",
+    "name": "Malahide Cricket Club August Camp 2026",
+    "provider": "Malahide Cricket Club",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-ballinteer",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-ballinteer",
+    "name": "Designer Minds STEAM Camp – Ballinteer",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "blackrock-college-rfc-minis",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/blackrock-college-rfc-minis",
+    "name": "Blackrock College RFC Minis",
+    "provider": "Blackrock College RFC",
+    "section": "classes"
+  },
+  {
+    "slug": "old-bawn-gymnastics-club",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/old-bawn-gymnastics-club",
+    "name": "Old Bawn Gymnastics Club",
+    "provider": "Old Bawn Gymnastics Club",
+    "section": "classes"
+  },
+  {
+    "slug": "rugbytots-newpark-sports-centre-blackrock",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-newpark-sports-centre-blackrock",
+    "name": "Rugbytots — Newpark Sports Centre (Blackrock)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "ballyboden-st-endas-gaa-boden-og",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/ballyboden-st-endas-gaa-boden-og",
+    "name": "Ballyboden St Enda's GAA — Boden Óg",
+    "provider": "Ballyboden St Enda's GAA",
+    "section": "classes"
+  },
+  {
+    "slug": "marian-lennon-school-of-ballet-blanchardstowncastleknock",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/marian-lennon-school-of-ballet-blanchardstowncastleknock",
+    "name": "Marian Lennon School of Ballet — Blanchardstown/Castleknock",
+    "provider": "Marian Lennon School of Ballet",
+    "section": "classes"
+  },
+  {
+    "slug": "dsa-dance-sing-act-performing-arts-classes-baldoyle",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/dsa-dance-sing-act-performing-arts-classes-baldoyle",
+    "name": "Performing Arts Classes — Baldoyle",
+    "provider": "DSA - Dance Sing Act",
+    "section": "classes"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-baldoyle-starcamp-ages-4-8",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-baldoyle-starcamp-ages-4-8",
+    "name": "Starcamp Thriller Halloween Camp – Baldoyle (StarCamp, ages 4-8)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "scouting-ireland-37th-dublin-scout-group-scouts-section-terenuretempleogue",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/scouting-ireland-37th-dublin-scout-group-scouts-section-terenuretempleogue",
+    "name": "Scouts Section (Terenure/Templeogue)",
+    "provider": "Scouting Ireland – 37th Dublin Scout Group",
+    "section": "classes"
+  },
+  {
+    "slug": "the-jam-creating-calm-mindfulness-through-art",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/the-jam-creating-calm-mindfulness-through-art",
+    "name": "Creating Calm: Mindfulness Through Art",
+    "provider": "The Jam",
+    "section": "classes"
+  },
+  {
+    "slug": "acting-academy-swords",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/acting-academy-swords",
+    "name": "Acting Academy — Swords",
+    "provider": "Acting Academy",
+    "section": "classes"
+  },
+  {
+    "slug": "neurodiversity-ireland-summer-camp-ages-5-7",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/neurodiversity-ireland-summer-camp-ages-5-7",
+    "name": "Neurodiversity Ireland Summer Camp – Ages 5–7",
+    "provider": "Neurodiversity Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "keys-strings-music-art-skerries-part-2-of-2",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/keys-strings-music-art-skerries-part-2-of-2",
+    "name": "Keys & Strings – Music & Art (Skerries) (Part 2 of 2)",
+    "provider": "Keys & Strings",
+    "section": "camps"
+  },
+  {
+    "slug": "leader-gymnastics-club-swords",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/leader-gymnastics-club-swords",
+    "name": "Leader Gymnastics Club — Swords",
+    "provider": "Leader Gymnastics Club",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-chapelizod",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-chapelizod",
+    "name": "Designer Minds STEAM Camp – Chapelizod",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-knocklyon",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-knocklyon",
+    "name": "Designer Minds STEAM Camp – Knocklyon",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-terenure-part-2-of-3",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-terenure-part-2-of-3",
+    "name": "Designer Minds STEAM Camp – Terenure (Part 2 of 3)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-donnycarney-week-8",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-donnycarney-week-8",
+    "name": "Designer Minds STEAM Camp – Donnycarney (Week 8)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "malahide-rfc-pre-mini-rugby-2026-2027",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/malahide-rfc-pre-mini-rugby-2026-2027",
+    "name": "Malahide RFC Pre Mini Rugby 2026-2027",
+    "provider": "Malahide RFC",
+    "section": "classes"
+  },
+  {
+    "slug": "scouting-ireland-109th-dublin-corduff-scout-group-all-sections-beavers-ventures",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/scouting-ireland-109th-dublin-corduff-scout-group-all-sections-beavers-ventures",
+    "name": "All Sections (Beavers–Ventures)",
+    "provider": "Scouting Ireland – 109th Dublin Corduff Scout Group",
+    "section": "classes"
+  },
+  {
+    "slug": "sport-ireland-campus-national-aquatic-centre-swim-academy-lessons-national-aquatic-centre",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/sport-ireland-campus-national-aquatic-centre-swim-academy-lessons-national-aquatic-centre",
+    "name": "Swim Academy Lessons - National Aquatic Centre",
+    "provider": "Sport Ireland Campus / National Aquatic Centre",
+    "section": "classes"
+  },
+  {
+    "slug": "leopardstown-tennis-club-junior-coaching-ages-5-18",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/leopardstown-tennis-club-junior-coaching-ages-5-18",
+    "name": "Leopardstown Tennis Club - Junior Coaching (Ages 5-18)",
+    "provider": "Leopardstown Tennis Club",
+    "section": "classes"
+  },
+  {
+    "slug": "cabinteely-fc-cubs-kittens",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/cabinteely-fc-cubs-kittens",
+    "name": "Cabinteely FC — Cubs & Kittens",
+    "provider": "Cabinteely FC",
+    "section": "classes"
+  },
+  {
+    "slug": "artzone-senior-primary-art-classes-1st-6th-class-malahide",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/artzone-senior-primary-art-classes-1st-6th-class-malahide",
+    "name": "Artzone Senior Primary Art Classes (1st–6th class) — Malahide",
+    "provider": "Artzone",
+    "section": "classes"
+  },
+  {
+    "slug": "dublin-raiders-basketball-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/dublin-raiders-basketball-academy",
+    "name": "Dublin Raiders Basketball Academy",
+    "provider": "Dublin Raiders Basketball Club",
+    "section": "classes"
+  },
+  {
+    "slug": "naomh-mearnog-gaa-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/naomh-mearnog-gaa-academy",
+    "name": "Naomh Mearnóg GAA Academy",
+    "provider": "Naomh Mearnóg GAA Club",
+    "section": "classes"
+  },
+  {
+    "slug": "gc-school-of-dance-swords",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/gc-school-of-dance-swords",
+    "name": "GC School of Dance — Swords",
+    "provider": "GC School of Dance",
+    "section": "classes"
+  },
+  {
+    "slug": "the-jam-art-drama-class",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/the-jam-art-drama-class",
+    "name": "Art & Drama Class",
+    "provider": "The Jam",
+    "section": "classes"
+  },
+  {
+    "slug": "irish-institute-of-music-and-song-iims-iims-youth-choir-balbriggan",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/irish-institute-of-music-and-song-iims-iims-youth-choir-balbriggan",
+    "name": "IIMS Youth Choir — Balbriggan",
+    "provider": "Irish Institute of Music and Song (IIMS)",
+    "section": "classes"
+  },
+  {
+    "slug": "clontarf-gaa-nursery",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/clontarf-gaa-nursery",
+    "name": "Clontarf GAA — Nursery",
+    "provider": "Clontarf GAA",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-sutton",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-sutton",
+    "name": "Designer Minds STEAM Camp – Sutton",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-swords",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-swords",
+    "name": "Designer Minds STEAM Camp – Swords",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "dublin-sonics-basketball-club",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/dublin-sonics-basketball-club",
+    "name": "Dublin Sonics Basketball Club",
+    "provider": "Dublin Sonics Basketball Club",
+    "section": "classes"
+  },
+  {
+    "slug": "dun-laoghaire-school-of-music-childrens-world-of-music-dalkey",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/dun-laoghaire-school-of-music-childrens-world-of-music-dalkey",
+    "name": "Dun Laoghaire School of Music — Children's World of Music (Dalkey)",
+    "provider": "Dun Laoghaire School of Music",
+    "section": "classes"
+  },
+  {
+    "slug": "stretch-n-grow-halloween-camp-dundrum",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/stretch-n-grow-halloween-camp-dundrum",
+    "name": "Stretch-n-Grow Halloween Camp – Dundrum",
+    "provider": "Stretch-n-Grow Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-leopardstown-gaelscoil",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-leopardstown-gaelscoil",
+    "name": "Designer Minds STEAM Camp – Leopardstown (Gaelscoil)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-rathgar-starcrew-ages-8-12",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-rathgar-starcrew-ages-8-12",
+    "name": "Starcamp Thriller Halloween Camp – Rathgar (StarCrew, ages 8-12)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "rugbytots-monkstown-etns-dun-laoghaire",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-monkstown-etns-dun-laoghaire",
+    "name": "Rugbytots — Monkstown ETNS (Dun Laoghaire)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "odwyers-gaa-ogdwyers-nursery-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/odwyers-gaa-ogdwyers-nursery-academy",
+    "name": "O'Dwyers GAA — OgDwyers Nursery & Academy",
+    "provider": "O'Dwyers GAA Club",
+    "section": "classes"
+  },
+  {
+    "slug": "alliance-franaise-dublin-childrens-french-classes",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/alliance-franaise-dublin-childrens-french-classes",
+    "name": "Alliance Française Dublin – Children's French Classes",
+    "provider": "Alliance Française Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "alive-outside-summer-camp-swords-colaiste-choilm",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/alive-outside-summer-camp-swords-colaiste-choilm",
+    "name": "Alive Outside Summer Camp – Swords (Colaiste Choilm)",
+    "provider": "Alive Outside",
+    "section": "camps"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-malahide-starcrew-ages-8-12",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-malahide-starcrew-ages-8-12",
+    "name": "Starcamp Thriller Halloween Camp – Malahide (StarCrew, ages 8-12)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-diswellstown-starcrew-ages-8-12",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-diswellstown-starcrew-ages-8-12",
+    "name": "Starcamp Thriller Halloween Camp – Diswellstown (StarCrew, ages 8-12)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "the-jam-child-led-art-sessiona",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/the-jam-child-led-art-sessiona",
+    "name": "Child-Led Art Sessiona",
+    "provider": "The Jam",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-drimnagh",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-drimnagh",
+    "name": "Designer Minds STEAM Camp – Drimnagh",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "little-kickers-swords",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/little-kickers-swords",
+    "name": "Little Kickers — Swords",
+    "provider": "Little Kickers",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-clonsilla",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-clonsilla",
+    "name": "Designer Minds STEAM Camp – Clonsilla",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-baldoyle",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-baldoyle",
+    "name": "Designer Minds STEAM Camp – Baldoyle",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "scouting-ireland-104th144th-blanchardstown-scout-group-all-sections-beavers-ventures",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/scouting-ireland-104th144th-blanchardstown-scout-group-all-sections-beavers-ventures",
+    "name": "All Sections (Beavers–Ventures)",
+    "provider": "Scouting Ireland – 104th/144th Blanchardstown Scout Group",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-lucan",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-lucan",
+    "name": "Designer Minds STEAM Camp – Lucan",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "raheny-gaa-ogra-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/raheny-gaa-ogra-academy",
+    "name": "Raheny GAA — Ógra (Academy)",
+    "provider": "Raheny GAA",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-killiney",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-killiney",
+    "name": "Designer Minds STEAM Camp – Killiney",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-terenure-part-3-of-3",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-terenure-part-3-of-3",
+    "name": "Designer Minds STEAM Camp – Terenure (Part 3 of 3)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "skerries-harps-gaa-camogie-club-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/skerries-harps-gaa-camogie-club-academy",
+    "name": "Skerries Harps GAA & Camogie Club — Academy",
+    "provider": "Skerries Harps GAA & Camogie Club",
+    "section": "classes"
+  },
+  {
+    "slug": "curtain-call-stage-school-malahide",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/curtain-call-stage-school-malahide",
+    "name": "Curtain Call Stage School — Malahide",
+    "provider": "Curtain Call Stage School",
+    "section": "classes"
+  },
+  {
+    "slug": "kinsella-school-of-ballet-malahide",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/kinsella-school-of-ballet-malahide",
+    "name": "Kinsella School of Ballet — Malahide",
+    "provider": "Kinsella School of Ballet",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-sandymount",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-sandymount",
+    "name": "Designer Minds STEAM Camp – Sandymount",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "kilmacud-crokes-gaa-club-nursery-football-camogie",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/kilmacud-crokes-gaa-club-nursery-football-camogie",
+    "name": "Kilmacud Crokes GAA Club — Nursery (Football & Camogie)",
+    "provider": "Kilmacud Crokes GAA Club",
+    "section": "classes"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-baldoyle-starcrew-ages-8-12",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-baldoyle-starcrew-ages-8-12",
+    "name": "Starcamp Thriller Halloween Camp – Baldoyle (StarCrew, ages 8-12)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-clontarf-starcrew-ages-8-12",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-clontarf-starcrew-ages-8-12",
+    "name": "Starcamp Thriller Halloween Camp – Clontarf (StarCrew, ages 8-12)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "the-krafty-italian-dublin-autumn-halloween-craft-classes-fridays",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/the-krafty-italian-dublin-autumn-halloween-craft-classes-fridays",
+    "name": "Autumn & Halloween Craft Classes (Fridays)",
+    "provider": "The Krafty Italian Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-castleknock-am",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-castleknock-am",
+    "name": "Designer Minds STEAM Camp – Castleknock (AM)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "rugbytots-skerries-etns",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-skerries-etns",
+    "name": "Rugbytots — Skerries ETNS",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "artzone-junior-art-classes-juniorsenior-infants-malahide",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/artzone-junior-art-classes-juniorsenior-infants-malahide",
+    "name": "Artzone Junior Art Classes (Junior/Senior Infants) — Malahide",
+    "provider": "Artzone",
+    "section": "classes"
+  },
+  {
+    "slug": "allegro-stage-school",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/allegro-stage-school",
+    "name": "Allegro Stage School",
+    "provider": "Allegro Stage School",
+    "section": "classes"
+  },
+  {
+    "slug": "leap-gymnastics-club",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/leap-gymnastics-club",
+    "name": "Leap Gymnastics Club",
+    "provider": "Leap Gymnastics Club",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-blackrock",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-blackrock",
+    "name": "Designer Minds STEAM Camp – Blackrock",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "catch-dance-academy-halloween-dance-camp",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/catch-dance-academy-halloween-dance-camp",
+    "name": "Halloween Dance Camp",
+    "provider": "Catch Dance Academy",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-rathgar",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-rathgar",
+    "name": "Designer Minds STEAM Camp – Rathgar",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-castleknock-pm",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-castleknock-pm",
+    "name": "Designer Minds STEAM Camp – Castleknock (PM)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "de-la-salle-palmerston-fc-dlsp-fc-dlsp-fc-mini-rugby",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/de-la-salle-palmerston-fc-dlsp-fc-dlsp-fc-mini-rugby",
+    "name": "DLSP FC Mini Rugby",
+    "provider": "De La Salle Palmerston FC (DLSP FC)",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-clontarf-week-3",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-clontarf-week-3",
+    "name": "Designer Minds STEAM Camp – Clontarf (Week 3)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-diswellstown",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-diswellstown",
+    "name": "Designer Minds STEAM Camp – Diswellstown",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "metro-st-brigids-ac-juvenile-training",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/metro-st-brigids-ac-juvenile-training",
+    "name": "Metro St. Brigid's AC Juvenile Training",
+    "provider": "Metro St. Brigid's Athletic Club",
+    "section": "classes"
+  },
+  {
+    "slug": "letsgo-summer-camp-wicklow",
+    "county": "wicklow",
+    "url": "https://sortd-ireland.ie/camps/wicklow/letsgo-summer-camp-wicklow",
+    "name": "LetsGo Summer Camp – Wicklow",
+    "provider": "LetsGo",
+    "section": "camps"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-malahide-starcamp-ages-4-8",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-malahide-starcamp-ages-4-8",
+    "name": "Starcamp Thriller Halloween Camp – Malahide (StarCamp, ages 4-8)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "navan-adventure-centre-summer-camp-part-4-of-4",
+    "county": "meath",
+    "url": "https://sortd-ireland.ie/camps/meath/navan-adventure-centre-summer-camp-part-4-of-4",
+    "name": "Navan Adventure Centre Summer Camp (Part 4 of 4)",
+    "provider": "Navan Adventure Centre",
+    "section": "camps"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-ballinteer-starcrew-ages-8-12",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-ballinteer-starcrew-ages-8-12",
+    "name": "Starcamp Thriller Halloween Camp – Ballinteer (StarCrew, ages 8-12)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-rathfarnham",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-rathfarnham",
+    "name": "Designer Minds STEAM Camp – Rathfarnham",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "messy-adventures-halloween-role-play-village-ashtown",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/messy-adventures-halloween-role-play-village-ashtown",
+    "name": "Messy Adventures Halloween Role Play Village – Ashtown",
+    "provider": "Messy Adventures",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-artane",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-artane",
+    "name": "Designer Minds STEAM Camp – Artane",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "rugbytots-marian-college-landsdowne",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-marian-college-landsdowne",
+    "name": "Rugbytots — Marian College (Landsdowne)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "bricks-4-kidz-after-school-legostem-club-foxrock",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/bricks-4-kidz-after-school-legostem-club-foxrock",
+    "name": "Bricks 4 Kidz — After-School LEGO/STEM Club (Foxrock)",
+    "provider": "Bricks 4 Kidz South County Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "na-fianna-clg-nursery",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/na-fianna-clg-nursery",
+    "name": "Na Fianna CLG — Nursery",
+    "provider": "Na Fianna CLG",
+    "section": "classes"
+  },
+  {
+    "slug": "catch-dance-academy-hip-hop-dance",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/catch-dance-academy-hip-hop-dance",
+    "name": "Hip Hop Dance",
+    "provider": "Catch Dance Academy",
+    "section": "classes"
+  },
+  {
+    "slug": "music-generation-fingal-lusk-cello-tuition-hub",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/music-generation-fingal-lusk-cello-tuition-hub",
+    "name": "Lusk Cello Tuition Hub",
+    "provider": "Music Generation Fingal",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-sandyford",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-sandyford",
+    "name": "Designer Minds STEAM Camp – Sandyford",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-ballinteer-starcamp-ages-4-8",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-ballinteer-starcamp-ages-4-8",
+    "name": "Starcamp Thriller Halloween Camp – Ballinteer (StarCamp, ages 4-8)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-drumcondra",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-drumcondra",
+    "name": "Designer Minds STEAM Camp – Drumcondra",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "project-fashion-fashion-design-after-school-workshop-dundrum",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/project-fashion-fashion-design-after-school-workshop-dundrum",
+    "name": "Project Fashion — Fashion Design After School Workshop (Dundrum)",
+    "provider": "Project Fashion",
+    "section": "classes"
+  },
+  {
+    "slug": "playball-toddler-drop-off-class-for-3-5-year-olds",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/playball-toddler-drop-off-class-for-3-5-year-olds",
+    "name": "Playball Toddler drop off class for 3-5 year olds",
+    "provider": "Playball North Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-clontarf-week-8",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-clontarf-week-8",
+    "name": "Designer Minds STEAM Camp – Clontarf (Week 8)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-shankill",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-shankill",
+    "name": "Designer Minds STEAM Camp – Shankill",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "sean-gilligan-performing-arts-artane",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/sean-gilligan-performing-arts-artane",
+    "name": "Sean Gilligan Performing Arts — Artane",
+    "provider": "Sean Gilligan Performing Arts (SGPA)",
+    "section": "classes"
+  },
+  {
+    "slug": "keys-strings-bandz-rush-part-2-of-2",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/keys-strings-bandz-rush-part-2-of-2",
+    "name": "Keys & Strings – BANDZ (Rush) (Part 2 of 2)",
+    "provider": "Keys & Strings",
+    "section": "camps"
+  },
+  {
+    "slug": "zila-art-and-design-halloween-midterm-art-design-camp-baldoyle",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/zila-art-and-design-halloween-midterm-art-design-camp-baldoyle",
+    "name": "Halloween Midterm Art & Design Camp – Baldoyle",
+    "provider": "Zila Art and Design",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-terenure",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-terenure",
+    "name": "Designer Minds STEAM Camp – Terenure",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "project-fashion-kids-sewing-class-malahide",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/project-fashion-kids-sewing-class-malahide",
+    "name": "Project Fashion — Kids Sewing Class (Malahide)",
+    "provider": "Project Fashion",
+    "section": "classes"
+  },
+  {
+    "slug": "fkft-kids-teens-dance-fitness-balbriggan",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/fkft-kids-teens-dance-fitness-balbriggan",
+    "name": "FKFT Kids & Teens Dance Fitness — Balbriggan",
+    "provider": "FKFT (Fit Kids Fit Teens)",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-malahide-community-school",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-malahide-community-school",
+    "name": "Designer Minds STEAM Camp – Malahide (Community School)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "keys-strings-music-art-rush-part-2-of-2",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/keys-strings-music-art-rush-part-2-of-2",
+    "name": "Keys & Strings – Music & Art (Rush) (Part 2 of 2)",
+    "provider": "Keys & Strings",
+    "section": "camps"
+  },
+  {
+    "slug": "rugbytots-alexandra-college-milltown",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-alexandra-college-milltown",
+    "name": "Rugbytots — Alexandra College (Milltown)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "splashtastic-swimming-classes",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/splashtastic-swimming-classes",
+    "name": "Splashtastic Swimming Classes",
+    "provider": "Splashtastic",
+    "section": "classes"
+  },
+  {
+    "slug": "playball-multisport-and-movement",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/playball-multisport-and-movement",
+    "name": "Playball multisport and movement",
+    "provider": "Playball north Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "rugbytots-st-josephs-bns-terenure",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-st-josephs-bns-terenure",
+    "name": "Rugbytots — St Josephs BNS (Terenure)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "glenageary-lawn-tennis-club-junior-coaching-red-to-yellow-ball",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/glenageary-lawn-tennis-club-junior-coaching-red-to-yellow-ball",
+    "name": "Glenageary Lawn Tennis Club - Junior Coaching (Red to Yellow Ball)",
+    "provider": "Glenageary Lawn Tennis Club",
+    "section": "classes"
+  },
+  {
+    "slug": "terenure-college-rfc-mini-rugby",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/terenure-college-rfc-mini-rugby",
+    "name": "Terenure College RFC Mini Rugby",
+    "provider": "Terenure College RFC",
+    "section": "classes"
+  },
+  {
+    "slug": "old-wesley-rfc-mini-youth-rugby",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/old-wesley-rfc-mini-youth-rugby",
+    "name": "Old Wesley RFC Mini & Youth Rugby",
+    "provider": "Old Wesley RFC",
+    "section": "classes"
+  },
+  {
+    "slug": "kate-buckley-school-of-dance-dundrum",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/kate-buckley-school-of-dance-dundrum",
+    "name": "Kate Buckley School of Dance — Dundrum",
+    "provider": "Kate Buckley School of Dance",
+    "section": "classes"
+  },
+  {
+    "slug": "clondalkin-rfc-mini-rugby",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/clondalkin-rfc-mini-rugby",
+    "name": "Clondalkin RFC Mini Rugby",
+    "provider": "Clondalkin RFC",
+    "section": "classes"
+  },
+  {
+    "slug": "dsa-dance-sing-act-performing-arts-classes-belmayne",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/dsa-dance-sing-act-performing-arts-classes-belmayne",
+    "name": "Performing Arts Classes — Belmayne",
+    "provider": "DSA - Dance Sing Act",
+    "section": "classes"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-rathgar-starcamp-ages-4-8",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-rathgar-starcamp-ages-4-8",
+    "name": "Starcamp Thriller Halloween Camp – Rathgar (StarCamp, ages 4-8)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "rugbytots-belgrove-junior-boys-ns-clontarf",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-belgrove-junior-boys-ns-clontarf",
+    "name": "Rugbytots — Belgrove Junior Boys NS (Clontarf)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "neurodiversity-ireland-summer-camp-ages-3-4",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/neurodiversity-ireland-summer-camp-ages-3-4",
+    "name": "Neurodiversity Ireland Summer Camp – Ages 3–4",
+    "provider": "Neurodiversity Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "iswim-academy-childrens-swimming-lessons",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/iswim-academy-childrens-swimming-lessons",
+    "name": "iSwim Academy Children's Swimming Lessons",
+    "provider": "iSwim Academy",
+    "section": "classes"
+  },
+  {
+    "slug": "alive-outside-summer-camp-rathgar-the-high-school",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/alive-outside-summer-camp-rathgar-the-high-school",
+    "name": "Alive Outside Summer Camp – Rathgar (The High School)",
+    "provider": "Alive Outside",
+    "section": "camps"
+  },
+  {
+    "slug": "neurodiversity-ireland-summer-camp-ages-11-14",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/neurodiversity-ireland-summer-camp-ages-11-14",
+    "name": "Neurodiversity Ireland Summer Camp – Ages 11–14",
+    "provider": "Neurodiversity Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "alive-outside-splash-zone-camp-bray-killruddery",
+    "county": "wicklow",
+    "url": "https://sortd-ireland.ie/camps/wicklow/alive-outside-splash-zone-camp-bray-killruddery",
+    "name": "Alive Outside Splash Zone Camp – Bray (Killruddery)",
+    "provider": "Alive Outside",
+    "section": "camps"
+  },
+  {
+    "slug": "designer-minds-steam-camp-skerries-am",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-skerries-am",
+    "name": "Designer Minds STEAM Camp – Skerries (AM)",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "skerries-ac-juvenile-athletics",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/skerries-ac-juvenile-athletics",
+    "name": "Skerries AC Juvenile Athletics",
+    "provider": "Skerries Athletic Club",
+    "section": "classes"
+  },
+  {
+    "slug": "raheny-shamrock-ac-juvenile-athletics",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/raheny-shamrock-ac-juvenile-athletics",
+    "name": "Raheny Shamrock AC Juvenile Athletics",
+    "provider": "Raheny Shamrock Athletic Club",
+    "section": "classes"
+  },
+  {
+    "slug": "colour-and-art-kids-classes-balbriggan",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/colour-and-art-kids-classes-balbriggan",
+    "name": "Colour and Art Kids Classes — Balbriggan",
+    "provider": "Colour and Art",
+    "section": "classes"
+  },
+  {
+    "slug": "designer-minds-steam-camp-firhouse",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-firhouse",
+    "name": "Designer Minds STEAM Camp – Firhouse",
+    "provider": "Designer Minds",
+    "section": "camps"
+  },
+  {
+    "slug": "starcamp-thriller-halloween-camp-blackrock-starcamp-ages-4-8",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-blackrock-starcamp-ages-4-8",
+    "name": "Starcamp Thriller Halloween Camp – Blackrock (StarCamp, ages 4-8)",
+    "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "swan-leisure-kids-swimming-lessons-rathmines",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/swan-leisure-kids-swimming-lessons-rathmines",
+    "name": "Swan Leisure — Kids Swimming Lessons (Rathmines)",
+    "provider": "Swan Leisure",
+    "section": "classes"
+  }
+]
