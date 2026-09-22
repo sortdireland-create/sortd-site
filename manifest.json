@@ -56,14 +56,6 @@
     "section": "classes"
   },
   {
-    "slug": "designer-minds-steam-camp-whitehall",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-whitehall",
-    "name": "Designer Minds STEAM Camp – Whitehall",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "babble-bloom",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/babble-bloom",
@@ -224,52 +216,12 @@
     "section": "classes"
   },
   {
-    "slug": "designer-minds-steam-camp-adamstown",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-adamstown",
-    "name": "Designer Minds STEAM Camp – Adamstown",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "sense-of-wonder-forest-school-killiney",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/sense-of-wonder-forest-school-killiney",
     "name": "Sense of Wonder Forest School — Killiney",
     "provider": "Sense of Wonder Forest School",
     "section": "classes"
-  },
-  {
-    "slug": "keys-strings-bandz-skerries-part-2-of-2",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/keys-strings-bandz-skerries-part-2-of-2",
-    "name": "Keys & Strings – BANDZ (Skerries) (Part 2 of 2)",
-    "provider": "Keys & Strings",
-    "section": "camps"
-  },
-  {
-    "slug": "keys-strings-newbies-rush-part-2-of-2",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/keys-strings-newbies-rush-part-2-of-2",
-    "name": "Keys & Strings – NEWBIES (Rush) (Part 2 of 2)",
-    "provider": "Keys & Strings",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-grangegorman",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-grangegorman",
-    "name": "Designer Minds STEAM Camp – Grangegorman",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "navan-adventure-centre-summer-camp-part-3-of-4",
-    "county": "meath",
-    "url": "https://sortd-ireland.ie/camps/meath/navan-adventure-centre-summer-camp-part-3-of-4",
-    "name": "Navan Adventure Centre Summer Camp (Part 3 of 4)",
-    "provider": "Navan Adventure Centre",
-    "section": "camps"
   },
   {
     "slug": "messy-adventures-halloween-role-play-village-swords",
@@ -288,14 +240,6 @@
     "section": "classes"
   },
   {
-    "slug": "designer-minds-steam-camp-malahide-parish-centre",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-malahide-parish-centre",
-    "name": "Designer Minds STEAM Camp – Malahide (Parish Centre)",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "dolphin-swim-school-group-swim-lessons",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/dolphin-swim-school-group-swim-lessons",
@@ -310,30 +254,6 @@
     "name": "Rugbytots — Manor House School (Raheny)",
     "provider": "Rugbytots Dublin",
     "section": "classes"
-  },
-  {
-    "slug": "designer-minds-steam-camp-leopardstown-nord-anglia",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-leopardstown-nord-anglia",
-    "name": "Designer Minds STEAM Camp – Leopardstown (Nord Anglia)",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "navan-adventure-centre-summer-camp-part-2-of-4",
-    "county": "meath",
-    "url": "https://sortd-ireland.ie/camps/meath/navan-adventure-centre-summer-camp-part-2-of-4",
-    "name": "Navan Adventure Centre Summer Camp (Part 2 of 4)",
-    "provider": "Navan Adventure Centre",
-    "section": "camps"
-  },
-  {
-    "slug": "alive-outside-summer-camp-grangegorman-tud",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/alive-outside-summer-camp-grangegorman-tud",
-    "name": "Alive Outside Summer Camp – Grangegorman (TUD)",
-    "provider": "Alive Outside",
-    "section": "camps"
   },
   {
     "slug": "rugbytots-pope-john-paul-ii-ns-malahide",
@@ -448,22 +368,6 @@
     "section": "classes"
   },
   {
-    "slug": "keys-strings-newbies-skerries-part-2-of-2",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/keys-strings-newbies-skerries-part-2-of-2",
-    "name": "Keys & Strings – NEWBIES (Skerries) (Part 2 of 2)",
-    "provider": "Keys & Strings",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-tallaght",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-tallaght",
-    "name": "Designer Minds STEAM Camp – Tallaght",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "messy-adventures-halloween-role-play-village-dundrum",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/messy-adventures-halloween-role-play-village-dundrum",
@@ -502,14 +406,6 @@
     "name": "Colour and Art Kids Classes — Swords",
     "provider": "Colour and Art",
     "section": "classes"
-  },
-  {
-    "slug": "designer-minds-steam-camp-donnycarney-week-3",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-donnycarney-week-3",
-    "name": "Designer Minds STEAM Camp – Donnycarney (Week 3)",
-    "provider": "Designer Minds",
-    "section": "camps"
   },
   {
     "slug": "trinity-sport-childrens-swimming-lessons",
@@ -560,30 +456,6 @@
     "section": "classes"
   },
   {
-    "slug": "designer-minds-steam-camp-skerries-pm",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-skerries-pm",
-    "name": "Designer Minds STEAM Camp – Skerries (PM)",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-mount-merrion",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-mount-merrion",
-    "name": "Designer Minds STEAM Camp – Mount Merrion",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-glenageary",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-glenageary",
-    "name": "Designer Minds STEAM Camp – Glenageary",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "starcamp-thriller-halloween-camp-diswellstown-starcamp-ages-4-8",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-diswellstown-starcamp-ages-4-8",
@@ -598,22 +470,6 @@
     "name": "Playball parent and toddler Saturday classes 2- 3 year olds",
     "provider": "Playball North Dublin",
     "section": "classes"
-  },
-  {
-    "slug": "malahide-cricket-club-august-camp-2026",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/malahide-cricket-club-august-camp-2026",
-    "name": "Malahide Cricket Club August Camp 2026",
-    "provider": "Malahide Cricket Club",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-ballinteer",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-ballinteer",
-    "name": "Designer Minds STEAM Camp – Ballinteer",
-    "provider": "Designer Minds",
-    "section": "camps"
   },
   {
     "slug": "blackrock-college-rfc-minis",
@@ -696,60 +552,12 @@
     "section": "classes"
   },
   {
-    "slug": "neurodiversity-ireland-summer-camp-ages-5-7",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/neurodiversity-ireland-summer-camp-ages-5-7",
-    "name": "Neurodiversity Ireland Summer Camp – Ages 5–7",
-    "provider": "Neurodiversity Ireland",
-    "section": "camps"
-  },
-  {
-    "slug": "keys-strings-music-art-skerries-part-2-of-2",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/keys-strings-music-art-skerries-part-2-of-2",
-    "name": "Keys & Strings – Music & Art (Skerries) (Part 2 of 2)",
-    "provider": "Keys & Strings",
-    "section": "camps"
-  },
-  {
     "slug": "leader-gymnastics-club-swords",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/leader-gymnastics-club-swords",
     "name": "Leader Gymnastics Club — Swords",
     "provider": "Leader Gymnastics Club",
     "section": "classes"
-  },
-  {
-    "slug": "designer-minds-steam-camp-chapelizod",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-chapelizod",
-    "name": "Designer Minds STEAM Camp – Chapelizod",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-knocklyon",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-knocklyon",
-    "name": "Designer Minds STEAM Camp – Knocklyon",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-terenure-part-2-of-3",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-terenure-part-2-of-3",
-    "name": "Designer Minds STEAM Camp – Terenure (Part 2 of 3)",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-donnycarney-week-8",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-donnycarney-week-8",
-    "name": "Designer Minds STEAM Camp – Donnycarney (Week 8)",
-    "provider": "Designer Minds",
-    "section": "camps"
   },
   {
     "slug": "malahide-rfc-pre-mini-rugby-2026-2027",
@@ -790,6 +598,14 @@
     "name": "Cabinteely FC — Cubs & Kittens",
     "provider": "Cabinteely FC",
     "section": "classes"
+  },
+  {
+    "slug": "skate-school-dublin-halloween-skateboarding-camp",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/skate-school-dublin-halloween-skateboarding-camp",
+    "name": "Skate School Dublin Halloween Skateboarding Camp",
+    "provider": "Skate School Dublin",
+    "section": "camps"
   },
   {
     "slug": "artzone-senior-primary-art-classes-1st-6th-class-malahide",
@@ -848,22 +664,6 @@
     "section": "classes"
   },
   {
-    "slug": "designer-minds-steam-camp-sutton",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-sutton",
-    "name": "Designer Minds STEAM Camp – Sutton",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-swords",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-swords",
-    "name": "Designer Minds STEAM Camp – Swords",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "dublin-sonics-basketball-club",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/dublin-sonics-basketball-club",
@@ -885,14 +685,6 @@
     "url": "https://sortd-ireland.ie/camps/dublin/stretch-n-grow-halloween-camp-dundrum",
     "name": "Stretch-n-Grow Halloween Camp – Dundrum",
     "provider": "Stretch-n-Grow Ireland",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-leopardstown-gaelscoil",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-leopardstown-gaelscoil",
-    "name": "Designer Minds STEAM Camp – Leopardstown (Gaelscoil)",
-    "provider": "Designer Minds",
     "section": "camps"
   },
   {
@@ -928,14 +720,6 @@
     "section": "classes"
   },
   {
-    "slug": "alive-outside-summer-camp-swords-colaiste-choilm",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/alive-outside-summer-camp-swords-colaiste-choilm",
-    "name": "Alive Outside Summer Camp – Swords (Colaiste Choilm)",
-    "provider": "Alive Outside",
-    "section": "camps"
-  },
-  {
     "slug": "starcamp-thriller-halloween-camp-malahide-starcrew-ages-8-12",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-malahide-starcrew-ages-8-12",
@@ -960,36 +744,12 @@
     "section": "classes"
   },
   {
-    "slug": "designer-minds-steam-camp-drimnagh",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-drimnagh",
-    "name": "Designer Minds STEAM Camp – Drimnagh",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "little-kickers-swords",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/little-kickers-swords",
     "name": "Little Kickers — Swords",
     "provider": "Little Kickers",
     "section": "classes"
-  },
-  {
-    "slug": "designer-minds-steam-camp-clonsilla",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-clonsilla",
-    "name": "Designer Minds STEAM Camp – Clonsilla",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-baldoyle",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-baldoyle",
-    "name": "Designer Minds STEAM Camp – Baldoyle",
-    "provider": "Designer Minds",
-    "section": "camps"
   },
   {
     "slug": "scouting-ireland-104th144th-blanchardstown-scout-group-all-sections-beavers-ventures",
@@ -1000,36 +760,12 @@
     "section": "classes"
   },
   {
-    "slug": "designer-minds-steam-camp-lucan",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-lucan",
-    "name": "Designer Minds STEAM Camp – Lucan",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "raheny-gaa-ogra-academy",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/raheny-gaa-ogra-academy",
     "name": "Raheny GAA — Ógra (Academy)",
     "provider": "Raheny GAA",
     "section": "classes"
-  },
-  {
-    "slug": "designer-minds-steam-camp-killiney",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-killiney",
-    "name": "Designer Minds STEAM Camp – Killiney",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-terenure-part-3-of-3",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-terenure-part-3-of-3",
-    "name": "Designer Minds STEAM Camp – Terenure (Part 3 of 3)",
-    "provider": "Designer Minds",
-    "section": "camps"
   },
   {
     "slug": "skerries-harps-gaa-camogie-club-academy",
@@ -1054,14 +790,6 @@
     "name": "Kinsella School of Ballet — Malahide",
     "provider": "Kinsella School of Ballet",
     "section": "classes"
-  },
-  {
-    "slug": "designer-minds-steam-camp-sandymount",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-sandymount",
-    "name": "Designer Minds STEAM Camp – Sandymount",
-    "provider": "Designer Minds",
-    "section": "camps"
   },
   {
     "slug": "kilmacud-crokes-gaa-club-nursery-football-camogie",
@@ -1096,14 +824,6 @@
     "section": "classes"
   },
   {
-    "slug": "designer-minds-steam-camp-castleknock-am",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-castleknock-am",
-    "name": "Designer Minds STEAM Camp – Castleknock (AM)",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "rugbytots-skerries-etns",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-skerries-etns",
@@ -1136,35 +856,11 @@
     "section": "classes"
   },
   {
-    "slug": "designer-minds-steam-camp-blackrock",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-blackrock",
-    "name": "Designer Minds STEAM Camp – Blackrock",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "catch-dance-academy-halloween-dance-camp",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/catch-dance-academy-halloween-dance-camp",
     "name": "Halloween Dance Camp",
     "provider": "Catch Dance Academy",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-rathgar",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-rathgar",
-    "name": "Designer Minds STEAM Camp – Rathgar",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-castleknock-pm",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-castleknock-pm",
-    "name": "Designer Minds STEAM Camp – Castleknock (PM)",
-    "provider": "Designer Minds",
     "section": "camps"
   },
   {
@@ -1176,22 +872,6 @@
     "section": "classes"
   },
   {
-    "slug": "designer-minds-steam-camp-clontarf-week-3",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-clontarf-week-3",
-    "name": "Designer Minds STEAM Camp – Clontarf (Week 3)",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-diswellstown",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-diswellstown",
-    "name": "Designer Minds STEAM Camp – Diswellstown",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "metro-st-brigids-ac-juvenile-training",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/metro-st-brigids-ac-juvenile-training",
@@ -1200,27 +880,11 @@
     "section": "classes"
   },
   {
-    "slug": "letsgo-summer-camp-wicklow",
-    "county": "wicklow",
-    "url": "https://sortd-ireland.ie/camps/wicklow/letsgo-summer-camp-wicklow",
-    "name": "LetsGo Summer Camp – Wicklow",
-    "provider": "LetsGo",
-    "section": "camps"
-  },
-  {
     "slug": "starcamp-thriller-halloween-camp-malahide-starcamp-ages-4-8",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-malahide-starcamp-ages-4-8",
     "name": "Starcamp Thriller Halloween Camp – Malahide (StarCamp, ages 4-8)",
     "provider": "Starcamp Ireland",
-    "section": "camps"
-  },
-  {
-    "slug": "navan-adventure-centre-summer-camp-part-4-of-4",
-    "county": "meath",
-    "url": "https://sortd-ireland.ie/camps/meath/navan-adventure-centre-summer-camp-part-4-of-4",
-    "name": "Navan Adventure Centre Summer Camp (Part 4 of 4)",
-    "provider": "Navan Adventure Centre",
     "section": "camps"
   },
   {
@@ -1232,27 +896,11 @@
     "section": "camps"
   },
   {
-    "slug": "designer-minds-steam-camp-rathfarnham",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-rathfarnham",
-    "name": "Designer Minds STEAM Camp – Rathfarnham",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "messy-adventures-halloween-role-play-village-ashtown",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/messy-adventures-halloween-role-play-village-ashtown",
     "name": "Messy Adventures Halloween Role Play Village – Ashtown",
     "provider": "Messy Adventures",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-artane",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-artane",
-    "name": "Designer Minds STEAM Camp – Artane",
-    "provider": "Designer Minds",
     "section": "camps"
   },
   {
@@ -1296,27 +944,11 @@
     "section": "classes"
   },
   {
-    "slug": "designer-minds-steam-camp-sandyford",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-sandyford",
-    "name": "Designer Minds STEAM Camp – Sandyford",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "starcamp-thriller-halloween-camp-ballinteer-starcamp-ages-4-8",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-ballinteer-starcamp-ages-4-8",
     "name": "Starcamp Thriller Halloween Camp – Ballinteer (StarCamp, ages 4-8)",
     "provider": "Starcamp Ireland",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-drumcondra",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-drumcondra",
-    "name": "Designer Minds STEAM Camp – Drumcondra",
-    "provider": "Designer Minds",
     "section": "camps"
   },
   {
@@ -1336,22 +968,6 @@
     "section": "classes"
   },
   {
-    "slug": "designer-minds-steam-camp-clontarf-week-8",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-clontarf-week-8",
-    "name": "Designer Minds STEAM Camp – Clontarf (Week 8)",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-shankill",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-shankill",
-    "name": "Designer Minds STEAM Camp – Shankill",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "sean-gilligan-performing-arts-artane",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/sean-gilligan-performing-arts-artane",
@@ -1360,27 +976,11 @@
     "section": "classes"
   },
   {
-    "slug": "keys-strings-bandz-rush-part-2-of-2",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/keys-strings-bandz-rush-part-2-of-2",
-    "name": "Keys & Strings – BANDZ (Rush) (Part 2 of 2)",
-    "provider": "Keys & Strings",
-    "section": "camps"
-  },
-  {
     "slug": "zila-art-and-design-halloween-midterm-art-design-camp-baldoyle",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/zila-art-and-design-halloween-midterm-art-design-camp-baldoyle",
     "name": "Halloween Midterm Art & Design Camp – Baldoyle",
     "provider": "Zila Art and Design",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-terenure",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-terenure",
-    "name": "Designer Minds STEAM Camp – Terenure",
-    "provider": "Designer Minds",
     "section": "camps"
   },
   {
@@ -1398,22 +998,6 @@
     "name": "FKFT Kids & Teens Dance Fitness — Balbriggan",
     "provider": "FKFT (Fit Kids Fit Teens)",
     "section": "classes"
-  },
-  {
-    "slug": "designer-minds-steam-camp-malahide-community-school",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-malahide-community-school",
-    "name": "Designer Minds STEAM Camp – Malahide (Community School)",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
-    "slug": "keys-strings-music-art-rush-part-2-of-2",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/keys-strings-music-art-rush-part-2-of-2",
-    "name": "Keys & Strings – Music & Art (Rush) (Part 2 of 2)",
-    "provider": "Keys & Strings",
-    "section": "camps"
   },
   {
     "slug": "rugbytots-alexandra-college-milltown",
@@ -1528,38 +1112,6 @@
     "section": "classes"
   },
   {
-    "slug": "alive-outside-summer-camp-rathgar-the-high-school",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/alive-outside-summer-camp-rathgar-the-high-school",
-    "name": "Alive Outside Summer Camp – Rathgar (The High School)",
-    "provider": "Alive Outside",
-    "section": "camps"
-  },
-  {
-    "slug": "neurodiversity-ireland-summer-camp-ages-11-14",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/neurodiversity-ireland-summer-camp-ages-11-14",
-    "name": "Neurodiversity Ireland Summer Camp – Ages 11–14",
-    "provider": "Neurodiversity Ireland",
-    "section": "camps"
-  },
-  {
-    "slug": "alive-outside-splash-zone-camp-bray-killruddery",
-    "county": "wicklow",
-    "url": "https://sortd-ireland.ie/camps/wicklow/alive-outside-splash-zone-camp-bray-killruddery",
-    "name": "Alive Outside Splash Zone Camp – Bray (Killruddery)",
-    "provider": "Alive Outside",
-    "section": "camps"
-  },
-  {
-    "slug": "designer-minds-steam-camp-skerries-am",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-skerries-am",
-    "name": "Designer Minds STEAM Camp – Skerries (AM)",
-    "provider": "Designer Minds",
-    "section": "camps"
-  },
-  {
     "slug": "skerries-ac-juvenile-athletics",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/skerries-ac-juvenile-athletics",
@@ -1582,14 +1134,6 @@
     "name": "Colour and Art Kids Classes — Balbriggan",
     "provider": "Colour and Art",
     "section": "classes"
-  },
-  {
-    "slug": "designer-minds-steam-camp-firhouse",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/designer-minds-steam-camp-firhouse",
-    "name": "Designer Minds STEAM Camp – Firhouse",
-    "provider": "Designer Minds",
-    "section": "camps"
   },
   {
     "slug": "starcamp-thriller-halloween-camp-blackrock-starcamp-ages-4-8",
