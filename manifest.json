@@ -128,6 +128,14 @@
     "section": "classes"
   },
   {
+    "slug": "ollies-homework-club",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/ollies-homework-club",
+    "name": "Ollie's Homework Club",
+    "provider": "Ollie's Homework Club",
+    "section": "camps"
+  },
+  {
     "slug": "junior-einsteins-halloween-science-camp-malahide-castle",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-halloween-science-camp-malahide-castle",
@@ -200,12 +208,28 @@
     "section": "classes"
   },
   {
+    "slug": "steam-club-term-one",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/steam-club-term-one",
+    "name": "STEAM Club (Term One)",
+    "provider": "STEAM Club Malahide",
+    "section": "camps"
+  },
+  {
     "slug": "gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-temple-bar",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-temple-bar",
     "name": "Young Gaiety Drama Workshop (Ages 8-10) — Temple Bar",
     "provider": "Gaiety School of Acting",
     "section": "classes"
+  },
+  {
+    "slug": "ollies-drama-club-after-school-drama-club",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/ollies-drama-club-after-school-drama-club",
+    "name": "After School Drama Club",
+    "provider": "Ollie's Drama Club",
+    "section": "camps"
   },
   {
     "slug": "coolmine-sports-leisure-centre-coolmine-swim-club-childrens-swimming-lessons",
@@ -360,11 +384,43 @@
     "section": "classes"
   },
   {
+    "slug": "chess-club",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/chess-club",
+    "name": "Chess Club",
+    "provider": "Chess Camp Malahide",
+    "section": "camps"
+  },
+  {
+    "slug": "ollies-lego-club-lego-club",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/ollies-lego-club-lego-club",
+    "name": "LEGO Club",
+    "provider": "Ollie's Lego Club",
+    "section": "camps"
+  },
+  {
     "slug": "messy-adventures-halloween-role-play-village-dundrum",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/messy-adventures-halloween-role-play-village-dundrum",
     "name": "Messy Adventures Halloween Role Play Village – Dundrum",
     "provider": "Messy Adventures",
+    "section": "camps"
+  },
+  {
+    "slug": "mellow-yellow-for-kids",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/mellow-yellow-for-kids",
+    "name": "Mellow Yellow for Kids",
+    "provider": "Mellow Yellow for Kids",
+    "section": "camps"
+  },
+  {
+    "slug": "playact-drama-school-halloween-camp",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/playact-drama-school-halloween-camp",
+    "name": "Halloween Camp",
+    "provider": "PlayAct Drama School",
     "section": "camps"
   },
   {
@@ -422,6 +478,14 @@
     "name": "Balbriggan RFC Mini Rugby",
     "provider": "Balbriggan RFC",
     "section": "classes"
+  },
+  {
+    "slug": "playball-halloween-camp",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/playball-halloween-camp",
+    "name": "Playball halloween camp",
+    "provider": "Playball north dublin",
+    "section": "camps"
   },
   {
     "slug": "starcamp-thriller-halloween-camp-blackrock-starcrew-ages-8-12",
@@ -592,6 +656,14 @@
     "section": "classes"
   },
   {
+    "slug": "young-artists-studio",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/young-artists-studio",
+    "name": "Young Artists Studio",
+    "provider": "Young Artists Studio",
+    "section": "camps"
+  },
+  {
     "slug": "cabinteely-fc-cubs-kittens",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/cabinteely-fc-cubs-kittens",
@@ -640,6 +712,14 @@
     "section": "classes"
   },
   {
+    "slug": "capoeira-for-kids-imaal-hall-dunlavin",
+    "county": "wicklow",
+    "url": "https://sortd-ireland.ie/classes/wicklow/capoeira-for-kids-imaal-hall-dunlavin",
+    "name": "Capoeira for Kids — Imaal Hall, Dunlavin",
+    "provider": "Capoeira Ireland (Mundo Capoeira)",
+    "section": "classes"
+  },
+  {
     "slug": "the-jam-art-drama-class",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/the-jam-art-drama-class",
@@ -677,6 +757,14 @@
     "url": "https://sortd-ireland.ie/classes/dublin/dun-laoghaire-school-of-music-childrens-world-of-music-dalkey",
     "name": "Dun Laoghaire School of Music — Children's World of Music (Dalkey)",
     "provider": "Dun Laoghaire School of Music",
+    "section": "classes"
+  },
+  {
+    "slug": "capoeira-for-kids-spotlight-studios-wicklow",
+    "county": "wicklow",
+    "url": "https://sortd-ireland.ie/classes/wicklow/capoeira-for-kids-spotlight-studios-wicklow",
+    "name": "Capoeira for Kids — Spotlight Studios, Wicklow",
+    "provider": "Capoeira Ireland (Mundo Capoeira)",
     "section": "classes"
   },
   {
@@ -744,6 +832,14 @@
     "section": "classes"
   },
   {
+    "slug": "active-ireland-halloween-camp-killiney-hill",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/active-ireland-halloween-camp-killiney-hill",
+    "name": "Halloween Camp — Killiney Hill",
+    "provider": "Active Ireland",
+    "section": "camps"
+  },
+  {
     "slug": "little-kickers-swords",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/little-kickers-swords",
@@ -757,6 +853,14 @@
     "url": "https://sortd-ireland.ie/classes/dublin/scouting-ireland-104th144th-blanchardstown-scout-group-all-sections-beavers-ventures",
     "name": "All Sections (Beavers–Ventures)",
     "provider": "Scouting Ireland – 104th/144th Blanchardstown Scout Group",
+    "section": "classes"
+  },
+  {
+    "slug": "capoeira-for-kids-alsaa-toberbunny",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/capoeira-for-kids-alsaa-toberbunny",
+    "name": "Capoeira for Kids — ALSAA Toberbunny",
+    "provider": "Capoeira Ireland (Mundo Capoeira)",
     "section": "classes"
   },
   {
@@ -816,6 +920,14 @@
     "section": "camps"
   },
   {
+    "slug": "active-ireland-halloween-camp-st-fintans-sutton",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/active-ireland-halloween-camp-st-fintans-sutton",
+    "name": "Halloween Camp — St Fintan's, Sutton",
+    "provider": "Active Ireland",
+    "section": "camps"
+  },
+  {
     "slug": "the-krafty-italian-dublin-autumn-halloween-craft-classes-fridays",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/the-krafty-italian-dublin-autumn-halloween-craft-classes-fridays",
@@ -854,6 +966,14 @@
     "name": "Leap Gymnastics Club",
     "provider": "Leap Gymnastics Club",
     "section": "classes"
+  },
+  {
+    "slug": "mellow-yellow-for-kids",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/mellow-yellow-for-kids",
+    "name": "Mellow Yellow for Kids",
+    "provider": "Mellow Yellow for Kids",
+    "section": "camps"
   },
   {
     "slug": "catch-dance-academy-halloween-dance-camp",
@@ -966,6 +1086,22 @@
     "name": "Playball Toddler drop off class for 3-5 year olds",
     "provider": "Playball North Dublin",
     "section": "classes"
+  },
+  {
+    "slug": "art-class",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/art-class",
+    "name": "Art Class",
+    "provider": "Art Camp Malahide",
+    "section": "camps"
+  },
+  {
+    "slug": "playact-drama-school-halloween-camp",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/playact-drama-school-halloween-camp",
+    "name": "Halloween Camp",
+    "provider": "PlayAct Drama School",
+    "section": "camps"
   },
   {
     "slug": "sean-gilligan-performing-arts-artane",
@@ -1104,6 +1240,14 @@
     "section": "classes"
   },
   {
+    "slug": "capoeira-for-kids-charlemont-st-dublin-2",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/capoeira-for-kids-charlemont-st-dublin-2",
+    "name": "Capoeira for Kids — Charlemont St, Dublin 2",
+    "provider": "Capoeira Ireland (Mundo Capoeira)",
+    "section": "classes"
+  },
+  {
     "slug": "skerries-ac-juvenile-athletics",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/skerries-ac-juvenile-athletics",
@@ -1126,6 +1270,14 @@
     "name": "Colour and Art Kids Classes — Balbriggan",
     "provider": "Colour and Art",
     "section": "classes"
+  },
+  {
+    "slug": "charlenes-little-bakers-halloween-spooktacular-baking-camp",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/charlenes-little-bakers-halloween-spooktacular-baking-camp",
+    "name": "Charlene's Little Bakers – Halloween Spooktacular Baking Camp",
+    "provider": "Charlene's Little Bakers Club",
+    "section": "camps"
   },
   {
     "slug": "starcamp-thriller-halloween-camp-blackrock-starcamp-ages-4-8",
