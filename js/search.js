@@ -183,7 +183,7 @@ function listingCard(c, i){
 function featuredCard(c){
   const isHalloween = /halloween/i.test(c.name||'');
   const s = isHalloween ? {cc:HW_ORANGE.ink} : categoryStyle(c.category);
-  const typeLabel = c.type === 'weekly' ? 'Weekly class' : 'Holiday camp';
+  const typeLabel = c.type === 'weekly' ? 'Class' : 'Holiday camp';
   const iconHtml = isHalloween ? HW_BAT_ICON : '<i class="ti '+s.icon+'"></i>';
   return '<a href="'+c.listingUrl+'" class="fcard" style="--cc:'+s.cc+'">'
   +'<div class="fcard-top"><div class="fcard-icon">'+iconHtml+'</div><div class="fcard-type">'+typeLabel+'</div></div>'
