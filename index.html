@@ -38,65 +38,78 @@ gtag('config', 'G-HHTB7S9WJG');
     <button class="nav-cta" onclick="openPopup()">Follow us</button>
   </div>
 </nav>
-<section class="hero">
+<section class="hero hero-split">
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
-  <div class="eyebrow">Camps &amp; weekly classes live now — expanding across Leinster</div>
-  <h1>Every camp, class &amp; after-school club — <em>sorted.</em></h1>
-  <p class="sub">Search summer camps, weekly classes and after-school clubs near you — all in one place, kept up to date so you're not stuck on a waitlist that closed months ago.</p>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Camps &amp; weekly classes live now — expanding across Leinster</div>
+      <h1>Every camp, class &amp; after-school club — <em>sorted.</em></h1>
+      <p class="sub">Search summer camps, weekly classes and after-school clubs near you — all in one place, kept up to date so you're not stuck on a waitlist that closed months ago.</p>
+      <span class="hero-note">no app to download · just open it →</span>
+    </div>
 
-  <div class="searchcard">
-    <div class="sf">
-      <i class="ti ti-map-pin"></i>
-      <div class="sf-body">
-        <div class="sf-label">Eircode or area</div>
-        <input type="text" id="hEircode" placeholder="e.g. D13, Malahide, K36…">
+    <div class="searchcard">
+      <div class="sf" style="flex-direction:column; align-items:stretch;">
+        <div style="display:flex; gap:10px; margin-bottom:10px;">
+          <i class="ti ti-sparkles" style="margin-top:2px;"></i>
+          <div class="sf-body">
+            <div class="sf-label">What are they into?</div>
+          </div>
+        </div>
+        <div class="actchips" id="hActivity"></div>
       </div>
-    </div>
-    <div class="sf">
-      <i class="ti ti-category"></i>
-      <div class="sf-body">
-        <div class="sf-label">What are you looking for?</div>
-        <select id="hType">
-          <option value="camp">Holiday camps</option>
-          <option value="weekly">Weekly classes</option>
-        </select>
-      </div>
-    </div>
-    <div class="sf">
-      <i class="ti ti-users"></i>
-      <div class="sf-body">
-        <div class="sf-label">What age?</div>
-        <select id="hAge">
-          <option value="">All ages</option>
-          <option value="0-2">0–2 years</option>
-          <option value="3-5">3–5 years</option>
-          <option value="6-8">6–8 years</option>
-          <option value="9-12">9–12 years</option>
-          <option value="13-99">13+ years</option>
-        </select>
-      </div>
-    </div>
-    <div class="sf" style="border-bottom:none; flex-direction:column; align-items:stretch;">
-      <div style="display:flex; gap:10px;">
-        <i class="ti ti-calendar" style="margin-top:6px;"></i>
+      <div class="sf">
+        <i class="ti ti-map-pin"></i>
         <div class="sf-body">
-          <div class="sf-label">Which days?</div>
-          <div class="daychips" id="hDays"></div>
+          <div class="sf-label">Eircode or area</div>
+          <input type="text" id="hEircode" placeholder="e.g. D13, Malahide, K36…">
+        </div>
+      </div>
+      <div class="sf">
+        <i class="ti ti-category"></i>
+        <div class="sf-body">
+          <div class="sf-label">What are you looking for?</div>
+          <select id="hType">
+            <option value="camp">Holiday camps</option>
+            <option value="weekly">Weekly classes</option>
+          </select>
+        </div>
+      </div>
+      <div class="sf">
+        <i class="ti ti-users"></i>
+        <div class="sf-body">
+          <div class="sf-label">What age?</div>
+          <select id="hAge">
+            <option value="">All ages</option>
+            <option value="0-2">0–2 years</option>
+            <option value="3-5">3–5 years</option>
+            <option value="6-8">6–8 years</option>
+            <option value="9-12">9–12 years</option>
+            <option value="13-99">13+ years</option>
+          </select>
+        </div>
+      </div>
+      <div class="sf" style="border-bottom:none; flex-direction:column; align-items:stretch;">
+        <div style="display:flex; gap:10px;">
+          <i class="ti ti-calendar" style="margin-top:6px;"></i>
+          <div class="sf-body">
+            <div class="sf-label">Which days?</div>
+            <div class="daychips" id="hDays"></div>
+          </div>
+        </div>
+      </div>
+      <button class="search-btn" onclick="heroSearch()">Search</button>
+      <div class="quick">
+        <div class="quick-label">Already know which class you're looking for?</div>
+        <div class="quick-input">
+          <i class="ti ti-search"></i>
+          <input type="text" id="hText" placeholder="Search by name or provider" onkeydown="if(event.key==='Enter')heroSearch()">
         </div>
       </div>
     </div>
-    <button class="search-btn" onclick="heroSearch()">Search</button>
-    <div class="quick">
-      <div class="quick-label">Already know which class you're looking for?</div>
-      <div class="quick-input">
-        <i class="ti ti-search"></i>
-        <input type="text" id="hText" placeholder="Search by name or provider" onkeydown="if(event.key==='Enter')heroSearch()">
-      </div>
-    </div>
   </div>
-  <span class="hero-note">no app to download · just open it →</span>
 </section>
 
 <div class="band band-green">
@@ -196,13 +209,15 @@ gtag('config', 'G-HHTB7S9WJG');
 <script src="/js/search.js"></script>
 <script>
 document.getElementById('hDays').innerHTML = dayCheckboxesHtml('hDays');
+document.getElementById('hActivity').innerHTML = activityChipsHtml('hActivity');
 function heroSearch(){
   const type = document.getElementById('hType').value;
   const eircode = document.getElementById('hEircode').value;
   const ageKey = document.getElementById('hAge').value;
   const days = readSelectedDays('hDays');
   const text = document.getElementById('hText').value;
-  const qs = buildSearchQuery({eircode, ageKey, days, text});
+  const activities = readSelectedActivities('hActivity');
+  const qs = buildSearchQuery({eircode, ageKey, days, text, activities});
   const dest = type === 'weekly' ? '/weekly-classes' : '/camps';
   window.location.href = dest + (qs ? '?' + qs : '');
 }

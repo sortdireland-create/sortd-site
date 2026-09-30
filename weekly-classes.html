@@ -47,6 +47,15 @@ gtag('config', 'G-HHTB7S9WJG');
   <p class="sub">Search term-time weekly classes by area, age and day.</p>
 
   <div class="searchcard wide">
+    <div class="sf" style="flex-direction:column; align-items:stretch;">
+      <div style="display:flex; gap:10px; margin-bottom:10px;">
+        <i class="ti ti-sparkles" style="margin-top:2px;"></i>
+        <div class="sf-body">
+          <div class="sf-label">What are they into?</div>
+        </div>
+      </div>
+      <div class="actchips" id="sActivity"></div>
+    </div>
     <div class="sf">
       <i class="ti ti-map-pin"></i>
       <div class="sf-body">
@@ -171,6 +180,7 @@ gtag('config', 'G-HHTB7S9WJG');
 <script src="/js/search.js"></script>
 <script>
 document.getElementById('sDays').innerHTML = dayCheckboxesHtml('sDays');
+document.getElementById('sActivity').innerHTML = activityChipsHtml('sActivity');
 const TYPE = 'weekly';
 
 function readFilters(){
@@ -181,6 +191,7 @@ function readFilters(){
     days: readSelectedDays('sDays'),
     text: document.getElementById('sText').value,
     sort: document.getElementById('sSort').value,
+    activities: readSelectedActivities('sActivity'),
   };
 }
 
@@ -206,6 +217,7 @@ function clearAll(){
   document.getElementById('sAge').value='';
   document.getElementById('sSort').value='name';
   setSelectedDays('sDays', []);
+  setSelectedActivities('sActivity', []);
   doSearch();
 }
 
@@ -218,6 +230,7 @@ document.getElementById('sEircode').addEventListener('keydown',e=>{if(e.key==='E
   document.getElementById('sText').value = q.text;
   if(q.ageKey) document.getElementById('sAge').value = q.ageKey;
   setSelectedDays('sDays', Array.from(q.days));
+  setSelectedActivities('sActivity', Array.from(q.activities));
 })();
 
 doSearch();

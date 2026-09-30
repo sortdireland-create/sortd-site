@@ -7,6 +7,51 @@ const COLS = [{bg:'#CFE8F6',ink:'#3D77A3'},{bg:'#C9F0DA',ink:'#1D8A52'},{bg:'#E7
 
 const ALL_DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 
+// ── Activity/category chips ─────────────────────────────────────────────
+// Nine clean segments, hand-mapped from the 31 raw values in the Airtable
+// Category field (lots of duplicates in there — e.g. "Sport", "Sport —
+// Tennis", "Tennis" all roll up into Sport). Each segment matches any raw
+// category value containing one of its keywords; several selected chips
+// are OR'd together, not AND'd, so "Sport + STEM" means either one.
+const ACTIVITY_SEGMENTS = [
+  {key:'sport', label:'Sport', icon:'ti-ball-football', ac:'#3D77A3', tint:'#CFE8F6', match:['sport','tennis','football','gaa']},
+  {key:'stem', label:'STEM', icon:'ti-circuit-board', ac:'#3D77A3', tint:'#CFE8F6', match:['stem','coding','lego']},
+  {key:'multi', label:'Multi-Activity', icon:'ti-stars', ac:'#3D77A3', tint:'#CFE8F6', match:['multi-activity','multi activity']},
+  {key:'outdoor', label:'Outdoor & Adventure', icon:'ti-mountain', ac:'#1D8A52', tint:'#C9F0DA', match:['outdoor','adventure']},
+  {key:'language', label:'Language', icon:'ti-language', ac:'#1D8A52', tint:'#C9F0DA', match:['language']},
+  {key:'drama', label:'Drama & Performing Arts', icon:'ti-masks-theater', ac:'#5B4FCA', tint:'#E7E1F8', match:['drama','performing']},
+  {key:'arts', label:'Arts & Crafts', icon:'ti-palette', ac:'#5B4FCA', tint:'#E7E1F8', match:['art']},
+  {key:'music', label:'Music', icon:'ti-music', ac:'#C6567F', tint:'#FBE1EB', match:['music']},
+  {key:'dance', label:'Dance', icon:'ti-music', ac:'#C6567F', tint:'#FBE1EB', match:['dance']},
+];
+
+function activityChipsHtml(idPrefix){
+  return ACTIVITY_SEGMENTS.map(a=>(
+    '<label class="actchip" style="--ac:'+a.ac+'; --tint:'+a.tint+'"><input type="checkbox" value="'+a.key+'" id="'+idPrefix+'-'+a.key+'"><span><i class="ti '+a.icon+'"></i>'+a.label+'</span></label>'
+  )).join('');
+}
+function readSelectedActivities(idPrefix){
+  const set = new Set();
+  ACTIVITY_SEGMENTS.forEach(a=>{
+    const el = document.getElementById(idPrefix+'-'+a.key);
+    if(el && el.checked) set.add(a.key);
+  });
+  return set;
+}
+function setSelectedActivities(idPrefix, keys){
+  ACTIVITY_SEGMENTS.forEach(a=>{
+    const el = document.getElementById(idPrefix+'-'+a.key);
+    if(el) el.checked = keys.includes(a.key);
+  });
+}
+// A listing matches if its (freeform) category contains a keyword for ANY
+// selected segment — OR logic, same spirit as matchesDays() below.
+function matchesActivities(category, selectedKeys){
+  if(!selectedKeys || !selectedKeys.size) return true;
+  const c = (category||'').toLowerCase();
+  return ACTIVITY_SEGMENTS.some(a => selectedKeys.has(a.key) && a.match.some(m => c.includes(m)));
+}
+
 // Freeform category string → accent colour + icon. Real category values are
 // hand-typed free text (e.g. "Sport — Multi-activity", "STEM / LEGO"), not a
 // clean enum, so this is a best-effort keyword match, not exact taxonomy —
@@ -78,13 +123,14 @@ function matchesEircodeOrArea(listing, query){
 }
 
 function filterListings(listings, opts){
-  const { type, text, eircode, ageBucket, days, sort } = opts;
+  const { type, text, eircode, ageBucket, days, sort, activities } = opts;
   let res = listings.filter(c=>{
     if(type && c.type !== type) return false;
     if(text){
       const h = [c.name,c.provider,c.area,c.county,c.category].join(' ').toLowerCase();
       if(!h.includes(text.toLowerCase().trim())) return false;
     }
+    if(!matchesActivities(c.category, activities)) return false;
     if(!matchesEircodeOrArea(c, eircode)) return false;
     if(ageBucket){
       const [lo,hi] = ageBucket;
@@ -165,12 +211,13 @@ function ageBucketFromKey(key){
 }
 
 // ── Query-string helpers for cross-page handoff (hero search → /camps etc.) ─
-function buildSearchQuery({eircode, ageKey, days, text}){
+function buildSearchQuery({eircode, ageKey, days, text, activities}){
   const p = new URLSearchParams();
   if(eircode) p.set('q', eircode);
   if(ageKey) p.set('age', ageKey);
   if(days && days.size) p.set('days', Array.from(days).join(','));
   if(text) p.set('text', text);
+  if(activities && activities.size) p.set('cats', Array.from(activities).join(','));
   return p.toString();
 }
 function readSearchQuery(){
@@ -180,5 +227,6 @@ function readSearchQuery(){
     ageKey: p.get('age') || '',
     days: new Set((p.get('days')||'').split(',').filter(Boolean)),
     text: p.get('text') || '',
+    activities: new Set((p.get('cats')||'').split(',').filter(Boolean)),
   };
 }
