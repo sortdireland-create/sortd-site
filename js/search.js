@@ -5,6 +5,14 @@
 
 const COLS = [{bg:'#CFE8F6',ink:'#3D77A3'},{bg:'#C9F0DA',ink:'#1D8A52'},{bg:'#E7E1F8',ink:'#5B4FCA'},{bg:'#FBE1EB',ink:'#C6567F'}];
 
+// Halloween camp treatment — any listing with "Halloween" in its name gets
+// an orange card band with a black silhouette icon instead of its usual
+// rotating pastel colour, matching the orange hero banner on its listing
+// page. Same three hand-drawn silhouettes used there (pumpkin/ghost/bat).
+const HW_ORANGE = {bg:'#FCE3C6', ink:'#E8791E'};
+const HW_PUMPKIN_ICON = '<svg class="hw-icon" viewBox="0 0 24 24" style="width:34px;height:34px;opacity:.3;"><path d="M11 8.2c0-1.8.9-2.9 1-4.2.1 1.3 1 2.4 1 4.2" stroke="#000" stroke-width="1.3" fill="none" stroke-linecap="round"/><ellipse cx="8.3" cy="14.5" rx="3.1" ry="5.2" fill="#000"/><ellipse cx="12" cy="14.5" rx="3.6" ry="5.8" fill="#000"/><ellipse cx="15.7" cy="14.5" rx="3.1" ry="5.2" fill="#000"/></svg>';
+const HW_BAT_ICON = '<svg viewBox="0 0 24 24" style="width:18px;height:18px;"><path fill="#fff" d="M12 8.3c-.6-2-1.9-3.3-3.4-3.8.4 1 .5 1.9.3 2.8-2.1-2-4.9-2.5-7.4-1.3 1.5.5 2.5 1.4 3 2.5-1.8.6-3.2 2-4 3.8 1.7-.9 3.2-1 4.4-.4-.5 1.2-.5 2.5 0 3.6 1-1.3 2.1-2.4 3.7-2.8.4 1.6 1.4 2.8 3.4 3.3 2-.5 3-1.7 3.4-3.3 1.6.4 2.7 1.5 3.7 2.8.5-1.1.5-2.4 0-3.6 1.2-.6 2.7-.5 4.4.4-.8-1.8-2.2-3.2-4-3.8.5-1.1 1.5-2 3-2.5-2.5-1.2-5.3-.7-7.4 1.3-.2-.9-.1-1.8.3-2.8-1.5.5-2.8 1.8-3.4 3.8z"/></svg>';
+
 const ALL_DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 
 // ── Activity/category chips ─────────────────────────────────────────────
@@ -147,12 +155,14 @@ function filterListings(listings, opts){
 }
 
 function listingCard(c, i){
-  const col = COLS[i % COLS.length];
+  const isHalloween = /halloween/i.test(c.name||'');
+  const col = isHalloween ? HW_ORANGE : COLS[i % COLS.length];
   const ageStr = c.ageMin!=null && c.ageMax!=null ? 'Ages '+c.ageMin+'–'+c.ageMax : c.ageMin!=null ? 'Ages '+c.ageMin+'+' : '';
   const weeksStr = (c.weeks||[]).slice(0,2).join(', ');
   const isWait = (c.notes||'').toLowerCase().includes('waiting list') || (c.notes||'').toLowerCase().includes('fully booked');
   return '<div class="camp-card">'
   +'<div class="card-img" style="background:'+col.bg+'">'
+  +(isHalloween?HW_PUMPKIN_ICON:'')
   +'<div class="card-status '+(isWait?'s-wait':'s-open')+'">'+(isWait?'WAITLIST':'LIVE NOW')+'</div>'
   +'</div>'
   +'<div class="card-body">'
@@ -171,10 +181,12 @@ function listingCard(c, i){
 }
 
 function featuredCard(c){
-  const s = categoryStyle(c.category);
+  const isHalloween = /halloween/i.test(c.name||'');
+  const s = isHalloween ? {cc:HW_ORANGE.ink} : categoryStyle(c.category);
   const typeLabel = c.type === 'weekly' ? 'Weekly class' : 'Holiday camp';
+  const iconHtml = isHalloween ? HW_BAT_ICON : '<i class="ti '+s.icon+'"></i>';
   return '<a href="'+c.listingUrl+'" class="fcard" style="--cc:'+s.cc+'">'
-  +'<div class="fcard-top"><div class="fcard-icon"><i class="ti '+s.icon+'"></i></div><div class="fcard-type">'+typeLabel+'</div></div>'
+  +'<div class="fcard-top"><div class="fcard-icon">'+iconHtml+'</div><div class="fcard-type">'+typeLabel+'</div></div>'
   +'<div class="fcard-name">'+c.name+'</div>'
   +'<div class="fcard-provider">'+c.provider+'</div>'
   +(c.days?'<div class="fcard-meta"><i class="ti ti-calendar"></i>'+c.days+(c.times?' · '+c.times:'')+'</div>':'')
