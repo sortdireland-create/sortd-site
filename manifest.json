@@ -32,6 +32,14 @@
     "section": "classes"
   },
   {
+    "slug": "junior-einsteins-spooky-science-halloween-camp-clontarf",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-spooky-science-halloween-camp-clontarf",
+    "name": "Junior Einsteins Spooky Science Halloween Camp – Clontarf",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps"
+  },
+  {
     "slug": "bective-tennis-club-junior-coaching",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/bective-tennis-club-junior-coaching",
@@ -104,6 +112,14 @@
     "section": "classes"
   },
   {
+    "slug": "junior-einsteins-halloween-science-camp-malahide-castle-thu",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-halloween-science-camp-malahide-castle-thu",
+    "name": "Junior Einsteins Halloween Science Camp – Malahide Castle (Thu)",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps"
+  },
+  {
     "slug": "foxrock-cabinteely-gaa-club-foxcub-academy",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/foxrock-cabinteely-gaa-club-foxcub-academy",
@@ -174,6 +190,14 @@
     "name": "Beaver Scouts (3rd/40th/41st Dublin)",
     "provider": "Scouting Ireland – Donnybrook Scout Group",
     "section": "classes"
+  },
+  {
+    "slug": "junior-einsteins-spooky-science-halloween-camp-newbridge",
+    "county": "kildare",
+    "url": "https://sortd-ireland.ie/camps/kildare/junior-einsteins-spooky-science-halloween-camp-newbridge",
+    "name": "Junior Einsteins Spooky Science Halloween Camp – Newbridge",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps"
   },
   {
     "slug": "tr-academy-weekly-basketball-classes",
@@ -408,18 +432,18 @@
     "section": "camps"
   },
   {
-    "slug": "mellow-yellow-for-kids",
+    "slug": "mellow-yellow-for-kids-swords",
     "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/mellow-yellow-for-kids",
-    "name": "Mellow Yellow for Kids",
+    "url": "https://sortd-ireland.ie/camps/dublin/mellow-yellow-for-kids-swords",
+    "name": "Mellow Yellow for Kids — Swords",
     "provider": "Mellow Yellow for Kids",
     "section": "camps"
   },
   {
-    "slug": "playact-drama-school-halloween-camp",
+    "slug": "playact-drama-school-halloween-camp-crumlin",
     "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/playact-drama-school-halloween-camp",
-    "name": "Halloween Camp",
+    "url": "https://sortd-ireland.ie/camps/dublin/playact-drama-school-halloween-camp-crumlin",
+    "name": "Halloween Camp — Crumlin",
     "provider": "PlayAct Drama School",
     "section": "camps"
   },
@@ -576,12 +600,28 @@
     "section": "classes"
   },
   {
+    "slug": "junior-einsteins-spooky-science-halloween-camp-nord-anglia-international-school-leopardstown-4-day",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-spooky-science-halloween-camp-nord-anglia-international-school-leopardstown-4-day",
+    "name": "Junior Einsteins Spooky Science Halloween Camp – Nord Anglia International School, Leopardstown (4-day)",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps"
+  },
+  {
     "slug": "dsa-dance-sing-act-performing-arts-classes-baldoyle",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/dsa-dance-sing-act-performing-arts-classes-baldoyle",
     "name": "Performing Arts Classes — Baldoyle",
     "provider": "DSA - Dance Sing Act",
     "section": "classes"
+  },
+  {
+    "slug": "junior-einsteins-spooky-science-halloween-camp-maynooth-university-5-day",
+    "county": "kildare",
+    "url": "https://sortd-ireland.ie/camps/kildare/junior-einsteins-spooky-science-halloween-camp-maynooth-university-5-day",
+    "name": "Junior Einsteins Spooky Science Halloween Camp – Maynooth University (5-day)",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps"
   },
   {
     "slug": "starcamp-thriller-halloween-camp-baldoyle-starcamp-ages-4-8",
@@ -616,6 +656,14 @@
     "section": "classes"
   },
   {
+    "slug": "junior-einsteins-spooky-science-halloween-camp-rosemont-school-sandyford-sat",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-spooky-science-halloween-camp-rosemont-school-sandyford-sat",
+    "name": "Junior Einsteins Spooky Science Halloween Camp – Rosemont School, Sandyford (Sat)",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps"
+  },
+  {
     "slug": "leader-gymnastics-club-swords",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/leader-gymnastics-club-swords",
@@ -646,6 +694,14 @@
     "name": "Swim Academy Lessons - National Aquatic Centre",
     "provider": "Sport Ireland Campus / National Aquatic Centre",
     "section": "classes"
+  },
+  {
+    "slug": "junior-einsteins-spooky-science-halloween-camp-greystones-5-day",
+    "county": "wicklow",
+    "url": "https://sortd-ireland.ie/camps/wicklow/junior-einsteins-spooky-science-halloween-camp-greystones-5-day",
+    "name": "Junior Einsteins Spooky Science Halloween Camp – Greystones (5-day)",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps"
   },
   {
     "slug": "leopardstown-tennis-club-junior-coaching-ages-5-18",
@@ -920,11 +976,27 @@
     "section": "camps"
   },
   {
+    "slug": "junior-einsteins-spooky-science-halloween-camp-rosemont-school-sandyford-wed",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-spooky-science-halloween-camp-rosemont-school-sandyford-wed",
+    "name": "Junior Einsteins Spooky Science Halloween Camp – Rosemont School, Sandyford (Wed)",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps"
+  },
+  {
     "slug": "active-ireland-halloween-camp-st-fintans-sutton",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/active-ireland-halloween-camp-st-fintans-sutton",
     "name": "Halloween Camp — St Fintan's, Sutton",
     "provider": "Active Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "junior-einsteins-halloween-science-camp-malahide-castle-fri",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-halloween-science-camp-malahide-castle-fri",
+    "name": "Junior Einsteins Halloween Science Camp – Malahide Castle (Fri)",
+    "provider": "Junior Einsteins Science Club",
     "section": "camps"
   },
   {
@@ -1120,6 +1192,14 @@
     "section": "camps"
   },
   {
+    "slug": "junior-einsteins-spooky-science-halloween-camp-beyond-the-trees-at-avondale",
+    "county": "wicklow",
+    "url": "https://sortd-ireland.ie/camps/wicklow/junior-einsteins-spooky-science-halloween-camp-beyond-the-trees-at-avondale",
+    "name": "Junior Einsteins Spooky Science Halloween Camp – Beyond the Trees at Avondale",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps"
+  },
+  {
     "slug": "project-fashion-kids-sewing-class-malahide",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/project-fashion-kids-sewing-class-malahide",
@@ -1238,6 +1318,30 @@
     "name": "iSwim Academy Children's Swimming Lessons",
     "provider": "iSwim Academy",
     "section": "classes"
+  },
+  {
+    "slug": "junior-einsteins-spooky-science-halloween-camp-castleknock-5-day",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-spooky-science-halloween-camp-castleknock-5-day",
+    "name": "Junior Einsteins Spooky Science Halloween Camp – Castleknock (5-day)",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps"
+  },
+  {
+    "slug": "junior-einsteins-spooky-science-halloween-camp-glenageary-5-day",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-spooky-science-halloween-camp-glenageary-5-day",
+    "name": "Junior Einsteins Spooky Science Halloween Camp – Glenageary (5-day)",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps"
+  },
+  {
+    "slug": "junior-einsteins-spooky-science-halloween-camp-glasnevin",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-spooky-science-halloween-camp-glasnevin",
+    "name": "Junior Einsteins Spooky Science Halloween Camp – Glasnevin",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps"
   },
   {
     "slug": "capoeira-for-kids-charlemont-st-dublin-2",
