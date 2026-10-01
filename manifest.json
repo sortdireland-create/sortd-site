@@ -184,6 +184,14 @@
     "section": "classes"
   },
   {
+    "slug": "the-jam-halloween-art-workshop-raheny",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/the-jam-halloween-art-workshop-raheny",
+    "name": "Halloween Art Workshop – Raheny",
+    "provider": "The Jam",
+    "section": "camps"
+  },
+  {
     "slug": "scouting-ireland-donnybrook-scout-group-beaver-scouts-3rd40th41st-dublin",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/scouting-ireland-donnybrook-scout-group-beaver-scouts-3rd40th41st-dublin",
@@ -670,6 +678,14 @@
     "name": "Leader Gymnastics Club — Swords",
     "provider": "Leader Gymnastics Club",
     "section": "classes"
+  },
+  {
+    "slug": "the-jam-halloween-art-workshop-malahide",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/the-jam-halloween-art-workshop-malahide",
+    "name": "Halloween Art Workshop – Malahide",
+    "provider": "The Jam",
+    "section": "camps"
   },
   {
     "slug": "malahide-rfc-pre-mini-rugby-2026-2027",
@@ -1176,6 +1192,14 @@
     "section": "camps"
   },
   {
+    "slug": "the-jam-halloween-art-drama-camp-clontarf",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/the-jam-halloween-art-drama-camp-clontarf",
+    "name": "Halloween Art & Drama Camp – Clontarf",
+    "provider": "The Jam",
+    "section": "camps"
+  },
+  {
     "slug": "sean-gilligan-performing-arts-artane",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/sean-gilligan-performing-arts-artane",
@@ -1352,12 +1376,28 @@
     "section": "classes"
   },
   {
+    "slug": "olympian-football-academy-halloween-camp-raheny-united-fc-st-annes-park",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/olympian-football-academy-halloween-camp-raheny-united-fc-st-annes-park",
+    "name": "Halloween Camp – Raheny United FC, St Anne's Park",
+    "provider": "Olympian Football Academy",
+    "section": "camps"
+  },
+  {
     "slug": "skerries-ac-juvenile-athletics",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/skerries-ac-juvenile-athletics",
     "name": "Skerries AC Juvenile Athletics",
     "provider": "Skerries Athletic Club",
     "section": "classes"
+  },
+  {
+    "slug": "first-steps-academy-creche-montessori-halloween-camp-churchwell-gardens-belmayne",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/first-steps-academy-creche-montessori-halloween-camp-churchwell-gardens-belmayne",
+    "name": "Halloween Camp – Churchwell Gardens, Belmayne",
+    "provider": "First Steps Academy Creche & Montessori",
+    "section": "camps"
   },
   {
     "slug": "raheny-shamrock-ac-juvenile-athletics",
