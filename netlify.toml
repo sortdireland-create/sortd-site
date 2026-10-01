@@ -10,6 +10,17 @@
   to = "/about"
   status = 200
 
+# ── PARENT ACCOUNTS ──────────────────────────────────────────────
+[[redirects]]
+  from = "/login"
+  to = "/login"
+  status = 200
+
+[[redirects]]
+  from = "/account"
+  to = "/account"
+  status = 200
+
 [[redirects]]
   from = "/how-it-works"
   to = "/how-it-works"

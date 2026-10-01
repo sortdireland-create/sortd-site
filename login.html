@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HHTB7S9WJG"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -10,25 +11,47 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-HHTB7S9WJG');
 </script>
-<title>Classes — sortd</title>
-<meta name="description" content="Every kids' weekly term-time class across Dublin, Wicklow, Meath and beyond — search by area, age and day.">
-<link rel="canonical" href="https://sortd-ireland.ie/weekly-classes">
+<title>Log in — sortd</title>
+<meta name="description" content="Log in to sortd to save camps and classes you're interested in — no password needed, just your email.">
+<link rel="canonical" href="https://sortd-ireland.ie/login">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <link rel="stylesheet" href="/css/site.css">
+<style>
+:root{--cr:#F5F0E8;--nv:#27314A;--sk:#29ABE2;--pk:#F4A7C3;--bl:#4782A8;--pkA:#C66686;--tpk:#F5D9E4;--su:#F7A800;--gr:#2BAD7E;--fd:'Baloo 2',sans-serif;--fb:'Nunito',sans-serif;}
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
+.hero{position:static;overflow:visible;background:var(--nv);color:#fff;padding:56px 24px 72px;text-align:center;}
+.hero h1{font-family:var(--fd);font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px;}
+.hero p{max-width:480px;margin:0 auto;color:#c9d0dd;font-size:1.05rem;line-height:1.6;}
+.wrap{max-width:460px;margin:-40px auto 64px;padding:0 20px;}
+.card{background:#fff;border-radius:20px;box-shadow:0 10px 40px rgba(39,49,74,.12);padding:36px 32px;}
+.fld{margin-bottom:18px;}
+.fld label{display:block;font-size:.85rem;font-weight:700;color:var(--nv);margin-bottom:6px;}
+.fld input{width:100%;padding:12px 14px;border:1.5px solid #e0d8c8;border-radius:10px;font-family:var(--fb);font-size:.95rem;background:var(--cr);}
+.fld input:focus{outline:2px solid var(--sk);background:#fff;}
+.submit-btn{width:100%;background:var(--bl);color:#fff;font-family:var(--fd);font-weight:800;font-size:1.05rem;padding:16px;border:none;border-radius:999px;cursor:pointer;}
+.submit-btn:hover{background:#3c6a86;}
+.submit-btn:disabled{opacity:.6;cursor:default;}
+.status{margin-top:16px;padding:14px 16px;border-radius:10px;font-size:.9rem;display:none;line-height:1.5;}
+.status.ok{background:#E8FFF3;color:#1A7A50;display:block;}
+.status.err{background:var(--tpk);color:var(--pkA);display:block;}
+.fine{display:block;margin-top:18px;text-align:center;font-size:.82rem;color:#888;}
+.fine a{color:var(--bl);font-weight:700;text-decoration:none;}
+</style>
   <script src="/js/booking-tracking.js" defer></script>
   <script src="/js/newsletter-signup.js" defer></script>
   <script src="/js/account.js" defer></script>
 </head>
-
 <body>
+
 <nav>
   <a href="/" class="brand">sortd<span>.</span></a>
   <div class="navlinks">
     <a href="/camps" class="navlink">Camps</a>
-    <a href="/weekly-classes" class="navlink active">Classes</a>
+    <a href="/weekly-classes" class="navlink">Classes</a>
     <a href="/how-it-works" class="navlink">How it works</a>
     <a href="/about" class="navlink">Our story</a>
     <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener" class="navlink">Partners portal</a>
@@ -40,79 +63,26 @@ gtag('config', 'G-HHTB7S9WJG');
     <button class="nav-cta" onclick="openPopup()">Follow us</button>
   </div>
 </nav>
-<section class="hero pagehero tint-pink">
-  <div class="blob blob1"></div>
-  <div class="blob blob2"></div>
-  <div class="blob blob3"></div>
-  <div class="eyebrow">Classes</div>
-  <h1>Find your class</h1>
-  <p class="sub">Search term-time classes by area, age and day.</p>
 
-  <div class="searchcard wide">
-    <div class="sf" style="flex-direction:column; align-items:stretch;">
-      <div style="display:flex; gap:10px; margin-bottom:10px;">
-        <i class="ti ti-sparkles" style="margin-top:2px;"></i>
-        <div class="sf-body">
-          <div class="sf-label">What are they into?</div>
-        </div>
-      </div>
-      <div class="actchips" id="sActivity"></div>
-    </div>
-    <div class="sf">
-      <i class="ti ti-map-pin"></i>
-      <div class="sf-body">
-        <div class="sf-label">Eircode or area</div>
-        <input type="text" id="sEircode" placeholder="e.g. D13, Malahide, K36…">
-      </div>
-    </div>
-    <div class="sf">
-      <i class="ti ti-users"></i>
-      <div class="sf-body">
-        <div class="sf-label">What age?</div>
-        <select id="sAge">
-          <option value="">All ages</option>
-          <option value="0-2">0–2 years</option>
-          <option value="3-5">3–5 years</option>
-          <option value="6-8">6–8 years</option>
-          <option value="9-12">9–12 years</option>
-          <option value="13-99">13+ years</option>
-        </select>
-      </div>
-    </div>
-    <div class="sf" style="border-bottom:none; flex-direction:column; align-items:stretch;">
-      <div style="display:flex; gap:10px;">
-        <i class="ti ti-calendar" style="margin-top:6px;"></i>
-        <div class="sf-body">
-          <div class="sf-label">Which days?</div>
-          <div class="daychips" id="sDays"></div>
-        </div>
-      </div>
-    </div>
-    <button class="search-btn" onclick="doSearch()">Search</button>
-    <div class="quick">
-      <div class="quick-label">Already know which one you're looking for?</div>
-      <div class="quick-input">
-        <i class="ti ti-search"></i>
-        <input type="text" id="sText" placeholder="Search by name or provider" onkeydown="if(event.key==='Enter')doSearch()">
-      </div>
-    </div>
-  </div>
-</section>
+<div class="hero">
+<h1>Log in to sortd</h1>
+<p>No password needed — just your email. We'll send you a one-click login link.</p>
+</div>
 
-<section class="results-shell">
-  <div class="results-inner">
-    <div class="typetoggle">
-      <a href="/camps" class="">Holiday camps</a>
-      <a href="/weekly-classes" class="on-weekly">Classes</a>
-    </div>
-    <div class="filter-row">
-      <div class="fg"><label class="fl" for="sSort">Sort by</label><select class="fs" id="sSort"><option value="name">Name (A–Z)</option><option value="price_lo">Price (low → high)</option><option value="price_hi">Price (high → low)</option><option value="age_lo">Youngest age first</option></select></div>
-      <button class="filter-clear" onclick="clearAll()">Clear all filters</button>
-    </div>
-    <div class="results-meta"><span class="results-count" id="rCount">Loading…</span></div>
-    <div class="grid" id="grid"></div>
-  </div>
-</section>
+<div class="wrap">
+<div class="card">
+<form id="login-form">
+<div class="fld">
+<label>Your email</label>
+<input type="email" name="email" required placeholder="you@example.ie" autocomplete="email">
+</div>
+<button type="submit" class="submit-btn" id="submit-btn">Send me a login link</button>
+<div class="status" id="status"></div>
+</form>
+<span class="fine">New to sortd? Entering your email above creates your account automatically.</span>
+</div>
+</div>
+
 <footer>
   <div class="foot-nl">
     <div class="foot-nl-inner">
@@ -167,6 +137,7 @@ gtag('config', 'G-HHTB7S9WJG');
     <div class="foot-source">Sources: provider websites, WhatsApp screenshots, Instagram. Confirm details with each provider before booking.</div>
   </div>
 </footer>
+
 <div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-label="Follow sortd on Instagram">
 <div class="popup">
 <button class="popup-close" onclick="closePopup()" aria-label="Close">&#10005;</button>
@@ -178,70 +149,8 @@ gtag('config', 'G-HHTB7S9WJG');
 </a>
 </div>
 </div>
-<script src="/js/camps-data.js"></script>
-<script src="/js/search.js"></script>
+
 <script>
-document.getElementById('sDays').innerHTML = dayCheckboxesHtml('sDays');
-document.getElementById('sActivity').innerHTML = activityChipsHtml('sActivity');
-const TYPE = 'weekly';
-
-function readFilters(){
-  return {
-    type: TYPE,
-    eircode: document.getElementById('sEircode').value,
-    ageBucket: ageBucketFromKey(document.getElementById('sAge').value),
-    days: readSelectedDays('sDays'),
-    text: document.getElementById('sText').value,
-    sort: document.getElementById('sSort').value,
-    activities: readSelectedActivities('sActivity'),
-  };
-}
-
-function render(listings){
-  const grid = document.getElementById('grid');
-  const count = document.getElementById('rCount');
-  if(!listings.length){
-    grid.innerHTML = '<div class="empty"><div class="empty-title">No classes found</div><div class="empty-sub">Try a different area, age or day, or clear the filters.</div></div>';
-    count.textContent = '0 results';
-    return;
-  }
-  count.textContent = listings.length + ' result' + (listings.length!==1?'s':'') + ' found';
-  grid.innerHTML = listings.map((c,i) => listingCard(c,i)).join('');
-}
-
-function doSearch(){
-  render(filterListings(LISTINGS, readFilters()));
-}
-
-function clearAll(){
-  document.getElementById('sEircode').value='';
-  document.getElementById('sText').value='';
-  document.getElementById('sAge').value='';
-  document.getElementById('sSort').value='name';
-  setSelectedDays('sDays', []);
-  setSelectedActivities('sActivity', []);
-  doSearch();
-}
-
-document.getElementById('sEircode').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch();});
-
-// ── INIT — pick up filters handed off from the homepage hero search ──────
-(function initFromQuery(){
-  const q = readSearchQuery();
-  document.getElementById('sEircode').value = q.eircode;
-  document.getElementById('sText').value = q.text;
-  if(q.ageKey) document.getElementById('sAge').value = q.ageKey;
-  setSelectedDays('sDays', Array.from(q.days));
-  setSelectedActivities('sActivity', Array.from(q.activities));
-})();
-
-doSearch();
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"sortd","url":"https://sortd-ireland.ie","description":"Ireland's directory of kids' summer camps and classes. Find summer camps, after-school sport, drama, GAA, coding and more across Dublin and Leinster.","potentialAction":{"@type":"SearchAction","target":"https://sortd-ireland.ie/camps?text={search_term_string}","query-input":"required name=search_term_string"}}
-</script>
-<script>
-let popupShown = false;
 function openPopup() {
   document.getElementById('popupOverlay').classList.add('show');
   document.body.style.overflow = 'hidden';
@@ -249,8 +158,6 @@ function openPopup() {
 function closePopup() {
   document.getElementById('popupOverlay').classList.remove('show');
   document.body.style.overflow = '';
-  popupShown = true;
-  sessionStorage.setItem('igShown', '1');
 }
 document.getElementById('popupOverlay').addEventListener('click', function(e) {
   if (e.target === this) closePopup();
@@ -258,17 +165,53 @@ document.getElementById('popupOverlay').addEventListener('click', function(e) {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closePopup();
 });
-function checkScroll() {
-  if (popupShown || sessionStorage.getItem('igShown')) return;
-  const scrolled = window.scrollY + window.innerHeight;
-  const total = document.body.scrollHeight;
-  if (scrolled / total >= 0.5) {
-    openPopup();
-    popupShown = true;
-    window.removeEventListener('scroll', checkScroll);
-  }
-}
-window.addEventListener('scroll', checkScroll, { passive: true });
 </script>
+
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var error = params.get('error');
+  if (error) {
+    var messages = {
+      invalid_link: "That login link isn't valid. Request a new one below.",
+      expired_link: "That login link has expired or was already used. Request a new one below.",
+      server_error: "Something went wrong on our end. Please try again.",
+    };
+    var status = document.getElementById('status');
+    status.className = 'status err';
+    status.textContent = messages[error] || 'Something went wrong. Please try again.';
+  }
+})();
+
+document.getElementById('login-form').addEventListener('submit', async function(e){
+e.preventDefault();
+const btn = document.getElementById('submit-btn');
+const status = document.getElementById('status');
+const data = Object.fromEntries(new FormData(e.target));
+
+btn.disabled = true;
+btn.textContent = 'Sending...';
+status.className = 'status';
+
+try{
+const res = await fetch('/.netlify/functions/request-login', {
+method: 'POST',
+headers: {'Content-Type':'application/json'},
+body: JSON.stringify(data)
+});
+const result = await res.json();
+if (!res.ok) throw new Error(result.error || 'Something went wrong');
+status.className = 'status ok';
+status.textContent = result.message || "Check your inbox — we've sent you a login link.";
+btn.textContent = 'Sent ✓';
+} catch(err){
+status.className = 'status err';
+status.textContent = err.message || 'Something went wrong. Please try again or email us directly.';
+btn.disabled = false;
+btn.textContent = 'Send me a login link';
+}
+});
+</script>
+
 </body>
 </html>
