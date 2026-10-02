@@ -56,6 +56,24 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 .done-again{text-align:center;margin-top:14px;font-size:.85rem;}
 .done-again a{color:var(--sk);font-weight:700;text-decoration:none;}
 .done-note{font-family:var(--fs);font-size:1.15rem;color:var(--bl);text-align:center;margin-top:18px;}
+.step-progress{margin-bottom:24px;}
+.step-progress-track{height:6px;border-radius:999px;background:#eee1cd;overflow:hidden;}
+.step-progress-fill{height:100%;background:var(--bl);border-radius:999px;transition:width .25s ease;width:25%;}
+.step-progress-label{margin-top:9px;font-size:.82rem;}
+.step-progress-label .num{font-weight:800;color:var(--nv);}
+.step-progress-label .name{font-weight:600;color:#888;}
+.step{display:none;}
+.step.active{display:block;}
+.step-nav{display:flex;gap:12px;margin-top:22px;}
+.step-nav .submit-btn{flex:1;margin-top:0;}
+.btn-next{flex:1;background:var(--bl);color:#fff;font-family:var(--fd);font-weight:800;font-size:1rem;padding:15px;border:none;border-radius:999px;cursor:pointer;}
+.btn-next:hover{background:#3c6a86;}
+.btn-back{background:none;border:1.5px solid #e0d8c8;color:var(--nv);font-family:var(--fb);font-weight:700;font-size:.95rem;padding:15px 20px;border-radius:999px;cursor:pointer;white-space:nowrap;}
+.btn-back:hover{background:var(--cr);}
+.step-err{font-size:.82rem;color:var(--pkA);margin-top:10px;display:none;}
+.step-err.show{display:block;}
+.fld input.invalid,.fld select.invalid,.fld textarea.invalid{border-color:var(--pkA);background:#fff;}
+.optional-tag{font-size:.68rem;font-weight:800;color:#999;text-transform:uppercase;letter-spacing:.03em;margin-left:6px;}
 </style>
   <script src="/js/booking-tracking.js" defer></script>
   <script src="/js/account.js" defer></script>
@@ -86,7 +104,14 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 
 <div class="wrap">
 <div class="card" id="form-card">
-<form id="listing-form">
+<div class="step-progress" id="stepProgress">
+<div class="step-progress-track"><div class="step-progress-fill" id="stepFill"></div></div>
+<div class="step-progress-label"><span class="num" id="stepLabel">Step 1 of 4</span> <span class="name" id="stepName">· What's the activity?</span></div>
+</div>
+
+<form id="listing-form" novalidate>
+
+<div class="step active" data-step="1">
 <div class="fld">
 <label>Activity name <span class="req">*</span></label>
 <input type="text" name="name" required placeholder="e.g. Little Explorers Nature Club">
@@ -102,10 +127,28 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 </div>
 
 <div class="fld">
+<label>Category <span class="req">*</span></label>
+<select name="category" required>
+<option value="">Select category</option>
+<option>Arts & Crafts</option><option>Coding & STEM</option><option>Dance</option>
+<option>Drama & Performing Arts</option><option>Language</option><option>Multi-Activity</option>
+<option>Music</option><option>Outdoor & Adventure</option><option>Sport</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="fld">
 <label>Your business / provider name <span class="req">*</span></label>
 <input type="text" name="provider" required placeholder="e.g. Adventure Ireland">
 </div>
 
+<div class="step-err">Please fill in the highlighted fields before continuing.</div>
+<div class="step-nav">
+<button type="button" class="btn-next" data-next>Next: Who's it for →</button>
+</div>
+</div>
+
+<div class="step" data-step="2">
 <div class="row2">
 <div class="fld">
 <label>County <span class="req">*</span></label>
@@ -121,17 +164,6 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 <label>Area / town <span class="req">*</span></label>
 <input type="text" name="area" required placeholder="e.g. Malahide">
 </div>
-</div>
-
-<div class="fld">
-<label>Category <span class="req">*</span></label>
-<select name="category" required>
-<option value="">Select category</option>
-<option>Arts & Crafts</option><option>Coding & STEM</option><option>Dance</option>
-<option>Drama & Performing Arts</option><option>Language</option><option>Multi-Activity</option>
-<option>Music</option><option>Outdoor & Adventure</option><option>Sport</option>
-<option>Other</option>
-</select>
 </div>
 
 <div class="row2">
@@ -151,6 +183,14 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 <div class="hint">Running a camp? The first day it runs. Running a class? The date the current or next term starts.</div>
 </div>
 
+<div class="step-err">Please fill in the highlighted fields before continuing.</div>
+<div class="step-nav">
+<button type="button" class="btn-back" data-back>← Back</button>
+<button type="button" class="btn-next" data-next>Next: Cost & booking →</button>
+</div>
+</div>
+
+<div class="step" data-step="3">
 <div class="fld">
 <label>Cost <span class="req">*</span></label>
 <input type="text" name="cost" required placeholder="e.g. €80 for 7 weeks, or €150 a week">
@@ -164,21 +204,29 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 </div>
 
 <div class="fld">
-<label>Tell parents more about it</label>
+<label>Tell parents more about it <span class="optional-tag">Optional</span></label>
 <textarea name="activities" rows="4" placeholder="What happens during the day, what's included, anything that makes it special..."></textarea>
 </div>
 
+<div class="step-err">Please fill in the highlighted fields before continuing.</div>
+<div class="step-nav">
+<button type="button" class="btn-back" data-back>← Back</button>
+<button type="button" class="btn-next" data-next>Next: Finishing touches →</button>
+</div>
+</div>
+
+<div class="step" data-step="4">
 <div class="fld">
-<label>Logo</label>
+<label>Logo <span class="optional-tag">Optional</span></label>
 <input type="file" id="f-logo" accept="image/*">
-<div class="hint">Optional — up to 4MB. Shown alongside your listing. Companies who do <strong>not</strong> upload a logo will <strong>not</strong> be featured in the weekly newsletter or Instagram.</div>
+<div class="hint">Up to 4MB. Shown alongside your listing. Companies who do <strong>not</strong> upload a logo will <strong>not</strong> be featured in the weekly newsletter or Instagram.</div>
 <div class="field-err" id="logo-err"></div>
 </div>
 
 <div class="fld">
-<label>Photos</label>
+<label>Photos <span class="optional-tag">Optional</span></label>
 <input type="file" id="f-photos" accept="image/*" multiple>
-<div class="hint">Optional — up to 5 images, 4MB each.</div>
+<div class="hint">Up to 5 images, 4MB each.</div>
 <div class="file-list" id="photos-list"></div>
 <div class="field-err" id="photos-err"></div>
 </div>
@@ -189,8 +237,14 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 <div class="hint">We'll send a confirmation here, and use it if you ever need to update or claim this listing.</div>
 </div>
 
+<div class="step-err">Please fill in the highlighted fields before submitting.</div>
+<div class="step-nav">
+<button type="button" class="btn-back" data-back>← Back</button>
 <button type="submit" class="submit-btn" id="submit-btn">Submit for review</button>
+</div>
 <div class="status" id="status"></div>
+</div>
+
 </form>
 </div>
 
@@ -350,6 +404,75 @@ document.getElementById('f-photos').addEventListener('change', function () {
   listEl.textContent = files.length ? files.map((f) => f.name).join(', ') : '';
 });
 
+// ── Multi-step form navigation ───────────────────────────────────────
+// The form itself is unchanged (same fields, same name attributes, same
+// single FormData submit) — it's just chunked into four screens so a
+// provider sees 3-4 fields at a time instead of all 12 at once. novalidate
+// is set on <form> so the browser never tries to validate a required field
+// sitting in a currently-hidden step (which it can't focus, so it would
+// silently refuse to submit with no visible error) — validateStep() below
+// does that job per-screen instead, and the submit handler re-runs it for
+// the final step before allowing the real submit.
+const TOTAL_STEPS = 4;
+const STEP_NAMES = {
+  1: "What's the activity?",
+  2: "Who's it for, and when?",
+  3: 'Cost & booking',
+  4: 'Finishing touches',
+};
+let currentStep = 1;
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function (s) {
+    s.classList.toggle('active', Number(s.dataset.step) === n);
+  });
+  currentStep = n;
+  document.getElementById('stepLabel').textContent = `Step ${n} of ${TOTAL_STEPS}`;
+  document.getElementById('stepName').textContent = `· ${STEP_NAMES[n]}`;
+  document.getElementById('stepFill').style.width = (n / TOTAL_STEPS * 100) + '%';
+  const card = document.getElementById('form-card');
+  if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function validateStep(n) {
+  const stepEl = document.querySelector('.step[data-step="' + n + '"]');
+  if (!stepEl) return true;
+  const fields = stepEl.querySelectorAll('input[required], select[required], textarea[required]');
+  let firstInvalid = null;
+  fields.forEach(function (f) {
+    const bad = !String(f.value || '').trim();
+    f.classList.toggle('invalid', bad);
+    if (bad && !firstInvalid) firstInvalid = f;
+  });
+  const err = stepEl.querySelector('.step-err');
+  if (firstInvalid) {
+    if (err) err.classList.add('show');
+    firstInvalid.focus();
+    return false;
+  }
+  if (err) err.classList.remove('show');
+  return true;
+}
+
+document.getElementById('listing-form').addEventListener('input', function (e) {
+  if (e.target.classList && e.target.classList.contains('invalid')) {
+    e.target.classList.remove('invalid');
+  }
+});
+
+document.querySelectorAll('[data-next]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    if (!validateStep(currentStep)) return;
+    showStep(currentStep + 1);
+  });
+});
+
+document.querySelectorAll('[data-back]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    showStep(currentStep - 1);
+  });
+});
+
 function showDoneCard(name, email, failedUploads) {
   document.getElementById('form-card').style.display = 'none';
   document.getElementById('already-note').style.display = 'none';
@@ -377,11 +500,13 @@ document.getElementById('submit-another').addEventListener('click', function (e)
   const status = document.getElementById('status');
   status.className = 'status';
   status.textContent = '';
+  showStep(1);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 document.getElementById('listing-form').addEventListener('submit', async function(e){
 e.preventDefault();
+if (!validateStep(4)) return;
 const btn = document.getElementById('submit-btn');
 const status = document.getElementById('status');
 const data = Object.fromEntries(new FormData(e.target));
@@ -440,6 +565,7 @@ e.target.reset();
 document.getElementById('photos-list').textContent = '';
 btn.disabled = false;
 btn.textContent = 'Submit for review';
+showStep(1);
 showDoneCard(submittedName, submittedEmail, failedUploads);
 } catch(err){
 status.className = 'status err';
