@@ -164,11 +164,15 @@ function listingCard(c, i, showType){
   +'<div class="card-img" style="background:'+col.bg+'">'
   +(isHalloween?HW_PUMPKIN_ICON:'')
   +'<div class="card-status '+(isWait?'s-wait':'s-open')+'">'+(isWait?'WAITLIST':'LIVE NOW')+'</div>'
+  +'<button class="card-save" data-save-id="'+c.id+'" aria-label="Save for later" aria-pressed="false" onclick="event.preventDefault();window.SortdSaved&&window.SortdSaved.toggle(\''+c.id+'\',this);"><i class="ti ti-heart"></i></button>'
   +'</div>'
   +'<div class="card-body">'
   +(c.category?'<div class="card-cat" style="color:'+col.ink+'">'+c.category+'</div>':'')
   +'<div class="card-name">'+c.name+'</div>'
   +(c.provider&&c.provider!==c.name?'<div class="card-prov">'+c.provider+'</div>':'')
+  // Order follows how a parent actually decides: age/location first (is
+  // this even in the running), then day/time (does it fit our week),
+  // then price — same priority the optimisation brief asked for.
   +'<div class="card-meta">'
   // Only shown on the combined /find-an-activity results, where camps and
   // classes sit in the same grid and need a quick way to tell apart —
@@ -177,6 +181,7 @@ function listingCard(c, i, showType){
   +(showType?'<span class="cm cm-type">'+(c.type==='weekly'?'Class':'Camp')+'</span>':'')
   +(ageStr?'<span class="cm">'+ageStr+'</span>':'')
   +(c.area?'<span class="cm">📍 '+c.area+'</span>':'')
+  +(c.days?'<span class="cm">'+c.days.split('\n')[0].substring(0,18)+'</span>':'')
   +(c.times?'<span class="cm">'+c.times.split('\n')[0].substring(0,20)+'</span>':'')
   +(weeksStr?'<span class="cm">'+weeksStr+'</span>':'')
   +'</div>'

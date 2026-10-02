@@ -80,6 +80,7 @@ h1 em{font-style:normal; color:var(--pu);}
 .sf input[type=text]::placeholder{color:#aab0bc; font-weight:700;}
 .search-btn{width:100%; margin-top:16px; background:var(--sk); color:#fff; border:none; border-radius:14px;
   font-family:'Baloo 2',sans-serif; font-weight:700; font-size:16px; padding:14px; cursor:pointer;}
+.search-trust{margin-top:10px; text-align:center; font-size:11.5px; font-weight:700; color:#9aa0ab; letter-spacing:.01em;}
 .quick{margin-top:16px; padding-top:16px; border-top:1px dashed var(--bd); text-align:center;}
 .quick-label{font-size:13px; font-weight:700; color:#8a8f9c; margin-bottom:10px;}
 .quick-input{display:flex; align-items:center; gap:8px; background:var(--pg); border:1px solid var(--bd);
@@ -179,6 +180,21 @@ h1 em{font-style:normal; color:var(--pu);}
 .card-status{position:absolute;top:11px;left:11px;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.08em;padding:5px 11px;border-radius:999px;color:#fff;}
 .s-open{background:var(--gr);}
 .s-wait{background:#D9971E;color:#fff;}
+/* Save (heart) button on a listing card — top-right of the image, mirrors
+   the status pill's top-left placement. Filled pink + beating-heart icon
+   once saved; see js/saved.js for the save/unsave logic. */
+.card-save{position:absolute;top:9px;right:9px;width:30px;height:30px;border:none;border-radius:999px;background:rgba(255,255,255,.88);color:var(--nv);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:transform .12s,color .12s,background .12s;padding:0;}
+.card-save:hover{transform:scale(1.08);}
+.card-save.saved{color:#fff;background:var(--pkink);}
+/* One-time toast nudging an anonymous saver toward a free account —
+   js/saved.js shows this once, ever, on first save, never again. */
+.save-toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%) translateY(16px);display:flex;align-items:center;gap:14px;background:var(--nv);color:#fff;padding:14px 16px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.2);z-index:500;opacity:0;transition:opacity .2s,transform .2s;max-width:calc(100vw - 32px);}
+.save-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.save-toast-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:14px;}
+.save-toast-sub{font-size:12.5px;color:#c9d0dd;margin-top:1px;}
+.save-toast-cta{background:#fff;color:var(--nv);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:13px;padding:8px 14px;border-radius:999px;white-space:nowrap;flex-shrink:0;}
+.save-toast-close{background:none;border:none;color:#c9d0dd;font-size:13px;cursor:pointer;padding:4px;flex-shrink:0;}
+@media(max-width:600px){.save-toast{flex-wrap:wrap;justify-content:center;text-align:center;}}
 .card-body{padding:16px 18px 20px;display:flex;flex-direction:column;flex:1;}
 .card-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.16em;margin-bottom:3px;}
 .card-name{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:17px;color:var(--nv);margin-bottom:3px;line-height:1.2;}

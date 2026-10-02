@@ -17,11 +17,11 @@ gtag('config', 'G-HHTB7S9WJG');
 <link rel="canonical" href="https://sortd-ireland.ie/account">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <link rel="stylesheet" href="/css/site.css">
 <style>
 :root{--cr:#F5F0E8;--nv:#27314A;--sk:#29ABE2;--pk:#F4A7C3;--bl:#4782A8;--pkA:#C66686;--tpk:#F5D9E4;--su:#F7A800;--gr:#2BAD7E;--fd:'Baloo 2',sans-serif;--fb:'Nunito',sans-serif;}
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 .hero{position:static;overflow:visible;background:var(--nv);color:#fff;padding:56px 24px 72px;text-align:center;}
@@ -36,10 +36,16 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 .coming b{color:var(--nv);display:block;font-size:.95rem;}
 .coming span{color:#888;font-size:.85rem;}
 .logout-link{display:inline-block;margin-top:20px;color:var(--pkA);font-weight:700;text-decoration:none;font-size:.9rem;}
+.saved-heading{font-family:var(--fd);font-size:1.3rem;color:var(--nv);margin-bottom:18px;}
+.saved-empty{grid-column:1/-1;background:#fafafa;border:1.5px dashed #e2e2e2;border-radius:16px;padding:36px 24px;text-align:center;color:#888;}
+.saved-empty a{color:var(--sk);font-weight:700;}
 </style>
   <script src="/js/booking-tracking.js" defer></script>
   <script src="/js/newsletter-signup.js" defer></script>
   <script src="/js/account.js" defer></script>
+  <script src="/js/camps-data.js" defer></script>
+  <script src="/js/search.js" defer></script>
+  <script src="/js/saved.js" defer></script>
 </head>
 <body>
 
@@ -67,16 +73,20 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 <div class="wrap">
 <div class="card">
 <h2>What's here so far</h2>
-<p>Your account works — that's the first piece. Saving camps &amp; classes, and a shareable summer planner, are coming next.</p>
-<div class="coming">
-<div><b>Saved camps &amp; classes</b><span>Heart a listing to keep track of it — coming soon.</span></div>
-</div>
+<p>Save a camp or class anywhere on the site and it'll show up below. A shareable summer planner is coming next.</p>
 <div class="coming">
 <div><b>Summer planner</b><span>Drop-off/pick-up, who's doing what, a link to share with other parents — coming soon.</span></div>
 </div>
 <a href="/.netlify/functions/logout" class="logout-link">Log out</a>
 </div>
 </div>
+
+<section class="results-shell">
+  <div class="results-inner">
+    <h2 class="saved-heading">Your saved activities</h2>
+    <div class="grid" id="savedGrid"></div>
+  </div>
+</section>
 
 <footer>
   <div class="foot-nl">
@@ -171,6 +181,36 @@ document.addEventListener('keydown', function(e) {
   var loggedIn = document.cookie.split('; ').some(function (c) { return c === 'sortd_logged_in=1'; });
   if (!loggedIn) window.location.replace('/login');
 })();
+</script>
+
+<script>
+// Renders the logged-in parent's saved activities by cross-referencing
+// their saved listing IDs (from js/saved.js, which itself called
+// get-saved.js) against the same LISTINGS dataset every search page uses
+// — so a saved card here looks and behaves exactly like it did wherever
+// it was saved from, heart included (click it again here to unsave).
+function renderSaved() {
+  var grid = document.getElementById('savedGrid');
+  if (!grid || typeof window.SortdSaved === 'undefined' || typeof LISTINGS === 'undefined') return;
+  var ids = window.SortdSaved.savedIds();
+  var saved = LISTINGS.filter(function (c) { return ids.indexOf(c.id) !== -1; });
+  if (!saved.length) {
+    grid.innerHTML = '<div class="saved-empty">Nothing saved yet — the heart icon on any camp or class card will add it here. <a href="/find-an-activity">Find an activity →</a></div>';
+    return;
+  }
+  grid.innerHTML = saved.map(function (c, i) { return listingCard(c, i, true); }).join('');
+}
+
+if (window.SortdSaved) {
+  window.SortdSaved.onReady(renderSaved);
+} else {
+  // Normal path, not a fallback: saved.js loads with `defer`, so it
+  // hasn't run yet when this inline script executes mid-parse — wait for
+  // DOMContentLoaded, by which point every deferred script has run.
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.SortdSaved) window.SortdSaved.onReady(renderSaved);
+  });
+}
 </script>
 
 </body>
