@@ -40,6 +40,10 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 .status.err{background:var(--tpk);color:var(--pkA);display:block;}
 .fine{display:block;margin-top:18px;text-align:center;font-size:.82rem;color:#888;}
 .fine a{color:var(--bl);font-weight:700;text-decoration:none;}
+.consent{display:flex;align-items:flex-start;gap:10px;margin:4px 0 20px;}
+.consent input{margin-top:3px;width:16px;height:16px;flex-shrink:0;accent-color:var(--bl);}
+.consent label{font-size:.82rem;color:#555;line-height:1.5;font-weight:400;}
+.consent label a{color:var(--bl);font-weight:700;text-decoration:none;}
 </style>
   <script src="/js/booking-tracking.js" defer></script>
   <script src="/js/newsletter-signup.js" defer></script>
@@ -75,6 +79,10 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 <div class="fld">
 <label>Your email</label>
 <input type="email" name="email" required placeholder="you@example.ie" autocomplete="email">
+</div>
+<div class="consent">
+<input type="checkbox" name="newsletterOptIn" id="newsletter-optin">
+<label for="newsletter-optin">Also send me the weekly "what's on near you" email — new camps, open spots and honest updates. See our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</label>
 </div>
 <button type="submit" class="submit-btn" id="submit-btn">Send me a login link</button>
 <div class="status" id="status"></div>

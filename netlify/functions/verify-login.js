@@ -15,6 +15,9 @@
 // equivalent.
 //
 // Requires: AIRTABLE_API_KEY, PARENT_SESSION_SECRET
+// Optional (newsletter opt-in only — see addToNewsletter below; same vars
+// subscribe.js already uses, so nothing new to set up if that's working):
+//   CUSTOMERIO_SITE_ID, CUSTOMERIO_TRACK_API_KEY, CUSTOMERIO_REGION
 
 const { createSessionCookies } = require('./lib/session');
 
@@ -27,6 +30,7 @@ const LT = {
   CREATED_AT: 'CreatedAt',
   EXPIRES_AT: 'ExpiresAt',
   USED: 'Used',
+  NEWSLETTER_OPT_IN: 'NewsletterOptIn',
 };
 
 const USERS_TABLE_ID = 'tblTaHPPgDfxnkdEm'; // "Users" (parents)
@@ -34,6 +38,7 @@ const U = {
   EMAIL: 'Email',
   NAME: 'Name',
   NEWSLETTER_OPT_IN: 'NewsletterOptIn',
+  NEWSLETTER_OPT_IN_AT: 'NewsletterOptInAt',
   CREATED_AT: 'CreatedAt',
   LAST_LOGIN_AT: 'LastLoginAt',
 };
@@ -42,6 +47,31 @@ const SITE_URL = 'https://sortd-ireland.ie';
 
 function escapeFormulaValue(v) {
   return String(v).replace(/'/g, "\\'");
+}
+
+// Adds/updates this parent's profile in Customer.io — the same mailing
+// list the footer newsletter signup (subscribe.js) writes to, so a parent
+// who ticks the /login checkbox lands on the exact same list as anyone
+// who signs up from the footer. Best-effort only: a failure here must
+// never stop the login itself from completing, since the Airtable
+// NewsletterOptIn/NewsletterOptInAt fields are the authoritative consent
+// record regardless of whether this call succeeds.
+async function addToNewsletter(email) {
+  const siteId = process.env.CUSTOMERIO_SITE_ID;
+  const apiKey = process.env.CUSTOMERIO_TRACK_API_KEY;
+  if (!siteId || !apiKey) {
+    console.warn('verify-login: Customer.io Track API credentials not set — skipping newsletter add for', email);
+    return;
+  }
+  const region = (process.env.CUSTOMERIO_REGION || 'us').toLowerCase();
+  const trackHost = region === 'eu' ? 'track-eu.customer.io' : 'track.customer.io';
+  const auth = Buffer.from(`${siteId}:${apiKey}`).toString('base64');
+  const res = await fetch(`https://${trackHost}/api/v1/customers/${encodeURIComponent(email)}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Basic ${auth}` },
+    body: JSON.stringify({ email, subscribed_at: Math.floor(Date.now() / 1000), source: 'parent_account_login' }),
+  });
+  if (!res.ok) console.error('verify-login: Customer.io newsletter add failed:', await res.text());
 }
 
 async function airtableRequest(tableId, pathAndQuery, options = {}) {
@@ -90,6 +120,14 @@ exports.handler = async function (event) {
     const email = String(f[LT.EMAIL] || '').trim().toLowerCase();
     if (!email) return redirect(`${SITE_URL}/login?error=invalid_link`);
 
+    // Carried over from the checkbox on /login at request time (see
+    // request-login.js). Only ever used to turn opt-in ON below — a
+    // false here just means "nothing to add", never "remove consent".
+    // Unsubscribing is handled separately, the normal way (the
+    // Unsubscribe link in every marketing email), not by logging in
+    // again with the box unticked.
+    const newsletterOptIn = !!f[LT.NEWSLETTER_OPT_IN];
+
     // Mark the token used before doing anything else — if a request were
     // somehow replayed concurrently, we want the SECOND attempt to fail,
     // not succeed twice.
@@ -112,19 +150,39 @@ exports.handler = async function (event) {
     const existing = findData.records && findData.records[0];
 
     if (existing) {
+      const updateFields = { [U.LAST_LOGIN_AT]: now };
+      // Only write the opt-in fields when newly opting in AND not already
+      // opted in — never overwrite an existing NewsletterOptInAt, and
+      // never write NewsletterOptIn: false (see note above).
+      if (newsletterOptIn && !existing.fields[U.NEWSLETTER_OPT_IN]) {
+        updateFields[U.NEWSLETTER_OPT_IN] = true;
+        updateFields[U.NEWSLETTER_OPT_IN_AT] = now;
+      }
       const updateRes = await airtableRequest(USERS_TABLE_ID, '', {
         method: 'PATCH',
-        body: JSON.stringify({ records: [{ id: existing.id, fields: { [U.LAST_LOGIN_AT]: now } }] }),
+        body: JSON.stringify({ records: [{ id: existing.id, fields: updateFields }] }),
       });
-      if (!updateRes.ok) console.error('verify-login: failed to update LastLoginAt:', await updateRes.text());
+      if (!updateRes.ok) console.error('verify-login: failed to update Users record:', await updateRes.text());
     } else {
+      const createFields = { [U.EMAIL]: email, [U.CREATED_AT]: now, [U.LAST_LOGIN_AT]: now };
+      if (newsletterOptIn) {
+        createFields[U.NEWSLETTER_OPT_IN] = true;
+        createFields[U.NEWSLETTER_OPT_IN_AT] = now;
+      }
       const createRes = await airtableRequest(USERS_TABLE_ID, '', {
         method: 'POST',
-        body: JSON.stringify({
-          records: [{ fields: { [U.EMAIL]: email, [U.CREATED_AT]: now, [U.LAST_LOGIN_AT]: now } }],
-        }),
+        body: JSON.stringify({ records: [{ fields: createFields }] }),
       });
       if (!createRes.ok) console.error('verify-login: failed to create Users record:', await createRes.text());
+    }
+
+    // Best-effort — never let a newsletter-platform hiccup break login.
+    if (newsletterOptIn) {
+      try {
+        await addToNewsletter(email);
+      } catch (newsletterErr) {
+        console.error('verify-login: addToNewsletter error:', newsletterErr);
+      }
     }
 
     const cookies = createSessionCookies(email);

@@ -30,6 +30,7 @@ const LT = {
   CREATED_AT: 'CreatedAt',
   EXPIRES_AT: 'ExpiresAt',
   USED: 'Used',
+  NEWSLETTER_OPT_IN: 'NewsletterOptIn',
 };
 
 const TOKEN_TTL_MINUTES = 30;
@@ -110,6 +111,15 @@ exports.handler = async function (event) {
     };
   }
 
+  // The newsletter checkbox on /login — unticked by default, its own
+  // separate opt-in from account creation (see parent-login-auth-method
+  // decision doc / GDPR: marketing consent needs its own unticked box,
+  // can't be bundled with "create my account"). A browser form only
+  // includes a checkbox's name in FormData/the POST body when it's
+  // checked, so any of these shapes mean "checked": 'on' (native form
+  // submit), true/'true' (a JSON body posting a real boolean).
+  const newsletterOptIn = data.newsletterOptIn === 'on' || data.newsletterOptIn === true || data.newsletterOptIn === 'true';
+
   try {
     const token = crypto.randomUUID().replace(/-/g, '') + crypto.randomUUID().replace(/-/g, '');
     const now = new Date();
@@ -126,6 +136,7 @@ exports.handler = async function (event) {
             [LT.CREATED_AT]: now.toISOString(),
             [LT.EXPIRES_AT]: expires.toISOString(),
             [LT.USED]: false,
+            [LT.NEWSLETTER_OPT_IN]: newsletterOptIn,
           },
         }],
       }),
