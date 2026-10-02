@@ -4,8 +4,9 @@
   --pkl:#FBD7E4; --pkink:#D45F86;
 }
 
-/* Holiday camps = green tint, Weekly classes = pink tint — used on the
-   /camps and /weekly-classes page heroes and their type-toggle pills. */
+/* Holiday camps = green tint, Weekly classes = pink tint, the combined
+   /find-an-activity search = purple tint — used on their page heroes and
+   their type-toggle pills. */
 .hero.tint-green{background:var(--grl);}
 .hero.tint-green .eyebrow{color:var(--gr);}
 .hero.tint-green h1 em{color:var(--gr);}
@@ -16,8 +17,16 @@
 .hero.tint-pink h1 em{color:var(--pkink);}
 .hero.tint-pink .blob2{background:var(--grl);}
 .hero.tint-pink .blob3{background:var(--pkink); opacity:.2;}
+.hero.tint-purple{background:var(--pul);}
+.hero.tint-purple .eyebrow{color:var(--pu);}
+.hero.tint-purple h1 em{color:var(--pu);}
+.hero.tint-purple .blob2{background:var(--pkl);}
+.hero.tint-purple .blob3{background:var(--pu); opacity:.2;}
 .typetoggle a.on-camp{background:var(--gr); color:#fff; border-color:var(--gr);}
 .typetoggle a.on-weekly{background:var(--pkink); color:#fff; border-color:var(--pkink);}
+/* Type badge on a mixed-results card (/find-an-activity only), so a camp
+   and a class are easy to tell apart at a glance in the same grid. */
+.cm-type{background:var(--nv); color:#fff;}
 *{box-sizing:border-box; margin:0; padding:0;}
 body{font-family:'Nunito',sans-serif; background:var(--pg); color:var(--nv);}
 h1,h2,h3,.brand,.pill,.navlink,.cta{font-family:'Baloo 2',sans-serif;}

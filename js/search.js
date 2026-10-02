@@ -154,7 +154,7 @@ function filterListings(listings, opts){
   return res;
 }
 
-function listingCard(c, i){
+function listingCard(c, i, showType){
   const isHalloween = /halloween/i.test(c.name||'');
   const col = isHalloween ? HW_ORANGE : COLS[i % COLS.length];
   const ageStr = c.ageMin!=null && c.ageMax!=null ? 'Ages '+c.ageMin+'–'+c.ageMax : c.ageMin!=null ? 'Ages '+c.ageMin+'+' : '';
@@ -170,6 +170,11 @@ function listingCard(c, i){
   +'<div class="card-name">'+c.name+'</div>'
   +(c.provider&&c.provider!==c.name?'<div class="card-prov">'+c.provider+'</div>':'')
   +'<div class="card-meta">'
+  // Only shown on the combined /find-an-activity results, where camps and
+  // classes sit in the same grid and need a quick way to tell apart —
+  // /camps and /weekly-classes are each already one type, so this would
+  // just be noise there.
+  +(showType?'<span class="cm cm-type">'+(c.type==='weekly'?'Class':'Camp')+'</span>':'')
   +(ageStr?'<span class="cm">'+ageStr+'</span>':'')
   +(c.area?'<span class="cm">📍 '+c.area+'</span>':'')
   +(c.times?'<span class="cm">'+c.times.split('\n')[0].substring(0,20)+'</span>':'')

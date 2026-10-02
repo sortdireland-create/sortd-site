@@ -10,9 +10,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-HHTB7S9WJG');
 </script>
-<title>Classes — sortd</title>
-<meta name="description" content="Every kids' weekly term-time class across Dublin, Wicklow, Meath and beyond — search by area, age and day.">
-<link rel="canonical" href="https://sortd-ireland.ie/weekly-classes">
+<title>Find an activity — sortd</title>
+<meta name="description" content="Every kids' holiday camp and weekly class across Dublin, Wicklow, Meath and beyond, in one search — by area, age and day.">
+<link rel="canonical" href="https://sortd-ireland.ie/find-an-activity">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
@@ -39,13 +39,13 @@ gtag('config', 'G-HHTB7S9WJG');
     <button class="nav-cta" onclick="openPopup()">Follow us</button>
   </div>
 </nav>
-<section class="hero pagehero tint-pink">
+<section class="hero pagehero tint-purple">
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
-  <div class="eyebrow">Classes</div>
-  <h1>Find your class</h1>
-  <p class="sub">Search term-time classes by area, age and day.</p>
+  <div class="eyebrow">Camps &amp; classes</div>
+  <h1>Find your activity</h1>
+  <p class="sub">Search every camp and class in one place — by area, age and day, updated weekly so you're not stuck on a waitlist that closed months ago.</p>
 
   <div class="searchcard wide">
     <div class="sf" style="flex-direction:column; align-items:stretch;">
@@ -100,9 +100,10 @@ gtag('config', 'G-HHTB7S9WJG');
 
 <section class="results-shell">
   <div class="results-inner">
-    <div class="typetoggle">
-      <a href="/camps" class="">Holiday camps</a>
-      <a href="/weekly-classes" class="on-weekly">Classes</a>
+    <div class="typetoggle" id="typeToggle">
+      <a href="#" class="on" data-type="" onclick="setType(this,'');doSearch();return false;">All</a>
+      <a href="#" data-type="camp" onclick="setType(this,'camp');doSearch();return false;">Holiday camps</a>
+      <a href="#" data-type="weekly" onclick="setType(this,'weekly');doSearch();return false;">Classes</a>
     </div>
     <div class="filter-row">
       <div class="fg"><label class="fl" for="sSort">Sort by</label><select class="fs" id="sSort"><option value="name">Name (A–Z)</option><option value="price_lo">Price (low → high)</option><option value="price_hi">Price (high → low)</option><option value="age_lo">Youngest age first</option></select></div>
@@ -182,7 +183,16 @@ gtag('config', 'G-HHTB7S9WJG');
 <script>
 document.getElementById('sDays').innerHTML = dayCheckboxesHtml('sDays');
 document.getElementById('sActivity').innerHTML = activityChipsHtml('sActivity');
-const TYPE = 'weekly';
+let TYPE = '';
+
+// Mixed-results page only — swaps the active pill in the All/Holiday
+// camps/Classes toggle and sets what doSearch() filters by. '' (All)
+// is falsy, which filterListings() already treats as "no type filter".
+function setType(el, t){
+  TYPE = t;
+  document.querySelectorAll('#typeToggle a').forEach(a=>a.classList.remove('on','on-camp','on-weekly'));
+  el.classList.add(t === 'camp' ? 'on-camp' : t === 'weekly' ? 'on-weekly' : 'on');
+}
 
 function readFilters(){
   return {
@@ -200,12 +210,12 @@ function render(listings){
   const grid = document.getElementById('grid');
   const count = document.getElementById('rCount');
   if(!listings.length){
-    grid.innerHTML = '<div class="empty"><div class="empty-title">No classes found</div><div class="empty-sub">Try a different area, age or day, or clear the filters.</div></div>';
+    grid.innerHTML = '<div class="empty"><div class="empty-title">No activities found</div><div class="empty-sub">Try a different area, age or day, or clear the filters.</div></div>';
     count.textContent = '0 results';
     return;
   }
   count.textContent = listings.length + ' result' + (listings.length!==1?'s':'') + ' found';
-  grid.innerHTML = listings.map((c,i) => listingCard(c,i)).join('');
+  grid.innerHTML = listings.map((c,i) => listingCard(c,i,true)).join('');
 }
 
 function doSearch(){
@@ -219,6 +229,8 @@ function clearAll(){
   document.getElementById('sSort').value='name';
   setSelectedDays('sDays', []);
   setSelectedActivities('sActivity', []);
+  const allEl = document.querySelector('#typeToggle a[data-type=""]');
+  if(allEl) setType(allEl, '');
   doSearch();
 }
 
@@ -232,12 +244,21 @@ document.getElementById('sEircode').addEventListener('keydown',e=>{if(e.key==='E
   if(q.ageKey) document.getElementById('sAge').value = q.ageKey;
   setSelectedDays('sDays', Array.from(q.days));
   setSelectedActivities('sActivity', Array.from(q.activities));
+
+  // Optional ?type=camp|weekly — lets the homepage's "What are you
+  // looking for?" dropdown pre-select a tab here instead of defaulting
+  // to "All". Anything else (missing, or some other value) leaves it on All.
+  const type = new URLSearchParams(window.location.search).get('type');
+  if(type === 'camp' || type === 'weekly'){
+    const el = document.querySelector('#typeToggle a[data-type="'+type+'"]');
+    if(el) setType(el, type);
+  }
 })();
 
 doSearch();
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"sortd","url":"https://sortd-ireland.ie","description":"Ireland's directory of kids' summer camps and classes. Find summer camps, after-school sport, drama, GAA, coding and more across Dublin and Leinster.","potentialAction":{"@type":"SearchAction","target":"https://sortd-ireland.ie/camps?text={search_term_string}","query-input":"required name=search_term_string"}}
+{"@context":"https://schema.org","@type":"WebSite","name":"sortd","url":"https://sortd-ireland.ie","description":"Ireland's directory of kids' summer camps and classes. Find summer camps, after-school sport, drama, GAA, coding and more across Dublin and Leinster.","potentialAction":{"@type":"SearchAction","target":"https://sortd-ireland.ie/find-an-activity?text={search_term_string}","query-input":"required name=search_term_string"}}
 </script>
 <script>
 let popupShown = false;
