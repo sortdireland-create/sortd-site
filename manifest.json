@@ -146,10 +146,10 @@
   {
     "slug": "ollies-homework-club",
     "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/ollies-homework-club",
+    "url": "https://sortd-ireland.ie/classes/dublin/ollies-homework-club",
     "name": "Ollie's Homework Club",
     "provider": "Ollie's Homework Club",
-    "section": "camps"
+    "section": "classes"
   },
   {
     "slug": "junior-einsteins-halloween-science-camp-malahide-castle",
@@ -242,10 +242,10 @@
   {
     "slug": "steam-club-term-one",
     "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/steam-club-term-one",
+    "url": "https://sortd-ireland.ie/classes/dublin/steam-club-term-one",
     "name": "STEAM Club (Term One)",
     "provider": "STEAM Club Malahide",
-    "section": "camps"
+    "section": "classes"
   },
   {
     "slug": "gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-temple-bar",
@@ -258,10 +258,10 @@
   {
     "slug": "ollies-drama-club-after-school-drama-club",
     "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/ollies-drama-club-after-school-drama-club",
+    "url": "https://sortd-ireland.ie/classes/dublin/ollies-drama-club-after-school-drama-club",
     "name": "After School Drama Club",
     "provider": "Ollie's Drama Club",
-    "section": "camps"
+    "section": "classes"
   },
   {
     "slug": "coolmine-sports-leisure-centre-coolmine-swim-club-childrens-swimming-lessons",
@@ -418,18 +418,18 @@
   {
     "slug": "chess-club",
     "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/chess-club",
+    "url": "https://sortd-ireland.ie/classes/dublin/chess-club",
     "name": "Chess Club",
     "provider": "Chess Camp Malahide",
-    "section": "camps"
+    "section": "classes"
   },
   {
     "slug": "ollies-lego-club-lego-club",
     "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/ollies-lego-club-lego-club",
+    "url": "https://sortd-ireland.ie/classes/dublin/ollies-lego-club-lego-club",
     "name": "LEGO Club",
     "provider": "Ollie's Lego Club",
-    "section": "camps"
+    "section": "classes"
   },
   {
     "slug": "messy-adventures-halloween-role-play-village-dundrum",
@@ -730,10 +730,10 @@
   {
     "slug": "young-artists-studio",
     "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/young-artists-studio",
+    "url": "https://sortd-ireland.ie/classes/dublin/young-artists-studio",
     "name": "Young Artists Studio",
     "provider": "Young Artists Studio",
-    "section": "camps"
+    "section": "classes"
   },
   {
     "slug": "cabinteely-fc-cubs-kittens",
@@ -1178,10 +1178,10 @@
   {
     "slug": "art-class",
     "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/art-class",
+    "url": "https://sortd-ireland.ie/classes/dublin/art-class",
     "name": "Art Class",
     "provider": "Art Camp Malahide",
-    "section": "camps"
+    "section": "classes"
   },
   {
     "slug": "playact-drama-school-halloween-camp",
