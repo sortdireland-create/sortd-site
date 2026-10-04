@@ -16,64 +16,58 @@ gtag('config', 'G-HHTB7S9WJG');
 <link rel="canonical" href="https://sortd-ireland.ie/list">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <link rel="stylesheet" href="/css/site.css">
 <style>
-:root{--cr:#F5F0E8;--nv:#27314A;--sk:#29ABE2;--pk:#F4A7C3;--bl:#4782A8;--pkA:#C66686;--tpk:#F5D9E4;--su:#F7A800;--gr:#2BAD7E;--bd:#3a4560;--fd:'Baloo 2',sans-serif;--fb:'Nunito',sans-serif;--fs:'Caveat',cursive;}
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&family=Caveat:wght@600&display=swap');
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
-.hero{position:static;overflow:visible;background:var(--nv);color:#fff;padding:56px 24px 72px;text-align:center;}
-.hero h1{font-family:var(--fd);font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px;}
-.hero p{max-width:520px;margin:0 auto;color:#c9d0dd;font-size:1.05rem;line-height:1.6;}
-.hero .pill{display:inline-block;margin-top:20px;background:var(--pk);color:var(--nv);font-weight:800;font-size:.85rem;padding:8px 18px;border-radius:20px;}
-.wrap{max-width:640px;margin:-40px auto 64px;padding:0 20px;}
-.card{background:#fff;border-radius:20px;box-shadow:0 10px 40px rgba(39,49,74,.12);padding:36px 32px;}
+/* /list uses the shared site tokens from /css/site.css (navy, sky blue, green,
+   pink ink, purple + their pastel tints) so it matches the rest of the site. */
+.wrap{max-width:640px;margin:32px auto 64px;padding:0 20px;}
+.card{background:#fff;border:1px solid var(--bd);border-radius:20px;box-shadow:0 8px 24px rgba(39,49,74,.08);padding:36px 32px;}
 .fld{margin-bottom:18px;}
 .fld label{display:block;font-size:.85rem;font-weight:700;color:var(--nv);margin-bottom:6px;}
-.fld .req{color:var(--pkA);}
-.fld input,.fld select,.fld textarea{width:100%;padding:12px 14px;border:1.5px solid #e0d8c8;border-radius:10px;font-family:var(--fb);font-size:.95rem;background:var(--cr);}
-.fld input:focus,.fld select:focus,.fld textarea:focus{outline:2px solid var(--sk);background:#fff;}
-.fld input[type=file]{padding:9px 12px;background:#fff;border:1.5px dashed #cfc4ac;cursor:pointer;}
+.fld .req{color:var(--pkink);}
+.fld input,.fld select,.fld textarea{width:100%;padding:12px 14px;border:1.5px solid var(--bd);border-radius:12px;font-family:'Nunito',sans-serif;font-weight:600;font-size:.95rem;color:var(--nv);background:#fff;}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:2px solid var(--sk);border-color:var(--sk);}
+.fld input[type=file]{padding:9px 12px;border-style:dashed;cursor:pointer;}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.hint{font-size:.78rem;color:#888;margin-top:4px;}
-.file-list{font-size:.78rem;color:#888;margin-top:4px;}
-.field-err{font-size:.78rem;color:var(--pkA);margin-top:4px;display:none;}
+.hint{font-size:.78rem;color:#8a8f9c;margin-top:4px;line-height:1.45;}
+.hint strong{color:var(--nv);}
+.file-list{font-size:.78rem;color:#8a8f9c;margin-top:4px;}
+.field-err{font-size:.78rem;color:var(--pkink);margin-top:4px;display:none;}
 .field-err.show{display:block;}
-.submit-btn{width:100%;background:var(--bl);color:#fff;font-family:var(--fd);font-weight:800;font-size:1.05rem;padding:16px;border:none;border-radius:999px;cursor:pointer;margin-top:8px;}
-.submit-btn:hover{background:#3c6a86;}
+.submit-btn{width:100%;background:var(--sk);color:#fff;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.05rem;padding:14px;border:none;border-radius:14px;cursor:pointer;margin-top:8px;}
+.submit-btn:hover{filter:brightness(.92);}
 .submit-btn:disabled{opacity:.6;cursor:default;}
-.status{margin-top:16px;padding:14px 16px;border-radius:10px;font-size:.9rem;display:none;}
-.status.ok{background:#E8FFF3;color:#1A7A50;display:block;}
-.status.err{background:var(--tpk);color:var(--pkA);display:block;}
-.already{text-align:center;margin-top:28px;font-size:.9rem;color:#666;}
-.already a{color:var(--sk);font-weight:700;text-decoration:none;}
+.status{margin-top:16px;padding:14px 16px;border-radius:12px;font-size:.9rem;font-weight:600;display:none;}
+.status.ok{background:var(--grl);color:var(--gr);display:block;}
+.status.err{background:var(--pkl);color:var(--pkink);display:block;}
+.already{text-align:center;margin-top:28px;font-size:.9rem;font-weight:600;color:#5b6478;}
+.already a{color:var(--sk);font-weight:700;}
 .done-badge{width:52px;height:52px;border-radius:14px;background:var(--gr);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;margin:0 auto 18px;}
-.done-h{font-family:var(--fd);font-weight:800;font-size:1.4rem;color:var(--nv);text-align:center;margin-bottom:12px;}
-.done-p{font-size:.95rem;color:#444;line-height:1.6;text-align:center;margin-bottom:16px;}
-.done-p strong{color:var(--nv);}
-.done-cta{display:block;text-align:center;text-decoration:none;}
-.done-again{text-align:center;margin-top:14px;font-size:.85rem;}
-.done-again a{color:var(--sk);font-weight:700;text-decoration:none;}
-.done-note{font-family:var(--fs);font-size:1.15rem;color:var(--bl);text-align:center;margin-top:18px;}
+.done-h{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.6rem;line-height:1.2;color:var(--nv);text-align:center;margin-bottom:12px;}
+.done-p{font-size:1rem;font-weight:600;color:var(--nv);line-height:1.6;text-align:center;margin-bottom:16px;}
+.done-p strong{font-weight:800;}
+.done-cta{display:block;text-align:center;}
+.done-note{font-family:'Caveat',cursive;font-size:1.25rem;color:var(--pu);text-align:center;margin-top:18px;}
 .step-progress{margin-bottom:24px;}
-.step-progress-track{height:6px;border-radius:999px;background:#eee1cd;overflow:hidden;}
-.step-progress-fill{height:100%;background:var(--bl);border-radius:999px;transition:width .25s ease;width:25%;}
+.step-progress-track{height:6px;border-radius:999px;background:var(--pul);overflow:hidden;}
+.step-progress-fill{height:100%;background:var(--sk);border-radius:999px;transition:width .25s ease;width:25%;}
 .step-progress-label{margin-top:9px;font-size:.82rem;}
 .step-progress-label .num{font-weight:800;color:var(--nv);}
-.step-progress-label .name{font-weight:600;color:#888;}
+.step-progress-label .name{font-weight:600;color:#8a8f9c;}
 .step{display:none;}
 .step.active{display:block;}
 .step-nav{display:flex;gap:12px;margin-top:22px;}
 .step-nav .submit-btn{flex:1;margin-top:0;}
-.btn-next{flex:1;background:var(--bl);color:#fff;font-family:var(--fd);font-weight:800;font-size:1rem;padding:15px;border:none;border-radius:999px;cursor:pointer;}
-.btn-next:hover{background:#3c6a86;}
-.btn-back{background:none;border:1.5px solid #e0d8c8;color:var(--nv);font-family:var(--fb);font-weight:700;font-size:.95rem;padding:15px 20px;border-radius:999px;cursor:pointer;white-space:nowrap;}
-.btn-back:hover{background:var(--cr);}
-.step-err{font-size:.82rem;color:var(--pkA);margin-top:10px;display:none;}
+.btn-next{flex:1;background:var(--sk);color:#fff;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1rem;padding:14px;border:none;border-radius:14px;cursor:pointer;}
+.btn-next:hover{filter:brightness(.92);}
+.btn-back{background:#fff;border:1.5px solid var(--bd);color:var(--nv);font-family:'Nunito',sans-serif;font-weight:700;font-size:.95rem;padding:14px 20px;border-radius:14px;cursor:pointer;white-space:nowrap;}
+.btn-back:hover{background:var(--pg);}
+.step-err{font-size:.82rem;font-weight:600;color:var(--pkink);margin-top:10px;display:none;}
 .step-err.show{display:block;}
-.fld input.invalid,.fld select.invalid,.fld textarea.invalid{border-color:var(--pkA);background:#fff;}
-.optional-tag{font-size:.68rem;font-weight:800;color:#999;text-transform:uppercase;letter-spacing:.03em;margin-left:6px;}
+.fld input.invalid,.fld select.invalid,.fld textarea.invalid{border-color:var(--pkink);}
+.optional-tag{font-size:.68rem;font-weight:800;color:#8a8f9c;text-transform:uppercase;letter-spacing:.03em;margin-left:6px;}
 </style>
   <script src="/js/booking-tracking.js" defer></script>
   <script src="/js/account.js" defer></script>
@@ -96,11 +90,14 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
   </div>
 </nav>
 
-<div class="hero">
-<h1>List your activity for free</h1>
-<p>Reach Irish parents searching for activities near them. Takes about 3 minutes — no payment needed to get listed.</p>
-<div class="pill">✓ Free forever tier · No card required</div>
-</div>
+<section class="hero pagehero tint-purple">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+  <div class="eyebrow">For providers</div>
+  <h1>List your activity <em>for free</em></h1>
+  <p class="sub">Reach 1000s of Irish parents searching for activities near them. Register your class or camp in 3 minutes.</p>
+</section>
 
 <div class="wrap">
 <div class="card" id="form-card">
@@ -250,12 +247,11 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 
 <div class="card" id="done-card" style="display:none;">
 <div class="done-badge">✓</div>
-<h2 class="done-h">You're on the list!</h2>
-<p class="done-p">Thanks for submitting <strong id="done-name">your listing</strong> — we'll review it and it's usually live within a few days. Check <strong id="done-email">your inbox</strong> for a confirmation email.</p>
+<h2 class="done-h">Got it, thanks!</h2>
+<p class="done-p">We'll check <strong id="done-name">your listing</strong> and get it live within a few days. A confirmation is on its way to <strong id="done-email">your inbox</strong>.</p>
 <p class="done-p" id="done-upload-warning" style="display:none;"></p>
-<p class="done-p">Got another camp or class to add? Log into your provider portal to manage all your listings — new and existing — in one place.</p>
-<a class="submit-btn done-cta" href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener">Log into my portal →</a>
-<p class="done-again"><a href="#" id="submit-another">Or submit another listing here</a></p>
+<p class="done-p">Want to add more or change something? You can do it any time.</p>
+<a class="submit-btn done-cta" href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener">Manage my classes</a>
 <p class="done-note">thanks for being part of sortd →</p>
 </div>
 
@@ -480,7 +476,7 @@ function showDoneCard(name, email, failedUploads) {
   document.getElementById('done-email').textContent = email || 'your inbox';
   const warn = document.getElementById('done-upload-warning');
   if (failedUploads && failedUploads.length) {
-    warn.textContent = `Heads up: ${failedUploads.join(', ')} didn't upload — no worries, just email us the images directly.`;
+    warn.textContent = `We couldn't upload ${failedUploads.join(', ')}. Email the images to hello@sortd-ireland.ie and we'll add them.`;
     warn.style.display = 'block';
   } else {
     warn.style.display = 'none';
@@ -488,21 +484,6 @@ function showDoneCard(name, email, failedUploads) {
   document.getElementById('done-card').style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-document.getElementById('submit-another').addEventListener('click', function (e) {
-  e.preventDefault();
-  document.getElementById('done-card').style.display = 'none';
-  document.getElementById('form-card').style.display = 'block';
-  document.getElementById('already-note').style.display = 'block';
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = false;
-  btn.textContent = 'Submit for review';
-  const status = document.getElementById('status');
-  status.className = 'status';
-  status.textContent = '';
-  showStep(1);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
 
 document.getElementById('listing-form').addEventListener('submit', async function(e){
 e.preventDefault();
