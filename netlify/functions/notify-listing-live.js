@@ -48,7 +48,7 @@ async function sendEmail({ to, subject, html }) {
         'Accept': 'application/json',
       },
       body: JSON.stringify({
-        sender: { name: 'sortd', email: 'hello@sortd-ireland.ie' },
+        sender: { name: 'Rachel at Sortd', email: 'hello@sortd-ireland.ie' },
         to: [{ email: to }],
         subject,
         htmlContent: html,

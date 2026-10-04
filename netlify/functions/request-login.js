@@ -44,7 +44,7 @@ async function sendEmail({ to, subject, html }) {
     method: 'POST',
     headers: { 'api-key': apiKey, 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify({
-      sender: { name: 'sortd', email: 'hello@sortd-ireland.ie' },
+      sender: { name: 'Rachel at Sortd', email: 'hello@sortd-ireland.ie' },
       to: [{ email: to }],
       subject,
       htmlContent: html,

@@ -32,6 +32,14 @@ const TINTS = {
   parent: { bg: '#C9F0DA', ink: '#176B42' },
 };
 
+// The wordmark is an image, not text: Gmail/Outlook can't load Baloo 2, so live
+// text falls back to Trebuchet/Verdana and no longer looks like the logo. The
+// PNG is the site's own wordmark (Baloo 2 ExtraBold, navy "sortd" + sky-blue
+// full stop, transparent background, drawn at 3x for retina; shown at 90x33).
+// Lives at /images/sortd-logo-email.png in the site repo. If the image is
+// blocked or missing, the alt text "sortd." shows in the same colour and weight.
+const LOGO_URL = 'https://sortd-ireland.ie/images/sortd-logo-email.png';
+
 const BODY_FONT = "'Nunito','Trebuchet MS',Verdana,Arial,sans-serif";
 const HEAD_FONT = "'Baloo 2','Trebuchet MS',Verdana,Arial,sans-serif";
 
@@ -54,7 +62,7 @@ function emailShell(innerHtml, unsubscribeUrl, opts) {
 <tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:540px;background:#ffffff;border:1px solid ${BORDER};border-radius:18px;overflow:hidden;">
 <tr><td style="background:${tint.bg};padding:28px 32px 24px;text-align:left;">
-<span style="font-family:${HEAD_FONT};font-size:30px;font-weight:800;line-height:1;color:${NAVY};">sortd<span style="color:${ACCENT};">.</span></span>
+<a href="https://sortd-ireland.ie" style="text-decoration:none;"><img src="${LOGO_URL}" width="90" height="33" alt="sortd." style="display:block;border:0;outline:none;text-decoration:none;font-family:${HEAD_FONT};font-size:30px;font-weight:800;line-height:1;color:${NAVY};"></a>
 ${eyebrow}
 </td></tr>
 <tr><td style="padding:32px;color:${NAVY};font-size:16px;font-family:${BODY_FONT};font-weight:400;line-height:1.65;">
