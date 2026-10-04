@@ -169,8 +169,8 @@ function welcomeEmailHtml({ name, portalCtaUrl, unsubscribeUrl }) {
     <p style="margin:0 0 16px;">Hi,</p>
     <p style="margin:0 0 16px;"><strong>${name}</strong> is now verified on sortd — parents searching for camps and classes near you will see it's kept up to date.</p>
     <p style="margin:0 0 16px;"><strong>Add as many classes or camps as you like</strong> — a new term, a Halloween camp, an extra venue — there's no limit and no charge. Send us your logo and Instagram handle while you're in there and we'll feature you across the site and our socials, free.</p>
-    <p style="margin:0 0 4px;">Log into your portal any time — no password needed, the button below logs you straight in:</p>
-    ${emailButton('Log into my portal →', portalCtaUrl)}
+    <p style="margin:0 0 4px;">Open your dashboard any time. No password needed, the button below logs you straight in:</p>
+    ${emailButton('Manage my classes', portalCtaUrl)}
     <p style="margin:0 0 16px;">A bit about why sortd exists, in case you haven't come across it before: I'm Rachel, a working mum in Malahide. Last summer I spent hours trying to plan childcare for my daughter across 8+ weeks of school holidays, with camp info scattered across Instagram, WhatsApp groups and websites nobody had updated since 2022. So one Monday night I built the thing that didn't exist — one place to see everything. No VC funding, no boardroom — just a real problem being sorted for real families, and it's grown from there ever since.</p>
     <p style="margin:0;">Rachel<br>sortd</p>
   `, unsubscribeUrl, { audience: 'provider', eyebrow: 'For providers' });
@@ -186,8 +186,8 @@ function htmlPage(title, message, ok) {
   .card{background:#fff;border-radius:18px;padding:40px;max-width:440px;text-align:center;box-shadow:0 10px 40px rgba(41,49,72,.10);}
   h1{font-family:'Baloo 2',sans-serif;font-weight:800;color:${accent};font-size:1.4rem;margin-bottom:12px;}
   p{color:#293148;font-weight:600;line-height:1.6;}
-  a{color:#4782A8;font-weight:700;text-decoration:none;}
-  .btn{display:inline-block;margin-top:6px;padding:14px 30px;background:#4782A8;color:#fff !important;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:15px;border-radius:999px;text-decoration:none;}
+  a{color:#1B8350;font-weight:700;text-decoration:none;}
+  .btn{display:inline-block;margin-top:6px;padding:14px 30px;background:#1B8350;color:#fff !important;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:15px;border-radius:999px;text-decoration:none;}
   .fine{font-size:13px;color:#888;font-weight:600;display:block;margin-top:16px;}</style></head>
   <body><div class="card"><h1>${ok ? '✓' : '✕'} ${title}</h1><p>${message}</p><p style="margin-top:20px"><a href="https://sortd-ireland.ie">← Back to sortd</a></p></div></body></html>`;
 }
@@ -252,7 +252,7 @@ exports.handler = async function (event) {
       headers: { 'Content-Type': 'text/html' },
       body: htmlPage(
         'Listing claimed!',
-        `<strong>${name}</strong> is now confirmed as yours.<br><br>Got a camp or a new term class to add? Log into your portal below — no password needed:<br><a class="btn" href="${portalCtaUrl}">Log into my portal →</a><span class="fine">Need to update existing details instead? Just reply to any email from us, or contact hello@sortd-ireland.ie.</span>`,
+        `<strong>${name}</strong> is now confirmed as yours.<br><br>Got a camp or a new term class to add? Open your dashboard below. No password needed:<br><a class="btn" href="${portalCtaUrl}">Manage my classes</a><span class="fine">Need to update existing details instead? Just reply to any email from us, or contact hello@sortd-ireland.ie.</span>`,
         true
       ),
     };

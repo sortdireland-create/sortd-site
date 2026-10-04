@@ -313,10 +313,10 @@ exports.handler = async function (event) {
         Ages ${data.ageMin}–${data.ageMax} · ${data.cost.trim()}<br>
         Starts ${formatDateForEmail(data.startDate.trim())}
         `, 'provider')}
-        <p style="margin:0 0 16px;">Once it's live, parents across ${data.county.trim()} searching for ${data.category.trim().toLowerCase()} activities will be able to find you.</p>
-        <p style="margin:0 0 16px;">Got another camp or class to add? You can add it any time from your provider portal — this link logs you straight in, no password needed.</p>
-        ${emailButton('Log into my portal →', portalCtaUrl)}
-        <p style="margin:0;font-size:14px;color:#5B6783;">This login link expires in ${TOKEN_TTL_MINUTES} minutes and can only be used once — after that, just enter your email again at portal.sortd-ireland.ie for a fresh one.</p>
+        <p style="margin:0 0 16px;">Once it's live, parents across Ireland searching for ${data.category.trim().toLowerCase()} activities will be able to find you.</p>
+        <p style="margin:0 0 16px;">Got another camp or class to add? You can add it any time from your provider dashboard — this button logs you straight in, no password needed.</p>
+        ${emailButton('Manage my classes', portalCtaUrl)}
+        <p style="margin:0;font-size:14px;color:#5B6783;">This button expires in ${TOKEN_TTL_MINUTES} minutes and can only be used once. After that, just enter your email again at portal.sortd-ireland.ie for a fresh login link.</p>
         <p style="margin:16px 0 0;">Questions in the meantime? Just reply to this email.</p>
         <p style="margin:16px 0 0;">Rachel<br>sortd</p>
       `, `${SITE_URL}/.netlify/functions/unsubscribe?id=${record.id}`, { audience: 'provider', eyebrow: 'For providers' }),

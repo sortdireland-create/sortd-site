@@ -144,8 +144,8 @@ exports.handler = async function () {
         html: emailShell(`
           <p style="margin:0 0 16px;">Hi,</p>
           <p style="margin:0 0 16px;">Good news — <strong>${name || 'your listing'}</strong> is now live on sortd! Parents searching for activities near you can find and book it right now.</p>
-          <p style="margin:0 0 16px;">Want to add another activity, update this one, or see how it's doing? Head to your provider dashboard — log in any time with just your email, no password needed.</p>
-          ${emailButton('Open my provider dashboard →', 'https://portal.sortd-ireland.ie')}
+          <p style="margin:0 0 16px;">Want to add another activity, update this one, or see how it's doing? Head to your provider dashboard. Log in any time with just your email, no password needed.</p>
+          ${emailButton('Manage my classes', 'https://portal.sortd-ireland.ie')}
           <p style="margin:0;">Thanks for being part of sortd!</p>
           <p style="margin:16px 0 0;">Rachel<br>sortd</p>
         `, `${SITE_URL}/.netlify/functions/unsubscribe?id=${record.id}`, { audience: 'provider', eyebrow: 'For providers' }),

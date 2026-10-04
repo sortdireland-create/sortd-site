@@ -5,7 +5,7 @@
 // function carried its own copy and they drifted.
 //
 // Matches the live website (css/site.css), not the older brand-skill hexes:
-//   page bg #CFE8F6 · card white · text navy #1E2A44 · links/buttons sky #3D77A3
+//   page bg #CFE8F6 · card white · text navy #1E2A44 · links/buttons green #1D8A52
 //   tints: purple #E7E1F8 (providers), green #C9F0DA (parents)
 //   border #C3DCEC · Baloo 2 headings/wordmark · Nunito body
 //
@@ -23,7 +23,7 @@
 //   emailShell(innerHtml, unsubscribeUrl, { audience: 'provider' | 'parent', eyebrow: 'For providers' })
 
 const NAVY = '#1E2A44';
-const SKY = '#3D77A3';
+const ACCENT = '#1B8350'; // site green (--gr #1D8A52) one step darker so white text passes AA (4.8:1): buttons, links, wordmark full stop
 const BORDER = '#C3DCEC';
 const MUTED = '#5B6783';
 
@@ -54,16 +54,16 @@ function emailShell(innerHtml, unsubscribeUrl, opts) {
 <tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:540px;background:#ffffff;border:1px solid ${BORDER};border-radius:18px;overflow:hidden;">
 <tr><td style="background:${tint.bg};padding:28px 32px 24px;text-align:left;">
-<span style="font-family:${HEAD_FONT};font-size:30px;font-weight:800;line-height:1;color:${NAVY};">sortd<span style="color:${SKY};">.</span></span>
+<span style="font-family:${HEAD_FONT};font-size:30px;font-weight:800;line-height:1;color:${NAVY};">sortd<span style="color:${ACCENT};">.</span></span>
 ${eyebrow}
 </td></tr>
 <tr><td style="padding:32px;color:${NAVY};font-size:16px;font-family:${BODY_FONT};font-weight:400;line-height:1.65;">
 ${innerHtml}
 </td></tr>
 <tr><td style="border-top:1px solid ${BORDER};padding:20px 32px 24px;text-align:left;">
-<p style="margin:0;font-size:13px;line-height:1.6;color:${MUTED};font-family:${BODY_FONT};">sortd · Dublin, Ireland · <a href="https://sortd-ireland.ie" style="color:${SKY};text-decoration:none;font-weight:700;">sortd-ireland.ie</a></p>
-<p style="margin:6px 0 0;font-size:13px;line-height:1.6;color:${MUTED};font-family:${BODY_FONT};">Questions? <a href="mailto:hello@sortd-ireland.ie" style="color:${SKY};text-decoration:underline;">hello@sortd-ireland.ie</a> · <a href="https://sortd-ireland.ie/privacy-policy" style="color:${SKY};text-decoration:underline;">Privacy Policy</a></p>
-${unsubscribeUrl ? `<p style="margin:6px 0 0;font-size:13px;line-height:1.6;color:${MUTED};font-family:${BODY_FONT};"><a href="${unsubscribeUrl}" style="color:${SKY};text-decoration:underline;">Unsubscribe</a> from emails like this</p>` : ''}
+<p style="margin:0;font-size:13px;line-height:1.6;color:${MUTED};font-family:${BODY_FONT};">sortd · Ireland · <a href="https://sortd-ireland.ie" style="color:${ACCENT};text-decoration:none;font-weight:700;">sortd-ireland.ie</a></p>
+<p style="margin:6px 0 0;font-size:13px;line-height:1.6;color:${MUTED};font-family:${BODY_FONT};">Questions? <a href="mailto:hello@sortd-ireland.ie" style="color:${ACCENT};text-decoration:underline;">hello@sortd-ireland.ie</a> · <a href="https://sortd-ireland.ie/privacy-policy" style="color:${ACCENT};text-decoration:underline;">Privacy Policy</a></p>
+${unsubscribeUrl ? `<p style="margin:6px 0 0;font-size:13px;line-height:1.6;color:${MUTED};font-family:${BODY_FONT};"><a href="${unsubscribeUrl}" style="color:${ACCENT};text-decoration:underline;">Unsubscribe</a> from emails like this</p>` : ''}
 </td></tr>
 </table>
 </td></tr>
@@ -72,9 +72,9 @@ ${unsubscribeUrl ? `<p style="margin:6px 0 0;font-size:13px;line-height:1.6;colo
 </html>`;
 }
 
-// Primary CTA: sky-blue stadium pill, like the site's nav button.
+// Primary CTA: green stadium pill.
 function emailButton(text, url) {
-  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:999px;background:${SKY};">
+  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:999px;background:${ACCENT};">
 <a href="${url}" style="display:inline-block;padding:14px 30px;color:#ffffff;font-family:${HEAD_FONT};font-weight:700;text-decoration:none;font-size:16px;border-radius:999px;">${text}</a>
 </td></tr></table>`;
 }
