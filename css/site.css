@@ -180,6 +180,7 @@ h1 em{font-style:normal; color:var(--pu);}
 .card-status{position:absolute;top:11px;left:11px;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.08em;padding:5px 11px;border-radius:999px;color:#fff;}
 .s-open{background:var(--gr);}
 .s-wait{background:#D9971E;color:#fff;}
+.s-limited{background:var(--pu);color:#fff;}
 /* Save (heart) button on a listing card — top-right of the image, mirrors
    the status pill's top-left placement. Filled pink + beating-heart icon
    once saved; see js/saved.js for the save/unsave logic. */

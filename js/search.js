@@ -154,16 +154,30 @@ function filterListings(listings, opts){
   return res;
 }
 
+// Availability badge, driven by the Airtable "Availability" field
+// (Open / Limited spaces / Waitlist; blank = Open). Once the generator
+// writes an `availability` key onto every listing, that is the only source.
+// Until then (key absent) fall back to the old Notes check, but only for
+// the unambiguous phrases, so a note like "waiting lists recently reopened"
+// no longer flags a listing as waitlist.
+function availabilityOf(c){
+  if ('availability' in c) return c.availability || 'Open';
+  const n = (c.notes||'').toLowerCase();
+  return (n.includes('fully booked') || n.includes('waiting list only')) ? 'Waitlist' : 'Open';
+}
+
 function listingCard(c, i, showType){
   const isHalloween = /halloween/i.test(c.name||'');
   const col = isHalloween ? HW_ORANGE : COLS[i % COLS.length];
   const ageStr = c.ageMin!=null && c.ageMax!=null ? 'Ages '+c.ageMin+'–'+c.ageMax : c.ageMin!=null ? 'Ages '+c.ageMin+'+' : '';
   const weeksStr = (c.weeks||[]).slice(0,2).join(', ');
-  const isWait = (c.notes||'').toLowerCase().includes('waiting list') || (c.notes||'').toLowerCase().includes('fully booked');
+  const avail = availabilityOf(c);
+  const isWait = avail === 'Waitlist';
+  const isLimited = avail === 'Limited spaces';
   return '<div class="camp-card">'
   +'<div class="card-img" style="background:'+col.bg+'">'
   +(isHalloween?HW_PUMPKIN_ICON:'')
-  +'<div class="card-status '+(isWait?'s-wait':'s-open')+'">'+(isWait?'WAITLIST':'LIVE NOW')+'</div>'
+  +'<div class="card-status '+(isWait?'s-wait':isLimited?'s-limited':'s-open')+'">'+(isWait?'WAITLIST':isLimited?'LIMITED SPACES':'LIVE NOW')+'</div>'
   +'<button class="card-save" data-save-id="'+c.id+'" aria-label="Save for later" aria-pressed="false" onclick="event.preventDefault();window.SortdSaved&&window.SortdSaved.toggle(\''+c.id+'\',this);"><i class="ti ti-heart"></i></button>'
   +'</div>'
   +'<div class="card-body">'
