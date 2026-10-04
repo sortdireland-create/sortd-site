@@ -110,6 +110,12 @@ gtag('config', 'G-HHTB7S9WJG');
           <input type="text" id="hText" placeholder="Search by name or provider" onkeydown="if(event.key==='Enter')heroSearch()">
         </div>
       </div>
+      <div class="school-search" id="schoolSearchWrap" style="display:none;">
+        <div class="quick-label">Or find your school's activities</div>
+        <select id="hSchool" onchange="if(this.value) window.location.href=this.value;">
+          <option value="">Select your child's school…</option>
+        </select>
+      </div>
     </div>
   </div>
 </section>
@@ -208,6 +214,7 @@ gtag('config', 'G-HHTB7S9WJG');
 </div>
 </div>
 <script src="/js/camps-data.js"></script>
+<script src="/js/schools-data.js"></script>
 <script src="/js/search.js"></script>
 <script src="/js/saved.js"></script>
 <script>
@@ -229,6 +236,25 @@ function heroSearch(){
 
 function filterCounty(county){
   window.location.href = '/camps?q=' + encodeURIComponent(county);
+}
+
+// "Search by school" dropdown — hidden entirely until at least one school
+// has activities on Sortd (populated from js/schools-data.js, generated
+// straight from Airtable). While only one school is onboarded, its label
+// gets a "(Trial)" suffix so it's clear this is a pilot; that suffix drops
+// on its own once a second school is added, no hand-editing needed.
+function renderSchoolSearch(){
+  if (typeof SCHOOLS === 'undefined' || !SCHOOLS.length) return;
+  const wrap = document.getElementById('schoolSearchWrap');
+  const sel = document.getElementById('hSchool');
+  const isTrial = SCHOOLS.length === 1;
+  SCHOOLS.forEach(s=>{
+    const opt = document.createElement('option');
+    opt.value = s.url;
+    opt.textContent = isTrial ? s.name + ' (Trial)' : s.name;
+    sel.appendChild(opt);
+  });
+  wrap.style.display = '';
 }
 
 function renderFeatured(){
@@ -258,6 +284,7 @@ document.getElementById('hEircode').addEventListener('keydown',e=>{if(e.key==='E
 
 renderFeatured();
 renderCountyStrip();
+renderSchoolSearch();
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"sortd","url":"https://sortd-ireland.ie","description":"Ireland's directory of kids' summer camps and classes. Find summer camps, after-school sport, drama, GAA, coding and more across Dublin and Leinster.","potentialAction":{"@type":"SearchAction","target":"https://sortd-ireland.ie/find-an-activity?text={search_term_string}","query-input":"required name=search_term_string"}}

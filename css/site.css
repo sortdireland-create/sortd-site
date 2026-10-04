@@ -83,6 +83,10 @@ h1 em{font-style:normal; color:var(--pu);}
 .search-trust{margin-top:10px; text-align:center; font-size:11.5px; font-weight:700; color:#9aa0ab; letter-spacing:.01em;}
 .quick{margin-top:16px; padding-top:16px; border-top:1px dashed var(--bd); text-align:center;}
 .quick-label{font-size:13px; font-weight:700; color:#8a8f9c; margin-bottom:10px;}
+.school-search{margin-top:16px; padding-top:16px; border-top:1px dashed var(--bd); text-align:center;}
+.school-search select{width:100%; font-family:'Baloo 2',sans-serif; font-weight:700; font-size:15px; color:var(--nv);
+  background:var(--pg); border:1px solid var(--bd); border-radius:12px; padding:10px 14px; outline:none;
+  appearance:none; -webkit-appearance:none; cursor:pointer;}
 .quick-input{display:flex; align-items:center; gap:8px; background:var(--pg); border:1px solid var(--bd);
   border-radius:12px; padding:10px 14px;}
 .quick-input .ti{color:#8a8f9c; font-size:16px;}
