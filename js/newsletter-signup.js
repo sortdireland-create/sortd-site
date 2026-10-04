@@ -16,6 +16,20 @@
     var input = form.querySelector('.foot-nl-input');
     if (!btn || !input) return;
 
+    // Explicit, unticked consent checkbox under the email field. Added here
+    // (rather than copied into every page's footer markup) so the ~250
+    // generated listing pages get it too, with one source of truth. It's
+    // `required`, so the browser blocks the submit until it's ticked.
+    if (!form.querySelector('.foot-nl-consent')) {
+      var consent = document.createElement('label');
+      consent.className = 'foot-nl-consent';
+      consent.innerHTML =
+        '<input type="checkbox" name="newsletterConsent" required>' +
+        '<span>Yes, send me the weekly "what\'s on near you" email. ' +
+        'See our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</span>';
+      form.appendChild(consent);
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var email = (input.value || '').trim();

@@ -251,6 +251,12 @@ footer{background:var(--nv); color:#cfd4e0; padding:56px 40px 24px;}
   padding:12px 26px; border-radius:999px; border:none; cursor:pointer; white-space:nowrap;}
 .foot-nl-btn:hover{opacity:.9;}
 .foot-nl-btn:disabled{opacity:.6; cursor:default;}
+/* width:0 + min-width:100% = span the form's row without widening the form itself
+   (otherwise the long label text pushes the whole form below the headline). */
+.foot-nl-consent{flex-basis:100%; width:0; min-width:100%; display:flex; align-items:flex-start; gap:8px; font-size:12.5px; line-height:1.45;
+  color:#9aa4bd; cursor:pointer;}
+.foot-nl-consent input{margin-top:2px; width:15px; height:15px; accent-color:var(--sk); flex-shrink:0; cursor:pointer;}
+.foot-nl-consent a{color:#fff; text-decoration:underline;}
 .foot-nl-msg{margin:14px 0 0; font-size:13px; font-weight:700; min-height:16px;}
 .foot-nl-msg.ok{color:#5CE0A0;}
 .foot-nl-msg.err{color:#F4A7C3;}
