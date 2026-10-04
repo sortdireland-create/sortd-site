@@ -28,8 +28,16 @@
 
   // The footer headline is static HTML in every page; say "Thursday" in one
   // place instead of editing hundreds of files.
+  // Same for the rest of the footer box copy and the button label.
   document.querySelectorAll('.foot-nl-title').forEach(function (el) {
     el.textContent = el.textContent.replace(/every week/i, 'every Thursday');
+    if (el.parentElement) el.parentElement.classList.add('foot-nl-copy');
+  });
+  document.querySelectorAll('.foot-nl-sub').forEach(function (el) {
+    el.textContent = 'One short email: new camps, open spots and honest updates. Free, and you can unsubscribe in one click.';
+  });
+  document.querySelectorAll('.foot-nl-btn').forEach(function (el) {
+    el.textContent = 'Get the Thursday email';
   });
 
   function initForm(form, cfg) {

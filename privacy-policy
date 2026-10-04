@@ -83,7 +83,7 @@ a:hover{text-decoration:underline;}
 </section>
 
 <div class="content">
-  <span class="updated">Last updated: June 2026</span>
+  <span class="updated">Last updated: October 2026</span>
 
   <div class="card">
     <h2>Who we are</h2>
@@ -99,11 +99,13 @@ a:hover{text-decoration:underline;}
     <p>When you sign up for our newsletter, we collect:</p>
     <ul>
       <li>Your email address</li>
-      <li>Your first name</li>
-      <li>Your county in Ireland</li>
-      <li>Your child or children's ages</li>
+      <li>Your first name or county, only if you choose to give them to us</li>
+      <li>A record of your consent: the date and time you signed up, the exact wording of the tick box you agreed to, and the page you signed up on</li>
     </ul>
-    <p>We collect this information so we can send you a relevant, personalised monthly round-up of kids' activities in your area, matched to your children's ages.</p>
+    <p>We collect this so we can send you our weekly "what's on near you" email, every Thursday, and so we can show that you asked for it.</p>
+
+    <h3>Parent accounts and provider dashboard</h3>
+    <p>If you log in to sortd as a parent, we collect your email address so we can send you a one-time login link, and we remember the camps and classes you save. If you list or claim a camp or class as a provider, we collect the details you give us about it (such as the name, location, contact email and booking details) so we can publish and manage your listing, and we email you about it.</p>
 
     <h3>Camp recommendations</h3>
     <p>When you recommend a camp via our website, we collect the details you provide about the camp (name, location, category, contact details) and optionally your first name. We use this to research and add the camp to our directory.</p>
@@ -116,7 +118,8 @@ a:hover{text-decoration:underline;}
     <h2>How we use your information</h2>
     <p>We use the information we collect only for the purposes it was given:</p>
     <ul>
-      <li>To send you our monthly newsletter with children's activities relevant to your county and your children's ages</li>
+      <li>To send you our weekly newsletter (every Thursday) with new camps, open spots and updates</li>
+      <li>To send you the emails you ask for, such as login links and confirmations that a listing has been received or is live</li>
       <li>To add recommended camps to the sortd directory</li>
       <li>To improve the website and understand how parents use it</li>
     </ul>
@@ -134,9 +137,14 @@ a:hover{text-decoration:underline;}
 
   <div class="card">
     <h2>How we store your data</h2>
-    <p>Newsletter signups are captured via Netlify Forms and stored securely on Netlify's servers. Netlify is GDPR-compliant and their data processing terms are available at <a href="https://www.netlify.com/gdpr-ccpa" target="_blank" rel="noopener">netlify.com/gdpr-ccpa</a>.</p>
-    <p>We do not currently use a third-party email marketing platform. When we do, we will update this policy to name that provider and link to their privacy terms.</p>
-    <p>We retain your data for as long as you are subscribed to our newsletter. If you unsubscribe, we will delete your personal data from our records within 30 days.</p>
+    <p>We use a small number of trusted services to run sortd. They process your data on our behalf and only for the purposes described in this policy:</p>
+    <ul>
+      <li><strong>Brevo</strong> (a company based in France, in the EU) stores our newsletter list and sends our emails, including the weekly newsletter, login links and listing confirmations. Their privacy policy is at <a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener">brevo.com/legal/privacypolicy</a>.</li>
+      <li><strong>Netlify</strong> hosts this website and runs the code behind our sign-up and login forms. Their data processing terms are at <a href="https://www.netlify.com/gdpr-ccpa" target="_blank" rel="noopener">netlify.com/gdpr-ccpa</a>.</li>
+      <li><strong>Airtable</strong> stores the camp and class listings, provider details submitted through our forms, and parent account records. Their privacy policy is at <a href="https://www.airtable.com/company/privacy" target="_blank" rel="noopener">airtable.com/company/privacy</a>.</li>
+      <li><strong>Google Analytics</strong> measures how the website is used (see "Cookies" below).</li>
+    </ul>
+    <p>We keep your newsletter details for as long as you are subscribed. When you unsubscribe, we keep only your email address on a "do not email" list so that we never email you again by mistake. If you would like that deleted too, email us and we will erase it within 30 days.</p>
   </div>
 
   <div class="card">
@@ -156,7 +164,9 @@ a:hover{text-decoration:underline;}
 
   <div class="card">
     <h2>Cookies</h2>
-    <p>sortd-ireland.ie does not currently use tracking cookies or advertising cookies. We may use a session cookie to remember that you have closed our newsletter popup during your visit, so it does not reappear. This cookie is not used to identify you and expires when you close your browser.</p>
+    <p>We do not use advertising cookies, and we do not sell or share your data for advertising.</p>
+    <p>We use Google Analytics to understand how the website is used, for example which pages are visited and whether newsletter sign-ups are working. It sets cookies in your browser and receives your IP address and basic details about your device. We do not send it your email address or name.</p>
+    <p>We also use a login cookie that keeps you signed in if you have a parent account, and small pieces of browser storage that remember the camps and classes you have saved and that you have closed our "Follow on Instagram" pop-up. These are only used to make the site work for you.</p>
   </div>
 
   <div class="card">
@@ -166,7 +176,7 @@ a:hover{text-decoration:underline;}
 
   <div class="card">
     <h2>Children's privacy</h2>
-    <p>sortd is a service for parents and guardians. We do not knowingly collect personal data directly from children. The only data we collect about children is their age, provided by a parent or guardian when signing up for our newsletter, used solely to personalise activity recommendations.</p>
+    <p>sortd is a service for parents and guardians. We do not knowingly collect personal data directly from children, and we do not ask for children's names or ages.</p>
   </div>
 
   <div class="card">

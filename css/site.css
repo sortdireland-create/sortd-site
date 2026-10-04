@@ -237,31 +237,39 @@ footer{background:var(--nv); color:#cfd4e0; padding:56px 40px 24px;}
 .foot-bottom a{color:#8892a8;}
 .foot-source{max-width:520px;}
 
-/* Footer newsletter signup box (added Sept 2026) */
-.foot-nl{max-width:1200px; margin:0 auto 36px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
-  border-radius:18px; padding:26px 32px;}
-.foot-nl-inner{display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;}
-.foot-nl-title{font-family:'Baloo 2',sans-serif; font-weight:800; font-size:18px; color:#fff; margin-bottom:4px;}
-.foot-nl-sub{font-size:14px; color:#9aa4bd; margin:0; max-width:360px;}
-.foot-nl-form{display:flex; gap:10px; flex-wrap:wrap;}
-.foot-nl-input{background:#fff; border:1.5px solid transparent; border-radius:999px; padding:12px 18px; font-size:14px;
-  font-weight:600; color:var(--nv); outline:none; min-width:220px; font-family:'Nunito',sans-serif;}
-.foot-nl-input:focus{border-color:var(--sk);}
-.foot-nl-btn{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:14px; color:#fff; background:var(--sk);
-  padding:12px 26px; border-radius:999px; border:none; cursor:pointer; white-space:nowrap;}
-.foot-nl-btn:hover{opacity:.9;}
-.foot-nl-btn:disabled{opacity:.6; cursor:default;}
+/* Footer newsletter signup box (added Sept 2026, restyled Oct 2026)
+   A mint card on the navy footer so it's the one thing the eye lands on.
+   Button is the site green, darkened a step (#1B8350) so white text passes AA. */
+.foot-nl{max-width:1200px; margin:0 auto 40px; background:var(--grl); border:1px solid #A9E0C0;
+  border-radius:20px; padding:30px 36px;}
+.foot-nl-inner{display:flex; align-items:center; justify-content:space-between; gap:28px 40px; flex-wrap:wrap;}
+.foot-nl-copy{flex:1 1 320px; min-width:0;}
+.foot-nl-title{font-family:'Baloo 2',sans-serif; font-weight:800; font-size:26px; line-height:1.15; color:var(--nv); margin-bottom:6px;}
+.foot-nl-sub{font-size:15px; line-height:1.5; color:#3A4A63; margin:0; max-width:420px;}
+.foot-nl-form{display:flex; gap:10px; flex-wrap:wrap; flex:1 1 440px; max-width:520px;}
+.foot-nl-input{flex:1 1 220px; min-width:0; background:#fff; border:2px solid #A9E0C0; border-radius:999px; padding:13px 20px; font-size:15px;
+  font-weight:600; color:var(--nv); outline:none; font-family:'Nunito',sans-serif; transition:border-color .15s, box-shadow .15s;}
+.foot-nl-input::placeholder{color:#6B7690; font-weight:600;}
+.foot-nl-input:focus{border-color:#1B8350; box-shadow:0 0 0 4px rgba(27,131,80,.2);}
+.foot-nl-btn{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:16px; color:#fff; background:#1B8350;
+  padding:13px 28px; border-radius:999px; border:none; cursor:pointer; white-space:nowrap; transition:background .15s, transform .15s;}
+.foot-nl-btn:hover{background:#176B42;}
+.foot-nl-btn:active{transform:translateY(1px);}
+.foot-nl-btn:focus-visible{outline:3px solid var(--nv); outline-offset:3px;}
+.foot-nl-btn:disabled{opacity:.65; cursor:default;}
 /* width:0 + min-width:100% = span the form's row without widening the form itself
    (otherwise the long label text pushes the whole form below the headline). */
-.foot-nl-consent{flex-basis:100%; width:0; min-width:100%; display:flex; align-items:flex-start; gap:8px; font-size:12.5px; line-height:1.45;
-  color:#9aa4bd; cursor:pointer;}
-.foot-nl-consent input{margin-top:2px; width:15px; height:15px; accent-color:var(--sk); flex-shrink:0; cursor:pointer;}
-.foot-nl-consent a{color:#fff; text-decoration:underline;}
-.foot-nl-msg{margin:14px 0 0; font-size:13px; font-weight:700; min-height:16px;}
-.foot-nl-msg.ok{color:#5CE0A0;}
-.foot-nl-msg.err{color:#F4A7C3;}
-@media (max-width:800px){ .foot-nl{padding:22px 20px;} .foot-nl-inner{flex-direction:column; align-items:flex-start;}
-  .foot-nl-form{width:100%;} .foot-nl-input{flex:1; min-width:0;} }
+.foot-nl-consent{flex-basis:100%; width:0; min-width:100%; display:flex; align-items:flex-start; gap:10px; font-size:13px; line-height:1.45;
+  color:#2F4A3D; cursor:pointer; margin-top:2px;}
+.foot-nl-consent input{margin-top:1px; width:18px; height:18px; accent-color:#1B8350; flex-shrink:0; cursor:pointer;}
+.foot-nl-consent a{color:var(--nv); text-decoration:underline;}
+.foot-nl-msg{margin:14px 0 0; font-size:14px; font-weight:700; min-height:16px;}
+.foot-nl-msg:empty{margin:0; min-height:0;}
+.foot-nl-msg.ok{color:#176B42;}
+.foot-nl-msg.err{color:#A12F5B;}
+@media (max-width:800px){ .foot-nl{padding:24px 20px; border-radius:18px;} .foot-nl-inner{flex-direction:column; align-items:stretch; gap:20px;}
+  .foot-nl-copy{flex:0 0 auto;} .foot-nl-title{font-size:22px;} .foot-nl-form{width:100%; max-width:none; flex:0 0 auto;}
+  .foot-nl-input{flex:1 1 100%;} .foot-nl-btn{flex:1 1 100%; padding:14px 28px;} }
 
 .annotation{background:#fff8e6; border:1px dashed #D9971E; border-radius:10px; padding:14px 18px; font-size:13px;
   color:#6b5410; max-width:1200px; margin:0 auto 0; font-family:'Nunito',sans-serif;}
