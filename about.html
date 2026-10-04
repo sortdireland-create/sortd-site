@@ -69,6 +69,12 @@ a{text-decoration:none;color:inherit;}
 .nl-input:focus{border-color:#1A9D67;}
 .nl-btn{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#1A9D67;padding:13px 28px;border-radius:999px;border:none;cursor:pointer;white-space:nowrap;}
 .nl-note{font-size:13px;font-weight:700;color:#1A9D67;}
+.nl-consent{flex-basis:100%;width:0;min-width:100%;display:flex;align-items:flex-start;justify-content:center;gap:8px;font-size:13px;font-weight:600;line-height:1.45;color:#3d6b54;text-align:left;cursor:pointer;}
+.nl-consent input{margin-top:2px;width:15px;height:15px;accent-color:#1A9D67;flex-shrink:0;cursor:pointer;}
+.nl-consent a{color:#27314A;text-decoration:underline;}
+.nl-msg{font-size:14px;font-weight:700;min-height:18px;margin:0 0 10px;}
+.nl-msg.ok{color:#1A7A50;}
+.nl-msg.err{color:#C0436E;}
 @media(max-width:768px){.nl{padding:48px 20px;}}
 
 /* CTA */
@@ -180,11 +186,12 @@ a{text-decoration:none;color:inherit;}
 <span class="eyebrow" style="color:#1A9D67;">Stay in the loop</span>
 <div class="nl-title">Get "what's on near you" every Thursday.</div>
 <p class="nl-sub">New camps, open places, and honest updates — straight to your inbox. No spam.</p>
-<form class="nl-form" onsubmit="return false;">
-<input class="nl-input" type="email" placeholder="your@email.ie" aria-label="Email address">
+<form class="nl-form" data-source="about_page">
+<input class="nl-input" type="email" name="email" placeholder="your@email.ie" aria-label="Email address" required>
 <button class="nl-btn" type="submit">Join free</button>
 </form>
-<span class="nl-note">400+ Irish parents already getting it</span>
+<p class="nl-msg" role="status" aria-live="polite"></p>
+<span class="nl-note">One short email, every Thursday. Unsubscribe any time.</span>
 </div>
 </section>
 

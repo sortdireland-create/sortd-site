@@ -1,69 +1,121 @@
-// Wires up the "Get the newsletter" signup box in the site footer
-// (added Sept 2026) to the existing /.netlify/functions/subscribe
-// endpoint, which already creates/updates a Customer.io profile and
-// sends a "you're on the list" confirmation email — this file only
-// adds the missing frontend: nothing on the site previously posted to
-// that function.
+// Wires up the "Thursday email" sign-up forms to /.netlify/functions/subscribe,
+// which adds the person to the Brevo newsletter list and sends a welcome email.
 //
-// Progressive enhancement: the form still has a real <input type=email>
-// and a real <button type=submit>, this just intercepts submit so the
-// page never navigates away, and shows an inline success/error message.
+// Two kinds of form, one script (so the generated listing pages pick it up too):
+//   .foot-nl-form  the box in the site footer, on every page
+//   .nl-form       the bigger box on the About page
+//
+// Each form gets a required, unticked consent checkbox injected under the
+// email field. The exact label text is sent with the sign-up and saved in
+// Brevo as the consent record, along with the page and a timestamp.
+//
+// GA4 events (via the gtag set up in booking-tracking.js), all carrying
+// signup_location = footer | about_page. No email address is ever sent to GA4.
+//   newsletter_form_start   first time someone interacts with a form on the page
+//   newsletter_signup       new subscriber saved (mark this one as a key event in GA4)
+//   newsletter_signup_existing  email was already on the list (not counted as a sign-up)
+//   newsletter_signup_error sign-up failed
 (function () {
-  function initFootNlForm(form) {
-    var wrap = form.closest('.foot-nl');
-    var msgEl = wrap ? wrap.querySelector('.foot-nl-msg') : null;
-    var btn = form.querySelector('.foot-nl-btn');
-    var input = form.querySelector('.foot-nl-input');
+  var CONSENT_LABEL_TEXT = 'Yes, send me the weekly "what\'s on near you" email every Thursday.';
+
+  function track(name, location) {
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', name, { signup_location: location });
+      }
+    } catch (e) { /* analytics must never break the form */ }
+  }
+
+  // The footer headline is static HTML in every page; say "Thursday" in one
+  // place instead of editing hundreds of files.
+  document.querySelectorAll('.foot-nl-title').forEach(function (el) {
+    el.textContent = el.textContent.replace(/every week/i, 'every Thursday');
+  });
+
+  function initForm(form, cfg) {
+    var wrap = form.closest(cfg.wrapSelector);
+    var msgEl = wrap ? wrap.querySelector(cfg.msgSelector) : null;
+    var btn = form.querySelector(cfg.btnSelector);
+    var input = form.querySelector('input[type="email"]');
     if (!btn || !input) return;
 
-    // Explicit, unticked consent checkbox under the email field. Added here
-    // (rather than copied into every page's footer markup) so the ~250
-    // generated listing pages get it too, with one source of truth. It's
+    var location = form.getAttribute('data-source') || cfg.source;
+
+    // Explicit, unticked consent checkbox. Added here (rather than copied
+    // into every page) so all pages share one source of truth. It's
     // `required`, so the browser blocks the submit until it's ticked.
-    if (!form.querySelector('.foot-nl-consent')) {
-      var consent = document.createElement('label');
-      consent.className = 'foot-nl-consent';
-      consent.innerHTML =
+    var consentLabel = form.querySelector('.' + cfg.consentClass);
+    if (!consentLabel) {
+      consentLabel = document.createElement('label');
+      consentLabel.className = cfg.consentClass;
+      consentLabel.innerHTML =
         '<input type="checkbox" name="newsletterConsent" required>' +
-        '<span>Yes, send me the weekly "what\'s on near you" email. ' +
-        'See our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</span>';
-      form.appendChild(consent);
+        '<span>' + CONSENT_LABEL_TEXT +
+        ' See our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</span>';
+      form.appendChild(consentLabel);
+    }
+    var consentBox = consentLabel.querySelector('input[type="checkbox"]');
+
+    var started = false;
+    function onStart() {
+      if (started) return;
+      started = true;
+      track('newsletter_form_start', location);
+    }
+    input.addEventListener('focus', onStart);
+
+    function setMsg(text, kind) {
+      if (!msgEl) return;
+      msgEl.textContent = text;
+      msgEl.className = cfg.msgClass + (kind ? ' ' + kind : '');
     }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var email = (input.value || '').trim();
       if (!email) return;
+      if (!consentBox.checked) { consentBox.focus(); return; }
 
-      if (msgEl) {
-        msgEl.textContent = '';
-        msgEl.className = 'foot-nl-msg';
-      }
+      setMsg('', '');
       btn.disabled = true;
       var originalLabel = btn.textContent;
       btn.textContent = 'Joining…';
 
+      var consentText = (consentLabel.textContent || '').replace(/\s+/g, ' ').trim();
+
       fetch('/.netlify/functions/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email }),
+        body: JSON.stringify({
+          email: email,
+          consent: true,
+          consentText: consentText,
+          source: location,
+          pageUrl: window.location.href.split('#')[0],
+        }),
       })
         .then(function (res) {
-          if (!res.ok) throw new Error('subscribe failed');
-          return res.json().catch(function () { return {}; });
+          return res.json().catch(function () { return {}; }).then(function (body) {
+            if (!res.ok) {
+              var err = new Error('subscribe failed');
+              err.userMessage = res.status === 400 && body && body.error ? body.error : '';
+              throw err;
+            }
+            return body;
+          });
         })
-        .then(function () {
-          if (msgEl) {
-            msgEl.textContent = "You're on the list! Check your inbox to confirm.";
-            msgEl.className = 'foot-nl-msg ok';
-          }
+        .then(function (body) {
+          setMsg(body && body.isNew === false
+            ? "You're already on the list. See you Thursday."
+            : "You're on the list. A welcome email is on its way.", 'ok');
+          // Only count genuinely new people, so re-submits don't inflate the number.
+          track(body && body.isNew === false ? 'newsletter_signup_existing' : 'newsletter_signup', location);
           form.reset();
+          started = false;
         })
-        .catch(function () {
-          if (msgEl) {
-            msgEl.textContent = 'Something went wrong — please try again.';
-            msgEl.className = 'foot-nl-msg err';
-          }
+        .catch(function (err) {
+          setMsg((err && err.userMessage) || 'Something went wrong. Please try again.', 'err');
+          track('newsletter_signup_error', location);
         })
         .finally(function () {
           btn.disabled = false;
@@ -72,5 +124,25 @@
     });
   }
 
-  document.querySelectorAll('.foot-nl-form').forEach(initFootNlForm);
+  document.querySelectorAll('.foot-nl-form').forEach(function (form) {
+    initForm(form, {
+      wrapSelector: '.foot-nl',
+      msgSelector: '.foot-nl-msg',
+      msgClass: 'foot-nl-msg',
+      btnSelector: '.foot-nl-btn',
+      consentClass: 'foot-nl-consent',
+      source: 'footer',
+    });
+  });
+
+  document.querySelectorAll('.nl-form').forEach(function (form) {
+    initForm(form, {
+      wrapSelector: '.nl-inner',
+      msgSelector: '.nl-msg',
+      msgClass: 'nl-msg',
+      btnSelector: '.nl-btn',
+      consentClass: 'nl-consent',
+      source: 'about_page',
+    });
+  });
 })();

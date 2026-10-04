@@ -14,20 +14,18 @@
 //       Flips MARKETING_OPT_OUT on that Airtable listing record.
 //   /.netlify/functions/unsubscribe?email=<address>
 //     — subscribe.js (newsletter signup), which has no Airtable listing
-//       record behind it, just a Customer.io profile keyed by email.
-//       Sets an `unsubscribed_at` attribute on that profile via the Track
-//       API — Rachel should exclude profiles where this is set when
-//       building a Customer.io Campaign/Broadcast segment, since this is a
-//       plain attribute rather than Customer.io's own suppression list.
+//       record behind it, just a Brevo contact keyed by email. Puts the
+//       contact on Brevo's blocklist (which every Brevo campaign respects)
+//       and sets OPT_IN to false.
 //
 // Deliberately no token on either link — worst case someone else flips a
 // stranger's opt-out flag, which just means that person gets fewer
 // marketing emails from us. Not worth the extra friction of a signed link
 // for a one-way, low-stakes preference.
 //
-// Requires: AIRTABLE_API_KEY (id path), CUSTOMERIO_SITE_ID +
-// CUSTOMERIO_TRACK_API_KEY + CUSTOMERIO_REGION (email path — same as
-// subscribe.js's Track API credentials).
+// Requires: AIRTABLE_API_KEY (id path), BREVO_API_KEY (email path).
+
+const { unsubscribeContact } = require('./lib/brevo-newsletter');
 
 const BASE_ID = 'appuyWkAmTRI4lN5r';
 const TABLE_ID = 'tblziKRbWXA1veyuz';
@@ -35,9 +33,6 @@ const TABLE_ID = 'tblziKRbWXA1veyuz';
 const F = {
   MARKETING_OPT_OUT: 'fldCx8ppVT18rV7og',
 };
-
-const REGION = (process.env.CUSTOMERIO_REGION || 'us').toLowerCase();
-const TRACK_HOST = REGION === 'eu' ? 'track-eu.customer.io' : 'track.customer.io';
 
 function htmlPage(title, message, ok) {
   const accent = ok ? '#4A9B6C' : '#C66686';
@@ -50,6 +45,12 @@ function htmlPage(title, message, ok) {
   a{color:#4782A8;font-weight:700;text-decoration:none;}</style></head>
   <body><div class="card"><h1>${ok ? '✓' : '✕'} ${title}</h1><p>${message}</p><p style="margin-top:20px"><a href="https://sortd-ireland.ie">← Back to sortd</a></p></div></body></html>`;
 }
+
+const NEWSLETTER_SUCCESS = htmlPage(
+  "You're unsubscribed",
+  "You won't get the Thursday email any more. Sorry to see you go. You can sign up again any time from the bottom of any page.",
+  true
+);
 
 const GENERIC_ERROR = htmlPage('Something went wrong', "We couldn't process that just now — please email hello@sortd-ireland.ie and we'll take care of it.", false);
 const SUCCESS = htmlPage(
@@ -98,36 +99,12 @@ exports.handler = async function (event) {
     return { statusCode: 200, headers: { 'Content-Type': 'text/html' }, body: SUCCESS };
   }
 
-  // ── Newsletter path (subscribe.js) — no Airtable record, just a Customer.io profile ──
-  const siteId = process.env.CUSTOMERIO_SITE_ID;
-  const trackApiKey = process.env.CUSTOMERIO_TRACK_API_KEY;
-  if (!siteId || !trackApiKey) {
-    console.error('unsubscribe: Customer.io Track API credentials not set');
-    return { statusCode: 500, body: 'Server error' };
-  }
-
-  try {
-    const cleanEmail = email.trim().toLowerCase();
-    const auth = Buffer.from(`${siteId}:${trackApiKey}`).toString('base64');
-    // Track API's customer PUT merges attributes rather than replacing the
-    // profile, so this can't clobber subscribed_at / first_name / etc.
-    const res = await fetch(`https://${TRACK_HOST}/api/v1/customers/${encodeURIComponent(cleanEmail)}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Basic ${auth}`,
-      },
-      body: JSON.stringify({ unsubscribed_at: Math.floor(Date.now() / 1000) }),
-    });
-
-    if (!res.ok) {
-      console.error('unsubscribe: Customer.io update failed:', await res.text());
-      return { statusCode: 500, headers: { 'Content-Type': 'text/html' }, body: GENERIC_ERROR };
-    }
-  } catch (err) {
-    console.error('unsubscribe (email) error:', err);
+  // ── Newsletter path (subscribe.js) — no Airtable record, just a Brevo contact ──
+  const cleanEmail = String(email).trim().toLowerCase();
+  const result = await unsubscribeContact(cleanEmail);
+  if (!result.ok) {
     return { statusCode: 500, headers: { 'Content-Type': 'text/html' }, body: GENERIC_ERROR };
   }
 
-  return { statusCode: 200, headers: { 'Content-Type': 'text/html' }, body: SUCCESS };
+  return { statusCode: 200, headers: { 'Content-Type': 'text/html' }, body: NEWSLETTER_SUCCESS };
 };

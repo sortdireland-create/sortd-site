@@ -15,11 +15,11 @@
 // equivalent.
 //
 // Requires: AIRTABLE_API_KEY, PARENT_SESSION_SECRET
-// Optional (newsletter opt-in only — see addToNewsletter below; same vars
-// subscribe.js already uses, so nothing new to set up if that's working):
-//   CUSTOMERIO_SITE_ID, CUSTOMERIO_TRACK_API_KEY, CUSTOMERIO_REGION
+// Optional (newsletter opt-in only): BREVO_API_KEY, and BREVO_NEWSLETTER_LIST_ID
+// if the list isn't Brevo's default list 2. See lib/brevo-newsletter.js.
 
 const { createSessionCookies } = require('./lib/session');
+const { addNewsletterContact } = require('./lib/brevo-newsletter');
 
 const BASE_ID = 'appuyWkAmTRI4lN5r';
 
@@ -49,29 +49,24 @@ function escapeFormulaValue(v) {
   return String(v).replace(/'/g, "\\'");
 }
 
-// Adds/updates this parent's profile in Customer.io — the same mailing
-// list the footer newsletter signup (subscribe.js) writes to, so a parent
-// who ticks the /login checkbox lands on the exact same list as anyone
-// who signs up from the footer. Best-effort only: a failure here must
-// never stop the login itself from completing, since the Airtable
-// NewsletterOptIn/NewsletterOptInAt fields are the authoritative consent
-// record regardless of whether this call succeeds.
+// Exact wording of the tick box on /login (login.html, label for
+// #newsletter-optin), saved with the contact as the consent record. If you
+// change the label there, change this string too.
+const LOGIN_CONSENT_TEXT = 'Also send me the weekly "what\'s on near you" email every Thursday: new camps, open spots and honest updates. See our Privacy Policy.';
+
+// Adds this parent to the Brevo newsletter list, the same list the footer
+// and About-page sign-ups write to (see lib/brevo-newsletter.js). Best-effort
+// only: a failure here must never stop the login itself from completing,
+// since the Airtable NewsletterOptIn/NewsletterOptInAt fields are the
+// authoritative consent record regardless of whether this call succeeds.
 async function addToNewsletter(email) {
-  const siteId = process.env.CUSTOMERIO_SITE_ID;
-  const apiKey = process.env.CUSTOMERIO_TRACK_API_KEY;
-  if (!siteId || !apiKey) {
-    console.warn('verify-login: Customer.io Track API credentials not set — skipping newsletter add for', email);
-    return;
-  }
-  const region = (process.env.CUSTOMERIO_REGION || 'us').toLowerCase();
-  const trackHost = region === 'eu' ? 'track-eu.customer.io' : 'track.customer.io';
-  const auth = Buffer.from(`${siteId}:${apiKey}`).toString('base64');
-  const res = await fetch(`https://${trackHost}/api/v1/customers/${encodeURIComponent(email)}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Basic ${auth}` },
-    body: JSON.stringify({ email, subscribed_at: Math.floor(Date.now() / 1000), source: 'parent_account_login' }),
+  const result = await addNewsletterContact({
+    email,
+    source: 'parent_login',
+    consentText: LOGIN_CONSENT_TEXT,
+    pageUrl: `${SITE_URL}/login`,
   });
-  if (!res.ok) console.error('verify-login: Customer.io newsletter add failed:', await res.text());
+  if (!result.ok) console.error('verify-login: Brevo newsletter add failed for', email);
 }
 
 async function airtableRequest(tableId, pathAndQuery, options = {}) {
