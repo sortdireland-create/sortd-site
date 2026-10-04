@@ -13,6 +13,8 @@
 // Requires the same AIRTABLE_API_KEY / CUSTOMERIO_APP_API_KEY env vars as
 // submit-listing.js.
 
+const { emailShell, emailButton, emailBox } = require('./lib/email-shell');
+
 const BASE_ID = 'appuyWkAmTRI4lN5r';
 const TABLE_ID = 'tblziKRbWXA1veyuz';
 const SITE_URL = 'https://sortd-ireland.ie';
@@ -29,45 +31,6 @@ const F = {
 // submit-listing.js / subscribe.js.
 const CIO_REGION = (process.env.CUSTOMERIO_REGION || 'us').toLowerCase();
 const CIO_SEND_HOST = CIO_REGION === 'eu' ? 'api-eu.customer.io' : 'api.customer.io';
-
-// ── Branded email shell — kept in sync manually with the equivalent shell
-// in submit-listing.js / claim-listing.js / subscribe.js. unsubscribeUrl
-// goes on every send from this file — a provider can always opt out of
-// future non-essential emails, even though this particular send (their
-// listing going live) is itself never skipped. ──
-function emailShell(innerHtml, unsubscribeUrl) {
-  return `<!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet"></head>
-<body style="margin:0;padding:0;background:#F7F7F7;font-family:'Nunito',Verdana,Arial,sans-serif;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F7F7F7;padding:32px 16px;">
-<tr><td align="center">
-<table role="presentation" width="100%" style="max-width:520px;background:#ffffff;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(41,49,72,.08);">
-<tr><td style="background:#293148;padding:24px 32px;text-align:center;">
-<span style="font-family:'Baloo 2',Verdana,sans-serif;font-size:24px;font-weight:800;color:#ffffff;letter-spacing:.5px;">sortd</span>
-</td></tr>
-<tr><td style="padding:32px;color:#293148;font-size:15px;font-family:'Nunito',Verdana,Arial,sans-serif;font-weight:600;line-height:1.6;">
-${innerHtml}
-</td></tr>
-<tr><td style="background:#293148;padding:20px 32px;text-align:center;">
-<p style="margin:0;font-size:12px;color:#D1E9F5;font-family:'Nunito',Verdana,Arial,sans-serif;">sortd · Dublin, Ireland<br>
-<a href="https://sortd-ireland.ie" style="color:#D1E9F5;text-decoration:none;font-weight:700;">sortd-ireland.ie</a></p>
-<p style="margin:10px 0 0;font-size:11px;color:#8fa5b8;font-family:'Nunito',Verdana,Arial,sans-serif;">Questions? <a href="mailto:hello@sortd-ireland.ie" style="color:#8fa5b8;text-decoration:underline;">hello@sortd-ireland.ie</a> · <a href="https://sortd-ireland.ie/privacy-policy" style="color:#8fa5b8;text-decoration:underline;">Privacy Policy</a></p>
-${unsubscribeUrl ? `<p style="margin:6px 0 0;font-size:11px;color:#8fa5b8;font-family:'Nunito',Verdana,Arial,sans-serif;"><a href="${unsubscribeUrl}" style="color:#8fa5b8;text-decoration:underline;">Unsubscribe</a> from emails like this</p>` : ''}
-</td></tr>
-</table>
-</td></tr>
-</table>
-</body>
-</html>`;
-}
-
-function emailButton(text, url) {
-  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:999px;background:#4782A8;">
-<a href="${url}" style="display:inline-block;padding:14px 30px;color:#ffffff;font-family:'Baloo 2',Verdana,sans-serif;font-weight:700;text-decoration:none;font-size:15px;border-radius:999px;">${text}</a>
-</td></tr></table>`;
-}
 
 async function sendEmail({ to, subject, html }) {
   const apiKey = process.env.BREVO_API_KEY;
@@ -184,8 +147,8 @@ exports.handler = async function () {
           <p style="margin:0 0 16px;">Want to add another activity, update this one, or see how it's doing? Head to your provider dashboard — log in any time with just your email, no password needed.</p>
           ${emailButton('Open my provider dashboard →', 'https://portal.sortd-ireland.ie')}
           <p style="margin:0;">Thanks for being part of sortd!</p>
-          <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">go get discovered →</p>
-        `, `${SITE_URL}/.netlify/functions/unsubscribe?id=${record.id}`),
+          <p style="margin:16px 0 0;">Rachel<br>sortd</p>
+        `, `${SITE_URL}/.netlify/functions/unsubscribe?id=${record.id}`, { audience: 'provider', eyebrow: 'For providers' }),
       });
 
       // Mark as sent even if the send itself failed silently (e.g. no API key

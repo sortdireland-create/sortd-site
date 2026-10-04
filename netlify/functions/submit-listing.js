@@ -22,6 +22,7 @@
 // ─────────────────────────────────────────────────────────────────────
 
 const crypto = require('crypto');
+const { emailShell, emailButton, emailBox } = require('./lib/email-shell');
 
 const BASE_ID = 'appuyWkAmTRI4lN5r';
 const TABLE_ID = 'tblziKRbWXA1veyuz';
@@ -120,52 +121,6 @@ function deriveCostValue(costStr) {
   }
 
   return null;
-}
-
-// ── Branded email shell — matches sortd-brand-foundations exactly:
-// muted/dusty palette (navy #293148, blue #4782A8 accent, NEVER red),
-// Baloo 2 for headings/logo/buttons, Nunito for body, ~18px card radius,
-// ~12px button radius, rounded corners only (never circles).
-//
-// unsubscribeUrl is optional — pass it for anything a provider might want
-// to opt out of (the confirmation email below); leave it out for Rachel's
-// own internal "new listing to review" notification, which isn't a
-// subscription she can opt out of. ──
-function emailShell(innerHtml, unsubscribeUrl) {
-  return `<!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet"></head>
-<body style="margin:0;padding:0;background:#F7F7F7;font-family:'Nunito',Verdana,Arial,sans-serif;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F7F7F7;padding:32px 16px;">
-<tr><td align="center">
-<table role="presentation" width="100%" style="max-width:520px;background:#ffffff;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(41,49,72,.08);">
-<tr><td style="background:#293148;padding:24px 32px;text-align:center;">
-<span style="font-family:'Baloo 2',Verdana,sans-serif;font-size:24px;font-weight:800;color:#ffffff;letter-spacing:.5px;">sortd</span>
-</td></tr>
-<tr><td style="padding:32px;color:#293148;font-size:15px;font-family:'Nunito',Verdana,Arial,sans-serif;font-weight:600;line-height:1.6;">
-${innerHtml}
-</td></tr>
-<tr><td style="background:#293148;padding:20px 32px;text-align:center;">
-<p style="margin:0;font-size:12px;color:#D1E9F5;font-family:'Nunito',Verdana,Arial,sans-serif;">sortd · Dublin, Ireland<br>
-<a href="https://sortd-ireland.ie" style="color:#D1E9F5;text-decoration:none;font-weight:700;">sortd-ireland.ie</a></p>
-<p style="margin:10px 0 0;font-size:11px;color:#8fa5b8;font-family:'Nunito',Verdana,Arial,sans-serif;">Questions? <a href="mailto:hello@sortd-ireland.ie" style="color:#8fa5b8;text-decoration:underline;">hello@sortd-ireland.ie</a> · <a href="https://sortd-ireland.ie/privacy-policy" style="color:#8fa5b8;text-decoration:underline;">Privacy Policy</a></p>
-${unsubscribeUrl ? `<p style="margin:6px 0 0;font-size:11px;color:#8fa5b8;font-family:'Nunito',Verdana,Arial,sans-serif;"><a href="${unsubscribeUrl}" style="color:#8fa5b8;text-decoration:underline;">Unsubscribe</a> from emails like this</p>` : ''}
-</td></tr>
-</table>
-</td></tr>
-</table>
-</body>
-</html>`;
-}
-
-// Primary CTA — blue stadium pill, matching the real site's "Get the
-// newsletter" / "List an activity" primary buttons. No colour param:
-// red/bright colours are off-brand.
-function emailButton(text, url) {
-  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:999px;background:#4782A8;">
-<a href="${url}" style="display:inline-block;padding:14px 30px;color:#ffffff;font-family:'Baloo 2',Verdana,sans-serif;font-weight:700;text-decoration:none;font-size:15px;border-radius:999px;">${text}</a>
-</td></tr></table>`;
 }
 
 async function sendEmail({ to, subject, html }) {
@@ -352,19 +307,19 @@ exports.handler = async function (event) {
       html: emailShell(`
         <p style="margin:0 0 16px;">Hi,</p>
         <p style="margin:0 0 16px;">Thanks for submitting <strong>${data.name.trim()}</strong> to sortd! We'll review it and get it live within a few days.</p>
-        <table role="presentation" width="100%" style="background:#D1E9F5;border-radius:16px;margin:0 0 20px;"><tr><td style="padding:16px 20px;font-size:14px;color:#293148;line-height:1.8;font-weight:600;">
+        ${emailBox(`
         <strong>${data.name.trim()}</strong> · ${data.type.trim()}<br>
         ${data.category.trim()} · ${data.county.trim()}, ${data.area.trim()}<br>
         Ages ${data.ageMin}–${data.ageMax} · ${data.cost.trim()}<br>
         Starts ${formatDateForEmail(data.startDate.trim())}
-        </td></tr></table>
+        `, 'provider')}
         <p style="margin:0 0 16px;">Once it's live, parents across ${data.county.trim()} searching for ${data.category.trim().toLowerCase()} activities will be able to find you.</p>
         <p style="margin:0 0 16px;">Got another camp or class to add? You can add it any time from your provider portal — this link logs you straight in, no password needed.</p>
         ${emailButton('Log into my portal →', portalCtaUrl)}
-        <p style="margin:0;font-size:12px;color:#888;">This login link expires in ${TOKEN_TTL_MINUTES} minutes and can only be used once — after that, just enter your email again at portal.sortd-ireland.ie for a fresh one.</p>
+        <p style="margin:0;font-size:14px;color:#5B6783;">This login link expires in ${TOKEN_TTL_MINUTES} minutes and can only be used once — after that, just enter your email again at portal.sortd-ireland.ie for a fresh one.</p>
         <p style="margin:16px 0 0;">Questions in the meantime? Just reply to this email.</p>
-        <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">we'll take it from here →</p>
-      `, `${SITE_URL}/.netlify/functions/unsubscribe?id=${record.id}`),
+        <p style="margin:16px 0 0;">Rachel<br>sortd</p>
+      `, `${SITE_URL}/.netlify/functions/unsubscribe?id=${record.id}`, { audience: 'provider', eyebrow: 'For providers' }),
     });
 
     // Notification to Rachel — no unsubscribe link, this is her own inbox
@@ -376,7 +331,7 @@ exports.handler = async function (event) {
         subject: `New listing to review: ${data.name.trim()}`,
         html: emailShell(`
           <p style="margin:0 0 16px;">New self-submitted listing, pending review:</p>
-          <table role="presentation" width="100%" style="background:#D1E9F5;border-radius:16px;margin:0 0 4px;"><tr><td style="padding:16px 20px;font-size:14px;color:#293148;line-height:1.8;font-weight:600;">
+          ${emailBox(`
           <strong>Name:</strong> ${data.name.trim()}<br>
           <strong>Type:</strong> ${data.type.trim()}<br>
           <strong>Provider:</strong> ${data.provider.trim()}<br>
@@ -386,7 +341,7 @@ exports.handler = async function (event) {
           <strong>Cost:</strong> ${data.cost.trim()}<br>
           <strong>Start date:</strong> ${formatDateForEmail(data.startDate.trim())}<br>
           <strong>Contact:</strong> ${data.providerEmail.trim()}
-          </td></tr></table>
+          `, 'provider')}
           ${emailButton('Review in Airtable →', airtableUrl)}
         `),
       });

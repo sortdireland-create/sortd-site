@@ -17,6 +17,7 @@
 // so nothing can sign someone up without it.
 
 const { addNewsletterContact } = require('./lib/brevo-newsletter');
+const { emailShell, emailButton } = require('./lib/email-shell');
 
 const SITE_URL = 'https://sortd-ireland.ie';
 const SOURCES = new Set(['footer', 'about_page', 'parent_login']);
@@ -50,48 +51,16 @@ async function sendEmail({ to, subject, html }) {
   if (!res.ok) console.error('Brevo welcome email failed:', await res.text());
 }
 
-// ── Branded email shell — matches sortd-brand-foundations:
-// muted palette (navy #293148, blue #4782A8 accent, NEVER red),
-// Baloo 2 for headings/logo, Nunito for body, ~18px card radius,
-// rounded corners only (never circles). Same shell as the other
-// transactional emails, kept in sync manually. ──
-function emailShell(innerHtml, unsubscribeUrl) {
-  return `<!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet"></head>
-<body style="margin:0;padding:0;background:#F7F7F7;font-family:'Nunito',Verdana,Arial,sans-serif;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F7F7F7;padding:32px 16px;">
-<tr><td align="center">
-<table role="presentation" width="100%" style="max-width:520px;background:#ffffff;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(41,49,72,.08);">
-<tr><td style="background:#293148;padding:24px 32px;text-align:center;">
-<span style="font-family:'Baloo 2',Verdana,sans-serif;font-size:24px;font-weight:800;color:#ffffff;letter-spacing:.5px;">sortd</span>
-</td></tr>
-<tr><td style="padding:32px;color:#293148;font-size:15px;font-family:'Nunito',Verdana,Arial,sans-serif;font-weight:600;line-height:1.6;">
-${innerHtml}
-</td></tr>
-<tr><td style="background:#293148;padding:20px 32px;text-align:center;">
-<p style="margin:0;font-size:12px;color:#D1E9F5;font-family:'Nunito',Verdana,Arial,sans-serif;">sortd · Dublin, Ireland<br>
-<a href="https://sortd-ireland.ie" style="color:#D1E9F5;text-decoration:none;font-weight:700;">sortd-ireland.ie</a></p>
-<p style="margin:10px 0 0;font-size:11px;color:#8fa5b8;font-family:'Nunito',Verdana,Arial,sans-serif;">Questions? <a href="mailto:hello@sortd-ireland.ie" style="color:#8fa5b8;text-decoration:underline;">hello@sortd-ireland.ie</a> · <a href="https://sortd-ireland.ie/privacy-policy" style="color:#8fa5b8;text-decoration:underline;">Privacy Policy</a></p>
-${unsubscribeUrl ? `<p style="margin:6px 0 0;font-size:11px;color:#8fa5b8;font-family:'Nunito',Verdana,Arial,sans-serif;"><a href="${unsubscribeUrl}" style="color:#8fa5b8;text-decoration:underline;">Unsubscribe</a> from the Thursday email</p>` : ''}
-</td></tr>
-</table>
-</td></tr>
-</table>
-</body>
-</html>`;
-}
-
 function welcomeEmail(firstName, email) {
   const hi = firstName ? `Hi ${escapeHtml(firstName)},` : 'Hi,';
   return emailShell(`
     <p style="margin:0 0 16px;">${hi}</p>
     <p style="margin:0 0 16px;">You're on the list. Thanks for signing up.</p>
     <p style="margin:0 0 16px;">Every Thursday I'll send one short email: new camps and classes, spaces opening up, and anything worth knowing before the weekend. No spam, and you can unsubscribe in one click.</p>
-    <p style="margin:0 0 16px;">Your first one lands next Thursday. In the meantime, <a href="${SITE_URL}" style="color:#4782A8;font-weight:700;text-decoration:none;">have a browse</a>.</p>
-    <p style="margin:16px 0 0;font-family:'Caveat',cursive;font-size:20px;color:#4782A8;">Rachel, sortd →</p>
-  `, `${SITE_URL}/.netlify/functions/unsubscribe?email=${encodeURIComponent(email)}`);
+    <p style="margin:0 0 4px;">Your first one lands next Thursday. In the meantime, have a browse:</p>
+    ${emailButton('Browse camps and classes', SITE_URL)}
+    <p style="margin:0;">Rachel<br>sortd</p>
+  `, `${SITE_URL}/.netlify/functions/unsubscribe?email=${encodeURIComponent(email)}`, { audience: 'parent', eyebrow: 'The Thursday email' });
 }
 
 exports.handler = async function (event) {
