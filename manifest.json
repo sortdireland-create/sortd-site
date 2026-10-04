@@ -144,14 +144,6 @@
     "section": "classes"
   },
   {
-    "slug": "ollies-homework-club",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/ollies-homework-club",
-    "name": "Ollie's Homework Club",
-    "provider": "Ollie's Homework Club",
-    "section": "classes"
-  },
-  {
     "slug": "junior-einsteins-halloween-science-camp-malahide-castle",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-halloween-science-camp-malahide-castle",
@@ -240,27 +232,11 @@
     "section": "classes"
   },
   {
-    "slug": "steam-club-term-one",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/steam-club-term-one",
-    "name": "STEAM Club (Term One)",
-    "provider": "STEAM Club Malahide",
-    "section": "classes"
-  },
-  {
     "slug": "gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-temple-bar",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-temple-bar",
     "name": "Young Gaiety Drama Workshop (Ages 8-10) — Temple Bar",
     "provider": "Gaiety School of Acting",
-    "section": "classes"
-  },
-  {
-    "slug": "ollies-drama-club-after-school-drama-club",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/ollies-drama-club-after-school-drama-club",
-    "name": "After School Drama Club",
-    "provider": "Ollie's Drama Club",
     "section": "classes"
   },
   {
@@ -413,22 +389,6 @@
     "url": "https://sortd-ireland.ie/classes/dublin/metropolitan-school-of-dance-howth",
     "name": "Metropolitan School of Dance — Howth",
     "provider": "Metropolitan School of Dance",
-    "section": "classes"
-  },
-  {
-    "slug": "chess-club",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/chess-club",
-    "name": "Chess Club",
-    "provider": "Chess Camp Malahide",
-    "section": "classes"
-  },
-  {
-    "slug": "ollies-lego-club-lego-club",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/ollies-lego-club-lego-club",
-    "name": "LEGO Club",
-    "provider": "Ollie's Lego Club",
     "section": "classes"
   },
   {
@@ -725,14 +685,6 @@
     "url": "https://sortd-ireland.ie/classes/dublin/leopardstown-tennis-club-junior-coaching-ages-5-18",
     "name": "Leopardstown Tennis Club - Junior Coaching (Ages 5-18)",
     "provider": "Leopardstown Tennis Club",
-    "section": "classes"
-  },
-  {
-    "slug": "young-artists-studio",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/young-artists-studio",
-    "name": "Young Artists Studio",
-    "provider": "Young Artists Studio",
     "section": "classes"
   },
   {
@@ -1176,14 +1128,6 @@
     "section": "classes"
   },
   {
-    "slug": "art-class",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/art-class",
-    "name": "Art Class",
-    "provider": "Art Camp Malahide",
-    "section": "classes"
-  },
-  {
     "slug": "playact-drama-school-halloween-camp",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/playact-drama-school-halloween-camp",
@@ -1438,5 +1382,14 @@
     "name": "Swan Leisure — Kids Swimming Lessons (Rathmines)",
     "provider": "Swan Leisure",
     "section": "classes"
+  },
+  {
+    "slug": "st-oliver-plunkett-ns-malahide",
+    "county": null,
+    "provider": null,
+    "section": "school",
+    "url": "https://sortd-ireland.ie/schools/st-oliver-plunkett-ns-malahide",
+    "name": "St Oliver Plunkett NS (Malahide)",
+    "listingCount": 7
   }
 ]
