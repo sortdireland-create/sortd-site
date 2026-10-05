@@ -4,19 +4,27 @@
 // Two kinds of form, one script (so the generated listing pages pick it up too):
 //   .foot-nl-form  the box in the site footer, on every page
 //   .nl-form       the bigger box on the About page
+//   .popup-form    the pop-up (nav "Get the newsletter" button, and after scrolling half a page)
 //
 // Each form gets a required, unticked consent checkbox injected under the
 // email field. The exact label text is sent with the sign-up and saved in
 // Brevo as the consent record, along with the page and a timestamp.
 //
 // GA4 events (via the gtag set up in booking-tracking.js), all carrying
-// signup_location = footer | about_page. No email address is ever sent to GA4.
+// signup_location = footer | about_page | popup. No email address is ever sent to GA4.
 //   newsletter_form_start   first time someone interacts with a form on the page
 //   newsletter_signup       new subscriber saved (mark this one as a key event in GA4)
 //   newsletter_signup_existing  email was already on the list (not counted as a sign-up)
 //   newsletter_signup_error sign-up failed
 (function () {
   var CONSENT_LABEL_TEXT = 'Yes, send me the weekly "what\'s on near you" email every Thursday.';
+
+  // Someone who has already signed up shouldn't get the scroll pop-up again.
+  // The pages' own scroll code skips the pop-up once sessionStorage has igShown,
+  // so re-set it here for returning subscribers.
+  try {
+    if (window.localStorage.getItem('sortdNewsletterDone')) window.sessionStorage.setItem('igShown', '1');
+  } catch (e) { /* storage can be blocked; the pop-up just shows as normal */ }
 
   function track(name, location) {
     try {
@@ -60,7 +68,8 @@
         '<input type="checkbox" name="newsletterConsent" required>' +
         '<span>' + CONSENT_LABEL_TEXT +
         ' See our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</span>';
-      form.appendChild(consentLabel);
+      if (cfg.consentBeforeBtn) form.insertBefore(consentLabel, btn);
+      else form.appendChild(consentLabel);
     }
     var consentBox = consentLabel.querySelector('input[type="checkbox"]');
 
@@ -118,6 +127,10 @@
             : "You're on the list. A welcome email is on its way.", 'ok');
           // Only count genuinely new people, so re-submits don't inflate the number.
           track(body && body.isNew === false ? 'newsletter_signup_existing' : 'newsletter_signup', location);
+          try {
+            window.localStorage.setItem('sortdNewsletterDone', '1');
+            window.sessionStorage.setItem('igShown', '1');
+          } catch (e) { /* ignore */ }
           form.reset();
           started = false;
         })
@@ -140,6 +153,18 @@
       btnSelector: '.foot-nl-btn',
       consentClass: 'foot-nl-consent',
       source: 'footer',
+    });
+  });
+
+  document.querySelectorAll('.popup-form').forEach(function (form) {
+    initForm(form, {
+      wrapSelector: '.popup',
+      msgSelector: '.popup-msg',
+      msgClass: 'popup-msg',
+      btnSelector: '.popup-btn',
+      consentClass: 'popup-consent',
+      consentBeforeBtn: true,
+      source: 'popup',
     });
   });
 
