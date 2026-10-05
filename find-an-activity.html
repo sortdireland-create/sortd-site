@@ -95,6 +95,12 @@ gtag('config', 'G-HHTB7S9WJG');
         <input type="text" id="sText" placeholder="Search by name or provider" onkeydown="if(event.key==='Enter')doSearch()">
       </div>
     </div>
+    <div class="school-search" id="schoolSearchWrap" style="display:none;">
+      <div class="quick-label">Or find your school's activities</div>
+      <select id="sSchool" onchange="if(this.value) window.location.href=this.value;">
+        <option value="">Select your child's school…</option>
+      </select>
+    </div>
   </div>
 </section>
 
@@ -179,6 +185,7 @@ gtag('config', 'G-HHTB7S9WJG');
 </div>
 </div>
 <script src="/js/camps-data.js"></script>
+<script src="/js/schools-data.js"></script>
 <script src="/js/search.js"></script>
 <script src="/js/saved.js"></script>
 <script>
@@ -219,6 +226,25 @@ function render(listings){
   grid.innerHTML = listings.map((c,i) => listingCard(c,i,true)).join('');
 }
 
+// "Search by school" dropdown — same as the homepage hero. Hidden entirely
+// until at least one school has activities on Sortd (populated from
+// js/schools-data.js, generated from Airtable). While only one school is
+// onboarded its label gets a "(Trial)" suffix, which drops automatically
+// once a second school is added.
+function renderSchoolSearch(){
+  if (typeof SCHOOLS === 'undefined' || !SCHOOLS.length) return;
+  const wrap = document.getElementById('schoolSearchWrap');
+  const sel = document.getElementById('sSchool');
+  const isTrial = SCHOOLS.length === 1;
+  SCHOOLS.forEach(s=>{
+    const opt = document.createElement('option');
+    opt.value = s.url;
+    opt.textContent = isTrial ? s.name + ' (Trial)' : s.name;
+    sel.appendChild(opt);
+  });
+  wrap.style.display = '';
+}
+
 function doSearch(){
   render(filterListings(LISTINGS, readFilters()));
 }
@@ -256,6 +282,7 @@ document.getElementById('sEircode').addEventListener('keydown',e=>{if(e.key==='E
   }
 })();
 
+renderSchoolSearch();
 doSearch();
 </script>
 <script type="application/ld+json">
