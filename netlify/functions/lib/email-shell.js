@@ -17,6 +17,15 @@
 //     clients that can't load Nunito fall back to Trebuchet/Verdana, which
 //     look very heavy at weight 600, so 600 is never used.
 //   - rounded corners, no circles
+//   - dark mode: two layers.
+//       1. Clients that honour the colour-scheme meta + prefers-color-scheme
+//          (Apple Mail, iOS Mail, Outlook.com, Thunderbird) get a proper dark
+//          theme from the <style> block below, and swap to a white wordmark.
+//       2. Gmail (Android / iOS) ignores that and darkens colours itself. It
+//          leaves images alone, so a plain navy transparent PNG vanishes on the
+//          darkened header. The wordmark PNG therefore carries a thin white
+//          halo, readable on pale and dark backgrounds alike.
+//     Every colour in the layout has a dm-* class so dark overrides can win.
 //
 // Usage:
 //   const { emailShell, emailButton, emailBox } = require('./lib/email-shell');
@@ -38,7 +47,33 @@ const TINTS = {
 // full stop, transparent background, drawn at 3x for retina; shown at 90x33).
 // Lives at /images/sortd-logo-email.png in the site repo. If the image is
 // blocked or missing, the alt text "sortd." shows in the same colour and weight.
-const LOGO_URL = 'https://sortd-ireland.ie/images/sortd-logo-email.png';
+const LOGO_URL = 'https://sortd-ireland.ie/images/sortd-logo-email.png'; // navy + thin white halo, 288x117 (3x), shown 96x39
+// White wordmark (no halo) for clients that really support dark mode. Shown 90x33.
+const LOGO_DARK_URL = 'https://sortd-ireland.ie/images/sortd-logo-email-dark.png';
+
+// Dark theme, same family as the light one: deep navy surfaces, soft light text,
+// brand green lifted so links still pass contrast on dark. Buttons keep the
+// brand green with white text.
+const DARK_CSS = `
+:root{color-scheme:light dark;supported-color-schemes:light dark;}
+.dm-logo-dark{display:none !important;max-height:0 !important;overflow:hidden !important;mso-hide:all;}
+@media (prefers-color-scheme: dark){
+  body,.dm-page{background:#0E1626 !important;}
+  .dm-card{background:#18233A !important;border-color:#2B3A58 !important;}
+  .dm-head-provider{background:#2A2552 !important;}
+  .dm-head-parent{background:#17392B !important;}
+  .dm-eyebrow-provider{color:#C4BCFA !important;}
+  .dm-eyebrow-parent{color:#8EDDB2 !important;}
+  .dm-body,.dm-body p,.dm-body strong,.dm-box{color:#E9EEF8 !important;}
+  .dm-muted,.dm-foot p{color:#A9B4CC !important;}
+  .dm-foot{border-color:#2B3A58 !important;}
+  .dm-link,.dm-foot a,.dm-body a:not(.dm-btn){color:#6FD0A0 !important;}
+  .dm-box-provider{background:#2A2552 !important;}
+  .dm-box-parent{background:#17392B !important;}
+  .dm-logo-light{display:none !important;max-height:0 !important;overflow:hidden !important;mso-hide:all;}
+  .dm-logo-dark{display:block !important;max-height:none !important;overflow:visible !important;}
+  [style*="color:#5B6783"]{color:#A9B4CC !important;}
+}`;
 
 const BODY_FONT = "'Nunito','Trebuchet MS',Verdana,Arial,sans-serif";
 const HEAD_FONT = "'Baloo 2','Trebuchet MS',Verdana,Arial,sans-serif";
@@ -49,29 +84,32 @@ function escapeHtml(s) {
 
 function emailShell(innerHtml, unsubscribeUrl, opts) {
   const o = opts || {};
-  const tint = TINTS[o.audience] || TINTS.provider;
+  const audienceKey = TINTS[o.audience] ? o.audience : 'provider';
+  const tint = TINTS[audienceKey];
   const eyebrow = o.eyebrow
-    ? `<p style="margin:10px 0 0;font-family:${BODY_FONT};font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:${tint.ink};">${escapeHtml(o.eyebrow)}</p>`
+    ? `<p class="dm-eyebrow-${audienceKey}" style="margin:10px 0 0;font-family:${BODY_FONT};font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:${tint.ink};">${escapeHtml(o.eyebrow)}</p>`
     : '';
   return `<!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet"></head>
+<meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>${DARK_CSS}</style></head>
 <body style="margin:0;padding:0;background:#CFE8F6;font-family:${BODY_FONT};">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#CFE8F6;padding:32px 16px;">
+<table role="presentation" class="dm-page" width="100%" cellpadding="0" cellspacing="0" style="background:#CFE8F6;padding:32px 16px;">
 <tr><td align="center">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:540px;background:#ffffff;border:1px solid ${BORDER};border-radius:18px;overflow:hidden;">
-<tr><td style="background:${tint.bg};padding:28px 32px 24px;text-align:left;">
-<a href="https://sortd-ireland.ie" style="text-decoration:none;"><img src="${LOGO_URL}" width="90" height="33" alt="sortd." style="display:block;border:0;outline:none;text-decoration:none;font-family:${HEAD_FONT};font-size:30px;font-weight:800;line-height:1;color:${NAVY};"></a>
+<table role="presentation" class="dm-card" width="100%" cellpadding="0" cellspacing="0" style="max-width:540px;background:#ffffff;border:1px solid ${BORDER};border-radius:18px;overflow:hidden;">
+<tr><td class="dm-head-${audienceKey}" style="background:${tint.bg};padding:28px 32px 24px;text-align:left;">
+<a href="https://sortd-ireland.ie" style="text-decoration:none;"><img class="dm-logo-light" src="${LOGO_URL}" width="96" height="39" alt="sortd." style="display:block;border:0;outline:none;text-decoration:none;font-family:${HEAD_FONT};font-size:30px;font-weight:800;line-height:1;color:${NAVY};"><img class="dm-logo-dark" src="${LOGO_DARK_URL}" width="90" height="33" alt="" style="display:none;border:0;outline:none;text-decoration:none;mso-hide:all;max-height:0;overflow:hidden;"></a>
 ${eyebrow}
 </td></tr>
-<tr><td style="padding:32px;color:${NAVY};font-size:16px;font-family:${BODY_FONT};font-weight:400;line-height:1.65;">
+<tr><td class="dm-body" style="padding:32px;color:${NAVY};font-size:16px;font-family:${BODY_FONT};font-weight:400;line-height:1.65;">
 ${innerHtml}
 </td></tr>
-<tr><td style="border-top:1px solid ${BORDER};padding:20px 32px 24px;text-align:left;">
-<p style="margin:0;font-size:13px;line-height:1.6;color:${MUTED};font-family:${BODY_FONT};">sortd · Ireland · <a href="https://sortd-ireland.ie" style="color:${ACCENT};text-decoration:none;font-weight:700;">sortd-ireland.ie</a></p>
-<p style="margin:6px 0 0;font-size:13px;line-height:1.6;color:${MUTED};font-family:${BODY_FONT};">Questions? <a href="mailto:hello@sortd-ireland.ie" style="color:${ACCENT};text-decoration:underline;">hello@sortd-ireland.ie</a> · <a href="https://sortd-ireland.ie/privacy-policy" style="color:${ACCENT};text-decoration:underline;">Privacy Policy</a></p>
-${unsubscribeUrl ? `<p style="margin:6px 0 0;font-size:13px;line-height:1.6;color:${MUTED};font-family:${BODY_FONT};"><a href="${unsubscribeUrl}" style="color:${ACCENT};text-decoration:underline;">Unsubscribe</a> from emails like this</p>` : ''}
+<tr><td class="dm-foot" style="border-top:1px solid ${BORDER};padding:20px 32px 24px;text-align:left;">
+<p class="dm-muted" style="margin:0;font-size:13px;line-height:1.6;color:${MUTED};font-family:${BODY_FONT};">sortd · Ireland · <a class="dm-link" href="https://sortd-ireland.ie" style="color:${ACCENT};text-decoration:none;font-weight:700;">sortd-ireland.ie</a></p>
+<p class="dm-muted" style="margin:6px 0 0;font-size:13px;line-height:1.6;color:${MUTED};font-family:${BODY_FONT};">Questions? <a class="dm-link" href="mailto:hello@sortd-ireland.ie" style="color:${ACCENT};text-decoration:underline;">hello@sortd-ireland.ie</a> · <a class="dm-link" href="https://sortd-ireland.ie/privacy-policy" style="color:${ACCENT};text-decoration:underline;">Privacy Policy</a></p>
+${unsubscribeUrl ? `<p class="dm-muted" style="margin:6px 0 0;font-size:13px;line-height:1.6;color:${MUTED};font-family:${BODY_FONT};"><a class="dm-link" href="${unsubscribeUrl}" style="color:${ACCENT};text-decoration:underline;">Unsubscribe</a> from emails like this</p>` : ''}
 </td></tr>
 </table>
 </td></tr>
@@ -83,14 +121,14 @@ ${unsubscribeUrl ? `<p style="margin:6px 0 0;font-size:13px;line-height:1.6;colo
 // Primary CTA: green stadium pill.
 function emailButton(text, url) {
   return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-radius:999px;background:${ACCENT};">
-<a href="${url}" style="display:inline-block;padding:14px 30px;color:#ffffff;font-family:${HEAD_FONT};font-weight:700;text-decoration:none;font-size:16px;border-radius:999px;">${text}</a>
+<a class="dm-btn" href="${url}" style="display:inline-block;padding:14px 30px;color:#ffffff;font-family:${HEAD_FONT};font-weight:700;text-decoration:none;font-size:16px;border-radius:999px;">${text}</a>
 </td></tr></table>`;
 }
 
 // Soft tinted summary box (listing details etc.). `html` is trusted markup.
 function emailBox(html, audience) {
   const tint = TINTS[audience] || TINTS.provider;
-  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${tint.bg};border-radius:16px;margin:0 0 20px;"><tr><td style="padding:16px 20px;font-size:15px;color:${NAVY};line-height:1.8;font-family:${BODY_FONT};">
+  return `<table role="presentation" class="dm-box-${TINTS[audience] ? audience : 'provider'}" width="100%" cellpadding="0" cellspacing="0" style="background:${tint.bg};border-radius:16px;margin:0 0 20px;"><tr><td class="dm-box" style="padding:16px 20px;font-size:15px;color:${NAVY};line-height:1.8;font-family:${BODY_FONT};">
 ${html}
 </td></tr></table>`;
 }
