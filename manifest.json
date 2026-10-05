@@ -224,6 +224,14 @@
     "section": "classes"
   },
   {
+    "slug": "starcamp-halloween-camp-ballincollig",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/starcamp-halloween-camp-ballincollig",
+    "name": "Starcamp Halloween Camp – Ballincollig",
+    "provider": "Starcamp",
+    "section": "camps"
+  },
+  {
     "slug": "zila-art-and-design-the-art-club",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/zila-art-and-design-the-art-club",
@@ -254,6 +262,14 @@
     "name": "Sense of Wonder Forest School — Killiney",
     "provider": "Sense of Wonder Forest School",
     "section": "classes"
+  },
+  {
+    "slug": "inspireland-halloween-art-animation-camp-for-kids-cork",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/inspireland-halloween-art-animation-camp-for-kids-cork",
+    "name": "Halloween Art & Animation Camp for Kids – Cork",
+    "provider": "Inspireland",
+    "section": "camps"
   },
   {
     "slug": "messy-adventures-halloween-role-play-village-swords",
@@ -696,6 +712,14 @@
     "section": "classes"
   },
   {
+    "slug": "starcamp-halloween-camp-douglas",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/starcamp-halloween-camp-douglas",
+    "name": "Starcamp Halloween Camp – Douglas",
+    "provider": "Starcamp",
+    "section": "camps"
+  },
+  {
     "slug": "skate-school-dublin-halloween-skateboarding-camp",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/skate-school-dublin-halloween-skateboarding-camp",
@@ -726,6 +750,14 @@
     "name": "Naomh Mearnóg GAA Academy",
     "provider": "Naomh Mearnóg GAA Club",
     "section": "classes"
+  },
+  {
+    "slug": "starcamp-halloween-camp-carrigaline",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/starcamp-halloween-camp-carrigaline",
+    "name": "Starcamp Halloween Camp – Carrigaline",
+    "provider": "Starcamp",
+    "section": "camps"
   },
   {
     "slug": "gc-school-of-dance-swords",
@@ -1024,6 +1056,14 @@
     "section": "camps"
   },
   {
+    "slug": "inspireland-halloween-art-animation-camp-for-teens-cork",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/inspireland-halloween-art-animation-camp-for-teens-cork",
+    "name": "Halloween Art & Animation Camp for Teens – Cork",
+    "provider": "Inspireland",
+    "section": "camps"
+  },
+  {
     "slug": "de-la-salle-palmerston-fc-dlsp-fc-dlsp-fc-mini-rugby",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/de-la-salle-palmerston-fc-dlsp-fc-dlsp-fc-mini-rugby",
@@ -1286,6 +1326,14 @@
     "name": "iSwim Academy Children's Swimming Lessons",
     "provider": "iSwim Academy",
     "section": "classes"
+  },
+  {
+    "slug": "starcamp-halloween-camp-glanmire",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/starcamp-halloween-camp-glanmire",
+    "name": "Starcamp Halloween Camp – Glanmire",
+    "provider": "Starcamp",
+    "section": "camps"
   },
   {
     "slug": "junior-einsteins-spooky-science-halloween-camp-castleknock-5-day",
