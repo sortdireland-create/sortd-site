@@ -60,6 +60,9 @@ a:hover{text-decoration:underline;}
 .footer-logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;color:#F4A7C3;display:block;margin-bottom:10px;text-decoration:none;}
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.35);}
 </style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
 
