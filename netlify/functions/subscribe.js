@@ -20,7 +20,7 @@ const { addNewsletterContact } = require('./lib/brevo-newsletter');
 const { emailShell, emailButton } = require('./lib/email-shell');
 
 const SITE_URL = 'https://sortd-ireland.ie';
-const SOURCES = new Set(['footer', 'about_page', 'parent_login']);
+const SOURCES = new Set(['footer', 'about_page', 'parent_login', 'popup', 'newsletter_page']);
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function json(statusCode, obj) {

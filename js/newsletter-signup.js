@@ -11,7 +11,7 @@
 // Brevo as the consent record, along with the page and a timestamp.
 //
 // GA4 events (via the gtag set up in booking-tracking.js), all carrying
-// signup_location = footer | about_page | popup. No email address is ever sent to GA4.
+// signup_location = footer | about_page | popup | newsletter_page. No email address is ever sent to GA4.
 //   newsletter_form_start   first time someone interacts with a form on the page
 //   newsletter_signup       new subscriber saved (mark this one as a key event in GA4)
 //   newsletter_signup_existing  email was already on the list (not counted as a sign-up)

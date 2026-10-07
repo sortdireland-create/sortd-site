@@ -11,6 +11,11 @@
   status = 200
 
 [[redirects]]
+  from = "/newsletter"
+  to = "/newsletter"
+  status = 200
+
+[[redirects]]
   from = "/find-an-activity"
   to = "/find-an-activity"
   status = 200

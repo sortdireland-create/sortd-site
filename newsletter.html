@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Thursday email from sortd — what's on for kids, every week</title>
+<meta name="description" content="One short email every Thursday from Rachel at sortd: new kids' camps and classes, places still open, and honest updates. Free, and you can unsubscribe in one click.">
+<link rel="canonical" href="https://sortd-ireland.ie/newsletter">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sortd">
+<meta property="og:title" content="The Thursday email from sortd">
+<meta property="og:description" content="New camps and classes, places still open and honest updates, in one short email every Thursday. Free. Unsubscribe in one click.">
+<meta property="og:url" content="https://sortd-ireland.ie/newsletter">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:#fff;color:#27314A;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+a.nav-cta{display:inline-block;}
+.w{max-width:1200px;margin:0 auto;}
+.eyebrow{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;display:block;margin-bottom:14px;}
+.caveat{font-family:'Caveat',cursive;font-weight:600;font-size:21px;display:block;margin-top:20px;}
+
+/* HERO */
+.nl-hero{background:#D2F2E2;padding:72px 40px 80px;}
+.nl-hero-inner{max-width:1200px;margin:0 auto;display:flex;gap:64px;align-items:center;}
+.nl-hero-copy{flex:1 1 0;min-width:0;}
+.nl-hero h1{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(36px,5.2vw,60px);line-height:1.0;letter-spacing:-0.03em;color:#27314A;margin-bottom:20px;text-wrap:balance;}
+.nl-hero h1 em{font-style:normal;color:#1B8350;}
+.nl-hero-sub{font-weight:600;font-size:18px;line-height:1.65;color:#2f5a45;max-width:520px;margin-bottom:28px;}
+
+/* SIGN-UP FORM (wired by /js/newsletter-signup.js: .nl-form inside .nl-inner) */
+.nl-inner{max-width:520px;}
+.nl-form{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+.nl-input{flex:1 1 240px;min-width:0;background:#fff;border:2px solid #A9E0C0;border-radius:999px;padding:14px 22px;font-family:'Nunito',sans-serif;font-size:16px;font-weight:600;color:#27314A;outline:none;}
+.nl-input::placeholder{color:#6B7690;}
+.nl-input:focus{border-color:#1B8350;box-shadow:0 0 0 4px rgba(27,131,80,.2);}
+.nl-btn{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:16px;color:#fff;background:#1B8350;padding:14px 28px;border-radius:999px;border:none;cursor:pointer;white-space:nowrap;}
+.nl-btn:hover{background:#176B42;}
+.nl-btn:active{transform:translateY(1px);}
+.nl-btn:focus-visible{outline:3px solid #27314A;outline-offset:3px;}
+.nl-btn:disabled{opacity:.65;cursor:default;}
+.nl-consent{flex-basis:100%;width:0;min-width:100%;display:flex;align-items:flex-start;gap:10px;font-size:14px;font-weight:600;line-height:1.5;color:#2f5a45;text-align:left;cursor:pointer;}
+.nl-consent input{margin-top:2px;width:18px;height:18px;accent-color:#1B8350;flex-shrink:0;cursor:pointer;}
+.nl-consent a{color:#27314A;text-decoration:underline;}
+.nl-msg{font-size:15px;font-weight:700;min-height:20px;margin:6px 0 4px;}
+.nl-msg.ok{color:#176B42;}
+.nl-msg.err{color:#A12F5B;}
+.nl-note{font-size:14px;font-weight:700;color:#1B6B45;}
+
+/* SAMPLE EMAIL CARD */
+.peek{flex:0 0 380px;transform:rotate(2deg);}
+.peek-card{background:#fff;border-radius:22px;box-shadow:0 18px 44px rgba(39,49,74,.14);overflow:hidden;}
+.peek-head{background:#C9F0DA;padding:20px 24px;}
+.peek-brand{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px;color:#27314A;line-height:1;}
+.peek-brand span{color:#3D77A3;}
+.peek-eyebrow{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#176B42;margin-top:8px;display:block;}
+.peek-body{padding:22px 24px 26px;}
+.peek-hi{font-weight:600;font-size:15px;color:#27314A;margin-bottom:14px;}
+.peek-row{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-top:1px solid #E4EBF2;}
+.peek-row:first-of-type{border-top:none;}
+.peek-ico{flex:0 0 38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.peek-t{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:16px;color:#27314A;line-height:1.2;}
+.peek-d{font-weight:600;font-size:14px;line-height:1.5;color:#5B6783;margin-top:2px;}
+.peek-sign{margin-top:12px;padding-top:14px;border-top:1px solid #E4EBF2;font-weight:600;font-size:14px;color:#5B6783;}
+.peek-cap{font-family:'Caveat',cursive;font-weight:600;font-size:20px;color:#1B8350;text-align:center;display:block;margin-top:18px;transform:rotate(-2deg);}
+
+@media(max-width:900px){
+  .nl-hero{padding:48px 20px 56px;}
+  .nl-hero-inner{flex-direction:column;align-items:stretch;gap:44px;}
+  .peek{flex:none;width:100%;max-width:400px;margin:0 auto;transform:rotate(1deg);}
+}
+
+/* WHAT YOU GET */
+.get{background:#CBEAF6;padding:72px 40px;}
+.get-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-0.02em;color:#27314A;margin-bottom:36px;text-wrap:balance;}
+.get-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.get-card{background:#fff;border-radius:18px;padding:28px;}
+.get-tag{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;}
+.get-h{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:21px;color:#27314A;margin-bottom:8px;line-height:1.2;}
+.get-p{font-weight:600;font-size:15px;line-height:1.65;color:#555;}
+.get-p a{color:#1B8350;text-decoration:underline;}
+@media(max-width:768px){.get{padding:48px 20px;}.get-grid{grid-template-columns:1fr;}}
+
+/* STORY */
+.story{background:#fff;padding:80px 40px;}
+.story-inner{max-width:1000px;margin:0 auto;display:flex;gap:56px;align-items:center;}
+.story-photo{flex:0 0 300px;height:400px;border-radius:22px;overflow:hidden;}
+.story-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.story-copy{flex:1 1 0;min-width:0;}
+.story-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-0.02em;color:#27314A;margin-bottom:22px;line-height:1.1;}
+.story-title em{font-style:normal;color:#D45F86;}
+.story-body{font-weight:600;font-size:17px;line-height:1.75;color:#444;}
+.story-body p{margin-bottom:18px;}
+.story-more{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:16px;color:#6E5FB8;display:inline-block;margin-top:4px;border-bottom:2px solid #E6E2F6;}
+.story-more:hover{border-bottom-color:#6E5FB8;}
+@media(max-width:860px){.story{padding:52px 20px;}.story-inner{flex-direction:column;gap:32px;align-items:stretch;}.story-photo{flex:none;width:100%;height:300px;}}
+
+/* FINAL SIGN-UP */
+.last{background:#D2F2E2;padding:72px 40px;}
+.last-inner{max-width:560px;margin:0 auto;text-align:center;}
+.last-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(26px,4vw,40px);letter-spacing:-0.02em;color:#27314A;line-height:1.1;margin-bottom:10px;text-wrap:balance;}
+.last-sub{font-weight:600;font-size:17px;line-height:1.6;color:#2f5a45;margin-bottom:26px;}
+.last .nl-inner{margin:0 auto;max-width:520px;}
+.last .nl-form{justify-content:center;}
+.last .nl-msg{text-align:center;}
+.last-follow{margin-top:26px;font-weight:700;font-size:15px;color:#2f5a45;}
+.last-follow a{color:#27314A;text-decoration:underline;}
+@media(max-width:768px){.last{padding:52px 20px;}}
+</style>
+  <script src="/js/booking-tracking.js" defer></script>
+  <script src="/js/account.js" defer></script>
+  <script src="/js/newsletter-signup.js" defer></script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+
+<nav>
+  <a href="/" class="brand">sortd<span>.</span></a>
+  <div class="navlinks">
+    <a href="/find-an-activity" class="navlink">Find an activity</a>
+    <a href="/how-it-works" class="navlink">How it works</a>
+    <a href="/about" class="navlink">Our story</a>
+    <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener" class="navlink">Providers</a>
+    <a href="/login" class="navlink" id="nav-account-link">Parents</a>
+  </div>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" aria-label="sortd on Instagram"><i class="ti ti-brand-instagram nav-icon"></i></a>
+    <a href="#signup" class="nav-cta">Get the newsletter</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="nl-hero">
+<div class="nl-hero-inner">
+<div class="nl-hero-copy">
+<span class="eyebrow" style="color:#1B8350;">The Thursday email</span>
+<h1>What's on for the kids, <em>every Thursday.</em></h1>
+<p class="nl-hero-sub">One short email from me: new camps and classes, places still open, and honest updates. So you stop trawling 14 WhatsApp groups to find out what's going on.</p>
+<div class="nl-inner" id="signup">
+<form class="nl-form" data-source="newsletter_page">
+<input class="nl-input" type="email" name="email" placeholder="your@email.ie" aria-label="Email address" autocomplete="email" required>
+<button class="nl-btn" type="submit">Get the Thursday email</button>
+</form>
+<p class="nl-msg" role="status" aria-live="polite"></p>
+<span class="nl-note">Free. One email a week. Unsubscribe in one click.</span>
+</div>
+</div>
+
+<div class="peek" aria-hidden="true">
+<div class="peek-card">
+<div class="peek-head">
+<div class="peek-brand">sortd<span>.</span></div>
+<span class="peek-eyebrow">The Thursday email</span>
+</div>
+<div class="peek-body">
+<p class="peek-hi">Hi, here's what's on this week.</p>
+<div class="peek-row">
+<div class="peek-ico" style="background:#D1E9F5;color:#2E84AC;"><i class="ti ti-sparkles"></i></div>
+<div><div class="peek-t">New camps and classes</div><div class="peek-d">The newest listings added to sortd, in one short list.</div></div>
+</div>
+<div class="peek-row">
+<div class="peek-ico" style="background:#D8F1E3;color:#1B8350;"><i class="ti ti-ticket"></i></div>
+<div><div class="peek-t">Places still open</div><div class="peek-d">Spots you can still book, while there's room.</div></div>
+</div>
+<div class="peek-row">
+<div class="peek-ico" style="background:#F5D9E4;color:#D45F86;"><i class="ti ti-message-heart"></i></div>
+<div><div class="peek-t">Honest updates</div><div class="peek-d">A straight note from me on what's changed and what's worth knowing before the weekend.</div></div>
+</div>
+<p class="peek-sign">Rachel · sortd</p>
+</div>
+</div>
+<span class="peek-cap">that's the whole thing →</span>
+</div>
+</div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="get">
+<div class="w">
+<span class="eyebrow" style="color:#2E84AC;">What to expect</span>
+<div class="get-title">Short, useful, and it comes when it says it will.</div>
+<div class="get-grid">
+<div class="get-card">
+<div class="get-tag" style="color:#1B8350;">When</div>
+<div class="get-h">Every Thursday</div>
+<p class="get-p">One email in your inbox, in time to plan the weekend and see what's coming up. Sign up and you'll get a quick welcome email straight away, then the first proper one on the next Thursday.</p>
+</div>
+<div class="get-card">
+<div class="get-tag" style="color:#2E84AC;">What's in it</div>
+<div class="get-h">New camps, open spots, honest updates</div>
+<p class="get-p">What's new on sortd, which places are still open, and a straight note from me on anything worth knowing. Short enough to read on the school run.</p>
+</div>
+<div class="get-card">
+<div class="get-tag" style="color:#D45F86;">Who it's from</div>
+<div class="get-h">Me, not a marketing team</div>
+<p class="get-p">I'm Rachel, a working mum in Malahide, and I write it myself. You can reply to any email and it comes to me.</p>
+</div>
+<div class="get-card">
+<div class="get-tag" style="color:#6E5FB8;">The small print</div>
+<div class="get-h">Free, and easy to leave</div>
+<p class="get-p">It costs nothing, and every email has an unsubscribe link that works in one click. See how your email is used in the <a href="/privacy-policy">Privacy Policy</a>.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+<div class="story-inner">
+<div class="story-photo"><img src="/images/rachel-ella.jpg" alt="Rachel and her daughter Ella enjoying ice cream in Malahide" ></div>
+<div class="story-copy">
+<span class="eyebrow" style="color:#D45F86;">Why I send it</span>
+<div class="story-title">I needed this, <em>so I built it.</em></div>
+<div class="story-body">
+<p>I'm a working mum to Ella and Finn. When the school holidays came around, information about camps was scattered everywhere: Instagram, WhatsApp groups, websites that hadn't been updated since 2022. If you weren't in the right group, you missed out.</p>
+<p>There was no one place to see it all, so I built one, on a Monday night. Parents started sharing it with other parents, and providers started asking to be added. We're growing county by county.</p>
+<p>The Thursday email is the same idea, delivered to you: I do the hunting, you get the short version.</p>
+</div>
+<a href="/about" class="story-more">Read the full story &rarr;</a>
+<span class="caveat" style="color:#D45F86;">Rachel · Founder · Malahide →</span>
+</div>
+</div>
+</section>
+
+<!-- FINAL SIGN-UP -->
+<section class="last">
+<div class="last-inner">
+<div class="last-title">Get the first one next Thursday.</div>
+<p class="last-sub">Free, one short email a week, and you can leave whenever you like.</p>
+<div class="nl-inner">
+<form class="nl-form" data-source="newsletter_page">
+<input class="nl-input" type="email" name="email" placeholder="your@email.ie" aria-label="Email address" autocomplete="email" required>
+<button class="nl-btn" type="submit">Get the Thursday email</button>
+</form>
+<p class="nl-msg" role="status" aria-live="polite"></p>
+</div>
+<p class="last-follow">Or follow along on <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener">Instagram</a> or the <a href="https://whatsapp.com/channel/0029Vb7sv3eInlqMyMfLFY01" target="_blank" rel="noopener">WhatsApp channel</a>.</p>
+</div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-logo">sortd</div>
+      <p class="foot-tag">Every kids' camp &amp; class across Leinster, in one place. Built by a mum. For parents.</p>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb7sv3eInlqMyMfLFY01" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <div class="foot-heading">Browse</div>
+      <a href="/camps?q=Dublin">Dublin camps</a>
+      <a href="/camps?q=Wicklow">Wicklow camps</a>
+      <a href="/camps?q=Meath">Meath camps</a>
+      <a href="/camps">All camps</a>
+      <a href="/weekly-classes">All classes</a>
+    </div>
+    <div class="foot-col">
+      <div class="foot-heading">Company</div>
+      <a href="/how-it-works">How it works</a>
+      <a href="/about">About</a>
+      <a href="/newsletter">The Thursday email</a>
+      <a href="mailto:sortd.ireland@gmail.com?subject=Camp%20recommendation">Recommend an activity</a>
+      <a href="mailto:sortd.ireland@gmail.com">Contact</a>
+    </div>
+    <div class="foot-col">
+      <div class="foot-heading">For providers</div>
+      <a href="/list">Add a class — free</a>
+      <a href="/claim">Claim your listing</a>
+      <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener">Partners portal</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© 2026 Sortd Ireland · <a href="/privacy-policy">Privacy Policy</a></div>
+    <div class="foot-source">Sources: provider websites, WhatsApp screenshots, Instagram. Confirm details with each provider before booking.</div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "WebPage",
+"name": "The Thursday email from sortd",
+"url": "https://sortd-ireland.ie/newsletter",
+"description": "One short email every Thursday from Rachel at sortd: new kids' camps and classes, places still open, and honest updates.",
+"publisher": {
+"@type": "Organization",
+"name": "sortd Ireland",
+"url": "https://sortd-ireland.ie"
+}
+}
+</script>
+</body>
+</html>
