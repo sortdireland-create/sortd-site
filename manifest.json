@@ -136,6 +136,14 @@
     "section": "classes"
   },
   {
+    "slug": "cork-city-fc-october-midterm-camp-drinagh-rangers",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/cork-city-fc-october-midterm-camp-drinagh-rangers",
+    "name": "Cork City FC October Midterm Camp – Drinagh Rangers",
+    "provider": "Cork City FC",
+    "section": "camps"
+  },
+  {
     "slug": "rugbytots-cabinteely-community-school",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-cabinteely-community-school",
@@ -304,6 +312,14 @@
     "section": "classes"
   },
   {
+    "slug": "cork-city-fc-october-midterm-corky-camp-lakewood-athletic",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/cork-city-fc-october-midterm-corky-camp-lakewood-athletic",
+    "name": "Cork City FC October Midterm Corky Camp – Lakewood Athletic",
+    "provider": "Cork City FC",
+    "section": "camps"
+  },
+  {
     "slug": "rugbytots-pope-john-paul-ii-ns-malahide",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-pope-john-paul-ii-ns-malahide",
@@ -376,6 +392,14 @@
     "section": "classes"
   },
   {
+    "slug": "cork-city-fc-october-midterm-corky-camp-virgin-media-park",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/cork-city-fc-october-midterm-corky-camp-virgin-media-park",
+    "name": "Cork City FC October Midterm Corky Camp – Virgin Media Park",
+    "provider": "Cork City FC",
+    "section": "camps"
+  },
+  {
     "slug": "little-kickers-portmarnock",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/little-kickers-portmarnock",
@@ -390,6 +414,14 @@
     "name": "Young Gaiety Drama Workshop (Ages 8-10) — Malahide",
     "provider": "Gaiety School of Acting",
     "section": "classes"
+  },
+  {
+    "slug": "dramatastic-halloween-camp-knocknacarra",
+    "county": "galway",
+    "url": "https://sortd-ireland.ie/camps/galway/dramatastic-halloween-camp-knocknacarra",
+    "name": "Dramatastic Halloween Camp – Knocknacarra",
+    "provider": "Dramatastic",
+    "section": "camps"
   },
   {
     "slug": "rugbytots-taney-parish-centre-dundrum",
@@ -712,6 +744,14 @@
     "section": "classes"
   },
   {
+    "slug": "declan-omeara-art-halloween-art-camp-ages-8-14-cork",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/declan-omeara-art-halloween-art-camp-ages-8-14-cork",
+    "name": "Halloween Art Camp (ages 8–14) – Cork",
+    "provider": "Declan O'Meara Art",
+    "section": "camps"
+  },
+  {
     "slug": "starcamp-halloween-camp-douglas",
     "county": "cork",
     "url": "https://sortd-ireland.ie/camps/cork/starcamp-halloween-camp-douglas",
@@ -920,6 +960,14 @@
     "section": "classes"
   },
   {
+    "slug": "dramatastic-halloween-camp-roscam-castlegar",
+    "county": "galway",
+    "url": "https://sortd-ireland.ie/camps/galway/dramatastic-halloween-camp-roscam-castlegar",
+    "name": "Dramatastic Halloween Camp – Roscam-Castlegar",
+    "provider": "Dramatastic",
+    "section": "camps"
+  },
+  {
     "slug": "raheny-gaa-ogra-academy",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/raheny-gaa-ogra-academy",
@@ -1022,6 +1070,14 @@
     "name": "Artzone Junior Art Classes (Junior/Senior Infants) — Malahide",
     "provider": "Artzone",
     "section": "classes"
+  },
+  {
+    "slug": "galway-united-halloween-football-camp-clarenbridge",
+    "county": "galway",
+    "url": "https://sortd-ireland.ie/camps/galway/galway-united-halloween-football-camp-clarenbridge",
+    "name": "Galway United Halloween Football Camp – Clarenbridge",
+    "provider": "Galway United FC",
+    "section": "camps"
   },
   {
     "slug": "allegro-stage-school",
@@ -1421,6 +1477,22 @@
     "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-blackrock-starcamp-ages-4-8",
     "name": "Starcamp Thriller Halloween Camp – Blackrock (StarCamp, ages 4-8)",
     "provider": "Starcamp Ireland",
+    "section": "camps"
+  },
+  {
+    "slug": "cork-city-fc-october-midterm-performance-camp-ringmahon-rangers-ages-13-16",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/cork-city-fc-october-midterm-performance-camp-ringmahon-rangers-ages-13-16",
+    "name": "Cork City FC October Midterm Performance Camp – Ringmahon Rangers (ages 13–16)",
+    "provider": "Cork City FC",
+    "section": "camps"
+  },
+  {
+    "slug": "declan-omeara-art-halloween-art-camp-ages-5-7-cork",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/declan-omeara-art-halloween-art-camp-ages-5-7-cork",
+    "name": "Halloween Art Camp (ages 5–7) – Cork",
+    "provider": "Declan O'Meara Art",
     "section": "camps"
   },
   {
