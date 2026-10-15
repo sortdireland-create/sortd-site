@@ -10,7 +10,8 @@
 //   border #C3DCEC · Baloo 2 headings/wordmark · Nunito body
 //
 // Rules this layout keeps:
-//   - no navy blocks (header and footer are light)
+//   - the header is a solid navy banner (#27314A) with the white wordmark,
+//     identical in light and dark mode
 //   - no script/handwritten font anywhere in emails (many clients can't load
 //     it and it read as clutter); sign off in plain Nunito
 //   - body text is regular weight; bold only where it means something. Mail
@@ -18,13 +19,14 @@
 //     look very heavy at weight 600, so 600 is never used.
 //   - rounded corners, no circles
 //   - dark mode: built to survive it rather than to be switched.
-//       Gmail (Android / iOS) ignores colour-scheme CSS and darkens colours
-//       itself, but never touches images. So the layout keeps colour out of
-//       big blocks: page, card and header are neutral (they invert cleanly to
-//       charcoal), and the wordmark sits on an opaque pastel chip image that
-//       looks identical on light or dark. Clients that do honour
-//       prefers-color-scheme (Apple Mail, Outlook.com) get a deliberate navy
-//       theme from the <style> block. Every colour has a dm-* class.
+//       Gmail (Android / iOS) ignores colour-scheme CSS and darkens light
+//       colours itself, but never touches images and leaves already-dark
+//       colours alone. So the header is a saturated mid-dark banner with the
+//       white wordmark on it (reads the same in light and dark, in every
+//       client), while page, card and footer are neutral and invert cleanly to
+//       charcoal. Clients that honour prefers-color-scheme (Apple Mail,
+//       Outlook.com) get a deliberate navy theme from the <style> block.
+//       Every colour has a dm-* class.
 //
 // Usage:
 //   const { emailShell, emailButton, emailBox } = require('./lib/email-shell');
@@ -35,21 +37,20 @@ const ACCENT = '#1B8350'; // site green (--gr #1D8A52) one step darker so white 
 const BORDER = '#DCE5EE';
 const MUTED = '#5B6783';
 
+const BANNER = '#27314A'; // brand navy: header banner behind the white wordmark, same for parents and providers
+
 const TINTS = {
-  provider: { bg: '#E7E1F8', ink: '#5B4FCA' },
-  parent: { bg: '#C9F0DA', ink: '#176B42' },
+  provider: { bg: '#E7E1F8', ink: '#5B4FCA', banner: BANNER },
+  parent: { bg: '#C9F0DA', ink: '#176B42', banner: BANNER },
 };
 
 // The wordmark is an image, not text: Gmail/Outlook can't load Baloo 2, so live
-// text falls back to Trebuchet/Verdana and no longer looks like the logo. The
-// PNG is the site's own wordmark (Baloo 2 ExtraBold, navy "sortd" + sky-blue
-// full stop, transparent background, drawn at 3x for retina; shown at 90x33).
-// Lives at /images/sortd-logo-chip-*.png in the site repo (the chip is this wordmark on a pastel rounded tile). If the image is
-// blocked or missing, the alt text "sortd." shows in the same colour and weight.
-const LOGO_URL = {
-  provider: 'https://sortd-ireland.ie/images/sortd-logo-chip-provider.png',
-  parent: 'https://sortd-ireland.ie/images/sortd-logo-chip-parent.png',
-}; // wordmark on an opaque rounded pastel chip, 354x159 (3x), shown 118x53
+// text falls back to Trebuchet/Verdana and no longer looks like the logo. This
+// is the white version (transparent background, white "sortd" + light-blue full
+// stop, drawn at 3x for retina = 270x99, shown 108x40) for the coloured banner.
+// Lives at /images/sortd-logo-email-white.png in the site repo. If the image is
+// blocked or missing, the alt text "sortd." shows in white on the banner.
+const LOGO_WHITE_URL = 'https://sortd-ireland.ie/images/sortd-logo-email-white.png';
 
 // Dark theme, same family as the light one: deep navy surfaces, soft light text,
 // brand green lifted so links still pass contrast on dark. Buttons keep the
@@ -59,9 +60,6 @@ const DARK_CSS = `
 @media (prefers-color-scheme: dark){
   body,.dm-page{background:#0E1626 !important;}
   .dm-card{background:#18233A !important;border-color:#2B3A58 !important;}
-  .dm-head{background:#18233A !important;}
-  .dm-eyebrow-provider{color:#C4BCFA !important;}
-  .dm-eyebrow-parent{color:#8EDDB2 !important;}
   .dm-body,.dm-body p,.dm-body strong,.dm-box{color:#E9EEF8 !important;}
   .dm-muted,.dm-foot p{color:#A9B4CC !important;}
   .dm-foot{border-color:#2B3A58 !important;}
@@ -83,7 +81,7 @@ function emailShell(innerHtml, unsubscribeUrl, opts) {
   const audienceKey = TINTS[o.audience] ? o.audience : 'provider';
   const tint = TINTS[audienceKey];
   const eyebrow = o.eyebrow
-    ? `<td class="dm-eyebrow-${audienceKey}" style="padding-left:14px;vertical-align:middle;font-family:${BODY_FONT};font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:${tint.ink};">${escapeHtml(o.eyebrow)}</td>`
+    ? `<td style="padding-left:16px;vertical-align:middle;font-family:${BODY_FONT};font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#ffffff;">${escapeHtml(o.eyebrow)}</td>`
     : '';
   return `<!DOCTYPE html>
 <html>
@@ -95,13 +93,13 @@ function emailShell(innerHtml, unsubscribeUrl, opts) {
 <table role="presentation" class="dm-page" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F6F9;padding:32px 16px;">
 <tr><td align="center">
 <table role="presentation" class="dm-card" width="100%" cellpadding="0" cellspacing="0" style="max-width:540px;background:#ffffff;border:1px solid ${BORDER};border-radius:18px;overflow:hidden;">
-<tr><td class="dm-head" style="background:#ffffff;padding:28px 32px 0;text-align:left;">
+<tr><td class="dm-head" bgcolor="${tint.banner}" style="background:${tint.banner};padding:22px 32px;text-align:left;">
 <table role="presentation" cellpadding="0" cellspacing="0"><tr>
-<td style="vertical-align:middle;"><a href="https://sortd-ireland.ie" style="text-decoration:none;"><img src="${LOGO_URL[audienceKey]}" width="118" height="53" alt="sortd." style="display:block;border:0;outline:none;text-decoration:none;font-family:${HEAD_FONT};font-size:30px;font-weight:800;line-height:1;color:${NAVY};"></a></td>
+<td style="vertical-align:middle;"><a href="https://sortd-ireland.ie" style="text-decoration:none;"><img src="${LOGO_WHITE_URL}" width="108" height="40" alt="sortd." style="display:block;border:0;outline:none;text-decoration:none;font-family:${HEAD_FONT};font-size:30px;font-weight:800;line-height:1;color:#ffffff;"></a></td>
 ${eyebrow}
 </tr></table>
 </td></tr>
-<tr><td class="dm-body" style="padding:24px 32px 32px;color:${NAVY};font-size:16px;font-family:${BODY_FONT};font-weight:400;line-height:1.65;">
+<tr><td class="dm-body" style="padding:28px 32px 32px;color:${NAVY};font-size:16px;font-family:${BODY_FONT};font-weight:400;line-height:1.65;">
 ${innerHtml}
 </td></tr>
 <tr><td class="dm-foot" style="border-top:1px solid ${BORDER};padding:20px 32px 24px;text-align:left;">
