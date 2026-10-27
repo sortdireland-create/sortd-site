@@ -71,7 +71,6 @@ gtag('config', 'G-HHTB7S9WJG');
       <div class="sf-body">
         <div class="sf-label">What are you looking for?</div>
         <select id="sType">
-          <option value="">Holiday camps &amp; classes</option>
           <option value="camp">Holiday camps</option>
           <option value="weekly">Classes</option>
         </select>
@@ -217,7 +216,7 @@ function setType(el, t){
   el.classList.add(t === 'camp' ? 'on-camp' : t === 'weekly' ? 'on-weekly' : 'on');
   // Keep the search-card dropdown in step with the results toggle.
   const sel = document.getElementById('sType');
-  if(sel) sel.value = t;
+  if(sel){ sel.value = t; if(!t) sel.selectedIndex = -1; }
 }
 
 // "What are you looking for?" dropdown in the search card — same control as
@@ -283,8 +282,8 @@ function clearAll(){
   document.getElementById('sSort').value='name';
   setSelectedDays('sDays', []);
   setSelectedActivities('sActivity', []);
-  const allEl = document.querySelector('#typeToggle a[data-type=""]');
-  if(allEl) setType(allEl, '');
+  const campEl = document.querySelector('#typeToggle a[data-type="camp"]');
+  if(campEl) setType(campEl, 'camp');
   doSearch();
 }
 
@@ -302,8 +301,8 @@ document.getElementById('sEircode').addEventListener('keydown',e=>{if(e.key==='E
   // Optional ?type=camp|weekly — lets the homepage's "What are you
   // looking for?" dropdown pre-select a tab here instead of defaulting
   // to "All". Anything else (missing, or some other value) leaves it on All.
-  const type = new URLSearchParams(window.location.search).get('type');
-  if(type === 'camp' || type === 'weekly'){
+  const type = new URLSearchParams(window.location.search).get('type') === 'weekly' ? 'weekly' : 'camp';
+  {
     const el = document.querySelector('#typeToggle a[data-type="'+type+'"]');
     if(el) setType(el, type);
   }
