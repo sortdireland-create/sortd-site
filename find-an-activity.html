@@ -67,6 +67,17 @@ gtag('config', 'G-HHTB7S9WJG');
       </div>
     </div>
     <div class="sf">
+      <i class="ti ti-category"></i>
+      <div class="sf-body">
+        <div class="sf-label">What are you looking for?</div>
+        <select id="sType">
+          <option value="">Holiday camps &amp; classes</option>
+          <option value="camp">Holiday camps</option>
+          <option value="weekly">Classes</option>
+        </select>
+      </div>
+    </div>
+    <div class="sf">
       <i class="ti ti-users"></i>
       <div class="sf-body">
         <div class="sf-label">What age?</div>
@@ -204,7 +215,19 @@ function setType(el, t){
   TYPE = t;
   document.querySelectorAll('#typeToggle a').forEach(a=>a.classList.remove('on','on-camp','on-weekly'));
   el.classList.add(t === 'camp' ? 'on-camp' : t === 'weekly' ? 'on-weekly' : 'on');
+  // Keep the search-card dropdown in step with the results toggle.
+  const sel = document.getElementById('sType');
+  if(sel) sel.value = t;
 }
+
+// "What are you looking for?" dropdown in the search card — same control as
+// the homepage hero. Picking an option moves the results toggle to match and
+// re-runs the search.
+document.getElementById('sType').addEventListener('change', function(){
+  const el = document.querySelector('#typeToggle a[data-type="'+this.value+'"]');
+  if(el) setType(el, this.value);
+  doSearch();
+});
 
 function readFilters(){
   return {
