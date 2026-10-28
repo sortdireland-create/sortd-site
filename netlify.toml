@@ -957,3 +957,9 @@
   to = "/camps/dublin/zila-art-and-design-halloween-midterm-art-design-camp-baldoyle"
   status = 301
   force = true
+
+# Monthly guide PDF is a gated lead magnet (sent via Instagram DM), so keep it out of search results.
+[[headers]]
+  for = "/guides/november-2026.pdf"
+  [headers.values]
+    X-Robots-Tag = "noindex"
