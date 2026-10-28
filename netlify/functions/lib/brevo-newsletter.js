@@ -29,6 +29,7 @@ const CUSTOM_ATTRIBUTES = {
   CONSENT_TEXT: 'text',
   SIGNUP_URL: 'text',
   COUNTY: 'text',
+  EARLY_ACCESS: 'text',
 };
 
 function headers() {
@@ -71,7 +72,7 @@ async function ensureAttributes() {
 
 // Adds (or updates) a contact on the newsletter list with their consent
 // record. Returns { ok, isNew }. Never throws: callers decide what to do.
-async function addNewsletterContact({ email, firstName, county, source, consentText, pageUrl }) {
+async function addNewsletterContact({ email, firstName, county, source, consentText, pageUrl, extra }) {
   if (!process.env.BREVO_API_KEY) {
     console.error('brevo-newsletter: BREVO_API_KEY not set');
     return { ok: false, isNew: false };
@@ -87,6 +88,8 @@ async function addNewsletterContact({ email, firstName, county, source, consentT
     SIGNUP_URL: String(pageUrl || '').slice(0, 300),
   };
   if (county) consent.COUNTY = String(county).trim().slice(0, 50);
+  // Extra custom attributes a caller wants on the contact (e.g. EARLY_ACCESS).
+  if (extra) for (const [k, v] of Object.entries(extra)) if (k in CUSTOM_ATTRIBUTES) consent[k] = String(v).slice(0, 100);
 
   let haveCustom = true;
   try {
