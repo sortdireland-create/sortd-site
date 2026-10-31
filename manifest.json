@@ -168,28 +168,12 @@
     "section": "classes"
   },
   {
-    "slug": "stretch-n-grow-halloween-camp-firhouse",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/stretch-n-grow-halloween-camp-firhouse",
-    "name": "Stretch-n-Grow Halloween Camp – Firhouse",
-    "provider": "Stretch-n-Grow Ireland",
-    "section": "camps"
-  },
-  {
     "slug": "music-generation-fingal-balbriggan-jam",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/music-generation-fingal-balbriggan-jam",
     "name": "Balbriggan Jam",
     "provider": "Music Generation Fingal",
     "section": "classes"
-  },
-  {
-    "slug": "starcamp-halloween-camp-ballincollig",
-    "county": "cork",
-    "url": "https://sortd-ireland.ie/camps/cork/starcamp-halloween-camp-ballincollig",
-    "name": "Starcamp Halloween Camp – Ballincollig",
-    "provider": "Starcamp",
-    "section": "camps"
   },
   {
     "slug": "zila-art-and-design-the-art-club",
@@ -222,22 +206,6 @@
     "name": "Sense of Wonder Forest School — Killiney",
     "provider": "Sense of Wonder Forest School",
     "section": "classes"
-  },
-  {
-    "slug": "iims-sounds-good-halloween-camp",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/iims-sounds-good-halloween-camp",
-    "name": "Sounds Good Halloween Camp",
-    "provider": "IIMS",
-    "section": "camps"
-  },
-  {
-    "slug": "inspireland-halloween-art-animation-camp-for-kids-cork",
-    "county": "cork",
-    "url": "https://sortd-ireland.ie/camps/cork/inspireland-halloween-art-animation-camp-for-kids-cork",
-    "name": "Halloween Art & Animation Camp for Kids – Cork",
-    "provider": "Inspireland",
-    "section": "camps"
   },
   {
     "slug": "scouting-ireland-112th-knocklyon-scout-group-beaver-scouts",
@@ -312,14 +280,6 @@
     "section": "classes"
   },
   {
-    "slug": "starcamp-thriller-halloween-camp-clontarf-starcamp-ages-4-8",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-clontarf-starcamp-ages-4-8",
-    "name": "Starcamp Thriller Halloween Camp – Clontarf (StarCamp, ages 4-8)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
-  },
-  {
     "slug": "coderdojo-digital-dun-laoghaire",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/coderdojo-digital-dun-laoghaire",
@@ -336,14 +296,6 @@
     "section": "classes"
   },
   {
-    "slug": "cork-city-fc-october-midterm-corky-camp-virgin-media-park",
-    "county": "cork",
-    "url": "https://sortd-ireland.ie/camps/cork/cork-city-fc-october-midterm-corky-camp-virgin-media-park",
-    "name": "Cork City FC October Midterm Corky Camp – Virgin Media Park",
-    "provider": "Cork City FC",
-    "section": "camps"
-  },
-  {
     "slug": "little-kickers-portmarnock",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/little-kickers-portmarnock",
@@ -358,14 +310,6 @@
     "name": "Young Gaiety Drama Workshop (Ages 8-10) — Malahide",
     "provider": "Gaiety School of Acting",
     "section": "classes"
-  },
-  {
-    "slug": "dramatastic-halloween-camp-knocknacarra",
-    "county": "galway",
-    "url": "https://sortd-ireland.ie/camps/galway/dramatastic-halloween-camp-knocknacarra",
-    "name": "Dramatastic Halloween Camp – Knocknacarra",
-    "provider": "Dramatastic",
-    "section": "camps"
   },
   {
     "slug": "rugbytots-taney-parish-centre-dundrum",
@@ -389,14 +333,6 @@
     "url": "https://sortd-ireland.ie/camps/dublin/mellow-yellow-for-kids-swords",
     "name": "Mellow Yellow for Kids — Swords",
     "provider": "Mellow Yellow for Kids",
-    "section": "camps"
-  },
-  {
-    "slug": "playact-drama-school-halloween-camp-crumlin",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/playact-drama-school-halloween-camp-crumlin",
-    "name": "Halloween Camp — Crumlin",
-    "provider": "PlayAct Drama School",
     "section": "camps"
   },
   {
@@ -464,14 +400,6 @@
     "section": "camps"
   },
   {
-    "slug": "starcamp-thriller-halloween-camp-blackrock-starcrew-ages-8-12",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-blackrock-starcrew-ages-8-12",
-    "name": "Starcamp Thriller Halloween Camp – Blackrock (StarCrew, ages 8-12)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
-  },
-  {
     "slug": "rugbytots-stepaside-etns",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-stepaside-etns",
@@ -486,14 +414,6 @@
     "name": "Drama House — Malahide (Musical Theatre / Youth Theatre)",
     "provider": "Drama House",
     "section": "classes"
-  },
-  {
-    "slug": "starcamp-thriller-halloween-camp-diswellstown-starcamp-ages-4-8",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-diswellstown-starcamp-ages-4-8",
-    "name": "Starcamp Thriller Halloween Camp – Diswellstown (StarCamp, ages 4-8)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
   },
   {
     "slug": "playball-parent-and-toddler-saturday-classes-2-3-year-olds",
@@ -552,36 +472,12 @@
     "section": "classes"
   },
   {
-    "slug": "junior-einsteins-spooky-science-halloween-camp-nord-anglia-international-school-leopardstown-4-day",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-spooky-science-halloween-camp-nord-anglia-international-school-leopardstown-4-day",
-    "name": "Junior Einsteins Spooky Science Halloween Camp – Nord Anglia International School, Leopardstown (4-day)",
-    "provider": "Junior Einsteins Science Club",
-    "section": "camps"
-  },
-  {
     "slug": "dsa-dance-sing-act-performing-arts-classes-baldoyle",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/dsa-dance-sing-act-performing-arts-classes-baldoyle",
     "name": "Performing Arts Classes — Baldoyle",
     "provider": "DSA - Dance Sing Act",
     "section": "classes"
-  },
-  {
-    "slug": "junior-einsteins-spooky-science-halloween-camp-maynooth-university-5-day",
-    "county": "kildare",
-    "url": "https://sortd-ireland.ie/camps/kildare/junior-einsteins-spooky-science-halloween-camp-maynooth-university-5-day",
-    "name": "Junior Einsteins Spooky Science Halloween Camp – Maynooth University (5-day)",
-    "provider": "Junior Einsteins Science Club",
-    "section": "camps"
-  },
-  {
-    "slug": "starcamp-thriller-halloween-camp-baldoyle-starcamp-ages-4-8",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-baldoyle-starcamp-ages-4-8",
-    "name": "Starcamp Thriller Halloween Camp – Baldoyle (StarCamp, ages 4-8)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
   },
   {
     "slug": "scouting-ireland-37th-dublin-scout-group-scouts-section-terenuretempleogue",
@@ -624,14 +520,6 @@
     "section": "classes"
   },
   {
-    "slug": "artzone-halloween-midterm-art-camp-taney-dundrum",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/artzone-halloween-midterm-art-camp-taney-dundrum",
-    "name": "Artzone Halloween Midterm Art Camp — Taney, Dundrum",
-    "provider": "Artzone",
-    "section": "camps"
-  },
-  {
     "slug": "scouting-ireland-109th-dublin-corduff-scout-group-all-sections-beavers-ventures",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/scouting-ireland-109th-dublin-corduff-scout-group-all-sections-beavers-ventures",
@@ -648,14 +536,6 @@
     "section": "classes"
   },
   {
-    "slug": "junior-einsteins-spooky-science-halloween-camp-greystones-5-day",
-    "county": "wicklow",
-    "url": "https://sortd-ireland.ie/camps/wicklow/junior-einsteins-spooky-science-halloween-camp-greystones-5-day",
-    "name": "Junior Einsteins Spooky Science Halloween Camp – Greystones (5-day)",
-    "provider": "Junior Einsteins Science Club",
-    "section": "camps"
-  },
-  {
     "slug": "leopardstown-tennis-club-junior-coaching-ages-5-18",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/leopardstown-tennis-club-junior-coaching-ages-5-18",
@@ -670,22 +550,6 @@
     "name": "Cabinteely FC — Cubs & Kittens",
     "provider": "Cabinteely FC",
     "section": "classes"
-  },
-  {
-    "slug": "declan-omeara-art-halloween-art-camp-ages-8-14-cork",
-    "county": "cork",
-    "url": "https://sortd-ireland.ie/camps/cork/declan-omeara-art-halloween-art-camp-ages-8-14-cork",
-    "name": "Halloween Art Camp (ages 8–14) – Cork",
-    "provider": "Declan O'Meara Art",
-    "section": "camps"
-  },
-  {
-    "slug": "starcamp-halloween-camp-douglas",
-    "county": "cork",
-    "url": "https://sortd-ireland.ie/camps/cork/starcamp-halloween-camp-douglas",
-    "name": "Starcamp Halloween Camp – Douglas",
-    "provider": "Starcamp",
-    "section": "camps"
   },
   {
     "slug": "artzone-senior-primary-art-classes-1st-6th-class-malahide",
@@ -710,14 +574,6 @@
     "name": "Naomh Mearnóg GAA Academy",
     "provider": "Naomh Mearnóg GAA Club",
     "section": "classes"
-  },
-  {
-    "slug": "starcamp-halloween-camp-carrigaline",
-    "county": "cork",
-    "url": "https://sortd-ireland.ie/camps/cork/starcamp-halloween-camp-carrigaline",
-    "name": "Starcamp Halloween Camp – Carrigaline",
-    "provider": "Starcamp",
-    "section": "camps"
   },
   {
     "slug": "gc-school-of-dance-swords",
@@ -784,22 +640,6 @@
     "section": "classes"
   },
   {
-    "slug": "stretch-n-grow-halloween-camp-dundrum",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/stretch-n-grow-halloween-camp-dundrum",
-    "name": "Stretch-n-Grow Halloween Camp – Dundrum",
-    "provider": "Stretch-n-Grow Ireland",
-    "section": "camps"
-  },
-  {
-    "slug": "starcamp-thriller-halloween-camp-rathgar-starcrew-ages-8-12",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-rathgar-starcrew-ages-8-12",
-    "name": "Starcamp Thriller Halloween Camp – Rathgar (StarCrew, ages 8-12)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
-  },
-  {
     "slug": "rugbytots-monkstown-etns-dun-laoghaire",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-monkstown-etns-dun-laoghaire",
@@ -824,36 +664,12 @@
     "section": "classes"
   },
   {
-    "slug": "starcamp-thriller-halloween-camp-malahide-starcrew-ages-8-12",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-malahide-starcrew-ages-8-12",
-    "name": "Starcamp Thriller Halloween Camp – Malahide (StarCrew, ages 8-12)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
-  },
-  {
-    "slug": "starcamp-thriller-halloween-camp-diswellstown-starcrew-ages-8-12",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-diswellstown-starcrew-ages-8-12",
-    "name": "Starcamp Thriller Halloween Camp – Diswellstown (StarCrew, ages 8-12)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
-  },
-  {
     "slug": "the-jam-child-led-art-sessiona",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/the-jam-child-led-art-sessiona",
     "name": "Child-Led Art Sessiona",
     "provider": "The Jam",
     "section": "classes"
-  },
-  {
-    "slug": "active-ireland-halloween-camp-killiney-hill",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/active-ireland-halloween-camp-killiney-hill",
-    "name": "Halloween Camp — Killiney Hill",
-    "provider": "Active Ireland",
-    "section": "camps"
   },
   {
     "slug": "little-kickers-swords",
@@ -878,14 +694,6 @@
     "name": "Capoeira for Kids — ALSAA Toberbunny",
     "provider": "Capoeira Ireland (Mundo Capoeira)",
     "section": "classes"
-  },
-  {
-    "slug": "dramatastic-halloween-camp-roscam-castlegar",
-    "county": "galway",
-    "url": "https://sortd-ireland.ie/camps/galway/dramatastic-halloween-camp-roscam-castlegar",
-    "name": "Dramatastic Halloween Camp – Roscam-Castlegar",
-    "provider": "Dramatastic",
-    "section": "camps"
   },
   {
     "slug": "raheny-gaa-ogra-academy",
@@ -926,46 +734,6 @@
     "name": "Kilmacud Crokes GAA Club — Nursery (Football & Camogie)",
     "provider": "Kilmacud Crokes GAA Club",
     "section": "classes"
-  },
-  {
-    "slug": "starcamp-thriller-halloween-camp-baldoyle-starcrew-ages-8-12",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-baldoyle-starcrew-ages-8-12",
-    "name": "Starcamp Thriller Halloween Camp – Baldoyle (StarCrew, ages 8-12)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
-  },
-  {
-    "slug": "starcamp-thriller-halloween-camp-clontarf-starcrew-ages-8-12",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-clontarf-starcrew-ages-8-12",
-    "name": "Starcamp Thriller Halloween Camp – Clontarf (StarCrew, ages 8-12)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
-  },
-  {
-    "slug": "malahide-castle-sports-pavilion-halloween-junior-tennis-camp",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/malahide-castle-sports-pavilion-halloween-junior-tennis-camp",
-    "name": "Halloween Junior Tennis Camp",
-    "provider": "Malahide Castle Sports Pavilion",
-    "section": "camps"
-  },
-  {
-    "slug": "active-ireland-halloween-camp-st-fintans-sutton",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/active-ireland-halloween-camp-st-fintans-sutton",
-    "name": "Halloween Camp — St Fintan's, Sutton",
-    "provider": "Active Ireland",
-    "section": "camps"
-  },
-  {
-    "slug": "junior-einsteins-halloween-science-camp-malahide-castle-fri",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-halloween-science-camp-malahide-castle-fri",
-    "name": "Junior Einsteins Halloween Science Camp – Malahide Castle (Fri)",
-    "provider": "Junior Einsteins Science Club",
-    "section": "camps"
   },
   {
     "slug": "the-krafty-italian-dublin-autumn-halloween-craft-classes-fridays",
@@ -1016,22 +784,6 @@
     "section": "camps"
   },
   {
-    "slug": "catch-dance-academy-halloween-dance-camp",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/catch-dance-academy-halloween-dance-camp",
-    "name": "Halloween Dance Camp",
-    "provider": "Catch Dance Academy",
-    "section": "camps"
-  },
-  {
-    "slug": "inspireland-halloween-art-animation-camp-for-teens-cork",
-    "county": "cork",
-    "url": "https://sortd-ireland.ie/camps/cork/inspireland-halloween-art-animation-camp-for-teens-cork",
-    "name": "Halloween Art & Animation Camp for Teens – Cork",
-    "provider": "Inspireland",
-    "section": "camps"
-  },
-  {
     "slug": "de-la-salle-palmerston-fc-dlsp-fc-dlsp-fc-mini-rugby",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/de-la-salle-palmerston-fc-dlsp-fc-dlsp-fc-mini-rugby",
@@ -1046,22 +798,6 @@
     "name": "Metro St. Brigid's AC Juvenile Training",
     "provider": "Metro St. Brigid's Athletic Club",
     "section": "classes"
-  },
-  {
-    "slug": "starcamp-thriller-halloween-camp-malahide-starcamp-ages-4-8",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-malahide-starcamp-ages-4-8",
-    "name": "Starcamp Thriller Halloween Camp – Malahide (StarCamp, ages 4-8)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
-  },
-  {
-    "slug": "starcamp-thriller-halloween-camp-ballinteer-starcrew-ages-8-12",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-ballinteer-starcrew-ages-8-12",
-    "name": "Starcamp Thriller Halloween Camp – Ballinteer (StarCrew, ages 8-12)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
   },
   {
     "slug": "rugbytots-marian-college-landsdowne",
@@ -1104,14 +840,6 @@
     "section": "classes"
   },
   {
-    "slug": "starcamp-thriller-halloween-camp-ballinteer-starcamp-ages-4-8",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-ballinteer-starcamp-ages-4-8",
-    "name": "Starcamp Thriller Halloween Camp – Ballinteer (StarCamp, ages 4-8)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
-  },
-  {
     "slug": "project-fashion-fashion-design-after-school-workshop-dundrum",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/project-fashion-fashion-design-after-school-workshop-dundrum",
@@ -1128,36 +856,12 @@
     "section": "classes"
   },
   {
-    "slug": "playact-drama-school-halloween-camp",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/playact-drama-school-halloween-camp",
-    "name": "Halloween Camp",
-    "provider": "PlayAct Drama School",
-    "section": "camps"
-  },
-  {
-    "slug": "the-jam-halloween-art-drama-camp-clontarf",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/the-jam-halloween-art-drama-camp-clontarf",
-    "name": "Halloween Art & Drama Camp – Clontarf",
-    "provider": "The Jam",
-    "section": "camps"
-  },
-  {
     "slug": "sean-gilligan-performing-arts-artane",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/sean-gilligan-performing-arts-artane",
     "name": "Sean Gilligan Performing Arts — Artane",
     "provider": "Sean Gilligan Performing Arts (SGPA)",
     "section": "classes"
-  },
-  {
-    "slug": "zila-art-and-design-halloween-midterm-art-design-camp-baldoyle",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/zila-art-and-design-halloween-midterm-art-design-camp-baldoyle",
-    "name": "Halloween Midterm Art & Design Camp – Baldoyle",
-    "provider": "Zila Art and Design",
-    "section": "camps"
   },
   {
     "slug": "project-fashion-kids-sewing-class-malahide",
@@ -1256,14 +960,6 @@
     "section": "classes"
   },
   {
-    "slug": "starcamp-thriller-halloween-camp-rathgar-starcamp-ages-4-8",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-rathgar-starcamp-ages-4-8",
-    "name": "Starcamp Thriller Halloween Camp – Rathgar (StarCamp, ages 4-8)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
-  },
-  {
     "slug": "rugbytots-belgrove-junior-boys-ns-clontarf",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-belgrove-junior-boys-ns-clontarf",
@@ -1280,30 +976,6 @@
     "section": "classes"
   },
   {
-    "slug": "starcamp-halloween-camp-glanmire",
-    "county": "cork",
-    "url": "https://sortd-ireland.ie/camps/cork/starcamp-halloween-camp-glanmire",
-    "name": "Starcamp Halloween Camp – Glanmire",
-    "provider": "Starcamp",
-    "section": "camps"
-  },
-  {
-    "slug": "junior-einsteins-spooky-science-halloween-camp-castleknock-5-day",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-spooky-science-halloween-camp-castleknock-5-day",
-    "name": "Junior Einsteins Spooky Science Halloween Camp – Castleknock (5-day)",
-    "provider": "Junior Einsteins Science Club",
-    "section": "camps"
-  },
-  {
-    "slug": "junior-einsteins-spooky-science-halloween-camp-glenageary-5-day",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-spooky-science-halloween-camp-glenageary-5-day",
-    "name": "Junior Einsteins Spooky Science Halloween Camp – Glenageary (5-day)",
-    "provider": "Junior Einsteins Science Club",
-    "section": "camps"
-  },
-  {
     "slug": "capoeira-for-kids-charlemont-st-dublin-2",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/capoeira-for-kids-charlemont-st-dublin-2",
@@ -1312,28 +984,12 @@
     "section": "classes"
   },
   {
-    "slug": "olympian-football-academy-halloween-camp-raheny-united-fc-st-annes-park",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/olympian-football-academy-halloween-camp-raheny-united-fc-st-annes-park",
-    "name": "Halloween Camp – Raheny United FC, St Anne's Park",
-    "provider": "Olympian Football Academy",
-    "section": "camps"
-  },
-  {
     "slug": "skerries-ac-juvenile-athletics",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/skerries-ac-juvenile-athletics",
     "name": "Skerries AC Juvenile Athletics",
     "provider": "Skerries Athletic Club",
     "section": "classes"
-  },
-  {
-    "slug": "first-steps-academy-creche-montessori-halloween-camp-churchwell-gardens-belmayne",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/first-steps-academy-creche-montessori-halloween-camp-churchwell-gardens-belmayne",
-    "name": "Halloween Camp – Churchwell Gardens, Belmayne",
-    "provider": "First Steps Academy Creche & Montessori",
-    "section": "camps"
   },
   {
     "slug": "raheny-shamrock-ac-juvenile-athletics",
@@ -1350,38 +1006,6 @@
     "name": "Colour and Art Kids Classes — Balbriggan",
     "provider": "Colour and Art",
     "section": "classes"
-  },
-  {
-    "slug": "charlenes-little-bakers-halloween-spooktacular-baking-camp",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/charlenes-little-bakers-halloween-spooktacular-baking-camp",
-    "name": "Charlene's Little Bakers – Halloween Spooktacular Baking Camp",
-    "provider": "Charlene's Little Bakers Club",
-    "section": "camps"
-  },
-  {
-    "slug": "starcamp-thriller-halloween-camp-blackrock-starcamp-ages-4-8",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/starcamp-thriller-halloween-camp-blackrock-starcamp-ages-4-8",
-    "name": "Starcamp Thriller Halloween Camp – Blackrock (StarCamp, ages 4-8)",
-    "provider": "Starcamp Ireland",
-    "section": "camps"
-  },
-  {
-    "slug": "cork-city-fc-october-midterm-performance-camp-ringmahon-rangers-ages-13-16",
-    "county": "cork",
-    "url": "https://sortd-ireland.ie/camps/cork/cork-city-fc-october-midterm-performance-camp-ringmahon-rangers-ages-13-16",
-    "name": "Cork City FC October Midterm Performance Camp – Ringmahon Rangers (ages 13–16)",
-    "provider": "Cork City FC",
-    "section": "camps"
-  },
-  {
-    "slug": "declan-omeara-art-halloween-art-camp-ages-5-7-cork",
-    "county": "cork",
-    "url": "https://sortd-ireland.ie/camps/cork/declan-omeara-art-halloween-art-camp-ages-5-7-cork",
-    "name": "Halloween Art Camp (ages 5–7) – Cork",
-    "provider": "Declan O'Meara Art",
-    "section": "camps"
   },
   {
     "slug": "swan-leisure-kids-swimming-lessons-rathmines",
