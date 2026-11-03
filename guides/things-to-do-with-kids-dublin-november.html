@@ -60,9 +60,10 @@ details{border-top:1px solid #C3DCEC;padding:16px 0;}
 details:last-child{border-bottom:1px solid #C3DCEC;}
 summary{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:18px;color:#27314A;cursor:pointer;}
 details p{font-weight:600;font-size:16px;line-height:1.65;color:#444;margin-top:10px;}
-.g-unlock{margin:0 0 14px;}
-.g-unlock .g-btn{background:#1A9D67;margin-top:4px;}
-.nl-note a{text-decoration:underline;}
+.g-get{background:#CBEAF6;padding:64px 40px;text-align:center;}
+.g-get-inner{max-width:600px;margin:0 auto;}
+.g-get .g-btn{margin-top:4px;}
+@media(max-width:768px){.g-get{padding:48px 20px;}}
 .g-check{max-width:760px;margin:0 auto;padding:28px 40px 56px;text-align:center;font-size:15px;line-height:1.6;color:#5B6783;}
 .g-check b{color:#27314A;}
 a:focus-visible,summary:focus-visible{outline:3px solid #3D77A3;outline-offset:3px;border-radius:4px;}
@@ -115,7 +116,7 @@ a:focus-visible,summary:focus-visible{outline:3px solid #3D77A3;outline-offset:3
 <span class="eyebrow" style="color:#3D77A3;">The November guide · 2026</span>
 <h1>Things to do with kids in Dublin <em>this November</em></h1>
 <p class="g-lede">November has no bank holiday and a lot of dark afternoons. It also has a free book festival day, a whole week of science and the start of the light trails. Here are the best bits, sorted by week.</p>
-<a href="#get-the-guide" class="g-btn">Get all 23 things, free</a>
+<a href="/guides/november-2026.pdf" class="g-btn" target="_blank" rel="noopener">Download all 23 things (free PDF)</a>
 <span class="caveat" style="color:#3D77A3;">Rachel · checked against each venue's own page →</span>
 </div>
 </section>
@@ -210,7 +211,7 @@ a:focus-visible,summary:focus-visible{outline:3px solid #3D77A3;outline-offset:3
 <p class="g-meta">Donabate · Weekends from Sat 28 Nov, plus 21–22 Dec · All ages · Child €28.50, adult €15.50</p>
 <p>Hot chocolate, Mrs Claus making puddings, a walk through the farmyard and Santa by the fire.</p>
 </div>
-<p class="g-more">That's 13 of the 23. The full guide also has the Gaiety and Helix pantos, toddler workshops, quiet sensory mornings, Santa at Malahide Castle and more. <a href="#get-the-guide">Get it free below.</a></p>
+<p class="g-more">That's 13 of the 23. The full guide also has the Gaiety and Helix pantos, toddler workshops, quiet sensory mornings, Santa at Malahide Castle and more. <a href="/guides/november-2026.pdf" target="_blank" rel="noopener">Download it free.</a></p>
 </section>
 
 <section class="g-sec g-sortd" aria-labelledby="on-sortd">
@@ -247,18 +248,27 @@ a:focus-visible,summary:focus-visible{outline:3px solid #3D77A3;outline-offset:3
 </article>
 
 <!-- GET THE GUIDE -->
-<section class="nl" id="get-the-guide">
+<section class="g-get" id="get-the-guide">
+<div class="g-get-inner">
+<span class="eyebrow" style="color:#3D77A3;">The full November guide</span>
+<div class="nl-title">All 23 things, free to download.</div>
+<p class="nl-sub" style="color:#2c4a63;">A printable PDF with dates, prices and ages, plus which ones are free, good for a rainy day or ND-friendly. Stick it on the fridge.</p>
+<a href="/guides/november-2026.pdf" class="g-btn" target="_blank" rel="noopener">Download the November guide (PDF)</a>
+</div>
+</section>
+
+<!-- NEWSLETTER (optional) -->
+<section class="nl">
 <div class="nl-inner">
-<span class="eyebrow" style="color:#1A9D67;">The full November guide</span>
-<div class="nl-title">Get all 23 things, free.</div>
-<p class="nl-sub">A printable PDF with dates, prices and ages, plus which ones are free, good for a rainy day or ND-friendly. Pop in your email and the download link appears straight away.</p>
+<span class="eyebrow" style="color:#1A9D67;">Want December's guide too?</span>
+<div class="nl-title">Get "what's on near you" every Thursday.</div>
+<p class="nl-sub">New camps, open spots and each month's guide, straight to your inbox. No spam.</p>
 <form class="nl-form" data-source="guide_page">
 <input class="nl-input" type="email" name="email" placeholder="your@email.ie" aria-label="Email address" required>
-<button class="nl-btn" type="submit">Get the guide</button>
+<button class="nl-btn" type="submit">Join free</button>
 </form>
 <p class="nl-msg" role="status" aria-live="polite"></p>
-<p class="g-unlock" id="guideUnlock" hidden><a href="/guides/november-2026.pdf" target="_blank" rel="noopener" class="g-btn">Download the November guide (PDF)</a></p>
-<span class="nl-note">On Instagram? Comment NOVEMBER on <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener">@sortd.ireland</a> and I'll DM it to you.</span>
+<span class="nl-note">One short email, every Thursday. Unsubscribe any time.</span>
 </div>
 </section>
 
@@ -352,13 +362,7 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 
-<script>
-// Reveal the PDF link once the sign-up succeeds (newsletter-signup.js marks the message "ok").
-(function(){var msg=document.querySelector('#get-the-guide .nl-msg'),box=document.getElementById('guideUnlock');
-if(!msg||!box)return;
-function check(){if(msg.classList.contains('ok')){box.hidden=false;}}
-new MutationObserver(check).observe(msg,{attributes:true,attributeFilter:['class']});})();
-</script>
+
 
 <script type="application/ld+json">
 [
