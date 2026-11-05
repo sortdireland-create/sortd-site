@@ -51,15 +51,41 @@ async function sendEmail({ to, subject, html }) {
   if (!res.ok) console.error('Brevo welcome email failed:', await res.text());
 }
 
+const INSTAGRAM_URL = 'https://www.instagram.com/sortd.ireland/';
+const HEAD = "'Baloo 2','Trebuchet MS',Verdana,Arial,sans-serif";
+
+// One "what's on sortd" row: a coloured square tile, a title, a line, a link.
+function snapRow(tint, ink, letter, title, text, linkText, url) {
+  return `<tr><td style="padding:0 0 16px;vertical-align:top;width:52px;">
+<table role="presentation" cellpadding="0" cellspacing="0"><tr><td class="dm-box" style="width:40px;height:40px;border-radius:12px;background:${tint};color:${ink};text-align:center;font-family:${HEAD};font-weight:800;font-size:18px;line-height:40px;">${letter}</td></tr></table>
+</td><td style="padding:0 0 16px;vertical-align:top;font-size:15px;line-height:1.55;">
+<strong>${title}</strong><br><span style="color:#5B6783;">${text}</span><br>
+<a class="dm-link" href="${url}" style="color:#1B8350;font-weight:700;text-decoration:none;">${linkText} →</a>
+</td></tr>`;
+}
+
 function welcomeEmail(firstName, email) {
   const hi = firstName ? `Hi ${escapeHtml(firstName)},` : 'Hi,';
   return emailShell(`
+    <p style="margin:0 0 6px;font-family:${HEAD};font-size:24px;font-weight:800;line-height:1.25;">Welcome to the Thursday email</p>
     <p style="margin:0 0 16px;">${hi}</p>
-    <p style="margin:0 0 16px;">You're on the list. Thanks for signing up.</p>
-    <p style="margin:0 0 16px;">Every Thursday I'll send one short email: new camps and classes, spaces opening up, and anything worth knowing before the weekend. No spam, and you can unsubscribe in one click.</p>
-    <p style="margin:0 0 4px;">Your first one lands next Thursday. In the meantime, have a browse:</p>
-    ${emailButton('Browse camps and classes', SITE_URL)}
-    <p style="margin:0;">Rachel<br>sortd</p>
+    <p style="margin:0 0 16px;">Thanks for signing up. Every Thursday I'll send one short email with new camps and classes, spaces opening up, and what's on for kids before the weekend. No spam, and you can unsubscribe in one click.</p>
+    <p style="margin:0 0 22px;">Your first one lands on Thursday. Until then, here's everything you can do on sortd.</p>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 6px;">
+      ${snapRow('#E7E1F8', '#5B4FCA', 'G', 'Monthly guides', "Days out, events and free things to do with the kids, sorted by week. Each one has a free PDF to keep.", 'See the guides', SITE_URL + '/guides')}
+      ${snapRow('#DCEBF5', '#3D77A3', 'F', 'Find an activity', 'Holiday camps and weekly classes across Ireland. Search by age, area and dates.', 'Start searching', SITE_URL + '/find-an-activity')}
+      ${snapRow('#FBD7E4', '#C66686', 'S', 'Save your favourites', 'Tap the heart on any camp or class to keep a shortlist.', 'Browse camps', SITE_URL + '/camps')}
+      ${snapRow('#C9F0DA', '#176B42', 'B', 'Unlock the beta features', 'Add your email on your account page to be first to try the summer planner, family calendar and more. Free.', 'Unlock features', SITE_URL + '/account')}
+    </table>
+
+    ${emailButton('See this month\'s guide', SITE_URL + '/guides')}
+
+    <p style="margin:0 0 12px;">For quick updates between emails, we're on Instagram:</p>
+    <a class="dm-link" href="${INSTAGRAM_URL}" style="display:inline-block;margin:0 0 22px;padding:11px 22px;border:2px solid #1B8350;border-radius:999px;color:#1B8350;font-family:${HEAD};font-weight:700;font-size:15px;text-decoration:none;">Follow @sortd.ireland</a>
+
+    <p style="margin:0 0 16px;">Know a camp or class that should be on sortd? Just reply to this email and tell me.</p>
+    <p style="margin:0;">Rachel<br><span style="color:#5B6783;">Founder, sortd</span></p>
   `, `${SITE_URL}/.netlify/functions/unsubscribe?email=${encodeURIComponent(email)}`, { audience: 'parent', eyebrow: 'The Thursday email' });
 }
 
@@ -114,7 +140,7 @@ exports.handler = async function (event) {
     try {
       await sendEmail({
         to: email,
-        subject: "You're on the list",
+        subject: "Welcome to the Thursday email from sortd",
         html: welcomeEmail(firstName.trim().slice(0, 100), email),
       });
     } catch (emailErr) {
@@ -124,3 +150,6 @@ exports.handler = async function (event) {
 
   return json(200, { success: true, isNew: result.isNew });
 };
+
+// Exported for previews/tests only.
+exports._welcomeEmail = welcomeEmail;
