@@ -307,3 +307,14 @@ footer{background:var(--nv); color:#cfd4e0; padding:56px 40px 24px;}
 .popup-msg:empty{margin:0; min-height:0;}
 .popup-msg.ok{color:#176B42;}
 .popup-msg.err{color:#A12F5B;}
+
+/* Homepage: How sortd works (find, add to calendar, share) */
+.hw-sec{padding-top:56px;}
+.hw-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.hw-card{display:flex;flex-direction:column;gap:8px;background:#fff;border:1.5px solid var(--bd);border-radius:20px;padding:22px;text-decoration:none;color:var(--nv);transition:border-color .15s,transform .15s;}
+.hw-card:hover{border-color:var(--nv);transform:translateY(-2px);}
+.hw-n{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#fff;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px;}
+.hw-card b{font-family:'Baloo 2',sans-serif;font-size:20px;font-weight:800;line-height:1.2;}
+.hw-card span{font-size:15px;line-height:1.6;color:#555;}
+.hw-card em{font-style:normal;font-weight:800;font-size:14px;color:var(--sk);margin-top:auto;padding-top:6px;}
+@media(max-width:860px){.hw-grid{grid-template-columns:1fr;}.hw-sec{padding-top:36px;}}
