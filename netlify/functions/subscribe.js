@@ -51,15 +51,81 @@ async function sendEmail({ to, subject, html }) {
   if (!res.ok) console.error('Brevo welcome email failed:', await res.text());
 }
 
+const INSTAGRAM_URL = 'https://www.instagram.com/sortd.ireland/';
+const HEAD = "'Baloo 2','Trebuchet MS',Verdana,Arial,sans-serif";
+
+const PHOTO_URL = SITE_URL + '/images/rachel-ella-email.jpg';
+const BODY = "'Nunito','Trebuchet MS',Verdana,Arial,sans-serif";
+
+// A coloured module: rounded tinted block. Gmail keeps tints as-is; Apple
+// Mail/Outlook.com dark mode gets the dm-box-* overrides from email-shell.
+function module(bg, inner, extraStyle) {
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 14px;"><tr><td class="dm-box" style="background:${bg};border-radius:18px;padding:22px 22px;${extraStyle || ''}">${inner}</td></tr></table>`;
+}
+
+// One tile in the 2x2 grid.
+function tile(bg, ink, title, text, linkText, url) {
+  return `<td class="dm-box" width="48%" style="width:48%;background:${bg};border-radius:16px;padding:18px 16px;vertical-align:top;">
+<p style="margin:0 0 4px;font-family:${HEAD};font-weight:800;font-size:17px;line-height:1.25;color:${ink};">${title}</p>
+<p style="margin:0 0 10px;font-size:14px;line-height:1.5;color:#1E2A44;">${text}</p>
+<a href="${url}" style="font-family:${HEAD};font-weight:700;font-size:14px;color:${ink};text-decoration:none;">${linkText}&nbsp;→</a>
+</td>`;
+}
+const TILE_GAP = '<td width="4%" style="width:4%;font-size:0;line-height:0;">&nbsp;</td>';
+
+function pill(text, url, bg, color) {
+  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:14px 0 0;"><tr><td style="border-radius:999px;background:${bg};">
+<a href="${url}" style="display:inline-block;padding:12px 24px;color:${color};font-family:${HEAD};font-weight:700;font-size:15px;text-decoration:none;border-radius:999px;">${text}</a>
+</td></tr></table>`;
+}
+
 function welcomeEmail(firstName, email) {
   const hi = firstName ? `Hi ${escapeHtml(firstName)},` : 'Hi,';
   return emailShell(`
-    <p style="margin:0 0 16px;">${hi}</p>
-    <p style="margin:0 0 16px;">You're on the list. Thanks for signing up.</p>
-    <p style="margin:0 0 16px;">Every Thursday I'll send one short email: new camps and classes, spaces opening up, and anything worth knowing before the weekend. No spam, and you can unsubscribe in one click.</p>
-    <p style="margin:0 0 4px;">Your first one lands next Thursday. In the meantime, have a browse:</p>
-    ${emailButton('Browse camps and classes', SITE_URL)}
-    <p style="margin:0;">Rachel<br>sortd</p>
+    ${module('#CFE8F6', `
+      <p style="margin:0 0 6px;font-family:${HEAD};font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3D77A3;">You're on the list</p>
+      <p style="margin:0 0 10px;font-family:${HEAD};font-size:26px;font-weight:800;line-height:1.2;color:#1E2A44;">Welcome to the Thursday email</p>
+      <p style="margin:0 0 10px;color:#1E2A44;">${hi}</p>
+      <p style="margin:0;color:#1E2A44;">Every Thursday I'll send one short email: new camps and classes, spaces opening up, and what's on for kids before the weekend. Your first one lands on Thursday. No spam, and you can unsubscribe in one click.</p>
+    `)}
+
+    ${module('#E7E1F8', `
+      <p style="margin:0 0 6px;font-family:${HEAD};font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5B4FCA;">This month's guide</p>
+      <p style="margin:0 0 8px;font-family:${HEAD};font-size:21px;font-weight:800;line-height:1.25;color:#1E2A44;">Things to do with the kids, sorted by week</p>
+      <p style="margin:0;font-size:15px;line-height:1.55;color:#1E2A44;">Days out, events and plenty of free things to do, checked against each venue. Read it online or keep the free PDF. Every past guide lives on one page too.</p>
+      ${pill("See the guides", SITE_URL + '/guides', '#5B4FCA', '#ffffff')}
+    `)}
+
+    <p style="margin:18px 0 10px;font-family:${HEAD};font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5B6783;">Everything on sortd</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 12px;table-layout:fixed;">
+      <tr>
+        ${tile('#DCEBF5', '#2F6189', 'Find an activity', 'Holiday camps and weekly classes across Ireland, by age, area and dates.', 'Start searching', SITE_URL + '/find-an-activity')}
+        ${TILE_GAP}
+        ${tile('#FBD7E4', '#B04A70', 'Save favourites', 'Tap the heart on any camp or class to keep a shortlist.', 'Browse camps', SITE_URL + '/camps')}
+      </tr>
+      <tr><td colspan="3" style="height:12px;font-size:0;line-height:0;">&nbsp;</td></tr>
+      <tr>
+        ${tile('#C9F0DA', '#176B42', 'Beta features', 'Be first to try the summer planner and family calendar. Free.', 'Unlock features', SITE_URL + '/account')}
+        ${TILE_GAP}
+        ${tile('#FFF2CC', '#8A5A12', 'Weekly classes', 'Swimming, drama, football, art and more, every week of term.', 'See classes', SITE_URL + '/weekly-classes')}
+      </tr>
+    </table>
+
+    ${module('#FFFFFF', `
+      <p style="margin:0 0 4px;font-family:${HEAD};font-size:18px;font-weight:800;color:#1E2A44;">Follow along on Instagram</p>
+      <p style="margin:0;font-size:15px;line-height:1.55;color:#1E2A44;">New camps, last-minute spaces and the odd behind-the-scenes, between emails.</p>
+      ${pill('Follow @sortd.ireland', INSTAGRAM_URL, '#1B8350', '#ffffff')}
+    `, 'border:2px solid #C9F0DA;')}
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:22px 0 0;"><tr>
+      <td width="96" style="width:96px;vertical-align:top;padding-right:16px;">
+        <img src="${PHOTO_URL}" width="96" height="96" alt="Rachel and her daughter Ella with ice creams in Malahide" style="display:block;width:96px;height:96px;border-radius:20px;border:0;">
+      </td>
+      <td style="vertical-align:top;font-size:15px;line-height:1.6;">
+        <p style="margin:0 0 8px;">Know a camp or class that should be on sortd? Just reply to this email and tell me.</p>
+        <p style="margin:0;">Rachel<br><span style="color:#5B6783;">Founder, sortd, and mum to Ella</span></p>
+      </td>
+    </tr></table>
   `, `${SITE_URL}/.netlify/functions/unsubscribe?email=${encodeURIComponent(email)}`, { audience: 'parent', eyebrow: 'The Thursday email' });
 }
 
@@ -114,7 +180,7 @@ exports.handler = async function (event) {
     try {
       await sendEmail({
         to: email,
-        subject: "You're on the list",
+        subject: "Welcome to the Thursday email from sortd",
         html: welcomeEmail(firstName.trim().slice(0, 100), email),
       });
     } catch (emailErr) {
@@ -124,3 +190,6 @@ exports.handler = async function (event) {
 
   return json(200, { success: true, isNew: result.isNew });
 };
+
+// Exported for previews/tests only.
+exports._welcomeEmail = welcomeEmail;
