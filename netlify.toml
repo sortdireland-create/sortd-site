@@ -11,6 +11,100 @@
   to = "/guides/things-to-do-with-kids-dublin-november"
   status = 301
 
+
+# ── RETIRED LISTING PAGES (5 Nov 2026) ─────────────────────────
+# Old pages no longer generated: school-only clubs now live on their school's
+# page, and the rest are no longer live. Kept as redirects so old links still work.
+[[redirects]]
+  from = "/classes/dublin/chess-club"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/camps/dublin/chess-club"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/classes/dublin/ollies-homework-club"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/camps/dublin/ollies-homework-club"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/classes/dublin/ollies-drama-club-after-school-drama-club"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/camps/dublin/ollies-drama-club-after-school-drama-club"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/classes/dublin/ollies-lego-club-lego-club"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/camps/dublin/ollies-lego-club-lego-club"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/classes/dublin/steam-club-term-one"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/camps/dublin/steam-club-term-one"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/classes/dublin/young-artists-studio"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/camps/dublin/young-artists-studio"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/classes/dublin/art-class"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/camps/dublin/art-class"
+  to = "/schools/st-oliver-plunkett-ns-malahide"
+  status = 301
+
+[[redirects]]
+  from = "/classes/dublin/babble-bloom"
+  to = "/weekly-classes"
+  status = 301
+
+[[redirects]]
+  from = "/classes/dublin/leader-gymnastics-club-swords"
+  to = "/weekly-classes"
+  status = 301
+
+[[redirects]]
+  from = "/classes/dublin/the-krafty-italian-dublin-autumn-halloween-craft-classes-tuesdays"
+  to = "/weekly-classes"
+  status = 301
+
+[[redirects]]
+  from = "/classes/dublin/the-krafty-italian-dublin-autumn-halloween-craft-classes-fridays"
+  to = "/weekly-classes"
+  status = 301
+
 [[redirects]]
   from = "/about"
   to = "/about"
