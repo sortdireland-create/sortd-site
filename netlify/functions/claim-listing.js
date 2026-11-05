@@ -169,8 +169,9 @@ function welcomeEmailHtml({ name, portalCtaUrl, unsubscribeUrl }) {
     <p style="margin:0 0 16px;">Hi,</p>
     <p style="margin:0 0 16px;"><strong>${name}</strong> is now verified on sortd — parents searching for camps and classes near you will see it's kept up to date.</p>
     <p style="margin:0 0 16px;"><strong>Add as many classes or camps as you like</strong> — a new term, a Halloween camp, an extra venue — there's no limit and no charge. Send us your logo and Instagram handle while you're in there and we'll feature you across the site and our socials, free.</p>
-    <p style="margin:0 0 4px;">Open your dashboard any time. No password needed, the button below logs you straight in:</p>
+    <p style="margin:0 0 4px;">No password needed, the button below logs you straight in:</p>
     ${emailButton('Manage my classes', portalCtaUrl)}
+    <p style="margin:0 0 16px;font-size:14px;color:#5B6783;">This button expires in ${TOKEN_TTL_MINUTES} minutes and works once. After that, just pop your email in at portal.sortd-ireland.ie whenever you like and we'll send a fresh login link.</p>
     <p style="margin:0 0 16px;">A bit about why sortd exists, in case you haven't come across it before: I'm Rachel, a working mum in Malahide. Last summer I spent hours trying to plan childcare for my daughter across 8+ weeks of school holidays, with camp info scattered across Instagram, WhatsApp groups and websites nobody had updated since 2022. So one Monday night I built the thing that didn't exist — one place to see everything. No VC funding, no boardroom — just a real problem being sorted for real families, and it's grown from there ever since.</p>
     <p style="margin:0;">Rachel<br>sortd</p>
   `, unsubscribeUrl, { audience: 'provider', eyebrow: 'For providers' });
