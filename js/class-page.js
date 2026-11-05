@@ -263,7 +263,7 @@
       .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || 'error'); return j; }); })
       .then(function () {
         e.target.outerHTML = '<div class="cp-sum"><b>Check your inbox</b><br><span>We\'ve sent a login link to ' + esc(email) + '. Open it on this phone or computer and you\'ll come straight back to this class, ready to add it to your calendar.</span></div>';
-        msg.textContent = 'Keep the email: the link logs you in any time.';
+        msg.textContent = 'The link logs you in any time for the next 30 days.';
         track('calendar_signup_requested');
       })
       .catch(function (err) { btn.disabled = false; btn.textContent = 'Create my free account'; msg.textContent = (err && err.message && err.message !== 'error') ? err.message : 'Something went wrong. Please try again.'; });

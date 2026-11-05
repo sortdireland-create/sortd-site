@@ -34,9 +34,9 @@ const LT = {
   NEWSLETTER_OPT_IN: 'NewsletterOptIn',
 };
 
-// Parent login links no longer expire (see verify-login.js). ExpiresAt is
-// still written so the Airtable field stays filled, set far in the future.
-const TOKEN_TTL_MINUTES = 60 * 24 * 365 * 100;
+// Parent login links last 30 days and can be reused within that time
+// (see verify-login.js).
+const TOKEN_TTL_MINUTES = 60 * 24 * 30;
 const SITE_URL = 'https://sortd-ireland.ie';
 const INSTAGRAM_URL = 'https://www.instagram.com/sortd.ireland/';
 
@@ -57,7 +57,7 @@ function unlockWelcomeHtml(link) {
     <p style="margin:0 0 6px;font-family:'Baloo 2','Trebuchet MS',Verdana,Arial,sans-serif;font-size:24px;font-weight:800;line-height:1.25;">You're in. Welcome to sortd.</p>
     <p style="margin:0 0 4px;">Thanks for unlocking your account. Tap below to log in, and your saved camps and classes will follow you to any device.</p>
     ${emailButton('Log me in →', link)}
-    <p style="margin:-8px 0 26px;font-size:13px;color:#5B6783;">Keep this email: the button logs you in any time, on any device.</p>
+    <p style="margin:-8px 0 26px;font-size:13px;color:#5B6783;">This button logs you in any time for the next 30 days, on any device. For your security it stops working after that, and you can get a new one any time at <a class="dm-link" href="${SITE_URL}/account" style="color:#1B8350;">sortd-ireland.ie/account</a>. Please don't forward this email: anyone with the button can get into your account.</p>
 
     <p style="margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#5B6783;">Ready now</p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 14px;">
@@ -190,7 +190,7 @@ exports.handler = async function (event) {
         html: emailShell(`
           <p style="margin:0 0 16px;">Here's your sortd login link — no password needed.</p>
           ${emailButton('Log me in →', link)}
-          <p style="margin:0;font-size:14px;color:#5B6783;">Keep this email: the button logs you in any time, on any device. If you didn't request this, you can safely ignore it.</p>
+          <p style="margin:0;font-size:14px;color:#5B6783;">This button logs you in any time for the next 30 days, on any device. For your security it stops working after that, and you can get a new one any time at <a class="dm-link" href="${SITE_URL}/account" style="color:#1B8350;">sortd-ireland.ie/account</a>. Please don't forward this email: anyone with the button can get into your account. If you didn't request this, you can safely ignore it.</p>
         `, null, { audience: 'parent', eyebrow: 'Your login link' }),
       });
     } catch (emailErr) {
