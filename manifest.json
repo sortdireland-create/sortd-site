@@ -8,14 +8,6 @@
     "section": "classes"
   },
   {
-    "slug": "the-krafty-italian-dublin-autumn-halloween-craft-classes-tuesdays",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/the-krafty-italian-dublin-autumn-halloween-craft-classes-tuesdays",
-    "name": "Autumn & Halloween Craft Classes (Tuesdays)",
-    "provider": "The Krafty Italian Dublin",
-    "section": "classes"
-  },
-  {
     "slug": "gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-sandyford",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-sandyford",
@@ -53,14 +45,6 @@
     "url": "https://sortd-ireland.ie/classes/dublin/shankill-tennis-club-junior-tennis",
     "name": "Shankill Tennis Club — Junior Tennis",
     "provider": "Shankill Tennis Club",
-    "section": "classes"
-  },
-  {
-    "slug": "babble-bloom",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/babble-bloom",
-    "name": "Babble & Bloom",
-    "provider": "Babble Box Learning",
     "section": "classes"
   },
   {
@@ -328,14 +312,6 @@
     "section": "classes"
   },
   {
-    "slug": "mellow-yellow-for-kids-swords",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/mellow-yellow-for-kids-swords",
-    "name": "Mellow Yellow for Kids — Swords",
-    "provider": "Mellow Yellow for Kids",
-    "section": "camps"
-  },
-  {
     "slug": "hombu-dojo-karate-mixed-juniors-karate-rathmines",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/hombu-dojo-karate-mixed-juniors-karate-rathmines",
@@ -392,14 +368,6 @@
     "section": "classes"
   },
   {
-    "slug": "playball-halloween-camp",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/playball-halloween-camp",
-    "name": "Playball halloween camp",
-    "provider": "Playball north dublin",
-    "section": "camps"
-  },
-  {
     "slug": "rugbytots-stepaside-etns",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-stepaside-etns",
@@ -438,14 +406,6 @@
     "name": "Old Bawn Gymnastics Club",
     "provider": "Old Bawn Gymnastics Club",
     "section": "classes"
-  },
-  {
-    "slug": "gcakes-halloween-cupcake-decorating-workshop-ardgillan-castle-gardens",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/gcakes-halloween-cupcake-decorating-workshop-ardgillan-castle-gardens",
-    "name": "🎃 Halloween Cupcake Decorating Workshop  (Ardgillan Castle & Gardens)",
-    "provider": "GCakes",
-    "section": "camps"
   },
   {
     "slug": "rugbytots-newpark-sports-centre-blackrock",
@@ -501,14 +461,6 @@
     "url": "https://sortd-ireland.ie/classes/dublin/acting-academy-swords",
     "name": "Acting Academy — Swords",
     "provider": "Acting Academy",
-    "section": "classes"
-  },
-  {
-    "slug": "leader-gymnastics-club-swords",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/leader-gymnastics-club-swords",
-    "name": "Leader Gymnastics Club — Swords",
-    "provider": "Leader Gymnastics Club",
     "section": "classes"
   },
   {
@@ -736,14 +688,6 @@
     "section": "classes"
   },
   {
-    "slug": "the-krafty-italian-dublin-autumn-halloween-craft-classes-fridays",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/the-krafty-italian-dublin-autumn-halloween-craft-classes-fridays",
-    "name": "Autumn & Halloween Craft Classes (Fridays)",
-    "provider": "The Krafty Italian Dublin",
-    "section": "classes"
-  },
-  {
     "slug": "rugbytots-skerries-etns",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-skerries-etns",
@@ -774,14 +718,6 @@
     "name": "Leap Gymnastics Club",
     "provider": "Leap Gymnastics Club",
     "section": "classes"
-  },
-  {
-    "slug": "mellow-yellow-for-kids",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/camps/dublin/mellow-yellow-for-kids",
-    "name": "Mellow Yellow for Kids",
-    "provider": "Mellow Yellow for Kids",
-    "section": "camps"
   },
   {
     "slug": "de-la-salle-palmerston-fc-dlsp-fc-dlsp-fc-mini-rugby",
