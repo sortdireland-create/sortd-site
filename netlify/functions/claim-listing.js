@@ -19,7 +19,7 @@
 // claimed, they're marked as verified and can email in changes — a full
 // self-serve edit flow is a later build once this proves people want it.
 //
-// Requires: AIRTABLE_API_KEY, CUSTOMERIO_APP_API_KEY (same as submit-listing.js)
+// Requires: AIRTABLE_API_KEY, BREVO_API_KEY (same as submit-listing.js)
 //
 // ── Same one-time Airtable setup as submit-listing.js — see that file's
 // header comment for the 3 fields to add, then fill in the real field
@@ -43,14 +43,6 @@ const F = {
 };
 
 const SITE_URL = 'https://sortd-ireland.ie';
-
-// Customer.io's transactional Send API is region-locked — an EU-region
-// workspace's App API key is rejected (401) by the default api.customer.io
-// (US) host. Must match CUSTOMERIO_REGION, same as subscribe.js's Track API
-// host logic. Getting this wrong means every send silently fails (caught
-// below and only console.error'd — nothing surfaces to the caller).
-const CIO_REGION = (process.env.CUSTOMERIO_REGION || 'us').toLowerCase();
-const CIO_SEND_HOST = CIO_REGION === 'eu' ? 'api-eu.customer.io' : 'api.customer.io';
 
 // Login Tokens table — shared with submit-listing.js and sortd-provider-portal's
 // request-link.js. Generating a token here means the "listing claimed!" page
@@ -136,26 +128,6 @@ async function sendEmail({ to, subject, html }) {
     }),
   });
   if (!res.ok) console.error('Brevo email failed:', await res.text());
-}
-
-// Kept for fallback — not called. Switched to Brevo (Sept 2026) after
-// Customer.io's trial lapsed; see the region-host fix above this function
-// for context on the send call this replaced.
-async function sendEmailViaCustomerIo({ to, subject, html }) {
-  const apiKey = process.env.CUSTOMERIO_APP_API_KEY;
-  if (!apiKey) { console.warn('CUSTOMERIO_APP_API_KEY not set — skipping email to', to); return; }
-  const res = await fetch(`https://${CIO_SEND_HOST}/v1/send/email`, {
-    method: 'POST',
-    headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      to,
-      from: 'sortd <hello@sortd-ireland.ie>',
-      subject,
-      body: html,
-      identifiers: { email: to },
-    }),
-  });
-  if (!res.ok) console.error('Customer.io email failed:', await res.text());
 }
 
 // ── Post-claim welcome email — sent once, right after a listing is

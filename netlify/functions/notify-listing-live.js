@@ -10,7 +10,7 @@
 // short interval, finds any listing that's newly live and hasn't been
 // emailed yet, sends the email, then marks it sent so it's never repeated.
 //
-// Requires the same AIRTABLE_API_KEY / CUSTOMERIO_APP_API_KEY env vars as
+// Requires the same AIRTABLE_API_KEY / BREVO_API_KEY env vars as
 // submit-listing.js.
 
 const { emailShell, emailButton, emailBox } = require('./lib/email-shell');
@@ -24,13 +24,6 @@ const F = {
   PROVIDER_EMAIL: 'fldaApVUFBE4DPy3S',
   LIVE_EMAIL_SENT: 'fldwRZoQ35bVMmu8J',
 };
-
-// Customer.io's transactional Send API is region-locked — an EU-region
-// workspace's App API key is rejected (401) by the default api.customer.io
-// (US) host. Kept in sync with the same fix in claim-listing.js /
-// submit-listing.js / subscribe.js.
-const CIO_REGION = (process.env.CUSTOMERIO_REGION || 'us').toLowerCase();
-const CIO_SEND_HOST = CIO_REGION === 'eu' ? 'api-eu.customer.io' : 'api.customer.io';
 
 async function sendEmail({ to, subject, html }) {
   const apiKey = process.env.BREVO_API_KEY;
@@ -62,41 +55,6 @@ async function sendEmail({ to, subject, html }) {
   }
   if (!res.ok) {
     console.error('Brevo email failed:', await res.text());
-    return false;
-  }
-  return true;
-}
-
-// Kept for fallback — not called. Switched to Brevo (Sept 2026) after
-// Customer.io's trial lapsed.
-async function sendEmailViaCustomerIo({ to, subject, html }) {
-  const apiKey = process.env.CUSTOMERIO_APP_API_KEY;
-  if (!apiKey) {
-    console.warn('CUSTOMERIO_APP_API_KEY not set — skipping email send to', to);
-    return false;
-  }
-  let res;
-  try {
-    res = await fetch(`https://${CIO_SEND_HOST}/v1/send/email`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        to,
-        from: 'sortd <hello@sortd-ireland.ie>',
-        subject,
-        body: html,
-        identifiers: { email: to },
-      }),
-    });
-  } catch (fetchErr) {
-    console.error(`Customer.io fetch threw for ${to}:`, fetchErr && fetchErr.stack || fetchErr);
-    return false;
-  }
-  if (!res.ok) {
-    console.error('Customer.io email failed:', await res.text());
     return false;
   }
   return true;

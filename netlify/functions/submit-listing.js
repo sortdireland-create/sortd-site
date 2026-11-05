@@ -9,8 +9,7 @@
 //
 // Requires these Netlify env vars (same pattern as generate-listings.js / subscribe.js):
 // AIRTABLE_API_KEY — already in use elsewhere
-// CUSTOMERIO_APP_API_KEY — Customer.io → Settings → API Credentials → App API Keys
-// (different key from the Track API key used in subscribe.js)
+// BREVO_API_KEY — Brevo → SMTP & API → API keys
 // RACHEL_NOTIFY_EMAIL — the inbox that should get "new listing" notifications
 //
 // ── ONE-TIME SETUP NEEDED IN AIRTABLE before this works ─────────────
@@ -43,14 +42,6 @@ const LT = {
 };
 const TOKEN_TTL_MINUTES = 30; // matches request-link.js
 const PORTAL_URL = 'https://portal.sortd-ireland.ie';
-
-// Customer.io's transactional Send API is region-locked — an EU-region
-// workspace's App API key is rejected (401) by the default api.customer.io
-// (US) host. Must match CUSTOMERIO_REGION, same as subscribe.js's Track API
-// host logic. Getting this wrong means every send silently fails (caught
-// below and only console.error'd — nothing surfaces to the caller).
-const CIO_REGION = (process.env.CUSTOMERIO_REGION || 'us').toLowerCase();
-const CIO_SEND_HOST = CIO_REGION === 'eu' ? 'api-eu.customer.io' : 'api.customer.io';
 
 const F = {
   NAME: 'fldTrzk8wQ8sefLvj',
@@ -145,35 +136,6 @@ async function sendEmail({ to, subject, html }) {
   });
   if (!res.ok) {
     console.error('Brevo email failed:', await res.text());
-  }
-}
-
-// Kept for fallback — not called. Switched to Brevo (Sept 2026) after
-// Customer.io's trial lapsed.
-async function sendEmailViaCustomerIo({ to, subject, html }) {
-  const apiKey = process.env.CUSTOMERIO_APP_API_KEY;
-  if (!apiKey) {
-    console.warn('CUSTOMERIO_APP_API_KEY not set — skipping email send to', to);
-    return;
-  }
-  // Ad-hoc send (no pre-built Customer.io template needed) — identifiers.email
-  // links this send to a customer profile, creating one if it doesn't exist yet.
-  const res = await fetch(`https://${CIO_SEND_HOST}/v1/send/email`, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      to,
-      from: 'sortd <hello@sortd-ireland.ie>',
-      subject,
-      body: html,
-      identifiers: { email: to },
-    }),
-  });
-  if (!res.ok) {
-    console.error('Customer.io email failed:', await res.text());
   }
 }
 
