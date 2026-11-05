@@ -80,6 +80,61 @@ function categoryStyle(cat){
   return {cc:'#3D77A3', icon:'ti-star'};
 }
 
+// Sport-specific icon for a listing's card banner. Almost every sport
+// listing has the generic Airtable category "Sport", so the actual sport
+// is read from the listing's name + provider + category text instead.
+// Order matters: GAA before soccer (Gaelic *football*), rugby before soccer
+// (rugby clubs are often "... FC"). Returns '' when no sport is recognised,
+// so non-sport cards keep their plain pastel banner.
+// All icons are hand-drawn inline SVG (48px grid, thin 1.5px line, single
+// colour via currentColor) so they render without any icon-font lookup.
+const SPORT_SVG = {
+  gaa: '<path d="M6 6l2.5-1.5 15 21-3 2z"/><path d="M8.6 9.6l2.4-1.5M10.4 12.2l2.4-1.5"/><path d="M20.5 27.5c-2 4.5-.5 11 5.5 13 5 1.5 11-.5 11.5-4 .5-3-2.5-5-6.5-6-3.5-.8-5.8-2.5-7.5-5"/><path d="M22.5 31.5c2 1.8 5 3 8 3.5" opacity=".6"/><circle cx="35" cy="12" r="6"/><path d="M29.6 9.6c3.4 2 7.4 2 10.8 0M29.6 14.4c3.4-2 7.4-2 10.8 0"/>',
+  tennis: '<g transform="rotate(-35 24 24)"><ellipse cx="24" cy="16" rx="9.5" ry="12"/><g opacity=".55" stroke-width="1"><path d="M19 5.5v21M24 4v24M29 5.5v21M15.5 10h17M14.5 16h19M15.5 22h17"/></g><path d="M19.5 26.5l2.9 6.5M28.5 26.5l-2.9 6.5M20.5 27.5q3.5 2 7 0"/><rect x="21.6" y="33" width="4.8" height="12" rx="2.2"/><path d="M21.6 36.5h4.8M21.6 39.5h4.8M21.6 42.5h4.8" opacity=".6"/></g><circle cx="39" cy="10" r="5"/><path d="M34.8 7.8c2.6 1.3 2.6 3.1 0 4.4M43.2 7.8c-2.6 1.3-2.6 3.1 0 4.4"/>',
+  rugby: '<g transform="rotate(-40 24 24)"><ellipse cx="24" cy="24" rx="18" ry="11"/><path d="M6 24q18-12 36 0M6 24q18 12 36 0" opacity=".6"/><path d="M17.5 24h13M19 21.8v4.4M22 21.8v4.4M25 21.8v4.4M28 21.8v4.4"/></g>',
+  swim: '<circle cx="33" cy="12" r="3.5"/><path d="M12 22c4-8 12-10 17-5"/><path d="M18 27l9-5 8 3"/><path d="M4 32c3 0 3-2.5 6-2.5s3 2.5 6 2.5 3-2.5 6-2.5 3 2.5 6 2.5 3-2.5 6-2.5 3 2.5 6 2.5"/><path d="M4 39c3 0 3-2.5 6-2.5s3 2.5 6 2.5 3-2.5 6-2.5 3 2.5 6 2.5 3-2.5 6-2.5 3 2.5 6 2.5" opacity=".6"/><circle cx="9" cy="17" r="1"/><circle cx="6" cy="22" r=".8"/>',
+  soccer: '<circle cx="24" cy="24" r="18"/><path d="M24 18l5.7 4.1-2.2 6.8h-7l-2.2-6.8z" fill="currentColor" fill-opacity=".18"/><path d="M24 18v-6M29.7 22.1l11.4-1.8M27.5 28.9l3.6 4.8M20.5 28.9l-3.6 4.8M18.3 22.1l-11.4-1.8" opacity=".9"/><path d="M15 8.4l9 3.6 9-3.6M36 10.6l-.6 9.7 6.2 7.4M40.4 31.3l-9.3 2.4-5.2 8.2M22.1 41.9l-5.2-8.2-9.3-2.4M6.4 27.7l6.2-7.4-.6-9.7" opacity=".55"/>',
+  basketball: '<circle cx="24" cy="24" r="18"/><path d="M24 6v36M6 24h36"/><path d="M11.3 11.3c5.7 5.7 5.7 19.7 0 25.4M36.7 11.3c-5.7 5.7-5.7 19.7 0 25.4"/>',
+  martial: '<path d="M6 18q18 4 36 0M6 23q18 4 36 0"/><rect x="20" y="16.5" width="8" height="8" rx="1.5"/><path d="M21.5 24.5L16 38l4.5 1.5L24 25M26.5 24.5L32 38l-4.5 1.5L24.5 25"/><path d="M17.2 35l4.2 1.2M30.8 35l-4.2 1.2" opacity=".6"/>',
+  gym: '<path d="M8 4h32"/><path d="M16 4v21M32 4v21"/><path d="M14.5 25h3M30.5 25h3"/><circle cx="16" cy="31" r="5.5"/><circle cx="32" cy="31" r="5.5"/><path d="M8 4l-2 2M40 4l2 2" opacity=".6"/>',
+  run: '<circle cx="30" cy="8" r="3.5"/><path d="M28.5 12.5L22 25"/><path d="M27 15.5l7 3.5 4-3M27 15.5l-7.5 1.5-4 5"/><path d="M22 25l7 6-2 9M22 25l-6 7-8-1"/><path d="M3 14h8M1 20h8M5 26h6" opacity=".5"/><path d="M4 44h40" opacity=".4"/>',
+  hockey: '<path d="M7 6l2.5-1.5L31 33.5c2 2.5 5 3 7 1.5 2.5-1.5 4 1 2 3.5-3 3.5-9 3-12-1.5z"/><path d="M10.2 9.4l2.4-1.6M12 12l2.4-1.6" opacity=".7"/><circle cx="14" cy="38" r="3.8"/><circle cx="13" cy="37" r=".6"/><circle cx="15.3" cy="38.8" r=".6"/>',
+  golf: '<path d="M18 6v32M18 6l14 4.5L18 15z"/><ellipse cx="18" cy="39" rx="8" ry="2.5"/><circle cx="33" cy="34" r="3.5"/><path d="M38 41l1-3M41 41l.5-2.5" opacity=".6"/>',
+  bike: '<circle cx="12" cy="32" r="8"/><circle cx="36" cy="32" r="8"/><path d="M12 32l8-12h12l4 12M20 20l4 12 8-12M17 16h6M20 16v4M30 15h4M32 15v5"/><circle cx="24" cy="32" r="1.5"/>',
+  horse: '<path d="M13 40C6 32 6 14 15 8c4-2.5 14-2.5 18 0 9 6 9 24 2 32l-4.5-2.5C36 31 36 17 30 12.5c-3-2-9-2-12 0-6 4.5-6 18.5-.5 25z"/><circle cx="11" cy="22" r=".9"/><circle cx="12" cy="29" r=".9"/><circle cx="37" cy="22" r=".9"/><circle cx="36" cy="29" r=".9"/><circle cx="16" cy="13" r=".9"/><circle cx="32" cy="13" r=".9"/>',
+  sail: '<path d="M8 34h32l-5 6H13z"/><path d="M24 6v28M24 8l13 22H24M22 11l-10 19h10"/><path d="M4 43c3 0 3-2 6-2s3 2 6 2 3-2 6-2 3 2 6 2 3-2 6-2 3 2 6 2" opacity=".6"/>',
+  kayak: '<path d="M4 30c10-6 30-6 40 0-10 4-30 4-40 0z"/><ellipse cx="24" cy="29" rx="4" ry="1.5"/><path d="M10 12l28 28"/><ellipse cx="8.5" cy="10.5" rx="2" ry="4.5" transform="rotate(-45 8.5 10.5)"/><ellipse cx="39.5" cy="41.5" rx="2" ry="4.5" transform="rotate(-45 39.5 41.5)"/>',
+  multi: '<g transform="translate(9 9) scale(.68)"><circle cx="30" cy="8" r="3.5"/><path d="M28.5 12.5L22 25"/><path d="M27 15.5l7 3.5 4-3M27 15.5l-7.5 1.5-4 5"/><path d="M22 25l7 6-2 9M22 25l-6 7-8-1"/></g><circle cx="8" cy="10" r="4.5"/><path d="M8 5.5v9M3.5 10h9M4.8 6.8c2 2 2 4.4 0 6.4M11.2 6.8c-2 2-2 4.4 0 6.4" opacity=".7"/><circle cx="41" cy="12" r="3.8"/><path d="M37.9 10.3c1.9 1 1.9 2.4 0 3.4M44.1 10.3c-1.9 1-1.9 2.4 0 3.4" opacity=".7"/><circle cx="39" cy="38" r="5"/><path d="M39 35.4l2.4 1.8-.9 2.8h-3l-.9-2.8z" opacity=".7"/><path d="M4 44h28" opacity=".4"/>'
+};
+const SPORT_ICONS = [
+  {match:['gaa','gaelic','hurling','camogie','gfc','clg','gaels','cumann'], svg:'gaa'},
+  {match:['rugby','rugbytots','rfc'], svg:'rugby'},
+  {match:['tennis'], svg:'tennis'},
+  {match:['basketball'], svg:'basketball'},
+  {match:['hockey'], svg:'hockey'},
+  {match:['swim','aquatic','splash'], svg:'swim'},
+  {match:['karate','taekwondo','martial','judo','capoeira','kickboxing','jiu'], svg:'martial'},
+  {match:['gymnastic','trampolin','tumbl'], svg:'gym'},
+  {match:['athletics','athletic club',' ac ','running'], svg:'run'},
+  {match:['soccer','football',' fc','kickers','afc'], svg:'soccer'},
+  {match:['golf'], svg:'golf'},
+  {match:['cycling','bike','bmx'], svg:'bike'},
+  {match:['horse','pony','equestrian','riding'], svg:'horse'},
+  {match:['sailing','sail '], svg:'sail'},
+  {match:['kayak','canoe'], svg:'kayak'},
+  // Multi-sport / anything else filed under Sport
+  {match:['playball','multisport','multi-sport','sport'], svg:'multi'}
+];
+function sportIconHtml(c){
+  const h = (' '+[c.name,c.provider,c.category].join(' ')+' ').toLowerCase();
+  for(const s of SPORT_ICONS){
+    if(s.match.some(m => h.includes(m))){
+      return '<svg class="sport-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+SPORT_SVG[s.svg]+'</svg>';
+    }
+  }
+  return '';
+}
+
 function ageOverlap(ageMin, ageMax, lo, hi){
   const effMin = ageMin==null ? 0 : ageMin;
   const effMax = ageMax==null ? 99 : ageMax;
@@ -174,9 +229,11 @@ function listingCard(c, i, showType){
   const avail = availabilityOf(c);
   const isWait = avail === 'Waitlist';
   const isLimited = avail === 'Limited spaces';
+  const sportIcon = sportIconHtml(c);
   return '<div class="camp-card">'
   +'<div class="card-img" style="background:'+col.bg+'">'
   +(isHalloween?HW_PUMPKIN_ICON:'')
+  +(!isHalloween&&sportIcon?'<div class="card-sport" style="color:'+col.ink+'">'+sportIcon+'</div>':'')
   +'<div class="card-status '+(isWait?'s-wait':isLimited?'s-limited':'s-open')+'">'+(isWait?'WAITLIST':isLimited?'LIMITED SPACES':'LIVE NOW')+'</div>'
   +'<button class="card-save" data-save-id="'+c.id+'" aria-label="Save for later" aria-pressed="false" onclick="event.preventDefault();window.SortdSaved&&window.SortdSaved.toggle(\''+c.id+'\',this);"><i class="ti ti-heart"></i></button>'
   +'</div>'
@@ -208,7 +265,7 @@ function featuredCard(c){
   const isHalloween = /halloween/i.test(c.name||'');
   const s = isHalloween ? {cc:HW_ORANGE.ink} : categoryStyle(c.category);
   const typeLabel = c.type === 'weekly' ? 'Class' : 'Holiday camp';
-  const iconHtml = isHalloween ? HW_BAT_ICON : '<i class="ti '+s.icon+'"></i>';
+  const iconHtml = isHalloween ? HW_BAT_ICON : (sportIconHtml(c) || '<i class="ti '+s.icon+'"></i>');
   return '<a href="'+c.listingUrl+'" class="fcard" style="--cc:'+s.cc+'">'
   +'<div class="fcard-top"><div class="fcard-icon">'+iconHtml+'</div><div class="fcard-type">'+typeLabel+'</div></div>'
   +'<div class="fcard-name">'+c.name+'</div>'
