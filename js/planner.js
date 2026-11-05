@@ -468,7 +468,24 @@
   function loadGuide() {
     var t = SY.today(), m1 = t.getFullYear() + '-' + SY.pad(t.getMonth() + 1), p = new Date(t.getFullYear(), t.getMonth() - 1, 1), m0 = p.getFullYear() + '-' + SY.pad(p.getMonth() + 1);
     function get(m) { return fetch('/data/whats-on-' + m + '.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }); }
-    return get(m1).catch(function () { return get(m0); }).then(function (g) { guide = g; }).catch(function () { guide = null; });
+    return get(m1).catch(function () { return get(m0); }).then(function (g) { guide = normGuide(g); }).catch(function () { guide = null; });
+  }
+  // Accepts both this file's own shape and the sortd-monthly-guide skill's
+  // calendar file (dates[], time/end "HH:MM", area, age, when, tag "rain").
+  function hhmm(v) { if (typeof v === 'number') return v; var m = String(v || '').match(/^(\d{1,2}):(\d{2})$/); return m ? (+m[1]) * 60 + (+m[2]) : null; }
+  function normGuide(g) {
+    var AGE = { baby: 'Babies & toddlers', little: 'Little kids (4–7)', big: 'Big kids (8–12)', all: 'All ages' };
+    (g.events || []).forEach(function (e) {
+      if (e.start == null && e.time !== undefined) e.start = hhmm(e.time);
+      if (typeof e.end === 'string') e.end = hhmm(e.end);
+      if (e.end == null && e.start != null) e.end = e.start + 60;
+      if (!e.region && e.area) e.region = e.area;
+      if (!e.ages && e.age) e.ages = AGE[e.age] || e.age;
+      if (!e.times && e.when) e.times = e.when;
+      e.tags = (e.tags || []).map(function (t) { return t === 'rain' ? 'rainy' : t; });
+      if (e.dates && e.dates.length) { e.from = e.from || e.dates[0]; e.to = e.to || e.dates[e.dates.length - 1]; }
+    });
+    return g;
   }
   function outings() { return P().outings || (P().outings = []); }
   function evById(id) { return guide && (guide.events || []).find(function (e) { return e.id === id; }); }
