@@ -359,7 +359,27 @@
       '<div class="stack"><div class="panel"><div class="phead"><h2>Your classes</h2>' +
       (list.length ? '<button class="btn light" data-act="exportall">Add all to my phone\'s calendar</button>' : '') + '</div>' +
       (list.length ? list.map(classCard).join('') : '<p class="muted">No classes yet. Find one on Sortd and tap "Add to my Sortd calendar", or add your own.</p>') +
-      '<div class="actions"><a class="btn" href="/weekly-classes">Find a class on Sortd</a><button class="btn light" data-act="ownclass">+ Add your own class</button></div></div></div>';
+      '<div class="actions"><a class="btn" href="/weekly-classes">Find a class on Sortd</a></div></div>' +
+      ownClassPanel() + '</div>';
+  }
+  // "Add your own class": its own module under Your classes, with the form
+  // inline (swimming, GAA, Irish dancing... anything not on Sortd).
+  function ownClassPanel() {
+    var head = '<div class="ownhead"><span class="ownico" aria-hidden="true">+</span><div><h2>Add your own class</h2>' +
+      '<p class="muted">Swimming, GAA, Irish dancing, grinds: anything that isn\'t on Sortd. It shows every week in term time, with school breaks taken out, just like the rest.</p></div></div>';
+    if (!kids().length) return '<div class="panel ownpanel">' + head + '<div class="actions"><button class="btn" data-act="setup">Add your children first</button></div></div>';
+    var t = SY.iso(SY.today());
+    return '<div class="panel ownpanel">' + head +
+      '<div class="ownform">' +
+      '<label class="field ownwide" for="oc-name">Class<input id="oc-name" maxlength="80" placeholder="e.g. Swimming at Portmarnock Sports Centre"></label>' +
+      '<div class="field ownwide"><span>Who\'s going?</span><div class="kidsbar">' + kids().map(function (k, i) { return '<label class="kid"><input type="checkbox" class="oc-kid" value="' + esc(k.id) + '"' + (i === 0 ? ' checked' : '') + '> <span class="swatch" style="background:var(' + k.col + ')"></span>' + esc(k.name) + '</label>'; }).join('') + '</div></div>' +
+      '<label class="field" for="oc-day">Day<select id="oc-day">' + [1, 2, 3, 4, 5, 6, 0].map(function (d) { return '<option value="' + d + '">' + DAYS_LONG[d] + '</option>'; }).join('') + '</select></label>' +
+      '<label class="field" for="oc-start">Starts<input id="oc-start" type="time" value="16:00"></label>' +
+      '<label class="field" for="oc-end">Ends<input id="oc-end" type="time" value="17:00"></label>' +
+      '<label class="field" for="oc-from">First class<input id="oc-from" type="date" value="' + t + '"></label>' +
+      '<label class="field ownwide" for="oc-venue">Where (optional)<input id="oc-venue" maxlength="120" placeholder="e.g. Malahide Community School"></label>' +
+      '<label class="field ownwide"><span><input id="oc-year" type="checkbox"> Carry on after this term (to ' + SY.nice(SY.lastTermDay()) + ')</span></label>' +
+      '</div><div class="actions"><button class="btn green" data-act="saveown">Add to my calendar</button></div></div>';
   }
   function classCard(c) {
     var rs = classRuns(c), n = rs.reduce(function (a, r) { return a + SY.count(r); }, 0), l = c.listing || {};
@@ -453,7 +473,7 @@
     P().kids = ks;
     setupKids = null; setupDraft = null;
     var s = document.querySelector('.scrim'); if (s) s.remove();
-    changed(); render(); toast(first ? 'All set. Start with week 1.' : 'Saved');
+    changed(); render(); toast(first ? 'All set' : 'Saved');
   }
 
   function campResult(c, k, w, fr) {

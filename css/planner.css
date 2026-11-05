@@ -221,3 +221,13 @@ table.costs{width:100%;border-collapse:collapse;font-size:14px}
 label.kid{cursor:pointer;}
 @media(min-width:760px){.cweek{grid-template-columns:repeat(5,minmax(0,1fr));}.cday.is-wkend{grid-column:span 1;}
   .cweek{grid-template-columns:repeat(7,minmax(0,1fr));}.cday{min-height:150px;align-content:start;padding:10px;}.cevt{font-size:12.5px;padding:6px 8px;}.cday-h{font-size:13px;}}
+/* "Add your own class" module */
+.ownpanel{background:var(--pul);border:2px dashed var(--pu);box-shadow:none;}
+.ownhead{display:flex;gap:14px;align-items:flex-start;}
+.ownico{flex:none;width:44px;height:44px;border-radius:12px;background:var(--pu);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:28px;line-height:1;}
+.ownhead h2{font-size:20px;margin-bottom:4px;}
+.ownform{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+.ownform .ownwide{grid-column:1/-1;}
+.ownform .field input,.ownform .field select{background:#fff;}
+.ownpanel label.kid{background:#fff;}
+@media(max-width:640px){.ownform{grid-template-columns:1fr 1fr;}}
