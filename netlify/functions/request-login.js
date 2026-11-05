@@ -36,6 +36,57 @@ const LT = {
 
 const TOKEN_TTL_MINUTES = 30;
 const SITE_URL = 'https://sortd-ireland.ie';
+const INSTAGRAM_URL = 'https://www.instagram.com/sortd.ireland/';
+
+// Secondary CTA: outlined pill, so the login button stays the main action.
+function outlineButton(text, url) {
+  return `<a class="dm-link" href="${url}" style="display:inline-block;margin:0 8px 10px 0;padding:11px 22px;border:2px solid #1B8350;border-radius:999px;color:#1B8350;font-family:'Baloo 2','Trebuchet MS',Verdana,Arial,sans-serif;font-weight:700;font-size:15px;text-decoration:none;">${text}</a>`;
+}
+
+function featureRow(title, text) {
+  return `<tr><td style="padding:0 0 10px;font-size:15px;line-height:1.55;"><strong>${title}</strong><br><span style="color:#5B6783;">${text}</span></td></tr>`;
+}
+
+// Sent when a parent unlocks features on /account (source: 'unlock').
+// Login link first, then what the account does, then the beta list,
+// then Instagram and the Thursday email (its own sign-up on /newsletter).
+function unlockWelcomeHtml(link) {
+  return emailShell(`
+    <p style="margin:0 0 6px;font-family:'Baloo 2','Trebuchet MS',Verdana,Arial,sans-serif;font-size:24px;font-weight:800;line-height:1.25;">You're in. Welcome to sortd.</p>
+    <p style="margin:0 0 4px;">Thanks for unlocking your account. Tap below to log in, and your saved camps and classes will follow you to any device.</p>
+    ${emailButton('Log me in →', link)}
+    <p style="margin:-8px 0 26px;font-size:13px;color:#5B6783;">This link works once and expires in ${TOKEN_TTL_MINUTES} minutes. You can get a new one any time at <a class="dm-link" href="${SITE_URL}/account" style="color:#1B8350;">sortd-ireland.ie/account</a>.</p>
+
+    <p style="margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#5B6783;">Ready now</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 14px;">
+      ${featureRow('Save camps and classes', 'Tap the heart on any listing and it is kept in your account.')}
+      ${featureRow('Find an activity', 'Holiday camps and weekly classes across Ireland, by age, area and dates.')}
+      ${featureRow("What's on this month", 'Our free monthly guide to days out and things to do with the kids.')}
+    </table>
+
+    ${emailBox(`
+      <p style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#5B4FCA;">In beta testing</p>
+      <p style="margin:0 0 10px;line-height:1.6;">These are being tested with a small group of parents right now. You're on the list, so you'll be first to try each one as it opens:</p>
+      <p style="margin:0 0 10px;line-height:1.9;">
+        <strong>Summer planner</strong>: plan the summer week by week, with drop-offs and pick-ups<br>
+        <strong>Family calendar</strong>: classes, days out and camps for each child<br>
+        <strong>Friends</strong>: see which camps your friends' kids are going to<br>
+        <strong>Add to your calendar</strong>: Google, Apple or Outlook<br>
+        <strong>School days off</strong>: midterms and bank holidays built in<br>
+        <strong>Costs and annual leave</strong>: what the summer costs, and the days off you'll need
+      </p>
+      <p style="margin:0;line-height:1.6;">It's a beta, so some things may be a bit rough. If anything looks off, just reply to this email.</p>
+    `, 'provider')}
+
+    <p style="margin:6px 0 12px;">Want to hear what's new first?</p>
+    <div style="margin:0 0 18px;">
+      ${outlineButton('Follow @sortd.ireland', INSTAGRAM_URL)}
+      ${outlineButton('Get the Thursday email', SITE_URL + '/newsletter')}
+    </div>
+
+    <p style="margin:0;">Rachel<br><span style="color:#5B6783;">Founder, sortd</span></p>
+  `, null, { audience: 'parent', eyebrow: 'Features unlocked' });
+}
 
 async function sendEmail({ to, subject, html }) {
   const apiKey = process.env.BREVO_API_KEY;
@@ -90,6 +141,7 @@ exports.handler = async function (event) {
   // includes a checkbox's name in FormData/the POST body when it's
   // checked, so any of these shapes mean "checked": 'on' (native form
   // submit), true/'true' (a JSON body posting a real boolean).
+  const isUnlock = data.source === 'unlock';
   const newsletterOptIn = data.newsletterOptIn === 'on' || data.newsletterOptIn === true || data.newsletterOptIn === 'true';
 
   try {
@@ -126,7 +178,11 @@ exports.handler = async function (event) {
     const link = `${SITE_URL}/.netlify/functions/verify-login?token=${token}`;
 
     try {
-      await sendEmail({
+      await sendEmail(isUnlock ? {
+        to: email,
+        subject: "You're in: your sortd account is unlocked",
+        html: unlockWelcomeHtml(link),
+      } : {
         to: email,
         subject: 'Your sortd login link',
         html: emailShell(`
@@ -156,3 +212,6 @@ exports.handler = async function (event) {
     };
   }
 };
+
+// Exported for previews/tests only.
+exports._unlockWelcomeHtml = unlockWelcomeHtml;
