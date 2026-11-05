@@ -25,7 +25,7 @@ gtag('config', 'G-HHTB7S9WJG');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 .hero{position:static;overflow:visible;background:var(--nv);color:#fff;padding:56px 24px 72px;text-align:center;}
-.hero h1{font-family:var(--fd);font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px;}
+.hero h1{color:#fff;font-family:var(--fd);font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px;}
 .hero p{max-width:480px;margin:0 auto;color:#c9d0dd;font-size:1.05rem;line-height:1.6;}
 .wrap{max-width:560px;margin:-40px auto 64px;padding:0 20px;}
 .card{background:#fff;border-radius:20px;box-shadow:0 10px 40px rgba(39,49,74,.12);padding:36px 32px;}
@@ -48,7 +48,30 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 .planner-card.is-off{opacity:.55;filter:grayscale(1);cursor:not-allowed;background:#fafafa;}
 .planner-card.is-off .planner-go{background:#bbb;}
 a.planner-card:hover{border-color:var(--gr);}
-@media (max-width:480px){.planner-card{flex-wrap:wrap}.planner-card .planner-go{margin-left:58px}}
+@media (max-width:480px){.planner-card{flex-wrap:wrap}.planner-txt{flex:1 1 calc(100% - 58px)}.planner-card .planner-go{margin-left:58px}}
+.wrap{max-width:760px;}
+.card .lede{margin-bottom:22px;}
+.sec-h{font-family:var(--fd);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#8a8fa0;margin:26px 0 10px;}
+.sec-h:first-of-type{margin-top:0;}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.feat{display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:16px;border:1.5px solid #e6e6ee;background:#fff;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s;}
+.feat:hover{border-color:var(--nv);transform:translateY(-1px);}
+.feat-ico{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:21px;margin-bottom:4px;}
+.feat b{font-family:var(--fd);color:var(--nv);font-size:1.05rem;}
+.feat span{color:#666;font-size:.88rem;line-height:1.45;flex:1;}
+.feat em{font-style:normal;font-weight:800;font-size:.85rem;color:var(--nv);margin-top:4px;}
+.ico-pk{background:#FBD7E4;color:#C66686;}
+.ico-bl{background:#DCEBF5;color:#3D77A3;}
+.ico-pu{background:#E7E1F8;color:#5B4FCA;}
+.ico-gr{background:#C9F0DA;color:#1D8A52;}
+.soon-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;}
+.soon-list li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid #f0f0f0;}
+.soon-list li i{flex:none;font-size:19px;color:#9aa0b0;margin-top:2px;}
+.soon-list b{display:block;color:var(--nv);font-size:.95rem;}
+.soon-list span{color:#888;font-size:.85rem;line-height:1.45;}
+.soon-list .soon-in-planner{display:inline-block;margin-top:4px;font-weight:800;font-size:.82rem;color:var(--gr);text-decoration:none;}
+.soon-note{color:#888;font-size:.85rem;margin-top:14px;}
+@media (max-width:600px){.feat-grid,.soon-list{grid-template-columns:1fr;}.card{padding:28px 20px;}}
 </style>
   <script src="/js/booking-tracking.js" defer></script>
   <script src="/js/newsletter-signup.js" defer></script>
@@ -78,24 +101,66 @@ a.planner-card:hover{border-color:var(--gr);}
 </nav>
 
 <div class="hero">
-<h1>You're logged in</h1>
-<p>Welcome to sortd — your account's ready.</p>
+<h1>My account</h1>
+<p>Save the activities you like, find what's on, and soon plan the whole year in one place.</p>
 </div>
 
 <div class="wrap">
 <div class="card">
-<h2>What's here so far</h2>
-<p>Save a camp or class anywhere on the site and it'll show up below.</p>
+<h2>What you can do on sortd</h2>
+<p class="lede">Your account is free. Here's what it does today, and what's on the way.</p>
+
+<div class="sec-h">Ready now</div>
+<div class="feat-grid">
+<a class="feat" href="#saved">
+<div class="feat-ico ico-pk" aria-hidden="true"><i class="ti ti-heart"></i></div>
+<b>Saved activities</b>
+<span id="savedCount">Tap the heart on any camp or class and it's kept here for you.</span>
+<em>See what you've saved →</em>
+</a>
+<a class="feat" href="/find-an-activity">
+<div class="feat-ico ico-bl" aria-hidden="true"><i class="ti ti-search"></i></div>
+<b>Find an activity</b>
+<span>Holiday camps and weekly classes across Ireland, by age, area and dates.</span>
+<em>Start searching →</em>
+</a>
+<!-- Monthly guide: update this link when each new month's guide goes live. -->
+<a class="feat" href="/guides/things-to-do-with-kids-dublin-november.html">
+<div class="feat-ico ico-pu" aria-hidden="true"><i class="ti ti-calendar-event"></i></div>
+<b>What's on this month</b>
+<span>Our free monthly guide to days out, events and things to do with the kids.</span>
+<em>Read the guide →</em>
+</a>
+<a class="feat" href="/newsletter">
+<div class="feat-ico ico-gr" aria-hidden="true"><i class="ti ti-mail"></i></div>
+<b>The Thursday email</b>
+<span>New camps, open spots and what's on near you, once a week.</span>
+<em>Get it free →</em>
+</a>
+</div>
+
+<div class="sec-h">In testing</div>
 <div class="planner-card is-off" id="plannerCard" aria-disabled="true">
 <div class="planner-ico" aria-hidden="true">☀</div>
 <div class="planner-txt"><b>Summer planner</b><span id="plannerNote">Plan the summer week by week, see where friends' kids are going, and sort out drop-offs and pick-ups. Coming soon, in testing.</span></div>
 <span class="planner-go" id="plannerGo">Coming soon</span>
 </div>
+
+<div class="sec-h">Coming soon</div>
+<ul class="soon-list">
+<li><i class="ti ti-mood-kid" aria-hidden="true"></i><div><b>Your kids</b><span>Add each child's first name and age once, and we'll show what suits them.</span></div></li>
+<li><i class="ti ti-calendar" aria-hidden="true"></i><div><b>Family calendar</b><span>Classes, days out and camps for each child, across the whole school year.</span></div></li>
+<li data-planner><i class="ti ti-users" aria-hidden="true"></i><div><b>Friends</b><span>See which camps your friends' kids are going to, and join them in a tap.</span></div></li>
+<li><i class="ti ti-calendar-plus" aria-hidden="true"></i><div><b>Add to your calendar</b><span>Send anything to Google, Apple or Outlook calendar.</span></div></li>
+<li><i class="ti ti-school" aria-hidden="true"></i><div><b>School days off</b><span>Midterms and bank holidays built in, plus your school's own days off.</span></div></li>
+<li data-planner><i class="ti ti-coin-euro" aria-hidden="true"></i><div><b>Costs and annual leave</b><span>See what the summer will cost and how many days off you'll need.</span></div></li>
+</ul>
+<p class="soon-note">You'll hear about each one in the Thursday email as it goes live.</p>
 <a href="/.netlify/functions/logout" class="logout-link">Log out</a>
 </div>
 </div>
 
-<section class="results-shell">
+<section class="results-shell" id="saved" style="scroll-margin-top:90px">
   <div class="results-inner">
     <h2 class="saved-heading">Your saved activities</h2>
     <div class="grid" id="savedGrid"></div>
@@ -210,6 +275,8 @@ function renderSaved() {
   if (!grid || typeof window.SortdSaved === 'undefined' || typeof LISTINGS === 'undefined') return;
   var ids = window.SortdSaved.savedIds();
   var saved = LISTINGS.filter(function (c) { return ids.indexOf(c.id) !== -1; });
+  var countEl = document.getElementById('savedCount');
+  if (countEl && saved.length) countEl.textContent = 'You have ' + saved.length + (saved.length === 1 ? ' activity' : ' activities') + ' saved.';
   if (!saved.length) {
     grid.innerHTML = '<div class="saved-empty">Nothing saved yet — the heart icon on any camp or class card will add it here. <a href="/find-an-activity">Find an activity →</a></div>';
     return;
@@ -250,6 +317,11 @@ if (window.SortdSaved) {
       card.parentNode.replaceChild(a, card);
       document.getElementById('plannerNote').textContent = d.plan ? 'Pick up where you left off: weeks, friends, drop-offs and costs.' : 'Plan the summer week by week, see where friends\' kids are going, and sort out drop-offs and pick-ups. You\'re one of our testers.';
       document.getElementById('plannerGo').textContent = d.plan ? 'Open planner' : 'Start planning';
+      document.querySelectorAll('.soon-list [data-planner] div').forEach(function (el) {
+        var l = document.createElement('a');
+        l.className = 'soon-in-planner'; l.href = '/planner'; l.textContent = 'Try it in your planner →';
+        el.appendChild(l);
+      });
     })
     .catch(function () {});
 })();
