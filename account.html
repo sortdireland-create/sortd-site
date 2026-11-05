@@ -70,7 +70,7 @@ html.is-out .only-in, html.is-in .only-out{display:none !important;}
 .unlock-msg{margin-top:12px;padding:12px 14px;border-radius:10px;font-size:.9rem;line-height:1.5;display:none;}
 .unlock-msg.ok{display:block;background:#E8FFF3;color:#1A7A50;}
 .unlock-msg.err{display:block;background:#FBD7E4;color:#C66686;}
-html.is-out .locked-zone .sec-h::after{content:" · unlock with your email";text-transform:none;letter-spacing:0;font-weight:700;color:#5B4FCA;}
+html.is-out .locked-zone .sec-h::after{content:" · add your email to be the first to try";text-transform:none;letter-spacing:0;font-weight:700;color:#5B4FCA;}
 .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .feat{display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:16px;border:1.5px solid #e6e6ee;background:#fff;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s;}
 .feat:hover{border-color:var(--nv);transform:translateY(-1px);}
@@ -82,7 +82,7 @@ html.is-out .locked-zone .sec-h::after{content:" · unlock with your email";text
 .ico-bl{background:#DCEBF5;color:#3D77A3;}
 .ico-pu{background:#E7E1F8;color:#5B4FCA;}
 .ico-gr{background:#C9F0DA;color:#1D8A52;}
-.soon-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;}
+.soon-list{margin-top:14px;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;}
 .soon-list li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid #f0f0f0;}
 .soon-list li i{flex:none;font-size:19px;color:#9aa0b0;margin-top:2px;}
 .soon-list b{display:block;color:var(--nv);font-size:.95rem;}
@@ -183,14 +183,13 @@ html.is-out .locked-zone .sec-h::after{content:" · unlock with your email";text
 </div>
 
 <div class="locked-zone">
-<div class="sec-h">In testing</div>
+<div class="sec-h">In beta testing</div>
 <div class="planner-card is-off" id="plannerCard" aria-disabled="true">
 <div class="planner-ico" aria-hidden="true">☀</div>
-<div class="planner-txt"><b>Summer planner</b><span id="plannerNote">Plan the summer week by week, see where friends' kids are going, and sort out drop-offs and pick-ups. Coming soon, in testing.</span></div>
-<span class="planner-go" id="plannerGo">Coming soon</span>
+<div class="planner-txt"><b>Summer planner</b><span id="plannerNote">Plan the summer week by week, see where friends' kids are going, and sort out drop-offs and pick-ups. In beta testing now.</span></div>
+<span class="planner-go" id="plannerGo">In beta</span>
 </div>
 
-<div class="sec-h">Coming soon</div>
 <ul class="soon-list">
 <li><i class="ti ti-mood-kid" aria-hidden="true"></i><div><b>Your kids</b><span>Add each child's first name and age once, and we'll show what suits them.</span></div></li>
 <li><i class="ti ti-calendar" aria-hidden="true"></i><div><b>Family calendar</b><span>Classes, days out and camps for each child, across the whole school year.</span></div></li>
@@ -199,7 +198,7 @@ html.is-out .locked-zone .sec-h::after{content:" · unlock with your email";text
 <li><i class="ti ti-school" aria-hidden="true"></i><div><b>School days off</b><span>Midterms and bank holidays built in, plus your school's own days off.</span></div></li>
 <li data-planner><i class="ti ti-coin-euro" aria-hidden="true"></i><div><b>Costs and annual leave</b><span>See what the summer will cost and how many days off you'll need.</span></div></li>
 </ul>
-<p class="soon-note">You'll hear about each one in the Thursday email as it goes live.</p>
+<p class="soon-note">You'll hear about each one in the Thursday email as it opens up.</p>
 </div>
 <a href="/.netlify/functions/logout" class="logout-link only-in">Log out</a>
 </div>
