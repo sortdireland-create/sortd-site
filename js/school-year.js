@@ -124,8 +124,9 @@
     var L = [], now = new Date(), dtstamp = now.getUTCFullYear() + pad(now.getUTCMonth() + 1) + pad(now.getUTCDate()) + 'T' + pad(now.getUTCHours()) + pad(now.getUTCMinutes()) + '00Z';
     rs.forEach(function (r, i) {
       L.push('BEGIN:VEVENT', 'UID:' + ev.uid + '-' + ymd(r.first) + '-' + i + '@sortd-ireland.ie', 'DTSTAMP:' + dtstamp,
-        'DTSTART;TZID=Europe/Dublin:' + stamp(r.first, ev.start), 'DTEND;TZID=Europe/Dublin:' + stamp(r.first, ev.end),
-        'RRULE:FREQ=WEEKLY;UNTIL=' + ymd(r.last) + 'T235959Z');
+        ev.allDay ? 'DTSTART;VALUE=DATE:' + ymd(r.first) : 'DTSTART;TZID=Europe/Dublin:' + stamp(r.first, ev.start),
+        ev.allDay ? 'DTEND;VALUE=DATE:' + ymd(new Date(r.first.getFullYear(), r.first.getMonth(), r.first.getDate() + 1)) : 'DTEND;TZID=Europe/Dublin:' + stamp(r.first, ev.end));
+      if (iso(r.first) !== iso(r.last)) L.push('RRULE:FREQ=WEEKLY;UNTIL=' + ymd(r.last) + 'T235959Z');
       if (r.ex.length) L.push('EXDATE;TZID=Europe/Dublin:' + r.ex.map(function (d) { return stamp(d, ev.start); }).join(','));
       L.push(fold('SUMMARY:' + icsEscape(ev.title)), fold('DESCRIPTION:' + icsEscape(ev.details || '')), fold('LOCATION:' + icsEscape(ev.location || '')));
       if (ev.url) L.push(fold('URL:' + ev.url));

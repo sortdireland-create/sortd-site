@@ -256,3 +256,17 @@ label.kid{cursor:pointer;}
 .sugg:hover,.sugg:focus-visible{border-color:var(--pk);}
 .cl-src{font-size:11.5px;font-weight:700;color:var(--muted);font-style:italic;}
 .sugg em{font-style:normal;font-weight:700;color:var(--pk);}
+/* "Days out this month" module (monthly guide) */
+.guidepanel{background:#FFF6DC;border:2px dashed var(--ochre);box-shadow:none;}
+.ownico--guide{background:var(--ochre);font-size:22px;}
+.gtags .ghost{cursor:pointer;background:#fff;}
+.gtags .ghost.on{background:var(--nv);color:#fff;border-color:var(--nv);border-style:solid;}
+.gevents{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;}
+.gevent{background:#fff;border-radius:16px;padding:12px 14px;display:grid;gap:4px;align-content:start;}
+.gev-top{display:flex;justify-content:space-between;align-items:center;gap:6px;}
+.gev-r{background:#FFF6DC;color:var(--ochre);}
+.gev-price{font-weight:800;font-size:13.5px;}
+.gevent .actions{margin-top:6px;}
+.gtag-free{background:var(--grl)!important;}.gtag-rainy{background:var(--skl)!important;}.gtag-nd{background:var(--pul)!important;}.gtag-book{background:var(--warnl)!important;}
+.cevt--outing{background:#FFF0C2;}
+.cevt--outing a{color:inherit;}

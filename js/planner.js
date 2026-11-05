@@ -328,6 +328,10 @@
     classes().forEach(function (c) {
       if (SY.runsOn(d, c.day, classFrom(c), classUntil(c))) items.push({ t: c.start, html: '<div class="cevt cevt--class"><b>' + SY.fmtTime(c.start) + '–' + SY.fmtTime(c.end) + '</b> <span class="cevt-n">' + esc(classTitle(c)) + (c.label ? ' · ' + esc(c.label) : '') + '</span>' + kidChips(c.kids) + (c.venue ? '<span class="cevt-v">' + esc(c.venue) + '</span>' : '') + '</div>' });
     });
+    outingsOn(d).forEach(function (o) {
+      var u = safeUrl(o.url);
+      items.push({ t: o.start != null ? o.start : 0, html: '<div class="cevt cevt--outing"><b>' + esc(outingLine(o)) + '</b> <span class="cevt-n">' + (u ? '<a href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + esc(o.title) + '</a>' : esc(o.title)) + '</span>' + kidChips(o.kids) + (o.venue ? '<span class="cevt-v">' + esc(o.venue) + '</span>' : '') + '</div>' });
+    });
     var wk = summerWeekOf(d), dow = (d.getDay() + 6) % 7;
     if (wk && dow < 5 && wk.bank !== dow) {
       kids().forEach(function (k) {
@@ -457,6 +461,67 @@
       '<details class="addschool"><summary>+ Add another school</summary>' + newSchoolForm(false) + '</details></div>';
   }
 
+  // ---------- Days out from the monthly guide ----------
+  // /data/whats-on-YYYY-MM.json is written alongside each month's guide.
+  // plan.outings = [{ id, kids, eventId, title, venue, url, date, start, end }]
+  var guide = null, guideTag = 'all', guideAll = false;
+  function loadGuide() {
+    var t = SY.today(), m1 = t.getFullYear() + '-' + SY.pad(t.getMonth() + 1), p = new Date(t.getFullYear(), t.getMonth() - 1, 1), m0 = p.getFullYear() + '-' + SY.pad(p.getMonth() + 1);
+    function get(m) { return fetch('/data/whats-on-' + m + '.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }); }
+    return get(m1).catch(function () { return get(m0); }).then(function (g) { guide = g; }).catch(function () { guide = null; });
+  }
+  function outings() { return P().outings || (P().outings = []); }
+  function evById(id) { return guide && (guide.events || []).find(function (e) { return e.id === id; }); }
+  function allowedDates(ev) {
+    var out = [], today = SY.iso(SY.today());
+    if (ev.dates) return ev.dates.filter(function (d) { return d >= today; });
+    var d = SY.parseISO(ev.from > today ? ev.from : today), to = SY.parseISO(ev.to);
+    for (; d <= to && out.length < 70; d = SY.addDays(d, 1)) if (!ev.days || ev.days.indexOf(d.getDay()) !== -1) out.push(SY.iso(d));
+    (ev.extraDates || []).forEach(function (x) { if (x >= today && out.indexOf(x) === -1) out.push(x); });
+    return out.sort();
+  }
+  var TAGS = { free: 'Free', rainy: 'Rainy day', nd: 'ND-friendly', book: 'Book early' };
+  function outingLine(o) { return (o.start != null ? SY.fmtTime(o.start) + (o.end ? '–' + SY.fmtTime(o.end) : '') : 'All day'); }
+  function outingsOn(d) { var s = SY.iso(d); return outings().filter(function (o) { return o.date === s; }); }
+  function guidePanel() {
+    var today = SY.iso(SY.today());
+    var mine = outings().filter(function (o) { return o.date >= today; }).sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : (a.start || 0) - (b.start || 0); });
+    var head = '<div class="ownhead"><span class="ownico ownico--guide" aria-hidden="true">★</span><div><h2>' + (guide ? 'Days out this month' : 'Days out') + '</h2>' +
+      '<p class="muted">' + (guide ? 'Picked from the Sortd guide' + (guide.title ? ': ' + esc(guide.title.replace(/^What's on for kids in /, '')) : '') + '. Add the ones you\'re going to and they show on your week.' : 'The monthly guide\'s days out will show here.') + '</p></div></div>';
+    var mineHtml = mine.length ? '<div class="schoolblock"><b>You\'re going to</b><ul class="closures">' + mine.map(function (o) {
+      return '<li><b>' + SY.nice(SY.parseISO(o.date)) + '</b><span>' + esc(outingLine(o)) + ' · ' + esc(o.title) + '</span>' + kidChips(o.kids) +
+        '<button class="btn danger" data-act="deloutings" data-id="' + esc(o.id) + '">Remove</button></li>';
+    }).join('') + '</ul></div>' : '';
+    if (!guide) return '<div class="panel guidepanel">' + head + mineHtml + '</div>';
+    var evs = (guide.events || []).filter(function (e) { return allowedDates(e).length && (guideTag === 'all' || (e.tags || []).indexOf(guideTag) !== -1); });
+    var chips = '<div class="kidsbar gtags">' + [['all', 'All']].concat(Object.keys(TAGS).slice(0, 3).map(function (k) { return [k, TAGS[k]]; })).map(function (t) {
+      return '<button class="ghost' + (guideTag === t[0] ? ' on' : '') + '" data-act="gtag" data-tag="' + t[0] + '" aria-pressed="' + (guideTag === t[0]) + '">' + t[1] + '</button>';
+    }).join('') + '</div>';
+    return '<div class="panel guidepanel">' + head + mineHtml + chips +
+      '<div class="gevents">' + (evs.length ? evs.slice(0, guideAll ? evs.length : 6).map(function (e) {
+        var u = safeUrl(e.url);
+        return '<div class="gevent"><div class="gev-top"><span class="cl-l gev-r">' + esc(e.region || '') + '</span><span class="cmeta">' + esc(e.ages || '') + '</span></div>' +
+          '<div class="ctitle">' + esc(e.title) + '</div><div class="cmeta">' + esc(e.times || '') + '</div><div class="cmeta">' + esc(e.venue || '') + '</div>' +
+          '<div class="gev-price">' + esc(e.price || '') + '</div>' +
+          '<div class="friends">' + (e.tags || []).map(function (t) { return TAGS[t] ? '<span class="fchip gtag-' + t + '">' + TAGS[t] + '</span>' : ''; }).join('') + '</div>' +
+          '<div class="actions"><button class="btn green" data-act="addouting" data-id="' + esc(e.id) + '">Add to my calendar</button>' + (u ? '<a class="btn link" href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">Info ↗</a>' : '') + '</div></div>';
+      }).join('') : '<p class="muted">Nothing left this month with that filter.</p>') + '</div>' +
+      (evs.length > 6 ? '<div class="actions"><button class="btn light" data-act="gall">' + (guideAll ? 'Show fewer' : 'Show all ' + evs.length) + '</button></div>' : '') +
+      (guide.guide ? '<p class="cmeta"><a href="' + esc(guide.guide) + '">See the full guide</a>' + (guide.pdf ? ' · <a href="' + esc(guide.pdf) + '">Download the PDF</a>' : '') + '. Check with the venue before you go.</p>' : '') + '</div>';
+  }
+  function outingSheet(id) {
+    var e = evById(id); if (!e) return;
+    if (!kids().length) { toast('Add a child first'); setupKids = null; setupDraft = null; setupSheet(false); return; }
+    var ds = allowedDates(e);
+    openSheet(head(esc(e.title), esc([e.venue, e.times].filter(Boolean).join(' · '))) +
+      '<div class="field"><span>Who\'s going?</span>' + kidTicks('ou-kid', kids().map(function (k) { return k.id; })) + '</div>' +
+      '<label class="field" for="ou-date">Which day?<select id="ou-date">' + ds.map(function (d) { return '<option value="' + d + '">' + SY.nice(SY.parseISO(d)) + '</option>'; }).join('') + '</select></label>' +
+      '<div class="ocrow"><label class="field" for="ou-start">Starts<input id="ou-start" type="time" value="' + (e.start != null ? SY.pad(Math.floor(e.start / 60)) + ':' + SY.pad(e.start % 60) : '') + '"></label>' +
+      '<label class="field" for="ou-end">Ends<input id="ou-end" type="time" value="' + (e.end != null ? SY.pad(Math.floor(e.end / 60)) + ':' + SY.pad(e.end % 60) : '') + '"></label></div>' +
+      '<p class="cmeta">' + (e.start == null ? 'Times vary. Add your ticket time, or leave it blank to add it as all day.' : 'Change the time if you\'ve booked a different slot.') + '</p>' +
+      '<div class="actions"><button class="btn green" data-act="saveouting" data-id="' + esc(e.id) + '">Add to my calendar</button></div>', '#ou-date');
+  }
+
   function viewCalendar() {
     if (!state.weekStart) state.weekStart = mondayOf(SY.today());
     var ws = state.weekStart, we = SY.addDays(ws, 6), t = SY.iso(SY.today());
@@ -477,10 +542,10 @@
       (SY.iso(ws) !== SY.iso(mondayOf(SY.today())) ? '<button class="btn link" data-act="wk" data-dir="0">This week</button>' : '') + '</div>' +
       '<div class="cweek">' + days + '</div>' +
       '<div class="stack"><div class="panel"><div class="phead"><h2>Your classes</h2>' +
-      (list.length ? '<button class="btn light" data-act="exportall">Add all to my phone\'s calendar</button>' : '') + '</div>' +
+      (list.length || outings().length ? '<button class="btn light" data-act="exportall">Add all to my phone\'s calendar</button>' : '') + '</div>' +
       (list.length ? list.map(classCard).join('') : '<p class="muted">No classes yet. Find one on Sortd and tap "Add to my Sortd calendar", or add your own.</p>') +
       '<div class="actions"><a class="btn" href="/weekly-classes">Find a class on Sortd</a></div></div>' +
-      ownClassPanel() + schoolPanel() + '</div>';
+      guidePanel() + ownClassPanel() + schoolPanel() + '</div>';
   }
   // "Add your own class": its own module under Your classes, with the form
   // inline (swimming, GAA, Irish dancing... anything not on Sortd).
@@ -580,7 +645,7 @@
     if (first) {
       var carers = [{ id: 'you', name: me, col: '--sk' }];
       if (partner) carers.push({ id: 'partner', name: partner, col: '--pu' });
-      state.plan = { v: 1, me: { name: me }, partner: partner, kids: [], carers: carers, plans: [], days: {}, pendingBook: [], classes: [], schools: [] };
+      state.plan = { v: 1, me: { name: me }, partner: partner, kids: [], carers: carers, plans: [], days: {}, pendingBook: [], classes: [], schools: [], outings: [] };
     } else {
       P().me.name = me; P().partner = partner;
       var you = carer('you'); if (you) you.name = me;
@@ -589,6 +654,7 @@
       P().plans = P().plans.filter(function (p) { return keep[p.kid]; });
       P().classes = P().classes.map(function (c) { c.kids = c.kids.filter(function (id) { return keep[id]; }); return c; }).filter(function (c) { return c.kids.length; });
       schools().forEach(function (sc) { sc.kids = sc.kids.filter(function (id) { return keep[id]; }); });
+      P().outings = outings().map(function (o) { o.kids = o.kids.filter(function (id) { return keep[id]; }); return o; }).filter(function (o) { return o.kids.length; });
     }
     ks.forEach(function (k, i) { if (!k.col) k.col = KID_COLOURS[i % KID_COLOURS.length]; });
     P().kids = ks;
@@ -698,7 +764,10 @@
     var a = el.dataset.act, id = el.dataset.id, w = +el.dataset.week, kid = el.dataset.kid, p = id ? planById(id) : null;
     switch (a) {
       case 'wk': { var dir = +el.dataset.dir; state.weekStart = dir === 0 ? mondayOf(SY.today()) : SY.addDays(state.weekStart || mondayOf(SY.today()), 7 * dir); render(); break; }
-      case 'exportall': { var list = classes().map(function (c) { return [classEv(c), classRuns(c)]; }).filter(function (x) { return x[1].length; }); if (!list.length) { toast('No classes left this school year'); break; } SY.download('sortd-calendar.ics', SY.ics(list)); toast('Open the downloaded file to add everything'); break; }
+      case 'exportall': { var list = classes().map(function (c) { return [classEv(c), classRuns(c)]; }).filter(function (x) { return x[1].length; });
+        var td = SY.iso(SY.today());
+        outings().filter(function (o) { return o.date >= td; }).forEach(function (o) { var dd = SY.parseISO(o.date);
+          list.push([{ uid: 'o-' + o.id, title: o.title, day: dd.getDay(), start: o.start != null ? o.start : 0, end: o.end != null ? o.end : (o.start != null ? o.start + 60 : 0), allDay: o.start == null, url: o.url, location: o.venue || '', details: 'For: ' + kidNames(o.kids) + (o.url ? '\n' + o.url : '') + '\nFrom the Sortd guide. Check with the venue before you go.' }, [{ first: dd, last: dd, ex: [] }]]); }); if (!list.length) { toast('No classes left this school year'); break; } SY.download('sortd-calendar.ics', SY.ics(list)); toast('Open the downloaded file to add everything'); break; }
       case 'cics': { var cc = classById(id); if (cc) SY.download('sortd-class.ics', SY.ics([[classEv(cc), classRuns(cc)]])); break; }
       case 'cyear': { var cy = classById(id); if (!cy) break; var ally = SY.iso(classUntil(cy)) >= SY.iso(SY.addDays(SY.lastTermDay(), -6));
         cy.until = SY.iso(ally ? SY.currentTermEnd(SY.today()) : SY.lastTermDay()); changed(); render(); toast(ally ? 'Stops at the end of this term' : 'Carries on until the end of the school year'); break; }
@@ -745,6 +814,18 @@
         var gone = (dsc.closures || []).find(function (c) { return c.id === el.dataset.cid; });
         if (gone && gone.src && gone.src !== 'me') { dsc.dismissed = dsc.dismissed || []; dsc.dismissed.push(closureKey(gone)); }
         dsc.closures = (dsc.closures || []).filter(function (c) { return c.id !== el.dataset.cid; }); changed(); render(); toast('Removed'); break; }
+      case 'gtag': guideTag = el.dataset.tag; render(); break;
+      case 'gall': guideAll = !guideAll; render(); break;
+      case 'addouting': outingSheet(id); break;
+      case 'saveouting': {
+        var ge = evById(id); if (!ge) break;
+        var ok = Array.prototype.map.call(document.querySelectorAll('.ou-kid:checked'), function (x) { return x.value; }); if (!ok.length) { toast('Choose who\'s going'); break; }
+        var od = document.getElementById('ou-date').value, os = tmins(document.getElementById('ou-start').value), oe = tmins(document.getElementById('ou-end').value);
+        if (os != null && oe != null && oe <= os) { toast('Check the start and end times'); break; }
+        outings().push({ id: uid('o'), kids: ok, eventId: ge.id, title: ge.title, venue: ge.venue || '', url: safeUrl(ge.url), date: od, start: os, end: os != null ? oe : null });
+        state.weekStart = mondayOf(SY.parseISO(od)); closeSheet(); changed(); render(); toast('Added for ' + SY.nice(SY.parseISO(od))); break;
+      }
+      case 'deloutings': { P().outings = outings().filter(function (o) { return o.id !== id; }); changed(); render(); toast('Removed'); break; }
       case 'setup': setupKids = null; setupDraft = null; setupSheet(false); break;
       case 's-addkid': readSetupKids(); setupKids.push({ id: uid('k'), name: '', age: '', col: KID_COLOURS[setupKids.length % KID_COLOURS.length] }); setupSheet(!P()); var ins = document.querySelectorAll('#kidlist .k-name'); ins[ins.length - 1].focus(); break;
       case 's-delkid': readSetupKids(); setupKids = setupKids.filter(function (k) { return k.id !== kid; }); setupSheet(!P()); break;
@@ -858,10 +939,11 @@
       }
       state.friends = data.friends || []; state.inviteCode = data.inviteCode || null; state.plan = data.plan || null;
       if (state.plan) {
-        ['kids','carers','plans','pendingBook','classes','schools'].forEach(function (k) { if (!Array.isArray(state.plan[k])) state.plan[k] = []; });
+        ['kids','carers','plans','pendingBook','classes','schools','outings'].forEach(function (k) { if (!Array.isArray(state.plan[k])) state.plan[k] = []; });
         if (!state.plan.days || typeof state.plan.days !== 'object') state.plan.days = {};
         if (!state.plan.me) state.plan.me = { name: '' };
       }
+      loadGuide().then(function () { if (state.plan && state.view === 'calendar' && !document.querySelector('.scrim')) rerenderKeepOpen(); });
       fetch('/.netlify/functions/get-saved', { credentials: 'same-origin' }).then(function (r) { return r.json(); }).then(function (s) { state.savedIds = s.saved || []; }).catch(function () {});
       var pending = join; if (!pending) { try { pending = localStorage.getItem('sortd_pending_join'); } catch (_) {} }
       var after = pending ? handleJoin(pending) : Promise.resolve();
