@@ -239,8 +239,51 @@
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && layer.innerHTML) close(); });
 
+  // ---- Logged-out: calendar is locked behind a free account -----------------------
+  function loggedIn() { return document.cookie.split('; ').some(function (c) { return c === 'sortd_logged_in=1'; }); }
+  function signupSheet() {
+    layer.innerHTML = '<div class="cp-scrim" data-cp="close"><div class="cp-sheet" role="dialog" aria-modal="true" aria-labelledby="cp-t">' +
+      '<div class="cp-head"><div><h2 id="cp-t">Add classes to your calendar</h2><p>Free with a Sortd account. Pop in your email and we\'ll send you a link to log in. No password needed.</p></div><button class="cp-x" data-cp="close" aria-label="Close">✕</button></div>' +
+      '<form id="cp-signup" class="cp-acts" novalidate><label class="cp-f">Your email<input type="email" id="cp-email" autocomplete="email" required placeholder="you@example.ie"></label>' +
+      '<button class="cp-btn cp-btn--pri" type="submit">Create my free account</button></form>' +
+      '<p class="cp-hint" id="cp-msg" role="status" aria-live="polite">Already have an account? Same thing: enter your email and we\'ll send you a login link.</p></div></div>';
+    document.body.style.overflow = 'hidden';
+    var f = document.getElementById('cp-email'); if (f) f.focus();
+    track('calendar_locked_click');
+  }
+  layer.addEventListener('submit', function (e) {
+    if (e.target.id !== 'cp-signup') return;
+    e.preventDefault();
+    var input = document.getElementById('cp-email'), msg = document.getElementById('cp-msg'), btn = e.target.querySelector('button');
+    var email = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a valid email address.'; input.focus(); return; }
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try { localStorage.setItem('sortd_return_to', location.pathname + '#add-to-calendar'); } catch (_) {}
+    fetch('/.netlify/functions/request-login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email }) })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || 'error'); return j; }); })
+      .then(function () {
+        e.target.outerHTML = '<div class="cp-sum"><b>Check your inbox</b><br><span>We\'ve sent a login link to ' + esc(email) + '. Open it on this phone or computer and you\'ll come straight back to this class, ready to add it to your calendar.</span></div>';
+        msg.textContent = 'The link works once and expires after 30 minutes.';
+        track('calendar_signup_requested');
+      })
+      .catch(function (err) { btn.disabled = false; btn.textContent = 'Create my free account'; msg.textContent = (err && err.message && err.message !== 'error') ? err.message : 'Something went wrong. Please try again.'; });
+  });
+
   // ---- Buttons on the page -------------------------------------------------------
-  document.querySelectorAll('[data-lp="calendar"]').forEach(function (b) { b.addEventListener('click', open); });
+  var LOCKED = !loggedIn();
+  document.querySelectorAll('[data-lp="calendar"]').forEach(function (b) {
+    if (LOCKED) {
+      b.classList.add('is-locked');
+      var ic = b.querySelector('.ti'); if (ic) ic.className = 'ti ti-lock';
+      b.setAttribute('title', 'Free account needed');
+    }
+    b.addEventListener('click', function () { if (loggedIn()) open(); else signupSheet(); });
+  });
+  // Back from the login link: open the calendar straight away.
+  if (!LOCKED && location.hash === '#add-to-calendar') {
+    history.replaceState(null, '', location.pathname);
+    setTimeout(open, 300);
+  }
 
   document.querySelectorAll('[data-lp="share"]').forEach(function (b) {
     b.addEventListener('click', function () {

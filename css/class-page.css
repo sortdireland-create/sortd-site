@@ -115,3 +115,8 @@
 .lp-act-price--long{font-size:17px;}
 /* Keep the result and buttons in view while scrolling a long timetable */
 #cp-sum{position:sticky;bottom:calc(-22px - env(safe-area-inset-bottom,0px));background:#fff;padding:10px 0 4px;display:grid;gap:8px;box-shadow:0 -10px 14px -10px rgba(30,42,68,.18);}
+
+/* Logged out: calendar needs a free account */
+.lp-btn--cal.is-locked{background:#ECEDF2;color:#7A8094;border-color:#ECEDF2;}
+.lp-btn--cal.is-locked:hover{opacity:1;background:#E2E4EC;}
+.lp-btn--cal.is-locked .ti-lock{font-size:18px;}

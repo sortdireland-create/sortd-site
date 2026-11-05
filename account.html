@@ -338,6 +338,15 @@ if (window.SortdSaved) {
 // greyed out for everyone else. Also finishes a friend-invite that was
 // started before logging in (planner.js stores the code in localStorage).
 (function () {
+  // Came here from a login link started on another page (e.g. "Add to my
+  // calendar" on a class page): send them straight back there.
+  try {
+    var back = localStorage.getItem('sortd_return_to');
+    if (back) {
+      localStorage.removeItem('sortd_return_to');
+      if (back.charAt(1) !== "/" && /^\/[a-z0-9\-\/.]+(#[a-z\-]+)?$/i.test(back)) { window.location.replace(back); return; }
+    }
+  } catch (_) {}
   var pending = null;
   try { pending = localStorage.getItem('sortd_pending_join'); } catch (_) {}
   if (!document.documentElement.classList.contains('is-in')) return;
