@@ -5,6 +5,8 @@
 //        this to decide whether to show the planner card or grey it out.
 // POST { action: 'save', plan }        → saves the whole planner JSON
 // POST { action: 'addClass', cls, kidIds, newKids } → adds a weekly class to the Sortd calendar
+// POST { action: 'closures', rolls } → shared school days off by roll number
+// POST { action: 'shareClosure', roll, school, label, from, to } → share a day off with that school's parents
 // POST { action: 'invite' }            → returns (creating if needed) the invite code
 // POST { action: 'join', code }        → connects the caller with the code's owner
 // POST { action: 'disconnect', id }    → removes a connection on both sides
@@ -93,6 +95,50 @@ async function handleAddClass(email, body) {
   return P.json(200, { ok: true, classId: same ? same.id : entry.id, kids: plan.kids });
 }
 
+// ---- Shared school days off (Airtable "School Closures", keyed by roll number) ----
+// Parents never appear in this table: a shared row holds the school, the
+// dates and the label only.
+const CLOSURES_TABLE = 'tblt6Rx4ULxU2UYyr';
+const CLOSURE_LABELS = ['Inset day', 'School closed', 'Half day', 'School holidays'];
+function validRoll(r) { return /^[0-9]{5}[A-Z]$/i.test(String(r || '')); }
+async function closuresApi(path, opts) {
+  const res = await fetch(`https://api.airtable.com/v0/appuyWkAmTRI4lN5r/${CLOSURES_TABLE}${path || ''}`, Object.assign({}, opts, {
+    headers: { Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`, 'Content-Type': 'application/json' },
+  }));
+  if (!res.ok) throw new Error(`Airtable closures ${res.status}: ${await res.text()}`);
+  return res.json();
+}
+async function handleClosures(body) {
+  const rolls = (Array.isArray(body.rolls) ? body.rolls : []).map(r => String(r).toUpperCase()).filter(validRoll).slice(0, 10);
+  if (!rolls.length) return P.json(200, { closures: {} });
+  const formula = `AND(NOT({Hidden}), OR(${rolls.map(r => `{Roll number} = '${r}'`).join(',')}))`;
+  const data = await closuresApi(`?filterByFormula=${encodeURIComponent(formula)}&pageSize=100`);
+  const out = {};
+  (data.records || []).forEach(rec => {
+    const f = rec.fields, roll = String(f['Roll number'] || '').toUpperCase();
+    if (!f.From || CLOSURE_LABELS.indexOf(f.Label) === -1) return;
+    (out[roll] = out[roll] || []).push({ label: f.Label, from: f.From, to: f.To || f.From, source: (f.Source || 'Parent').toLowerCase(), verified: !!f.Verified });
+  });
+  return P.json(200, { closures: out });
+}
+async function handleShareClosure(body) {
+  const roll = String(body.roll || '').toUpperCase();
+  const from = String(body.from || ''), to = String(body.to || body.from || '');
+  if (!validRoll(roll) || CLOSURE_LABELS.indexOf(body.label) === -1 || !/^\d{4}-\d{2}-\d{2}$/.test(from) || !/^\d{4}-\d{2}-\d{2}$/.test(to) || to < from) return P.json(400, { error: 'bad_closure' });
+  // Sanity: within roughly one school year either side of today, and at most 3 weeks long.
+  const now = Date.now(), f = Date.parse(from), t = Date.parse(to);
+  if (f < now - 400 * 864e5 || f > now + 400 * 864e5 || t - f > 21 * 864e5) return P.json(400, { error: 'bad_closure' });
+  const dupe = `AND({Roll number} = '${roll}', {Label} = '${body.label}', DATETIME_FORMAT({From}, 'YYYY-MM-DD') = '${from}', DATETIME_FORMAT({To}, 'YYYY-MM-DD') = '${to}')`;
+  const existing = await closuresApi(`?filterByFormula=${encodeURIComponent(dupe)}&maxRecords=1`);
+  if (existing.records && existing.records.length) return P.json(200, { ok: true, existed: true });
+  const school = String(body.school || '').slice(0, 120);
+  await closuresApi('', { method: 'POST', body: JSON.stringify({ typecast: true, records: [{ fields: {
+    Summary: `${school || roll}: ${body.label} ${from}${to !== from ? ' to ' + to : ''}`, 'Roll number': roll, 'School name': school,
+    Label: body.label, From: from, To: to, Source: 'Parent', Verified: false,
+  } }] }) });
+  return P.json(200, { ok: true });
+}
+
 async function handleInvite(email) {
   const me = await getOrCreateMe(email);
   let code = me.fields[P.F.CODE];
@@ -146,6 +192,8 @@ exports.handler = async function (event) {
     switch (body.action) {
       case 'save': return await handleSave(g.email, body);
       case 'addClass': return await handleAddClass(g.email, body);
+      case 'closures': return await handleClosures(body);
+      case 'shareClosure': return await handleShareClosure(body);
       case 'invite': return await handleInvite(g.email);
       case 'join': return await handleJoin(g.email, body);
       case 'disconnect': return await handleDisconnect(g.email, body);

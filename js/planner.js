@@ -369,9 +369,61 @@
       return '<label class="kid"><input type="checkbox" class="' + cls + '" value="' + esc(k.id) + '"' + (on ? ' checked' : '') + '> <span class="swatch" style="background:var(' + k.col + ')"></span>' + esc(k.name) + '</label>';
     }).join('') + '</div>';
   }
+  // School lookup: every primary school in Ireland (Department of Education
+  // list) as /data/schools-ie.json: [{ r: roll number, n: name, a: town/address, c: county }].
+  var schoolList = null, schoolListLoading = null, pickedSchool = null;
+  function loadSchoolList() {
+    if (schoolList || schoolListLoading) return schoolListLoading || Promise.resolve(schoolList);
+    schoolListLoading = fetch('/data/schools-ie.json').then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; })
+      .then(function (j) { schoolList = Array.isArray(j) ? j : []; schoolListLoading = null; return schoolList; });
+    return schoolListLoading;
+  }
+  function norm(x) { return String(x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9 ]/g, ' ').replace(/\b(saint|naomh)\b/g, 'st').replace(/\s+/g, ' ').trim(); }
+  function searchSchools(q) {
+    var toks = norm(q).split(' ').filter(Boolean); if (!toks.length || !schoolList) return [];
+    var out = [];
+    for (var i = 0; i < schoolList.length && out.length < 8; i++) {
+      var sc = schoolList[i], hay = norm(sc.n + ' ' + (sc.a || '') + ' ' + (sc.c || '') + ' ' + sc.r);
+      if (toks.every(function (t) { return hay.indexOf(t) !== -1; })) out.push(sc);
+    }
+    return out;
+  }
+  function renderSchoolSugg(q) {
+    var box = document.getElementById('sc-sugg'); if (!box) return;
+    pickedSchool = null;
+    if (!q.trim()) { box.innerHTML = ''; return; }
+    var res = searchSchools(q);
+    box.innerHTML = res.length ? res.map(function (sc) {
+      return '<button type="button" class="sugg" data-act="pickschool" data-roll="' + esc(sc.r) + '"><b>' + esc(sc.n) + '</b><span>' + esc([sc.a, sc.c].filter(Boolean).join(', ')) + '</span></button>';
+    }).join('') : (schoolList && schoolList.length ? '<p class="cmeta">No match in the school list. You can still add it as typed.</p>' : '');
+  }
+  function closureKey(c) { return c.label + '|' + c.from + '|' + (c.to || c.from); }
+  // Pull days off other parents (or Sortd) have shared for these schools.
+  function syncClosures(list) {
+    var withRoll = (list || schools()).filter(function (sc) { return sc.roll; });
+    if (!withRoll.length) return Promise.resolve(0);
+    return post({ action: 'closures', rolls: withRoll.map(function (sc) { return sc.roll; }) }).then(function (j) {
+      var added = 0;
+      withRoll.forEach(function (sc) {
+        var have = {}; (sc.closures || []).forEach(function (c) { have[closureKey(c)] = 1; });
+        (sc.dismissed || []).forEach(function (k) { have[k] = 1; });
+        ((j.closures || {})[sc.roll] || []).forEach(function (c) {
+          if (have[closureKey(c)]) return;
+          sc.closures = sc.closures || []; sc.closures.push({ id: uid('x'), label: c.label, from: c.from, to: c.to, src: c.source, verified: c.verified }); added++;
+        });
+      });
+      if (added) { changed(); if (state.view === 'calendar') render(); }
+      return added;
+    }).catch(function () { return 0; });
+  }
+  function closureSource(c) {
+    if (!c.src || c.src === 'me') return '';
+    if (c.verified) return c.src === 'school' ? 'from the school' : 'checked by Sortd';
+    return 'added by a parent';
+  }
   function newSchoolForm(first) {
     return '<div class="ownform schoolform">' +
-      '<label class="field ownwide" for="sc-name">School name<input id="sc-name" maxlength="80" placeholder="e.g. St Oliver Plunkett NS"></label>' +
+      '<div class="field ownwide schoolsearch"><label for="sc-name">School</label><input id="sc-name" maxlength="80" autocomplete="off" placeholder="Start typing your school\'s name or town"><div id="sc-sugg" class="suggs" role="listbox"></div></div>' +
       '<div class="field ownwide"><span>Who goes there?</span>' + kidTicks('sc-kid') + '</div></div>' +
       '<div class="actions"><button class="btn" data-act="addschool">' + (first ? 'Add school' : 'Add this school') + '</button></div>';
   }
@@ -379,10 +431,11 @@
     var today = SY.iso(SY.today());
     var cl = (sc.closures || []).slice().sort(function (a, b) { return a.from < b.from ? -1 : 1; });
     var upcoming = cl.filter(function (c) { return (c.to || c.from) >= today; }), past = cl.length - upcoming.length;
-    return '<div class="schoolblock"><div class="phead"><div><div class="pname">' + esc(sc.name) + '</div><div class="friends">' + kidChips(sc.kids) + '</div></div>' +
+    return '<div class="schoolblock"><div class="phead"><div><div class="pname">' + esc(sc.name) + '</div>' + (sc.town ? '<div class="cmeta">' + esc(sc.town) + '</div>' : '') + '<div class="friends">' + kidChips(sc.kids) + '</div></div>' +
       '<button class="btn danger" data-act="delschool" data-sid="' + esc(sc.id) + '">Remove school</button></div>' +
       (upcoming.length ? '<ul class="closures">' + upcoming.map(function (c) {
-        return '<li><span class="cl-l' + (c.label === 'Half day' ? ' is-half' : '') + '">' + esc(c.label) + '</span><b>' + closureWhen(c) + '</b>' +
+        var srcTxt = closureSource(c);
+        return '<li><span class="cl-l' + (c.label === 'Half day' ? ' is-half' : '') + '">' + esc(c.label) + '</span><b>' + closureWhen(c) + '</b>' + (srcTxt ? '<span class="cl-src">' + srcTxt + '</span>' : '') +
           '<button class="btn danger" data-act="delclosure" data-sid="' + esc(sc.id) + '" data-cid="' + esc(c.id) + '" aria-label="Remove ' + esc(c.label) + ' ' + closureWhen(c) + '">Remove</button></li>';
       }).join('') + '</ul>' : '<p class="muted">No days off added yet. Your school\'s calendar is usually on its website or in the newsletter.</p>') +
       (past ? '<p class="cmeta">' + past + ' past day' + (past === 1 ? '' : 's') + ' off hidden.</p>' : '') +
@@ -390,7 +443,9 @@
       '<label class="field" for="cl-label-' + esc(sc.id) + '">Type<select id="cl-label-' + esc(sc.id) + '">' + CLOSURE_LABELS.map(function (l) { return '<option>' + l + '</option>'; }).join('') + '</select></label>' +
       '<label class="field" for="cl-from-' + esc(sc.id) + '">Date<input type="date" id="cl-from-' + esc(sc.id) + '" min="' + SY.TERMS[0][0] + '"></label>' +
       '<label class="field" for="cl-to-' + esc(sc.id) + '">Until (optional)<input type="date" id="cl-to-' + esc(sc.id) + '"></label>' +
-      '<div class="field"><span>&nbsp;</span><button class="btn green" data-act="addclosure" data-sid="' + esc(sc.id) + '">Add day off</button></div></div></div>';
+      '<div class="field"><span>&nbsp;</span><button class="btn green" data-act="addclosure" data-sid="' + esc(sc.id) + '">Add day off</button></div>' +
+      (sc.roll ? '<label class="field ownwide"><span><input type="checkbox" id="cl-share-' + esc(sc.id) + '" checked> Share with other parents at ' + esc(sc.name) + ' (just the date, not who added it)</span></label>' : '') +
+      '</div></div>';
   }
   function schoolPanel() {
     var head = '<div class="ownhead"><span class="ownico ownico--school" aria-hidden="true">✎</span><div><h2>Your school\'s days off</h2>' +
@@ -632,6 +687,9 @@
     P().plans.push({ id: uid('p'), kid: kid, week: w, kind: 'camp', camp: snap, status: 'planned' });
   }
   document.addEventListener('input', function (e) { if (e.target.id === 'fq') renderFindResults(e.target.value); });
+  document.addEventListener('input', function (e) {
+    if (e.target.id === 'sc-name') { var v = e.target.value; loadSchoolList().then(function () { if (document.getElementById('sc-name') && document.getElementById('sc-name').value === v) renderSchoolSugg(v); }); }
+  });
   document.addEventListener('click', function (e) {
     var tab = e.target.closest('.tab'); if (tab) { state.view = tab.dataset.view; render(); window.scrollTo(0, 0); return; }
     var el = e.target.closest('[data-act]'); if (!el) return;
@@ -657,7 +715,11 @@
       case 'addschool': {
         var sn = document.getElementById('sc-name').value.trim(); if (!sn) { toast('Add the school name'); document.getElementById('sc-name').focus(); break; }
         var sk = Array.prototype.map.call(document.querySelectorAll('.sc-kid:checked'), function (x) { return x.value; }); if (!sk.length) { toast('Choose who goes there'); break; }
-        schools().push({ id: uid('s'), name: sn, kids: sk, closures: [] }); changed(); render(); toast('School added. Now add its days off.');
+        var ps = pickedSchool && norm(pickedSchool.n) === norm(sn) ? pickedSchool : null;
+        var nsc = { id: uid('s'), name: sn, kids: sk, closures: [], roll: ps ? ps.r : null, town: ps ? [ps.a, ps.c].filter(Boolean).join(', ') : '' };
+        schools().push(nsc); pickedSchool = null; changed(); render();
+        if (nsc.roll) syncClosures([nsc]).then(function (n) { toast(n ? 'School added, with ' + n + ' day' + (n === 1 ? '' : 's') + ' off other parents have shared' : 'School added. Now add its days off.'); });
+        else toast('School added. Now add its days off.');
         var nf = document.querySelectorAll('.schoolblock input[type=date]'); if (nf.length) nf[nf.length - 2].focus(); break;
       }
       case 'delschool': { var ds = schoolById(el.dataset.sid); if (!ds || !window.confirm('Remove ' + ds.name + ' and its days off?')) break; P().schools = schools().filter(function (x) { return x !== ds; }); changed(); render(); toast('School removed'); break; }
@@ -667,12 +729,21 @@
         if (!cf) { toast('Pick the date'); document.getElementById('cl-from-' + sid).focus(); break; }
         if (ct && ct < cf) { toast('"Until" is before the start date'); break; }
         if (CLOSURE_LABELS.indexOf(lab) === -1) lab = 'School closed';
-        sc.closures = sc.closures || []; sc.closures.push({ id: uid('x'), label: lab, from: cf, to: ct || cf });
+        sc.closures = sc.closures || []; sc.closures.push({ id: uid('x'), label: lab, from: cf, to: ct || cf, src: 'me' });
+        var shareBox = document.getElementById('cl-share-' + sid);
+        if (sc.roll && shareBox && shareBox.checked) post({ action: 'shareClosure', roll: sc.roll, school: sc.name, label: lab, from: cf, to: ct || cf }).catch(function () {});
         state.weekStart = mondayOf(SY.parseISO(cf));
         changed(); render(); toast(lab + ' added, ' + closureWhen({ from: cf, to: ct || cf }));
         var nb = document.getElementById('cl-from-' + sid); if (nb) nb.focus(); break;
       }
-      case 'delclosure': { var dsc = schoolById(el.dataset.sid); if (!dsc) break; dsc.closures = (dsc.closures || []).filter(function (c) { return c.id !== el.dataset.cid; }); changed(); render(); toast('Removed'); break; }
+      case 'pickschool': {
+        var pr = (schoolList || []).find(function (x) { return x.r === el.dataset.roll; }); if (!pr) break;
+        document.getElementById('sc-name').value = pr.n; document.getElementById('sc-sugg').innerHTML = '<p class="cmeta">✓ ' + esc([pr.a, pr.c].filter(Boolean).join(', ')) + '</p>'; pickedSchool = pr; break;
+      }
+      case 'delclosure': { var dsc = schoolById(el.dataset.sid); if (!dsc) break;
+        var gone = (dsc.closures || []).find(function (c) { return c.id === el.dataset.cid; });
+        if (gone && gone.src && gone.src !== 'me') { dsc.dismissed = dsc.dismissed || []; dsc.dismissed.push(closureKey(gone)); }
+        dsc.closures = (dsc.closures || []).filter(function (c) { return c.id !== el.dataset.cid; }); changed(); render(); toast('Removed'); break; }
       case 'setup': setupKids = null; setupDraft = null; setupSheet(false); break;
       case 's-addkid': readSetupKids(); setupKids.push({ id: uid('k'), name: '', age: '', col: KID_COLOURS[setupKids.length % KID_COLOURS.length] }); setupSheet(!P()); var ins = document.querySelectorAll('#kidlist .k-name'); ins[ins.length - 1].focus(); break;
       case 's-delkid': readSetupKids(); setupKids = setupKids.filter(function (k) { return k.id !== kid; }); setupSheet(!P()); break;
@@ -797,7 +868,7 @@
         if (!state.plan) { document.getElementById('app').innerHTML = '<p class="loading">Welcome to your summer planner.</p>'; setupSheet(true); return; }
         if (pending && state.friends.length) state.view = 'friends';
         else if (/^#(calendar|summer|friends|costs)$/.test(location.hash)) state.view = { '#summer': 'plan', '#calendar': 'calendar', '#friends': 'friends', '#costs': 'costs' }[location.hash];
-        render(); setSaveState('Saved');
+        render(); setSaveState('Saved'); syncClosures();
         if (!state.plan.me.name || !state.plan.kids.length) { setupKids = null; setupDraft = null; setupSheet(false); }
       });
     }).catch(function () {
