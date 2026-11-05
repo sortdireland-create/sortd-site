@@ -11,8 +11,8 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-HHTB7S9WJG');
 </script>
-<title>Summer planner — sortd</title>
-<meta name="description" content="Plan your kids' summer week by week.">
+<title>My Sortd calendar — sortd</title>
+<meta name="description" content="Your family's classes, school breaks and summer plans in one calendar.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -34,8 +34,9 @@ gtag('config', 'G-HHTB7S9WJG');
       </div>
     </div>
     <div class="tabs" role="tablist" id="tabs" hidden>
-      <button class="tab" role="tab" aria-selected="true" data-view="plan">My summer</button>
-      <button class="tab" role="tab" aria-selected="false" data-view="cal">Calendar</button>
+      <button class="tab" role="tab" aria-selected="true" data-view="calendar">Calendar</button>
+      <button class="tab" role="tab" aria-selected="false" data-view="plan">Summer</button>
+      <button class="tab" role="tab" aria-selected="false" data-view="cal">Summer days</button>
       <button class="tab" role="tab" aria-selected="false" data-view="friends">Friends</button>
       <button class="tab" role="tab" aria-selected="false" data-view="costs">Costs &amp; leave</button>
       <button class="tab" role="tab" aria-selected="false" data-view="how">How it works</button>
@@ -47,6 +48,7 @@ gtag('config', 'G-HHTB7S9WJG');
 <div id="layer"></div>
 
 <script src="/js/camps-data.js"></script>
+<script src="/js/school-year.js"></script>
 <script src="/js/planner.js"></script>
 </body>
 </html>

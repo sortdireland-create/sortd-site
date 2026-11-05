@@ -23,9 +23,11 @@
   });
   var COLOURS = ['--sk','--pu','--pk','--gr','--teal','--plum','--ochre','--warn','--slate','--nv'];
   var KID_COLOURS = ['--gr','--pk','--sk','--pu','--ochre','--teal'];
+  var DAYS_LONG = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   var ROWS = [['drop','Drop off'],['pick','Pick up'],['aft','Afternoon care'],['leaveYou','Your leave'],['leavePartner','partner']];
 
-  var state = { view: 'plan', plan: null, friends: [], inviteCode: null, savedIds: [] };
+  var SY = window.SortdSchoolYear;
+  var state = { view: 'calendar', plan: null, friends: [], inviteCode: null, savedIds: [], weekStart: null };
   var uidN = 0;
   function uid(p) { return (p || 'x') + Date.now().toString(36) + (uidN++).toString(36) + Math.random().toString(36).slice(2, 5); }
 
@@ -114,7 +116,7 @@
     document.querySelectorAll('.tab').forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.view === state.view)); });
     var app = document.getElementById('app');
     var v = state.view;
-    app.innerHTML = v === 'how' ? viewHow() : v === 'cal' ? viewCal() : v === 'friends' ? viewFriends() : v === 'costs' ? viewCosts() : viewPlan();
+    app.innerHTML = v === 'calendar' ? viewCalendar() : v === 'how' ? viewHow() : v === 'cal' ? viewCal() : v === 'friends' ? viewFriends() : v === 'costs' ? viewCosts() : viewPlan();
   }
   function rerenderKeepOpen() {
     var open = Array.prototype.map.call(document.querySelectorAll('details.days'), function (d) { return d.open; });
@@ -143,7 +145,7 @@
     return '<section class="intro"><span class="eyebrow">Summer ' + YEAR + '</span>' +
       '<h1>Your summer, <em>sorted.</em></h1>' +
       '<p class="muted">Plot each week, see where your friends\' kids are going, and sort out who\'s doing pick-up.</p>' +
-      '<span class="testing">Testing version. Tell Rachel what works and what doesn\'t.</span></section>' +
+      '</section>' +
       bookPrompt() + summaryTiles() +
       '<div class="kidsbar">' + kids().map(function (k) { return '<button class="kid" data-act="setup" aria-label="Edit ' + esc(k.name) + '"><span class="swatch" style="background:var(' + k.col + ')"></span>' + esc(k.name) + (k.age !== '' && k.age != null ? ', ' + esc(k.age) : '') + '</button>'; }).join('') +
       '<button class="ghost" data-act="setup">+ Add or edit children</button></div>' +
@@ -224,7 +226,7 @@
         ? '<div class="invite"><code id="invitelink">' + esc(inviteLink()) + '</code><button class="btn" data-act="copy">Copy link</button>' +
           '<a class="btn green" href="https://wa.me/?text=' + encodeURIComponent('I\'m planning the kids\' summer on Sortd. Connect with me so we can see which camps our kids are going to: ' + inviteLink()) + '" target="_blank" rel="noopener noreferrer">Share on WhatsApp</a></div>'
         : '<div class="actions"><button class="btn" data-act="makeinvite">Get my invite link</button></div>') +
-      '<p class="cmeta">While the planner is in testing, the parent you invite needs to be on the test list too.</p></div>' +
+      '</div>' +
       (state.friends.length ? '<div class="overlap">You overlap with friends on ' + overlaps + ' camp-week' + (overlaps === 1 ? '' : 's') + ' so far.</div>' +
         '<div class="panel">' + state.friends.map(friendBlock).join('') + '</div>'
         : '<div class="panel"><p class="muted">No connected parents yet. Once someone joins with your link, their camps show up here.</p></div>') +
@@ -302,6 +304,92 @@
       '<div class="cal"><div class="calgrid">' + DAYS.map(function (d) { return '<div class="dow">' + d + '</div>'; }).join('') + cells + '</div></div></div>';
   }
 
+  // ---------- Sortd calendar (term-time classes + summer plans) ----------
+  function mondayOf(d) { var x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); var k = (x.getDay() + 6) % 7; return SY.addDays(x, -k); }
+  function classes() { return P().classes || []; }
+  function classById(id) { return classes().find(function (c) { return c.id === id; }); }
+  function classTitle(c) { return (c.listing && c.listing.name) || 'Class'; }
+  function classFrom(c) { return c.from ? SY.parseISO(c.from) : null; }
+  function classUntil(c) { return c.until ? SY.parseISO(c.until) : SY.lastTermDay(); }
+  function kidChips(ids) {
+    return (ids || []).map(kidById).filter(Boolean).map(function (k) { return '<span class="kchip"><span class="swatch" style="background:var(' + k.col + ')"></span>' + esc(k.name) + '</span>'; }).join('');
+  }
+  function classEv(c) {
+    var l = c.listing || {};
+    return { uid: (l.id || c.id) + '-' + c.day + '-' + c.start, title: classTitle(c) + (c.label ? ' (' + c.label + ')' : ''), day: c.day, start: c.start, end: c.end, url: l.url || '',
+      location: c.venue ? c.venue + (l.area ? ', ' + l.area : '') : (l.area || ''),
+      details: [l.provider, c.venue ? 'Venue: ' + c.venue : '', 'For: ' + (c.kids || []).map(kidById).filter(Boolean).map(function (k) { return k.name; }).join(', '),
+        l.bookingUrl ? 'Book or check dates: ' + l.bookingUrl : '', l.url ? 'On Sortd: ' + l.url : '', 'Weekly in term time. Skips midterm and bank holidays.'].filter(Boolean).join('\n') };
+  }
+  function classRuns(c) { var f = classFrom(c) || SY.today(); return SY.runs(c.day, f, classUntil(c)); }
+  function summerWeekOf(d) { for (var i = 0; i < WEEKS.length; i++) { var s = WEEKS[i].start; if (d >= s && d < SY.addDays(s, 7)) return WEEKS[i]; } return null; }
+  function dayItems(d) {
+    var items = [];
+    classes().forEach(function (c) {
+      if (SY.runsOn(d, c.day, classFrom(c), classUntil(c))) items.push({ t: c.start, html: '<div class="cevt cevt--class"><b>' + SY.fmtTime(c.start) + '–' + SY.fmtTime(c.end) + '</b> <span class="cevt-n">' + esc(classTitle(c)) + (c.label ? ' · ' + esc(c.label) : '') + '</span>' + kidChips(c.kids) + (c.venue ? '<span class="cevt-v">' + esc(c.venue) + '</span>' : '') + '</div>' });
+    });
+    var wk = summerWeekOf(d), dow = (d.getDay() + 6) % 7;
+    if (wk && dow < 5 && wk.bank !== dow) {
+      kids().forEach(function (k) {
+        var p = planFor(k.id, wk.i); if (!p) return;
+        var l = kidLabel(p);
+        items.push({ t: 1, html: '<div class="cevt cevt--' + l.cls + '"><span class="cevt-n">' + esc(l.txt) + '</span>' + kidChips([k.id]) + (p.kind === 'camp' && p.camp.time ? '<span class="cevt-v">' + esc(p.camp.time) + '</span>' : '') + '</div>' });
+      });
+    }
+    return items.sort(function (a, b) { return a.t - b.t; }).map(function (x) { return x.html; }).join('');
+  }
+  function viewCalendar() {
+    if (!state.weekStart) state.weekStart = mondayOf(SY.today());
+    var ws = state.weekStart, we = SY.addDays(ws, 6), t = SY.iso(SY.today());
+    var days = '';
+    for (var i = 0; i < 7; i++) {
+      var d = SY.addDays(ws, i), off = SY.whyOff(d), items = dayItems(d), isToday = SY.iso(d) === t;
+      days += '<div class="cday' + (isToday ? ' is-today' : '') + (i >= 5 ? ' is-wkend' : '') + '"><div class="cday-h"><b>' + DAYS_LONG[d.getDay()].slice(0, 3) + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + '</b>' +
+        (off && i < 5 ? '<span class="coff">' + esc(off) + '</span>' : '') + (isToday ? '<span class="ctoday">Today</span>' : '') + '</div>' +
+        (items || '<div class="cnone">' + (i < 5 && !off ? 'Nothing on' : '') + '</div>') + '</div>';
+    }
+    var list = classes().slice().sort(function (a, b) { return a.day - b.day || a.start - b.start; });
+    return '<section class="intro"><span class="eyebrow">Your Sortd calendar</span><h1>The week, <em>sorted.</em></h1>' +
+      '<p class="muted">Every class for every child, with midterm, holidays and bank holidays already taken out. Add classes from any class page on Sortd.</p></section>' +
+      '<div class="calnav"><button class="btn light" data-act="wk" data-dir="-1" aria-label="Previous week">←</button>' +
+      '<b>' + ws.getDate() + ' ' + MONTHS[ws.getMonth()] + ' – ' + we.getDate() + ' ' + MONTHS[we.getMonth()] + ' ' + we.getFullYear() + '</b>' +
+      '<button class="btn light" data-act="wk" data-dir="1" aria-label="Next week">→</button>' +
+      (SY.iso(ws) !== SY.iso(mondayOf(SY.today())) ? '<button class="btn link" data-act="wk" data-dir="0">This week</button>' : '') + '</div>' +
+      '<div class="cweek">' + days + '</div>' +
+      '<div class="stack"><div class="panel"><div class="phead"><h2>Your classes</h2>' +
+      (list.length ? '<button class="btn light" data-act="exportall">Add all to my phone\'s calendar</button>' : '') + '</div>' +
+      (list.length ? list.map(classCard).join('') : '<p class="muted">No classes yet. Find one on Sortd and tap "Add to my Sortd calendar", or add your own.</p>') +
+      '<div class="actions"><a class="btn" href="/weekly-classes">Find a class on Sortd</a><button class="btn light" data-act="ownclass">+ Add your own class</button></div></div></div>';
+  }
+  function classCard(c) {
+    var rs = classRuns(c), n = rs.reduce(function (a, r) { return a + SY.count(r); }, 0), l = c.listing || {};
+    var allYear = SY.iso(classUntil(c)) >= SY.iso(SY.addDays(SY.lastTermDay(), -6));
+    var lu = safeUrl(l.url), bu = safeUrl(l.bookingUrl);
+    return '<div class="ccard"><div class="ctop"><div style="min-width:0"><div class="ctitle">' + (lu ? '<a href="' + esc(lu) + '">' + esc(classTitle(c)) + '</a>' : esc(classTitle(c))) + '</div>' +
+      '<div class="cmeta">' + [DAYS_LONG[c.day] + 's ' + SY.fmtTime(c.start) + '–' + SY.fmtTime(c.end), c.label, c.venue, l.provider].filter(Boolean).map(esc).join(' · ') + '</div>' +
+      '<div class="cmeta">' + (rs.length ? n + ' class' + (n === 1 ? '' : 'es') + ' left, until ' + SY.nice(rs[rs.length - 1].last) : 'Finished for this school year') + '</div></div>' +
+      '<div class="friends">' + kidChips(c.kids) + '</div></div>' +
+      '<div class="actions">' +
+      '<button class="btn light" data-act="cyear" data-id="' + esc(c.id) + '">' + (allYear ? 'Stop at end of this term' : 'Carry on all year') + '</button>' +
+      (rs.length ? '<a class="btn link" href="' + esc(SY.googleLink(classEv(c), rs[0])) + '" target="_blank" rel="noopener noreferrer">Google Calendar</a><button class="btn link" data-act="cics" data-id="' + esc(c.id) + '">Apple / Outlook</button>' : '') +
+      (bu ? '<a class="btn link" href="' + esc(bu) + '" target="_blank" rel="noopener">Book ↗</a>' : '') +
+      '<button class="btn danger" data-act="cremove" data-id="' + esc(c.id) + '">Remove</button></div></div>';
+  }
+  function ownClassSheet() {
+    if (!kids().length) { toast('Add a child first'); setupKids = null; setupDraft = null; setupSheet(false); return; }
+    var t = SY.iso(SY.today());
+    openSheet(head('Add your own class', 'A class that isn\'t on Sortd yet. It shows on your calendar every week in term time.') +
+      '<label class="field" for="oc-name">Class<input id="oc-name" maxlength="80" placeholder="e.g. Swimming at Portmarnock"></label>' +
+      '<div class="field"><span>Who\'s going?</span><div class="kidsbar">' + kids().map(function (k, i) { return '<label class="kid"><input type="checkbox" class="oc-kid" value="' + esc(k.id) + '"' + (i === 0 ? ' checked' : '') + '> ' + esc(k.name) + '</label>'; }).join('') + '</div></div>' +
+      '<div class="ocrow"><label class="field" for="oc-day">Day<select id="oc-day">' + [1, 2, 3, 4, 5, 6, 0].map(function (d) { return '<option value="' + d + '">' + DAYS_LONG[d] + '</option>'; }).join('') + '</select></label>' +
+      '<label class="field" for="oc-start">Starts<input id="oc-start" type="time" value="16:00"></label><label class="field" for="oc-end">Ends<input id="oc-end" type="time" value="17:00"></label></div>' +
+      '<label class="field" for="oc-venue">Where (optional)<input id="oc-venue" maxlength="120"></label>' +
+      '<label class="field" for="oc-from">First class on or after<input id="oc-from" type="date" value="' + t + '"></label>' +
+      '<label class="field"><span><input id="oc-year" type="checkbox"> Carry on after this term</span></label>' +
+      '<div class="actions"><button class="btn green" data-act="saveown">Add to my calendar</button></div>', '#oc-name');
+  }
+  function tmins(v) { var p = String(v || '').split(':'); return p.length === 2 ? (+p[0]) * 60 + (+p[1]) : null; }
+
   // ---------- sheets ----------
   var returnToDay = null, pickCtx = null, findCtx = null;
   function openSheet(html, focusSel) {
@@ -352,13 +440,14 @@
     if (first) {
       var carers = [{ id: 'you', name: me, col: '--sk' }];
       if (partner) carers.push({ id: 'partner', name: partner, col: '--pu' });
-      state.plan = { v: 1, me: { name: me }, partner: partner, kids: [], carers: carers, plans: [], days: {}, pendingBook: [] };
+      state.plan = { v: 1, me: { name: me }, partner: partner, kids: [], carers: carers, plans: [], days: {}, pendingBook: [], classes: [] };
     } else {
       P().me.name = me; P().partner = partner;
       var you = carer('you'); if (you) you.name = me;
       var pc = carer('partner'); if (pc && partner) pc.name = partner; else if (!pc && partner) P().carers.push({ id: 'partner', name: partner, col: '--pu' });
       var keep = {}; ks.forEach(function (k) { keep[k.id] = 1; });
       P().plans = P().plans.filter(function (p) { return keep[p.kid]; });
+      P().classes = P().classes.map(function (c) { c.kids = c.kids.filter(function (id) { return keep[id]; }); return c; }).filter(function (c) { return c.kids.length; });
     }
     ks.forEach(function (k, i) { if (!k.col) k.col = KID_COLOURS[i % KID_COLOURS.length]; });
     P().kids = ks;
@@ -464,6 +553,22 @@
     if (el.classList.contains('scrim') && e.target !== el) return;
     var a = el.dataset.act, id = el.dataset.id, w = +el.dataset.week, kid = el.dataset.kid, p = id ? planById(id) : null;
     switch (a) {
+      case 'wk': { var dir = +el.dataset.dir; state.weekStart = dir === 0 ? mondayOf(SY.today()) : SY.addDays(state.weekStart || mondayOf(SY.today()), 7 * dir); render(); break; }
+      case 'exportall': { var list = classes().map(function (c) { return [classEv(c), classRuns(c)]; }).filter(function (x) { return x[1].length; }); if (!list.length) { toast('No classes left this school year'); break; } SY.download('sortd-calendar.ics', SY.ics(list)); toast('Open the downloaded file to add everything'); break; }
+      case 'cics': { var cc = classById(id); if (cc) SY.download('sortd-class.ics', SY.ics([[classEv(cc), classRuns(cc)]])); break; }
+      case 'cyear': { var cy = classById(id); if (!cy) break; var ally = SY.iso(classUntil(cy)) >= SY.iso(SY.addDays(SY.lastTermDay(), -6));
+        cy.until = SY.iso(ally ? SY.currentTermEnd(SY.today()) : SY.lastTermDay()); changed(); render(); toast(ally ? 'Stops at the end of this term' : 'Carries on until the end of the school year'); break; }
+      case 'cremove': { var cr = classById(id); if (!cr || !window.confirm('Remove ' + classTitle(cr) + ' from your calendar?')) break; P().classes = classes().filter(function (x) { return x !== cr; }); changed(); render(); toast('Removed'); break; }
+      case 'ownclass': ownClassSheet(); break;
+      case 'saveown': {
+        var nm = document.getElementById('oc-name').value.trim(); if (!nm) { toast('Add the class name'); document.getElementById('oc-name').focus(); break; }
+        var kidsSel = Array.prototype.map.call(document.querySelectorAll('.oc-kid:checked'), function (x) { return x.value; }); if (!kidsSel.length) { toast('Choose who\'s going'); break; }
+        var st = tmins(document.getElementById('oc-start').value), en = tmins(document.getElementById('oc-end').value); if (st == null || en == null || en <= st) { toast('Check the start and end times'); break; }
+        var fr = document.getElementById('oc-from').value || SY.iso(SY.today()); var frd = SY.parseISO(fr);
+        P().classes.push({ id: uid('c'), kids: kidsSel, listing: { id: null, name: nm, provider: '', url: '', area: '', bookingUrl: '' }, label: '', venue: document.getElementById('oc-venue').value.trim(),
+          day: +document.getElementById('oc-day').value, start: st, end: en, from: fr, until: SY.iso(document.getElementById('oc-year').checked ? SY.lastTermDay() : SY.currentTermEnd(frd)), addedAt: new Date().toISOString() });
+        closeSheet(); changed(); render(); toast('Added to your calendar'); break;
+      }
       case 'setup': setupKids = null; setupDraft = null; setupSheet(false); break;
       case 's-addkid': readSetupKids(); setupKids.push({ id: uid('k'), name: '', age: '', col: KID_COLOURS[setupKids.length % KID_COLOURS.length] }); setupSheet(!P()); var ins = document.querySelectorAll('#kidlist .k-name'); ins[ins.length - 1].focus(); break;
       case 's-delkid': readSetupKids(); setupKids = setupKids.filter(function (k) { return k.id !== kid; }); setupSheet(!P()); break;
@@ -577,7 +682,7 @@
       }
       state.friends = data.friends || []; state.inviteCode = data.inviteCode || null; state.plan = data.plan || null;
       if (state.plan) {
-        ['kids','carers','plans','pendingBook'].forEach(function (k) { if (!Array.isArray(state.plan[k])) state.plan[k] = []; });
+        ['kids','carers','plans','pendingBook','classes'].forEach(function (k) { if (!Array.isArray(state.plan[k])) state.plan[k] = []; });
         if (!state.plan.days || typeof state.plan.days !== 'object') state.plan.days = {};
         if (!state.plan.me) state.plan.me = { name: '' };
       }
@@ -587,7 +692,9 @@
       after.then(function () {
         if (!state.plan) { document.getElementById('app').innerHTML = '<p class="loading">Welcome to your summer planner.</p>'; setupSheet(true); return; }
         if (pending && state.friends.length) state.view = 'friends';
+        else if (/^#(calendar|summer|friends|costs)$/.test(location.hash)) state.view = { '#summer': 'plan', '#calendar': 'calendar', '#friends': 'friends', '#costs': 'costs' }[location.hash];
         render(); setSaveState('Saved');
+        if (!state.plan.me.name || !state.plan.kids.length) { setupKids = null; setupDraft = null; setupSheet(false); }
       });
     }).catch(function () {
       gatePage('Something went wrong', 'We couldn\'t load your planner. Check your connection and refresh the page.');

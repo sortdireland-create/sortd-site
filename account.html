@@ -198,19 +198,19 @@ html.is-unlocked .soon-list b::after{content:" \2713";color:#1D8A52;}
 </div>
 
 <div class="locked-zone">
-<div class="sec-h">In beta testing</div>
+<div class="sec-h" id="plannerSecH">In beta testing</div>
 <div class="planner-card is-off" id="plannerCard" aria-disabled="true">
-<div class="planner-ico" aria-hidden="true">☀</div>
-<div class="planner-txt"><b>Summer planner</b><span id="plannerNote">Plan the summer week by week, see where friends' kids are going, and sort out drop-offs and pick-ups. In beta testing now.</span></div>
+<div class="planner-ico" aria-hidden="true"><i class="ti ti-calendar"></i></div>
+<div class="planner-txt"><b>My Sortd calendar</b><span id="plannerNote">Every class for every child with school breaks taken out, plus your summer plan with friends.</span></div>
 <span class="planner-go" id="plannerGo">In beta</span>
 </div>
 
 <ul class="soon-list">
-<li><i class="ti ti-mood-kid" aria-hidden="true"></i><div><b>Your kids</b><span>Add each child's first name and age once, and we'll show what suits them.</span></div></li>
-<li><i class="ti ti-calendar" aria-hidden="true"></i><div><b>Family calendar</b><span>Classes, days out and camps for each child, across the whole school year.</span></div></li>
+<li data-planner><i class="ti ti-mood-kid" aria-hidden="true"></i><div><b>Your kids</b><span>Add each child's first name and age once, and we'll show what suits them.</span></div></li>
+<li data-planner><i class="ti ti-calendar" aria-hidden="true"></i><div><b>Family calendar</b><span>Classes, days out and camps for each child, across the whole school year.</span></div></li>
 <li data-planner><i class="ti ti-users" aria-hidden="true"></i><div><b>Friends</b><span>See which camps your friends' kids are going to, and join them in a tap.</span></div></li>
-<li><i class="ti ti-calendar-plus" aria-hidden="true"></i><div><b>Add to your calendar</b><span>Send anything to Google, Apple or Outlook calendar.</span></div></li>
-<li><i class="ti ti-school" aria-hidden="true"></i><div><b>School days off</b><span>Midterms and bank holidays built in, plus your school's own days off.</span></div></li>
+<li data-planner><i class="ti ti-calendar-plus" aria-hidden="true"></i><div><b>Add to your calendar</b><span>Send anything to Google, Apple or Outlook calendar.</span></div></li>
+<li data-planner><i class="ti ti-school" aria-hidden="true"></i><div><b>School days off</b><span>Midterms and bank holidays built in, plus your school's own days off (coming soon).</span></div></li>
 <li data-planner><i class="ti ti-coin-euro" aria-hidden="true"></i><div><b>Costs and annual leave</b><span>See what the summer will cost and how many days off you'll need.</span></div></li>
 </ul>
 <p class="soon-note">You'll hear about each one in the Thursday email as it opens up.</p>
@@ -348,7 +348,8 @@ if (window.SortdSaved) {
 </script>
 
 <script>
-// Summer planner card: live for testers (PLANNER_TESTERS in Netlify),
+// Sortd calendar / planner card: live for every logged-in parent while
+// PLANNER_OPEN_TO_ALL=true in Netlify (otherwise only PLANNER_TESTERS),
 // greyed out for everyone else. Also finishes a friend-invite that was
 // started before logging in (planner.js stores the code in localStorage).
 (function () {
@@ -374,11 +375,12 @@ if (window.SortdSaved) {
       a.className = 'planner-card'; a.id = 'plannerCard'; a.href = '/planner';
       a.innerHTML = card.innerHTML;
       card.parentNode.replaceChild(a, card);
-      document.getElementById('plannerNote').textContent = d.plan ? 'Pick up where you left off: weeks, friends, drop-offs and costs.' : 'Plan the summer week by week, see where friends\' kids are going, and sort out drop-offs and pick-ups. You\'re one of our testers.';
-      document.getElementById('plannerGo').textContent = d.plan ? 'Open planner' : 'Start planning';
+      document.getElementById('plannerGo').textContent = d.plan ? 'Open my calendar' : 'Start';
+      var sh = document.getElementById('plannerSecH'); if (sh) sh.textContent = 'Your calendar and planner';
+      var sn = document.querySelector('.soon-note'); if (sn) sn.textContent = 'All of these live in your Sortd calendar. School days off for your own school are coming next.';
       document.querySelectorAll('.soon-list [data-planner] div').forEach(function (el) {
         var l = document.createElement('a');
-        l.className = 'soon-in-planner'; l.href = '/planner'; l.textContent = 'Try it in your planner →';
+        l.className = 'soon-in-planner'; l.href = '/planner'; l.textContent = 'Open →';
         el.appendChild(l);
       });
     })

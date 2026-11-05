@@ -85,7 +85,7 @@
   .lp-bar .lp-btn{padding:12px;font-size:14px;}
   .lp-bar .lp-btn--cal{order:1;flex:1 1 auto;}
   .lp-bar .lp-btn--book{order:2;flex:0 0 auto;width:auto;padding-inline:16px;}
-  .lp-bar .lp-btn--cal[aria-label]::after{content:"Add to my calendar";}
+  .lp-bar .lp-btn--cal[aria-label]::after{content:"Add to my Sortd calendar";}
 }
 
 /* Add-to-calendar sheet */
@@ -120,3 +120,16 @@
 .lp-btn--cal.is-locked{background:#ECEDF2;color:#7A8094;border-color:#ECEDF2;}
 .lp-btn--cal.is-locked:hover{opacity:1;background:#E2E4EC;}
 .lp-btn--cal.is-locked .ti-lock{font-size:18px;}
+
+/* Sortd calendar sheet: children */
+.cp-kids{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.cp-kid{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--bd);background:#fff;border-radius:999px;padding:8px 14px;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--nv);cursor:pointer;}
+.cp-kid i{width:12px;height:12px;border-radius:4px;display:inline-block;}
+.cp-kid.on{border-color:var(--nv);background:var(--nv);color:#fff;}
+.cp-newkid{margin-top:6px;}
+.cp-f--age{flex:0 0 90px;}
+.cp-link{justify-self:start;background:none;border:none;padding:6px 0;color:var(--sk);font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+.cp-btn[disabled]{opacity:.45;cursor:default;}
+.cp-err{color:#B4703F;font-weight:700;}
+.cp-more summary{cursor:pointer;font-weight:800;font-size:14px;color:var(--sk);padding:4px 0;}
+.cp-more .cp-acts{margin-top:10px;}

@@ -4,6 +4,7 @@
 //        Not logged in / not a tester is not an error here: /account calls
 //        this to decide whether to show the planner card or grey it out.
 // POST { action: 'save', plan }        → saves the whole planner JSON
+// POST { action: 'addClass', cls, kidIds, newKids } → adds a weekly class to the Sortd calendar
 // POST { action: 'invite' }            → returns (creating if needed) the invite code
 // POST { action: 'join', code }        → connects the caller with the code's owner
 // POST { action: 'disconnect', id }    → removes a connection on both sides
@@ -46,6 +47,50 @@ async function handleSave(email, body) {
   const me = await getOrCreateMe(email);
   await P.updateUser(me.id, { [P.F.DATA]: str });
   return P.json(200, { ok: true, savedAt: new Date().toISOString() });
+}
+
+// Class pages call this to put a weekly class straight into the parent's
+// Sortd calendar (plan.classes). Creates the planner if they don't have one
+// yet, and any new children typed in on the class page.
+const KID_COLOURS = ['--gr', '--pk', '--sk', '--pu', '--ochre', '--teal'];
+function str(v, max) { return String(v == null ? '' : v).trim().slice(0, max); }
+function isoOrNull(v) { return /^\d{4}-\d{2}-\d{2}$/.test(String(v || '')) ? String(v) : null; }
+function rid(prefix) { return prefix + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+async function handleAddClass(email, body) {
+  const c = body.cls || {};
+  const day = Number(c.day), start = Number(c.start), end = Number(c.end);
+  if (!(day >= 0 && day <= 6) || !(start >= 0 && end > start && end <= 24 * 60)) return P.json(400, { error: 'bad_class' });
+  const listing = c.listing || {};
+  const me = await getOrCreateMe(email);
+  let plan = P.parseJSON(me.fields[P.F.DATA], null);
+  if (!plan || typeof plan !== 'object') {
+    plan = { v: 1, me: { name: '' }, partner: '', kids: [], carers: [{ id: 'you', name: 'You', col: '--sk' }], plans: [], days: {}, pendingBook: [], classes: [] };
+  }
+  ['kids', 'classes', 'plans', 'carers', 'pendingBook'].forEach(k => { if (!Array.isArray(plan[k])) plan[k] = []; });
+  const kidIds = (Array.isArray(body.kidIds) ? body.kidIds : []).filter(id => plan.kids.some(k => k.id === id));
+  (Array.isArray(body.newKids) ? body.newKids : []).slice(0, 6).forEach(nk => {
+    const name = str(nk && nk.name, 30); if (!name) return;
+    const age = nk.age === '' || nk.age == null ? '' : Math.max(0, Math.min(17, parseInt(nk.age, 10) || 0));
+    const kid = { id: rid('k'), name, age, col: KID_COLOURS[plan.kids.length % KID_COLOURS.length] };
+    plan.kids.push(kid); kidIds.push(kid.id);
+  });
+  if (!kidIds.length) return P.json(400, { error: 'no_child' });
+  const entry = {
+    id: rid('c'),
+    kids: kidIds,
+    listing: { id: str(listing.id, 30) || null, name: str(listing.name, 120), provider: str(listing.provider, 120), url: str(listing.url, 300), area: str(listing.area, 80), bookingUrl: str(listing.bookingUrl, 300) },
+    label: str(c.label, 80), venue: str(c.venue, 120), day, start, end,
+    from: isoOrNull(c.from), until: isoOrNull(c.until), addedAt: new Date().toISOString(),
+  };
+  if (!entry.listing.name) return P.json(400, { error: 'bad_class' });
+  // Same class, same slot already there: just add the children to it.
+  const same = plan.classes.find(x => x.listing && x.listing.id && x.listing.id === entry.listing.id && x.day === day && x.start === start);
+  if (same) { kidIds.forEach(id => { if (same.kids.indexOf(id) === -1) same.kids.push(id); }); same.until = entry.until; same.from = same.from && entry.from && same.from < entry.from ? same.from : entry.from; }
+  else plan.classes.push(entry);
+  const out = JSON.stringify(plan);
+  if (out.length > P.MAX_DATA_CHARS) return P.json(413, { error: 'plan_too_big' });
+  await P.updateUser(me.id, { [P.F.DATA]: out });
+  return P.json(200, { ok: true, classId: same ? same.id : entry.id, kids: plan.kids });
 }
 
 async function handleInvite(email) {
@@ -100,6 +145,7 @@ exports.handler = async function (event) {
 
     switch (body.action) {
       case 'save': return await handleSave(g.email, body);
+      case 'addClass': return await handleAddClass(g.email, body);
       case 'invite': return await handleInvite(g.email);
       case 'join': return await handleJoin(g.email, body);
       case 'disconnect': return await handleDisconnect(g.email, body);
