@@ -107,9 +107,10 @@ exports.handler = async function (event) {
     if (!record) return redirect(`${SITE_URL}/login?error=invalid_link`);
 
     const f = record.fields;
-    // Parent login links don't expire and can be used again (Rachel's call,
-    // 5 Nov 2026): a parent can always get back in from the email they were
-    // sent. Used/ExpiresAt are still recorded but no longer checked.
+    // Parent login links last 30 days and can be used again within that
+    // time (Rachel's call, 5 Nov 2026). Used is recorded but not checked.
+    const expiresAt = f[LT.EXPIRES_AT] ? new Date(f[LT.EXPIRES_AT]) : null;
+    if (!expiresAt || expiresAt.getTime() < Date.now()) return redirect(`${SITE_URL}/login?error=expired_link`);
 
     const email = String(f[LT.EMAIL] || '').trim().toLowerCase();
     if (!email) return redirect(`${SITE_URL}/login?error=invalid_link`);
