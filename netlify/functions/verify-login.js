@@ -107,10 +107,9 @@ exports.handler = async function (event) {
     if (!record) return redirect(`${SITE_URL}/login?error=invalid_link`);
 
     const f = record.fields;
-    const used = !!f[LT.USED];
-    const expiresAt = f[LT.EXPIRES_AT] ? new Date(f[LT.EXPIRES_AT]) : null;
-    const expired = !expiresAt || expiresAt.getTime() < Date.now();
-    if (used || expired) return redirect(`${SITE_URL}/login?error=expired_link`);
+    // Parent login links don't expire and can be used again (Rachel's call,
+    // 5 Nov 2026): a parent can always get back in from the email they were
+    // sent. Used/ExpiresAt are still recorded but no longer checked.
 
     const email = String(f[LT.EMAIL] || '').trim().toLowerCase();
     if (!email) return redirect(`${SITE_URL}/login?error=invalid_link`);
@@ -123,9 +122,8 @@ exports.handler = async function (event) {
     // again with the box unticked.
     const newsletterOptIn = !!f[LT.NEWSLETTER_OPT_IN];
 
-    // Mark the token used before doing anything else — if a request were
-    // somehow replayed concurrently, we want the SECOND attempt to fail,
-    // not succeed twice.
+    // Record that the link has been used (for reference only; the link
+    // keeps working).
     const markUsedRes = await airtableRequest(LOGIN_TOKENS_TABLE_ID, '', {
       method: 'PATCH',
       body: JSON.stringify({ records: [{ id: record.id, fields: { [LT.USED]: true } }] }),
