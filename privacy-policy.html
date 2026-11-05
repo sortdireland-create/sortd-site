@@ -59,21 +59,37 @@ a:hover{text-decoration:underline;}
 .footer{background:#27314A;padding:32px 40px;text-align:center;}
 .footer-logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;color:#F4A7C3;display:block;margin-bottom:10px;text-decoration:none;}
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.35);}
+/* Site nav, same as /css/site.css (this page keeps its own styles otherwise) */
+.sitenav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #C3DCEC;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;}
+.sitenav .brand{font-family:'Baloo 2',sans-serif;font-size:24px;font-weight:800;color:#1E2A44;display:flex;align-items:center;gap:6px;text-decoration:none;}
+.sitenav .brand span{color:#3D77A3;}
+.sitenav .navlinks{display:flex;align-items:center;gap:28px;}
+.sitenav .navlink{font-family:'Nunito',sans-serif;font-weight:700;font-size:15px;color:#1E2A44;text-decoration:none;padding:6px 2px;border-bottom:2px solid transparent;}
+.sitenav .navlink:hover{border-bottom-color:#3D77A3;color:#3D77A3;text-decoration:none;}
+.sitenav .nav-cta{background:#3D77A3;color:#fff;font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;padding:10px 20px;border-radius:999px;text-decoration:none;}
+.sitenav .nav-icon{font-size:18px;color:#1E2A44;}
+@media(max-width:900px){.sitenav .navlinks{display:none;}.sitenav{padding:14px 20px;}}
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<script src="/js/account.js" defer></script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="logo">sortd</a>
-    <div class="nav-links">
-      <a href="/how-it-works">how it works</a>
-      <a href="/about">about</a>
-      <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener">instagram</a>
-    </div>
+<nav class="sitenav">
+  <a href="/" class="brand">sortd<span>.</span></a>
+  <div class="navlinks">
+    <a href="/find-an-activity" class="navlink">Find an activity</a>
+    <a href="/how-it-works" class="navlink">How it works</a>
+    <a href="/about" class="navlink">Our story</a>
+    <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener" class="navlink">Providers</a>
+    <a href="/login" class="navlink" id="nav-account-link">Parents</a>
+  </div>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" aria-label="Sortd on Instagram"><i class="ti ti-brand-instagram nav-icon"></i></a>
+    <a href="/newsletter" class="nav-cta">Get the newsletter</a>
   </div>
 </nav>
 
