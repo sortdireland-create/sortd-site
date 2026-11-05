@@ -383,8 +383,9 @@
     var toks = norm(q).split(' ').filter(Boolean); if (!toks.length || !schoolList) return [];
     var out = [];
     for (var i = 0; i < schoolList.length && out.length < 8; i++) {
-      var sc = schoolList[i], hay = norm(sc.n + ' ' + (sc.a || '') + ' ' + (sc.c || '') + ' ' + sc.r);
-      if (toks.every(function (t) { return hay.indexOf(t) !== -1; })) out.push(sc);
+      var sc = schoolList[i], hay = ' ' + norm(sc.n + ' ' + (sc.e || '') + ' ' + (sc.k || '') + ' ' + (sc.a || '') + ' ' + (sc.c || '')) + ' ', roll = sc.r.toLowerCase();
+      // Numbers ("dublin 3") must match a whole word; a 6-character token can match the roll number.
+      if (toks.every(function (t) { return /^\d+$/.test(t) ? hay.indexOf(' ' + t + ' ') !== -1 : (hay.indexOf(t) !== -1 || (t.length >= 5 && roll.indexOf(t) === 0)); })) out.push(sc);
     }
     return out;
   }
@@ -394,7 +395,7 @@
     if (!q.trim()) { box.innerHTML = ''; return; }
     var res = searchSchools(q);
     box.innerHTML = res.length ? res.map(function (sc) {
-      return '<button type="button" class="sugg" data-act="pickschool" data-roll="' + esc(sc.r) + '"><b>' + esc(sc.n) + '</b><span>' + esc([sc.a, sc.c].filter(Boolean).join(', ')) + '</span></button>';
+      return '<button type="button" class="sugg" data-act="pickschool" data-roll="' + esc(sc.r) + '"><b>' + esc(sc.n) + (sc.e ? ' <em>(' + esc(sc.e) + ')</em>' : '') + '</b><span>' + esc([sc.a, sc.c].filter(Boolean).join(', ')) + '</span></button>';
     }).join('') : (schoolList && schoolList.length ? '<p class="cmeta">No match in the school list. You can still add it as typed.</p>' : '');
   }
   function closureKey(c) { return c.label + '|' + c.from + '|' + (c.to || c.from); }
@@ -431,7 +432,7 @@
     var today = SY.iso(SY.today());
     var cl = (sc.closures || []).slice().sort(function (a, b) { return a.from < b.from ? -1 : 1; });
     var upcoming = cl.filter(function (c) { return (c.to || c.from) >= today; }), past = cl.length - upcoming.length;
-    return '<div class="schoolblock"><div class="phead"><div><div class="pname">' + esc(sc.name) + '</div>' + (sc.town ? '<div class="cmeta">' + esc(sc.town) + '</div>' : '') + '<div class="friends">' + kidChips(sc.kids) + '</div></div>' +
+    return '<div class="schoolblock"><div class="phead"><div><div class="pname">' + esc(sc.name) + '</div>' + (sc.town || sc.official ? '<div class="cmeta">' + esc([sc.official, sc.town].filter(Boolean).join(' · ')) + '</div>' : '') + '<div class="friends">' + kidChips(sc.kids) + '</div></div>' +
       '<button class="btn danger" data-act="delschool" data-sid="' + esc(sc.id) + '">Remove school</button></div>' +
       (upcoming.length ? '<ul class="closures">' + upcoming.map(function (c) {
         var srcTxt = closureSource(c);
@@ -716,7 +717,7 @@
         var sn = document.getElementById('sc-name').value.trim(); if (!sn) { toast('Add the school name'); document.getElementById('sc-name').focus(); break; }
         var sk = Array.prototype.map.call(document.querySelectorAll('.sc-kid:checked'), function (x) { return x.value; }); if (!sk.length) { toast('Choose who goes there'); break; }
         var ps = pickedSchool && norm(pickedSchool.n) === norm(sn) ? pickedSchool : null;
-        var nsc = { id: uid('s'), name: sn, kids: sk, closures: [], roll: ps ? ps.r : null, town: ps ? [ps.a, ps.c].filter(Boolean).join(', ') : '' };
+        var nsc = { id: uid('s'), name: ps && ps.e ? ps.e : sn, official: ps && ps.e ? ps.n : '', kids: sk, closures: [], roll: ps ? ps.r : null, town: ps ? [ps.a, ps.c].filter(Boolean).join(', ') : '' };
         schools().push(nsc); pickedSchool = null; changed(); render();
         if (nsc.roll) syncClosures([nsc]).then(function (n) { toast(n ? 'School added, with ' + n + ' day' + (n === 1 ? '' : 's') + ' off other parents have shared' : 'School added. Now add its days off.'); });
         else toast('School added. Now add its days off.');
