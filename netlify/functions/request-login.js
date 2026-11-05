@@ -49,7 +49,7 @@ function featureRow(title, text) {
   return `<tr><td style="padding:0 0 10px;font-size:15px;line-height:1.55;"><strong>${title}</strong><br><span style="color:#5B6783;">${text}</span></td></tr>`;
 }
 
-// Sent when a parent unlocks features on /account (source: 'unlock').
+// Sent for every parent login request.
 // Login link first, then what the account does, then the beta list,
 // then Instagram and the Thursday email (its own sign-up on /newsletter).
 function unlockWelcomeHtml(link) {
@@ -143,7 +143,6 @@ exports.handler = async function (event) {
   // includes a checkbox's name in FormData/the POST body when it's
   // checked, so any of these shapes mean "checked": 'on' (native form
   // submit), true/'true' (a JSON body posting a real boolean).
-  const isUnlock = data.source === 'unlock';
   const newsletterOptIn = data.newsletterOptIn === 'on' || data.newsletterOptIn === true || data.newsletterOptIn === 'true';
 
   try {
@@ -180,18 +179,12 @@ exports.handler = async function (event) {
     const link = `${SITE_URL}/.netlify/functions/verify-login?token=${token}`;
 
     try {
-      await sendEmail(isUnlock ? {
+      // One email for every parent login request (account unlock, /login,
+      // class pages). It replaced the old plain "Your sortd login link" email.
+      await sendEmail({
         to: email,
         subject: "You're in: your sortd account is unlocked",
         html: unlockWelcomeHtml(link),
-      } : {
-        to: email,
-        subject: 'Your sortd login link',
-        html: emailShell(`
-          <p style="margin:0 0 16px;">Here's your sortd login link — no password needed.</p>
-          ${emailButton('Log me in →', link)}
-          <p style="margin:0;font-size:14px;color:#5B6783;">This button logs you in any time for the next 30 days, on any device. For your security it stops working after that, and you can get a new one any time at <a class="dm-link" href="${SITE_URL}/account" style="color:#1B8350;">sortd-ireland.ie/account</a>. Please don't forward this email: anyone with the button can get into your account. If you didn't request this, you can safely ignore it.</p>
-        `, null, { audience: 'parent', eyebrow: 'Your login link' }),
       });
     } catch (emailErr) {
       // Never let an email-sending failure hide the fact that the token
