@@ -53,6 +53,24 @@ a.planner-card:hover{border-color:var(--gr);}
 .card .lede{margin-bottom:22px;}
 .sec-h{font-family:var(--fd);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#8a8fa0;margin:26px 0 10px;}
 .sec-h:first-of-type{margin-top:0;}
+.locked-zone .sec-h:first-of-type{margin-top:26px;}
+html.is-out .only-in, html.is-in .only-out{display:none !important;}
+.unlock{margin:28px 0 6px;padding:22px;border-radius:18px;background:#F3F1FB;border:1.5px solid #E1DCF5;}
+.unlock h3{font-family:var(--fd);color:var(--nv);font-size:1.2rem;margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+.unlock p{font-size:.92rem;margin-bottom:14px;}
+.unlock-row{display:flex;gap:8px;flex-wrap:wrap;}
+.unlock-row input[type=email]{flex:1 1 220px;min-width:0;padding:12px 16px;border-radius:99px;border:1.5px solid #d6d2ea;font:inherit;font-size:.95rem;background:#fff;}
+.unlock-row input[type=email]:focus{outline:none;border-color:#5B4FCA;}
+.unlock-btn{flex:none;padding:12px 20px;border-radius:99px;border:0;background:#5B4FCA;color:#fff;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;}
+.unlock-btn:disabled{opacity:.6;cursor:default;}
+.unlock-consent{display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:.82rem;color:#666;line-height:1.45;}
+.unlock-consent input{margin-top:3px;flex:none;}
+.unlock-consent a{color:#5B4FCA;}
+.unlock-fine{display:block;margin-top:10px;font-size:.8rem;color:#888;}
+.unlock-msg{margin-top:12px;padding:12px 14px;border-radius:10px;font-size:.9rem;line-height:1.5;display:none;}
+.unlock-msg.ok{display:block;background:#E8FFF3;color:#1A7A50;}
+.unlock-msg.err{display:block;background:#FBD7E4;color:#C66686;}
+html.is-out .locked-zone .sec-h::after{content:" · unlock with your email";text-transform:none;letter-spacing:0;font-weight:700;color:#5B4FCA;}
 .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .feat{display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:16px;border:1.5px solid #e6e6ee;background:#fff;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s;}
 .feat:hover{border-color:var(--nv);transform:translateY(-1px);}
@@ -84,6 +102,14 @@ a.planner-card:hover{border-color:var(--gr);}
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
+<script>
+// Logged-in marker only decides which version of the page to show.
+// Real access to saved lists and the planner is checked server-side.
+(function () {
+  var inn = document.cookie.split('; ').some(function (c) { return c === 'sortd_logged_in=1'; });
+  document.documentElement.classList.add(inn ? 'is-in' : 'is-out');
+})();
+</script>
 
 <nav>
   <a href="/" class="brand">sortd<span>.</span></a>
@@ -101,14 +127,17 @@ a.planner-card:hover{border-color:var(--gr);}
 </nav>
 
 <div class="hero">
-<h1>My account</h1>
-<p>Save the activities you like, find what's on, and soon plan the whole year in one place.</p>
+<h1 class="only-in">My account</h1>
+<p class="only-in">Save the activities you like, find what's on, and soon plan the whole year in one place.</p>
+<h1 class="only-out">Your sortd</h1>
+<p class="only-out">Save activities and find what's on, no sign-up needed. Add your email to unlock the planner, calendar and more.</p>
 </div>
 
 <div class="wrap">
 <div class="card">
 <h2>What you can do on sortd</h2>
-<p class="lede">Your account is free. Here's what it does today, and what's on the way.</p>
+<p class="lede only-in">Your account is free. Here's what it does today, and what's on the way.</p>
+<p class="lede only-out">Everything in "Ready now" works straight away. The rest unlocks with your email.</p>
 
 <div class="sec-h">Ready now</div>
 <div class="feat-grid">
@@ -139,6 +168,21 @@ a.planner-card:hover{border-color:var(--gr);}
 </a>
 </div>
 
+<div class="unlock only-out" id="unlock">
+<h3><i class="ti ti-lock-open" aria-hidden="true"></i> Unlock features</h3>
+<p>Pop in your email to get the summer planner, family calendar and the rest as each one opens. It's free, and there's no password: we'll email you a link.</p>
+<form id="unlock-form" novalidate>
+<div class="unlock-row">
+<input type="email" name="email" required placeholder="you@example.ie" autocomplete="email" aria-label="Your email">
+<button type="submit" class="unlock-btn" id="unlock-btn">Unlock features</button>
+</div>
+<label class="unlock-consent"><input type="checkbox" name="newsletterOptIn"> <span>Also send me the Thursday email: new camps, open spots and what's on near you. See our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+<div class="unlock-msg" id="unlock-msg" role="status" aria-live="polite"></div>
+</form>
+<span class="unlock-fine">Your saved activities come with you when you unlock.</span>
+</div>
+
+<div class="locked-zone">
 <div class="sec-h">In testing</div>
 <div class="planner-card is-off" id="plannerCard" aria-disabled="true">
 <div class="planner-ico" aria-hidden="true">☀</div>
@@ -156,7 +200,8 @@ a.planner-card:hover{border-color:var(--gr);}
 <li data-planner><i class="ti ti-coin-euro" aria-hidden="true"></i><div><b>Costs and annual leave</b><span>See what the summer will cost and how many days off you'll need.</span></div></li>
 </ul>
 <p class="soon-note">You'll hear about each one in the Thursday email as it goes live.</p>
-<a href="/.netlify/functions/logout" class="logout-link">Log out</a>
+</div>
+<a href="/.netlify/functions/logout" class="logout-link only-in">Log out</a>
 </div>
 </div>
 
@@ -253,16 +298,6 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 
-<script>
-// Client-side convenience only — if there's no "logged in" marker cookie,
-// bounce to /login. The real gate is server-side (verify-login.js is the
-// only thing that can ever set the HttpOnly session cookie); this just
-// avoids showing an empty "you're logged in" page to someone who isn't.
-(function () {
-  var loggedIn = document.cookie.split('; ').some(function (c) { return c === 'sortd_logged_in=1'; });
-  if (!loggedIn) window.location.replace('/login');
-})();
-</script>
 
 <script>
 // Renders the logged-in parent's saved activities by cross-referencing
@@ -305,6 +340,7 @@ if (window.SortdSaved) {
 (function () {
   var pending = null;
   try { pending = localStorage.getItem('sortd_pending_join'); } catch (_) {}
+  if (!document.documentElement.classList.contains('is-in')) return;
   fetch('/.netlify/functions/planner', { credentials: 'same-origin' })
     .then(function (r) { return r.json(); })
     .then(function (d) {
@@ -324,6 +360,41 @@ if (window.SortdSaved) {
       });
     })
     .catch(function () {});
+})();
+</script>
+
+<script>
+// "Unlock features" = the same magic-link sign-up as /login
+// (request-login.js). The newsletter box is a separate, unticked opt-in.
+(function () {
+  var form = document.getElementById('unlock-form');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = document.getElementById('unlock-btn');
+    var msg = document.getElementById('unlock-msg');
+    var email = form.email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      msg.className = 'unlock-msg err'; msg.textContent = 'Please enter a valid email address.'; return;
+    }
+    btn.disabled = true; btn.textContent = 'Sending...'; msg.className = 'unlock-msg';
+    fetch('/.netlify/functions/request-login', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, newsletterOptIn: form.newsletterOptIn.checked })
+    })
+      .then(function (r) { return r.json().then(function (d) { if (!r.ok) throw new Error(d.error); return d; }); })
+      .then(function () {
+        msg.className = 'unlock-msg ok';
+        msg.textContent = "Check your inbox. Tap the link we've sent you and your features are unlocked.";
+        btn.textContent = 'Sent ✓';
+        if (window.gtag) gtag('event', 'unlock_features_submit');
+      })
+      .catch(function (err) {
+        msg.className = 'unlock-msg err';
+        msg.textContent = (err && err.message) || 'Something went wrong. Please try again.';
+        btn.disabled = false; btn.textContent = 'Unlock features';
+      });
+  });
 })();
 </script>
 

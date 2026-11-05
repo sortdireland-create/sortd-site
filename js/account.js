@@ -18,8 +18,10 @@
     if (!link) return;
     if (isLoggedIn()) {
       link.textContent = 'My account';
-      link.href = '/account';
     }
+    // Logged out or in, the account page is where parents go: logged-out
+    // visitors see what's free and an "Unlock features" email box.
+    link.href = '/account';
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', apply);

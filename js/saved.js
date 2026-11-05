@@ -74,7 +74,7 @@
       '<div class="save-toast-title">Saved!</div>' +
       '<div class="save-toast-sub">Want to keep your shortlist in one place?</div>' +
       '</div>' +
-      '<a href="/login" class="save-toast-cta">Create your free account</a>' +
+      '<a href="/account#unlock" class="save-toast-cta">Create your free account</a>' +
       '<button class="save-toast-close" aria-label="Dismiss">&#10005;</button>';
     document.body.appendChild(toast);
     requestAnimationFrame(() => toast.classList.add('show'));
