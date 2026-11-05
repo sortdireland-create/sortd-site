@@ -338,6 +338,69 @@
     }
     return items.sort(function (a, b) { return a.t - b.t; }).map(function (x) { return x.html; }).join('');
   }
+  // ---------- Your school's days off ----------
+  // plan.schools = [{ id, name, kids: [kidIds], closures: [{ id, label, from, to }] }]
+  // Shown on the week view as "No school for Ella (Inset day)". Weekly
+  // classes are not removed: most run outside school and still go ahead.
+  var CLOSURE_LABELS = ['Inset day', 'School closed', 'Half day', 'School holidays'];
+  function schools() { return P().schools || (P().schools = []); }
+  function schoolById(id) { return schools().find(function (s) { return s.id === id; }); }
+  function kidNames(ids) { var n = (ids || []).map(kidById).filter(Boolean).map(function (k) { return k.name; }); return n.length > 1 ? n.slice(0, -1).join(', ') + ' and ' + n[n.length - 1] : (n[0] || ''); }
+  function closuresOn(d) {
+    var s = SY.iso(d), out = [];
+    schools().forEach(function (sc) { (sc.closures || []).forEach(function (c) { if (s >= c.from && s <= (c.to || c.from)) out.push({ sc: sc, c: c }); }); });
+    return out;
+  }
+  function closureChips(d) {
+    return closuresOn(d).map(function (x) {
+      var who = kidNames(x.sc.kids) || x.sc.name, half = x.c.label === 'Half day';
+      return '<div class="cschool' + (half ? ' is-half' : '') + '">' + (half ? 'Half day for ' : 'No school for ') + esc(who) + (half ? '' : ' (' + esc(x.c.label) + ')') + '</div>';
+    }).join('');
+  }
+  function closureWhen(c) {
+    var f = SY.parseISO(c.from);
+    if (!c.to || c.to === c.from) return SY.nice(f);
+    var t = SY.parseISO(c.to);
+    return SY.nice(f) + ' – ' + SY.nice(t);
+  }
+  function kidTicks(cls, checkedIds) {
+    return '<div class="kidsbar">' + kids().map(function (k, i) {
+      var on = checkedIds ? checkedIds.indexOf(k.id) !== -1 : i === 0;
+      return '<label class="kid"><input type="checkbox" class="' + cls + '" value="' + esc(k.id) + '"' + (on ? ' checked' : '') + '> <span class="swatch" style="background:var(' + k.col + ')"></span>' + esc(k.name) + '</label>';
+    }).join('') + '</div>';
+  }
+  function newSchoolForm(first) {
+    return '<div class="ownform schoolform">' +
+      '<label class="field ownwide" for="sc-name">School name<input id="sc-name" maxlength="80" placeholder="e.g. St Oliver Plunkett NS"></label>' +
+      '<div class="field ownwide"><span>Who goes there?</span>' + kidTicks('sc-kid') + '</div></div>' +
+      '<div class="actions"><button class="btn" data-act="addschool">' + (first ? 'Add school' : 'Add this school') + '</button></div>';
+  }
+  function schoolBlock(sc) {
+    var today = SY.iso(SY.today());
+    var cl = (sc.closures || []).slice().sort(function (a, b) { return a.from < b.from ? -1 : 1; });
+    var upcoming = cl.filter(function (c) { return (c.to || c.from) >= today; }), past = cl.length - upcoming.length;
+    return '<div class="schoolblock"><div class="phead"><div><div class="pname">' + esc(sc.name) + '</div><div class="friends">' + kidChips(sc.kids) + '</div></div>' +
+      '<button class="btn danger" data-act="delschool" data-sid="' + esc(sc.id) + '">Remove school</button></div>' +
+      (upcoming.length ? '<ul class="closures">' + upcoming.map(function (c) {
+        return '<li><span class="cl-l' + (c.label === 'Half day' ? ' is-half' : '') + '">' + esc(c.label) + '</span><b>' + closureWhen(c) + '</b>' +
+          '<button class="btn danger" data-act="delclosure" data-sid="' + esc(sc.id) + '" data-cid="' + esc(c.id) + '" aria-label="Remove ' + esc(c.label) + ' ' + closureWhen(c) + '">Remove</button></li>';
+      }).join('') + '</ul>' : '<p class="muted">No days off added yet. Your school\'s calendar is usually on its website or in the newsletter.</p>') +
+      (past ? '<p class="cmeta">' + past + ' past day' + (past === 1 ? '' : 's') + ' off hidden.</p>' : '') +
+      '<div class="ownform closureform">' +
+      '<label class="field" for="cl-label-' + esc(sc.id) + '">Type<select id="cl-label-' + esc(sc.id) + '">' + CLOSURE_LABELS.map(function (l) { return '<option>' + l + '</option>'; }).join('') + '</select></label>' +
+      '<label class="field" for="cl-from-' + esc(sc.id) + '">Date<input type="date" id="cl-from-' + esc(sc.id) + '" min="' + SY.TERMS[0][0] + '"></label>' +
+      '<label class="field" for="cl-to-' + esc(sc.id) + '">Until (optional)<input type="date" id="cl-to-' + esc(sc.id) + '"></label>' +
+      '<div class="field"><span>&nbsp;</span><button class="btn green" data-act="addclosure" data-sid="' + esc(sc.id) + '">Add day off</button></div></div></div>';
+  }
+  function schoolPanel() {
+    var head = '<div class="ownhead"><span class="ownico ownico--school" aria-hidden="true">✎</span><div><h2>Your school\'s days off</h2>' +
+      '<p class="muted">Add your school\'s inset days, half days and closures. They show on your calendar so you\'re never caught out. Classes still show, as most run outside school.</p></div></div>';
+    if (!kids().length) return '<div class="panel schoolpanel">' + head + '<div class="actions"><button class="btn" data-act="setup">Add your children first</button></div></div>';
+    if (!schools().length) return '<div class="panel schoolpanel">' + head + newSchoolForm(true) + '</div>';
+    return '<div class="panel schoolpanel">' + head + schools().map(schoolBlock).join('') +
+      '<details class="addschool"><summary>+ Add another school</summary>' + newSchoolForm(false) + '</details></div>';
+  }
+
   function viewCalendar() {
     if (!state.weekStart) state.weekStart = mondayOf(SY.today());
     var ws = state.weekStart, we = SY.addDays(ws, 6), t = SY.iso(SY.today());
@@ -346,7 +409,8 @@
       var d = SY.addDays(ws, i), off = SY.whyOff(d), items = dayItems(d), isToday = SY.iso(d) === t;
       days += '<div class="cday' + (isToday ? ' is-today' : '') + (i >= 5 ? ' is-wkend' : '') + '"><div class="cday-h"><b>' + DAYS_LONG[d.getDay()].slice(0, 3) + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + '</b>' +
         (off && i < 5 ? '<span class="coff">' + esc(off) + '</span>' : '') + (isToday ? '<span class="ctoday">Today</span>' : '') + '</div>' +
-        (items || '<div class="cnone">' + (i < 5 && !off ? 'Nothing on' : '') + '</div>') + '</div>';
+        closureChips(d) +
+        (items || '<div class="cnone">' + (i < 5 && !off && !closuresOn(d).length ? 'Nothing on' : '') + '</div>') + '</div>';
     }
     var list = classes().slice().sort(function (a, b) { return a.day - b.day || a.start - b.start; });
     return '<section class="intro"><span class="eyebrow">Your Sortd calendar</span><h1>The week, <em>sorted.</em></h1>' +
@@ -360,7 +424,7 @@
       (list.length ? '<button class="btn light" data-act="exportall">Add all to my phone\'s calendar</button>' : '') + '</div>' +
       (list.length ? list.map(classCard).join('') : '<p class="muted">No classes yet. Find one on Sortd and tap "Add to my Sortd calendar", or add your own.</p>') +
       '<div class="actions"><a class="btn" href="/weekly-classes">Find a class on Sortd</a></div></div>' +
-      ownClassPanel() + '</div>';
+      ownClassPanel() + schoolPanel() + '</div>';
   }
   // "Add your own class": its own module under Your classes, with the form
   // inline (swimming, GAA, Irish dancing... anything not on Sortd).
@@ -460,7 +524,7 @@
     if (first) {
       var carers = [{ id: 'you', name: me, col: '--sk' }];
       if (partner) carers.push({ id: 'partner', name: partner, col: '--pu' });
-      state.plan = { v: 1, me: { name: me }, partner: partner, kids: [], carers: carers, plans: [], days: {}, pendingBook: [], classes: [] };
+      state.plan = { v: 1, me: { name: me }, partner: partner, kids: [], carers: carers, plans: [], days: {}, pendingBook: [], classes: [], schools: [] };
     } else {
       P().me.name = me; P().partner = partner;
       var you = carer('you'); if (you) you.name = me;
@@ -468,6 +532,7 @@
       var keep = {}; ks.forEach(function (k) { keep[k.id] = 1; });
       P().plans = P().plans.filter(function (p) { return keep[p.kid]; });
       P().classes = P().classes.map(function (c) { c.kids = c.kids.filter(function (id) { return keep[id]; }); return c; }).filter(function (c) { return c.kids.length; });
+      schools().forEach(function (sc) { sc.kids = sc.kids.filter(function (id) { return keep[id]; }); });
     }
     ks.forEach(function (k, i) { if (!k.col) k.col = KID_COLOURS[i % KID_COLOURS.length]; });
     P().kids = ks;
@@ -589,6 +654,25 @@
           day: +document.getElementById('oc-day').value, start: st, end: en, from: fr, until: SY.iso(document.getElementById('oc-year').checked ? SY.lastTermDay() : SY.currentTermEnd(frd)), addedAt: new Date().toISOString() });
         closeSheet(); changed(); render(); toast('Added to your calendar'); break;
       }
+      case 'addschool': {
+        var sn = document.getElementById('sc-name').value.trim(); if (!sn) { toast('Add the school name'); document.getElementById('sc-name').focus(); break; }
+        var sk = Array.prototype.map.call(document.querySelectorAll('.sc-kid:checked'), function (x) { return x.value; }); if (!sk.length) { toast('Choose who goes there'); break; }
+        schools().push({ id: uid('s'), name: sn, kids: sk, closures: [] }); changed(); render(); toast('School added. Now add its days off.');
+        var nf = document.querySelectorAll('.schoolblock input[type=date]'); if (nf.length) nf[nf.length - 2].focus(); break;
+      }
+      case 'delschool': { var ds = schoolById(el.dataset.sid); if (!ds || !window.confirm('Remove ' + ds.name + ' and its days off?')) break; P().schools = schools().filter(function (x) { return x !== ds; }); changed(); render(); toast('School removed'); break; }
+      case 'addclosure': {
+        var sid = el.dataset.sid, sc = schoolById(sid); if (!sc) break;
+        var lab = document.getElementById('cl-label-' + sid).value, cf = document.getElementById('cl-from-' + sid).value, ct = document.getElementById('cl-to-' + sid).value;
+        if (!cf) { toast('Pick the date'); document.getElementById('cl-from-' + sid).focus(); break; }
+        if (ct && ct < cf) { toast('"Until" is before the start date'); break; }
+        if (CLOSURE_LABELS.indexOf(lab) === -1) lab = 'School closed';
+        sc.closures = sc.closures || []; sc.closures.push({ id: uid('x'), label: lab, from: cf, to: ct || cf });
+        state.weekStart = mondayOf(SY.parseISO(cf));
+        changed(); render(); toast(lab + ' added, ' + closureWhen({ from: cf, to: ct || cf }));
+        var nb = document.getElementById('cl-from-' + sid); if (nb) nb.focus(); break;
+      }
+      case 'delclosure': { var dsc = schoolById(el.dataset.sid); if (!dsc) break; dsc.closures = (dsc.closures || []).filter(function (c) { return c.id !== el.dataset.cid; }); changed(); render(); toast('Removed'); break; }
       case 'setup': setupKids = null; setupDraft = null; setupSheet(false); break;
       case 's-addkid': readSetupKids(); setupKids.push({ id: uid('k'), name: '', age: '', col: KID_COLOURS[setupKids.length % KID_COLOURS.length] }); setupSheet(!P()); var ins = document.querySelectorAll('#kidlist .k-name'); ins[ins.length - 1].focus(); break;
       case 's-delkid': readSetupKids(); setupKids = setupKids.filter(function (k) { return k.id !== kid; }); setupSheet(!P()); break;
@@ -702,7 +786,7 @@
       }
       state.friends = data.friends || []; state.inviteCode = data.inviteCode || null; state.plan = data.plan || null;
       if (state.plan) {
-        ['kids','carers','plans','pendingBook','classes'].forEach(function (k) { if (!Array.isArray(state.plan[k])) state.plan[k] = []; });
+        ['kids','carers','plans','pendingBook','classes','schools'].forEach(function (k) { if (!Array.isArray(state.plan[k])) state.plan[k] = []; });
         if (!state.plan.days || typeof state.plan.days !== 'object') state.plan.days = {};
         if (!state.plan.me) state.plan.me = { name: '' };
       }
