@@ -203,6 +203,8 @@ function renderSaved() {
     return;
   }
   grid.innerHTML = saved.map(function (c, i) { return listingCard(c, i, true); }).join('');
+  // listingCard() renders every heart as unsaved; paint the real state.
+  window.SortdSaved.paintAll();
 }
 
 if (window.SortdSaved) {
