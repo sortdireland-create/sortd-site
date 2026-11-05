@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HHTB7S9WJG"></script>
 <script>
@@ -12,123 +12,38 @@ gtag('config', 'G-HHTB7S9WJG');
 </script>
 <script src="/js/booking-tracking.js" defer></script>
 <script src="/js/newsletter-signup.js" defer></script>
+<script src="/js/account.js" defer></script>
+<script src="/js/saved.js" defer></script>
+<script src="/js/class-page.js" defer></script>
 <title>Kinsella School of Ballet — Malahide — Malahide, Dublin | sortd</title>
-<meta name="description" content="RAD ballet curriculum ladder: PrePrimary Ballet (gentle intro through stories/im…. Dance camp in Malahide, Dublin for ages 5–18. Find and book on sortd.ie.">
+<meta name="description" content="RAD ballet curriculum ladder: PrePrimary Ballet (gentle intro through stories/imagery, bu…. Weekly dance class in Malahide, Dublin for ages 5–18. On sortd.">
 <link rel="canonical" href="https://sortd-ireland.ie/classes/dublin/kinsella-school-of-ballet-malahide">
 <meta property="og:title" content="Kinsella School of Ballet — Malahide — Malahide | sortd">
-<meta property="og:description" content="RAD ballet curriculum ladder: PrePrimary Ballet (gentle intro through stories/im…. Dance camp in Malahide, Dublin for ages 5–18. Find and book on sortd.ie.">
+<meta property="og:description" content="RAD ballet curriculum ladder: PrePrimary Ballet (gentle intro through stories/imagery, bu…. Weekly dance class in Malahide, Dublin for ages 5–18. On sortd.">
 <meta property="og:url" content="https://sortd-ireland.ie/classes/dublin/kinsella-school-of-ballet-malahide">
 <meta property="og:type" content="website">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SportsClub","name":"Kinsella School of Ballet — Malahide","description":"RAD ballet curriculum ladder: PrePrimary Ballet (gentle intro through stories/imagery, builds co-ordination and motor skills) → Primary Ballet (age 5-7, RAD syllabus, optional Helix Theatre performances) → Grade 1 & 2 (age 8-9, Class Awards + Helix Theatre performances) → Grade 3+ (age 10+, 2 classes/week encouraged, option to sit RAD exams) → PrePointe (age 14+, 2 classes/week compulsory for students working toward Pointe).","url":"https://sortd-ireland.ie/classes/dublin/kinsella-school-of-ballet-malahide","address":{"@type":"PostalAddress","addressLocality":"Malahide","addressRegion":"Dublin","addressCountry":"IE"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<!-- Shared site stylesheet — same nav/hero/footer/tokens as the homepage,
-     /camps and /weekly-classes, so a listing page is never its own island. -->
 <link rel="stylesheet" href="/css/site.css">
-<style>
-/* ── Listing-page-only rules. Everything else (nav, footer, popup, colour
-   tokens, fonts) comes from /css/site.css so this page always stays in sync
-   with the rest of the site instead of drifting on its own. Classes below
-   are prefixed lp- so they can never collide with a site.css class. ── */
-
-/* Breadcrumb */
-.lp-bc{background:#fff;padding:11px 40px;border-bottom:1px solid var(--bd);font-size:12px;font-weight:700;color:#9aa0ad;}
-.lp-bc-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
-.lp-bc a{color:#9aa0ad;}.lp-bc a:hover{color:var(--nv);}.lp-sep{opacity:.5;}.lp-cur{color:var(--nv);}
-@media(max-width:768px){.lp-bc{padding:10px 20px;}}
-
-/* Page wrapper + two-column layout */
-.lp-page{max-width:1200px;margin:0 auto;padding:0 40px 64px;}
-.lp-layout{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start;}
-@media(max-width:900px){.lp-layout{grid-template-columns:1fr;}}
-@media(max-width:768px){.lp-page{padding:0 20px 48px;}}
-
-/* Hero — same rotated rounded-card blobs as the homepage hero, tinted to
-   this listing's category rather than the fixed purple/green/pink the
-   homepage and hub pages use, so each listing still reads as itself. */
-.lp-hero{position:relative;overflow:hidden;background:#FBE1EB;padding:56px 40px 68px;}
-.lp-hero .blob1{background:#fff;}
-.lp-hero .blob2{background:rgba(255,255,255,.6);}
-.lp-hero .blob3{background:#C6567F;opacity:.3;}
-.lp-pin{position:absolute;bottom:-24px;left:40px;width:56px;height:56px;background:#fff;border-radius:16px;display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 4px 16px rgba(30,42,68,.16);}
-.lp-pin .ti{font-size:26px;color:#C6567F;}
-@media(max-width:768px){.lp-hero{padding:40px 20px 52px;}.lp-pin{left:20px;}}
-
-/* Main column cards */
-.lp-hd{background:#fff;border:1px solid var(--bd);border-radius:20px;padding:44px 28px 28px;margin-bottom:16px;box-shadow:0 4px 16px rgba(30,42,68,.06);}
-.lp-eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#C6567F;margin-bottom:8px;}
-h1{font-weight:800;font-size:clamp(22px,3.5vw,36px);line-height:1.1;color:var(--nv);margin-bottom:8px;}
-.lp-provider-row{font-size:14px;color:#767c8c;display:flex;align-items:center;gap:8px;margin-bottom:20px;}
-.lp-badge{background:var(--nv);color:#fff;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:999px;}
-.lp-facts{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--bd);border-radius:14px;overflow:hidden;margin-bottom:16px;}
-.lp-fact{padding:12px 16px;border-right:1.5px solid var(--bd);border-bottom:1.5px solid var(--bd);}
-.lp-fact:nth-child(2n){border-right:none;}.lp-fact:nth-child(3),.lp-fact:nth-child(4){border-bottom:none;}
-.lp-fact-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#aaa;display:flex;align-items:center;gap:4px;margin-bottom:4px;}
-.lp-fact-l .ti{color:#C6567F;font-size:12px;}
-.lp-fact-v{font-size:13px;font-weight:700;color:var(--nv);line-height:1.35;}
-.lp-startdate{background:#FBE1EB;border-radius:12px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
-.lp-startdate-l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--nv);opacity:.7;margin-bottom:2px;}
-.lp-startdate-d{font-weight:800;font-size:18px;color:var(--nv);}
-.lp-startdate .ti{font-size:26px;color:var(--nv);opacity:.5;}
-.lp-cta{display:block;width:100%;background:#C6567F;color:#fff;border:none;border-radius:999px;padding:15px;font-weight:700;font-size:15px;text-align:center;text-decoration:none;cursor:pointer;margin-bottom:10px;transition:opacity .15s;}
-.lp-cta:hover{opacity:.88;}
-.lp-cta[disabled]{opacity:.5;cursor:default;}
-.lp-cta-ghost{display:block;width:100%;background:transparent;color:var(--nv);border:1.5px solid var(--bd);border-radius:999px;padding:12px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;text-align:center;cursor:not-allowed;opacity:.5;}
-.lp-card{background:#fff;border:1px solid var(--bd);border-radius:20px;padding:24px 28px;margin-bottom:16px;}
-.lp-card-l{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C6567F;margin-bottom:12px;}
-.lp-about{font-size:15px;line-height:1.7;color:#3f4557;white-space:pre-line;}
-.lp-weeks{display:flex;flex-direction:column;gap:8px;}
-.lp-week{background:var(--pg);border:1px solid var(--bd);border-radius:10px;padding:9px 14px;}
-.lp-week-p{font-size:13px;font-weight:700;color:var(--nv);}.lp-week-s{font-size:11px;color:#888;margin-top:2px;}
-.lp-cost{font-weight:800;font-size:32px;color:var(--nv);line-height:1;}
-.lp-cost-note{font-size:13px;color:#888;margin-top:4px;margin-bottom:14px;}
-.lp-cost-extra{background:var(--pg);border-radius:10px;padding:12px 14px;font-size:13px;color:#3f4557;line-height:1.55;white-space:pre-line;}
-.lp-loc{display:flex;gap:14px;align-items:flex-start;}
-.lp-loc-icon{width:90px;min-width:90px;height:72px;background:var(--grl);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--gr);font-size:28px;}
-.lp-loc-text{font-size:14px;color:#3f4557;line-height:1.55;margin-bottom:8px;}
-.lp-loc-link{color:var(--sk);font-size:13px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:4px;}
-
-/* Sidebar column */
-.lp-box{background:var(--nv);border-radius:20px;padding:20px 22px;display:flex;flex-direction:column;margin-bottom:16px;}
-.lp-box-row{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.1);}.lp-box-row:last-child{border-bottom:none;}
-.lp-box-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:4px;}
-.lp-box-v{font-size:14px;font-weight:600;color:#fff;display:flex;align-items:center;gap:6px;}
-.lp-box-v a{color:#fff;text-decoration:underline;text-underline-offset:2px;}
-.lp-box-v--ig{color:#F4A7C3;}.lp-box-n{font-weight:400;color:rgba(255,255,255,.75);font-size:13px;line-height:1.5;}
-.lp-invite{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.lp-invite-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:13px;border-radius:12px;font-size:13px;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-family:'Nunito',sans-serif;}
-.lp-invite-btn--wa{background:#25D366;color:#fff;}.lp-invite-btn--em{background:var(--pg);color:var(--nv);}
-.lp-explore{background:#fff;border:1px solid var(--bd);border-radius:20px;padding:20px 22px;}
-.lp-explore-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#aaa;margin-bottom:12px;}
-.lp-explore-ls{display:flex;flex-direction:column;gap:10px;}
-.lp-explore-a{color:var(--sk);font-size:14px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:5px;}
-
-.lp-badge-neuro{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:999px;font-size:.78rem;font-weight:700;background:var(--pul);color:var(--pu);border:1.5px solid var(--pu);margin-bottom:10px;}
-.lp-fb-banner{background:#FFF7E8;border:2px solid #D9971E;border-radius:16px;padding:20px 24px;margin-bottom:24px;}
-.lp-fb-banner-t{font-size:1.15rem;font-weight:800;color:#8a5f0f;margin-bottom:6px;}
-.lp-fb-banner-p{font-size:.92rem;color:#6b4a0c;line-height:1.6;margin:0;}
-.lp-mo-ribbon{background:var(--nv);color:#fff;text-align:center;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:.01em;padding:11px 16px;display:flex;align-items:center;justify-content:center;gap:8px;}
-.lp-mo-ribbon .ti{font-size:1.05rem;}
-.lp-sibling-link{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 14px;background:var(--pg);border-radius:12px;text-decoration:none;color:var(--nv);font-weight:600;font-size:.88rem;margin-top:10px;}
-.lp-sibling-link .lp-avail{font-size:.74rem;color:var(--gr);font-weight:700;white-space:nowrap;}
-.lp-sibling-link .lp-full{font-size:.74rem;color:#8a5f0f;font-weight:700;white-space:nowrap;}
-</style>
+<link rel="stylesheet" href="/css/class-page.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
-<body data-listing-id="reciTCvzVVdkBtCTk" data-listing-name="Kinsella School of Ballet — Malahide" data-provider="Kinsella School of Ballet" data-listing-type="class">
+<body data-listing-id="reciTCvzVVdkBtCTk" data-listing-name="Kinsella School of Ballet — Malahide" data-provider="Kinsella School of Ballet" data-listing-type="class" style="--cat:#C6567F;--cat-tint:#FBE1EB;">
 
 <nav>
   <a href="/" class="brand">sortd<span>.</span></a>
   <div class="navlinks">
-    <a href="/camps" class="navlink">Camps</a>
-    <a href="/weekly-classes" class="navlink active">Weekly classes</a>
+    <a href="/find-an-activity" class="navlink">Find an activity</a>
     <a href="/how-it-works" class="navlink">How it works</a>
     <a href="/about" class="navlink">Our story</a>
-    <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener" class="navlink">Partners portal</a>
+    <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener" class="navlink">Providers</a>
+    <a href="/login" class="navlink" id="nav-account-link">Parents</a>
   </div>
   <div style="display:flex; align-items:center; gap:12px;">
-    <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener"><i class="ti ti-brand-instagram nav-icon"></i></a>
+    <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" aria-label="Sortd on Instagram"><i class="ti ti-brand-instagram nav-icon"></i></a>
     <a href="/newsletter" class="nav-cta">Get the newsletter</a>
   </div>
 </nav>
@@ -136,101 +51,68 @@ h1{font-weight:800;font-size:clamp(22px,3.5vw,36px);line-height:1.1;color:var(--
 <nav class="lp-bc" aria-label="Breadcrumb">
 <div class="lp-bc-inner">
 <a href="/">sortd</a><span class="lp-sep">›</span>
-<a href="/weekly-classes?q=Dublin">Dance · Dublin</a><span class="lp-sep">›</span>
+<a href="/weekly-classes">Classes</a><span class="lp-sep">›</span>
 <a href="/weekly-classes?q=Malahide">Malahide</a><span class="lp-sep">›</span>
 <span class="lp-cur">Kinsella School of Ballet — Malahide</span>
 </div>
 </nav>
 
-<div class="hero lp-hero">
-<div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div>
-<div class="lp-pin"><i class="ti ti-music"></i></div>
-</div>
+<div class="cl-wrap">
+<main class="cl-page">
 
-<div class="lp-page">
-<div class="lp-layout">
-
-<!-- MAIN COLUMN -->
-<div class="main-col">
-<div class="lp-hd">
-<div class="lp-eyebrow">Dance</div>
-
+<header class="cl-head">
+<div class="cl-eyebrow">Weekly class · Dance</div>
 <h1>Kinsella School of Ballet — Malahide</h1>
-<div class="lp-provider-row">Kinsella School of Ballet<span class="lp-badge">Sortd Listed</span></div>
-<div class="lp-facts">
-<div class="lp-fact"><div class="lp-fact-l"><i class="ti ti-calendar-event"></i> Days</div><div class="lp-fact-v">Saturday &amp; Wednesday, at Portmarnock Sports &amp; Leisure Club, Blackwood Lane (the shared Portmarnock/Malahide venue)</div></div>
-<div class="lp-fact"><div class="lp-fact-l"><i class="ti ti-users"></i> Ages</div><div class="lp-fact-v">5–18 yrs</div></div>
-<div class="lp-fact"><div class="lp-fact-l"><i class="ti ti-currency-euro"></i> Cost</div><div class="lp-fact-v">Per term (roughly 10-11 teaching weeks): 30min €100 · 45min €120 · 50min €125 · 60min €130 · 75min €160 · 90min €180 — price depends on class length, not level</div></div>
-<div class="lp-fact"><div class="lp-fact-l"><i class="ti ti-map-pin"></i> Location</div><div class="lp-fact-v">Malahide, Dublin</div></div>
+<div class="cl-prov">Kinsella School of Ballet</div>
+<div class="cl-chips">
+<span class="cl-chip"><i class="ti ti-users"></i>Ages 5–18</span>
+<span class="cl-chip"><i class="ti ti-calendar-event"></i>Sat &amp; Wed, at Portmarnock Sports &amp; Leisure Club, Blackwood Lane (the shared Portmarnock/Malahide venue)</span>
+<span class="cl-chip"><i class="ti ti-map-pin"></i>Malahide</span>
 </div>
 
+</header>
 
-<a href="https://www.balletschool.ie/our-school/locations/ballet-classes-in-portmarnock/" target="_blank" rel="noopener" class="lp-cta bb" data-track="booking">Book this camp ↗</a>
-<button class="lp-cta-ghost" disabled>Send enquiry — coming soon</button>
-</div>
-
-<div class="lp-card">
-<div class="lp-card-l">About this camp</div>
-<p class="lp-about">RAD ballet curriculum ladder: PrePrimary Ballet (gentle intro through stories/imagery, builds co-ordination and motor skills) → Primary Ballet (age 5-7, RAD syllabus, optional Helix Theatre performances) → Grade 1 &amp; 2 (age 8-9, Class Awards + Helix Theatre performances) → Grade 3+ (age 10+, 2 classes/week encouraged, option to sit RAD exams) → PrePointe (age 14+, 2 classes/week compulsory for students working toward Pointe).</p>
-</div>
-
-<div class="lp-card">
-<div class="lp-card-l">Weeks available</div>
-<div class="lp-weeks"><p class="mu">Check with the provider for available weeks.</p></div>
+<aside class="lp-act" aria-label="Book or plan this class">
+<div class="lp-booked" id="lp-booked" hidden><b>Booked a place?</b>Add it to your calendar so you don't miss a week.<button type="button" id="lp-booked-x" aria-label="Dismiss">✕</button></div>
+<div class="lp-act-price lp-act-price--long">Per term (roughly 10-11 teaching weeks): 30min €100 · 45min €120 · 50min €125 · 60min €130 · 75min €160 · 90min €180 — price depends on class length, not level</div>
+<div class="lp-act-sub">per child</div>
+<a href="https://www.balletschool.ie/our-school/locations/ballet-classes-in-portmarnock/" target="_blank" rel="noopener" class="lp-btn lp-btn--book bb" data-track="booking">Book with provider <i class="ti ti-external-link"></i></a>
+<button type="button" class="lp-btn lp-btn--cal" data-lp="calendar"><i class="ti ti-calendar-plus"></i> Add to my calendar</button>
+<div class="lp-minor">
+<button type="button" class="lp-mini" data-save-id="reciTCvzVVdkBtCTk" aria-pressed="false" aria-label="Save for later"><i class="ti ti-heart h-off"></i><i class="ti ti-heart-filled h-on"></i> Save</button>
+<button type="button" class="lp-mini" data-lp="share"><i class="ti ti-share"></i> Share</button>
 </div>
 
-<div class="lp-card">
-<div class="lp-card-l">Cost</div>
-<div class="lp-cost">Per term (roughly 10-11 teaching weeks): 30min €100 · 45min €120 · 50min €125 · 60min €130 · 75min €160 · 90min €180 — price depends on class length, not level</div>
-<div class="lp-cost-note">per child · Sat: PrePrimary 9:10–9:40am; Primary 9:45–10:30am; Grade 1 10:25–11:10am; Grade 2 11:10am–12:00pm; Advanced 12:15–1:45pm; Grade 4 1:45–3:00pm.</div>
+</aside>
 
-</div>
+<div class="cl-body">
+<section class="cl-card"><h2>Timetable</h2><div class="cl-tt"><div class="cl-tt-grp"><h3>Saturday</h3><div class="cl-tt-row"><b></b><span>PrePrimary 9:10–9:40am; Primary 9:45–10:30am; Grade 1 10:25–11:10am; Grade 2 11:10am–12:00pm; Advanced 12:15–1:45pm; Grade 4 1:45–3:00pm.</span></div></div><div class="cl-tt-grp"><h3>Wednesday</h3><div class="cl-tt-row"><b></b><span>Grade 4 5:30–7:00pm; Advanced 6:00–7:00pm.</span></div></div></div><p class="cl-note">Times are from Kinsella School of Ballet (balletschool.ie). Check with them before your first class.</p></section>
 
-<div class="lp-card">
-<div class="lp-card-l">Location</div>
-<div class="lp-loc">
-<div class="lp-loc-icon"><i class="ti ti-map-pin"></i></div>
-<div>
-<div class="lp-loc-text">Portmarnock Sports &amp; Leisure Club, Blackwood Lane, Portmarnock<br></div>
-<a href="https://maps.google.com/?q=Portmarnock%20Sports%20%26%20Leisure%20Club%2C%20Blackwood%20Lane%2C%20Portmarnock" target="_blank" rel="noopener" class="lp-loc-link">Get directions <i class="ti ti-external-link"></i></a>
-</div>
-</div>
-</div>
+<section class="cl-card"><h2>About</h2><p class="cl-about">RAD ballet curriculum ladder: PrePrimary Ballet (gentle intro through stories/imagery, builds co-ordination and motor skills) → Primary Ballet (age 5-7, RAD syllabus, optional Helix Theatre performances) → Grade 1 &amp; 2 (age 8-9, Class Awards + Helix Theatre performances) → Grade 3+ (age 10+, 2 classes/week encouraged, option to sit RAD exams) → PrePointe (age 14+, 2 classes/week compulsory for students working toward Pointe).</p>
+</section>
 
-</div>
-
-<!-- SIDEBAR COLUMN -->
-<div class="sidebar">
-<div class="lp-box">
-<div class="lp-card-l" style="color:#F4A7C3">How to book</div>
-<div class="lp-box-row"><div class="lp-box-l">Book online</div><div class="lp-box-v"><i class="ti ti-external-link"></i><a href="https://www.balletschool.ie/our-school/locations/ballet-classes-in-portmarnock/" target="_blank" rel="noopener">balletschool.ie</a></div></div>
+<section class="cl-card"><h2>Where</h2><div class="cl-where"><div>Portmarnock Sports &amp; Leisure Club, Blackwood Lane, Portmarnock</div>
+<a href="https://maps.google.com/?q=Portmarnock%20Sports%20%26%20Leisure%20Club%2C%20Blackwood%20Lane%2C%20Portmarnock" target="_blank" rel="noopener">Open in Google Maps <i class="ti ti-external-link"></i></a></div></section>
 
 
+
+<div class="cl-explore" role="navigation" aria-label="Explore more classes">
+<a href="/weekly-classes?text=Dance">More dance classes</a>
+<a href="/weekly-classes?q=Malahide">Classes in Malahide</a>
+<a href="/weekly-classes?age=3-5">Classes for ages 5–18</a>
+</div>
+<p class="cl-src">Listed on Sortd from Kinsella School of Ballet's own information. Confirm details with them before booking.</p>
 </div>
 
-<div class="lp-card">
-<div class="lp-card-l">Invite a friend</div>
-<div class="lp-invite">
-<a href="https://wa.me/?text=I%20found%20this%20camp%20on%20sortd.ie%20%E2%80%94%20thought%20you%20might%20be%20interested!%20https%3A%2F%2Fsortd-ireland.ie%2Fclasses%2Fdublin%2Fkinsella-school-of-ballet-malahide" target="_blank" rel="noopener" class="lp-invite-btn lp-invite-btn--wa"><i class="ti ti-brand-whatsapp"></i> WhatsApp</a>
-<a href="mailto:?subject=Found%20this%20on%20sortd&body=I%20found%20this%20camp%20on%20sortd.ie%20%E2%80%94%20thought%20you%20might%20be%20interested!%0Ahttps%3A%2F%2Fsortd-ireland.ie%2Fclasses%2Fdublin%2Fkinsella-school-of-ballet-malahide" class="lp-invite-btn lp-invite-btn--em"><i class="ti ti-mail"></i> Email</a>
-</div>
+</main>
 </div>
 
-<div class="note" style="background:#fff;border:1px solid var(--bd);border-radius:20px;padding:20px 22px;margin-bottom:16px;color:#C6567F;">no experience needed — just bring your best moves ↗</div>
-
-<div class="lp-explore">
-<div class="lp-explore-l">Explore more</div>
-<div class="lp-explore-ls">
-<a href="/weekly-classes?text=Dance" class="lp-explore-a"><i class="ti ti-arrow-right"></i> All Dance classes in Dublin</a>
-<a href="/weekly-classes?q=Malahide" class="lp-explore-a"><i class="ti ti-arrow-right"></i> All classes in Malahide</a>
-<a href="/weekly-classes?age=3-5" class="lp-explore-a"><i class="ti ti-arrow-right"></i> Classes for ages 5–18 yrs</a>
-<a href="/weekly-classes" class="lp-explore-a"><i class="ti ti-arrow-right"></i> Back to all weekly classes</a>
-</div>
-</div>
+<div class="lp-bar" aria-hidden="true">
+<a href="https://www.balletschool.ie/our-school/locations/ballet-classes-in-portmarnock/" target="_blank" rel="noopener" class="lp-btn lp-btn--book bb" data-track="booking" tabindex="-1">Book <i class="ti ti-external-link"></i></a>
+<button type="button" class="lp-btn lp-btn--cal" data-lp="calendar" tabindex="-1" aria-label="Add to my calendar"><i class="ti ti-calendar-plus"></i></button>
 </div>
 
-</div>
-</div>
+<script type="application/json" id="lp-data">{"id":"reciTCvzVVdkBtCTk","slug":"kinsella-school-of-ballet-malahide","name":"Kinsella School of Ballet — Malahide","provider":"Kinsella School of Ballet","url":"https://sortd-ireland.ie/classes/dublin/kinsella-school-of-ballet-malahide","days":"Saturday & Wednesday, at Portmarnock Sports & Leisure Club, Blackwood Lane (the shared Portmarnock/Malahide venue)","times":"Sat: PrePrimary 9:10–9:40am; Primary 9:45–10:30am; Grade 1 10:25–11:10am; Grade 2 11:10am–12:00pm; Advanced 12:15–1:45pm; Grade 4 1:45–3:00pm.\nWed: Grade 4 5:30–7:00pm; Advanced 6:00–7:00pm.","cost":"Per term (roughly 10-11 teaching weeks): 30min €100 · 45min €120 · 50min €125 · 60min €130 · 75min €160 · 90min €180 — price depends on class length, not level","area":"Malahide, Dublin","location":"Portmarnock Sports & Leisure Club, Blackwood Lane, Portmarnock","bookingUrl":"https://www.balletschool.ie/our-school/locations/ballet-classes-in-portmarnock/","dateStart":"2026-09-10","dateEnd":"2027-05-27"}</script>
 
 <footer>
   <div class="foot-nl">
@@ -249,7 +131,7 @@ h1{font-weight:800;font-size:clamp(22px,3.5vw,36px);line-height:1.1;color:var(--
   <div class="foot-top">
     <div>
       <div class="foot-logo">sortd</div>
-      <p class="foot-tag">Every kids' camp &amp; weekly class across Leinster, in one place. Built by a mum. For parents.</p>
+      <p class="foot-tag">Every kids' camp &amp; class across Leinster, in one place. Built by a mum. For parents.</p>
       <div class="foot-social">
         <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" aria-label="Instagram">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -265,7 +147,7 @@ h1{font-weight:800;font-size:clamp(22px,3.5vw,36px);line-height:1.1;color:var(--
       <a href="/camps?q=Wicklow">Wicklow camps</a>
       <a href="/camps?q=Meath">Meath camps</a>
       <a href="/camps">All camps</a>
-      <a href="/weekly-classes">All weekly classes</a>
+      <a href="/weekly-classes">All classes</a>
     </div>
     <div class="foot-col">
       <div class="foot-heading">Company</div>
@@ -315,6 +197,5 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closePopup();
 });
 </script>
-
 </body>
 </html>
