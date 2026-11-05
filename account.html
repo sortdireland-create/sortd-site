@@ -39,6 +39,16 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 .saved-heading{font-family:var(--fd);font-size:1.3rem;color:var(--nv);margin-bottom:18px;}
 .saved-empty{grid-column:1/-1;background:#fafafa;border:1.5px dashed #e2e2e2;border-radius:16px;padding:36px 24px;text-align:center;color:#888;}
 .saved-empty a{color:var(--sk);font-weight:700;}
+.planner-card{display:flex;align-items:center;gap:14px;padding:16px;border-radius:16px;border:1.5px solid #e6e6ee;background:#fff;text-decoration:none;color:inherit;margin-top:6px;}
+.planner-card .planner-ico{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:#FFF2CC;color:#B4703F;}
+.planner-card b{display:block;font-family:var(--fd);color:var(--nv);font-size:1.05rem;}
+.planner-card span{color:#666;font-size:.88rem;line-height:1.45;}
+.planner-txt{flex:1;min-width:0;}
+.planner-card .planner-go{flex:none;font-weight:800;font-size:.85rem;border-radius:99px;padding:7px 14px;background:var(--gr);color:#fff;white-space:nowrap;}
+.planner-card.is-off{opacity:.55;filter:grayscale(1);cursor:not-allowed;background:#fafafa;}
+.planner-card.is-off .planner-go{background:#bbb;}
+a.planner-card:hover{border-color:var(--gr);}
+@media (max-width:480px){.planner-card{flex-wrap:wrap}.planner-card .planner-go{margin-left:58px}}
 </style>
   <script src="/js/booking-tracking.js" defer></script>
   <script src="/js/newsletter-signup.js" defer></script>
@@ -75,9 +85,11 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 <div class="wrap">
 <div class="card">
 <h2>What's here so far</h2>
-<p>Save a camp or class anywhere on the site and it'll show up below. A shareable summer planner is coming next.</p>
-<div class="coming">
-<div><b>Summer planner</b><span>Drop-off/pick-up, who's doing what, a link to share with other parents — coming soon.</span></div>
+<p>Save a camp or class anywhere on the site and it'll show up below.</p>
+<div class="planner-card is-off" id="plannerCard" aria-disabled="true">
+<div class="planner-ico" aria-hidden="true">☀</div>
+<div class="planner-txt"><b>Summer planner</b><span id="plannerNote">Plan the summer week by week, see where friends' kids are going, and sort out drop-offs and pick-ups. Coming soon, in testing.</span></div>
+<span class="planner-go" id="plannerGo">Coming soon</span>
 </div>
 <a href="/.netlify/functions/logout" class="logout-link">Log out</a>
 </div>
@@ -217,6 +229,30 @@ if (window.SortdSaved) {
     if (window.SortdSaved) window.SortdSaved.onReady(renderSaved);
   });
 }
+</script>
+
+<script>
+// Summer planner card: live for testers (PLANNER_TESTERS in Netlify),
+// greyed out for everyone else. Also finishes a friend-invite that was
+// started before logging in (planner.js stores the code in localStorage).
+(function () {
+  var pending = null;
+  try { pending = localStorage.getItem('sortd_pending_join'); } catch (_) {}
+  fetch('/.netlify/functions/planner', { credentials: 'same-origin' })
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (!d.tester) { try { localStorage.removeItem('sortd_pending_join'); } catch (_) {} return; }
+      if (pending) { window.location.replace('/planner?join=' + encodeURIComponent(pending)); return; }
+      var card = document.getElementById('plannerCard');
+      var a = document.createElement('a');
+      a.className = 'planner-card'; a.id = 'plannerCard'; a.href = '/planner';
+      a.innerHTML = card.innerHTML;
+      card.parentNode.replaceChild(a, card);
+      document.getElementById('plannerNote').textContent = d.plan ? 'Pick up where you left off: weeks, friends, drop-offs and costs.' : 'Plan the summer week by week, see where friends\' kids are going, and sort out drop-offs and pick-ups. You\'re one of our testers.';
+      document.getElementById('plannerGo').textContent = d.plan ? 'Open planner' : 'Start planning';
+    })
+    .catch(function () {});
+})();
 </script>
 
 </body>

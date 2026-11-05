@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HHTB7S9WJG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HHTB7S9WJG');
+</script>
+<title>Summer planner — sortd</title>
+<meta name="description" content="Plan your kids' summer week by week.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="/css/planner.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="toprow">
+      <a href="/" class="brand">sortd<span>.</span></a>
+      <div class="topright">
+        <span class="savestate" id="savestate" role="status" aria-live="polite"></span>
+        <a href="/account" class="toplink">My account</a>
+      </div>
+    </div>
+    <div class="tabs" role="tablist" id="tabs" hidden>
+      <button class="tab" role="tab" aria-selected="true" data-view="plan">My summer</button>
+      <button class="tab" role="tab" aria-selected="false" data-view="cal">Calendar</button>
+      <button class="tab" role="tab" aria-selected="false" data-view="friends">Friends</button>
+      <button class="tab" role="tab" aria-selected="false" data-view="costs">Costs &amp; leave</button>
+      <button class="tab" role="tab" aria-selected="false" data-view="how">How it works</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="app"><p class="loading">Loading your planner…</p></main>
+<div id="layer"></div>
+
+<script src="/js/camps-data.js"></script>
+<script src="/js/planner.js"></script>
+</body>
+</html>
