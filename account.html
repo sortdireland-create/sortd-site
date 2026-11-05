@@ -413,7 +413,7 @@ if (window.SortdSaved) {
     btn.disabled = true; btn.textContent = 'Sending...'; msg.className = 'unlock-msg';
     fetch('/.netlify/functions/request-login', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email })
+      body: JSON.stringify({ email: email, source: 'unlock' })
     })
       .then(function (r) { return r.json().then(function (d) { if (!r.ok) throw new Error(d.error); return d; }); })
       .then(function () {
