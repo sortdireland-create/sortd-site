@@ -190,6 +190,7 @@ html.is-unlocked .soon-list b::after{content:" \2713";color:#1D8A52;}
 <button type="submit" class="unlock-btn" id="unlock-btn">Unlock features</button>
 </div>
 <label class="unlock-consent"><input type="checkbox" name="unlockAgree" required> <span>Unlock to access these services. We'll use your email to set up your free sortd account and send you a link to log in. See our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+<label class="unlock-consent"><input type="checkbox" name="newsletterOptIn"> <span>Also send me the weekly "what's on near you" email every Thursday: new camps, open spots and honest updates. See our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
 <div class="unlock-msg" id="unlock-msg" role="status" aria-live="polite"></div>
 </form>
 <span class="unlock-fine">Your favourites work straight away, and follow you to any device once you tap the link.</span>
@@ -245,7 +246,7 @@ html.is-unlocked .soon-list b::after{content:" \2713";color:#1D8A52;}
   <div class="foot-top">
     <div>
       <div class="foot-logo">sortd</div>
-      <p class="foot-tag">Every kids' camp &amp; class across Leinster, in one place. Built by a mum. For parents.</p>
+      <p class="foot-tag">Every kids' camp &amp; class across Ireland, in one place. Built by a mum. For parents.</p>
       <div class="foot-social">
         <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" aria-label="Instagram">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -398,7 +399,7 @@ if (window.SortdSaved) {
 <script>
 // "Unlock features" = the same magic-link sign-up as /login
 // (request-login.js). The tick box is required to unlock; the newsletter
-// is its own sign-up on /newsletter, not part of this form.
+// tick box is separate and unticked by default (same wording as /login).
 (function () {
   function markPlanner() {
     var go = document.getElementById('plannerGo');
@@ -421,7 +422,7 @@ if (window.SortdSaved) {
     btn.disabled = true; btn.textContent = 'Sending...'; msg.className = 'unlock-msg';
     fetch('/.netlify/functions/request-login', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, source: 'unlock' })
+      body: JSON.stringify({ email: email, source: 'unlock', newsletterOptIn: !!(form.newsletterOptIn && form.newsletterOptIn.checked) })
     })
       .then(function (r) { return r.json().then(function (d) { if (!r.ok) throw new Error(d.error); return d; }); })
       .then(function () {

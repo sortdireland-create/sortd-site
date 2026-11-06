@@ -104,6 +104,7 @@
         '<form class="sv-form" novalidate>' +
           '<input type="email" name="email" autocomplete="email" required placeholder="you@example.ie" aria-label="Your email">' +
           '<button type="submit" class="sv-btn">Save to favourites</button>' +
+          '<label class="sv-opt" style="display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;font-size:13px;line-height:1.45;text-align:left;font-weight:600;"><input type="checkbox" name="newsletterOptIn" style="margin-top:2px;flex:0 0 auto;width:16px;height:16px;"> <span>Also send me the weekly "what\'s on near you" email every Thursday: new camps, open spots and honest updates. See our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>' +
         '</form>' +
         '<p class="sv-msg" role="status" aria-live="polite"></p>' +
         '<p class="sv-fine">Already have an account? Same thing: enter your email and we\'ll send a login link. We\'ll use your email to set up your free sortd account. <a href="/privacy-policy" target="_blank" rel="noopener">Privacy policy</a>.</p>' +
@@ -139,7 +140,7 @@
     fetch('/.netlify/functions/request-login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, source: 'save' }),
+      body: JSON.stringify({ email, source: 'save', newsletterOptIn: !!(sheetEl && sheetEl.querySelector('input[name="newsletterOptIn"]:checked')) }),
     })
       .then((r) => r.json().then((d) => { if (!r.ok) throw new Error(d.error || 'error'); return d; }))
       .then(() => {
