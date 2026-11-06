@@ -66,6 +66,32 @@ const F = {
   DATE_START: 'fldwCRNqtDFTs7u4N', // DateStart — same field the sourcing agent / sortd-updater use for camps
 };
 
+
+// Clean the free-text Area into a plain place name, same rules as
+// normaliseArea() in sortd-admin's generate-listings.js (keep the two in
+// step). "Clontarf, Dublin 3 (Dublin City)" -> "Clontarf", "Fingal (Lusk)"
+// -> "Lusk", "Dublin 2" -> "City Centre". Multi-place answers are kept as
+// typed. The original wording goes into Notes so nothing is lost.
+const AREA_ALIASES = {
+  'dublin 1':'City Centre','dublin 2':'City Centre','temple bar':'City Centre','dublin city':'City Centre',
+  'dublin city centre':'City Centre','ilac centre':'City Centre','north inner city':'City Centre',
+  'dun laoghaire':'Dún Laoghaire','dún laoghaire':'Dún Laoghaire',
+  'dublin 15':'Blanchardstown','corduff':'Blanchardstown','porterstown':'Castleknock',
+  'fassaugh avenue':'Cabra','dublin 18':'Sandyford','rathfarnham village':'Rathfarnham','ongar village':'Ongar',
+};
+function cleanArea(raw) {
+  let s = String(raw || '').trim();
+  if (!s) return s;
+  const fingal = s.match(/^fingal\s*\(\s*([^,)]+)/i);
+  if (fingal) s = fingal[1];
+  if (/\s&\s/.test(s) || /^multiple sites/i.test(s)) return String(raw).trim();
+  const first = s.split(/[,(\/]/)[0].trim();
+  if (!first) return String(raw).trim();
+  let name = AREA_ALIASES[first.toLowerCase()] || first.replace(/\s+/g, ' ');
+  if (name === name.toLowerCase()) name = name.replace(/\b\w/g, ch => ch.toUpperCase());
+  return name;
+}
+
 const REQUIRED = ['name','type','provider','county','area','category','ageMin','ageMax','cost','bookingUrl','providerEmail','startDate'];
 
 // Formats a "YYYY-MM-DD" date input value as e.g. "2 Sep 2026" for emails.
@@ -207,7 +233,7 @@ exports.handler = async function (event) {
     [F.TYPE]: data.type.trim(),
     [F.PROVIDER]: data.provider.trim(),
     [F.COUNTY]: data.county.trim(),
-    [F.AREA]: data.area.trim(),
+    [F.AREA]: cleanArea(data.area),
     [F.CATEGORY]: data.category.trim(),
     [F.AGE_MIN]: Number(data.ageMin),
     [F.AGE_MAX]: Number(data.ageMax),
@@ -215,7 +241,7 @@ exports.handler = async function (event) {
     [F.ACTIVITIES]: (data.activities || '').trim(),
     [F.PROVIDER_EMAIL]: data.providerEmail.trim(),
     [F.LIVE]: false, // always a draft — Rachel reviews before publishing
-    [F.NOTES]: 'Submitted via self-submit form — pending review.',
+    [F.NOTES]: 'Submitted via self-submit form — pending review.' + (cleanArea(data.area) !== data.area.trim() ? ` Area as submitted: "${data.area.trim()}".` : ''),
     [F.SOURCE_TYPE]: 'Provider Self-Submit', // distinguishes from Manual / AI-Sourced
     [F.DATE_START]: data.startDate.trim(), // "YYYY-MM-DD" from the <input type="date">, Airtable accepts this directly
   };

@@ -176,6 +176,11 @@ function matchesEircodeOrArea(listing, query){
   // stored format, same as the padding applied to postcodes on import.
   let qCode = qRaw.replace(/\s+/g, '').toUpperCase();
   qCode = qCode.replace(/^D(\d)(?!\d)/, 'D0$1');
+  // "Dublin 15" / "Dublin 6W" typed as words -> the D15 / D6W routing key,
+  // since Area now holds the plain place name (Blanchardstown) and the
+  // district lives in the postcode.
+  const dm = qRaw.match(/^(?:co\.?\s*)?dublin\s*(\d{1,2})\s*(w?)$/i);
+  if (dm) qCode = dm[2] ? 'D' + dm[1] + 'W' : 'D' + dm[1].padStart(2, '0');
   if(listing.postcode){
     const pcCode = listing.postcode.replace(/\s+/g, '').toUpperCase();
     if(pcCode.startsWith(qCode) || qCode.startsWith(pcCode)) return true;
