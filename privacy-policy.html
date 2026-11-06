@@ -69,12 +69,17 @@ a:hover{text-decoration:underline;}
 .sitenav .nav-cta{background:#3D77A3;color:#fff;font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;padding:10px 20px;border-radius:999px;text-decoration:none;}
 .sitenav .nav-icon{font-size:18px;color:#1E2A44;}
 @media(max-width:900px){.sitenav .navlinks{display:none;}.sitenav{padding:14px 20px;}}
+.sitenav .nav-right{display:flex;align-items:center;gap:16px;}
+.sitenav .nav-cta-outline{background:transparent;color:#1E2A44;font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;text-decoration:none;border:1.5px solid #C3DCEC;}
+.sitenav .nav-cta-find{display:none;}
+@media(max-width:900px){.sitenav .nav-cta-find{display:inline-block;}.sitenav .nav-login,.sitenav .nav-signup{display:none;}}
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <script src="/js/account.js" defer></script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script src="/js/mobile-nav.js" defer></script>
 </head>
 <body>
 
@@ -83,14 +88,14 @@ a:hover{text-decoration:underline;}
   <div class="navlinks">
     <a href="/find-an-activity" class="navlink">Find an activity</a>
     <a href="/whats-on" class="navlink">What's on</a>
-    <a href="/how-it-works" class="navlink">How it works</a>
     <a href="/about" class="navlink">Our story</a>
-    <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener" class="navlink">Providers</a>
-    <a href="/login" class="navlink" id="nav-account-link">Parents</a>
+    <a href="/list" class="navlink">For providers</a>
   </div>
-  <div style="display:flex; align-items:center; gap:12px;">
+  <div class="nav-right">
     <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" aria-label="Sortd on Instagram"><i class="ti ti-brand-instagram nav-icon"></i></a>
-    <a href="/newsletter" class="nav-cta">Get the newsletter</a>
+    <a href="/login" class="navlink nav-login" id="nav-account-link" data-smn-item>Log in</a>
+    <a href="/login" class="nav-cta-outline nav-signup" data-smn-cta>Sign up free</a>
+    <a href="/find-an-activity" class="nav-cta nav-cta-find">Find an activity</a>
   </div>
 </nav>
 

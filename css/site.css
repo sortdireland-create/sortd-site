@@ -49,6 +49,13 @@ nav{
   padding:10px 18px; border-radius:999px; text-decoration:none; border:1.5px solid var(--bd);}
 .nav-icon{font-size:18px; color:var(--nv);}
 @media (max-width:900px){ .navlinks{display:none;} }
+.nav-right{display:flex; align-items:center; gap:16px;}
+.nav-right .nav-signup{padding:9px 18px;}
+.nav-cta-find{display:none;}
+@media (max-width:900px){
+  .nav-right .nav-cta-find{display:inline-block;}
+  .nav-right .nav-login, .nav-right .nav-signup{display:none;}
+}
 
 /* ===== HERO ===== */
 .hero{position:relative; overflow:hidden; padding:64px 40px 48px; text-align:center; background:var(--pul); color:var(--nv);}

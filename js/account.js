@@ -18,6 +18,9 @@
     if (!link) return;
     if (isLoggedIn()) {
       link.textContent = 'My account';
+      // Already have an account: no need for "Sign up free"
+      var signup = document.querySelector('nav .nav-signup');
+      if (signup) signup.parentNode.removeChild(signup);
     }
     // Logged out or in, the account page is where parents go: logged-out
     // visitors see what's free and an "Unlock features" email box.

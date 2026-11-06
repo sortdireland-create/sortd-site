@@ -20,6 +20,15 @@
  * If a page has no GA4 tag, this script loads it (G-HHTB7S9WJG), so
  * listing pages generated without the tag still get page views + clicks.
  */
+// Site-wide mobile burger menu rides along with this script (it's on every page).
+(function () {
+  if (window.__sortdMobileNav || document.querySelector('script[src*="mobile-nav.js"]')) return;
+  var s = document.createElement('script');
+  s.src = '/js/mobile-nav.js';
+  s.defer = true;
+  document.head.appendChild(s);
+})();
+
 (function () {
   'use strict';
 
