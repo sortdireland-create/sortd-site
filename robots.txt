@@ -28,3 +28,4 @@ Disallow: /planner
 Disallow: /.netlify/
 
 Sitemap: https://sortd-ireland.ie/sitemap.xml
+Sitemap: https://sortd-ireland.ie/sitemap-archive.xml
