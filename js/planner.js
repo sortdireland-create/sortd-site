@@ -579,9 +579,9 @@
     var mname = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][ms.getMonth()];
     var isThis = ms.getFullYear() === SY.today().getFullYear() && ms.getMonth() === SY.today().getMonth();
     return '<div class="calnav"><button class="btn light" data-act="mo" data-dir="-1" aria-label="Previous month">←</button><b>' + mname + ' ' + ms.getFullYear() + '</b>' +
-      '<button class="btn light" data-act="mo" data-dir="1" aria-label="Next month">→</button>' + (isThis ? '' : '<button class="btn link" data-act="mo" data-dir="0">This month</button>') + '</div>' +
+      '<button class="btn light" data-act="mo" data-dir="1" aria-label="Next month">→</button>' + (isThis ? '' : '<button class="btn link" data-act="mo" data-dir="0">This month</button>') + '</div>' + calKey() +
       '<div class="mgrid"><div class="mdow">Mon</div><div class="mdow">Tue</div><div class="mdow">Wed</div><div class="mdow">Thu</div><div class="mdow">Fri</div><div class="mdow">Sat</div><div class="mdow">Sun</div>' + cells + '</div>' +
-      calKey() + '<p class="cmeta">Tap a day to see that week.</p>';
+      '<p class="cmeta">Tap a day to see that week.</p>';
   }
   function schoolYearStart() { // 1 Sept of the current school year
     var t = SY.today(), y = t.getMonth() >= 8 ? t.getFullYear() : t.getFullYear() - 1;
@@ -604,8 +604,8 @@
         '<span class="ydow"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i></span><span class="ygrid">' + cells + '</span></button>';
     }
     return '<div class="calnav"><button class="btn light" data-act="yr" data-dir="-1" aria-label="Previous school year">←</button><b>School year ' + ys.getFullYear() + '/' + String(ys.getFullYear() + 1).slice(2) + '</b>' +
-      '<button class="btn light" data-act="yr" data-dir="1" aria-label="Next school year">→</button>' + (state.yearOffset ? '<button class="btn link" data-act="yr" data-dir="0">This year</button>' : '') + '</div>' +
-      '<div class="ymonths">' + months + '</div>' + calKey(true) + '<p class="cmeta">Tap a month to open it.</p>';
+      '<button class="btn light" data-act="yr" data-dir="1" aria-label="Next school year">→</button>' + (state.yearOffset ? '<button class="btn link" data-act="yr" data-dir="0">This year</button>' : '') + '</div>' + calKey(true) +
+      '<div class="ymonths">' + months + '</div>' + '<p class="cmeta">Tap a month to open it.</p>';
   }
   function calKey(year) {
     return '<div class="calkey ckey">' +
@@ -629,7 +629,7 @@
     var weekHtml = '<div class="calnav"><button class="btn light" data-act="wk" data-dir="-1" aria-label="Previous week">←</button>' +
       '<b>' + ws.getDate() + ' ' + MONTHS[ws.getMonth()] + ' – ' + we.getDate() + ' ' + MONTHS[we.getMonth()] + ' ' + we.getFullYear() + '</b>' +
       '<button class="btn light" data-act="wk" data-dir="1" aria-label="Next week">→</button>' +
-      (SY.iso(ws) !== SY.iso(mondayOf(SY.today())) ? '<button class="btn link" data-act="wk" data-dir="0">This week</button>' : '') + '</div>' +
+      (SY.iso(ws) !== SY.iso(mondayOf(SY.today())) ? '<button class="btn link" data-act="wk" data-dir="0">This week</button>' : '') + '</div>' + calKey() +
       '<div class="cweek">' + days + '</div>';
     return '<section class="intro"><span class="eyebrow">Your Sortd calendar</span><h1>' + (mode === 'year' ? 'The year' : mode === 'month' ? 'The month' : 'The week') + ', <em>sorted.</em></h1>' +
       '<p class="muted">Every class for every child, with midterm, holidays and bank holidays already taken out. Add classes from any class page on Sortd.</p></section>' +
