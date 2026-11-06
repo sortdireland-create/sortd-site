@@ -328,3 +328,28 @@ footer{background:var(--nv); color:#cfd4e0; padding:56px 40px 24px;}
 .hw-card span{font-size:15px;line-height:1.6;color:#555;}
 .hw-card em{font-style:normal;font-weight:800;font-size:14px;color:var(--sk);margin-top:auto;padding-top:6px;}
 @media(max-width:860px){.hw-grid{grid-template-columns:1fr;}.hw-sec{padding-top:36px;}}
+
+/* Save-to-favourites email sheet (js/saved.js). Favourites are behind the
+   email wall; searching is free. Bottom sheet on phones, centred card on
+   desktop. */
+.sv-layer{position:fixed;inset:0;z-index:600;background:rgba(30,42,68,.45);display:flex;align-items:flex-end;justify-content:center;opacity:0;transition:opacity .2s;}
+.sv-layer.show{opacity:1;}
+.sv-sheet{position:relative;width:100%;max-width:440px;background:#fff;border-radius:22px 22px 0 0;padding:26px 22px 24px;box-shadow:0 -10px 40px rgba(0,0,0,.18);transform:translateY(24px);transition:transform .2s;text-align:center;color:var(--nv);}
+.sv-layer.show .sv-sheet{transform:none;}
+@media(min-width:600px){.sv-layer{align-items:center;}.sv-sheet{border-radius:22px;}}
+.sv-x{position:absolute;top:12px;right:12px;width:32px;height:32px;border:0;border-radius:99px;background:#f3f3f3;color:var(--nv);font-size:13px;cursor:pointer;}
+.sv-ico{width:52px;height:52px;margin:0 auto 10px;border-radius:99px;background:var(--pkl);color:var(--pkink);display:flex;align-items:center;justify-content:center;font-size:26px;}
+.sv-ico--ok{background:var(--grl);color:var(--gr);}
+.sv-sheet h3{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.35rem;line-height:1.2;margin-bottom:6px;}
+.sv-sub{font-size:.92rem;line-height:1.5;color:#4a5570;margin-bottom:16px;}
+.sv-form{display:flex;flex-direction:column;gap:10px;}
+.sv-form input{width:100%;padding:13px 16px;border-radius:99px;border:1.5px solid #d6d2ea;font:inherit;font-size:1rem;background:#fff;text-align:center;}
+.sv-form input:focus{outline:none;border-color:var(--pkink);}
+.sv-btn{width:100%;padding:13px 20px;border-radius:99px;border:0;background:var(--pkink);color:#fff;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1rem;cursor:pointer;}
+.sv-btn:disabled{opacity:.6;cursor:default;}
+.sv-msg{font-size:.88rem;margin-top:8px;min-height:1px;}
+.sv-msg.err{color:#C66686;}
+.sv-fine{font-size:.78rem;color:#888;line-height:1.45;margin-top:10px;}
+.sv-fine a{color:var(--pu);}
+.sv-acts{display:flex;flex-direction:column;gap:10px;align-items:center;}
+.sv-link{color:var(--sk);font-weight:700;font-size:.92rem;}

@@ -75,6 +75,7 @@ html.is-out .locked-zone .sec-h::after{content:" · add your email to be the fir
 .unlocked{display:none;margin:28px 0 6px;padding:20px 22px;border-radius:18px;background:#E8FFF3;border:1.5px solid #BFEBD3;}
 .unlocked h3{font-family:var(--fd);color:#1A7A50;font-size:1.2rem;margin-bottom:4px;display:flex;align-items:center;gap:8px;}
 .unlocked p{font-size:.92rem;color:#2f5f47;margin:0;}
+html.is-out:not(.is-unlocked) .fav-feat{display:none;}
 html.is-out.is-unlocked .unlock{display:none !important;}
 html.is-out.is-unlocked .unlocked{display:block;}
 html.is-out.is-unlocked .locked-zone .sec-h::after{content:" · unlocked, you're first in line";color:#1D8A52;}
@@ -143,22 +144,22 @@ html.is-unlocked .soon-list b::after{content:" \2713";color:#1D8A52;}
 <h1 class="only-in">My account</h1>
 <p class="only-in">Save the activities you like, find what's on, and soon plan the whole year in one place.</p>
 <h1 class="only-out">Your sortd</h1>
-<p class="only-out">Save activities and find what's on, no sign-up needed. Add your email to unlock the planner, calendar and more.</p>
+<p class="only-out">Search camps, classes and what's on, no sign-up needed. Add your email to save favourites and unlock the family calendar.</p>
 </div>
 
 <div class="wrap">
 <div class="card">
 <h2>What you can do on sortd</h2>
 <p class="lede only-in">Your account is free. Here's what it does today, and what's on the way.</p>
-<p class="lede only-out">Everything in "Ready now" works straight away. The rest unlocks with your email.</p>
+<p class="lede only-out">Everything in "Free for everyone" works straight away. Favourites and the rest unlock with your email.</p>
 
-<div class="sec-h">Ready now</div>
+<div class="sec-h"><span class="only-out">Free for everyone</span><span class="only-in">Ready now</span></div>
 <div class="feat-grid">
-<a class="feat" href="#saved">
+<a class="feat fav-feat" href="#saved">
 <div class="feat-ico ico-pk" aria-hidden="true"><i class="ti ti-heart"></i></div>
-<b>Saved activities</b>
+<b>Favourites</b>
 <span id="savedCount">Tap the heart on any camp or class and it's kept here for you.</span>
-<em>See what you've saved →</em>
+<em>See your favourites →</em>
 </a>
 <a class="feat" href="/find-an-activity">
 <div class="feat-ico ico-bl" aria-hidden="true"><i class="ti ti-search"></i></div>
@@ -166,11 +167,11 @@ html.is-unlocked .soon-list b::after{content:" \2713";color:#1D8A52;}
 <span>Holiday camps and weekly classes across Ireland, by age, area and dates.</span>
 <em>Start searching →</em>
 </a>
-<a class="feat" href="/guides/">
+<a class="feat" href="/whats-on">
 <div class="feat-ico ico-pu" aria-hidden="true"><i class="ti ti-calendar-event"></i></div>
-<b>What's on this month</b>
-<span>Our free monthly guide to days out, events and things to do with the kids.</span>
-<em>Read the guide →</em>
+<b>What's on</b>
+<span>Days out, events and things to do with the kids, plus our free monthly guide.</span>
+<em>See what's on →</em>
 </a>
 <a class="feat" href="/newsletter">
 <div class="feat-ico ico-gr" aria-hidden="true"><i class="ti ti-mail"></i></div>
@@ -182,7 +183,7 @@ html.is-unlocked .soon-list b::after{content:" \2713";color:#1D8A52;}
 
 <div class="unlock only-out" id="unlock">
 <h3><i class="ti ti-lock-open" aria-hidden="true"></i> Unlock features</h3>
-<p>Pop in your email to get the summer planner, family calendar and the rest as each one opens. It's free, and there's no password: we'll email you a link.</p>
+<p>Pop in your email to save favourite camps and classes, and get the family calendar and the rest as each one opens. It's free, and there's no password: we'll email you a link.</p>
 <form id="unlock-form" novalidate>
 <div class="unlock-row">
 <input type="email" name="email" required placeholder="you@example.ie" autocomplete="email" aria-label="Your email">
@@ -191,11 +192,11 @@ html.is-unlocked .soon-list b::after{content:" \2713";color:#1D8A52;}
 <label class="unlock-consent"><input type="checkbox" name="unlockAgree" required> <span>Unlock to access these services. We'll use your email to set up your free sortd account and send you a link to log in. See our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
 <div class="unlock-msg" id="unlock-msg" role="status" aria-live="polite"></div>
 </form>
-<span class="unlock-fine">Your saved activities come with you when you unlock.</span>
+<span class="unlock-fine">Your favourites work straight away, and follow you to any device once you tap the link.</span>
 </div>
 <div class="unlocked" id="unlocked" role="status" aria-live="polite">
 <h3><i class="ti ti-circle-check" aria-hidden="true"></i> Features unlocked</h3>
-<p>You're on the beta list, so you'll be first to try each one as it opens. We've also emailed you a link: tap it to keep your saved activities on any device.</p>
+<p>Favourites are on: tap the heart on any camp or class. You're also on the beta list for the calendar. We've emailed you a link: tap it to keep your favourites on any device.</p>
 </div>
 
 <div class="locked-zone">
@@ -222,7 +223,7 @@ html.is-unlocked .soon-list b::after{content:" \2713";color:#1D8A52;}
 
 <section class="results-shell" id="saved" style="scroll-margin-top:90px">
   <div class="results-inner">
-    <h2 class="saved-heading">Your saved activities</h2>
+    <h2 class="saved-heading">Your favourites</h2>
     <div class="grid" id="savedGrid"></div>
   </div>
 </section>
@@ -330,7 +331,10 @@ function renderSaved() {
   var countEl = document.getElementById('savedCount');
   if (countEl && saved.length) countEl.textContent = 'You have ' + saved.length + (saved.length === 1 ? ' activity' : ' activities') + ' saved.';
   if (!saved.length) {
-    grid.innerHTML = '<div class="saved-empty">Nothing saved yet — the heart icon on any camp or class card will add it here. <a href="/find-an-activity">Find an activity →</a></div>';
+    var unlocked = window.SortdSaved.isUnlocked && window.SortdSaved.isUnlocked();
+    grid.innerHTML = unlocked
+      ? '<div class="saved-empty">No favourites yet. Tap the heart on any camp or class and it will appear here. <a href="/find-an-activity">Find an activity →</a></div>'
+      : '<div class="saved-empty">Add your email above to save favourite camps and classes. They\'ll appear here. <a href="#unlock">Unlock favourites →</a></div>';
     return;
   }
   grid.innerHTML = saved.map(function (c, i) { return listingCard(c, i, true); }).join('');
@@ -424,6 +428,7 @@ if (window.SortdSaved) {
         try { localStorage.setItem('sortd_unlocked', '1'); } catch (_) {}
         document.documentElement.classList.add('is-unlocked');
         markPlanner();
+        if (typeof renderSaved === 'function') renderSaved();
         document.getElementById('unlocked').scrollIntoView({ behavior: 'smooth', block: 'center' });
         if (window.gtag) gtag('event', 'unlock_features_submit');
       })

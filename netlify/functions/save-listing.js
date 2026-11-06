@@ -1,6 +1,8 @@
 // netlify/functions/save-listing.js
 // POST { listingId, action: 'save' | 'unsave' } — toggles one listing on
 // the logged-in parent's shortlist.
+// POST { action: 'merge', listingIds: [...] } — adds favourites saved in
+// this browser before logging in (js/saved.js calls this once after login).
 //
 // Only ever called while logged in (js/saved.js keeps an anonymous saver's
 // shortlist entirely in localStorage and never hits this endpoint) — so a
@@ -72,8 +74,11 @@ exports.handler = async function (event) {
   }
 
   const listingId = String(data.listingId || '').trim();
-  const action = data.action === 'unsave' ? 'unsave' : 'save';
-  if (!listingId) {
+  const action = data.action === 'unsave' ? 'unsave' : data.action === 'merge' ? 'merge' : 'save';
+  const mergeIds = action === 'merge' && Array.isArray(data.listingIds)
+    ? data.listingIds.filter((x) => typeof x === 'string' && /^[A-Za-z0-9_-]{1,60}$/.test(x)).slice(0, 200)
+    : [];
+  if (action !== 'merge' && !listingId) {
     return { statusCode: 400, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ error: 'missing_listing_id' }) };
   }
 
@@ -96,9 +101,18 @@ exports.handler = async function (event) {
     }
 
     const current = parseSaved(existing.fields[U.SAVED_LISTINGS]);
-    const next = action === 'save'
-      ? (current.includes(listingId) ? current : [...current, listingId])
-      : current.filter((id) => id !== listingId);
+    let next;
+    if (action === 'merge') {
+      next = [...current];
+      mergeIds.forEach((id) => { if (!next.includes(id)) next.push(id); });
+      if (next.length === current.length) {
+        return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ success: true, saved: current }) };
+      }
+    } else {
+      next = action === 'save'
+        ? (current.includes(listingId) ? current : [...current, listingId])
+        : current.filter((id) => id !== listingId);
+    }
 
     const updateRes = await airtableRequest(USERS_TABLE_ID, '', {
       method: 'PATCH',

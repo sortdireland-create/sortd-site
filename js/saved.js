@@ -1,26 +1,27 @@
 // js/saved.js — shared "Save" (heart) behaviour for listing cards.
-// Included after search.js on any page whose cards can be saved
-// (camps.html, weekly-classes.html, find-an-activity.html, account.html).
+// Included on any page whose cards can be saved (camps.html,
+// weekly-classes.html, find-an-activity.html, index.html, account.html and
+// the generated class pages).
 //
-// Two tiers, matching the brief this was built from (don't force an
-// account before browsing):
-//   - Not logged in: saves live only in this browser's localStorage.
-//     The first-ever save shows a one-time, dismissible nudge toward
-//     creating an account — never again after that, logged in or not.
-//   - Logged in (sortd_logged_in=1 marker cookie, same one js/account.js
-//     reads): saves write through to the parent's Users record via
-//     save-listing.js, and the page's heart states load from
-//     get-saved.js on page load, so they're correct on any device.
-//
-// Deliberately NOT handled here: migrating a browser's anonymous saves
-// into an account the first time that browser logs in. Today those stay
-// separate — an anonymous save doesn't retroactively appear in the
-// account once you log in on the same browser. Worth building once this
-// proves people actually use Save; flagged rather than silently skipped.
+// Free vs email (Nov 2026): searching camps, classes and What's on is free
+// with no email. Saving favourites is behind the email wall:
+//   - No email yet: tapping a heart opens a small sheet asking for an
+//     email. Submitting it calls request-login (same magic link as /login
+//     and the /account unlock), marks this browser as unlocked
+//     (localStorage sortd_unlocked, the same flag account.html sets) and
+//     saves the listing straight away, so there's no waiting on the email.
+//   - Unlocked on this browser, link not clicked yet: saves live in this
+//     browser's localStorage.
+//   - Logged in (sortd_logged_in=1 marker cookie): saves write through to
+//     the parent's Users record via save-listing.js. On the first page load
+//     after logging in, any saves kept in this browser are merged into the
+//     account (action 'merge') and the local copy is cleared.
+// Removing a save is never gated, so hearts saved before this change can
+// still be un-hearted.
 
 (function () {
   const LOCAL_KEY = 'sortd_saved_local';
-  const PROMPT_SHOWN_KEY = 'sortd_save_prompt_shown';
+  const UNLOCK_KEY = 'sortd_unlocked';
 
   let savedSet = new Set();
   let loggedIn = false;
@@ -31,11 +32,15 @@
     return document.cookie.split('; ').some((c) => c === 'sortd_logged_in=1');
   }
 
+  function isUnlocked() {
+    try { return !!localStorage.getItem(UNLOCK_KEY); } catch (e) { return false; }
+  }
+
   function readLocal() {
     try {
       const raw = localStorage.getItem(LOCAL_KEY);
       const arr = raw ? JSON.parse(raw) : [];
-      return Array.isArray(arr) ? arr : [];
+      return Array.isArray(arr) ? arr.filter((x) => typeof x === 'string') : [];
     } catch (e) {
       return [];
     }
@@ -45,9 +50,17 @@
     try {
       localStorage.setItem(LOCAL_KEY, JSON.stringify(arr));
     } catch (e) {
-      // Private browsing / storage disabled — Save still works for this
+      // Private browsing / storage disabled: Save still works for this
       // page view via the in-memory savedSet, it just won't persist.
     }
+  }
+
+  function track(name, params) {
+    try { if (window.gtag) window.gtag('event', name, params || {}); } catch (e) { /* ignore */ }
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
   function paintAll() {
@@ -60,37 +73,116 @@
   function setButtonState(btn, saved) {
     btn.classList.toggle('saved', saved);
     btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
-    btn.setAttribute('aria-label', saved ? 'Remove from saved' : 'Save for later');
+    btn.setAttribute('aria-label', saved ? 'Remove from favourites' : 'Save to favourites');
   }
 
-  function showAccountPrompt() {
-    if (localStorage.getItem(PROMPT_SHOWN_KEY)) return;
-    try { localStorage.setItem(PROMPT_SHOWN_KEY, '1'); } catch (e) { /* ignore */ }
+  // ---- Email sheet (shown to visitors who haven't given an email) ----
+  let sheetEl = null;
+  let pending = null; // { id, btn } waiting on the email
 
-    const toast = document.createElement('div');
-    toast.className = 'save-toast';
-    toast.innerHTML =
-      '<div class="save-toast-body">' +
-      '<div class="save-toast-title">Saved!</div>' +
-      '<div class="save-toast-sub">Want to keep your shortlist in one place?</div>' +
-      '</div>' +
-      '<a href="/account#unlock" class="save-toast-cta">Create your free account</a>' +
-      '<button class="save-toast-close" aria-label="Dismiss">&#10005;</button>';
-    document.body.appendChild(toast);
-    requestAnimationFrame(() => toast.classList.add('show'));
+  function closeSheet() {
+    if (!sheetEl) return;
+    sheetEl.classList.remove('show');
+    document.body.style.overflow = '';
+    const el = sheetEl;
+    sheetEl = null;
+    pending = null;
+    setTimeout(() => el.remove(), 200);
+  }
 
-    function dismiss() {
-      toast.classList.remove('show');
-      setTimeout(() => toast.remove(), 250);
+  function openSheet(id, btn) {
+    if (sheetEl) closeSheet();
+    pending = { id, btn };
+    const wrap = document.createElement('div');
+    wrap.className = 'sv-layer';
+    wrap.innerHTML =
+      '<div class="sv-sheet" role="dialog" aria-modal="true" aria-labelledby="sv-title">' +
+        '<button type="button" class="sv-x" aria-label="Close">&#10005;</button>' +
+        '<div class="sv-ico" aria-hidden="true"><i class="ti ti-heart"></i></div>' +
+        '<h3 id="sv-title">Save your favourites</h3>' +
+        '<p class="sv-sub">Searching is free for everyone. Add your email to keep a list of favourite camps and classes, and get the family calendar as it opens. No password: we\'ll email you a link to log in.</p>' +
+        '<form class="sv-form" novalidate>' +
+          '<input type="email" name="email" autocomplete="email" required placeholder="you@example.ie" aria-label="Your email">' +
+          '<button type="submit" class="sv-btn">Save to favourites</button>' +
+        '</form>' +
+        '<p class="sv-msg" role="status" aria-live="polite"></p>' +
+        '<p class="sv-fine">Already have an account? Same thing: enter your email and we\'ll send a login link. We\'ll use your email to set up your free sortd account. <a href="/privacy-policy" target="_blank" rel="noopener">Privacy policy</a>.</p>' +
+      '</div>';
+    document.body.appendChild(wrap);
+    sheetEl = wrap;
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => wrap.classList.add('show'));
+    const input = wrap.querySelector('input');
+    setTimeout(() => { try { input.focus(); } catch (e) { /* ignore */ } }, 60);
+
+    wrap.addEventListener('click', (e) => {
+      if (e.target === wrap || e.target.closest('.sv-x') || e.target.closest('[data-sv-close]')) closeSheet();
+    });
+    wrap.querySelector('form').addEventListener('submit', submitEmail);
+    track('save_locked_click', { listing_id: id });
+  }
+
+  function submitEmail(e) {
+    e.preventDefault();
+    const form = e.target;
+    const input = form.querySelector('input');
+    const btn = form.querySelector('button');
+    const msg = sheetEl && sheetEl.querySelector('.sv-msg');
+    const email = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (msg) { msg.className = 'sv-msg err'; msg.textContent = 'Please enter a valid email address.'; }
+      input.focus();
+      return;
     }
-    toast.querySelector('.save-toast-close').addEventListener('click', dismiss);
-    setTimeout(dismiss, 8000);
+    btn.disabled = true;
+    btn.textContent = 'Saving…';
+    fetch('/.netlify/functions/request-login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source: 'save' }),
+    })
+      .then((r) => r.json().then((d) => { if (!r.ok) throw new Error(d.error || 'error'); return d; }))
+      .then(() => {
+        try { localStorage.setItem(UNLOCK_KEY, '1'); } catch (err) { /* ignore */ }
+        document.documentElement.classList.add('is-unlocked');
+        const p = pending;
+        if (p) {
+          savedSet.add(p.id);
+          writeLocal(Array.from(savedSet));
+          paintAll();
+        }
+        track('save_unlock_submit');
+        if (!sheetEl) return;
+        sheetEl.querySelector('.sv-sheet').innerHTML =
+          '<button type="button" class="sv-x" aria-label="Close">&#10005;</button>' +
+          '<div class="sv-ico sv-ico--ok" aria-hidden="true"><i class="ti ti-circle-check"></i></div>' +
+          '<h3 id="sv-title">Saved. Favourites unlocked.</h3>' +
+          '<p class="sv-sub">Keep tapping the heart on anything you like. We\'ve sent a login link to <b>' + esc(email) + '</b>: tap it to keep your favourites on any phone or computer.</p>' +
+          '<div class="sv-acts"><button type="button" class="sv-btn" data-sv-close>Keep browsing</button><a class="sv-link" href="/account#saved">See my favourites</a></div>';
+      })
+      .catch((err) => {
+        btn.disabled = false;
+        btn.textContent = 'Save to favourites';
+        if (msg) {
+          msg.className = 'sv-msg err';
+          msg.textContent = (err && err.message && err.message !== 'error') ? err.message : 'Something went wrong. Please try again.';
+        }
+      });
   }
 
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sheetEl) closeSheet(); });
+
+  // ---- Toggle ----
   async function toggle(id, btn) {
     const willSave = !savedSet.has(id);
 
-    // Optimistic UI — flip immediately, reconcile after.
+    // The email wall: only adding a favourite is gated, never removing one.
+    if (willSave && !loggedIn && !isUnlocked()) {
+      openSheet(id, btn);
+      return;
+    }
+
+    // Optimistic UI: flip immediately, reconcile after.
     if (willSave) savedSet.add(id); else savedSet.delete(id);
     setButtonState(btn, willSave);
 
@@ -114,9 +206,8 @@
       return;
     }
 
-    // Not logged in — local only.
+    // Unlocked on this browser but not logged in yet: local only.
     writeLocal(Array.from(savedSet));
-    if (willSave) showAccountPrompt();
   }
 
   function onReady(cb) {
@@ -127,13 +218,32 @@
   async function init() {
     loggedIn = isLoggedIn();
     if (loggedIn) {
+      const local = readLocal();
       try {
-        const res = await fetch('/.netlify/functions/get-saved', { credentials: 'include' });
-        const data = await res.json();
+        let data;
+        if (local.length) {
+          // First visit after logging in on this browser: bring the
+          // favourites saved here into the account, then drop the local copy.
+          const res = await fetch('/.netlify/functions/save-listing', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ action: 'merge', listingIds: local }),
+          });
+          if (!res.ok) throw new Error('merge failed: ' + res.status);
+          data = await res.json();
+          writeLocal([]);
+          track('saved_merged', { count: local.length });
+        } else {
+          const res = await fetch('/.netlify/functions/get-saved', { credentials: 'include' });
+          data = await res.json();
+        }
         savedSet = new Set(data.saved || []);
       } catch (e) {
-        console.error('get-saved failed, falling back to empty:', e);
-        savedSet = new Set();
+        console.error('Loading saved failed:', e);
+        // Merge failed: show the local ones so nothing looks lost; they
+        // stay in localStorage and the merge is retried on the next page.
+        savedSet = new Set(local);
       }
     } else {
       savedSet = new Set(readLocal());
@@ -151,6 +261,7 @@
     paintAll,
     onReady,
     isLoggedIn: () => loggedIn,
+    isUnlocked: () => loggedIn || isUnlocked(),
   };
 
   if (document.readyState === 'loading') {
