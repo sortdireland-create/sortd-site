@@ -136,6 +136,14 @@
     "section": "classes"
   },
   {
+    "slug": "round-towers-lusk-gaa-towers-oga-nursery",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/round-towers-lusk-gaa-towers-oga-nursery",
+    "name": "Round Towers Lusk GAA — Towers Óga Nursery",
+    "provider": "Round Towers Lusk GAA Club",
+    "section": "classes"
+  },
+  {
     "slug": "scouting-ireland-donnybrook-scout-group-beaver-scouts-3rd40th41st-dublin",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/scouting-ireland-donnybrook-scout-group-beaver-scouts-3rd40th41st-dublin",
@@ -189,6 +197,14 @@
     "url": "https://sortd-ireland.ie/classes/dublin/sense-of-wonder-forest-school-killiney",
     "name": "Sense of Wonder Forest School — Killiney",
     "provider": "Sense of Wonder Forest School",
+    "section": "classes"
+  },
+  {
+    "slug": "st-finians-gaa-swords-u9-girls-born-2017-gaa-camogie",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/st-finians-gaa-swords-u9-girls-born-2017-gaa-camogie",
+    "name": "St Finian's GAA Swords — U9 Girls (born 2017) GAA & Camogie",
+    "provider": "St Finian's GAA Club, Swords",
     "section": "classes"
   },
   {
@@ -376,6 +392,14 @@
     "section": "classes"
   },
   {
+    "slug": "castleknock-gaa-u7-girls-boys",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/castleknock-gaa-u7-girls-boys",
+    "name": "Castleknock GAA — U7 Girls & Boys",
+    "provider": "Castleknock Hurling & Football Club",
+    "section": "classes"
+  },
+  {
     "slug": "drama-house-malahide-musical-theatre-youth-theatre",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/drama-house-malahide-musical-theatre-youth-theatre",
@@ -469,6 +493,14 @@
     "url": "https://sortd-ireland.ie/classes/dublin/malahide-rfc-pre-mini-rugby-2026-2027",
     "name": "Malahide RFC Pre Mini Rugby 2026-2027",
     "provider": "Malahide RFC",
+    "section": "classes"
+  },
+  {
+    "slug": "st-maurs-gaa-rush-mini-maurs-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/st-maurs-gaa-rush-mini-maurs-academy",
+    "name": "St Maur's GAA Rush — Mini-Maurs Academy",
+    "provider": "St Maur's GAA Club",
     "section": "classes"
   },
   {
@@ -632,6 +664,14 @@
     "section": "classes"
   },
   {
+    "slug": "st-sylvesters-gaa-syls-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/st-sylvesters-gaa-syls-academy",
+    "name": "St Sylvester's GAA — Syls Academy",
+    "provider": "St Sylvester's GAA Club",
+    "section": "classes"
+  },
+  {
     "slug": "scouting-ireland-104th144th-blanchardstown-scout-group-all-sections-beavers-ventures",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/scouting-ireland-104th144th-blanchardstown-scout-group-all-sections-beavers-ventures",
@@ -648,6 +688,14 @@
     "section": "classes"
   },
   {
+    "slug": "fingallians-gaa-joe-duffy-nursery-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/fingallians-gaa-joe-duffy-nursery-academy",
+    "name": "Fingallians GAA — Joe Duffy Nursery & Academy",
+    "provider": "Fingallians GAA Club",
+    "section": "classes"
+  },
+  {
     "slug": "raheny-gaa-ogra-academy",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/raheny-gaa-ogra-academy",
@@ -661,6 +709,14 @@
     "url": "https://sortd-ireland.ie/classes/dublin/skerries-harps-gaa-camogie-club-academy",
     "name": "Skerries Harps GAA & Camogie Club — Academy",
     "provider": "Skerries Harps GAA & Camogie Club",
+    "section": "classes"
+  },
+  {
+    "slug": "garda-westmanstown-gaels-nursery-fun-for-4s",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/garda-westmanstown-gaels-nursery-fun-for-4s",
+    "name": "Garda Westmanstown Gaels — Nursery & Fun for 4s",
+    "provider": "Garda Westmanstown Gaels GAA Club",
     "section": "classes"
   },
   {
@@ -720,6 +776,14 @@
     "section": "classes"
   },
   {
+    "slug": "castleknock-gaa-nursery",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/castleknock-gaa-nursery",
+    "name": "Castleknock GAA — Nursery",
+    "provider": "Castleknock Hurling & Football Club",
+    "section": "classes"
+  },
+  {
     "slug": "de-la-salle-palmerston-fc-dlsp-fc-dlsp-fc-mini-rugby",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/de-la-salle-palmerston-fc-dlsp-fc-dlsp-fc-mini-rugby",
@@ -749,6 +813,14 @@
     "url": "https://sortd-ireland.ie/classes/dublin/bricks-4-kidz-after-school-legostem-club-foxrock",
     "name": "Bricks 4 Kidz — After-School LEGO/STEM Club (Foxrock)",
     "provider": "Bricks 4 Kidz South County Dublin",
+    "section": "classes"
+  },
+  {
+    "slug": "st-finians-gaa-swords-nursery-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/st-finians-gaa-swords-nursery-academy",
+    "name": "St Finian's GAA Swords — Nursery & Academy",
+    "provider": "St Finian's GAA Club, Swords",
     "section": "classes"
   },
   {
@@ -813,6 +885,14 @@
     "url": "https://sortd-ireland.ie/classes/dublin/fkft-kids-teens-dance-fitness-balbriggan",
     "name": "FKFT Kids & Teens Dance Fitness — Balbriggan",
     "provider": "FKFT (Fit Kids Fit Teens)",
+    "section": "classes"
+  },
+  {
+    "slug": "st-colmcilles-gfc-swords-cilles-cubs-nursery",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/st-colmcilles-gfc-swords-cilles-cubs-nursery",
+    "name": "St Colmcille's GFC Swords — Cilles Cubs Nursery",
+    "provider": "St Colmcille's GFC, Swords",
     "section": "classes"
   },
   {
@@ -909,6 +989,14 @@
     "url": "https://sortd-ireland.ie/classes/dublin/iswim-academy-childrens-swimming-lessons",
     "name": "iSwim Academy Children's Swimming Lessons",
     "provider": "iSwim Academy",
+    "section": "classes"
+  },
+  {
+    "slug": "st-pats-gaa-donabate-paisti-pats-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/st-pats-gaa-donabate-paisti-pats-academy",
+    "name": "St Pat's GAA Donabate — Páistí Pats Academy",
+    "provider": "St Patrick's GAA Club, Donabate",
     "section": "classes"
   },
   {
