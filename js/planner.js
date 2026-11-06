@@ -1008,6 +1008,50 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && P()) closeSheet(); });
 
   // ---------- start ----------
+
+  // Logged-out /planner: a proper sign-up page for the calendar (people land
+  // here from Instagram, WhatsApp invites and the homepage).
+  function landingPage(invited) {
+    var feats = [
+      ['ti-calendar-week', 'Every class, every child', 'Add classes from any Sortd page or your own (swimming, GAA, anything). Midterms, school holidays and bank holidays are already taken out.'],
+      ['ti-school', 'Your school\'s days off', 'Pick your school and see inset days and half days, including ones other parents have already added.'],
+      ['ti-map-pin', 'Days out, sorted', 'Add things from What\'s on to the right weekend in one tap.'],
+      ['ti-users', 'Share with other parents', 'Connect with friends to see where their kids are going, and plan summer camps together.']
+    ];
+    var html = '<section class="lp">' +
+      '<div class="lp-hero"><span class="eyebrow">' + (invited ? 'A friend invited you' : 'Free for parents') + '</span>' +
+      '<h1>Your family\'s week, <em>sorted.</em></h1>' +
+      '<p class="lp-sub">' + (invited ? 'A friend wants to connect with you on Sortd. Create your free account to see where their kids are going and share your plans.' : 'One calendar for every class, school day off, day out and summer camp. Week, month or the whole school year at a glance, and on your phone\'s calendar too.') + '</p>' +
+      '<form class="lp-form" id="lp-form" novalidate><label for="lp-email" class="sr-only">Your email</label>' +
+      '<input id="lp-email" type="email" autocomplete="email" inputmode="email" placeholder="Your email" required>' +
+      '<button class="btn" type="submit" id="lp-btn">Create my free calendar</button></form>' +
+      '<p class="lp-msg" id="lp-msg" aria-live="polite">No password: we email you a link to log in. Already have an account? Same box.</p></div>' +
+      '<div class="lp-demo" aria-hidden="true"><div class="lp-demo-h">This week</div>' +
+      '<div class="lp-row"><b>Mon</b><span class="lp-ev lp-ev--off">Inset day · no school</span></div>' +
+      '<div class="lp-row"><b>Tue</b><span class="lp-ev">4pm Swimming · Finn</span></div>' +
+      '<div class="lp-row"><b>Thu</b><span class="lp-ev">5pm Irish dancing · Ella</span></div>' +
+      '<div class="lp-row"><b>Sat</b><span class="lp-ev">10am Ballet · Ella</span><span class="lp-ev lp-ev--out">2pm Day out · everyone</span></div></div>' +
+      '<div class="lp-feats">' + feats.map(function (f) { return '<div class="lp-feat"><i class="ti ' + f[0] + '"></i><h3>' + f[1] + '</h3><p>' + f[2] + '</p></div>'; }).join('') + '</div>' +
+      '<p class="lp-foot">Free, no app to download. <a href="/how-it-works">How it works</a> · <a href="/privacy-policy">Privacy</a></p></section>';
+    document.getElementById('app').innerHTML = html;
+    try { if (window.gtag) gtag('event', 'calendar_landing_view', { invited: invited ? 'yes' : 'no' }); } catch (_) {}
+    document.getElementById('lp-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input = document.getElementById('lp-email'), btn = document.getElementById('lp-btn'), msg = document.getElementById('lp-msg');
+      var email = input.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a valid email address.'; input.focus(); return; }
+      btn.disabled = true; btn.textContent = 'Sending…';
+      try { localStorage.setItem('sortd_return_to', '/planner'); } catch (_) {}
+      fetch('/.netlify/functions/request-login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email }) })
+        .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || 'error'); return j; }); })
+        .then(function () {
+          e.target.outerHTML = '<div class="lp-sent"><b>Check your inbox</b><span>We\'ve sent a link to ' + esc(email) + '. Open it on this phone or computer and you\'ll come straight back to your calendar.</span></div>';
+          msg.textContent = 'The link works once and expires after 30 minutes. Not there? Check spam or promotions.';
+          try { if (window.gtag) gtag('event', 'calendar_signup_requested', { source: 'planner_landing' }); } catch (_) {}
+        })
+        .catch(function (err) { btn.disabled = false; btn.textContent = 'Create my free calendar'; msg.textContent = (err && err.message && err.message !== 'error') ? err.message : 'Something went wrong. Please try again.'; });
+    });
+  }
   function gatePage(title, body, cta) {
     document.getElementById('app').innerHTML = '<div class="gate"><h1>' + title + '</h1><p class="muted">' + body + '</p>' + (cta || '') + '</div>';
   }
@@ -1026,13 +1070,12 @@
     fetch(API, { credentials: 'same-origin' }).then(function (r) { return r.json(); }).then(function (data) {
       if (!data.loggedIn) {
         if (join) { try { localStorage.setItem('sortd_pending_join', join); } catch (_) {} }
-        gatePage('Log in to plan your summer', join ? 'A friend invited you to connect on the Sortd summer planner. Log in or create your free account to see where their kids are going.' : 'The summer planner lives in your Sortd account.',
-          '<a class="btn" href="/login">Log in with your email</a>');
+        landingPage(!!join);
         return;
       }
       if (!data.tester) {
         try { localStorage.removeItem('sortd_pending_join'); } catch (_) {}
-        gatePage('The summer planner is coming soon', 'We\'re testing it with a small group of parents first. You\'ll be the first to know when it opens.', '<a class="btn" href="/account">Back to my account</a>');
+        gatePage('Your Sortd calendar is coming soon', 'We\'re testing it with a small group of parents first. You\'ll be the first to know when it opens.', '<a class="btn" href="/account">Back to my account</a>');
         return;
       }
       state.friends = data.friends || []; state.inviteCode = data.inviteCode || null; state.plan = data.plan || null;
