@@ -1,0 +1,30 @@
+# robots.txt for sortd-ireland.ie
+# Sortd is a free public directory of kids' camps, classes and activities in Ireland.
+# Search engines and AI assistants are welcome to crawl and cite it.
+
+# Everyone, including Google and Bing
+User-agent: *
+Allow: /
+Disallow: /account
+Disallow: /planner
+Disallow: /.netlify/
+
+# AI assistants: search indexes and live fetches (these power citations),
+# plus model training. All allowed on purpose.
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: bingbot
+Allow: /
+Disallow: /account
+Disallow: /planner
+Disallow: /.netlify/
+
+Sitemap: https://sortd-ireland.ie/sitemap.xml
