@@ -173,7 +173,9 @@
   function signup(e) {
     sheet(head('Add days out to your Sortd calendar', 'Free with a Sortd account. Pop in your email and we\'ll send you a link to log in. No password needed.') +
       '<form id="cp-signup" class="cp-acts" novalidate><label class="cp-f">Your email<input type="email" id="cp-email" autocomplete="email" required placeholder="you@example.ie"></label>' +
-      '<button class="cp-btn cp-btn--pri" type="submit">Create my free account</button></form><p class="cp-hint" id="cp-msg" role="status" aria-live="polite">Already have an account? Same thing: enter your email and we\'ll send you a login link.</p>');
+      '<button class="cp-btn cp-btn--pri" type="submit">Create my free account</button>' +
+      '<label class="cp-opt" style="display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;font-size:13px;line-height:1.45;text-align:left;font-weight:600;flex:1 1 100%;"><input type="checkbox" id="cp-optin" style="margin-top:2px;flex:0 0 auto;width:16px;height:16px;"> <span>Also send me the weekly "what\'s on near you" email every Thursday: new camps, open spots and honest updates. See our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>' +
+      '</form><p class="cp-hint" id="cp-msg" role="status" aria-live="polite">Already have an account? Same thing: enter your email and we\'ll send you a login link.</p>');
     layer.dataset.pending = e.id;
     var i = document.getElementById('cp-email'); if (i) i.focus();
     track('whats_on_locked_click', { event_id: e.id });
@@ -184,7 +186,7 @@
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a valid email address.'; input.focus(); return; }
     btn.disabled = true; btn.textContent = 'Sending…';
     try { localStorage.setItem('sortd_return_to', '/whats-on#add-' + (layer.dataset.pending || '')); } catch (_) {}
-    fetch('/.netlify/functions/request-login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email }) })
+    fetch('/.netlify/functions/request-login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, newsletterOptIn: !!(document.getElementById('cp-optin') && document.getElementById('cp-optin').checked) }) })
       .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || 'error'); return j; }); })
       .then(function () { ev.target.outerHTML = '<div class="cp-sum"><b>Check your inbox</b><br><span>We\'ve sent a login link to ' + esc(email) + '. Open it on this phone or computer and you\'ll come straight back here.</span></div>'; msg.textContent = 'The link works once and expires after 30 minutes.'; })
       .catch(function (err) { btn.disabled = false; btn.textContent = 'Create my free account'; msg.textContent = (err && err.message && err.message !== 'error') ? err.message : 'Something went wrong. Please try again.'; });
