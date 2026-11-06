@@ -129,6 +129,10 @@ gtag('config', 'G-HHTB7S9WJG');
     <div class="section-label">Browse by county</div>
     <h2>Dublin now. More counties soon.</h2>
     <div class="countystrip" id="countyStrip"></div>
+    <div class="areastrip" id="areaStrip" hidden>
+      <div class="areastrip-l">Or browse by area: <a href="/dublin/">all of Dublin, area by area →</a></div>
+      <div class="countystrip" id="areaChips"></div>
+    </div>
     <div class="note">no more missing the sign-up window — we'll tell you what's on ↗</div>
   </div>
 </div>
@@ -249,6 +253,7 @@ gtag('config', 'G-HHTB7S9WJG');
 </div>
 <script src="/js/camps-data.js"></script>
 <script src="/js/schools-data.js"></script>
+<script src="/js/areas-data.js"></script>
 <script src="/js/search.js"></script>
 <script src="/js/saved.js"></script>
 <script>
@@ -331,10 +336,25 @@ function renderCountyStrip(){
   }).join('') + '<a href="/camps" class="county" style="background:var(--nv);color:#fff;border-color:var(--nv);">All areas <span class="county-count" style="opacity:.8">('+LISTINGS.length+')</span></a>';
 }
 
+// Area hub pages (/dublin/<area>/) — AREA_HUBS comes from js/areas-data.js,
+// generated alongside the hub pages, so a chip only ever links to a hub that
+// exists. The /dublin/ link in the HTML stays crawlable either way; the block
+// is only revealed once the data file has loaded.
+function renderAreaStrip(){
+  if (typeof AREA_HUBS === 'undefined' || !AREA_HUBS.length) return;
+  const chips = [];
+  AREA_HUBS.forEach(c => c.areas.slice(0, 12).forEach(a =>
+    chips.push('<a class="county" href="'+a.url+'">'+a.name+'<span class="county-count">('+a.count+')</span></a>')));
+  if (!chips.length) return;
+  document.getElementById('areaChips').innerHTML = chips.join('');
+  document.getElementById('areaStrip').hidden = false;
+}
+
 document.getElementById('hEircode').addEventListener('keydown',e=>{if(e.key==='Enter')heroSearch();});
 
 renderFeatured();
 renderCountyStrip();
+renderAreaStrip();
 renderSchoolSearch();
 </script>
 <script type="application/ld+json">

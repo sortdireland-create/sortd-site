@@ -151,6 +151,9 @@ h1 em{font-style:normal; color:var(--pu);}
 .band-green{background:var(--grl);}
 .band-inner{max-width:1200px; margin:0 auto;}
 .countystrip{display:flex; flex-wrap:wrap; gap:10px;}
+.areastrip{margin-top:18px;}
+.areastrip-l{font-size:13px; font-weight:700; color:var(--nv); margin-bottom:10px;}
+.areastrip-l a{color:var(--gr); text-decoration:underline; text-underline-offset:2px;}
 .county{font-size:13px; font-weight:700; background:#fff; border:1px solid rgba(29,138,82,.25); color:var(--nv);
   padding:8px 16px; border-radius:999px; text-decoration:none; cursor:pointer;}
 .county:hover{background:var(--gr); color:#fff; border-color:var(--gr);}
