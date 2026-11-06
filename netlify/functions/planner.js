@@ -95,6 +95,36 @@ async function handleAddClass(email, body) {
   return P.json(200, { ok: true, classId: same ? same.id : entry.id, kids: plan.kids });
 }
 
+// The public What's on page calls this to put a day out straight into the
+// parent's Sortd calendar (plan.outings), creating the planner and any new
+// children if needed, like addClass.
+async function handleAddOuting(email, body) {
+  const o = body.outing || {};
+  const date = isoOrNull(o.date);
+  const start = o.start === null || o.start === undefined || o.start === '' ? null : Number(o.start);
+  const end = o.end === null || o.end === undefined || o.end === '' ? null : Number(o.end);
+  if (!date || !str(o.title, 120) || (start !== null && !(start >= 0 && start < 1440)) || (end !== null && start !== null && !(end > start && end <= 1440))) return P.json(400, { error: 'bad_outing' });
+  const me = await getOrCreateMe(email);
+  let plan = P.parseJSON(me.fields[P.F.DATA], null);
+  if (!plan || typeof plan !== 'object') {
+    plan = { v: 1, me: { name: '' }, partner: '', kids: [], carers: [{ id: 'you', name: 'You', col: '--sk' }], plans: [], days: {}, pendingBook: [], classes: [], schools: [], outings: [] };
+  }
+  ['kids', 'outings'].forEach(k => { if (!Array.isArray(plan[k])) plan[k] = []; });
+  const kidIds = (Array.isArray(body.kidIds) ? body.kidIds : []).filter(id => plan.kids.some(k => k.id === id));
+  (Array.isArray(body.newKids) ? body.newKids : []).slice(0, 6).forEach(nk => {
+    const name = str(nk && nk.name, 30); if (!name) return;
+    const age = nk.age === '' || nk.age == null ? '' : Math.max(0, Math.min(17, parseInt(nk.age, 10) || 0));
+    const kid = { id: rid('k'), name, age, col: KID_COLOURS[plan.kids.length % KID_COLOURS.length] };
+    plan.kids.push(kid); kidIds.push(kid.id);
+  });
+  if (!kidIds.length) return P.json(400, { error: 'no_child' });
+  plan.outings.push({ id: rid('o'), kids: kidIds, eventId: str(o.eventId, 80), title: str(o.title, 120), venue: str(o.venue, 120), url: str(o.url, 300), date, start, end: start === null ? null : end });
+  const out = JSON.stringify(plan);
+  if (out.length > P.MAX_DATA_CHARS) return P.json(413, { error: 'plan_too_big' });
+  await P.updateUser(me.id, { [P.F.DATA]: out });
+  return P.json(200, { ok: true, kids: plan.kids });
+}
+
 // ---- Shared school days off (Airtable "School Closures", keyed by roll number) ----
 // Parents never appear in this table: a shared row holds the school, the
 // dates and the label only.
@@ -192,6 +222,7 @@ exports.handler = async function (event) {
     switch (body.action) {
       case 'save': return await handleSave(g.email, body);
       case 'addClass': return await handleAddClass(g.email, body);
+      case 'addOuting': return await handleAddOuting(g.email, body);
       case 'closures': return await handleClosures(body);
       case 'shareClosure': return await handleShareClosure(body);
       case 'invite': return await handleInvite(g.email);

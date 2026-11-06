@@ -31,6 +31,7 @@ gtag('config', 'G-HHTB7S9WJG');
   <a href="/" class="brand">sortd<span>.</span></a>
   <div class="navlinks">
     <a href="/find-an-activity" class="navlink">Find an activity</a>
+    <a href="/whats-on" class="navlink">What's on</a>
     <a href="/how-it-works" class="navlink">How it works</a>
     <a href="/about" class="navlink">Our story</a>
     <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener" class="navlink">Providers</a>
@@ -77,6 +78,7 @@ gtag('config', 'G-HHTB7S9WJG');
           <select id="hType">
             <option value="camp">Holiday camps</option>
             <option value="weekly">Classes</option>
+            <option value="daysout">Days out &amp; events</option>
           </select>
         </div>
       </div>
@@ -260,9 +262,26 @@ function heroSearch(){
   const qs = buildSearchQuery({eircode, ageKey, days, text, activities});
   const params = new URLSearchParams(qs);
   if(type) params.set('type', type);
+  if(type === 'daysout'){
+    // Days out live on /whats-on (monthly guides), with their own filters.
+    const p2 = new URLSearchParams();
+    if(ageKey) p2.set('age', ageKey);
+    window.location.href = '/whats-on' + (p2.toString() ? '?' + p2 : '');
+    return;
+  }
   const query = params.toString();
   window.location.href = '/find-an-activity' + (query ? '?' + query : '');
 }
+
+// Days out: the day-of-week and activity chips don't apply, so hide them.
+(function(){
+  const t = document.getElementById('hType'); if(!t) return;
+  const toggle = () => {
+    const off = t.value === 'daysout';
+    ['hDays','hActivity'].forEach(id => { const el = document.getElementById(id); const box = el && el.closest('.sf'); if(box) box.style.display = off ? 'none' : ''; });
+  };
+  t.addEventListener('change', toggle); toggle();
+})();
 
 function filterCounty(county){
   window.location.href = '/camps?q=' + encodeURIComponent(county);

@@ -38,6 +38,11 @@
   status = 200
 
 [[redirects]]
+  from = "/whats-on"
+  to = "/whats-on.html"
+  status = 200
+
+[[redirects]]
   from = "/planner"
   to = "/planner.html"
   status = 200

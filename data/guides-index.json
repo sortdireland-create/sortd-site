@@ -1,0 +1,6 @@
+{
+  "note": "One entry per monthly guide, newest first. The What's on page (/whats-on) loads every 'data' file here and shows each event until its last date; the planner's Days out module reads data/whats-on-YYYY-MM.json directly.",
+  "guides": [
+    { "month": "2026-11", "label": "November 2026", "title": "What's on for kids in Dublin this November", "pdf": "/guides/november-2026.pdf", "guide": "/guides/things-to-do-with-kids-dublin-november", "data": "/data/whats-on-2026-11.json" }
+  ]
+}
