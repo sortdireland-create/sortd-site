@@ -539,6 +539,80 @@
       '<div class="actions"><button class="btn green" data-act="saveouting" data-id="' + esc(e.id) + '">Add to my calendar</button></div>', '#ou-date');
   }
 
+  // ---------- Month and year views ----------
+  // state.calMode: 'week' | 'month' | 'year'. state.monthStart = 1st of the
+  // month shown. Year view = the school year (Sept–Aug) with each day coloured.
+  function firstOfMonth(d) { return new Date(d.getFullYear(), d.getMonth(), 1); }
+  function dayFacts(d) { // compact summary of one day, shared by month and year views
+    var s = SY.iso(d), dow = (d.getDay() + 6) % 7, items = [];
+    classes().forEach(function (c) { if (SY.runsOn(d, c.day, classFrom(c), classUntil(c))) items.push({ k: 'class', t: c.start, txt: SY.fmtTime(c.start) + ' ' + classTitle(c), kids: c.kids }); });
+    outingsOn(d).forEach(function (o) { items.push({ k: 'outing', t: o.start != null ? o.start : 0, txt: (o.start != null ? SY.fmtTime(o.start) + ' ' : '') + o.title, kids: o.kids }); });
+    var wk = summerWeekOf(d);
+    if (wk && dow < 5 && wk.bank !== dow) kids().forEach(function (k) { var p = planFor(k.id, wk.i); if (p) { var l = kidLabel(p); items.push({ k: 'summer-' + l.cls, t: 1, txt: l.txt, kids: [k.id] }); } });
+    items.sort(function (a, b) { return a.t - b.t; });
+    var off = SY.whyOff(d), cl = closuresOn(d);
+    return { items: items, off: dow < 5 ? off : null, closures: cl, half: cl.length && cl.every(function (x) { return x.c.label === 'Half day'; }) };
+  }
+  function calModeSwitch() {
+    var m = state.calMode || 'week';
+    return '<div class="calmode" role="tablist" aria-label="Calendar view">' + [['week', 'Week'], ['month', 'Month'], ['year', 'Year']].map(function (x) {
+      return '<button role="tab" aria-selected="' + (m === x[0]) + '" data-act="calmode" data-mode="' + x[0] + '">' + x[1] + '</button>';
+    }).join('') + '</div>';
+  }
+  function monthView() {
+    if (!state.monthStart) state.monthStart = firstOfMonth(state.weekStart || SY.today());
+    var ms = state.monthStart, t = SY.iso(SY.today());
+    var gridStart = mondayOf(ms), cells = '';
+    var last = new Date(ms.getFullYear(), ms.getMonth() + 1, 0), gridEnd = SY.addDays(mondayOf(last), 6);
+    for (var d = gridStart; d <= gridEnd; d = SY.addDays(d, 1)) {
+      var inMonth = d.getMonth() === ms.getMonth(), f = dayFacts(d), s = SY.iso(d);
+      var cls = 'mcell' + (inMonth ? '' : ' is-out') + (s === t ? ' is-today' : '') + (f.off ? ' is-off' : '') + (f.closures.length ? (f.half ? ' is-half' : ' is-closed') : '');
+      var lines = f.items.slice(0, 3).map(function (x) {
+        var k = (x.kids || []).map(kidById).filter(Boolean)[0];
+        return '<span class="mev mev--' + x.k + '"' + (k ? ' style="--kc:var(' + k.col + ')"' : '') + '>' + esc(x.txt) + '</span>';
+      }).join('');
+      var label = f.closures.length ? (f.half ? 'Half day' : 'No school') : f.off;
+      cells += '<button class="' + cls + '" data-act="gotoday" data-date="' + s + '" aria-label="' + esc(SY.nice(d) + (label ? ', ' + label : '') + (f.items.length ? ', ' + f.items.length + ' thing' + (f.items.length === 1 ? '' : 's') + ' on' : '')) + '">' +
+        '<span class="mnum">' + d.getDate() + '</span>' + (label && inMonth ? '<span class="moff">' + esc(label) + '</span>' : '') + lines +
+        (f.items.length > 3 ? '<span class="mmore">+' + (f.items.length - 3) + ' more</span>' : '') + '</button>';
+    }
+    var mname = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][ms.getMonth()];
+    var isThis = ms.getFullYear() === SY.today().getFullYear() && ms.getMonth() === SY.today().getMonth();
+    return '<div class="calnav"><button class="btn light" data-act="mo" data-dir="-1" aria-label="Previous month">←</button><b>' + mname + ' ' + ms.getFullYear() + '</b>' +
+      '<button class="btn light" data-act="mo" data-dir="1" aria-label="Next month">→</button>' + (isThis ? '' : '<button class="btn link" data-act="mo" data-dir="0">This month</button>') + '</div>' +
+      '<div class="mgrid"><div class="mdow">Mon</div><div class="mdow">Tue</div><div class="mdow">Wed</div><div class="mdow">Thu</div><div class="mdow">Fri</div><div class="mdow">Sat</div><div class="mdow">Sun</div>' + cells + '</div>' +
+      calKey() + '<p class="cmeta">Tap a day to see that week.</p>';
+  }
+  function schoolYearStart() { // 1 Sept of the current school year
+    var t = SY.today(), y = t.getMonth() >= 8 ? t.getFullYear() : t.getFullYear() - 1;
+    return new Date(y + (state.yearOffset || 0), 8, 1);
+  }
+  function yearView() {
+    var ys = schoolYearStart(), t = SY.iso(SY.today()), months = '';
+    for (var m = 0; m < 12; m++) {
+      var ms = new Date(ys.getFullYear(), ys.getMonth() + m, 1), last = new Date(ms.getFullYear(), ms.getMonth() + 1, 0);
+      var cells = '', lead = (ms.getDay() + 6) % 7;
+      for (var i = 0; i < lead; i++) cells += '<span class="ycell is-blank"></span>';
+      for (var d = new Date(ms.getTime()); d <= last; d = SY.addDays(d, 1)) {
+        var f = dayFacts(d), s = SY.iso(d), dow = (d.getDay() + 6) % 7;
+        var hasClass = f.items.some(function (x) { return x.k === 'class'; }), hasOut = f.items.some(function (x) { return x.k === 'outing'; }), hasSummer = f.items.some(function (x) { return x.k.indexOf('summer') === 0; });
+        var c = 'ycell' + (dow >= 5 ? ' is-wkend' : '') + (f.closures.length ? (f.half ? ' is-half' : ' is-closed') : f.off ? ' is-off' : '') + (s === t ? ' is-today' : '');
+        cells += '<span class="' + c + '" title="' + esc(SY.nice(d) + (f.off ? ' · ' + f.off : '') + (f.items.length ? ' · ' + f.items.map(function (x) { return x.txt; }).join(', ') : '')) + '">' + d.getDate() +
+          (hasClass || hasOut || hasSummer ? '<i class="ydots">' + (hasClass ? '<b class="yd-class"></b>' : '') + (hasOut ? '<b class="yd-outing"></b>' : '') + (hasSummer ? '<b class="yd-summer"></b>' : '') + '</i>' : '') + '</span>';
+      }
+      months += '<button class="ymonth" data-act="gomonth" data-date="' + SY.iso(ms) + '"><b>' + ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][ms.getMonth()] + ' ' + ms.getFullYear() + '</b>' +
+        '<span class="ydow"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i></span><span class="ygrid">' + cells + '</span></button>';
+    }
+    return '<div class="calnav"><button class="btn light" data-act="yr" data-dir="-1" aria-label="Previous school year">←</button><b>School year ' + ys.getFullYear() + '/' + String(ys.getFullYear() + 1).slice(2) + '</b>' +
+      '<button class="btn light" data-act="yr" data-dir="1" aria-label="Next school year">→</button>' + (state.yearOffset ? '<button class="btn link" data-act="yr" data-dir="0">This year</button>' : '') + '</div>' +
+      '<div class="ymonths">' + months + '</div>' + calKey(true) + '<p class="cmeta">Tap a month to open it.</p>';
+  }
+  function calKey(year) {
+    return '<div class="calkey ckey">' +
+      '<span><i class="ck ck-off"></i>School holidays &amp; bank holidays</span><span><i class="ck ck-closed"></i>Your school closed</span><span><i class="ck ck-half"></i>Half day</span>' +
+      (year ? '<span><b class="yd-class"></b>Classes</span><span><b class="yd-outing"></b>Days out</span><span><b class="yd-summer"></b>Summer camps &amp; plans</span>' : '<span><i class="ck ck-class"></i>Classes</span><span><i class="ck ck-outing"></i>Days out</span><span><i class="ck ck-summer"></i>Summer</span>') + '</div>';
+  }
+
   function viewCalendar() {
     if (!state.weekStart) state.weekStart = mondayOf(SY.today());
     var ws = state.weekStart, we = SY.addDays(ws, 6), t = SY.iso(SY.today());
@@ -551,13 +625,15 @@
         (items || '<div class="cnone">' + (i < 5 && !off && !closuresOn(d).length ? 'Nothing on' : '') + '</div>') + '</div>';
     }
     var list = classes().slice().sort(function (a, b) { return a.day - b.day || a.start - b.start; });
-    return '<section class="intro"><span class="eyebrow">Your Sortd calendar</span><h1>The week, <em>sorted.</em></h1>' +
-      '<p class="muted">Every class for every child, with midterm, holidays and bank holidays already taken out. Add classes from any class page on Sortd.</p></section>' +
-      '<div class="calnav"><button class="btn light" data-act="wk" data-dir="-1" aria-label="Previous week">←</button>' +
+    var mode = state.calMode || 'week';
+    var weekHtml = '<div class="calnav"><button class="btn light" data-act="wk" data-dir="-1" aria-label="Previous week">←</button>' +
       '<b>' + ws.getDate() + ' ' + MONTHS[ws.getMonth()] + ' – ' + we.getDate() + ' ' + MONTHS[we.getMonth()] + ' ' + we.getFullYear() + '</b>' +
       '<button class="btn light" data-act="wk" data-dir="1" aria-label="Next week">→</button>' +
       (SY.iso(ws) !== SY.iso(mondayOf(SY.today())) ? '<button class="btn link" data-act="wk" data-dir="0">This week</button>' : '') + '</div>' +
-      '<div class="cweek">' + days + '</div>' +
+      '<div class="cweek">' + days + '</div>';
+    return '<section class="intro"><span class="eyebrow">Your Sortd calendar</span><h1>' + (mode === 'year' ? 'The year' : mode === 'month' ? 'The month' : 'The week') + ', <em>sorted.</em></h1>' +
+      '<p class="muted">Every class for every child, with midterm, holidays and bank holidays already taken out. Add classes from any class page on Sortd.</p></section>' +
+      calModeSwitch() + (mode === 'year' ? yearView() : mode === 'month' ? monthView() : weekHtml) +
       '<div class="stack"><div class="panel"><div class="phead"><h2>Your classes</h2>' +
       (list.length || outings().length ? '<button class="btn light" data-act="exportall">Add all to my phone\'s calendar</button>' : '') + '</div>' +
       (list.length ? list.map(classCard).join('') : '<p class="muted">No classes yet. Find one on Sortd and tap "Add to my Sortd calendar", or add your own.</p>') +
@@ -780,7 +856,7 @@
     if (el.classList.contains('scrim') && e.target !== el) return;
     var a = el.dataset.act, id = el.dataset.id, w = +el.dataset.week, kid = el.dataset.kid, p = id ? planById(id) : null;
     switch (a) {
-      case 'wk': { var dir = +el.dataset.dir; state.weekStart = dir === 0 ? mondayOf(SY.today()) : SY.addDays(state.weekStart || mondayOf(SY.today()), 7 * dir); render(); break; }
+      case 'wk': { var dir = +el.dataset.dir; state.weekStart = dir === 0 ? mondayOf(SY.today()) : SY.addDays(state.weekStart || mondayOf(SY.today()), 7 * dir); state.monthStart = firstOfMonth(state.weekStart); render(); break; }
       case 'exportall': { var list = classes().map(function (c) { return [classEv(c), classRuns(c)]; }).filter(function (x) { return x[1].length; });
         var td = SY.iso(SY.today());
         outings().filter(function (o) { return o.date >= td; }).forEach(function (o) { var dd = SY.parseISO(o.date);
@@ -843,6 +919,11 @@
         state.weekStart = mondayOf(SY.parseISO(od)); closeSheet(); changed(); render(); toast('Added for ' + SY.nice(SY.parseISO(od))); break;
       }
       case 'deloutings': { P().outings = outings().filter(function (o) { return o.id !== id; }); changed(); render(); toast('Removed'); break; }
+      case 'calmode': state.calMode = el.dataset.mode; if (state.calMode === 'month' && !state.monthStart) state.monthStart = firstOfMonth(state.weekStart || SY.today()); render(); break;
+      case 'mo': { var md = +el.dataset.dir; state.monthStart = md === 0 ? firstOfMonth(SY.today()) : new Date(state.monthStart.getFullYear(), state.monthStart.getMonth() + md, 1); render(); break; }
+      case 'yr': { var yd = +el.dataset.dir; state.yearOffset = yd === 0 ? 0 : (state.yearOffset || 0) + yd; render(); break; }
+      case 'gotoday': { var gd = SY.parseISO(el.dataset.date); state.weekStart = mondayOf(gd); state.monthStart = firstOfMonth(gd); state.calMode = 'week'; render(); var tgt = document.querySelector('.calmode'); if (tgt) tgt.scrollIntoView({ block: 'start' }); break; }
+      case 'gomonth': { state.monthStart = SY.parseISO(el.dataset.date); state.calMode = 'month'; render(); break; }
       case 'setup': setupKids = null; setupDraft = null; setupSheet(false); break;
       case 's-addkid': readSetupKids(); setupKids.push({ id: uid('k'), name: '', age: '', col: KID_COLOURS[setupKids.length % KID_COLOURS.length] }); setupSheet(!P()); var ins = document.querySelectorAll('#kidlist .k-name'); ins[ins.length - 1].focus(); break;
       case 's-delkid': readSetupKids(); setupKids = setupKids.filter(function (k) { return k.id !== kid; }); setupSheet(!P()); break;
