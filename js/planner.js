@@ -990,7 +990,7 @@
         if (bu2) { var np = P().plans[P().plans.length - 1]; P().pendingBook = (P().pendingBook || []).concat([np.id]); window.open(bu2, '_blank', 'noopener'); }
         break;
       }
-      case 'makeinvite': post({ action: 'invite' }).then(function (j) { state.inviteCode = j.code; render(); }).catch(function () { toast('Couldn\'t make a link. Try again.'); }); break;
+      case 'makeinvite': post({ action: 'invite' }).then(function (j) { state.inviteCode = j.code; render(); try { if (window.gtag) gtag('event', 'planner_invite_created'); } catch (_) {} }).catch(function () { toast('Couldn\'t make a link. Try again.'); }); break;
       case 'disconnect': {
         var fr = state.friends.find(function (x) { return x.id === id; });
         if (!window.confirm('Disconnect from ' + (fr ? fr.name : 'this parent') + '? You\'ll both stop seeing each other\'s camps.')) break;
@@ -1061,6 +1061,7 @@
     return post({ action: 'join', code: code }).then(function (j) {
       if (j.friend && !state.friends.some(function (f) { return f.id === j.friend.id; })) state.friends.push(j.friend);
       toast('You\'re connected with ' + (j.friend ? j.friend.name : 'a friend'));
+      try { if (window.gtag) gtag('event', 'planner_friend_joined'); } catch (_) {}
     }).catch(function (err) {
       toast(err.code === 'own_code' ? 'That\'s your own invite link' : 'That invite link didn\'t work. Ask your friend to send it again.');
     });
@@ -1079,6 +1080,7 @@
         return;
       }
       state.friends = data.friends || []; state.inviteCode = data.inviteCode || null; state.plan = data.plan || null;
+      try { if (window.gtag) gtag('event', 'planner_open', { has_plan: state.plan ? 'yes' : 'no', friends: state.friends.length }); } catch (_) {}
       if (state.plan) {
         ['kids','carers','plans','pendingBook','classes','schools','outings'].forEach(function (k) { if (!Array.isArray(state.plan[k])) state.plan[k] = []; });
         if (!state.plan.days || typeof state.plan.days !== 'object') state.plan.days = {};

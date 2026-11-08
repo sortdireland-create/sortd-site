@@ -152,6 +152,7 @@
           paintAll();
         }
         track('save_unlock_submit');
+        if (p) track('save_listing', { listing_id: p.id, logged_in: 'no', via: 'email_wall' });
         if (!sheetEl) return;
         sheetEl.querySelector('.sv-sheet').innerHTML =
           '<button type="button" class="sv-x" aria-label="Close">&#10005;</button>' +
@@ -185,6 +186,7 @@
     // Optimistic UI: flip immediately, reconcile after.
     if (willSave) savedSet.add(id); else savedSet.delete(id);
     setButtonState(btn, willSave);
+    track(willSave ? 'save_listing' : 'unsave_listing', { listing_id: id, logged_in: loggedIn ? 'yes' : 'no' });
 
     if (loggedIn) {
       try {

@@ -328,3 +328,37 @@ function readSearchQuery(){
     activities: new Set((p.get('cats')||'').split(',').filter(Boolean)),
   };
 }
+
+// ── GA4: search tracking ────────────────────────────────────────────────
+// Called from doSearch() on /find-an-activity, /camps and /weekly-classes.
+// Debounced so ticking several filters in a row counts as one search, and
+// the automatic first render on page load is skipped unless the page was
+// opened with filters in the URL (a hand-off from the homepage hero search).
+// Only the routing key (first 3 characters) of an Eircode is sent, never a
+// full address.
+let _sortdSearchCalls = 0, _sortdSearchTimer = null;
+function trackSearch(opts, resultCount){
+  _sortdSearchCalls++;
+  if (_sortdSearchCalls === 1 && !location.search) return;
+  clearTimeout(_sortdSearchTimer);
+  _sortdSearchTimer = setTimeout(function(){
+    try {
+      if (!window.gtag) return;
+      const o = opts || {};
+      let area = String(o.eircode || '').trim();
+      if (/^[a-z]\d[\dw]/i.test(area.replace(/\s/g,''))) area = area.replace(/\s/g,'').slice(0,3).toUpperCase();
+      else area = area.slice(0,40);
+      window.gtag('event', 'search', {
+        search_term: String(o.text || '').trim().slice(0,60),
+        listing_type: o.type || 'all',
+        search_area: area,
+        age_filter: Array.isArray(o.ageBucket) ? o.ageBucket.join('-') : '',
+        days_filter: (o.days || []).join(',').slice(0,60),
+        activity_filter: (o.activities || []).join(',').slice(0,90),
+        result_count: resultCount,
+        zero_results: resultCount === 0 ? 'yes' : 'no',
+        page_path: location.pathname,
+      });
+    } catch (_) {}
+  }, 1500);
+}

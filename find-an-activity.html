@@ -275,7 +275,10 @@ function renderSchoolSearch(){
 }
 
 function doSearch(){
-  render(filterListings(LISTINGS, readFilters()));
+  const f = readFilters();
+  const res = filterListings(LISTINGS, f);
+  render(res);
+  if (typeof trackSearch === 'function') trackSearch(f, res.length);
 }
 
 function clearAll(){
