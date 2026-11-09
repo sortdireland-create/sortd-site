@@ -51,7 +51,7 @@
     "name": "Junior Einsteins Christmas Science Camp – Galway",
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "shankill-tennis-club-junior-tennis",
@@ -117,15 +117,6 @@
     "lastmod": "2026-11-07"
   },
   {
-    "slug": "rugbytots-sportsco-gym-ringsend",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-sportsco-gym-ringsend",
-    "name": "Rugbytots — SportsCo Gym (Ringsend)",
-    "provider": "Rugbytots Dublin",
-    "section": "classes",
-    "lastmod": "2026-11-08"
-  },
-  {
     "slug": "malahide-united-fc-nippers-academy",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/malahide-united-fc-nippers-academy",
@@ -142,15 +133,6 @@
     "provider": "GTI Ireland / Be Martial Arts & Fitness",
     "section": "classes",
     "lastmod": "2026-11-07"
-  },
-  {
-    "slug": "rugbytots-glasnevin-etns",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-glasnevin-etns",
-    "name": "Rugbytots — Glasnevin ETNS",
-    "provider": "Rugbytots Dublin",
-    "section": "classes",
-    "lastmod": "2026-11-08"
   },
   {
     "slug": "round-towers-lusk-gaa-towers-oga-nursery",
@@ -231,7 +213,7 @@
     "name": "Junior Einsteins Christmas Science Camp – Tuam",
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "st-finians-gaa-swords-u9-girls-born-2017-gaa-camogie",
@@ -258,16 +240,7 @@
     "name": "Dolphin Swim School – Group Swim Lessons",
     "provider": "Dolphin Swim School",
     "section": "classes",
-    "lastmod": "2026-11-07"
-  },
-  {
-    "slug": "rugbytots-loreto-abbey-dalkey",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-loreto-abbey-dalkey",
-    "name": "Rugbytots — Loreto Abbey Dalkey",
-    "provider": "Rugbytots Dublin",
-    "section": "classes",
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "trojan-gymnastic-club-recreational-gymnastics",
@@ -420,7 +393,7 @@
     "name": "Blackrock College RFC Minis",
     "provider": "Blackrock College RFC",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "old-bawn-gymnastics-club",
@@ -430,15 +403,6 @@
     "provider": "Old Bawn Gymnastics Club",
     "section": "classes",
     "lastmod": "2026-11-07"
-  },
-  {
-    "slug": "rugbytots-newpark-sports-centre-blackrock",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-newpark-sports-centre-blackrock",
-    "name": "Rugbytots — Newpark Sports Centre (Blackrock)",
-    "provider": "Rugbytots Dublin",
-    "section": "classes",
-    "lastmod": "2026-11-08"
   },
   {
     "slug": "ballyboden-st-endas-gaa-boden-og",
@@ -1075,67 +1039,61 @@
     "section": "hub",
     "name": "Kids' classes in Malahide",
     "url": "https://sortd-ireland.ie/dublin/malahide/",
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Balbriggan",
     "url": "https://sortd-ireland.ie/dublin/balbriggan/",
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Swords",
     "url": "https://sortd-ireland.ie/dublin/swords/",
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Baldoyle",
     "url": "https://sortd-ireland.ie/dublin/baldoyle/",
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Blanchardstown",
     "url": "https://sortd-ireland.ie/dublin/blanchardstown/",
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "section": "hub",
     "name": "Kids' classes in City Centre",
     "url": "https://sortd-ireland.ie/dublin/city-centre/",
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Clontarf",
     "url": "https://sortd-ireland.ie/dublin/clontarf/",
-    "lastmod": "2026-11-08"
-  },
-  {
-    "section": "hub",
-    "name": "Kids' classes in Blackrock",
-    "url": "https://sortd-ireland.ie/dublin/blackrock/",
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Castleknock",
     "url": "https://sortd-ireland.ie/dublin/castleknock/",
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Skerries",
     "url": "https://sortd-ireland.ie/dublin/skerries/",
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Dublin",
     "url": "https://sortd-ireland.ie/dublin/",
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "the-krafty-italian-dublin-autumn-halloween-craft-classes-tuesdays",
@@ -1188,6 +1146,16 @@
     "lastmod": "2026-11-07"
   },
   {
+    "slug": "rugbytots-sportsco-gym-ringsend",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-sportsco-gym-ringsend",
+    "name": "Rugbytots — SportsCo Gym (Ringsend)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes",
+    "archived": true,
+    "lastmod": "2026-11-09"
+  },
+  {
     "slug": "cork-city-fc-october-midterm-camp-drinagh-rangers",
     "county": "cork",
     "url": "https://sortd-ireland.ie/camps/cork/cork-city-fc-october-midterm-camp-drinagh-rangers",
@@ -1205,7 +1173,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "junior-einsteins-halloween-science-camp-malahide-castle",
@@ -1216,6 +1184,16 @@
     "section": "camps",
     "archived": true,
     "lastmod": "2026-11-07"
+  },
+  {
+    "slug": "rugbytots-glasnevin-etns",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-glasnevin-etns",
+    "name": "Rugbytots — Glasnevin ETNS",
+    "provider": "Rugbytots Dublin",
+    "section": "classes",
+    "archived": true,
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "the-jam-halloween-art-workshop-raheny",
@@ -1355,7 +1333,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "designer-minds-steam-camp-leopardstown-nord-anglia",
@@ -1405,7 +1383,17 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
+  },
+  {
+    "slug": "rugbytots-loreto-abbey-dalkey",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-loreto-abbey-dalkey",
+    "name": "Rugbytots — Loreto Abbey Dalkey",
+    "provider": "Rugbytots Dublin",
+    "section": "classes",
+    "archived": true,
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "rugbytots-ballyroan-boys-national-school-knocklyon",
@@ -1415,7 +1403,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "neurodiversity-ireland-summer-camp-ages-8-10",
@@ -1465,7 +1453,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "keys-strings-newbies-skerries-part-2-of-2",
@@ -1525,7 +1513,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "designer-minds-steam-camp-donnycarney-week-3",
@@ -1545,7 +1533,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "playball-halloween-camp",
@@ -1565,7 +1553,7 @@
     "provider": "Starcamp Ireland",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "rugbytots-stepaside-etns",
@@ -1575,7 +1563,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "designer-minds-steam-camp-skerries-pm",
@@ -1646,6 +1634,16 @@
     "section": "camps",
     "archived": true,
     "lastmod": "2026-11-07"
+  },
+  {
+    "slug": "rugbytots-newpark-sports-centre-blackrock",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/rugbytots-newpark-sports-centre-blackrock",
+    "name": "Rugbytots — Newpark Sports Centre (Blackrock)",
+    "provider": "Rugbytots Dublin",
+    "section": "classes",
+    "archived": true,
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "junior-einsteins-spooky-science-halloween-camp-nord-anglia-international-school-leopardstown-4-day",
@@ -1885,7 +1883,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "alive-outside-summer-camp-swords-colaiste-choilm",
@@ -2095,7 +2093,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "galway-united-halloween-football-camp-clarenbridge",
@@ -2115,7 +2113,7 @@
     "provider": "Designer Minds",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "mellow-yellow-for-kids",
@@ -2265,7 +2263,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "designer-minds-steam-camp-sandyford",
@@ -2405,7 +2403,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "rugbytots-st-josephs-bns-terenure",
@@ -2415,7 +2413,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "starcamp-thriller-halloween-camp-rathgar-starcamp-ages-4-8",
@@ -2435,7 +2433,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "neurodiversity-ireland-summer-camp-ages-3-4",
@@ -2575,7 +2573,7 @@
     "provider": "Starcamp Ireland",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-09"
   },
   {
     "slug": "cork-city-fc-october-midterm-performance-camp-ringmahon-rangers-ages-13-16",
