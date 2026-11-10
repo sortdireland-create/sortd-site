@@ -69,7 +69,7 @@
     "name": "Butler Patrice Performing Arts Academy",
     "provider": "Butler Patrice Performing Arts",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "stillorgan-rathfarnham-rfc-minis-rugby",
@@ -87,7 +87,7 @@
     "name": "East Coast School of Ballet — Malahide",
     "provider": "East Coast School of Ballet",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "clontarf-mini-rugby",
@@ -123,7 +123,7 @@
     "name": "Malahide United FC Nippers Academy",
     "provider": "Malahide United FC",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "gti-family-martial-arts-taekwondo-malahide",
@@ -132,7 +132,7 @@
     "name": "GTI Family Martial Arts (Taekwondo) — Malahide",
     "provider": "GTI Ireland / Be Martial Arts & Fitness",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "round-towers-lusk-gaa-towers-oga-nursery",
@@ -178,6 +178,15 @@
     "provider": "Zila Art and Design",
     "section": "classes",
     "lastmod": "2026-11-07"
+  },
+  {
+    "slug": "gcakes-mum-tot-christmas-decorating-workshop",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/gcakes-mum-tot-christmas-decorating-workshop",
+    "name": "Mum & Tot Christmas Decorating Workshop",
+    "provider": "GCakes",
+    "section": "camps",
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-temple-bar",
@@ -303,7 +312,7 @@
     "name": "Young Gaiety Drama Workshop (Ages 8-10) — Malahide",
     "provider": "Gaiety School of Acting",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "metropolitan-school-of-dance-howth",
@@ -375,7 +384,7 @@
     "name": "Drama House — Malahide (Musical Theatre / Youth Theatre)",
     "provider": "Drama House",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "playball-parent-and-toddler-saturday-classes-2-3-year-olds",
@@ -465,7 +474,7 @@
     "name": "Malahide RFC Pre Mini Rugby 2026-2027",
     "provider": "Malahide RFC",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "st-maurs-gaa-rush-mini-maurs-academy",
@@ -519,7 +528,7 @@
     "name": "Artzone Senior Primary Art Classes (1st–6th class) — Malahide",
     "provider": "Artzone",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "dublin-raiders-basketball-academy",
@@ -636,7 +645,7 @@
     "name": "Child-Led Art Sessiona",
     "provider": "The Jam",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "little-kickers-swords",
@@ -654,7 +663,7 @@
     "name": "St Sylvester's GAA — Syls Academy",
     "provider": "St Sylvester's GAA Club",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "scouting-ireland-104th144th-blanchardstown-scout-group-all-sections-beavers-ventures",
@@ -717,7 +726,7 @@
     "name": "Curtain Call Stage School — Malahide",
     "provider": "Curtain Call Stage School",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "kinsella-school-of-ballet-malahide",
@@ -726,7 +735,7 @@
     "name": "Kinsella School of Ballet — Malahide",
     "provider": "Kinsella School of Ballet",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "kilmacud-crokes-gaa-club-nursery-football-camogie",
@@ -744,7 +753,7 @@
     "name": "Artzone Junior Art Classes (Junior/Senior Infants) — Malahide",
     "provider": "Artzone",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "allegro-stage-school",
@@ -753,7 +762,7 @@
     "name": "Allegro Stage School",
     "provider": "Allegro Stage School",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "leap-gymnastics-club",
@@ -825,7 +834,7 @@
     "name": "Hip Hop Dance",
     "provider": "Catch Dance Academy",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "music-generation-fingal-lusk-cello-tuition-hub",
@@ -870,7 +879,7 @@
     "name": "Project Fashion — Kids Sewing Class (Malahide)",
     "provider": "Project Fashion",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "fkft-kids-teens-dance-fitness-balbriggan",
@@ -1037,63 +1046,69 @@
   },
   {
     "section": "hub",
-    "name": "Kids' classes in Malahide",
+    "name": "Kids' classes and camps in Malahide",
     "url": "https://sortd-ireland.ie/dublin/malahide/",
-    "lastmod": "2026-11-09"
+    "lastmod": "2026-11-10"
+  },
+  {
+    "section": "hub",
+    "name": "Kids' classes in Malahide",
+    "url": "https://sortd-ireland.ie/dublin/malahide/classes/",
+    "lastmod": "2026-11-10"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Balbriggan",
     "url": "https://sortd-ireland.ie/dublin/balbriggan/",
-    "lastmod": "2026-11-09"
+    "lastmod": "2026-11-10"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Swords",
     "url": "https://sortd-ireland.ie/dublin/swords/",
-    "lastmod": "2026-11-09"
+    "lastmod": "2026-11-10"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Baldoyle",
     "url": "https://sortd-ireland.ie/dublin/baldoyle/",
-    "lastmod": "2026-11-09"
+    "lastmod": "2026-11-10"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Blanchardstown",
     "url": "https://sortd-ireland.ie/dublin/blanchardstown/",
-    "lastmod": "2026-11-09"
+    "lastmod": "2026-11-10"
   },
   {
     "section": "hub",
     "name": "Kids' classes in City Centre",
     "url": "https://sortd-ireland.ie/dublin/city-centre/",
-    "lastmod": "2026-11-09"
+    "lastmod": "2026-11-10"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Clontarf",
     "url": "https://sortd-ireland.ie/dublin/clontarf/",
-    "lastmod": "2026-11-09"
+    "lastmod": "2026-11-10"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Castleknock",
     "url": "https://sortd-ireland.ie/dublin/castleknock/",
-    "lastmod": "2026-11-09"
+    "lastmod": "2026-11-10"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Skerries",
     "url": "https://sortd-ireland.ie/dublin/skerries/",
-    "lastmod": "2026-11-09"
+    "lastmod": "2026-11-10"
   },
   {
     "section": "hub",
-    "name": "Kids' classes in Dublin",
+    "name": "Kids' classes and camps in Dublin",
     "url": "https://sortd-ireland.ie/dublin/",
-    "lastmod": "2026-11-09"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "the-krafty-italian-dublin-autumn-halloween-craft-classes-tuesdays",
@@ -1103,7 +1118,7 @@
     "provider": "The Krafty Italian Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "junior-einsteins-spooky-science-halloween-camp-clontarf",
@@ -1133,7 +1148,7 @@
     "provider": "Babble Box Learning",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "junior-einsteins-halloween-science-camp-malahide-castle-thu",
@@ -1383,7 +1398,7 @@
     "provider": "Rugbytots Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-09"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "rugbytots-loreto-abbey-dalkey",
@@ -1633,7 +1648,7 @@
     "provider": "GCakes",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "rugbytots-newpark-sports-centre-blackrock",
@@ -2073,7 +2088,7 @@
     "provider": "The Krafty Italian Dublin",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-10"
   },
   {
     "slug": "designer-minds-steam-camp-castleknock-am",
