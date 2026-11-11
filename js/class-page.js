@@ -58,12 +58,22 @@
     return null;
   }
   function earliest() { var t = today(), st = D.dateStart ? parseISO(D.dateStart) : null; return st && st > t ? st : t; }
-  function limit() { var last = SY.lastTermDay(), end = D.dateEnd ? parseISO(D.dateEnd) : null; return end && end < last ? end : last; }
+  // The listing's DateEnd is usually the end of the provider's current block
+  // (e.g. "8-session term"), not the end of the class for good. By default we
+  // stop there; "Carry on" always runs to the end of the school year, the same
+  // as "Carry on all year" in the planner.
+  function blockEnd() { return D.dateEnd ? parseISO(D.dateEnd) : null; }
   function fromDate() { return sel.from ? parseISO(sel.from) : earliest(); }
-  function untilDate(s) {
-    var first = SY.firstOnOrAfter(fromDate(), s.day);
-    var u = sel.year ? limit() : SY.currentTermEnd(first);
-    return u > limit() ? limit() : u;
+  function defaultUntil(day) {
+    var first = SY.firstOnOrAfter(fromDate(), day == null ? fromDate().getDay() : day);
+    var u = SY.currentTermEnd(first), b = blockEnd();
+    return b && b < u ? b : u;
+  }
+  function untilDate(s) { return sel.year ? SY.lastTermDay() : defaultUntil(s.day); }
+  function blockEndsEarly() { var b = blockEnd(), s = chosen(); return !!(b && b < SY.currentTermEnd(SY.firstOnOrAfter(fromDate(), s ? s.day : fromDate().getDay()))); }
+  function yearLabel() {
+    var to = ' (to ' + nice(SY.lastTermDay()) + ')';
+    return blockEndsEarly() ? 'Keep going after this block' + to : 'Carry on after this term' + to;
   }
   function plan(s) { return SY.runs(s.day, fromDate(), untilDate(s)); }
   function ev(s) {
@@ -110,10 +120,12 @@
   function kidsChosen() { return sel.kids.length + sel.newKids.filter(function (k) { return k.name.trim(); }).length; }
   function summary() {
     var s = chosen(); if (!s) return '<p class="cp-hint">' + (SESSIONS.length ? 'Pick a class above.' : 'Add the day and time your child goes.') + '</p>';
-    var rs = plan(s); if (!rs.length) return '<p class="cp-hint">No more term-time ' + DAY_NAMES[s.day] + 's this school year.</p>';
+    var rs = plan(s);
+    if (!rs.length && !sel.year && blockEnd() && blockEnd() < fromDate()) return '<p class="cp-hint">' + esc(D.provider || 'The provider') + '\'s current block finished on ' + nice(blockEnd()) + '. Tick "Keep going" to add the next one, and check the new dates with them.</p>';
+    if (!rs.length) return '<p class="cp-hint">No more term-time ' + DAY_NAMES[s.day] + 's this school year.</p>';
     var n = rs.reduce(function (a, r) { return a + SY.count(r); }, 0), last = rs[rs.length - 1].last;
     return '<div class="cp-sum"><b>' + DAY_NAMES[s.day] + 's ' + fmtTime(s.start) + '–' + fmtTime(s.end) + '</b>, ' + nice(rs[0].first) + ' to ' + nice(last) + ' · ' + n + ' class' + (n === 1 ? '' : 'es') +
-      '<br><span>Skips midterm, school holidays and bank holidays.</span></div>' +
+      '<br><span>Skips midterm, school holidays and bank holidays.' + (!sel.year && blockEndsEarly() ? ' ' + esc(D.provider || 'The provider') + ' lists this block as ending ' + nice(blockEnd()) + '.' : '') + '</span></div>' +
       '<div class="cp-acts"><button class="cp-btn cp-btn--pri" id="cp-add" type="button"' + (kidsChosen() ? '' : ' disabled') + '>Add to my Sortd calendar</button>' +
       (kidsChosen() ? '' : '<p class="cp-hint">Choose who\'s going.</p>') + '</div>';
   }
@@ -123,7 +135,7 @@
       '<div id="cp-kidsbox">' + kidsPicker() + '</div>' +
       (SESSIONS.length ? sessionList() : manual()) +
       '<div class="cp-row"><label class="cp-f">First class on or after<input type="date" id="cp-from" value="' + startVal + '" min="' + iso(today()) + '"></label>' +
-      '<label class="cp-chk"><input type="checkbox" id="cp-year"' + (sel.year ? ' checked' : '') + '> Carry on after this term (to ' + nice(limit()) + ')</label></div>' +
+      '<label class="cp-chk"><input type="checkbox" id="cp-year"' + (sel.year ? ' checked' : '') + '> <span id="cp-year-l">' + yearLabel() + '</span></label></div>' +
       '<div id="cp-sum">' + summary() + '</div>');
   }
   function renderDone(names) {
@@ -136,7 +148,10 @@
       '<a class="cp-btn" id="cp-google" href="' + esc(SY.googleLink(e, rs[0])) + '" target="_blank" rel="noopener noreferrer">Google Calendar' + (rs.length > 1 ? ' (this term)' : '') + '</a>' +
       '<button class="cp-btn" id="cp-ics" type="button">Apple, Outlook or other</button></div></details>');
   }
-  function refresh() { var el = document.getElementById('cp-sum'); if (el) el.innerHTML = summary(); }
+  function refresh() {
+    var el = document.getElementById('cp-sum'); if (el) el.innerHTML = summary();
+    var yl = document.getElementById('cp-year-l'); if (yl) yl.textContent = yearLabel();
+  }
   function refreshKids() { var el = document.getElementById('cp-kidsbox'); if (el) el.innerHTML = kidsPicker(); refresh(); }
 
   function loadKids() {

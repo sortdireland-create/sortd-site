@@ -50,7 +50,7 @@ function featureRow(title, text) {
 }
 
 // Sent for every parent login request.
-// Login link first, then what the account does, then the beta list,
+// Login link first, then what the account does, then the calendar,
 // then Instagram and the Thursday email (its own sign-up on /newsletter).
 function unlockWelcomeHtml(link) {
   return emailShell(`
@@ -67,17 +67,18 @@ function unlockWelcomeHtml(link) {
     </table>
 
     ${emailBox(`
-      <p style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#5B4FCA;">In beta testing</p>
-      <p style="margin:0 0 10px;line-height:1.6;">These are being tested with a small group of parents right now. You're on the list, so you'll be first to try each one as it opens:</p>
+      <p style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#5B4FCA;">Your Sortd calendar</p>
+      <p style="margin:0 0 10px;line-height:1.6;">Free with your account, and ready to use now:</p>
       <p style="margin:0 0 10px;line-height:1.9;">
-        <strong>Summer planner</strong>: plan the summer week by week, with drop-offs and pick-ups<br>
         <strong>Family calendar</strong>: classes, days out and camps for each child<br>
+        <strong>School days off</strong>: midterms and bank holidays built in, plus your own school's days off<br>
+        <strong>Summer planner</strong>: plan the summer week by week, with drop-offs and pick-ups<br>
         <strong>Friends</strong>: see which camps your friends' kids are going to<br>
         <strong>Add to your calendar</strong>: Google, Apple or Outlook<br>
-        <strong>School days off</strong>: midterms and bank holidays built in<br>
         <strong>Costs and annual leave</strong>: what the summer costs, and the days off you'll need
       </p>
-      <p style="margin:0;line-height:1.6;">It's a beta, so some things may be a bit rough. If anything looks off, just reply to this email.</p>
+      <div style="margin:0 0 12px;">${outlineButton('Open my calendar', SITE_URL + '/planner')}</div>
+      <p style="margin:0;line-height:1.6;">It's new, so if anything looks off, just reply to this email.</p>
     `, 'provider')}
 
     <p style="margin:6px 0 12px;">Want to hear what's new first?</p>

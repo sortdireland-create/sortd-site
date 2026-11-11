@@ -1067,3 +1067,15 @@
   to = "/camps/dublin/zila-art-and-design-halloween-midterm-art-design-camp-baldoyle"
   status = 301
   force = true
+
+# Login pages: never send the address (which may briefly hold a login
+# token) to another site in the Referer header.
+[[headers]]
+  for = "/account"
+  [headers.values]
+    Referrer-Policy = "no-referrer"
+
+[[headers]]
+  for = "/login"
+  [headers.values]
+    Referrer-Policy = "no-referrer"

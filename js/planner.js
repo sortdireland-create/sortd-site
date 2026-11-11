@@ -272,13 +272,14 @@
   }
   function viewHow() {
     var S = [
-      ['--gr', 'Add your kids', 'Put in each child\'s first name and age. Age means you only see camps that suit them.', 'plan', 'Go to My summer'],
-      ['--pu', 'Fill in each week', 'Tap an empty week to find a camp that fits, or add your own plan, like a holiday or Granny\'s week.', 'plan', 'Start planning'],
+      ['--gr', 'Add your kids', 'Put in each child\'s first name and age. Age means you only see classes and camps that suit them.', 'calendar', 'Open my calendar'],
+      ['--sk', 'Add their classes', 'On any class page on Sortd, tap "Add to my Sortd calendar". It fills in every week of term and skips midterms and bank holidays. Classes not on Sortd? Use "Add your own class".', 'calendar', 'See my calendar'],
+      ['--warn', 'Add days out and school days off', 'Add days out from What\'s on, and pick your school to bring in its own days off.', 'calendar', 'Go to my calendar'],
+      ['--pu', 'Plan the summer', 'Tap an empty summer week to find a camp that fits, or add your own plan, like a holiday or Granny\'s week. Then sort out drop-offs and pick-ups day by day.', 'plan', 'Start planning'],
       ['--pk', 'Invite your friends', 'Send your invite link on WhatsApp. You\'ll see where their kids are going and can add the same camp in 1 tap.', 'friends', 'Invite a parent'],
-      ['--sk', 'Sort out the days', 'Add the people who help, then tap any day to pick who\'s doing drop-off, pick-up and afternoons.', 'cal', 'Open the calendar'],
-      ['--warn', 'Book it and tick it', 'Book with the provider, then tap "I\'ve booked it". Your total cost and leave days add up as you go.', 'costs', 'See costs & leave']
+      ['--gr', 'Book it and tick it', 'Book with the provider, then tap "I\'ve booked it". Your summer cost and leave days add up as you go.', 'costs', 'See costs & leave']
     ];
-    return '<section class="intro"><span class="eyebrow">How to use the planner</span><h1>Your summer in <em>5 steps.</em></h1>' +
+    return '<section class="intro"><span class="eyebrow">How it works</span><h1>Your family\'s year in <em>6 steps.</em></h1>' +
       '<p class="muted">Do them in any order. Everything saves as you go.</p></section>' +
       '<ol class="steps">' + S.map(function (x, i) { return '<li class="step"><span class="n" style="background:var(' + x[0] + ')" aria-hidden="true">' + (i + 1) + '</span><div><h2>' + x[1] + '</h2><p>' + x[2] + '</p><button class="btn" data-act="goto" data-view="' + x[3] + '">' + x[4] + ' →</button></div></li>'; }).join('') + '</ol>';
   }

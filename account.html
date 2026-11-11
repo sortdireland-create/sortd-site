@@ -212,7 +212,7 @@ html.is-unlocked .soon-list b::after{content:" \2713";color:#1D8A52;}
 <li data-planner><i class="ti ti-calendar" aria-hidden="true"></i><div><b>Family calendar</b><span>Classes, days out and camps for each child, across the whole school year.</span></div></li>
 <li data-planner><i class="ti ti-users" aria-hidden="true"></i><div><b>Friends</b><span>See which camps your friends' kids are going to, and join them in a tap.</span></div></li>
 <li data-planner><i class="ti ti-calendar-plus" aria-hidden="true"></i><div><b>Add to your calendar</b><span>Send anything to Google, Apple or Outlook calendar.</span></div></li>
-<li data-planner><i class="ti ti-school" aria-hidden="true"></i><div><b>School days off</b><span>Midterms and bank holidays built in, plus your school's own days off (coming soon).</span></div></li>
+<li data-planner><i class="ti ti-school" aria-hidden="true"></i><div><b>School days off</b><span>Midterms and bank holidays built in, plus your own school's days off.</span></div></li>
 <li data-planner><i class="ti ti-coin-euro" aria-hidden="true"></i><div><b>Costs and annual leave</b><span>See what the summer will cost and how many days off you'll need.</span></div></li>
 </ul>
 <p class="soon-note">You'll hear about each one in the Thursday email as it opens up.</p>
@@ -407,7 +407,7 @@ if (window.SortdSaved) {
       card.parentNode.replaceChild(a, card);
       document.getElementById('plannerGo').textContent = d.plan ? 'Open my calendar' : 'Start';
       var sh = document.getElementById('plannerSecH'); if (sh) sh.textContent = 'Your calendar and planner';
-      var sn = document.querySelector('.soon-note'); if (sn) sn.textContent = 'All of these live in your Sortd calendar. School days off for your own school are coming next.';
+      var sn = document.querySelector('.soon-note'); if (sn) sn.textContent = 'All of these live in your Sortd calendar.';
       document.querySelectorAll('.soon-list [data-planner] div').forEach(function (el) {
         var l = document.createElement('a');
         l.className = 'soon-in-planner'; l.href = '/planner'; l.textContent = 'Open →';
