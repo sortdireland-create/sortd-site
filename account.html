@@ -329,7 +329,12 @@ function renderSaved() {
   var ids = window.SortdSaved.savedIds();
   var saved = LISTINGS.filter(function (c) { return ids.indexOf(c.id) !== -1; });
   var countEl = document.getElementById('savedCount');
-  if (countEl && saved.length) countEl.textContent = 'You have ' + saved.length + (saved.length === 1 ? ' activity' : ' activities') + ' saved.';
+  if (countEl) {
+    if (!countEl.hasAttribute('data-default')) countEl.setAttribute('data-default', countEl.textContent);
+    countEl.textContent = saved.length
+      ? 'You have ' + saved.length + (saved.length === 1 ? ' activity' : ' activities') + ' saved.'
+      : countEl.getAttribute('data-default');
+  }
   if (!saved.length) {
     var unlocked = window.SortdSaved.isUnlocked && window.SortdSaved.isUnlocked();
     grid.innerHTML = unlocked
@@ -341,6 +346,24 @@ function renderSaved() {
   // listingCard() renders every heart as unsaved; paint the real state.
   window.SortdSaved.paintAll();
 }
+
+// Un-hearting a card here takes it off the list straight away (with a
+// short fade); re-hearting elsewhere, or a failed save being reverted,
+// redraws the list too.
+document.addEventListener('sortd:saved-change', function (e) {
+  var grid = document.getElementById('savedGrid');
+  var d = e.detail || {};
+  var btn = grid && !d.saved && d.id ? grid.querySelector('[data-save-id="' + d.id + '"]') : null;
+  var card = btn && btn.closest('.camp-card');
+  if (card && card.parentElement === grid) {
+    card.style.transition = 'opacity .2s ease, transform .2s ease';
+    card.style.opacity = '0';
+    card.style.transform = 'scale(.97)';
+    setTimeout(renderSaved, 200);
+  } else {
+    renderSaved();
+  }
+});
 
 if (window.SortdSaved) {
   window.SortdSaved.onReady(renderSaved);

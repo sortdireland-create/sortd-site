@@ -70,6 +70,16 @@
     });
   }
 
+  // Lets other parts of the page (e.g. the favourites list on /account)
+  // react when a favourite is added or removed.
+  function notifyChange(id, saved) {
+    try {
+      document.dispatchEvent(new CustomEvent('sortd:saved-change', {
+        detail: { id: id, saved: saved, ids: Array.from(savedSet) },
+      }));
+    } catch (e) { /* ignore */ }
+  }
+
   function setButtonState(btn, saved) {
     btn.classList.toggle('saved', saved);
     btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
@@ -150,6 +160,7 @@
           savedSet.add(p.id);
           writeLocal(Array.from(savedSet));
           paintAll();
+          notifyChange(p.id, true);
         }
         track('save_unlock_submit');
         if (p) track('save_listing', { listing_id: p.id, logged_in: 'no', via: 'email_wall' });
@@ -186,6 +197,7 @@
     // Optimistic UI: flip immediately, reconcile after.
     if (willSave) savedSet.add(id); else savedSet.delete(id);
     setButtonState(btn, willSave);
+    notifyChange(id, willSave);
     track(willSave ? 'save_listing' : 'unsave_listing', { listing_id: id, logged_in: loggedIn ? 'yes' : 'no' });
 
     if (loggedIn) {
@@ -198,12 +210,16 @@
         });
         if (!res.ok) throw new Error('save-listing failed: ' + res.status);
         const data = await res.json();
+        const before = savedSet.has(id);
         savedSet = new Set(data.saved || []);
         paintAll();
+        if (savedSet.has(id) !== before) notifyChange(id, savedSet.has(id));
       } catch (e) {
         console.error('Save failed, reverting:', e);
         if (willSave) savedSet.delete(id); else savedSet.add(id);
         setButtonState(btn, !willSave);
+        paintAll();
+        notifyChange(id, !willSave);
       }
       return;
     }
