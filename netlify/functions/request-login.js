@@ -177,14 +177,19 @@ exports.handler = async function (event) {
       };
     }
 
-    const link = `${SITE_URL}/.netlify/functions/verify-login?token=${token}`;
+    // Optional page to land on after login (e.g. /christmas for the Santa
+    // List). Same internal-paths-only rule verify-login.js applies.
+    const next = String(data.next || '');
+    const safeNext = /^\/[a-z0-9\-\/.]*(\?[a-z0-9=&_\-]*)?$/i.test(next) && next.indexOf('//') === -1 ? next : '';
+    const isSanta = safeNext.indexOf('/christmas') === 0;
+    const link = `${SITE_URL}/.netlify/functions/verify-login?token=${token}` + (safeNext ? `&next=${encodeURIComponent(safeNext)}` : '');
 
     try {
       // One email for every parent login request (account unlock, /login,
       // class pages). It replaced the old plain "Your sortd login link" email.
       await sendEmail({
         to: email,
-        subject: "You're in: your sortd account is unlocked",
+        subject: isSanta ? 'Your Sortd Santa List is ready 🎅' : "You're in: your sortd account is unlocked",
         html: unlockWelcomeHtml(link),
       });
     } catch (emailErr) {

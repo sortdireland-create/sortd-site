@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HHTB7S9WJG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HHTB7S9WJG');
+</script>
+<title>Sortd Santa List — a free shared Christmas list for parents</title>
+<meta name="description" content="A free Christmas list both parents can edit together. Keep Santa's gifts secret and send grandparents a link so nobody doubles up. From sortd.">
+<link rel="canonical" href="https://sortd-ireland.ie/christmas">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Sortd Santa List">
+<meta property="og:description" content="One Christmas list for both parents. Santa's gifts stay secret, and grandparents get their own link so nobody doubles up.">
+<meta property="og:url" content="https://sortd-ireland.ie/christmas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/santa-list.css">
+
+  <script src="/js/booking-tracking.js" defer></script>
+  <script src="/js/newsletter-signup.js" defer></script>
+  <script src="/js/account.js" defer></script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+
+<nav>
+  <a href="/" class="brand">sortd<span>.</span></a>
+  <div class="navlinks">
+    <a href="/find-an-activity" class="navlink">Find an activity</a>
+    <a href="/whats-on" class="navlink">What's on</a>
+    <a href="/about" class="navlink">Our story</a>
+    <a href="/list" class="navlink">For providers</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" aria-label="Sortd on Instagram"><i class="ti ti-brand-instagram nav-icon"></i></a>
+    <a href="/login" class="navlink nav-login" id="nav-account-link" data-smn-item>Log in</a>
+    <a href="/login" class="nav-cta-outline nav-signup" data-smn-cta>Sign up free</a>
+    <a href="/find-an-activity" class="nav-cta nav-cta-find">Find an activity</a>
+  </div>
+</nav>
+
+<div class="sl-hero">
+  <div class="sl-lights" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <span class="sl-eyebrow">Free from sortd</span>
+  <h1>Sortd <em>Santa List</em></h1>
+  <p class="sl-sub">One Christmas list for both parents. Santa's gifts stay secret, and the grandparents get their own link so nobody doubles up.</p>
+  <p class="sl-count" id="sl-count"></p>
+</div>
+
+<main class="sl-wrap">
+  <div class="sl-loading" id="v-loading">Checking the list twice… 🎄</div>
+
+  <!-- LOGGED OUT -->
+  <section id="v-login" hidden>
+    <div class="sl-card sl-login">
+      <h2>Start your Santa List</h2>
+      <p class="sl-join-note" id="login-join-note" hidden>You've been invited to join a family's Santa List. Pop in your email to get started.</p>
+      <form id="login-form">
+        <label class="sl-lbl" for="login-email">Your email</label>
+        <input class="sl-in" type="email" id="login-email" name="email" required placeholder="you@example.ie" autocomplete="email">
+        <div class="sl-consent">
+          <input type="checkbox" name="newsletterOptIn" id="newsletter-optin">
+          <label for="newsletter-optin">Also send me the weekly "what's on near you" email every Thursday: new camps, open spots and honest updates. See our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</label>
+        </div>
+        <button class="sl-btn sl-btn-red sl-btn-wide" type="submit" id="login-btn">Email me my link</button>
+        <div class="sl-status" id="login-status" role="status"></div>
+      </form>
+      <p class="sl-fine">No password. We'll email you a link that logs you in. Already have a sortd account? Same email, same account.</p>
+    </div>
+    <div class="sl-how">
+      <div class="sl-how-card" style="background:#FDE3DF"><span>🎅</span><b>Santa's list</b>Gifts from Santa, kept separate and hidden from family links.</div>
+      <div class="sl-how-card" style="background:#D2F2E2"><span>👫</span><b>Both parents</b>Invite your partner and you both add, tick off and edit.</div>
+      <div class="sl-how-card" style="background:#FFF1CC"><span>👵</span><b>Family link</b>Grandparents tap "I'll get this", so nobody buys the same thing twice.</div>
+    </div>
+  </section>
+
+  <!-- SETUP -->
+  <section id="v-setup" hidden>
+    <div class="sl-card" id="setup-join" hidden>
+      <h2>Join your family's list</h2>
+      <p>You've been invited to share a Santa List. Join to see and edit it together.</p>
+      <button class="sl-btn sl-btn-green" id="join-btn">Join the list</button>
+      <div class="sl-status" id="join-status" role="status"></div>
+    </div>
+    <div class="sl-card">
+      <h2>Who's on Santa's list?</h2>
+      <p>Add your children's first names. You can change these any time.</p>
+      <label class="sl-lbl" for="setup-family">Family name</label>
+      <input class="sl-in" id="setup-family" placeholder="e.g. The Hannons" maxlength="60">
+      <div class="sl-lbl">Children</div>
+      <div id="setup-kids"></div>
+      <button class="sl-btn sl-btn-ghost" type="button" id="setup-addkid">+ Add another child</button>
+      <button class="sl-btn sl-btn-red sl-btn-wide" type="button" id="setup-go">Make our list ✨</button>
+      <div class="sl-status" id="setup-status" role="status"></div>
+      <p class="sl-fine">Partner already started one? Ask them for the invite link from their list.</p>
+    </div>
+  </section>
+
+  <!-- FAMILY LIST -->
+  <section id="v-list" hidden>
+    <div class="sl-toolbar">
+      <div class="sl-kids" id="kid-tabs" role="tablist"></div>
+      <div class="sl-tools">
+        <span class="sl-sync" id="sync"><i></i><span id="sync-txt">Up to date</span></span>
+        <button class="sl-btn sl-btn-ghost sl-btn-sm" id="eyes-btn" aria-pressed="false">🙈 Little eyes</button>
+        <button class="sl-btn sl-btn-ghost sl-btn-sm" id="share-btn">🔗 Share</button>
+        <button class="sl-btn sl-btn-ghost sl-btn-sm" id="kids-btn">✏️ Children</button>
+      </div>
+    </div>
+    <div class="sl-eyes-note" id="eyes-note" hidden>Santa's list is hidden. Tap "Little eyes" again to show it.</div>
+    <div class="sl-boards">
+      <section class="sl-board sl-santa" id="board-santa">
+        <header><h2>From Santa 🎅</h2><span class="sl-total" id="t-santa"></span></header>
+        <p class="sl-note">Top secret. Never shown on the family link.</p>
+        <button class="sl-btn sl-btn-red" data-add="santa">+ Add a Santa gift</button>
+        <div class="sl-list" id="l-santa"></div>
+      </section>
+      <section class="sl-board sl-fam">
+        <header><h2>Family ideas 🎁</h2><span class="sl-total" id="t-family"></span></header>
+        <p class="sl-note">Ideas for grandparents, aunts and uncles. They see these on your family link.</p>
+        <button class="sl-btn sl-btn-green" data-add="family">+ Add an idea</button>
+        <div class="sl-list" id="l-family"></div>
+      </section>
+    </div>
+    <aside class="sl-sortd">
+      <div><b>Thinking about an experience gift?</b> A term of classes or a holiday camp place lasts longer than most toys.</div>
+      <a class="sl-btn sl-btn-ghost sl-btn-sm" href="/find-an-activity">Find an activity →</a>
+    </aside>
+  </section>
+
+  <!-- GIVERS (family link) -->
+  <section id="v-givers" hidden>
+    <div class="sl-card sl-givers-head">
+      <h2 id="g-title">Gift ideas</h2>
+      <p>Tap <b>I'll get this</b> on anything you're buying, so nobody doubles up. The family will see your name.</p>
+    </div>
+    <div id="g-kids"></div>
+    <div class="sl-card sl-make">
+      <h3>Make your own Santa List</h3>
+      <p>Free from sortd, the kids' activities directory built by a mum in Dublin.</p>
+      <a class="sl-btn sl-btn-red" href="/christmas">Start my list</a>
+    </div>
+  </section>
+
+  <section id="v-error" hidden>
+    <div class="sl-card"><h2 id="err-title">Hmm, that didn't work</h2><p id="err-msg">Please refresh and try again.</p></div>
+  </section>
+</main>
+
+<!-- Gift modal -->
+<div class="sl-scrim" id="gift-scrim" hidden>
+  <form class="sl-modal" id="gift-form" aria-labelledby="gift-title">
+    <h3 id="gift-title">New gift</h3>
+    <label class="sl-lbl" for="g-name">Gift</label>
+    <input class="sl-in" id="g-name" required maxlength="150" placeholder="e.g. LEGO Duplo fire station">
+    <div class="sl-row">
+      <div><label class="sl-lbl" for="g-price">Price (€)</label><input class="sl-in" id="g-price" type="number" min="0" step="0.01" inputmode="decimal" placeholder="35"></div>
+      <div><label class="sl-lbl" for="g-url">Shop link</label><input class="sl-in" id="g-url" type="url" placeholder="https://…"></div>
+    </div>
+    <div class="sl-lbl">Who's it for?</div>
+    <div class="sl-seg" id="g-kid"></div>
+    <div class="sl-lbl">From</div>
+    <div class="sl-seg" id="g-from"><button type="button" data-v="santa">🎅 Santa</button><button type="button" data-v="family">🎁 Family</button></div>
+    <div id="g-who-wrap">
+      <label class="sl-lbl" for="g-who">Who's buying it? (optional)</label>
+      <input class="sl-in" id="g-who" list="g-people" maxlength="60" placeholder="e.g. Granny">
+      <datalist id="g-people"><option>Granny</option><option>Grandad</option><option>Nana</option><option>Auntie</option><option>Uncle</option><option>Godparent</option></datalist>
+    </div>
+    <div class="sl-claimed" id="g-claimed" hidden></div>
+    <div class="sl-actions">
+      <button type="button" class="sl-btn sl-btn-ghost" id="g-cancel">Cancel</button>
+      <button type="submit" class="sl-btn sl-btn-red" id="g-save">Add to list ✨</button>
+    </div>
+  </form>
+</div>
+
+<!-- Share modal -->
+<div class="sl-scrim" id="share-scrim" hidden>
+  <div class="sl-modal">
+    <h3>Share your list</h3>
+    <div class="sl-share-block">
+      <b>👫 Your partner</b>
+      <p>They can see and edit everything, including Santa's list.</p>
+      <div class="sl-copyrow"><input class="sl-in" id="share-partner" readonly><button class="sl-btn sl-btn-green sl-btn-sm" data-copy="share-partner">Copy</button></div>
+    </div>
+    <div class="sl-share-block">
+      <b>👵 Grandparents and family</b>
+      <p>Family ideas only. Santa's list is never shown. They tap "I'll get this" to claim a gift.</p>
+      <div class="sl-copyrow"><input class="sl-in" id="share-givers" readonly><button class="sl-btn sl-btn-green sl-btn-sm" data-copy="share-givers">Copy</button></div>
+      <button class="sl-btn sl-btn-ghost sl-btn-sm" id="share-wa">💬 Copy a WhatsApp message</button>
+      <button class="sl-linkbtn" id="share-reset">Make a new family link (the old one stops working)</button>
+    </div>
+    <div class="sl-actions"><button class="sl-btn sl-btn-ghost" id="share-close">Done</button></div>
+  </div>
+</div>
+
+<!-- Kids modal -->
+<div class="sl-scrim" id="kids-scrim" hidden>
+  <div class="sl-modal">
+    <h3>Your children</h3>
+    <label class="sl-lbl" for="kids-family">Family name</label>
+    <input class="sl-in" id="kids-family" maxlength="60">
+    <div class="sl-lbl">Children</div>
+    <div id="kids-rows"></div>
+    <button class="sl-btn sl-btn-ghost sl-btn-sm" type="button" id="kids-add">+ Add a child</button>
+    <div class="sl-status" id="kids-status" role="status"></div>
+    <div class="sl-actions">
+      <button class="sl-btn sl-btn-ghost" id="kids-cancel">Cancel</button>
+      <button class="sl-btn sl-btn-red" id="kids-save">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Claim modal (givers) -->
+<div class="sl-scrim" id="claim-scrim" hidden>
+  <form class="sl-modal" id="claim-form">
+    <h3>I'll get this 🎁</h3>
+    <p id="claim-gift" class="sl-claim-gift"></p>
+    <label class="sl-lbl" for="claim-name">Your name</label>
+    <input class="sl-in" id="claim-name" required maxlength="40" placeholder="e.g. Granny Mary" autocomplete="given-name">
+    <div class="sl-status" id="claim-status" role="status"></div>
+    <div class="sl-actions">
+      <button type="button" class="sl-btn sl-btn-ghost" id="claim-cancel">Cancel</button>
+      <button type="submit" class="sl-btn sl-btn-green">Claim it</button>
+    </div>
+  </form>
+</div>
+
+<div class="sl-toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer>
+  <div class="foot-nl">
+    <div class="foot-nl-inner">
+      <div>
+        <div class="foot-nl-title">Get "what's on near you" every week</div>
+        <p class="foot-nl-sub">New camps, open spots and honest updates — straight to your inbox. No spam.</p>
+      </div>
+      <form class="foot-nl-form">
+        <input class="foot-nl-input" type="email" name="email" placeholder="your@email.ie" aria-label="Email address" required>
+        <button class="foot-nl-btn" type="submit">Join free</button>
+      </form>
+    </div>
+    <p class="foot-nl-msg" role="status" aria-live="polite"></p>
+  </div>
+  <div class="foot-top">
+    <div>
+      <div class="foot-logo">sortd</div>
+      <p class="foot-tag">Every kids' camp &amp; class across Leinster, in one place. Built by a mum. For parents.</p>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/sortd.ireland/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb7sv3eInlqMyMfLFY01" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <div class="foot-heading">Browse</div>
+      <a href="/camps?q=Dublin">Dublin camps</a>
+      <a href="/camps?q=Wicklow">Wicklow camps</a>
+      <a href="/camps?q=Meath">Meath camps</a>
+      <a href="/camps">All camps</a>
+      <a href="/weekly-classes">All classes</a>
+    </div>
+    <div class="foot-col">
+      <div class="foot-heading">Company</div>
+      <a href="/how-it-works">How it works</a>
+      <a href="/guides">Monthly guides</a>
+      <a href="/about">Our story</a>
+      <a href="/newsletter">Newsletter</a>
+      <a href="mailto:sortd.ireland@gmail.com?subject=Camp%20recommendation">Recommend an activity</a>
+      <a href="mailto:sortd.ireland@gmail.com">Contact</a>
+    </div>
+    <div class="foot-col">
+      <div class="foot-heading">For providers</div>
+      <a href="/list">List your activity free</a>
+      <a href="/claim">Claim your listing</a>
+      <a href="https://portal.sortd-ireland.ie" target="_blank" rel="noopener">Provider login</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© 2026 Sortd Ireland · <a href="/privacy-policy">Privacy Policy</a></div>
+    <div class="foot-source">Sources: provider websites, WhatsApp screenshots, Instagram. Confirm details with each provider before booking.</div>
+  </div>
+</footer>
+
+<script src="/js/santa-list.js"></script>
+</body>
+</html>

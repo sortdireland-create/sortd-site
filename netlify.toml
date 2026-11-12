@@ -141,6 +141,17 @@
   to = "/planner.html"
   status = 200
 
+# Sortd Santa List (Christmas 2026)
+[[redirects]]
+  from = "/christmas"
+  to = "/christmas.html"
+  status = 200
+
+[[redirects]]
+  from = "/santa"
+  to = "/christmas"
+  status = 301
+
 [[redirects]]
   from = "/how-it-works"
   to = "/how-it-works"
@@ -1077,5 +1088,12 @@
 
 [[headers]]
   for = "/login"
+  [headers.values]
+    Referrer-Policy = "no-referrer"
+
+# Santa List links carry invite/share tokens in the address: never send them
+# to shops in the Referer header when someone taps a gift's shop link.
+[[headers]]
+  for = "/christmas"
   [headers.values]
     Referrer-Policy = "no-referrer"
