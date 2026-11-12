@@ -56,24 +56,58 @@ async function createLoginLink(email) {
   return `${SITE_URL}/.netlify/functions/verify-login?token=${token}&next=${encodeURIComponent('/planner')}`;
 }
 
+const HEAD = "'Baloo 2','Trebuchet MS',Verdana,Arial,sans-serif";
+
+// One "what you can do" row: coloured tile with an emoji, title, line.
+function featureRow(icon, bg, title, text) {
+  return `<tr><td style="padding:0 0 12px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+      <td width="44" valign="top" style="width:44px;"><div style="width:36px;height:36px;line-height:36px;border-radius:10px;background:${bg};text-align:center;font-size:18px;">${icon}</div></td>
+      <td valign="top" style="font-size:15px;line-height:1.5;color:#27314A;"><strong style="font-family:${HEAD};font-size:16px;">${title}</strong><br><span style="color:#5B6783;">${text}</span></td>
+    </tr></table>
+  </td></tr>`;
+}
+
+// Little sample week, like the /planner landing page.
+function weekRow(day, chips) {
+  return `<tr><td width="44" valign="top" style="width:44px;padding:4px 0;font-size:12px;font-weight:700;color:#5B6783;">${day}</td><td style="padding:3px 0;">${chips}</td></tr>`;
+}
+function chip(text, bg, bar, color) {
+  return `<span style="display:inline-block;margin:0 4px 4px 0;padding:4px 9px;border-left:3px solid ${bar};border-radius:6px;background:${bg};font-size:13px;font-weight:700;color:${color || '#27314A'};">${text}</span>`;
+}
+
 function calendarEmail(firstName, email, link) {
-  const hi = firstName ? `Hi ${escapeHtml(firstName)},` : 'Hi,';
+  const name = firstName ? escapeHtml(firstName) : '';
   const open = link || `${SITE_URL}/planner`;
   return emailShell(`
-    <p style="margin:0 0 16px;">${hi}</p>
-    <p style="margin:0 0 16px;">Your free Sortd calendar is ready. Tap below and you're in: no password, no app to download.</p>
-    ${emailButton('Open my calendar →', open)}
-    <p style="margin:-8px 0 20px;font-size:13px;color:#5B6783;">${link ? "The button logs you in for the next 30 days, on any device. Please don't forward this email: anyone with the button can get into your account." : 'Pop your email in on that page and we\'ll send you a login link.'}</p>
-    <p style="margin:0 0 8px;"><strong>What you can do in it:</strong></p>
-    <p style="margin:0 0 16px;line-height:1.8;">
-      Add your kids' weekly classes, with midterms and bank holidays already taken out<br>
-      Pick your school and see its inset days and half days<br>
-      Add days out from our What's on page in one tap<br>
-      Share with other parents and plan summer camps together<br>
-      Send the lot to Google, Apple or Outlook
-    </p>
-    <p style="margin:0 0 16px;">You'll also get the Thursday what's-on email. If anything looks off, just reply to this email.</p>
-    <p style="margin:0;">Rachel<br>sortd</p>
+    <p style="margin:0 0 6px;font-family:${HEAD};font-size:28px;font-weight:800;line-height:1.15;color:#27314A;">${name ? `${name}, your` : 'Your'} family's week, <span style="color:#3D77A3;">sorted.</span></p>
+    <p style="margin:0 0 18px;font-size:16px;color:#5B6783;">Your free Sortd calendar is ready. One tap and you're in: no password, no app to download.</p>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 6px;background:#E3F1FA;border-radius:16px;"><tr><td style="padding:16px 18px;">
+      <p style="margin:0 0 8px;font-family:${HEAD};font-size:16px;font-weight:800;color:#27314A;">This week</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        ${weekRow('Mon', chip('Inset day · no school', '#FBD7E4', '#D45F86', '#9B3C5E'))}
+        ${weekRow('Tue', chip('4pm Swimming', '#ffffff', '#3D77A3'))}
+        ${weekRow('Thu', chip('5pm Irish dancing', '#ffffff', '#5B4FCA'))}
+        ${weekRow('Sat', chip('10am Ballet', '#ffffff', '#3D77A3') + chip('Day out', '#FFF0C2', '#A6812F'))}
+      </table>
+    </td></tr></table>
+
+    ${emailButton('Open my calendar →', open).replace('<table role="presentation"', '<table role="presentation" align="center"').replace('margin:24px 0;', 'margin:24px auto;')}
+    <p style="margin:-8px 0 26px;font-size:12px;line-height:1.5;color:#5B6783;text-align:center;">${link ? "This button logs you in for 30 days, on any device.<br>Please don't forward it: anyone with it can get into your account." : "Pop your email in on that page and we'll send you a login link."}</p>
+
+    <p style="margin:0 0 12px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#5B6783;">What you can do in it</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 10px;">
+      ${featureRow('📅', '#E3F1FA', 'Every class, every child', 'Midterms, school holidays and bank holidays already taken out.')}
+      ${featureRow('🏫', '#FBD7E4', "Your school's days off", 'Pick your school to see its inset days and half days.')}
+      ${featureRow('🎡', '#FFF0C2', 'Days out, sorted', "Add things from What's on to the right weekend in one tap.")}
+      ${featureRow('👋', '#C9F0DA', 'Share with other parents', 'See where friends’ kids are going and plan summer camps together.')}
+      ${featureRow('📲', '#E7E1F8', 'On your phone too', 'Send the lot to Google, Apple or Outlook calendar.')}
+    </table>
+
+    <p style="margin:0 0 18px;padding-top:16px;border-top:1px solid #E4EBF2;font-size:15px;color:#5B6783;">You'll also get the Thursday what's-on email. It's all new, so if anything looks off, just reply. I read every one.</p>
+    <p style="margin:0;font-family:'Caveat','Comic Sans MS',cursive;font-size:24px;line-height:1.1;color:#27314A;">Rachel</p>
+    <p style="margin:0;font-size:13px;color:#5B6783;">Founder, sortd · a mum in Malahide</p>
   `, `${SITE_URL}/.netlify/functions/unsubscribe?email=${encodeURIComponent(email)}`, { audience: 'parent', eyebrow: 'Your calendar' });
 }
 
