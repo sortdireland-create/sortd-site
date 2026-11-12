@@ -180,7 +180,11 @@ exports.handler = async function (event) {
     }
 
     const cookies = createSessionCookies(email);
-    return redirect(`${SITE_URL}/account`, cookies);
+    // Optional landing page (e.g. the Instagram calendar email sends people
+    // straight to /planner). Internal paths only.
+    const next = (event.queryStringParameters && event.queryStringParameters.next) || '';
+    const safeNext = /^\/[a-z0-9\-\/.]*(\?[a-z0-9=&_\-]*)?(#[a-z0-9\-]+)?$/i.test(next) && next.indexOf('//') === -1 ? next : '/account';
+    return redirect(`${SITE_URL}${safeNext}`, cookies);
   } catch (err) {
     console.error('verify-login error:', err);
     return redirect(`${SITE_URL}/login?error=server_error`);
