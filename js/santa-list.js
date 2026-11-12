@@ -86,25 +86,54 @@
   })();
 
   // ── LOGIN ──────────────────────────────────────────────────
-  $('#login-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+  var lastEmail = '', resendTimer = null;
+  function sendLink(isResend) {
     var btn = $('#login-btn'), st = $('#login-status');
+    var email = isResend ? lastEmail : $('#login-email').value.trim();
     var next = '/christmas' + (joinParam && /^[A-Za-z0-9]{6,32}$/.test(joinParam) ? '?join=' + joinParam : '');
     btn.disabled = true; btn.textContent = 'Sending…'; status(st);
-    fetch('/.netlify/functions/request-login', {
+    return fetch('/.netlify/functions/request-login', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: $('#login-email').value, newsletterOptIn: $('#newsletter-optin').checked, next: next })
+      body: JSON.stringify({ email: email, newsletterOptIn: $('#newsletter-optin').checked, next: next })
     }).then(function (res) {
       return res.json().then(function (d) { if (!res.ok) throw new Error(d.error || 'Something went wrong'); return d; });
     }).then(function () {
-      status(st, 'ok', 'Check your inbox. We\'ve emailed you a link to open your Santa List.');
-      btn.textContent = 'Sent ✓';
-      track('santa_login_requested', { newsletter: $('#newsletter-optin').checked });
+      lastEmail = email;
+      showSent(email, isResend);
+      track(isResend ? 'santa_login_resent' : 'santa_login_requested', { newsletter: $('#newsletter-optin').checked, domain: email.split('@')[1] || '' });
     }).catch(function (err) {
       status(st, 'err', err.message || 'Something went wrong. Please try again.');
       btn.disabled = false; btn.textContent = 'Email me my link';
     });
-  });
+  }
+  function showSent(email, isResend) {
+    var st = $('#login-status'), btn = $('#login-btn');
+    var ms = /@(hotmail|outlook|live|msn)\./i.test(email);
+    st.className = 'sl-status ok';
+    st.innerHTML =
+      '<b>' + (isResend ? 'Sent again' : 'Check your inbox') + '.</b> We\'ve emailed a login link to ' + esc(email) + '. It\'s from hello@sortd-ireland.ie.' +
+      '<br><br>' + (ms ? '<b>Using Hotmail or Outlook?</b> Look in Junk and "Other" too. It can take a few minutes to arrive.'
+                       : 'Not there? Look in Spam or Promotions. It can take a few minutes to arrive.') +
+      '<div class="sl-resend"><button type="button" class="sl-btn sl-btn-ghost sl-btn-sm" id="login-resend" disabled>Send it again</button>' +
+      '<button type="button" class="sl-linkbtn" id="login-other">Use a different email</button></div>' +
+      '<p class="sl-resend-note">Still nothing after 10 minutes? Try a different email address, like a Gmail one.</p>';
+    btn.textContent = 'Sent ✓';
+    var rb = $('#login-resend'), wait = 30;
+    clearInterval(resendTimer);
+    rb.textContent = 'Send it again (' + wait + 's)';
+    resendTimer = setInterval(function () {
+      wait--;
+      if (wait <= 0) { clearInterval(resendTimer); rb.disabled = false; rb.textContent = 'Send it again'; }
+      else rb.textContent = 'Send it again (' + wait + 's)';
+    }, 1000);
+    rb.onclick = function () { rb.disabled = true; sendLink(true); };
+    $('#login-other').onclick = function () {
+      clearInterval(resendTimer);
+      status(st); btn.disabled = false; btn.textContent = 'Email me my link';
+      var inp = $('#login-email'); inp.value = ''; inp.focus();
+    };
+  }
+  $('#login-form').addEventListener('submit', function (e) { e.preventDefault(); sendLink(false); });
 
   // ── SETUP ──────────────────────────────────────────────────
   function kidRow(container, kid, i) {
