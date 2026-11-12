@@ -146,3 +146,6 @@ body{background:var(--sl-cream);}
 
 .sl-toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,140px);background:var(--sl-navy);color:#fff;padding:11px 20px;border-radius:999px;font-weight:700;z-index:1100;transition:transform .3s,visibility .3s;visibility:hidden;max-width:90vw;text-align:center;}
 .sl-toast.on{transform:translate(-50%,0);visibility:visible;}
+.sl-resend{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:14px;}
+.sl-resend .sl-linkbtn{margin-top:0;}
+.sl-resend-note{margin:12px 0 0!important;font-size:.82rem;color:#1A7A50!important;opacity:.85;}

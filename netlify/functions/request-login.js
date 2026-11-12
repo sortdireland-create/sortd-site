@@ -91,7 +91,34 @@ function unlockWelcomeHtml(link) {
   `, null, { audience: 'parent', eyebrow: 'Features unlocked' });
 }
 
-async function sendEmail({ to, subject, html }) {
+// The login email itself: short, 1 button, no emoji, plus a plain-text
+// part. Microsoft (Hotmail/Outlook/Live) was silently not accepting the
+// longer welcome email (5 buttons, emoji subject) in Nov 2026, while Gmail
+// delivered it fine. A plain transactional email gets through far better.
+// unlockWelcomeHtml above is kept for reference / a separate welcome email.
+function loginEmail(link, isSanta) {
+  const what = isSanta ? 'your Sortd Santa List' : 'your sortd account';
+  const html = emailShell(`
+    <p style="margin:0 0 6px;font-family:'Baloo 2','Trebuchet MS',Verdana,Arial,sans-serif;font-size:24px;font-weight:800;line-height:1.25;">Here's your login link</p>
+    <p style="margin:0 0 4px;">Tap the button to open ${what}.</p>
+    ${emailButton('Log me in', link)}
+    <p style="margin:-8px 0 18px;font-size:13px;color:#5B6783;">The button works for 30 days, on any device. Please don't forward this email: anyone with the button can get into your account. If you didn't ask for this, you can ignore it.</p>
+    <p style="margin:0;">Rachel<br><span style="color:#5B6783;">sortd</span></p>
+  `, null, { audience: 'parent', eyebrow: isSanta ? 'Santa List' : 'Log in' });
+  const text = [
+    "Here's your login link for " + what + ':',
+    '',
+    link,
+    '',
+    "The link works for 30 days, on any device. Please don't forward this email: anyone with the link can get into your account. If you didn't ask for this, you can ignore it.",
+    '',
+    'Rachel',
+    'sortd · sortd-ireland.ie',
+  ].join('\n');
+  return { html, text };
+}
+
+async function sendEmail({ to, subject, html, text }) {
   const apiKey = process.env.BREVO_API_KEY;
   if (!apiKey) { console.warn('BREVO_API_KEY not set — skipping login email to', to); return; }
   const res = await fetch('https://api.brevo.com/v3/smtp/email', {
@@ -102,6 +129,8 @@ async function sendEmail({ to, subject, html }) {
       to: [{ email: to }],
       subject,
       htmlContent: html,
+      textContent: text || undefined,
+      tags: ['parent-login'],
     }),
   });
   if (!res.ok) console.error('Brevo login email failed:', await res.text());
@@ -187,10 +216,12 @@ exports.handler = async function (event) {
     try {
       // One email for every parent login request (account unlock, /login,
       // class pages). It replaced the old plain "Your sortd login link" email.
+      const msg = loginEmail(link, isSanta);
       await sendEmail({
         to: email,
-        subject: isSanta ? 'Your Sortd Santa List is ready 🎅' : "You're in: your sortd account is unlocked",
-        html: unlockWelcomeHtml(link),
+        subject: isSanta ? 'Your Sortd Santa List login link' : 'Your sortd login link',
+        html: msg.html,
+        text: msg.text,
       });
     } catch (emailErr) {
       // Never let an email-sending failure hide the fact that the token
@@ -216,3 +247,4 @@ exports.handler = async function (event) {
 
 // Exported for previews/tests only.
 exports._unlockWelcomeHtml = unlockWelcomeHtml;
+exports._loginEmail = loginEmail;
