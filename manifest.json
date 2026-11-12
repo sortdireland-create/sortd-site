@@ -36,6 +36,15 @@
     "lastmod": "2026-11-07"
   },
   {
+    "slug": "whitehall-colmcille-gaa-an-bua-nua-nursery",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/whitehall-colmcille-gaa-an-bua-nua-nursery",
+    "name": "Whitehall Colmcille GAA — An Bua Nua Nursery",
+    "provider": "Whitehall Colmcille GAA",
+    "section": "classes",
+    "lastmod": "2026-11-12"
+  },
+  {
     "slug": "flemington-community-centre-balbriggan-mandarin-chinese-language-school",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/flemington-community-centre-balbriggan-mandarin-chinese-language-school",
@@ -88,6 +97,15 @@
     "provider": "East Coast School of Ballet",
     "section": "classes",
     "lastmod": "2026-11-10"
+  },
+  {
+    "slug": "ballymun-kickhams-gaa-nursery",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/ballymun-kickhams-gaa-nursery",
+    "name": "Ballymun Kickhams GAA — Nursery",
+    "provider": "Ballymun Kickhams GAA",
+    "section": "classes",
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "clontarf-mini-rugby",
@@ -162,6 +180,15 @@
     "lastmod": "2026-11-07"
   },
   {
+    "slug": "kevins-gaa-crumlin-abc-nursery",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/kevins-gaa-crumlin-abc-nursery",
+    "name": "Kevin's GAA Crumlin — ABC Nursery",
+    "provider": "Kevin's GAA & Hurling Club",
+    "section": "classes",
+    "lastmod": "2026-11-12"
+  },
+  {
     "slug": "music-generation-fingal-balbriggan-jam",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/music-generation-fingal-balbriggan-jam",
@@ -169,6 +196,15 @@
     "provider": "Music Generation Fingal",
     "section": "classes",
     "lastmod": "2026-11-07"
+  },
+  {
+    "slug": "st-brigids-gaa-castleknock-club-nursery",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/st-brigids-gaa-castleknock-club-nursery",
+    "name": "St Brigid's GAA Castleknock — Club Nursery",
+    "provider": "St Brigid's GAA",
+    "section": "classes",
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "zila-art-and-design-the-art-club",
@@ -186,7 +222,7 @@
     "name": "Mum & Tot Christmas Decorating Workshop",
     "provider": "GCakes",
     "section": "camps",
-    "lastmod": "2026-11-10"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-temple-bar",
@@ -270,6 +306,15 @@
     "lastmod": "2026-11-08"
   },
   {
+    "slug": "playact-drama-school-christmas-camp-dun-laoghaire",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/playact-drama-school-christmas-camp-dun-laoghaire",
+    "name": "Christmas Camp – Dún Laoghaire",
+    "provider": "PlayAct Drama School",
+    "section": "camps",
+    "lastmod": "2026-11-12"
+  },
+  {
     "slug": "lucan-sarsfields-gaa-club-abc-academy",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/lucan-sarsfields-gaa-club-abc-academy",
@@ -324,13 +369,31 @@
     "lastmod": "2026-11-07"
   },
   {
+    "slug": "st-annes-gaa-bohernabreena-nursery-programme",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/st-annes-gaa-bohernabreena-nursery-programme",
+    "name": "St Anne's GAA Bohernabreena — Nursery Programme",
+    "provider": "St Anne's GAA (Bohernabreena)",
+    "section": "classes",
+    "lastmod": "2026-11-12"
+  },
+  {
+    "slug": "conscious-crafting-oyster-ornaments-christmas-workshop-waterford-winterval",
+    "county": "waterford",
+    "url": "https://sortd-ireland.ie/camps/waterford/conscious-crafting-oyster-ornaments-christmas-workshop-waterford-winterval",
+    "name": "Oyster Ornaments Christmas Workshop – Waterford Winterval",
+    "provider": "Conscious Crafting",
+    "section": "camps",
+    "lastmod": "2026-11-12"
+  },
+  {
     "slug": "hombu-dojo-karate-mixed-juniors-karate-rathmines",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/hombu-dojo-karate-mixed-juniors-karate-rathmines",
     "name": "Hombu Dojo Karate — Mixed Juniors Karate (Rathmines)",
     "provider": "Hombu Dojo Karate",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "metropolitan-school-of-dance-balbriggan",
@@ -459,6 +522,15 @@
     "lastmod": "2026-11-07"
   },
   {
+    "slug": "waterford-winterval-the-elves-workshop-waterford-winterval",
+    "county": "waterford",
+    "url": "https://sortd-ireland.ie/camps/waterford/waterford-winterval-the-elves-workshop-waterford-winterval",
+    "name": "The Elves Workshop – Waterford Winterval",
+    "provider": "Waterford Winterval",
+    "section": "camps",
+    "lastmod": "2026-11-12"
+  },
+  {
     "slug": "acting-academy-swords",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/acting-academy-swords",
@@ -466,6 +538,33 @@
     "provider": "Acting Academy",
     "section": "classes",
     "lastmod": "2026-11-07"
+  },
+  {
+    "slug": "scoil-ui-chonaill-gaa-scoil-hoppers-nursery",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/scoil-ui-chonaill-gaa-scoil-hoppers-nursery",
+    "name": "Scoil Uí Chonaill GAA — Scoil Hoppers Nursery",
+    "provider": "Scoil Uí Chonaill GAA",
+    "section": "classes",
+    "lastmod": "2026-11-12"
+  },
+  {
+    "slug": "brick-legends-ireland-christmas-lego-workshop-bantry",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/brick-legends-ireland-christmas-lego-workshop-bantry",
+    "name": "Christmas LEGO Workshop – Bantry",
+    "provider": "Brick Legends Ireland",
+    "section": "camps",
+    "lastmod": "2026-11-12"
+  },
+  {
+    "slug": "gcakes-little-christmas-childrens-decorating-workshop",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/gcakes-little-christmas-childrens-decorating-workshop",
+    "name": "Little Christmas Children's Decorating Workshop",
+    "provider": "GCakes",
+    "section": "camps",
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "malahide-rfc-pre-mini-rugby-2026-2027",
@@ -522,13 +621,22 @@
     "lastmod": "2026-11-07"
   },
   {
+    "slug": "naomh-fionnbarra-gaa-kids-academy-ages-3-7",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/naomh-fionnbarra-gaa-kids-academy-ages-3-7",
+    "name": "Naomh Fionnbarra GAA — Kids Academy (Ages 3–7)",
+    "provider": "Naomh Fionnbarra GAA Club",
+    "section": "classes",
+    "lastmod": "2026-11-12"
+  },
+  {
     "slug": "artzone-senior-primary-art-classes-1st-6th-class-malahide",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/artzone-senior-primary-art-classes-1st-6th-class-malahide",
     "name": "Artzone Senior Primary Art Classes (1st–6th class) — Malahide",
     "provider": "Artzone",
     "section": "classes",
-    "lastmod": "2026-11-10"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "dublin-raiders-basketball-academy",
@@ -538,6 +646,15 @@
     "provider": "Dublin Raiders Basketball Club",
     "section": "classes",
     "lastmod": "2026-11-07"
+  },
+  {
+    "slug": "wicklows-historic-gaol-christmas-workshops-at-wicklow-gaol",
+    "county": "wicklow",
+    "url": "https://sortd-ireland.ie/camps/wicklow/wicklows-historic-gaol-christmas-workshops-at-wicklow-gaol",
+    "name": "Christmas Workshops at Wicklow Gaol",
+    "provider": "Wicklow's Historic Gaol",
+    "section": "camps",
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "naomh-mearnog-gaa-academy",
@@ -564,7 +681,7 @@
     "name": "Capoeira for Kids — Imaal Hall, Dunlavin",
     "provider": "Capoeira Ireland (Mundo Capoeira)",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "the-jam-art-drama-class",
@@ -594,6 +711,15 @@
     "lastmod": "2026-11-07"
   },
   {
+    "slug": "conscious-crafting-yule-christmas-workshop-waterford-winterval",
+    "county": "waterford",
+    "url": "https://sortd-ireland.ie/camps/waterford/conscious-crafting-yule-christmas-workshop-waterford-winterval",
+    "name": "Yule Christmas Workshop – Waterford Winterval",
+    "provider": "Conscious Crafting",
+    "section": "camps",
+    "lastmod": "2026-11-12"
+  },
+  {
     "slug": "dublin-sonics-basketball-club",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/dublin-sonics-basketball-club",
@@ -618,7 +744,7 @@
     "name": "Capoeira for Kids — Spotlight Studios, Wicklow",
     "provider": "Capoeira Ireland (Mundo Capoeira)",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "artworx-paint-classes-christmas-canvas-painting-workshop-malahide",
@@ -627,7 +753,16 @@
     "name": "Christmas Canvas Painting Workshop – Malahide",
     "provider": "Artworx Paint Classes",
     "section": "camps",
-    "lastmod": "2026-11-11"
+    "lastmod": "2026-11-12"
+  },
+  {
+    "slug": "brick-legends-ireland-christmas-lego-workshop-lisavaird",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/brick-legends-ireland-christmas-lego-workshop-lisavaird",
+    "name": "Christmas LEGO Workshop – Lisavaird",
+    "provider": "Brick Legends Ireland",
+    "section": "camps",
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "odwyers-gaa-ogdwyers-nursery-academy",
@@ -693,6 +828,15 @@
     "lastmod": "2026-11-07"
   },
   {
+    "slug": "naomh-olaf-gaa-boys-girls-academy-ages-4-7",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/naomh-olaf-gaa-boys-girls-academy-ages-4-7",
+    "name": "Naomh Ólaf GAA — Boys & Girls Academy (Ages 4–7)",
+    "provider": "Naomh Ólaf GAA Club",
+    "section": "classes",
+    "lastmod": "2026-11-12"
+  },
+  {
     "slug": "fingallians-gaa-joe-duffy-nursery-academy",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/fingallians-gaa-joe-duffy-nursery-academy",
@@ -718,6 +862,15 @@
     "provider": "Skerries Harps GAA & Camogie Club",
     "section": "classes",
     "lastmod": "2026-11-07"
+  },
+  {
+    "slug": "conscious-crafting-its-a-wrap-christmas-workshop-waterford-winterval",
+    "county": "waterford",
+    "url": "https://sortd-ireland.ie/camps/waterford/conscious-crafting-its-a-wrap-christmas-workshop-waterford-winterval",
+    "name": "It's a Wrap Christmas Workshop – Waterford Winterval",
+    "provider": "Conscious Crafting",
+    "section": "camps",
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "garda-westmanstown-gaels-nursery-fun-for-4s",
@@ -756,13 +909,22 @@
     "lastmod": "2026-11-07"
   },
   {
-    "slug": "artzone-junior-art-classes-juniorsenior-infants-malahide",
+    "slug": "conscious-crafting-gonks-gifts-christmas-workshop-waterford-winterval",
+    "county": "waterford",
+    "url": "https://sortd-ireland.ie/camps/waterford/conscious-crafting-gonks-gifts-christmas-workshop-waterford-winterval",
+    "name": "Gonks + Gifts Christmas Workshop – Waterford Winterval",
+    "provider": "Conscious Crafting",
+    "section": "camps",
+    "lastmod": "2026-11-12"
+  },
+  {
+    "slug": "ranelagh-gaels-gaa-academy",
     "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/artzone-junior-art-classes-juniorsenior-infants-malahide",
-    "name": "Artzone Junior Art Classes (Junior/Senior Infants) — Malahide",
-    "provider": "Artzone",
+    "url": "https://sortd-ireland.ie/classes/dublin/ranelagh-gaels-gaa-academy",
+    "name": "Ranelagh Gaels GAA — Academy",
+    "provider": "Ranelagh Gaels GAA",
     "section": "classes",
-    "lastmod": "2026-11-10"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "allegro-stage-school",
@@ -772,6 +934,15 @@
     "provider": "Allegro Stage School",
     "section": "classes",
     "lastmod": "2026-11-10"
+  },
+  {
+    "slug": "gcakes-the-great-christmas-cupcake-cookie-party",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/gcakes-the-great-christmas-cupcake-cookie-party",
+    "name": "THE GREAT CHRISTMAS CUPCAKE & COOKIE PARTY! 🍪",
+    "provider": "GCakes",
+    "section": "camps",
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "leap-gymnastics-club",
@@ -843,7 +1014,7 @@
     "name": "Hip Hop Dance",
     "provider": "Catch Dance Academy",
     "section": "classes",
-    "lastmod": "2026-11-10"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "music-generation-fingal-lusk-cello-tuition-hub",
@@ -1008,6 +1179,15 @@
     "lastmod": "2026-11-07"
   },
   {
+    "slug": "catch-dance-academy-christmas-beats-baubles",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/catch-dance-academy-christmas-beats-baubles",
+    "name": "Christmas Beats & Baubles",
+    "provider": "Catch Dance Academy",
+    "section": "camps",
+    "lastmod": "2026-11-12"
+  },
+  {
     "slug": "skerries-ac-juvenile-athletics",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/skerries-ac-juvenile-athletics",
@@ -1041,7 +1221,16 @@
     "name": "Swan Leisure — Kids Swimming Lessons (Rathmines)",
     "provider": "Swan Leisure",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
+  },
+  {
+    "slug": "thomas-davis-gaa-tallaght-kids-academy",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/thomas-davis-gaa-tallaght-kids-academy",
+    "name": "Thomas Davis GAA Tallaght — Kids Academy",
+    "provider": "Thomas Davis GAA",
+    "section": "classes",
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "st-oliver-plunkett-ns-malahide",
@@ -1057,67 +1246,97 @@
     "section": "hub",
     "name": "Kids' classes and camps in Malahide",
     "url": "https://sortd-ireland.ie/dublin/malahide/",
-    "lastmod": "2026-11-11"
+    "lastmod": "2026-11-12"
+  },
+  {
+    "section": "hub",
+    "name": "Kids' camps in Malahide",
+    "url": "https://sortd-ireland.ie/dublin/malahide/camps/",
+    "lastmod": "2026-11-12"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Malahide",
     "url": "https://sortd-ireland.ie/dublin/malahide/classes/",
-    "lastmod": "2026-11-10"
+    "lastmod": "2026-11-12"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Balbriggan",
     "url": "https://sortd-ireland.ie/dublin/balbriggan/",
-    "lastmod": "2026-11-11"
+    "lastmod": "2026-11-12"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Swords",
     "url": "https://sortd-ireland.ie/dublin/swords/",
-    "lastmod": "2026-11-11"
+    "lastmod": "2026-11-12"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Baldoyle",
     "url": "https://sortd-ireland.ie/dublin/baldoyle/",
-    "lastmod": "2026-11-11"
+    "lastmod": "2026-11-12"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Blanchardstown",
     "url": "https://sortd-ireland.ie/dublin/blanchardstown/",
-    "lastmod": "2026-11-11"
-  },
-  {
-    "section": "hub",
-    "name": "Kids' classes in City Centre",
-    "url": "https://sortd-ireland.ie/dublin/city-centre/",
-    "lastmod": "2026-11-11"
+    "lastmod": "2026-11-12"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Clontarf",
     "url": "https://sortd-ireland.ie/dublin/clontarf/",
-    "lastmod": "2026-11-11"
+    "lastmod": "2026-11-12"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Castleknock",
     "url": "https://sortd-ireland.ie/dublin/castleknock/",
-    "lastmod": "2026-11-11"
+    "lastmod": "2026-11-12"
+  },
+  {
+    "section": "hub",
+    "name": "Kids' classes in City Centre",
+    "url": "https://sortd-ireland.ie/dublin/city-centre/",
+    "lastmod": "2026-11-12"
+  },
+  {
+    "section": "hub",
+    "name": "Kids' classes in Rathmines",
+    "url": "https://sortd-ireland.ie/dublin/rathmines/",
+    "lastmod": "2026-11-12"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Skerries",
     "url": "https://sortd-ireland.ie/dublin/skerries/",
-    "lastmod": "2026-11-11"
+    "lastmod": "2026-11-12"
   },
   {
     "section": "hub",
     "name": "Kids' classes and camps in Dublin",
     "url": "https://sortd-ireland.ie/dublin/",
-    "lastmod": "2026-11-11"
+    "lastmod": "2026-11-12"
+  },
+  {
+    "section": "hub",
+    "name": "Kids' camps in Waterford City",
+    "url": "https://sortd-ireland.ie/waterford/waterford-city/",
+    "lastmod": "2026-11-12"
+  },
+  {
+    "section": "hub",
+    "name": "Kids' camps in Waterford",
+    "url": "https://sortd-ireland.ie/waterford/",
+    "lastmod": "2026-11-12"
+  },
+  {
+    "section": "hub",
+    "name": "Kids' classes and camps in Wicklow",
+    "url": "https://sortd-ireland.ie/wicklow/",
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "the-krafty-italian-dublin-autumn-halloween-craft-classes-tuesdays",
@@ -1167,7 +1386,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "rugbytots-sportsco-gym-ringsend",
@@ -1207,7 +1426,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "rugbytots-glasnevin-etns",
@@ -1347,7 +1566,7 @@
     "provider": "Designer Minds",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "rugbytots-manor-house-school-raheny",
@@ -1527,7 +1746,7 @@
     "provider": "PlayAct Drama School",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "rugbytots-st-brigids-national-school-castleknock",
@@ -1637,7 +1856,7 @@
     "provider": "Malahide Cricket Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "designer-minds-steam-camp-ballinteer",
@@ -1657,7 +1876,7 @@
     "provider": "GCakes",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-10"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "rugbytots-newpark-sports-centre-blackrock",
@@ -1747,7 +1966,7 @@
     "provider": "The Jam",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "designer-minds-steam-camp-chapelizod",
@@ -1797,7 +2016,7 @@
     "provider": "Artzone",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-08"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "junior-einsteins-spooky-science-halloween-camp-greystones-5-day",
@@ -1807,7 +2026,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "declan-omeara-art-halloween-art-camp-ages-8-14-cork",
@@ -1927,7 +2146,7 @@
     "provider": "Starcamp Ireland",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "starcamp-thriller-halloween-camp-diswellstown-starcrew-ages-8-12",
@@ -2067,7 +2286,7 @@
     "provider": "Malahide Castle Sports Pavilion",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "active-ireland-halloween-camp-st-fintans-sutton",
@@ -2087,7 +2306,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "the-krafty-italian-dublin-autumn-halloween-craft-classes-fridays",
@@ -2120,6 +2339,16 @@
     "lastmod": "2026-11-09"
   },
   {
+    "slug": "artzone-junior-art-classes-juniorsenior-infants-malahide",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/artzone-junior-art-classes-juniorsenior-infants-malahide",
+    "name": "Artzone Junior Art Classes (Junior/Senior Infants) — Malahide",
+    "provider": "Artzone",
+    "section": "classes",
+    "archived": true,
+    "lastmod": "2026-11-12"
+  },
+  {
     "slug": "galway-united-halloween-football-camp-clarenbridge",
     "county": "galway",
     "url": "https://sortd-ireland.ie/camps/galway/galway-united-halloween-football-camp-clarenbridge",
@@ -2147,7 +2376,7 @@
     "provider": "Mellow Yellow for Kids",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "catch-dance-academy-halloween-dance-camp",
@@ -2157,7 +2386,7 @@
     "provider": "Catch Dance Academy",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "designer-minds-steam-camp-rathgar",
@@ -2217,7 +2446,7 @@
     "provider": "LetsGo",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "starcamp-thriller-halloween-camp-malahide-starcamp-ages-4-8",
@@ -2227,7 +2456,7 @@
     "provider": "Starcamp Ireland",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "navan-adventure-centre-summer-camp-part-4-of-4",
@@ -2327,7 +2556,7 @@
     "provider": "PlayAct Drama School",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "the-jam-halloween-art-drama-camp-clontarf",
@@ -2387,7 +2616,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "designer-minds-steam-camp-terenure",
@@ -2407,7 +2636,7 @@
     "provider": "Designer Minds",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "keys-strings-music-art-rush-part-2-of-2",
@@ -2547,7 +2776,7 @@
     "provider": "Alive Outside",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "designer-minds-steam-camp-skerries-am",
@@ -2587,7 +2816,7 @@
     "provider": "Charlene's Little Bakers Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-12"
   },
   {
     "slug": "starcamp-thriller-halloween-camp-blackrock-starcamp-ages-4-8",
