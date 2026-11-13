@@ -9,9 +9,12 @@
 // Users.PlannerInviteCode. Keeping it on the Users row means deleting a
 // parent's account deletes their planner and children's details with it.
 //
-// Access during testing: only emails listed in the PLANNER_TESTERS env var
-// (comma or newline separated) can use the planner. Everyone else sees it
-// greyed out on /account. Set PLANNER_OPEN_TO_ALL=true to open it to every
+// Access during testing: emails listed in the PLANNER_TESTERS env var
+// (comma or newline separated), plus any parent whose Users.PlannerAccess box
+// is ticked, can use the planner. PlannerAccess is ticked automatically for
+// everyone who uses the Santa List (/christmas, see santa-list.js and
+// verify-login.js), and can be ticked by hand in Airtable. Everyone else sees
+// it greyed out on /account. Set PLANNER_OPEN_TO_ALL=true to open it to every
 // logged-in parent later without a code change.
 //
 // Requires: AIRTABLE_API_KEY, PARENT_SESSION_SECRET, PLANNER_TESTERS
@@ -26,6 +29,7 @@ const F = {
   DATA: 'PlannerData',
   CODE: 'PlannerInviteCode',
   CONNECTIONS: 'PlannerConnections',
+  ACCESS: 'PlannerAccess',
 };
 const MAX_DATA_CHARS = 90000; // Airtable long text caps at 100k
 
@@ -47,6 +51,14 @@ function testerList() {
 function isTester(email) {
   if (String(process.env.PLANNER_OPEN_TO_ALL || '').toLowerCase() === 'true') return true;
   return testerList().indexOf(String(email || '').toLowerCase()) !== -1;
+}
+
+// Tester list OR the PlannerAccess box on their Users record. Pass the
+// record if you already have it, to save an Airtable call.
+async function hasAccess(email, record) {
+  if (isTester(email)) return true;
+  const rec = record === undefined ? await findUserByEmail(email) : record;
+  return !!(rec && rec.fields && rec.fields[F.ACCESS]);
 }
 
 function esc(v) {
@@ -113,12 +125,12 @@ function newCode() {
 
 // Common gate for every planner function: logged in + on the tester list.
 // Returns { email } or a ready-made error response in { error }.
-function gate(event) {
+async function gate(event) {
   if (!process.env.AIRTABLE_API_KEY) return { error: json(500, { error: 'server_error' }) };
   const session = getSessionFromEvent(event);
   if (!session) return { error: json(401, { error: 'not_logged_in' }) };
   const email = session.email.toLowerCase();
-  if (!isTester(email)) return { error: json(403, { error: 'not_a_tester' }) };
+  if (!(await hasAccess(email))) return { error: json(403, { error: 'not_a_tester' }) };
   return { email };
 }
 
@@ -160,6 +172,7 @@ module.exports = {
   MAX_DATA_CHARS,
   json,
   isTester,
+  hasAccess,
   gate,
   findUserByEmail,
   findUserByCode,

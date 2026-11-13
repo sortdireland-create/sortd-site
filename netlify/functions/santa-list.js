@@ -112,6 +112,22 @@ function kidsOf(rec) {
 function familyForEmail(email) {
   return findOne(FAMILIES, `FIND(',${esc(email)},', ',' & SUBSTITUTE(LOWER({${FF.MEMBERS}}), ' ', '') & ',')`);
 }
+// Everyone using the Santa List also gets the Sortd calendar: tick
+// Users.PlannerAccess (see lib/planner.js) if it isn't already. Best-effort.
+const USERS = 'tblTaHPPgDfxnkdEm';
+async function ensurePlannerAccess(email) {
+  try {
+    const u = await findOne(USERS, `LOWER({Email}) = '${esc(email)}'`);
+    if (u && !u.fields.PlannerAccess) {
+      await airtable(USERS, '', { method: 'PATCH', body: JSON.stringify({ records: [{ id: u.id, fields: { PlannerAccess: true } }] }) });
+    }
+    return !!u;
+  } catch (e) {
+    console.error('santa-list: ensurePlannerAccess failed', e.message);
+    return false;
+  }
+}
+
 function familyView(rec, full) {
   const v = { id: rec.fields[FF.ID], name: rec.fields[FF.NAME] || 'Our family', kids: kidsOf(rec) };
   if (full) {
@@ -212,12 +228,16 @@ async function handleGet(event) {
   }
 
   const fam = await familyForEmail(email);
-  if (!fam) return json(200, { loggedIn: true, email, family: null, gifts: [] });
+  // Only people who actually have a Santa List get the calendar from here.
+  // (New Santa List logins get it in verify-login.js; /account also calls
+  // this GET, so it must not grant access just for being logged in.)
+  if (!fam) return json(200, { loggedIn: true, email, planner: false, family: null, gifts: [] });
   const familyId = fam.fields[FF.ID];
-  const gifts = await giftsFor(familyId);
+  const [gifts, planner] = await Promise.all([giftsFor(familyId), ensurePlannerAccess(email)]);
   return json(200, {
     loggedIn: true,
     email,
+    planner,
     family: familyView(fam, true),
     gifts: gifts.map((r) => giftView(r, false)),
     pollToken: makePollToken(email, familyId),
@@ -269,6 +289,7 @@ async function handlePost(event) {
         [FF.CREATED]: new Date().toISOString(),
       } }] }),
     });
+    await ensurePlannerAccess(email);
     return json(200, { ok: true });
   }
 
@@ -283,6 +304,7 @@ async function handlePost(event) {
     if (members.length >= MAX_MEMBERS) return json(409, { error: 'family_full' });
     members.push(email);
     await airtable(FAMILIES, '', { method: 'PATCH', body: JSON.stringify({ records: [{ id: target.id, fields: { [FF.MEMBERS]: members.join(', ') } }] }) });
+    await ensurePlannerAccess(email);
     return json(200, { ok: true });
   }
 
