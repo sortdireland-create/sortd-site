@@ -28,6 +28,7 @@
 
 const crypto = require('crypto');
 const { getSessionFromEvent } = require('./lib/session');
+const { emailShell, emailButton, escapeHtml } = require('./lib/email-shell');
 
 const BASE_ID = 'appuyWkAmTRI4lN5r';
 const FAMILIES = 'tblQ18fmUMPGiT9HA'; // "Santa Families"
@@ -139,9 +140,11 @@ function familyView(rec, full) {
 }
 function giftView(rec, forGivers) {
   const f = rec.fields;
+  const kids = String(f[GF.KID] || '').split(',').map((x) => x.trim()).filter(Boolean);
   const g = {
     id: rec.id,
-    kid: f[GF.KID] || '',
+    kid: kids[0] || '',
+    kids,
     name: f[GF.NAME] || '',
     price: typeof f[GF.PRICE] === 'number' ? f[GF.PRICE] : 0,
     url: f[GF.URL] || '',
@@ -178,9 +181,14 @@ function cleanKids(input, existing) {
 function giftFields(g, kids, partial) {
   const out = {};
   if (!partial || g.name !== undefined) { const n = str(g.name, 150); if (!n) return { error: 'name_required' }; out[GF.NAME] = n; }
-  if (!partial || g.kid !== undefined) {
-    if (!kids.some((k) => k.id === g.kid)) return { error: 'bad_kid' };
-    out[GF.KID] = g.kid;
+  if (!partial || g.kid !== undefined || g.kids !== undefined) {
+    // One gift can be for several children (a joint Santa gift). Stored as
+    // comma-separated kid ids in KidId.
+    const want = Array.isArray(g.kids) ? g.kids : [g.kid];
+    const ids = [];
+    want.forEach((id) => { if (kids.some((k) => k.id === id) && ids.indexOf(id) === -1) ids.push(id); });
+    if (!ids.length) return { error: 'bad_kid' };
+    out[GF.KID] = ids.join(',');
   }
   if (!partial || g.from !== undefined) out[GF.FROM] = g.from === 'santa' ? 'Santa' : 'Family';
   if (!partial || g.price !== undefined) out[GF.PRICE] = price(g.price);
@@ -256,7 +264,40 @@ async function handleClaim(body) {
   if (!rec || rec.fields[GF.FROM] === 'Santa') return json(404, { error: 'not_found' });
   if (rec.fields[GF.CLAIMED] || (rec.fields[GF.STATUS] && rec.fields[GF.STATUS] !== 'Idea')) return json(409, { error: 'taken' });
   await airtable(GIFTS, '', { method: 'PATCH', body: JSON.stringify({ records: [{ id: rec.id, fields: { [GF.CLAIMED]: name } }] }) });
+  try { await sendClaimEmail(fam, rec, name); } catch (e) { console.error('santa-list: claim email failed', e.message); }
   return json(200, { ok: true });
+}
+
+// Tell the parents when a family giver claims a gift on the family link.
+async function sendClaimEmail(fam, rec, giver) {
+  const apiKey = process.env.BREVO_API_KEY;
+  const to = membersOf(fam);
+  if (!apiKey || !to.length) return;
+  const gift = str(rec.fields[GF.NAME], 150);
+  const kidIds = String(rec.fields[GF.KID] || '').split(',');
+  const names = kidsOf(fam).filter((k) => kidIds.indexOf(k.id) !== -1).map((k) => k.name);
+  const forWho = names.length > 1 ? names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1] : (names[0] || 'the kids');
+  const link = 'https://sortd-ireland.ie/christmas';
+  const html = emailShell(`
+    <p style="margin:0 0 6px;font-family:'Baloo 2','Trebuchet MS',Verdana,Arial,sans-serif;font-size:22px;font-weight:800;line-height:1.25;">${escapeHtml(giver)} is getting ${escapeHtml(gift)}</p>
+    <p style="margin:0 0 4px;">${escapeHtml(giver)} tapped "I'll get this" on your family link, for ${escapeHtml(forWho)}. It's marked as claimed on your Santa List, so nobody else will buy it.</p>
+    ${emailButton('Open my Santa List', link)}
+    <p style="margin:0;">Rachel<br><span style="color:#5B6783;">sortd</span></p>
+  `, null, { audience: 'parent', eyebrow: 'Santa List' });
+  const text = `${giver} is getting ${gift} for ${forWho}.\n\nThey tapped "I'll get this" on your family link, so it's marked as claimed on your Santa List.\n\nOpen your list: ${link}\n\nRachel\nsortd`;
+  const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: { 'api-key': apiKey, 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      sender: { name: 'Rachel at Sortd', email: 'hello@sortd-ireland.ie' },
+      to: to.map((email) => ({ email })),
+      subject: `${giver} is getting ${gift}`.slice(0, 150),
+      htmlContent: html,
+      textContent: text,
+      tags: ['santa-claim'],
+    }),
+  });
+  if (!res.ok) console.error('santa-list: Brevo claim email failed:', await res.text());
 }
 
 async function handlePost(event) {

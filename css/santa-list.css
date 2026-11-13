@@ -154,3 +154,30 @@ body{background:var(--sl-cream);}
 .sl-sortd-btns{display:flex;gap:8px;flex-wrap:wrap;}
 #sl-account{margin-top:16px;}
 #sl-account + .sl-sortd{margin-top:10px;}
+
+/* whole-list summary */
+.sl-summary{background:#fff;border-radius:20px;padding:14px 18px;box-shadow:0 10px 36px rgba(39,49,74,.10);margin-bottom:16px;}
+.sl-sum-main{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;color:var(--sl-navy);}
+.sl-sum-main b{font-family:var(--fd);font-size:1.6rem;line-height:1;}
+.sl-sum-main span{color:var(--sl-muted);font-size:.9rem;}
+.sl-sum-main .sl-sum-label{font-weight:800;color:var(--sl-navy);font-size:.95rem;}
+.sl-sum-parts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.sl-sum-chip{border-radius:999px;padding:4px 11px;font-size:.8rem;font-weight:700;background:var(--sl-cream);color:var(--sl-navy);}
+.sl-sum-chip.santa{background:var(--sl-tint-red);color:var(--sl-red-dk);}
+.sl-sum-chip.fam{background:var(--sl-tint-green);color:var(--sl-green-dk);}
+.sl-sum-chip.bought{background:#D1E9F5;color:#2F5F85;}
+.sl-sum-chip.claimed{background:#E7E1F8;color:#5B4FCA;}
+.sl-sum-kids{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;padding-top:10px;border-top:1px solid var(--sl-line);font-size:.9rem;color:var(--sl-navy);}
+.sl-kid-all{background:#fff;border-color:var(--sl-line);}
+.sl-tag.kid{background:#D1E9F5;color:#2F5F85;}
+.sl-lbl-hint{font-weight:600;color:var(--sl-muted);font-size:.78rem;margin-left:6px;}
+/* find a camp or class */
+.sl-find-btn{width:100%;margin:2px 0 4px;border:1.5px dashed var(--sl-line);background:#F4F9FC;color:var(--sl-navy);border-radius:12px;padding:10px;font-family:var(--fd);font-weight:800;font-size:.95rem;cursor:pointer;}
+.sl-find-btn:hover{border-color:var(--sl-sky);}
+.sl-find{background:#F4F9FC;border-radius:14px;padding:4px 12px 12px;margin-bottom:6px;}
+.sl-find-res{display:flex;flex-direction:column;gap:6px;margin-top:8px;max-height:260px;overflow:auto;}
+.sl-find-hit{text-align:left;border:1.5px solid var(--sl-line);background:#fff;border-radius:12px;padding:9px 12px;cursor:pointer;font-family:var(--fb);}
+.sl-find-hit:hover{border-color:var(--sl-green);}
+.sl-find-hit b{display:block;color:var(--sl-navy);font-size:.92rem;line-height:1.3;}
+.sl-find-hit span{display:block;color:var(--sl-muted);font-size:.8rem;margin-top:2px;}
+.sl-find-empty{color:var(--sl-muted);font-size:.85rem;padding:6px 2px;}
