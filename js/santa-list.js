@@ -190,24 +190,61 @@
   }
 
   // ── LIST ───────────────────────────────────────────────────
+  var ALL = '__all';
+  function kidsOfGift(g) { return (g.kids && g.kids.length) ? g.kids : [g.kid]; }
+  function visible(g) { return !state.eyes || g.from !== 'santa'; }
   function giftsFor(kidId, from) {
-    return state.gifts.filter(function (g) { return g.kid === kidId && g.from === from; });
+    return state.gifts.filter(function (g) { return g.from === from && (kidId === ALL || kidsOfGift(g).indexOf(kidId) !== -1); });
   }
+  function kidName(id) { var k = state.family.kids.filter(function (x) { return x.id === id; })[0]; return k ? k.name : ''; }
+  function joinNames(names) { return names.length > 1 ? names.slice(0, -1).join(', ') + ' & ' + names[names.length - 1] : (names[0] || ''); }
+  function sum(list) { return list.reduce(function (a, g) { return a + (Number(g.price) || 0); }, 0); }
   function renderTabs() {
     var tabs = $('#kid-tabs'); tabs.innerHTML = '';
-    state.family.kids.forEach(function (k) {
+    var list = state.family.kids.slice();
+    if (list.length > 1) list.unshift({ id: ALL, name: 'Everyone', emoji: '👨‍👩‍👧‍👦' });
+    list.forEach(function (k) {
       var b = document.createElement('button');
-      b.className = 'sl-kid'; b.setAttribute('role', 'tab');
+      b.className = 'sl-kid' + (k.id === ALL ? ' sl-kid-all' : ''); b.setAttribute('role', 'tab');
       b.setAttribute('aria-selected', String(k.id === state.kid));
-      var count = state.gifts.filter(function (g) { return g.kid === k.id && (!state.eyes || g.from !== 'santa'); }).length;
+      var count = state.gifts.filter(function (g) { return visible(g) && (k.id === ALL || kidsOfGift(g).indexOf(k.id) !== -1); }).length;
       b.innerHTML = esc(k.emoji) + ' ' + esc(k.name) + ' <span class="n">' + count + '</span>';
       b.onclick = function () { state.kid = k.id; render(); };
       tabs.appendChild(b);
     });
   }
+  // Whole-list totals, always across every child. Joint gifts count once.
+  function renderSummary() {
+    var all = state.gifts.filter(visible);
+    var santa = all.filter(function (g) { return g.from === 'santa'; });
+    var fam = all.filter(function (g) { return g.from === 'family'; });
+    var bought = all.filter(function (g) { return g.status !== 'idea'; });
+    var claimed = fam.filter(function (g) { return g.claimedBy; });
+    var html = '<div class="sl-sum-main"><span class="sl-sum-label">Whole list</span><b>' + eur(sum(all)) + '</b>' +
+      '<span>' + all.length + (all.length === 1 ? ' gift' : ' gifts') + '</span></div>' +
+      '<div class="sl-sum-parts">' +
+      (state.eyes ? '' : '<span class="sl-sum-chip santa">Santa ' + eur(sum(santa)) + '</span>') +
+      '<span class="sl-sum-chip fam">Family ideas ' + eur(sum(fam)) + '</span>' +
+      '<span class="sl-sum-chip bought">Bought ' + eur(sum(bought)) + ' of ' + eur(sum(all)) + '</span>' +
+      (fam.length ? '<span class="sl-sum-chip claimed">' + claimed.length + ' of ' + fam.length + ' family ideas claimed</span>' : '') +
+      '</div>';
+    if (state.kid === ALL) {
+      var rows = state.family.kids.map(function (k) {
+        var own = all.filter(function (g) { var ks = kidsOfGift(g); return ks.length === 1 && ks[0] === k.id; });
+        return '<span>' + esc(k.emoji) + ' ' + esc(k.name) + ' <b>' + eur(sum(own)) + '</b></span>';
+      });
+      var shared = all.filter(function (g) { return kidsOfGift(g).length > 1; });
+      if (shared.length) rows.push('<span>🤝 Shared <b>' + eur(sum(shared)) + '</b></span>');
+      html += '<div class="sl-sum-kids">' + rows.join('') + '</div>';
+    }
+    $('#sl-summary').innerHTML = html;
+  }
   function giftHtml(g) {
     var url = safeUrl(g.url), st = STATUS_LABEL[g.status] ? g.status : 'idea';
     var tags = '';
+    var ks = kidsOfGift(g);
+    if (state.kid === ALL) tags += '<span class="sl-tag kid">For ' + esc(joinNames(ks.map(kidName))) + '</span>';
+    else if (ks.length > 1) tags += '<span class="sl-tag kid">Shared with ' + esc(joinNames(ks.filter(function (id) { return id !== state.kid; }).map(kidName))) + '</span>';
     if (g.from === 'family') tags += '<span class="sl-tag who">' + (g.who ? 'For ' + esc(g.who) + ' to buy' : 'Anyone can take this') + '</span>';
     if (g.claimedBy) tags += '<span class="sl-tag claimed">🙋 ' + esc(g.claimedBy) + ' is getting this</span>';
     if (url) tags += '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer nofollow">🔗 ' + esc(host(url)) + '</a>';
@@ -221,9 +258,10 @@
   function render() {
     if (!state.family) return;
     var kids = state.family.kids;
-    if (!kids.some(function (k) { return k.id === state.kid; })) state.kid = kids[0] && kids[0].id;
+    if (!(state.kid === ALL && kids.length > 1) && !kids.some(function (k) { return k.id === state.kid; })) state.kid = kids[0] && kids[0].id;
     renderTabs();
-    var kid = kids.filter(function (k) { return k.id === state.kid; })[0] || { name: '' };
+    renderSummary();
+    var kid = state.kid === ALL ? { name: 'the kids' } : (kids.filter(function (k) { return k.id === state.kid; })[0] || { name: '' });
     ['santa', 'family'].forEach(function (src) {
       var items = giftsFor(state.kid, src);
       var total = items.reduce(function (a, g) { return a + (Number(g.price) || 0); }, 0);
@@ -278,7 +316,8 @@
   function openGift(from, g) {
     if (state.eyes && from === 'santa') return;
     editing = g;
-    draft = { kid: g ? g.kid : state.kid, from: g ? g.from : from };
+    draft = { kids: g ? kidsOfGift(g).slice() : [state.kid === ALL ? state.family.kids[0].id : state.kid], from: g ? g.from : from };
+    resetFinder();
     $('#gift-form').reset();
     var kidSeg = $('#g-kid'); kidSeg.innerHTML = '';
     state.family.kids.forEach(function (k) {
@@ -293,19 +332,27 @@
       claimed.innerHTML = '🙋 ' + esc(g.claimedBy) + ' said they\'ll get this. <button type="button" class="sl-linkbtn" id="g-unclaim" style="display:inline">Clear</button>';
       $('#g-unclaim').onclick = function () { draft.unclaim = true; claimed.textContent = 'Claim will be cleared when you save.'; };
     } else claimed.hidden = true;
-    seg('g-kid', draft.kid); seg('g-from', draft.from);
+    segMulti('g-kid', draft.kids); seg('g-from', draft.from);
     $('#g-who-wrap').hidden = draft.from !== 'family';
     // Santa can't be chosen while little eyes is on.
     $('#g-from button[data-v=santa]').disabled = state.eyes;
     openModal('gift-scrim');
     setTimeout(function () { $('#g-name').focus(); }, 50);
   }
-  $('#g-kid').onclick = function (e) { var b = e.target.closest('button'); if (b) { draft.kid = b.dataset.v; seg('g-kid', draft.kid); } };
+  function segMulti(id, vals) { Array.prototype.forEach.call(document.querySelectorAll('#' + id + ' button'), function (b) { b.classList.toggle('on', vals.indexOf(b.dataset.v) !== -1); }); }
+  // Tap a child to add or remove them: tick 2 or more for a joint gift.
+  $('#g-kid').onclick = function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var i = draft.kids.indexOf(b.dataset.v);
+    if (i === -1) draft.kids.push(b.dataset.v);
+    else if (draft.kids.length > 1) draft.kids.splice(i, 1);
+    segMulti('g-kid', draft.kids);
+  };
   $('#g-from').onclick = function (e) { var b = e.target.closest('button'); if (b && !b.disabled) { draft.from = b.dataset.v; seg('g-from', draft.from); $('#g-who-wrap').hidden = draft.from !== 'family'; } };
   $('#g-cancel').onclick = function () { closeModal('gift-scrim'); };
   $('#gift-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    var gift = { kid: draft.kid, from: draft.from, name: $('#g-name').value.trim(), price: $('#g-price').value, url: $('#g-url').value.trim(), who: draft.from === 'family' ? $('#g-who').value.trim() : '' };
+    var gift = { kids: draft.kids.slice(), from: draft.from, name: $('#g-name').value.trim(), price: $('#g-price').value, url: $('#g-url').value.trim(), who: draft.from === 'family' ? $('#g-who').value.trim() : '' };
     if (!gift.name) return;
     if (draft.unclaim) gift.claimedBy = '';
     var btn = $('#g-save'); btn.disabled = true;
@@ -314,11 +361,63 @@
     req.then(function (d) {
       if (wasEdit) state.gifts = state.gifts.map(function (x) { return x.id === d.gift.id ? d.gift : x; });
       else { state.gifts.push(d.gift); track('santa_gift_added', { from: gift.from }); }
-      state.kid = gift.kid;
+      if (state.kid !== ALL && gift.kids.indexOf(state.kid) === -1) state.kid = gift.kids[0];
       closeModal('gift-scrim'); render();
       toast(wasEdit ? 'Saved ✨' : 'Added ✨');
     }).catch(function (err) { toast(errorText(err.code)); })
       .then(function () { btn.disabled = false; });
+  });
+
+  // "Find a camp or class": search Sortd's own listings (js/camps-data.js,
+  // the same file the camps pages use), loaded only when first needed.
+  var LIST = null, listLoading = null;
+  function loadListings() {
+    if (LIST) return Promise.resolve(LIST);
+    if (listLoading) return listLoading;
+    listLoading = new Promise(function (resolve, reject) {
+      var sc = document.createElement('script');
+      sc.src = '/js/camps-data.js';
+      sc.onload = function () {
+        try { LIST = new Function('return typeof LISTINGS !== "undefined" ? LISTINGS : []')() || []; } catch (e) { LIST = []; }
+        resolve(LIST);
+      };
+      sc.onerror = function () { listLoading = null; reject(new Error('load')); };
+      document.head.appendChild(sc);
+    });
+    return listLoading;
+  }
+  function resetFinder() { $('#g-find').hidden = true; $('#g-find-q').value = ''; $('#g-find-res').innerHTML = ''; $('#g-find-btn').hidden = false; }
+  $('#g-find-btn').onclick = function () {
+    $('#g-find-btn').hidden = true; $('#g-find').hidden = false; $('#g-find-q').focus();
+    $('#g-find-res').innerHTML = '<div class="sl-find-empty">Loading camps and classes…</div>';
+    loadListings().then(function () { runFind(); }).catch(function () { $('#g-find-res').innerHTML = '<div class="sl-find-empty">Couldn\'t load camps and classes. Please try again.</div>'; });
+  };
+  var findT;
+  $('#g-find-q').addEventListener('input', function () { clearTimeout(findT); findT = setTimeout(runFind, 150); });
+  $('#g-find-q').addEventListener('keydown', function (e) { if (e.key === 'Enter') e.preventDefault(); });
+  function runFind() {
+    if (!LIST) return;
+    var words = $('#g-find-q').value.toLowerCase().split(/\s+/).filter(Boolean);
+    var res = $('#g-find-res');
+    if (!words.length) { res.innerHTML = '<div class="sl-find-empty">Type a camp, class, activity or area, like "drama", "Christmas" or "Malahide".</div>'; return; }
+    var hits = LIST.filter(function (l) {
+      var hay = [l.name, l.provider, l.category, l.area, l.county, l.type === 'weekly' ? 'class weekly' : 'camp'].join(' ').toLowerCase();
+      return words.every(function (w) { return hay.indexOf(w) !== -1; });
+    }).slice(0, 8);
+    res.innerHTML = hits.length ? hits.map(function (l) {
+      return '<button type="button" class="sl-find-hit" data-pick="' + esc(l.id) + '"><b>' + esc(l.name) + '</b><span>' +
+        esc([l.provider, l.area, l.costValue ? eur(l.costValue) : ''].filter(Boolean).join(' · ')) + '</span></button>';
+    }).join('') : '<div class="sl-find-empty">Nothing matched. Try another word.</div>';
+  }
+  $('#g-find-res').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-pick]'); if (!b || !LIST) return;
+    var l = LIST.filter(function (x) { return x.id === b.dataset.pick; })[0]; if (!l) return;
+    $('#g-name').value = (l.name + (l.provider && l.name.indexOf(l.provider) === -1 ? ' (' + l.provider + ')' : '')).slice(0, 150);
+    $('#g-price').value = l.costValue ? l.costValue : '';
+    $('#g-url').value = l.listingUrl ? location.origin + l.listingUrl : (l.bookingUrl || '');
+    resetFinder();
+    toast('Added the details. Check the price, then save.');
+    track('santa_camp_picked', { category: l.category || '' });
   });
 
   // share modal
@@ -361,7 +460,7 @@
     var kids = readKidRows($('#kids-rows')), st = $('#kids-status');
     if (!kids.length) { status(st, 'err', errorText('kids_required')); return; }
     var keep = kids.map(function (k) { return k.id; });
-    var dropped = state.family.kids.filter(function (k) { return keep.indexOf(k.id) === -1 && state.gifts.some(function (g) { return g.kid === k.id; }); });
+    var dropped = state.family.kids.filter(function (k) { return keep.indexOf(k.id) === -1 && state.gifts.some(function (g) { return kidsOfGift(g).indexOf(k.id) !== -1; }); });
     if (dropped.length) { status(st, 'err', 'Remove ' + dropped[0].name + '\'s gifts first, then you can take them off the list.'); return; }
     api('POST', { action: 'kids', kids: kids, familyName: $('#kids-family').value }).then(function (d) {
       state.family.kids = d.kids; state.family.name = $('#kids-family').value || state.family.name;
@@ -396,18 +495,33 @@
       $('#g-title').textContent = 'Christmas ideas for ' + kidNames(fam.kids);
       document.title = 'Christmas ideas for ' + kidNames(fam.kids) + ' — Sortd Santa List';
       var out = '';
-      fam.kids.forEach(function (k) {
-        var items = giversGifts.filter(function (g) { return g.kid === k.id; });
-        out += '<section class="sl-gkid"><h3>' + esc(k.emoji) + ' ' + esc(k.name) + '</h3>';
-        out += items.length ? '<div class="sl-list">' + items.map(function (g) {
-          var url = safeUrl(g.url);
-          var meta = (g.taken ? '<span class="sl-tag claimed">' + (g.claimedBy ? '🙋 ' + esc(g.claimedBy) + ' is getting this' : '✅ Already sorted') + '</span>' : '') +
-            (g.who ? '<span class="sl-tag who">Idea for ' + esc(g.who) + '</span>' : '') +
-            (url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer nofollow">🔗 ' + esc(host(url)) + '</a>' : '');
-          var right = g.taken ? '' : '<button class="sl-btn sl-btn-green sl-btn-sm" data-claim="' + esc(g.id) + '">I\'ll get this</button>';
-          return '<div class="sl-gift' + (g.taken ? ' taken' : '') + '"><div><div class="sl-gname" style="cursor:default">' + esc(g.name) + '</div><div class="sl-meta">' + meta + '</div></div>' +
-            '<div class="sl-right"><div class="sl-price">' + eur(g.price) + '</div>' + right + '</div></div>';
-        }).join('') + '</div>' : '<div class="sl-empty">No ideas added yet.</div>';
+      function giverHtml(g) {
+        var url = safeUrl(g.url);
+        var meta = (g.taken ? '<span class="sl-tag claimed">' + (g.claimedBy ? '🙋 ' + esc(g.claimedBy) + ' is getting this' : '✅ Already sorted') + '</span>' : '') +
+          (g.who ? '<span class="sl-tag who">Idea for ' + esc(g.who) + '</span>' : '') +
+          (url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer nofollow">🔗 ' + esc(host(url)) + '</a>' : '');
+        var right = g.taken ? '' : '<button class="sl-btn sl-btn-green sl-btn-sm" data-claim="' + esc(g.id) + '">I\'ll get this</button>';
+        return '<div class="sl-gift' + (g.taken ? ' taken' : '') + '"><div><div class="sl-gname" style="cursor:default">' + esc(g.name) + '</div><div class="sl-meta">' + meta + '</div></div>' +
+          '<div class="sl-right"><div class="sl-price">' + eur(g.price) + '</div>' + right + '</div></div>';
+      }
+      function giftKids(g) { return (g.kids && g.kids.length) ? g.kids : [g.kid]; }
+      // One section per child, then one per group of children for joint gifts.
+      var groups = fam.kids.map(function (k) { return { key: k.id, title: esc(k.emoji) + ' ' + esc(k.name), items: [] }; });
+      giversGifts.forEach(function (g) {
+        var ks = giftKids(g);
+        var key = ks.slice().sort().join(',');
+        var grp = groups.filter(function (x) { return x.key === key; })[0];
+        if (!grp) {
+          var names = fam.kids.filter(function (k) { return ks.indexOf(k.id) !== -1; }).map(function (k) { return k.name; });
+          grp = { key: key, title: '🤝 For ' + esc(kidNames(names.map(function (n) { return { name: n }; }))) + ' together', items: [] };
+          groups.push(grp);
+        }
+        grp.items.push(g);
+      });
+      groups.forEach(function (grp) {
+        if (grp.key.indexOf(',') !== -1 && !grp.items.length) return;
+        out += '<section class="sl-gkid"><h3>' + grp.title + '</h3>';
+        out += grp.items.length ? '<div class="sl-list">' + grp.items.map(giverHtml).join('') + '</div>' : '<div class="sl-empty">No ideas added yet.</div>';
         out += '</section>';
       });
       $('#g-kids').innerHTML = out;

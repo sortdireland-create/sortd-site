@@ -119,6 +119,7 @@ gtag('config', 'G-HHTB7S9WJG');
       </div>
     </div>
     <div class="sl-eyes-note" id="eyes-note" hidden>Santa's list is hidden. Tap "Little eyes" again to show it.</div>
+    <div class="sl-summary" id="sl-summary" aria-live="polite"></div>
     <div class="sl-boards">
       <section class="sl-board sl-santa" id="board-santa">
         <header><h2>From Santa 🎅</h2><span class="sl-total" id="t-santa"></span></header>
@@ -166,13 +167,19 @@ gtag('config', 'G-HHTB7S9WJG');
 <div class="sl-scrim" id="gift-scrim" hidden>
   <form class="sl-modal" id="gift-form" aria-labelledby="gift-title">
     <h3 id="gift-title">New gift</h3>
+    <button type="button" class="sl-find-btn" id="g-find-btn">🔎 Find a camp or class on sortd</button>
+    <div class="sl-find" id="g-find" hidden>
+      <label class="sl-lbl" for="g-find-q">Search camps and classes</label>
+      <input class="sl-in" id="g-find-q" type="search" placeholder="e.g. drama, swimming, Malahide" autocomplete="off">
+      <div class="sl-find-res" id="g-find-res"></div>
+    </div>
     <label class="sl-lbl" for="g-name">Gift</label>
     <input class="sl-in" id="g-name" required maxlength="150" placeholder="e.g. LEGO Duplo fire station">
     <div class="sl-row">
       <div><label class="sl-lbl" for="g-price">Price (€)</label><input class="sl-in" id="g-price" type="number" min="0" step="0.01" inputmode="decimal" placeholder="35"></div>
       <div><label class="sl-lbl" for="g-url">Shop link</label><input class="sl-in" id="g-url" type="url" placeholder="https://…"></div>
     </div>
-    <div class="sl-lbl">Who's it for?</div>
+    <div class="sl-lbl">Who's it for? <span class="sl-lbl-hint">Tap 2 or more for a joint gift</span></div>
     <div class="sl-seg" id="g-kid"></div>
     <div class="sl-lbl">From</div>
     <div class="sl-seg" id="g-from"><button type="button" data-v="santa">🎅 Santa</button><button type="button" data-v="family">🎁 Family</button></div>
