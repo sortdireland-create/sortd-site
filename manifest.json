@@ -630,15 +630,6 @@
     "lastmod": "2026-11-12"
   },
   {
-    "slug": "artzone-senior-primary-art-classes-1st-6th-class-malahide",
-    "county": "dublin",
-    "url": "https://sortd-ireland.ie/classes/dublin/artzone-senior-primary-art-classes-1st-6th-class-malahide",
-    "name": "Artzone Senior Primary Art Classes (1st–6th class) — Malahide",
-    "provider": "Artzone",
-    "section": "classes",
-    "lastmod": "2026-11-12"
-  },
-  {
     "slug": "dublin-raiders-basketball-academy",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/dublin-raiders-basketball-academy",
@@ -1246,7 +1237,7 @@
     "section": "hub",
     "name": "Kids' classes and camps in Malahide",
     "url": "https://sortd-ireland.ie/dublin/malahide/",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "section": "hub",
@@ -1258,67 +1249,67 @@
     "section": "hub",
     "name": "Kids' classes in Malahide",
     "url": "https://sortd-ireland.ie/dublin/malahide/classes/",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Balbriggan",
     "url": "https://sortd-ireland.ie/dublin/balbriggan/",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Swords",
     "url": "https://sortd-ireland.ie/dublin/swords/",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Baldoyle",
     "url": "https://sortd-ireland.ie/dublin/baldoyle/",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Blanchardstown",
     "url": "https://sortd-ireland.ie/dublin/blanchardstown/",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Clontarf",
     "url": "https://sortd-ireland.ie/dublin/clontarf/",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Castleknock",
     "url": "https://sortd-ireland.ie/dublin/castleknock/",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "section": "hub",
     "name": "Kids' classes in City Centre",
     "url": "https://sortd-ireland.ie/dublin/city-centre/",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Rathmines",
     "url": "https://sortd-ireland.ie/dublin/rathmines/",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Skerries",
     "url": "https://sortd-ireland.ie/dublin/skerries/",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "section": "hub",
     "name": "Kids' classes and camps in Dublin",
     "url": "https://sortd-ireland.ie/dublin/",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "section": "hub",
@@ -2016,7 +2007,7 @@
     "provider": "Artzone",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "slug": "junior-einsteins-spooky-science-halloween-camp-greystones-5-day",
@@ -2057,6 +2048,16 @@
     "section": "camps",
     "archived": true,
     "lastmod": "2026-11-07"
+  },
+  {
+    "slug": "artzone-senior-primary-art-classes-1st-6th-class-malahide",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/classes/dublin/artzone-senior-primary-art-classes-1st-6th-class-malahide",
+    "name": "Artzone Senior Primary Art Classes (1st–6th class) — Malahide",
+    "provider": "Artzone",
+    "section": "classes",
+    "archived": true,
+    "lastmod": "2026-11-13"
   },
   {
     "slug": "starcamp-halloween-camp-carrigaline",
@@ -2346,7 +2347,7 @@
     "provider": "Artzone",
     "section": "classes",
     "archived": true,
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-13"
   },
   {
     "slug": "galway-united-halloween-football-camp-clarenbridge",
