@@ -20,10 +20,10 @@ async function handleGet(event) {
   const session = getSessionFromEvent(event);
   if (!session) return P.json(200, { loggedIn: false, tester: false });
   const email = session.email.toLowerCase();
-  if (!P.isTester(email)) return P.json(200, { loggedIn: true, tester: false });
   if (!process.env.AIRTABLE_API_KEY) return P.json(500, { error: 'server_error' });
 
   const me = await P.findUserByEmail(email);
+  if (!(await P.hasAccess(email, me || null))) return P.json(200, { loggedIn: true, tester: false });
   const plan = me ? P.parseJSON(me.fields[P.F.DATA], null) : null;
   const conns = me ? P.connectionsOf(me) : [];
   const friendRecords = await P.findUsersByEmails(conns);
@@ -184,7 +184,7 @@ async function handleJoin(email, body) {
   if (!owner) return P.json(404, { error: 'invalid_code' });
   const ownerEmail = String(owner.fields[P.F.EMAIL] || '').toLowerCase();
   if (ownerEmail === email) return P.json(400, { error: 'own_code' });
-  if (!P.isTester(ownerEmail)) return P.json(404, { error: 'invalid_code' });
+  if (!(await P.hasAccess(ownerEmail, owner))) return P.json(404, { error: 'invalid_code' });
 
   const me = await getOrCreateMe(email);
   const mine = P.connectionsOf(me);
@@ -214,7 +214,7 @@ exports.handler = async function (event) {
     if (event.httpMethod === 'GET') return await handleGet(event);
     if (event.httpMethod !== 'POST') return P.json(405, { error: 'method_not_allowed' });
 
-    const g = P.gate(event);
+    const g = await P.gate(event);
     if (g.error) return g.error;
     let body;
     try { body = JSON.parse(event.body || '{}'); } catch (e) { return P.json(400, { error: 'bad_json' }); }

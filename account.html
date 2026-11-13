@@ -45,6 +45,7 @@ body{font-family:var(--fb);background:#fff;color:#1a1a2e;}
 .planner-card span{color:#666;font-size:.88rem;line-height:1.45;}
 .planner-txt{flex:1;min-width:0;}
 .planner-card .planner-go{flex:none;font-weight:800;font-size:.85rem;border-radius:99px;padding:7px 14px;background:var(--gr);color:#fff;white-space:nowrap;}
+.santa-card .planner-ico{background:#F5E1E0;}
 .planner-card.is-off{opacity:.55;filter:grayscale(1);cursor:not-allowed;background:#fafafa;}
 .planner-card.is-off .planner-go{background:#bbb;}
 a.planner-card:hover{border-color:var(--gr);}
@@ -152,6 +153,15 @@ html.is-unlocked .soon-list b::after{content:" \2713";color:#1D8A52;}
 <h2>What you can do on sortd</h2>
 <p class="lede only-in">Your account is free. Here's everything it does.</p>
 <p class="lede only-out">Everything in "Free for everyone" works straight away. Favourites and the rest unlock with your email.</p>
+
+<div id="santaWrap" hidden>
+<div class="sec-h">This Christmas</div>
+<a class="planner-card santa-card" href="/christmas" id="santaCard">
+<div class="planner-ico" aria-hidden="true"><svg viewBox="0 0 20 24" width="22" height="26"><polygon points="10,1 3,9 17,9" fill="#4A9B6C"/><polygon points="10,5 1.5,15 18.5,15" fill="#2F6B4A"/><polygon points="10,10 0,21 20,21" fill="#4A9B6C"/><rect x="8" y="20.5" width="4" height="3" rx="1" fill="#293148"/></svg></div>
+<div class="planner-txt"><b>Sortd Santa List</b><span id="santaNote">One Christmas list for both parents. Santa's gifts stay secret, and the grandparents get their own link so nobody doubles up.</span></div>
+<span class="planner-go" id="santaGo">Start my list</span>
+</a>
+</div>
 
 <div class="sec-h"><span class="only-out">Free for everyone</span><span class="only-in">Ready now</span></div>
 <div class="feat-grid">
@@ -413,6 +423,32 @@ if (window.SortdSaved) {
         l.className = 'soon-in-planner'; l.href = '/planner'; l.textContent = 'Open →';
         el.appendChild(l);
       });
+    })
+    .catch(function () {});
+})();
+</script>
+
+<script>
+// Sortd Santa List card: shows 1 Nov - 7 Jan (same season as the nav link
+// in js/mobile-nav.js). Logged in with a list: show what's on it.
+(function () {
+  var d = new Date(), m = d.getMonth(), day = d.getDate();
+  if (!(m >= 10 || (m === 0 && day <= 7))) return;
+  var wrap = document.getElementById('santaWrap'); if (!wrap) return;
+  wrap.hidden = false;
+  if (!document.documentElement.classList.contains('is-in')) return;
+  fetch('/.netlify/functions/santa-list', { credentials: 'same-origin' })
+    .then(function (r) { return r.json(); })
+    .then(function (s) {
+      if (!s || !s.family) return;
+      var kids = (s.family.kids || []).map(function (k) { return k.name; });
+      var names = kids.length > 1 ? kids.slice(0, -1).join(', ') + ' and ' + kids[kids.length - 1] : (kids[0] || 'the kids');
+      var n = (s.gifts || []).length;
+      var bought = (s.gifts || []).filter(function (g) { return g.status !== 'idea'; }).length;
+      document.getElementById('santaNote').textContent = n
+        ? n + (n === 1 ? ' gift' : ' gifts') + ' for ' + names + ', ' + bought + ' bought so far.'
+        : 'Your list for ' + names + ' is ready. Add the first gift.';
+      document.getElementById('santaGo').textContent = 'Open my list';
     })
     .catch(function () {});
 })();

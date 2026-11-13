@@ -41,6 +41,7 @@ const U = {
   NEWSLETTER_OPT_IN_AT: 'NewsletterOptInAt',
   CREATED_AT: 'CreatedAt',
   LAST_LOGIN_AT: 'LastLoginAt',
+  PLANNER_ACCESS: 'PlannerAccess', // unlocks the Sortd calendar, see lib/planner.js
 };
 
 const SITE_URL = 'https://sortd-ireland.ie';
@@ -135,6 +136,11 @@ exports.handler = async function (event) {
 
     const now = new Date().toISOString();
 
+    // Logging in through the Santa List (/christmas) also unlocks the Sortd
+    // calendar: tick Users.PlannerAccess (see lib/planner.js).
+    const nextParam = String((event.queryStringParameters && event.queryStringParameters.next) || '');
+    const viaSanta = /^\/(christmas|santa)(\?|$|\/)/i.test(nextParam);
+
     // Find-or-create the Users record for this email.
     const findRes = await airtableRequest(
       USERS_TABLE_ID,
@@ -145,6 +151,7 @@ exports.handler = async function (event) {
 
     if (existing) {
       const updateFields = { [U.LAST_LOGIN_AT]: now };
+      if (viaSanta && !existing.fields[U.PLANNER_ACCESS]) updateFields[U.PLANNER_ACCESS] = true;
       // Only write the opt-in fields when newly opting in AND not already
       // opted in — never overwrite an existing NewsletterOptInAt, and
       // never write NewsletterOptIn: false (see note above).
@@ -159,6 +166,7 @@ exports.handler = async function (event) {
       if (!updateRes.ok) console.error('verify-login: failed to update Users record:', await updateRes.text());
     } else {
       const createFields = { [U.EMAIL]: email, [U.CREATED_AT]: now, [U.LAST_LOGIN_AT]: now };
+      if (viaSanta) createFields[U.PLANNER_ACCESS] = true;
       if (newsletterOptIn) {
         createFields[U.NEWSLETTER_OPT_IN] = true;
         createFields[U.NEWSLETTER_OPT_IN_AT] = now;

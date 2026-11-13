@@ -458,6 +458,7 @@
         clearJoinParam();
       }
       state.family = d.family; state.gifts = d.gifts || []; state.pollToken = d.pollToken;
+      $('#sl-account').hidden = !d.planner;
       show('v-list'); render(); setSync('', 'Up to date'); startPolling();
     }).catch(function () {
       show('v-error');

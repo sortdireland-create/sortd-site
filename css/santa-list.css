@@ -151,3 +151,6 @@ body{background:var(--sl-cream);}
 .sl-resend{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:14px;}
 .sl-resend .sl-linkbtn{margin-top:0;}
 .sl-resend-note{margin:12px 0 0!important;font-size:.82rem;color:#1A7A50!important;opacity:.85;}
+.sl-sortd-btns{display:flex;gap:8px;flex-wrap:wrap;}
+#sl-account{margin-top:16px;}
+#sl-account + .sl-sortd{margin-top:10px;}
