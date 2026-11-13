@@ -21,7 +21,8 @@
 
   // ── utils ───────────────────────────────────────────────────
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
-  function eur(n) { return '€' + (Number(n) || 0).toLocaleString('en-IE', { minimumFractionDigits: 0, maximumFractionDigits: 2 }); }
+  // Whole euros as €30; anything with cents always shows 2 places (€12.50, not €12.5).
+  function eur(n) { var v = Math.round((Number(n) || 0) * 100) / 100; return '€' + v.toLocaleString('en-IE', { minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2 }); }
   function host(u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return 'link'; } }
   function safeUrl(u) { return /^https?:\/\//i.test(u || '') ? u : ''; }
   function track(name, params) { try { if (window.gtag) window.gtag('event', name, params || {}); } catch (e) {} }
