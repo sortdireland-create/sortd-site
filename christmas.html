@@ -148,7 +148,12 @@ gtag('config', 'G-HHTB7S9WJG');
   <section id="v-givers" hidden>
     <div class="sl-card sl-givers-head">
       <h2 id="g-title">Gift ideas</h2>
-      <p>Tap <b>I'll get this</b> on anything you're buying, so nobody doubles up. The family will see your name.</p>
+      <p class="sl-givers-rule"><b>Buying something? Tap "I'll get this" first,</b> so nobody doubles up.</p>
+      <p>The family will see your name next to it. Santa's list isn't shown here.</p>
+    </div>
+    <div class="sl-ask" id="g-ask" hidden>
+      <div><b>Did you buy <span id="g-ask-name"></span>?</b> Let the family know so nobody else gets it.</div>
+      <div class="sl-ask-btns"><button type="button" class="sl-btn sl-btn-green sl-btn-sm" id="g-ask-yes">Yes, mark it as mine</button><button type="button" class="sl-btn sl-btn-ghost sl-btn-sm" id="g-ask-no">No</button></div>
     </div>
     <div id="g-kids"></div>
     <div class="sl-card sl-make">
@@ -210,6 +215,7 @@ gtag('config', 'G-HHTB7S9WJG');
       <p>Family ideas only. Santa's list is never shown. They tap "I'll get this" to claim a gift.</p>
       <div class="sl-copyrow"><input class="sl-in" id="share-givers" readonly><button class="sl-btn sl-btn-green sl-btn-sm" data-copy="share-givers">Copy</button></div>
       <button class="sl-btn sl-btn-ghost sl-btn-sm" id="share-wa">💬 Copy a WhatsApp message</button>
+      <button class="sl-btn sl-btn-ghost sl-btn-sm" id="share-open">🎁 Copy what's still up for grabs</button>
       <button class="sl-linkbtn" id="share-reset">Make a new family link (the old one stops working)</button>
     </div>
     <div class="sl-actions"><button class="sl-btn sl-btn-ghost" id="share-close">Done</button></div>
@@ -233,6 +239,20 @@ gtag('config', 'G-HHTB7S9WJG');
   </div>
 </div>
 
+<!-- Shop prompt (givers) -->
+<div class="sl-scrim" id="shop-scrim" hidden>
+  <div class="sl-modal">
+    <h3>Getting this one?</h3>
+    <p class="sl-claim-gift" id="shop-gift"></p>
+    <p class="sl-shop-note">If you're buying it, tap "Yes" so nobody else gets it too. Then we'll take you to the shop.</p>
+    <div class="sl-actions sl-actions-stack">
+      <button type="button" class="sl-btn sl-btn-green" id="shop-yes">Yes, I'll get it</button>
+      <button type="button" class="sl-btn sl-btn-ghost" id="shop-look">Just looking</button>
+      <button type="button" class="sl-linkbtn" id="shop-cancel">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <!-- Claim modal (givers) -->
 <div class="sl-scrim" id="claim-scrim" hidden>
   <form class="sl-modal" id="claim-form">
@@ -246,6 +266,14 @@ gtag('config', 'G-HHTB7S9WJG');
       <button type="submit" class="sl-btn sl-btn-green">Claim it</button>
     </div>
   </form>
+  <div class="sl-modal" id="claim-done" hidden>
+    <h3>Thank you! It's yours 🎁</h3>
+    <p class="sl-shop-note">The family can see you're getting it, so nobody else will buy it.</p>
+    <div class="sl-actions sl-actions-stack">
+      <a class="sl-btn sl-btn-green" id="claim-shop" href="#" target="_blank" rel="noopener noreferrer nofollow">Go to the shop →</a>
+      <button type="button" class="sl-linkbtn" id="claim-done-close">Back to the list</button>
+    </div>
+  </div>
 </div>
 
 <div class="sl-toast" id="toast" role="status" aria-live="polite"></div>

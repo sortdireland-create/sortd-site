@@ -71,9 +71,9 @@
   function openModal(id) { $('#' + id).hidden = false; }
   function closeModal(id) { $('#' + id).hidden = true; }
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') ['gift-scrim', 'share-scrim', 'kids-scrim', 'claim-scrim'].forEach(closeModal);
+    if (e.key === 'Escape') ['gift-scrim', 'share-scrim', 'kids-scrim', 'claim-scrim', 'shop-scrim'].forEach(closeModal);
   });
-  ['gift-scrim', 'share-scrim', 'kids-scrim', 'claim-scrim'].forEach(function (id) {
+  ['gift-scrim', 'share-scrim', 'kids-scrim', 'claim-scrim', 'shop-scrim'].forEach(function (id) {
     $('#' + id).addEventListener('click', function (e) { if (e.target.id === id) closeModal(id); });
   });
 
@@ -337,7 +337,7 @@
     // Santa can't be chosen while little eyes is on.
     $('#g-from button[data-v=santa]').disabled = state.eyes;
     openModal('gift-scrim');
-    setTimeout(function () { $('#g-name').focus(); }, 50);
+    setTimeout(function () { var ae = document.activeElement; if (!ae || !/^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName)) $('#g-name').focus(); }, 50);
   }
   function segMulti(id, vals) { Array.prototype.forEach.call(document.querySelectorAll('#' + id + ' button'), function (b) { b.classList.toggle('on', vals.indexOf(b.dataset.v) !== -1); }); }
   // Tap a child to add or remove them: tick 2 or more for a joint gift.
@@ -430,9 +430,25 @@
   $('#share-close').onclick = function () { closeModal('share-scrim'); };
   $('#share-wa').onclick = function () {
     var msg = '🎄 Christmas gift ideas for ' + kidNames(state.family.kids) + ' 🎄\n\n' +
-      'Here\'s our list. Tap "I\'ll get this" on anything you\'re buying so nobody doubles up:\n' + giversLink() +
+      'Here\'s our list. Before you buy anything, tap "I\'ll get this" on it so nobody doubles up:\n' + giversLink() +
       '\n\nThank you! x';
     copyText(msg).then(function () { toast('Copied, ready to paste into WhatsApp 📲'); track('santa_whatsapp_copied'); })
+      .catch(function () { toast('Couldn\'t copy on this device'); });
+  };
+  // Nudge the family: only the family ideas nobody has claimed yet.
+  $('#share-open').onclick = function () {
+    var open = state.gifts.filter(function (g) { return g.from === 'family' && !g.claimedBy && g.status === 'idea'; });
+    if (!open.length) { toast('Every family idea has been claimed 🎉'); return; }
+    var lines = [];
+    state.family.kids.forEach(function (k) {
+      var mine = open.filter(function (g) { var ks = kidsOfGift(g); return ks.length === 1 && ks[0] === k.id; });
+      if (mine.length) lines.push('For ' + k.name + ':\n' + mine.map(function (g) { return '• ' + g.name + (g.price ? ' (' + eur(g.price) + ')' : ''); }).join('\n'));
+    });
+    var shared = open.filter(function (g) { return kidsOfGift(g).length > 1; });
+    if (shared.length) lines.push('For them to share:\n' + shared.map(function (g) { return '• ' + g.name + (g.price ? ' (' + eur(g.price) + ')' : ''); }).join('\n'));
+    var msg = '🎄 Still up for grabs for ' + kidNames(state.family.kids) + ' 🎄\n\n' + lines.join('\n\n') +
+      '\n\nIf you\'re getting one, tap "I\'ll get this" on it first so nobody doubles up:\n' + giversLink() + '\n\nThank you! x';
+    copyText(msg).then(function () { toast('Copied ' + open.length + (open.length === 1 ? ' idea' : ' ideas') + ', ready for WhatsApp 📲'); track('santa_nudge_copied', { open: open.length }); })
       .catch(function () { toast('Couldn\'t copy on this device'); });
   };
   $('#share-reset').onclick = function () {
@@ -499,7 +515,7 @@
         var url = safeUrl(g.url);
         var meta = (g.taken ? '<span class="sl-tag claimed">' + (g.claimedBy ? '🙋 ' + esc(g.claimedBy) + ' is getting this' : '✅ Already sorted') + '</span>' : '') +
           (g.who ? '<span class="sl-tag who">Idea for ' + esc(g.who) + '</span>' : '') +
-          (url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer nofollow">🔗 ' + esc(host(url)) + '</a>' : '');
+          (url ? '<a href="' + esc(url) + '" data-shop="' + esc(g.id) + '" target="_blank" rel="noopener noreferrer nofollow">🔗 ' + esc(host(url)) + '</a>' : '');
         var right = g.taken ? '' : '<button class="sl-btn sl-btn-green sl-btn-sm" data-claim="' + esc(g.id) + '">I\'ll get this</button>';
         return '<div class="sl-gift' + (g.taken ? ' taken' : '') + '"><div><div class="sl-gname" style="cursor:default">' + esc(g.name) + '</div><div class="sl-meta">' + meta + '</div></div>' +
           '<div class="sl-right"><div class="sl-price">' + eur(g.price) + '</div>' + right + '</div></div>';
@@ -525,6 +541,7 @@
         out += '</section>';
       });
       $('#g-kids').innerHTML = out;
+      renderAsk();
       show('v-givers');
       track('santa_givers_view');
     }).catch(function (err) {
@@ -533,22 +550,84 @@
       show('v-error');
     });
   }
+  // Remember which shop links a giver opened with "Just looking", so we can
+  // ask "Did you buy it?" when they come back to the page.
+  function openedKey() { return 'sl_opened_' + giversShare; }
+  function getOpened() { try { return JSON.parse(localStorage.getItem(openedKey()) || '[]'); } catch (e) { return []; } }
+  function setOpened(ids) { try { localStorage.setItem(openedKey(), JSON.stringify(ids.slice(-20))); } catch (e) {} }
+  function giverGift(id) { return giversGifts.filter(function (g) { return g.id === id; })[0]; }
+  var shopGift = null, claimThenShop = null;
+
+  // 1. Tapping a shop link on an unclaimed gift asks first.
+  $('#g-kids').addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-shop]'); if (!a) return;
+    var g = giverGift(a.dataset.shop);
+    if (!g || g.taken) return; // already claimed: just open the shop
+    e.preventDefault();
+    shopGift = g;
+    $('#shop-gift').textContent = g.name;
+    openModal('shop-scrim');
+  });
+  $('#shop-yes').onclick = function () {
+    if (!shopGift) return;
+    closeModal('shop-scrim');
+    claimThenShop = safeUrl(shopGift.url);
+    openClaim(shopGift.id);
+    track('santa_shop_prompt', { choice: 'yes' });
+  };
+  $('#shop-look').onclick = function () {
+    if (!shopGift) return;
+    var url = safeUrl(shopGift.url);
+    var ids = getOpened(); if (ids.indexOf(shopGift.id) === -1) ids.push(shopGift.id); setOpened(ids);
+    closeModal('shop-scrim');
+    if (url) window.open(url, '_blank', 'noopener,noreferrer');
+    track('santa_shop_prompt', { choice: 'looking' });
+  };
+  $('#shop-cancel').onclick = function () { closeModal('shop-scrim'); };
+
+  // 2. Back from the shop: "Did you buy it?"
+  function renderAsk() {
+    var box = $('#g-ask'); if (!box || !giversShare) return;
+    var ids = getOpened().filter(function (id) { var g = giverGift(id); return g && !g.taken; });
+    setOpened(ids);
+    var g = giverGift(ids[ids.length - 1]);
+    if (!g) { box.hidden = true; return; }
+    box.hidden = false;
+    $('#g-ask-name').textContent = g.name;
+    $('#g-ask-yes').onclick = function () { claimThenShop = null; openClaim(g.id); };
+    $('#g-ask-no').onclick = function () { setOpened(getOpened().filter(function (x) { return x !== g.id; })); renderAsk(); };
+  }
+  document.addEventListener('visibilitychange', function () { if (!document.hidden && giversShare) renderAsk(); });
+
   function openClaim(id) {
     claiming = giversGifts.filter(function (g) { return g.id === id; })[0];
     if (!claiming) return;
     $('#claim-gift').textContent = claiming.name;
+    $('#claim-form').hidden = false; $('#claim-done').hidden = true;
     try { $('#claim-name').value = localStorage.getItem('sl_giver') || ''; } catch (e) {}
     status($('#claim-status'));
     openModal('claim-scrim');
     setTimeout(function () { $('#claim-name').focus(); }, 50);
   }
-  $('#claim-cancel').onclick = function () { closeModal('claim-scrim'); };
+  $('#claim-cancel').onclick = function () { closeModal('claim-scrim'); claimThenShop = null; };
+  $('#claim-done-close').onclick = function () { closeModal('claim-scrim'); };
+  $('#claim-shop').addEventListener('click', function () { setTimeout(function () { closeModal('claim-scrim'); }, 300); });
   $('#claim-form').addEventListener('submit', function (e) {
     e.preventDefault();
     var name = $('#claim-name').value.trim(); if (!name || !claiming) return;
     try { localStorage.setItem('sl_giver', name); } catch (e2) {}
     api('POST', { action: 'claim', share: giversShare, id: claiming.id, name: name }).then(function () {
-      closeModal('claim-scrim'); toast('Thank you! It\'s yours 🎁'); track('santa_gift_claimed');
+      track('santa_gift_claimed');
+      var claimedId = claiming.id;
+      setOpened(getOpened().filter(function (x) { return x !== claimedId; }));
+      if (claimThenShop) {
+        // Claimed from the shop prompt: now send them to the shop.
+        $('#claim-form').hidden = true; $('#claim-done').hidden = false;
+        $('#claim-shop').href = claimThenShop;
+        claimThenShop = null;
+      } else {
+        closeModal('claim-scrim'); toast('Thank you! It\'s yours 🎁');
+      }
       loadGivers();
     }).catch(function (err) {
       status($('#claim-status'), 'err', errorText(err.code));
