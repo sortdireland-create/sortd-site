@@ -15,7 +15,7 @@
   var joinParam = q.get('join');
 
   var state = { email: '', family: null, gifts: [], pollToken: '', kid: null, eyes: false };
-  var pollTimer = null, polling = false, editing = null, draft = {}, claiming = null, giversShare = null, giversGifts = [];
+  var pollTimer = null, polling = false, writes = 0, editing = null, draft = {}, claiming = null, giversShare = null, giversGifts = [];
 
   try { state.eyes = localStorage.getItem('sl_eyes') === '1'; } catch (e) {}
 
@@ -46,14 +46,17 @@
     })[code] || 'Something went wrong. Please try again.';
   }
   function api(method, body, query) {
+    if (method === 'POST') writes++;
     var opts = { method: method, credentials: 'same-origin', headers: {} };
     if (body) { opts.headers['Content-Type'] = 'application/json'; opts.body = JSON.stringify(body); }
+    var done = function () { if (method === 'POST') writes++; };
     return fetch(API + (query || ''), opts).then(function (res) {
       return res.json().catch(function () { return {}; }).then(function (data) {
+        done();
         if (!res.ok) { var e = new Error(data.error || 'server_error'); e.code = data.error || 'server_error'; e.status = res.status; throw e; }
         return data;
       });
-    });
+    }, function (err) { done(); throw err; });
   }
   function copyText(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(text);
@@ -361,9 +364,14 @@
     req.then(function (d) {
       if (wasEdit) state.gifts = state.gifts.map(function (x) { return x.id === d.gift.id ? d.gift : x; });
       else { state.gifts.push(d.gift); track('santa_gift_added', { from: gift.from }); }
-      if (state.kid !== ALL && gift.kids.indexOf(state.kid) === -1) state.kid = gift.kids[0];
+      // Saved for a child whose tab isn't open: show Everyone, so the gift you
+      // just added and the ones already on screen are all still visible.
+      // (Jumping straight to the other child's tab made earlier gifts look deleted.)
+      var moved = state.kid !== ALL && gift.kids.indexOf(state.kid) === -1;
+      if (moved) state.kid = state.family.kids.length > 1 ? ALL : gift.kids[0];
       closeModal('gift-scrim'); render();
-      toast(wasEdit ? 'Saved ✨' : 'Added ✨');
+      var forWho = joinNames(gift.kids.map(kidName));
+      toast((wasEdit ? 'Saved' : 'Added') + (forWho ? ' to ' + forWho + '\'s list' : '') + ' ✨');
     }).catch(function (err) { toast(errorText(err.code)); })
       .then(function () { btn.disabled = false; });
   });
@@ -489,7 +497,11 @@
     if (polling || document.hidden || !state.pollToken) return;
     if (!$('#gift-scrim').hidden) return; // don't reshuffle under an open form
     polling = true; setSync('busy', 'Checking…');
+    var seen = writes;
     api('GET', null, '?poll=' + encodeURIComponent(state.pollToken)).then(function (d) {
+      // A gift was added, edited or removed while this check was in flight, so
+      // its answer may be from before that change. Drop it and check again soon.
+      if (writes !== seen) { setTimeout(poll, 1500); return; }
       state.gifts = d.gifts || []; render(); setSync('', 'Up to date');
     }).catch(function (err) {
       if (err.status === 401) return load(true);
