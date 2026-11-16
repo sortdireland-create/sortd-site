@@ -1,0 +1,22 @@
+{
+  "note": "One-off events added outside the monthly guides (e.g. provider-submitted workshops). Same event format as data/whats-on-YYYY-MM.json. Loaded by /whats-on via the 'extra' list in data/guides-index.json; each event hides itself after its 'to' date.",
+  "events": [
+    {
+      "id": "luce-kids-yoga-winter-workshop-2026",
+      "title": "Children's Yoga & Mindfulness Winter Workshop",
+      "venue": "CMWS Hall, Kildare Town",
+      "region": "Kildare",
+      "ages": "Ages 7 to 13",
+      "price": "€30 (sibling discount)",
+      "tags": ["rainy"],
+      "url": "https://www.instagram.com/luceyogi/",
+      "desc": "A Christmas holidays morning of yoga, breathwork, story and craft, with a snack and drink. Led by Breda, a primary school teacher and children's yoga teacher, from Luce Yoga & Wellness. Book at info@lucewellness.ie or 085 188 3127.",
+      "from": "2026-12-29",
+      "to": "2026-12-29",
+      "days": null,
+      "times": "Tue 29 Dec, 10am–12.30pm",
+      "start": 600,
+      "end": 750
+    }
+  ]
+}

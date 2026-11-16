@@ -106,8 +106,8 @@
   function renderFilters() {
     var regions = []; events.forEach(function (e) { if (e.region && regions.indexOf(e.region) === -1 && allowedDates(e).length) regions.push(e.region); });
     var order = ['City', 'North', 'South', 'Fingal']; regions.sort(function (a, b) { return (order.indexOf(a) + 1 || 99) - (order.indexOf(b) + 1 || 99); });
-    document.getElementById('woAreas').innerHTML = '<button type="button" data-v="all"' + (f.area === 'all' ? ' class="on"' : '') + '>All of Dublin</button>' +
-      regions.map(function (r) { return '<button type="button" data-v="' + esc(r) + '"' + (f.area === r ? ' class="on"' : '') + '>' + esc(r === 'City' ? 'City centre' : r === 'Fingal' ? 'Fingal' : r + ' Dublin') + '</button>'; }).join('');
+    document.getElementById('woAreas').innerHTML = '<button type="button" data-v="all"' + (f.area === 'all' ? ' class="on"' : '') + '>All areas</button>' +
+      regions.map(function (r) { return '<button type="button" data-v="' + esc(r) + '"' + (f.area === r ? ' class="on"' : '') + '>' + esc(r === 'City' ? 'City centre' : (r === 'North' || r === 'South') ? r + ' Dublin' : r) + '</button>'; }).join('');
     document.querySelectorAll('.wo-chips[data-group="when"] button').forEach(function (b) { b.classList.toggle('on', b.dataset.v === f.when); });
     document.querySelectorAll('.wo-chips[data-group="tags"] button').forEach(function (b) { b.classList.toggle('on', f.tags.indexOf(b.dataset.v) !== -1); b.setAttribute('aria-pressed', String(f.tags.indexOf(b.dataset.v) !== -1)); });
     document.getElementById('woAge').value = f.age;
@@ -218,10 +218,11 @@
 
   fetch('/data/guides-index.json').then(function (r) { return r.json(); }).then(function (idx) {
     guides = idx.guides || [];
-    return Promise.all(guides.map(function (g) { return fetch(g.data).then(function (r) { return r.ok ? r.json() : { events: [] }; }).catch(function () { return { events: [] }; }); }));
+    var srcs = guides.map(function (g) { return g.data; }).concat(idx.extra || []);
+    return Promise.all(srcs.map(function (u) { return fetch(u).then(function (r) { return r.ok ? r.json() : { events: [] }; }).catch(function () { return { events: [] }; }); }));
   }).then(function (files) {
     var seen = {};
-    files.forEach(function (file, i) { (file.events || []).forEach(function (e) { if (seen[e.id]) return; seen[e.id] = 1; events.push(norm(e, guides[i])); }); });
+    files.forEach(function (file, i) { (file.events || []).forEach(function (e) { if (seen[e.id]) return; seen[e.id] = 1; events.push(norm(e, guides[i] || null)); }); });
     var regions = events.map(function (e) { return e.region; });
     if (f.area !== 'all' && regions.indexOf(f.area) === -1) f.area = 'all';
     renderFilters(); render(); renderGuides();
