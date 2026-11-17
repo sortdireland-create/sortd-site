@@ -356,3 +356,26 @@ footer{background:var(--nv); color:#cfd4e0; padding:56px 40px 24px;}
 .sv-fine a{color:var(--pu);}
 .sv-acts{display:flex;flex-direction:column;gap:10px;align-items:center;}
 .sv-link{color:var(--sk);font-weight:700;font-size:.92rem;}
+
+/* Homepage seasonal section: Sortd Santa List (/christmas), 1 Nov – 7 Jan.
+   Brand: white rounded card, dusty Christmas red (#B85450) as the border only,
+   red/green only inside the icons. Button and accents stay on the core palette. */
+.xmas-sec{padding-top:48px; padding-bottom:8px;}
+.xmas-sec[hidden]{display:none;}
+.xmas-card{display:grid; grid-template-columns:1.15fr 1fr; gap:24px 48px; align-items:center; background:var(--cd); border:5px solid #B85450; border-radius:24px; padding:36px 40px;}
+.xmas-copy h2{margin-bottom:12px;}
+.xmas-copy h2 em{font-style:normal; color:var(--pkink);}
+.xmas-copy p{font-size:16px; line-height:1.65; color:#5b6478; max-width:520px; margin:0 0 22px;}
+.xmas-btn{display:inline-block; background:var(--sk); color:#fff; font-family:'Baloo 2',sans-serif; font-weight:800; font-size:17px; border-radius:999px; padding:12px 26px; text-decoration:none; transition:transform .15s, background .15s;}
+.xmas-btn:hover{background:var(--nv); transform:translateY(-1px);}
+.xmas-note{display:block; font-family:'Caveat',cursive; font-size:22px; color:var(--pkink); margin-top:14px;}
+.xmas-points{list-style:none; margin:0; padding:0; display:grid; gap:12px;}
+.xmas-points li{display:flex; gap:14px; align-items:center; border:1.5px solid var(--bd); border-radius:18px; padding:14px 16px; font-size:15px; line-height:1.5; color:#555;}
+.xmas-points b{display:block; font-family:'Baloo 2',sans-serif; font-weight:800; font-size:18px; line-height:1.2; color:var(--nv);}
+.xmas-ico{width:48px; height:48px; border-radius:14px; display:grid; place-items:center; flex-shrink:0;}
+@media (max-width: 900px){
+  .xmas-sec{padding:32px 20px 0;}
+  .xmas-card{grid-template-columns:1fr; padding:26px 22px; text-align:center;}
+  .xmas-copy p{margin:0 auto 20px;}
+  .xmas-points li{text-align:left;}
+}
