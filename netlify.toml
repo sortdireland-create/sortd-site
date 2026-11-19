@@ -11,6 +11,12 @@
   to = "/guides/things-to-do-with-kids-dublin-november"
   status = 301
 
+# Short link for social posts: sortd-ireland.ie/december
+[[redirects]]
+  from = "/december"
+  to = "/guides/things-to-do-with-kids-dublin-december"
+  status = 301
+
 
 # ── RETIRED LISTING PAGES (5 Nov 2026) ─────────────────────────
 # Old pages no longer generated: school-only clubs now live on their school's
