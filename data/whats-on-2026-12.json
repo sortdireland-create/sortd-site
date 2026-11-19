@@ -190,13 +190,13 @@
    "age": "big",
    "ages": "Big kids (8–12)",
    "venue": "EPIC Museum, then Dublin Zoo",
-   "price": "Combined ticket €41",
+   "price": "Adults €41, children (3–15) €28",
    "tags": [
     "rain",
     "book"
    ],
    "desc": "The emigration museum for the rainy afternoon, then lanterns after dark. 1 ticket for both.",
-   "url": "https://www.dublinzoo.ie/event/the-dublin-double-epic-and-dublin-zoo-winter-experience"
+   "url": "https://tickets.dublinzoo.ie/category/77533?branches.branchID=1860"
   },
   {
    "id": "wonderlights-malahide",
@@ -285,9 +285,10 @@
    "venue": "RDS, Ballsbridge",
    "price": "Santa visit from €18 per child, full experience from €29",
    "tags": [
-    "book"
+    "book",
+    "nd"
    ],
-   "desc": "A 90-minute Christmas walk-through that ends with a private chat with Santa. Shorter Santa-only visits too.",
+   "desc": "A 90-minute Christmas walk-through that ends with a private chat with Santa. Their sensory experience is on Sat 28 Nov from 9am.",
    "url": "https://www.rds.ie/whats-on/view/57210"
   },
   {
@@ -402,7 +403,7 @@
    "tags": [
     "book"
    ],
-   "desc": "Hot chocolate, reindeer food, Mrs Claus in the kitchen and a fireside visit with Santa.",
+   "desc": "Hot chocolate, reindeer food, Mrs Claus in the kitchen and a fireside visit with Santa. Sensory-friendly Fridays too, see 1–10 Dec.",
    "url": "https://newbridgehouseandfarm.com/?p=54243"
   },
   {
@@ -826,10 +827,41 @@
    "url": "https://www.dlrcoco.ie/dlr-events/event/christmas-events-dun-laoghaire-rathdown"
   },
   {
+   "id": "dalkey-castle-santa",
+   "title": "Dalkey Castle Christmas with Santa",
+   "section": "all",
+   "when": "Fridays 4pm, 5pm, 6pm · weekends and Mon 21–Tue 22 Dec hourly 10am–4pm",
+   "dates": [
+    "2026-12-04",
+    "2026-12-05",
+    "2026-12-06",
+    "2026-12-11",
+    "2026-12-12",
+    "2026-12-13",
+    "2026-12-18",
+    "2026-12-19",
+    "2026-12-20",
+    "2026-12-21",
+    "2026-12-22"
+   ],
+   "time": "",
+   "end": "",
+   "area": "South",
+   "age": "little",
+   "ages": "Little kids (4–7)",
+   "venue": "Dalkey Castle & Heritage Centre",
+   "price": "Price on the booking page",
+   "tags": [
+    "book"
+   ],
+   "desc": "A 40-minute show with elves, songs and Santa, and no queuing. Ages 18 months up.",
+   "url": "https://dalkeycastle.com/home/events/"
+  },
+  {
    "id": "luggwoods",
    "title": "Luggwoods Enchanted Forest",
    "section": "all",
-   "when": "December · dates and times to confirm",
+   "when": "Until 23 Dec (dates to confirm) · timed slots",
    "dates": [
     "2026-12-01",
     "2026-12-02",
@@ -867,7 +899,7 @@
     "tbc"
    ],
    "desc": "A lit-up woodland trail at the foot of the mountains that ends at Santa's cabin.",
-   "url": "https://www.luggwoods.ie"
+   "url": "https://luggwoodsevents.com/christmas/"
   },
   {
    "id": "civic-panto",
@@ -918,6 +950,30 @@
    "url": "https://www.civictheatre.ie/whats-on/tickles-and-dottie-are-freezin-the-civic-panto-2026/"
   },
   {
+   "id": "newbridge-sensory-santa",
+   "title": "Sensory Santa, Newbridge House",
+   "section": "1",
+   "when": "Fri 4, 11 & 18 Dec · 2:30pm–5pm, choose a slot when booking",
+   "dates": [
+    "2026-12-04",
+    "2026-12-11",
+    "2026-12-18"
+   ],
+   "time": "14:30",
+   "end": "17:00",
+   "area": "Fingal",
+   "age": "little",
+   "ages": "Little kids (4–7)",
+   "venue": "Newbridge House & Farm, Donabate",
+   "price": "€28.50",
+   "tags": [
+    "nd",
+    "book"
+   ],
+   "desc": "A quieter, calmer Santa visit with fewer people and less noise, for kids who find the busy days too much.",
+   "url": "https://newbridgehouseandfarm.com/a-christmas-to-remember-2026/"
+  },
+  {
    "id": "ark-baby-workshop",
    "title": "Baby Workshop: Where Sound Comes to Play",
    "section": "1",
@@ -944,13 +1000,13 @@
    "id": "swords-castle-market",
    "title": "Swords Castle Christmas Market",
    "section": "1",
-   "when": "Sat 5 & Sun 6 Dec (last weekend) · from 12pm",
+   "when": "Sat 5 & Sun 6 Dec (last weekend) · 12pm–7pm",
    "dates": [
     "2026-12-05",
     "2026-12-06"
    ],
    "time": "12:00",
-   "end": "",
+   "end": "19:00",
    "area": "Fingal",
    "age": "all",
    "ages": "All ages",
@@ -960,95 +1016,29 @@
     "free"
    ],
    "desc": "A small Christmas market inside the castle walls. Santa usually puts in an appearance.",
-   "url": "https://www.fingal.ie/christmas"
+   "url": "https://www.fingal.ie/events/swords-castle-christmas-market"
   },
   {
    "id": "ardgillan-christmas-fair",
    "title": "Ardgillan Castle Christmas Gift Fair",
    "section": "1",
-   "when": "Sat 5 & Sun 6 Dec",
+   "when": "Sat 5 & Sun 6 Dec · 11am–4pm",
    "dates": [
     "2026-12-05",
     "2026-12-06"
    ],
-   "time": "",
-   "end": "",
+   "time": "11:00",
+   "end": "16:00",
    "area": "Fingal",
    "age": "all",
    "ages": "All ages",
    "venue": "Ardgillan Castle, Balbriggan",
-   "price": "Price to confirm",
+   "price": "Free",
    "tags": [
-    "tbc"
+    "free"
    ],
    "desc": "A craft fair in the castle with festive bits for kids. Pair it with a run around the walled garden.",
-   "url": "https://dublin.ie/?p=86694"
-  },
-  {
-   "id": "farmleigh-christmas",
-   "title": "Christmas at Farmleigh",
-   "section": "1",
-   "when": "3 weekends before Christmas · 10am–5pm (2026 dates to confirm)",
-   "dates": [
-    "2026-12-05",
-    "2026-12-06",
-    "2026-12-12",
-    "2026-12-13",
-    "2026-12-19",
-    "2026-12-20"
-   ],
-   "time": "10:00",
-   "end": "17:00",
-   "area": "City",
-   "age": "all",
-   "ages": "All ages",
-   "venue": "Farmleigh House, Phoenix Park",
-   "price": "Free (some shows ticketed on the day)",
-   "tags": [
-    "free",
-    "tbc"
-   ],
-   "desc": "Food and craft market, storytelling, carols in the ballroom and horse and carriage rides. Free tickets go fast.",
-   "url": "https://farmleigh.ie/events/category/christmas"
-  },
-  {
-   "id": "dalkey-castle-santa",
-   "title": "Dalkey Castle Christmas with Santa",
-   "section": "1",
-   "when": "Selected dates in December (to confirm)",
-   "dates": [
-    "2026-12-05",
-    "2026-12-06",
-    "2026-12-07",
-    "2026-12-08",
-    "2026-12-09",
-    "2026-12-10",
-    "2026-12-11",
-    "2026-12-12",
-    "2026-12-13",
-    "2026-12-14",
-    "2026-12-15",
-    "2026-12-16",
-    "2026-12-17",
-    "2026-12-18",
-    "2026-12-19",
-    "2026-12-20",
-    "2026-12-21",
-    "2026-12-22"
-   ],
-   "time": "",
-   "end": "",
-   "area": "South",
-   "age": "little",
-   "ages": "Little kids (4–7)",
-   "venue": "Dalkey Castle & Heritage Centre",
-   "price": "Price to confirm (€23.85 last year)",
-   "tags": [
-    "book",
-    "tbc"
-   ],
-   "desc": "A 40-minute show with elves, songs and Santa, and no queuing. Ages 18 months up.",
-   "url": "https://dalkeycastle.com/the-visit/christmas"
+   "url": "https://ardgillancastle.ie/events/ardgillan-castle-craft-fair-2026/"
   },
   {
    "id": "botanic-craft-market",
@@ -1076,7 +1066,7 @@
    "id": "nch-snowman",
    "title": "This Way to Christmas! Featuring The Snowman",
    "section": "11",
-   "when": "Fri 18 – Sun 20 Dec · Sat shows 10:30am, 1pm, 3:30pm, 6pm",
+   "when": "Fri 18 – Sun 20 Dec · relaxed show Sat 19 Dec 10:30am",
    "dates": [
     "2026-12-18",
     "2026-12-19",
@@ -1088,13 +1078,14 @@
    "age": "all",
    "ages": "All ages",
    "venue": "National Concert Hall",
-   "price": "Child €23, adult €30",
+   "price": "Child €23, adult €30, family €95",
    "tags": [
     "book",
-    "rain"
+    "rain",
+    "nd"
    ],
-   "desc": "Theatre Lovett and a live orchestra playing The Snowman. A lovely first concert.",
-   "url": "https://www.nch.ie/Online/article/This-Way-To-Christmas-Dec19"
+   "desc": "Theatre Lovett and a live orchestra playing The Snowman. The Sat 10:30am show is relaxed, and disabled people and carers get 50% off.",
+   "url": "https://www.nch.ie/all-events-listing/this-way-to-christmas-relaxed-performance-dec26/"
   },
   {
    "id": "draiocht-mission-santa",
@@ -1192,35 +1183,76 @@
    "age": "all",
    "ages": "All ages",
    "venue": "The Ambassador Theatre, Parnell Street",
-   "price": "Price to confirm",
+   "price": "From €24.20",
    "tags": [
-    "book",
-    "tbc"
+    "book"
    ],
    "desc": "A newer city-centre panto, starting later than the rest, which helps if you're booking late.",
-   "url": "https://www.irishcentral.com/culture/entertainment/christmas-pantos-2026"
+   "url": "https://www.theambassadortheatre.com/show/rapunzel-christmas-pantomime"
   },
   {
-   "id": "nyf-dublin",
-   "title": "New Year's Festival Dublin",
+   "id": "nyf-echoes-of-ireland",
+   "title": "Echoes of Ireland, New Year's Festival",
    "section": "21",
-   "when": "Wed 30 & Thu 31 Dec (family events to confirm)",
+   "when": "Wed 30 Dec · 3:30pm–8pm",
    "dates": [
-    "2026-12-30",
-    "2026-12-31"
+    "2026-12-30"
    ],
-   "time": "",
-   "end": "",
+   "time": "15:30",
+   "end": "20:00",
    "area": "City",
    "age": "all",
    "ages": "All ages",
-   "venue": "Dublin Castle and city centre",
-   "price": "Free and ticketed events",
+   "venue": "Dublin Castle",
+   "price": "Free, no ticket",
    "tags": [
+    "free"
+   ],
+   "desc": "A free afternoon of live Irish music in the castle courtyard. Wander in and out as the kids allow.",
+   "url": "https://nyfdublin.com/"
+  },
+  {
+   "id": "nyf-countdown-matinee",
+   "title": "Countdown Concert Matinee, New Year's Festival",
+   "section": "21",
+   "when": "Thu 31 Dec · 4pm–6:30pm, with an early 'midnight' countdown",
+   "dates": [
+    "2026-12-31"
+   ],
+   "time": "16:00",
+   "end": "18:30",
+   "area": "City",
+   "age": "all",
+   "ages": "All ages",
+   "venue": "Dublin Castle",
+   "price": "Family ticket (2 adults, 2 children); last year €24.90",
+   "tags": [
+    "book"
+   ],
+   "desc": "New Year's Eve with a countdown at teatime, so you can do midnight and still have them in bed by 8.",
+   "url": "https://nyfdublin.com/"
+  },
+  {
+   "id": "nyf-coastal-fireworks",
+   "title": "New Year's Eve fireworks, Howth and Dún Laoghaire",
+   "section": "21",
+   "when": "Thu 31 Dec · 8pm",
+   "dates": [
+    "2026-12-31"
+   ],
+   "time": "20:00",
+   "end": "",
+   "area": "North",
+   "age": "all",
+   "ages": "All ages",
+   "venue": "Howth Harbour and Dún Laoghaire Harbour",
+   "price": "Free",
+   "tags": [
+    "free",
     "tbc"
    ],
-   "desc": "Past years had a family countdown matinee on New Year's Eve, so you can do midnight at 6pm.",
-   "url": "https://mcd.ie/artists/nyf-dublin"
+   "desc": "Free 8pm fireworks at both harbours. Midnight fireworks for people who go to bed at 9.",
+   "url": "https://nyfdublin.com/"
   },
   {
    "id": "sortd-recQgpsX4peHUbEG7",
