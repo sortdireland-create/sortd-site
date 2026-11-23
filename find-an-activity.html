@@ -259,7 +259,7 @@ function render(listings){
     count.textContent = '0 results';
     return;
   }
-  count.textContent = listings.length + ' result' + (listings.length!==1?'s':'') + ' found';
+  count.textContent = resultCountText(listings);
   grid.innerHTML = listings.map((c,i) => listingCard(c,i,true)).join('');
 }
 
@@ -284,7 +284,7 @@ function renderSchoolSearch(){
 
 function doSearch(){
   const f = readFilters();
-  const res = filterListings(LISTINGS, f);
+  const res = filterListings(searchPool(), f);
   render(res);
   if (typeof trackSearch === 'function') trackSearch(f, res.length);
 }

@@ -337,7 +337,10 @@ function renderSaved() {
   var grid = document.getElementById('savedGrid');
   if (!grid || typeof window.SortdSaved === 'undefined' || typeof LISTINGS === 'undefined') return;
   var ids = window.SortdSaved.savedIds();
-  var saved = LISTINGS.filter(function (c) { return ids.indexOf(c.id) !== -1; });
+  // Finished listings (ARCHIVED_LISTINGS) stay saveable for next year, so
+  // include them too, after the ones still running.
+  var pool = LISTINGS.concat(typeof ARCHIVED_LISTINGS !== 'undefined' ? ARCHIVED_LISTINGS : []);
+  var saved = pool.filter(function (c) { return ids.indexOf(c.id) !== -1; });
   var countEl = document.getElementById('savedCount');
   if (countEl) {
     if (!countEl.hasAttribute('data-default')) countEl.setAttribute('data-default', countEl.textContent);

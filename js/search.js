@@ -211,7 +211,28 @@ function filterListings(listings, opts){
   else if(sort==='price_lo') res.sort((a,b)=>(a.costValue||0)-(b.costValue||0));
   else if(sort==='price_hi') res.sort((a,b)=>(b.costValue||999)-(a.costValue||999));
   else if(sort==='age_lo') res.sort((a,b)=>(a.ageMin||99)-(b.ageMin||99));
+  // Finished listings always sit after everything still running, whatever
+  // the sort (Array.prototype.sort is stable, so the chosen order holds
+  // within each group).
+  res.sort((a,b)=>(a.archived?1:0)-(b.archived?1:0));
   return res;
+}
+
+// Everything the search pages filter over: live listings, then finished
+// ones (ARCHIVED_LISTINGS, from camps-data.js) shown greyed out so parents
+// can still favourite them for next year.
+function searchPool(){
+  const archived = (typeof ARCHIVED_LISTINGS !== 'undefined' && Array.isArray(ARCHIVED_LISTINGS)) ? ARCHIVED_LISTINGS : [];
+  return LISTINGS.concat(archived);
+}
+
+// "12 results found" / "12 results found · 3 finished"
+function resultCountText(listings){
+  const done = listings.filter(c=>c.archived).length;
+  const live = listings.length - done;
+  let t = live + ' result' + (live!==1?'s':'') + ' found';
+  if(done) t += ' · ' + done + ' finished';
+  return t;
 }
 
 // Availability badge, driven by the Airtable "Availability" field
@@ -226,21 +247,26 @@ function availabilityOf(c){
   return (n.includes('fully booked') || n.includes('waiting list only')) ? 'Waitlist' : 'Open';
 }
 
+const DONE_COL = {bg:'#ECEDF1', ink:'#7A8194'};
+
 function listingCard(c, i, showType){
-  const isHalloween = /halloween/i.test(c.name||'');
-  const col = isHalloween ? HW_ORANGE : COLS[i % COLS.length];
+  const isDone = !!c.archived;
+  const isHalloween = !isDone && /halloween/i.test(c.name||'');
+  const col = isDone ? DONE_COL : isHalloween ? HW_ORANGE : COLS[i % COLS.length];
   const ageStr = c.ageMin!=null && c.ageMax!=null ? 'Ages '+c.ageMin+'–'+c.ageMax : c.ageMin!=null ? 'Ages '+c.ageMin+'+' : '';
   const weeksStr = (c.weeks||[]).slice(0,2).join(', ');
   const avail = availabilityOf(c);
   const isWait = avail === 'Waitlist';
   const isLimited = avail === 'Limited spaces';
   const sportIcon = sportIconHtml(c);
-  return '<div class="camp-card">'
+  return '<div class="camp-card'+(isDone?' is-done':'')+'">'
   +'<div class="card-img" style="background:'+col.bg+'">'
   +(isHalloween?HW_PUMPKIN_ICON:'')
   +(!isHalloween&&sportIcon?'<div class="card-sport" style="color:'+col.ink+'">'+sportIcon+'</div>':'')
-  +'<div class="card-status '+(isWait?'s-wait':isLimited?'s-limited':'s-open')+'">'+(isWait?'WAITLIST':isLimited?'LIMITED SPACES':'LIVE NOW')+'</div>'
-  +'<button class="card-save" data-save-id="'+c.id+'" aria-label="Save for later" aria-pressed="false" onclick="event.preventDefault();window.SortdSaved&&window.SortdSaved.toggle(\''+c.id+'\',this);"><i class="ti ti-heart"></i></button>'
+  +(isDone
+    ?'<div class="card-status s-done">FINISHED</div>'
+    :'<div class="card-status '+(isWait?'s-wait':isLimited?'s-limited':'s-open')+'">'+(isWait?'WAITLIST':isLimited?'LIMITED SPACES':'LIVE NOW')+'</div>')
+  +'<button class="card-save" data-save-id="'+c.id+'" aria-label="'+(isDone?'Save for next year':'Save for later')+'" aria-pressed="false" onclick="event.preventDefault();window.SortdSaved&&window.SortdSaved.toggle(\''+c.id+'\',this);"><i class="ti ti-heart"></i></button>'
   +'</div>'
   +'<div class="card-body">'
   +(c.category?'<div class="card-cat" style="color:'+col.ink+'">'+c.category+'</div>':'')
@@ -261,8 +287,10 @@ function listingCard(c, i, showType){
   +(c.times?'<span class="cm">'+c.times.split('\n')[0].substring(0,20)+'</span>':'')
   +(weeksStr?'<span class="cm">'+weeksStr+'</span>':'')
   +'</div>'
-  +(c.cost?'<div class="card-cost">'+c.cost.split('\n')[0].substring(0,30)+'</div>':'')
-  +'<a href="'+c.listingUrl+'" class="card-link">Find out more ↗</a>'
+  +(isDone
+    ?'<div class="card-done">'+(c.ranWhen && c.ranWhen.length<=32?'Ran '+c.ranWhen+'. ':'')+'Finished for now. Tap ♡ to save it for next year.</div>'
+    :(c.cost?'<div class="card-cost">'+c.cost.split('\n')[0].substring(0,30)+'</div>':''))
+  +'<a href="'+c.listingUrl+'" class="card-link">'+(isDone?'See details ↗':'Find out more ↗')+'</a>'
   +'</div></div>';
 }
 

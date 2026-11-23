@@ -198,6 +198,15 @@ h1 em{font-style:normal; color:var(--pu);}
 .s-open{background:var(--gr);}
 .s-wait{background:#D9971E;color:#fff;}
 .s-limited{background:var(--pu);color:#fff;}
+.s-done{background:#8A90A0;color:#fff;}
+/* Finished listings: greyed out, but the heart stays full-strength so
+   parents can still save them for next year. */
+.camp-card.is-done{box-shadow:none;border-color:#e6e7ec;background:#fafafb;}
+.camp-card.is-done:hover{transform:none;box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.camp-card.is-done .card-sport{opacity:.5;}
+.camp-card.is-done .card-body > :not(.card-link):not(.card-done){opacity:.55;}
+.camp-card.is-done .card-link{background:#fff;color:var(--nv);border:1.5px solid #d5d8e0;}
+.card-done{font-size:13px;line-height:1.4;color:#5d6375;margin-top:auto;padding-top:4px;}
 /* Save (heart) button on a listing card — top-right of the image, mirrors
    the status pill's top-left placement. Filled pink + beating-heart icon
    once saved; see js/saved.js for the save/unsave logic. */
