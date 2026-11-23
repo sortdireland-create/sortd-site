@@ -11,7 +11,7 @@
 //
 // Consent record: every contact gets OPT_IN = true plus these text
 // attributes, created automatically in Brevo the first time they're needed:
-//   SIGNUP_SOURCE  footer | about_page | parent_login
+//   SIGNUP_SOURCE  footer | about_page | parent_login | santa_list
 //   CONSENT_AT     ISO timestamp of the sign-up
 //   CONSENT_TEXT   the exact wording of the tick box the person agreed to
 //   SIGNUP_URL     the page they signed up on
