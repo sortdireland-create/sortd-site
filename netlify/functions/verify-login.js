@@ -60,14 +60,18 @@ const LOGIN_CONSENT_TEXT = 'Also send me the weekly "what\'s on near you" email 
 // only: a failure here must never stop the login itself from completing,
 // since the Airtable NewsletterOptIn/NewsletterOptInAt fields are the
 // authoritative consent record regardless of whether this call succeeds.
+// Exact wording of the tick box on /christmas (christmas.html, #newsletter-optin).
+// Keep in sync with the page: this is the consent record.
+const SANTA_CONSENT_TEXT = 'Yes, send me Sortd\'s Thursday email too: Christmas camps, what\'s on over the holidays and open spots near you. Optional, and you can unsubscribe anytime. See our Privacy Policy.';
+
 // Sign-ups that came through the Santa List on /christmas are tagged
-// 'santa_list' so they can be told apart in Brevo; the tick-box wording
-// there is the same as /login, so the consent text is shared.
+// 'santa_list' so they can be told apart in Brevo, with the /christmas
+// tick-box wording as their consent text.
 async function addToNewsletter(email, viaSanta) {
   const result = await addNewsletterContact({
     email,
     source: viaSanta ? 'santa_list' : 'parent_login',
-    consentText: LOGIN_CONSENT_TEXT,
+    consentText: viaSanta ? SANTA_CONSENT_TEXT : LOGIN_CONSENT_TEXT,
     pageUrl: viaSanta ? `${SITE_URL}/christmas` : `${SITE_URL}/login`,
   });
   if (!result.ok) console.error('verify-login: Brevo newsletter add failed for', email);
