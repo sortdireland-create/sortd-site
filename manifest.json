@@ -69,7 +69,7 @@
     "name": "Junior Einsteins Christmas Science Camp – Galway",
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "shankill-tennis-club-junior-tennis",
@@ -105,7 +105,7 @@
     "name": "Young Chef – Christmas Session",
     "provider": "Airfield Estate",
     "section": "camps",
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "stillorgan-rathfarnham-rfc-minis-rugby",
@@ -162,6 +162,15 @@
     "lastmod": "2026-11-07"
   },
   {
+    "slug": "barnagh-greenway-hub-christmas-pottery-baking-camp-barnagh-greenway-hub",
+    "county": "limerick",
+    "url": "https://sortd-ireland.ie/camps/limerick/barnagh-greenway-hub-christmas-pottery-baking-camp-barnagh-greenway-hub",
+    "name": "Christmas Pottery & Baking Camp – Barnagh Greenway Hub",
+    "provider": "Barnagh Greenway Hub",
+    "section": "camps",
+    "lastmod": "2026-11-24"
+  },
+  {
     "slug": "malahide-united-fc-nippers-academy",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/malahide-united-fc-nippers-academy",
@@ -178,6 +187,15 @@
     "provider": "GTI Ireland / Be Martial Arts & Fitness",
     "section": "classes",
     "lastmod": "2026-11-10"
+  },
+  {
+    "slug": "junior-einsteins-christmas-science-camp-glenageary-sun-20-dec",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-christmas-science-camp-glenageary-sun-20-dec",
+    "name": "Junior Einsteins Christmas Science Camp – Glenageary (Sun 20 Dec)",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps",
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "round-towers-lusk-gaa-towers-oga-nursery",
@@ -249,7 +267,7 @@
     "name": "Mum & Tot Christmas Decorating Workshop",
     "provider": "GCakes",
     "section": "camps",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "gaiety-school-of-acting-young-gaiety-drama-workshop-ages-8-10-temple-bar",
@@ -276,7 +294,7 @@
     "name": "Junior Einsteins Christmas Science Camp – Tuam",
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "st-finians-gaa-swords-u9-girls-born-2017-gaa-camogie",
@@ -351,6 +369,15 @@
     "lastmod": "2026-11-08"
   },
   {
+    "slug": "the-jam-winter-wonderland-art-workshop-malahide",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/the-jam-winter-wonderland-art-workshop-malahide",
+    "name": "Winter Wonderland Art Workshop – Malahide",
+    "provider": "The Jam",
+    "section": "camps",
+    "lastmod": "2026-11-24"
+  },
+  {
     "slug": "coderdojo-digital-dun-laoghaire",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/coderdojo-digital-dun-laoghaire",
@@ -387,6 +414,15 @@
     "lastmod": "2026-11-10"
   },
   {
+    "slug": "declan-omeara-art-christmas-art-camp-5-7-yrs",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/declan-omeara-art-christmas-art-camp-5-7-yrs",
+    "name": "Christmas Art Camp (5–7 yrs)",
+    "provider": "Declan O'Meara Art",
+    "section": "camps",
+    "lastmod": "2026-11-24"
+  },
+  {
     "slug": "metropolitan-school-of-dance-howth",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/classes/dublin/metropolitan-school-of-dance-howth",
@@ -411,7 +447,7 @@
     "name": "Festive Explorer Family Workshop",
     "provider": "IMMA (Irish Museum of Modern Art)",
     "section": "camps",
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "conscious-crafting-oyster-ornaments-christmas-workshop-waterford-winterval",
@@ -459,13 +495,22 @@
     "lastmod": "2026-11-07"
   },
   {
+    "slug": "declan-omeara-art-christmas-art-camp-8-14-yrs",
+    "county": "cork",
+    "url": "https://sortd-ireland.ie/camps/cork/declan-omeara-art-christmas-art-camp-8-14-yrs",
+    "name": "Christmas Art Camp (8–14 yrs)",
+    "provider": "Declan O'Meara Art",
+    "section": "camps",
+    "lastmod": "2026-11-24"
+  },
+  {
     "slug": "junior-astronauts-space-science-camp-glasnevin",
     "county": "dublin",
     "url": "https://sortd-ireland.ie/camps/dublin/junior-astronauts-space-science-camp-glasnevin",
     "name": "Junior Astronauts Space Science Camp – Glasnevin",
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "balbriggan-rfc-mini-rugby",
@@ -546,7 +591,7 @@
     "name": "Marian Lennon School of Ballet — Blanchardstown/Castleknock",
     "provider": "Marian Lennon School of Ballet",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "dsa-dance-sing-act-performing-arts-classes-baldoyle",
@@ -573,7 +618,7 @@
     "name": "Creating Calm: Mindfulness Through Art",
     "provider": "The Jam",
     "section": "classes",
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "waterford-winterval-the-elves-workshop-waterford-winterval",
@@ -618,7 +663,7 @@
     "name": "Christmas LEGO Workshop – Bantry",
     "provider": "Brick Legends Ireland",
     "section": "camps",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "gcakes-little-christmas-childrens-decorating-workshop",
@@ -627,7 +672,7 @@
     "name": "Little Christmas Children's Decorating Workshop",
     "provider": "GCakes",
     "section": "camps",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "malahide-rfc-pre-mini-rugby-2026-2027",
@@ -654,7 +699,7 @@
     "name": "All Sections (Beavers–Ventures)",
     "provider": "Scouting Ireland – 109th Dublin Corduff Scout Group",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "sport-ireland-campus-national-aquatic-centre-swim-academy-lessons-national-aquatic-centre",
@@ -663,7 +708,7 @@
     "name": "Swim Academy Lessons - National Aquatic Centre",
     "provider": "Sport Ireland Campus / National Aquatic Centre",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "leopardstown-tennis-club-junior-coaching-ages-5-18",
@@ -708,7 +753,7 @@
     "name": "Christmas Workshops at Wicklow Gaol",
     "provider": "Wicklow's Historic Gaol",
     "section": "camps",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "naomh-mearnog-gaa-academy",
@@ -762,7 +807,7 @@
     "name": "Art & Drama Class",
     "provider": "The Jam",
     "section": "classes",
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "irish-institute-of-music-and-song-iims-iims-youth-choir-balbriggan",
@@ -828,13 +873,22 @@
     "lastmod": "2026-11-12"
   },
   {
+    "slug": "junior-einsteins-christmas-science-camp-nord-anglia-international-school-leopardstown-3-day",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-christmas-science-camp-nord-anglia-international-school-leopardstown-3-day",
+    "name": "Junior Einsteins Christmas Science Camp – Nord Anglia International School, Leopardstown (3-day)",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps",
+    "lastmod": "2026-11-24"
+  },
+  {
     "slug": "brick-legends-ireland-christmas-lego-workshop-lisavaird",
     "county": "cork",
     "url": "https://sortd-ireland.ie/camps/cork/brick-legends-ireland-christmas-lego-workshop-lisavaird",
     "name": "Christmas LEGO Workshop – Lisavaird",
     "provider": "Brick Legends Ireland",
     "section": "camps",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "odwyers-gaa-ogdwyers-nursery-academy",
@@ -870,7 +924,7 @@
     "name": "Child-Led Art Sessiona",
     "provider": "The Jam",
     "section": "classes",
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "little-kickers-swords",
@@ -906,7 +960,7 @@
     "name": "All Sections (Beavers–Ventures)",
     "provider": "Scouting Ireland – 104th/144th Blanchardstown Scout Group",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "capoeira-for-kids-alsaa-toberbunny",
@@ -916,6 +970,15 @@
     "provider": "Capoeira Ireland (Mundo Capoeira)",
     "section": "classes",
     "lastmod": "2026-11-07"
+  },
+  {
+    "slug": "sport-ireland-campus-christmas-multi-sport-camp-sport-ireland-campus",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/sport-ireland-campus-christmas-multi-sport-camp-sport-ireland-campus",
+    "name": "Christmas Multi-Sport Camp – Sport Ireland Campus",
+    "provider": "Sport Ireland Campus",
+    "section": "camps",
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "naomh-olaf-gaa-boys-girls-academy-ages-4-7",
@@ -960,7 +1023,7 @@
     "name": "It's a Wrap Christmas Workshop – Waterford Winterval",
     "provider": "Conscious Crafting",
     "section": "camps",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "the-jam-winter-wonderland-art-workshop-raheny",
@@ -969,7 +1032,7 @@
     "name": "Winter Wonderland Art Workshop – Raheny",
     "provider": "The Jam",
     "section": "camps",
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "garda-westmanstown-gaels-nursery-fun-for-4s",
@@ -1041,7 +1104,7 @@
     "name": "THE GREAT CHRISTMAS CUPCAKE & COOKIE PARTY! 🍪",
     "provider": "GCakes",
     "section": "camps",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "leap-gymnastics-club",
@@ -1050,7 +1113,7 @@
     "name": "Leap Gymnastics Club",
     "provider": "Leap Gymnastics Club",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "castleknock-gaa-nursery",
@@ -1078,6 +1141,15 @@
     "provider": "Metro St. Brigid's Athletic Club",
     "section": "classes",
     "lastmod": "2026-11-20"
+  },
+  {
+    "slug": "luce-yoga-wellness-childrens-yoga-mindfulness-winter-workshop",
+    "county": "kildare",
+    "url": "https://sortd-ireland.ie/camps/kildare/luce-yoga-wellness-childrens-yoga-mindfulness-winter-workshop",
+    "name": "Children's Yoga & Mindfulness Winter Workshop",
+    "provider": "Luce Yoga & Wellness",
+    "section": "camps",
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "bricks-4-kidz-after-school-legostem-club-foxrock",
@@ -1140,7 +1212,7 @@
     "name": "Christmas Science Camp – Glasnevin",
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "playball-toddler-drop-off-class-for-3-5-year-olds",
@@ -1212,7 +1284,7 @@
     "name": "Glenageary Lawn Tennis Club - Junior Coaching (Red to Yellow Ball)",
     "provider": "Glenageary Lawn Tennis Club",
     "section": "classes",
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "terenure-college-rfc-mini-rugby",
@@ -1276,6 +1348,15 @@
     "provider": "Colour & Art",
     "section": "camps",
     "lastmod": "2026-11-17"
+  },
+  {
+    "slug": "junior-einsteins-christmas-science-camp-glenageary-sat-19-dec",
+    "county": "dublin",
+    "url": "https://sortd-ireland.ie/camps/dublin/junior-einsteins-christmas-science-camp-glenageary-sat-19-dec",
+    "name": "Junior Einsteins Christmas Science Camp – Glenageary (Sat 19 Dec)",
+    "provider": "Junior Einsteins Science Club",
+    "section": "camps",
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "st-pats-gaa-donabate-paisti-pats-academy",
@@ -1372,13 +1453,13 @@
     "section": "hub",
     "name": "Kids' classes and camps in Malahide",
     "url": "https://sortd-ireland.ie/dublin/malahide/",
-    "lastmod": "2026-11-20"
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' camps in Malahide",
     "url": "https://sortd-ireland.ie/dublin/malahide/camps/",
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
@@ -1390,85 +1471,103 @@
     "section": "hub",
     "name": "Kids' classes in Balbriggan",
     "url": "https://sortd-ireland.ie/dublin/balbriggan/",
-    "lastmod": "2026-11-20"
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Swords",
     "url": "https://sortd-ireland.ie/dublin/swords/",
-    "lastmod": "2026-11-20"
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Baldoyle",
     "url": "https://sortd-ireland.ie/dublin/baldoyle/",
-    "lastmod": "2026-11-20"
+    "lastmod": "2026-11-24"
+  },
+  {
+    "section": "hub",
+    "name": "Kids' classes and camps in Blanchardstown",
+    "url": "https://sortd-ireland.ie/dublin/blanchardstown/",
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Blanchardstown",
-    "url": "https://sortd-ireland.ie/dublin/blanchardstown/",
-    "lastmod": "2026-11-20"
+    "url": "https://sortd-ireland.ie/dublin/blanchardstown/classes/",
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Clontarf",
     "url": "https://sortd-ireland.ie/dublin/clontarf/",
-    "lastmod": "2026-11-20"
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Castleknock",
     "url": "https://sortd-ireland.ie/dublin/castleknock/",
-    "lastmod": "2026-11-20"
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' classes in City Centre",
     "url": "https://sortd-ireland.ie/dublin/city-centre/",
-    "lastmod": "2026-11-20"
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' classes and camps in Dundrum",
     "url": "https://sortd-ireland.ie/dublin/dundrum/",
-    "lastmod": "2026-11-20"
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' classes and camps in Glasnevin",
     "url": "https://sortd-ireland.ie/dublin/glasnevin/",
-    "lastmod": "2026-11-20"
+    "lastmod": "2026-11-24"
+  },
+  {
+    "section": "hub",
+    "name": "Kids' classes and camps in Glenageary",
+    "url": "https://sortd-ireland.ie/dublin/glenageary/",
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' classes and camps in Raheny",
     "url": "https://sortd-ireland.ie/dublin/raheny/",
-    "lastmod": "2026-11-20"
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Rathmines",
     "url": "https://sortd-ireland.ie/dublin/rathmines/",
-    "lastmod": "2026-11-20"
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' classes in Skerries",
     "url": "https://sortd-ireland.ie/dublin/skerries/",
-    "lastmod": "2026-11-20"
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' classes and camps in Dublin",
     "url": "https://sortd-ireland.ie/dublin/",
-    "lastmod": "2026-11-20"
+    "lastmod": "2026-11-24"
+  },
+  {
+    "section": "hub",
+    "name": "Kids' camps in Cork",
+    "url": "https://sortd-ireland.ie/cork/",
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
     "name": "Kids' camps in Waterford City",
     "url": "https://sortd-ireland.ie/waterford/waterford-city/",
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-24"
   },
   {
     "section": "hub",
@@ -1500,7 +1599,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "designer-minds-steam-camp-whitehall",
@@ -1530,7 +1629,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "rugbytots-sportsco-gym-ringsend",
@@ -1550,7 +1649,7 @@
     "provider": "Cork City FC",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "rugbytots-cabinteely-community-school",
@@ -1570,7 +1669,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "rugbytots-glasnevin-etns",
@@ -1590,7 +1689,7 @@
     "provider": "The Jam",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "junior-einsteins-spooky-science-halloween-camp-newbridge",
@@ -1600,7 +1699,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "stretch-n-grow-halloween-camp-firhouse",
@@ -1620,7 +1719,7 @@
     "provider": "Starcamp",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "designer-minds-steam-camp-adamstown",
@@ -1680,7 +1779,7 @@
     "provider": "Inspireland",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "designer-minds-steam-camp-grangegorman",
@@ -1770,7 +1869,7 @@
     "provider": "Cork City FC",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "rugbytots-pope-john-paul-ii-ns-malahide",
@@ -1830,7 +1929,7 @@
     "provider": "Cork City FC",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "dramatastic-halloween-camp-knocknacarra",
@@ -1990,7 +2089,7 @@
     "provider": "Designer Minds",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "starcamp-thriller-halloween-camp-diswellstown-starcamp-ages-4-8",
@@ -2030,7 +2129,7 @@
     "provider": "GCakes",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-12"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "rugbytots-newpark-sports-centre-blackrock",
@@ -2050,7 +2149,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "junior-einsteins-spooky-science-halloween-camp-maynooth-university-5-day",
@@ -2060,7 +2159,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "starcamp-thriller-halloween-camp-baldoyle-starcamp-ages-4-8",
@@ -2080,7 +2179,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "neurodiversity-ireland-summer-camp-ages-5-7",
@@ -2120,7 +2219,7 @@
     "provider": "The Jam",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "designer-minds-steam-camp-chapelizod",
@@ -2180,7 +2279,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "declan-omeara-art-halloween-art-camp-ages-8-14-cork",
@@ -2190,7 +2289,7 @@
     "provider": "Declan O'Meara Art",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "starcamp-halloween-camp-douglas",
@@ -2200,7 +2299,7 @@
     "provider": "Starcamp",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "skate-school-dublin-halloween-skateboarding-camp",
@@ -2230,7 +2329,7 @@
     "provider": "Starcamp",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "designer-minds-steam-camp-sutton",
@@ -2440,7 +2539,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "malahide-castle-sports-pavilion-halloween-junior-tennis-camp",
@@ -2470,7 +2569,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "the-krafty-italian-dublin-autumn-halloween-craft-classes-fridays",
@@ -2580,7 +2679,7 @@
     "provider": "Inspireland",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "designer-minds-steam-camp-clontarf-week-3",
@@ -2730,7 +2829,7 @@
     "provider": "The Jam",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "designer-minds-steam-camp-clontarf-week-8",
@@ -2780,7 +2879,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "designer-minds-steam-camp-terenure",
@@ -2870,7 +2969,7 @@
     "provider": "Starcamp",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "junior-einsteins-spooky-science-halloween-camp-castleknock-5-day",
@@ -2880,7 +2979,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "junior-einsteins-spooky-science-halloween-camp-glenageary-5-day",
@@ -2890,7 +2989,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "alive-outside-summer-camp-rathgar-the-high-school",
@@ -2910,7 +3009,7 @@
     "provider": "Junior Einsteins Science Club",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-17"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "neurodiversity-ireland-summer-camp-ages-11-14",
@@ -3000,7 +3099,7 @@
     "provider": "Cork City FC",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   },
   {
     "slug": "declan-omeara-art-halloween-art-camp-ages-5-7-cork",
@@ -3010,6 +3109,6 @@
     "provider": "Declan O'Meara Art",
     "section": "camps",
     "archived": true,
-    "lastmod": "2026-11-07"
+    "lastmod": "2026-11-24"
   }
 ]
